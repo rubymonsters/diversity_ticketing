@@ -1,0 +1,9 @@
+<h1>Listing Events</h1>
+ 
+<% @events.each do |event| %>
+  <p>
+    <%= link_to event.name, event_path(:id => event.id) %>
+  </p>
+<% end %>
+
+<%= link_to 'New event', new_event_path %>
