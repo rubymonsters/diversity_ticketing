@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720200122) do
+ActiveRecord::Schema.define(version: 20150728172005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(version: 20150720200122) do
     t.string   "organizer_email"
     t.text     "description"
     t.text     "name"
-    t.date     "date"
+    t.date     "start_date"
     t.text     "question_1"
     t.text     "question_2"
     t.text     "question_3"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.date     "end_date"
   end
 
   add_foreign_key "applications", "events"
