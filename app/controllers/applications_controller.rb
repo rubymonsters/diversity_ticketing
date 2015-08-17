@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
   def show
     @event = Event.find(params[:event_id])
-    @application = Application.find(params[:id])
+    @application = @event.applications.find(params[:id])
   end
 
 	def new
@@ -12,9 +12,12 @@ class ApplicationsController < ApplicationController
     @event = Event.find(params[:event_id])
 
     @application = Application.new(application_params)
-    @application.event_id = params[:event_id]
-    @application.save
-    redirect_to event_application_path(@event, @application)
+    @application.event = @event
+    if @application.save
+      redirect_to event_application_path(@event, @application)
+    else 
+      render :new
+    end
   end
 
   private
