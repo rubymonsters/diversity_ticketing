@@ -3,6 +3,7 @@
 <% @events.each do |event| %>
   <p>
     <%= link_to event.name, event_path(:id => event.id) %>
+    <%= link_to 'Apply', new_event_application_path(:event_id => event.id) %>
   </p>
 <% end %>
 
