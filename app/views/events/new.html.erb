@@ -1,5 +1,17 @@
 <h1>New Event</h1>
 
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+ 
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for :event, url: events_path do |f| %>
   <p>
     <%= f.label :organizer_name %><br>
@@ -9,6 +21,11 @@
   <p>
     <%= f.label :organizer_email %><br>
     <%= f.text_field :organizer_email %>
+  </p>
+
+  <p>
+    <%= f.label :organizer_email_confirmation %><br>
+    <%= f.text_field :organizer_email_confirmation %>
   </p>
 
   <p>
