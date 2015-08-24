@@ -1,7 +1,8 @@
 class Application < ActiveRecord::Base
   belongs_to :event
-  validates :name, :email, presence: true
-  validates :email, format: { with: /.+@.+\..+/ }, allow_blank: false
+  validates :name, presence: true
+  validates :email, presence: true, confirmation: true, format: { with: /.+@.+\..+/ }
+  validates :email_confirmation, presence: true
   validate :presence_of_questions
 
   def presence_of_questions

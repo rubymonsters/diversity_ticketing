@@ -2,6 +2,17 @@
 
 <%= form_for :application, url: event_applications_path(params[:event_id]) do |f| %>
 
+<% if @application.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+ 
+    <ul>
+    <% @application.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
  
   <p>
     <%= f.label :name %><br>
@@ -13,6 +24,10 @@
     <%= f.text_field :email %>
   </p>
 
+  <p>
+    <%= f.label :email_confirmation %><br>
+    <%= f.text_field :email_confirmation %>
+  </p>
 
   <p>
     <%= f.label @event.question_1 %><br>
