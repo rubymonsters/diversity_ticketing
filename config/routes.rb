@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :events do 
-    resources :applications
+  resources :events, except: [:destroy, :update] do 
+    resources :applications, only: [:show, :new, :create]
   end
 
   get '/admin', to: 'events#admin_index'
