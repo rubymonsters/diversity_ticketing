@@ -1,4 +1,6 @@
-class EventsController < ApplicationController
+class EventsController < ApplicationController   
+  http_basic_authenticate_with name: ENV['username'], password: ENV['password'], only: :admin_index
+
   def index
     @events = Event.all
   end

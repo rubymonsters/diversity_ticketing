@@ -1,4 +1,6 @@
 class ApplicationsController < ApplicationController
+  http_basic_authenticate_with name: ENV['username'], password: ENV['password'], only: :show
+
   def show
     @event = Event.find(params[:event_id])
     @application = @event.applications.find(params[:id])
