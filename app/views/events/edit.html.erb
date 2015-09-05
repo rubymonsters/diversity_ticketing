@@ -1,3 +1,17 @@
+<h1>Approve Event</h1>
+
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being updated:</h2>
+ 
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <p>
   <strong>Organizer Name:</strong>
   <%= @event.organizer_name %>
