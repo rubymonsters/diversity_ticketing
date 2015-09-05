@@ -1,5 +1,5 @@
 class EventsController < ApplicationController   
-  http_basic_authenticate_with name: ENV['username'], password: ENV['password'], only: :admin_index
+  http_basic_authenticate_with name: ENV['username'], password: ENV['password'], only: [:admin_index, :edit]
 
   def index
     @events = Event.all
@@ -27,8 +27,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to admin_path
+    else
+      render :edit
+    end
+  end
+
   private
     def event_params
-      params.require(:event).permit(:organizer_name, :organizer_email, :organizer_email_confirmation, :description, :name, :start_date, :end_date, :question_1, :question_2, :question_3)
+      params.require(:event).permit(:organizer_name, :organizer_email, :organizer_email_confirmation, :description, :name, :start_date, :end_date, :question_1, :question_2, :question_3, :approved)
     end
 end

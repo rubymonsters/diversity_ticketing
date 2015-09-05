@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728172005) do
+ActiveRecord::Schema.define(version: 20150905093436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 20150728172005) do
     t.text     "question_1"
     t.text     "question_2"
     t.text     "question_3"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.date     "end_date"
+    t.boolean  "approved",        default: false, null: false
   end
 
   add_foreign_key "applications", "events"

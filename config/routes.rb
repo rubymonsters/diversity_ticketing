@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :events, except: [:destroy, :update] do 
+  resources :events, except: [:destroy] do 
     resources :applications, only: [:show, :new, :create]
   end
 
