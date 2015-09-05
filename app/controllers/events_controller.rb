@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   http_basic_authenticate_with name: ENV['username'], password: ENV['password'], only: [:admin_index, :edit]
 
   def index
-    @events = Event.all
+    @events = Event.where(approved: true)
   end
 
   def admin_index
@@ -11,6 +11,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+
+    if @event.approved
+      render :show
+    else
+      redirect_to events_path
+    end
   end
 
   def new
@@ -33,7 +39,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    
+
     if @event.update(event_params)
       redirect_to admin_path
     else
