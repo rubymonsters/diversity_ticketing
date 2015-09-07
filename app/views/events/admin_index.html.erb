@@ -2,9 +2,11 @@
  
 <% @events.each do |event| %>
   <p>
-    <%= link_to event.name, event_path(:id => event.id) %>
-    <%= link_to 'Apply', new_event_application_path(:event_id => event.id) %>
+    <%= event.name %>
+    <% if event.approved %>
+      <%= link_to 'Unapprove', edit_event_path(:id => event.id) %>
+    <% else %>
+      <%= link_to 'Approve', edit_event_path(:id => event.id) %>
+    <% end %>
   </p>
 <% end %>
-
-<%= link_to 'New event', new_event_path %>

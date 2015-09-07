@@ -1,0 +1,72 @@
+<h1>Admin Event</h1>
+
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being updated:</h2>
+ 
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p>
+  <strong>Organizer Name:</strong>
+  <%= @event.organizer_name %>
+</p>
+
+<p>
+  <strong>Organizer Email:</strong>
+  <%= @event.organizer_email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.start_date %>
+
+  <strong>to</strong>
+  <%= @event.end_date %>
+</p>
+
+<p>
+  <strong>Question 1:</strong>
+  <%= @event.question_1 %>
+</p>
+
+<p>
+  <strong>Question 2:</strong>
+  <%= @event.question_2 %>
+</p>
+
+<p>
+  <strong>Question 3:</strong>
+  <%= @event.question_3 %>
+</p>
+
+
+<%= form_for @event, url: event_path(@event), method: :patch do |f| %>
+  <div class="field">
+    <p>Approve Event?</p>
+    <p><%= label_tag do %>
+      <%= f.radio_button(:approved, true) %> Yes
+    <% end %></p>
+    <p><%= label_tag do %>
+      <%= f.radio_button(:approved, false) %> No
+    <% end %></p>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

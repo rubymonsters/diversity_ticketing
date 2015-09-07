@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
     @application = Application.new(application_params)
     @application.event = @event
     if @application.save
-      redirect_to event_application_path(@event, @application)
+      redirect_to @event
     else 
       render :new
     end
