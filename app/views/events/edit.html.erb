@@ -56,7 +56,7 @@
 </p>
 
 
-<%= form_for :event, url: event_path(@event), method: :patch do |f| %>
+<%= form_for @event, url: event_path(@event), method: :patch do |f| %>
   <div class="field">
     <p>Approve Event?</p>
     <p><%= label_tag do %>
