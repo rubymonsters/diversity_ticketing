@@ -1,5 +1,5 @@
 class EventsController < ApplicationController   
-  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :edit]
+  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit]
 
   def index
     @events = Event.approved
@@ -7,6 +7,14 @@ class EventsController < ApplicationController
 
   def admin_index
     @events = Event.all
+  end
+
+  def admin_show
+    @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @event.to_csv }
+    end
   end
 
   def show
