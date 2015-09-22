@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  margin: 0;
+}
+
+.topbar {
+  padding: 0 15px;
+  background-color: #eff0ec;
+  font-family: sans-serif;
+}
+
+.topbar a {
+  text-decoration: none;
+  color: #898989;
+}
+
+.topbar h1 {
+  display: inline-block;
+}
+
+.navigation {
+  display: inline-block;
+}
+
+.navigation li {
+  padding: 0 5px;
+  display: inline-block;
+  list-style: none;
+}
