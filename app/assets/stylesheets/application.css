@@ -42,3 +42,8 @@ body {
   display: inline-block;
   list-style: none;
 }
+
+.row li {
+  display: inline-block;
+  width: 150px;
+}
