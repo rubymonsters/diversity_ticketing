@@ -31,15 +31,19 @@
   <%= @event.question_1 %>
 </p>
 
-<p>
-  <strong>Question 2:</strong>
-  <%= @event.question_2 %>
-</p>
+<% if @event.question_2.present? %>
+  <p>
+    <strong>Question 2:</strong>
+    <%= @event.question_2 %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Question 3:</strong>
-  <%= @event.question_3 %>
-</p>
+<% if @event.question_2.present? %>
+  <p>
+    <strong>Question 3:</strong>
+    <%= @event.question_3 %>
+  </p>
+<% end %>
 
 <%= link_to 'Apply', new_event_application_path(params[:id]) %>
 <%= link_to 'Back', events_path %>
