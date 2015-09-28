@@ -7,10 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="topbar">
+    <h1><%= link_to 'Diversity Ticketing', root_path %></h1>
+    <div class="navigation">
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Events', events_path %></li>
+        <li><%= link_to 'Submit Event', new_event_path %></li>
+      </ul>
+    </div>
+  </div>
+
  	<% flash.each do |name, msg| -%>
     <%= content_tag :div, msg, class: name %>
   <% end -%>
-<%= yield %>
+
+  <%= yield %>
 
 </body>
 </html>
