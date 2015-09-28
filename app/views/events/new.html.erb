@@ -13,55 +13,94 @@
 <% end %>
 
 <%= form_for :event, url: events_path do |f| %>
+  <div class="form_field">
   <p>
-    <%= f.label :organizer_name %><br>
+    <%= f.label :organizer_name %>
+  </p>
+  <p>
     <%= f.text_field :organizer_name %>
   </p>
- 
+ </div>
+
+  <div class="form_field">
   <p>
-    <%= f.label :organizer_email %><br>
+    <%= f.label :organizer_email %>
+  </p>
+  <p>
     <%= f.text_field :organizer_email %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :organizer_email_confirmation %><br>
+    <%= f.label :organizer_email_confirmation %>
+  </p>
+  <p>
     <%= f.text_field :organizer_email_confirmation %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description %>
   </p>
- 
+    <%= f.text_area :description %>
+ </div>
+
+  <div class="form_field">
   <p>
-    <%= f.label :name %><br>
+    <%= f.label :name %>
+  </p>
+  <p>
     <%= f.text_field :name %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :start_date %><br>
+    <%= f.label :start_date %>
+  </p>
+  <p>
     <%= f.date_field :start_date %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :end_date %><br>
+    <%= f.label :end_date %>
+  </p>
+  <p>
     <%= f.date_field :end_date %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :question_1 %><br>
+    <%= f.label :question_1 %>
+  </p>
+  <p>
     <%= f.text_field :question_1 %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :question_2 %><br>
+    <%= f.label :question_2 %>
+  </p>
+  <p>
     <%= f.text_field :question_2 %>
   </p>
+</div>
 
+  <div class="form_field">
   <p>
-    <%= f.label :question_3 %><br>
+    <%= f.label :question_3 %>
+  </p>
+  <p>
     <%= f.text_field :question_3 %>
   </p>
+</div>
+
 
   <p>
     <%= f.submit %>

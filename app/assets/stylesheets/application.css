@@ -17,6 +17,9 @@
 body {
   margin: 0;
 }
+a {
+  color: #898989;
+}
 
 .topbar {
   padding: 0 15px;
@@ -46,4 +49,41 @@ body {
 .row li {
   display: inline-block;
   width: 150px;
+}
+
+.content {
+  font-family: sans-serif;
+  padding: 0 15px;
+  color: #898989;
+}
+
+.button {
+  border: 1px solid grey;
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: #eff0ec;
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+.topbar .button {
+   background-color: #898989;
+   color: #eff0ec;
+}
+
+.form_field {
+  margin-top: 0.75em;
+}
+
+.form_field p {
+  margin: 0;
+}
+
+.form_field input[type=text] {
+  width: 35em;
+}
+
+.form_field textarea {
+  width: 35em;
+  height: 10em;
 }
