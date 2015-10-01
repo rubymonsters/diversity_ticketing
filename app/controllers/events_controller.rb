@@ -1,5 +1,6 @@
 class EventsController < ApplicationController   
   http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit]
+  before_action :get_event, only: [:admin_show, :edit, :update]
 
   def index
     @events = Event.approved
@@ -10,7 +11,6 @@ class EventsController < ApplicationController
   end
 
   def admin_show
-    @event = Event.find(params[:id])
     respond_to do |format|
       format.html
       format.csv { send_data @event.to_csv }
@@ -36,12 +36,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
-
     if @event.update(event_params)
       redirect_to admin_path
     else
@@ -52,5 +49,9 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:organizer_name, :organizer_email, :organizer_email_confirmation, :description, :name, :start_date, :end_date, :question_1, :question_2, :question_3, :approved)
+    end
+
+    def get_event
+      @event = Event.find(params[:id])
     end
 end
