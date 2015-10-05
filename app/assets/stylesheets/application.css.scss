@@ -1,0 +1,114 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  margin: 0;
+}
+
+.content {
+  font-family: sans-serif;
+  padding: 0 15px;
+  color: #898989;
+
+  a {
+    color: #898989;
+  }
+
+  h1 {
+    color: #337389;
+  }
+
+  .button {
+    background-color: #dc4136;
+    color: #ffffff;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0 1em;
+    text-decoration: none;
+  }
+}
+
+/* Navigation Bar */
+.topbar {
+  padding: 0 15px;
+  background-color: #eff0ec;
+  font-family: sans-serif;
+
+  a {
+    text-decoration: none;
+    color: #898989;
+  }
+
+  h1 {
+    display: inline-block;
+  }
+
+  .button {
+    background-color: #898989;
+    color: #eff0ec;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0 1em;
+    text-decoration: none;
+  }
+}
+
+.navigation {
+  display: inline-block;
+
+ li {
+    padding: 0 5px;
+    display: inline-block;
+    list-style: none;
+  }
+}
+
+/* Admin Show Page */
+.row li {
+  display: inline-block;
+  width: 150px;
+}
+
+/* New Events Page (Form) */
+.form_field {
+  margin-top: 0.75em;
+
+  p {
+    margin: 0;
+  }
+
+  input[type=text] {
+    width: 35em;
+  }
+
+  textarea {
+    width: 35em;
+    height: 10em;
+  }
+}
+
+.date {
+  overflow: hidden;
+
+  .left {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .right {
+    float: left;
+  }
+}
