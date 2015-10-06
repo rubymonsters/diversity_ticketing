@@ -36,7 +36,6 @@ body {
     color: #ffffff;
     padding: 0.5em;
     border-radius: 5px;
-    margin: 0 1em;
     text-decoration: none;
   }
 }
@@ -114,9 +113,20 @@ body {
     float: left;
   }
 }
+/* Event Show Page */
+.event {
+  background-color: #EBCDC3;
+  padding: 5px 15px 30px 15px;
+  margin: 10px 0;
+  width: 35em;
+  border-radius: 5px;
+
+  p {
+    margin-bottom: 25px;
+  }
+}
 
 /* Messages */
-
 .notice {
   padding: 15px;
   color: #dc4136;
