@@ -16,10 +16,10 @@
 
 body {
   margin: 0;
+  font-family: sans-serif;
 }
 
 .content {
-  font-family: sans-serif;
   padding: 0 15px;
   color: #898989;
 
@@ -113,4 +113,11 @@ body {
   .right {
     float: left;
   }
+}
+
+/* Messages */
+
+.notice {
+  padding: 15px;
+  color: #dc4136;
 }
