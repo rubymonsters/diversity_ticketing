@@ -55,15 +55,6 @@ body {
   h1 {
     display: inline-block;
   }
-
-  .button {
-    background-color: #898989;
-    color: #eff0ec;
-    padding: 0.5em;
-    border-radius: 5px;
-    margin: 0 1em;
-    text-decoration: none;
-  }
 }
 
 .navigation {
@@ -97,6 +88,17 @@ body {
   textarea {
     width: 35em;
     height: 10em;
+  }
+
+  input[type=submit] {
+    font-family: sans-serif;
+    font-size: 14px;
+    background-color: #898989;
+    color: #eff0ec;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0;
+    text-decoration: none;
   }
 }
 
