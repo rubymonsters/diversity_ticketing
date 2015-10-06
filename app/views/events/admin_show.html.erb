@@ -5,26 +5,12 @@
 <ul class="row">
   <li>Name</li>
   <li>Email</li>
-  <li><%= @event.question_1 %></li>
-  <% if @event.question_2.present? %>
-    <li><%= @event.question_2 %></li>
-  <% end %>
-  <% if @event.question_3.present? %>
-    <li><%= @event.question_3 %></li>
-  <% end %>
 </ul>
 
 <% @event.applications.each do |application| %>
   <ul class="row">
     <li><%= application.name %></li>
     <li><%= application.email %></li>
-    <li><%= application.answer_1 %></li>
-    <% if @event.question_2.present? %>
-      <li><%= application.answer_2 %></li>
-    <% end %>
-    <% if @event.question_3.present? %>
-      <li><%= application.answer_3 %></li>
-    <% end %>
   </ul>
 <% end %>
 

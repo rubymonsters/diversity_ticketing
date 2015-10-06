@@ -40,21 +40,6 @@
   <%= @event.end_date %>
 </p>
 
-<p>
-  <strong>Question 1:</strong>
-  <%= @event.question_1 %>
-</p>
-
-<p>
-  <strong>Question 2:</strong>
-  <%= @event.question_2 %>
-</p>
-
-<p>
-  <strong>Question 3:</strong>
-  <%= @event.question_3 %>
-</p>
-
 
 <%= form_for @event, url: event_path(@event), method: :patch do |f| %>
   <div class="field">
