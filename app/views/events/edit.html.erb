@@ -36,8 +36,10 @@
   <strong>Date:</strong>
   <%= @event.start_date %>
 
-  <strong>to</strong>
-  <%= @event.end_date %>
+  <% unless @event.start_date == @event.end_date %>
+    <strong>to</strong>
+    <%= @event.end_date %>
+  <% end %>
 </p>
 
 
