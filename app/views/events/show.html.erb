@@ -1,17 +1,6 @@
-<p>
-  <strong>Organizer Name:</strong>
-  <%= @event.organizer_name %>
-</p>
+<p><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
 
-<p>
-  <strong>Organizer Email:</strong>
-  <%= @event.organizer_email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<h1><%= @event.name %></h1>
  
 <p>
   <strong>Description:</strong>
@@ -26,5 +15,4 @@
   <%= @event.end_date %>
 </p>
 
-<%= link_to 'Apply', new_event_application_path(params[:id]) %>
-<%= link_to 'Back', events_path %>
+<%= link_to 'Apply', new_event_application_path(params[:id]), class:'button' %><br>
