@@ -12,48 +12,75 @@
   </div>
 <% end %>
 
-<p>
-  <strong>Organizer Name:</strong>
-  <%= @event.organizer_name %>
-</p>
-
-<p>
-  <strong>Organizer Email:</strong>
-  <%= @event.organizer_email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.start_date %>
-
-  <% unless @event.start_date == @event.end_date %>
-    <strong>to</strong>
-    <%= @event.end_date %>
-  <% end %>
-</p>
-
-
 <%= form_for @event, url: event_path(@event), method: :patch do |f| %>
-  <div class="field">
+
+  <p>Event Details:</p>
+  <div class="form_field">
+    <p>
+      <%= f.label :name, 'Event Name' %>
+
+    </p>
+    <p>
+      <%= f.text_field :name %>
+    </p>
+  </div>
+
+  <div class="date">
+    <div class="form_field left">
+      <p>
+        <%= f.label :start_date, 'From' %>
+      </p>
+      <p>
+        <%= f.date_field :start_date %>
+      </p>
+    </div>
+
+    <div class="form_field right">
+      <p>
+        <%= f.label :end_date, 'To' %>
+      </p>
+      <p>
+        <%= f.date_field :end_date %>
+      </p>
+    </div>
+  </div>
+
+  <div class="form_field">
+    <p>
+      <%= f.label :description, 'Description' %>
+    </p>
+      <%= f.text_area :description %>
+  </div>
+
+  <p>Organizer Details:</p>
+  <div class="form_field">
+    <p>
+      <%= f.label :organizer_name, 'Name' %>
+    </p>
+    <p>
+      <%= f.text_field :organizer_name %>
+    </p>
+  </div>
+
+  <div class="form_field">
+    <p>
+      <%= f.label :organizer_email, 'Email' %>
+    </p>
+    <p>
+      <%= f.text_field :organizer_email %>
+    </p>
+  </div>
+
+  <div class="form_field">
     <p>Approve Event?</p>
-    <p><%= label_tag do %>
+    <p class="radio-button"><%= label_tag do %>
       <%= f.radio_button(:approved, true) %> Yes
-    <% end %></p>
-    <p><%= label_tag do %>
+    <% end %>
+    <%= label_tag do %>
       <%= f.radio_button(:approved, false) %> No
     <% end %></p>
   </div>
-  <div class="actions">
+  <div class="form_field">
     <%= f.submit %>
-  </div>
+  </div><br>
 <% end %>
