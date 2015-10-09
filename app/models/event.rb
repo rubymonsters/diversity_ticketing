@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :applications
+  has_many :applications, dependent: :destroy
   
   validates :organizer_name, :description, :name, presence: true
   validates :start_date, date: true

@@ -3,11 +3,11 @@
 <% @events.each do |event| %>
   <p>
     <%= link_to event.name, event_admin_path(:id => event.id) %>
-    <% if event.approved %>
-      <%= link_to 'Unapprove', edit_event_path(:id => event.id) %>
-    <% else %>
-      <%= link_to 'Approve', edit_event_path(:id => event.id) %>
-    <% end %>
+    
     <%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv) %>
+
+    <%= link_to 'Edit', edit_event_path(:id => event.id) %>
+
+    <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?" } %>
   </p>
 <% end %>
