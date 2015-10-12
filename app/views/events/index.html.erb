@@ -1,9 +1,8 @@
-<h1>Listing Events</h1>
- 
 <% @events.each do |event| %>
-  <p>
-    <%= link_to event.name, event_path(:id => event.id) %>
+  <div class="event">
+    <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
+    <p><%= event.description %></p>
     <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'button' %>
-  </p>
+  </div>
 <% end %>
 

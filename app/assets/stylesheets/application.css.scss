@@ -16,10 +16,10 @@
 
 body {
   margin: 0;
+  font-family: sans-serif;
 }
 
 .content {
-  font-family: sans-serif;
   padding: 0 15px;
   color: #898989;
 
@@ -36,7 +36,6 @@ body {
     color: #ffffff;
     padding: 0.5em;
     border-radius: 5px;
-    margin: 0 1em;
     text-decoration: none;
   }
 }
@@ -54,15 +53,6 @@ body {
 
   h1 {
     display: inline-block;
-  }
-
-  .button {
-    background-color: #898989;
-    color: #eff0ec;
-    padding: 0.5em;
-    border-radius: 5px;
-    margin: 0 1em;
-    text-decoration: none;
   }
 }
 
@@ -98,6 +88,21 @@ body {
     width: 35em;
     height: 10em;
   }
+
+  input[type=submit] {
+    font-family: sans-serif;
+    font-size: 14px;
+    background-color: #898989;
+    color: #eff0ec;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  .radio-button {
+    font-size: 12px;
+  }
 }
 
 .date {
@@ -111,4 +116,22 @@ body {
   .right {
     float: left;
   }
+}
+/* Event Show Page */
+.event {
+  background-color: #EBCDC3;
+  padding: 5px 15px 30px 15px;
+  margin: 10px 0;
+  width: 35em;
+  border-radius: 5px;
+
+  p {
+    margin-bottom: 25px;
+  }
+}
+
+/* Messages */
+.notice {
+  padding: 15px;
+  color: #dc4136;
 }

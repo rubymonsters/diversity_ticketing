@@ -1,6 +1,6 @@
 class EventsController < ApplicationController   
   http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit]
-  before_action :get_event, only: [:admin_show, :edit, :update]
+  before_action :get_event, only: [:admin_show, :edit, :update, :destroy]
 
   def index
     @events = Event.approved
@@ -44,6 +44,11 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to admin_url
   end
 
   private
