@@ -1,5 +1,5 @@
 class EventsController < ApplicationController   
-  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit]
+  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit, :destroy]
   before_action :get_event, only: [:admin_show, :edit, :update, :destroy]
 
   def index
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
  
     if @event.save
-      redirect_to events_url, notice: "You have successfully created an event."
+      redirect_to events_url, notice: "You have successfully created #{@event.name}."
     else
       render :new
     end
@@ -40,7 +40,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to admin_path
+      redirect_to admin_path, notice: "You have successfully updated #{@event.name}."
     else
       render :edit
     end
