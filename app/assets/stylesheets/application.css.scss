@@ -47,9 +47,7 @@ body {
     float: left;
     width: 50%;
     text-align: center
-
   }
-
 
   .button {
     display: inline-block;
@@ -75,10 +73,14 @@ body {
 .navigation {
   display: inline-block;
 
- li {
+  li {
     padding: 0 5px;
     display: inline-block;
     list-style: none;
+  }
+
+  .active {
+    font-weight: bold;
   }
 }
 
@@ -133,6 +135,7 @@ body {
     float: left;
   }
 }
+
 /* Event Show Page */
 .event {
   background-color: #EBCDC3;
