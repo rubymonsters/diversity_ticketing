@@ -40,6 +40,22 @@ body {
   }
 }
 
+.two_column {
+  overflow: hidden;
+
+  .left, .right {
+    float: left;
+    width: 50%;
+    text-align: center
+
+  }
+
+
+  .button {
+    display: inline-block;
+  }
+}
+
 /* Navigation Bar */
 .topbar {
   padding: 0 15px;
