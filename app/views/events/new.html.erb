@@ -3,7 +3,7 @@
 <h1>Create New Event</h1>
 
 <% if @event.errors.any? %>
-  <div id="error_explanation">
+  <div class="error">
     <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
  
     <ul>

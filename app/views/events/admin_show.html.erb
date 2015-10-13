@@ -1,4 +1,34 @@
-<h2>Applications for <%= @event.name %></h2>
+<p><%= link_to 'Home', root_path %> > <%= link_to 'Admin', admin_path %> > <%= @event.name %></p>
+
+<h1>Details for <%= @event.name %></h1>
+
+<h2>Organizer</h2>
+<p>
+  <strong>Name:</strong>
+  <%= @event.organizer_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @event.organizer_email %>
+</p>
+
+<h2>Event</h2>
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.start_date %>
+
+  <% unless @event.start_date == @event.end_date %>
+    <strong>to</strong>
+    <%= @event.end_date %>
+  <% end %>
+</p>
+
+<h2>Applications</h2>
 
 <p>Currently <%= pluralize(@event.applications.count, "application") %> for this event.</p>
 
@@ -14,4 +44,3 @@
   </ul>
 <% end %>
 
-<%= link_to 'Back', admin_path %>

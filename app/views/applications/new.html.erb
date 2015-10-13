@@ -5,7 +5,7 @@
 <%= form_for :application, url: event_applications_path(params[:event_id]) do |f| %>
 
 <% if @application.errors.any? %>
-  <div id="error_explanation">
+  <div class="error">
     <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
  
     <ul>

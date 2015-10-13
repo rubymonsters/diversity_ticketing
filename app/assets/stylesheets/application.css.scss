@@ -84,6 +84,21 @@ body {
   }
 }
 
+/* Admin Index Page */
+.admin {
+  display: inline-block;
+
+  li {
+    padding: 5px 10px;
+    display: inline-block;
+    list-style: none;
+  }
+
+  li:first-child {
+    width: 150px;
+  }
+}
+
 /* Admin Show Page */
 .row li {
   display: inline-block;
