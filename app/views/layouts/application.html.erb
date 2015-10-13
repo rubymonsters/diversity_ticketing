@@ -14,6 +14,9 @@
         <li><%= link_to 'Home', root_path, class: "#{'active' if controller_name == 'home'}" %></li>
         <li><%= link_to 'Events', events_path, class: "#{'active' if controller_name == 'events' && action_name == 'index' }" %></li>
         <li><%= link_to 'Submit Event', new_event_path, class: "#{'active' if controller_name == 'events' && action_name == 'new' }" %></li>
+        <% if authenticated? %>
+          <li><%= link_to 'Admin', admin_path, class: "#{'active' if controller_name == 'events' && action_name == 'admin_index' }" %></li>
+        <% end %>
       </ul>
     </div>
   </div>

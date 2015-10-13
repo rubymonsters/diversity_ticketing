@@ -1,5 +1,5 @@
 class EventsController < ApplicationController   
-  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit, :destroy]
+  skip_before_action :authenticate, only: [:index, :show, :create, :new]
   before_action :get_event, only: [:admin_show, :edit, :update, :destroy]
 
   def index
