@@ -1,9 +1,13 @@
 class EventsController < ApplicationController   
-  skip_before_action :authenticate, only: [:index, :show, :create, :new]
+  skip_before_action :authenticate, only: [:index, :index_past, :show, :create, :new]
   before_action :get_event, only: [:admin_show, :edit, :update, :destroy]
 
   def index
-    @events = Event.approved
+    @events = Event.approved.upcoming
+  end
+
+  def index_past
+    @events = Event.approved.past
   end
 
   def admin_index
@@ -19,6 +23,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.approved.find(params[:id])
+    @events = Event.approved.upcoming
   end
 
   def new
