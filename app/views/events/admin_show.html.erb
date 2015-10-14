@@ -2,6 +2,23 @@
 
 <h1>Details for <%= @event.name %></h1>
 
+<h2>Applications</h2>
+
+<p>Currently <%= pluralize(@event.applications.count, "application") %> for this event.</p>
+
+<ul class="row">
+  <li>Name</li>
+  <li>Email</li>
+</ul>
+
+<% @event.applications.each do |application| %>
+  <ul class="row">
+    <li><%= application.name %></li>
+    <li><%= application.email %></li>
+  </ul>
+<% end %>
+
+
 <h2>Organizer</h2>
 <p>
   <strong>Name:</strong>
@@ -11,6 +28,7 @@
   <strong>Email:</strong>
   <%= @event.organizer_email %>
 </p>
+
 
 <h2>Event</h2>
 <p>
@@ -27,20 +45,4 @@
     <%= @event.end_date %>
   <% end %>
 </p>
-
-<h2>Applications</h2>
-
-<p>Currently <%= pluralize(@event.applications.count, "application") %> for this event.</p>
-
-<ul class="row">
-  <li>Name</li>
-  <li>Email</li>
-</ul>
-
-<% @event.applications.each do |application| %>
-  <ul class="row">
-    <li><%= application.name %></li>
-    <li><%= application.email %></li>
-  </ul>
-<% end %>
 

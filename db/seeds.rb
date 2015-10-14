@@ -7,21 +7,34 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 event1 = Event.create(name: "RubyConf", start_date: "2015-12-20", end_date: "2015-12-22", 
-  description: "The International Ruby Conference – more commonly known as RubyConf – 
-  has been the main annual gathering of Rubyists from around the world since 2001. 
-  Focused on fostering the Ruby programming language and the robust community that 
-  has sprung up around it, RubyConf brings together Rubyists both established and 
-  new to discuss emerging ideas, collaborate, and socialize in some of the best 
-  locations in the US. Come join us in San Antonio for what will surely be the best 
-  RubyConf yet!", organizer_name: "Klaus Mustermann", organizer_email: "klaus@example.com", 
+  description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
+  quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas 
+  sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+  voluptatem sequi nesciunt.", organizer_name: "Klaus Mustermann", organizer_email: "klaus@example.com", 
   organizer_email_confirmation: "klaus@example.com", approved: true)
 
 event2 = Event.create(name: "CSSConf", start_date: "2015-12-12", end_date: "2015-12-12", 
-  description: "CSSConf is a conference dedicated to the designers, developers and engineers 
-  who build the world’s most engaging user interfaces. The presenters push the boundaries of 
-  what is possible — talking about the latest technologies, cutting edge techniques, and tools.", 
+  description: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. 
+  Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in 
+  li grammatica, li pronunciation e li plu commun vocabules.", 
   organizer_name: "Lina Klein", organizer_email: "lina@example.com", 
   organizer_email_confirmation: "lina@example.com", approved: true)
+
+event3 = Event.create(name: "JSConf", start_date: "2015-09-10", end_date: "2015-09-12", 
+  description: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae 
+  consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et 
+  iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores 
+  et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia 
+  deserunt mollitia animi, id est laborum et dolorum fuga.", 
+  organizer_name: "Ina Biena", organizer_email: "ina@example.com", 
+  organizer_email_confirmation: "ina@example.com", approved: true)
+
+event4 = Event.create(name: "JRubyConf", start_date: "2015-11-20", end_date: "2015-11-25", 
+  description: "Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi 
+  traductores. At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles.", 
+  organizer_name: "Ottokar Paul", organizer_email: "otto@example.com", 
+  organizer_email_confirmation: "otto@example.com", approved: false)
 
 Application.create(name: "Lea Humphreys", email: "lea@example.com", email_confirmation: "lea@example.com",
   event: event1)
