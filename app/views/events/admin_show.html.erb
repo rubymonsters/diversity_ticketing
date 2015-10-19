@@ -6,10 +6,12 @@
 
 <p>Currently <%= pluralize(@event.applications.count, "application") %> for this event.</p>
 
-<ul class="row">
-  <li>Name</li>
-  <li>Email</li>
-</ul>
+<% unless @event.applications.empty? %>
+  <ul class="row">
+    <li>Name</li>
+    <li>Email</li>
+  </ul>
+<% end %>
 
 <% @event.applications.each do |application| %>
   <ul class="row">
