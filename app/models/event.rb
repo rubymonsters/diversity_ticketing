@@ -11,6 +11,22 @@ class Event < ActiveRecord::Base
     where(approved: true)
   end
 
+  def self.unapproved
+    where(approved: false)
+  end
+
+  def self.upcoming
+    where('end_date > ?', DateTime.now)
+  end
+
+  def self.past
+    where('end_date < ?', DateTime.now)
+  end
+
+  def open?
+    end_date > DateTime.now
+  end
+
   def to_csv
     CSV.generate do |csv|
     	csv << ["name", "email", question_1, question_2, question_3]

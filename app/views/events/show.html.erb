@@ -17,4 +17,8 @@
   <% end %>
 </p>
 
-<%= link_to 'Apply', new_event_application_path(params[:id]), class:'button' %><br>
+<% if @event.open? %>
+  <%= link_to 'Apply', new_event_application_path(params[:id]), class:'button' %><br>
+<% else %>
+  <strong>Sorry, application for <%= @event.name %> is closed.</strong>
+<% end %>

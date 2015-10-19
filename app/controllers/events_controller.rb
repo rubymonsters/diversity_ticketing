@@ -1,13 +1,21 @@
 class EventsController < ApplicationController   
-  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: [:admin_index, :admin_show, :edit, :destroy]
+  skip_before_action :authenticate, only: [:index, :index_past, :show, :create, :new]
   before_action :get_event, only: [:admin_show, :edit, :update, :destroy]
 
   def index
-    @events = Event.approved
+    @events = Event.approved.upcoming
+  end
+
+  def index_past
+    @events = Event.approved.past
   end
 
   def admin_index
-    @events = Event.all
+    @categorized_events = {
+      "Unapproved Events" => Event.unapproved,
+      "Approved Events" => Event.approved.upcoming, 
+      "Past Events"=> Event.approved.past 
+    }
   end
 
   def admin_show

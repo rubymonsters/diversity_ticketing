@@ -1,13 +1,20 @@
-<h1>Admin Events</h1>
- 
-<% @events.each do |event| %>
-  <p>
-    <%= link_to event.name, event_admin_path(:id => event.id) %>
-    
-    <%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv) %>
+<h1>Admin Page</h1>
+<p>Approve/Unapprove events by clicking Edit.</p>
 
-    <%= link_to 'Edit', edit_event_path(:id => event.id) %>
-
-    <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?" } %>
-  </p>
+<% @categorized_events.each do |heading, events| %>
+  <h2><%= heading %></h2>
+  
+  <div class="admin">
+    <% events.each do |event| %>
+      <div>
+        <ul>
+          <li><strong><%= link_to event.name, event_admin_path(:id => event.id) %></strong></li>
+          <li><%= link_to 'Edit', edit_event_path(:id => event.id) %></li>
+          <li><%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?" } %></li>
+          <li><%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class:'button' %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+

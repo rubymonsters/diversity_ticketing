@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
-  http_basic_authenticate_with name: ENV['DT_USERNAME'], password: ENV['DT_PASSWORD'], only: :show
   before_action :get_event, only: [:show, :new, :create]
+  skip_before_action :authenticate, only: [:new]
 
   def show
     @application = @event.applications.find(params[:id])

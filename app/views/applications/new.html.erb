@@ -3,18 +3,19 @@
 <h1>Application for <%= @event.name %></h1>
 
 <%= form_for :application, url: event_applications_path(params[:event_id]) do |f| %>
+  <p class="description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
 
-<% if @application.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
- 
-    <ul>
-    <% @application.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @application.errors.any? %>
+    <div class="error">
+      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+   
+      <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="form_field">
     <p>

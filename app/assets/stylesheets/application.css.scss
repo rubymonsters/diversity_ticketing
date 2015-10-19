@@ -74,6 +74,7 @@ body {
   display: inline-block;
 
   li {
+    color: #898989;
     padding: 0 5px;
     display: inline-block;
     list-style: none;
@@ -84,6 +85,21 @@ body {
   }
 }
 
+/* Admin Index Page */
+.admin {
+  display: inline-block;
+
+  li {
+    padding: 5px 10px;
+    display: inline-block;
+    list-style: none;
+  }
+
+  li:first-child {
+    width: 150px;
+  }
+}
+
 /* Admin Show Page */
 .row li {
   display: inline-block;
@@ -91,6 +107,10 @@ body {
 }
 
 /* New Events Page (Form) */
+.description {
+  font-size: 14px;
+}
+
 .form_field {
   margin-top: 0.75em;
 
