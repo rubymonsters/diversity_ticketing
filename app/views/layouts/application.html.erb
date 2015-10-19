@@ -11,11 +11,11 @@
     <h1><%= link_to 'Diversity Ticketing', root_path %></h1>
     <div class="navigation">
       <ul>
-        <li><%= link_to 'Home', root_path, class: "#{'active' if controller_name == 'home'}" %></li>
-        <li><%= link_to 'Events', events_path, class: "#{'active' if controller_name == 'events' && action_name == 'index' }" %></li>
-        <li><%= link_to 'Submit Event', new_event_path, class: "#{'active' if controller_name == 'events' && action_name == 'new' }" %></li>
+        <li><%= navbar_link_to 'Home', root_path %></li>
+        <li><%= navbar_link_to 'Events', events_path %></li>
+        <li><%= navbar_link_to 'Submit Event', new_event_path %></li>
         <% if authenticated? %>
-          <li><%= link_to 'Admin', admin_path, class: "#{'active' if controller_name == 'events' && action_name == 'admin_index' }" %></li>
+          <li><%= navbar_link_to 'Admin', admin_path %></li>
         <% end %>
       </ul>
     </div>

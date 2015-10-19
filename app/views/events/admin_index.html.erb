@@ -1,7 +1,7 @@
 <h1>Admin Page</h1>
 <p>Approve/Unapprove events by clicking Edit.</p>
 
-<% { "Unapproved Events" => @events - @events.approved, "Approved Events" => @events.approved.upcoming, "Past Events"=> @events.approved.past }.each do |heading, events| %>
+<% @categorized_events.each do |heading, events| %>
   <h2><%= heading %></h2>
   
   <div class="admin">

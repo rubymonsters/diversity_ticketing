@@ -11,7 +11,11 @@ class EventsController < ApplicationController
   end
 
   def admin_index
-    @events = Event.all
+    @categorized_events = {
+      "Unapproved Events" => Event.unapproved,
+      "Approved Events" => Event.approved.upcoming, 
+      "Past Events"=> Event.approved.past 
+    }
   end
 
   def admin_show
@@ -23,7 +27,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.approved.find(params[:id])
-    @events = Event.approved.upcoming
   end
 
   def new
