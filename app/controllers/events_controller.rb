@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   def admin_show
     respond_to do |format|
       format.html
-      format.csv { send_data @event.to_csv }
+      format.csv { send_data @event.to_csv, filename: "#{@event.name} #{DateTime.now.strftime("%F")}.csv" }
     end
   end
 
