@@ -1,6 +1,6 @@
 class EventsController < ApplicationController   
   skip_before_action :authenticate, only: [:index, :index_past, :show, :create, :new]
-  before_action :get_event, only: [:admin_show, :edit, :update, :destroy]
+  before_action :get_event, only: [:admin_show, :approve, :edit, :update, :destroy]
 
   def index
     @events = Event.approved.upcoming
@@ -52,6 +52,12 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def approve
+    @event.toggle(:approved)
+    @event.save
+    redirect_to admin_url
   end
 
   def destroy

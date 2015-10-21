@@ -98,6 +98,10 @@ body {
   li:first-child {
     width: 150px;
   }
+
+  li:nth-child(2) {
+    width: 80px;
+  }
 }
 
 /* Admin Show Page */
