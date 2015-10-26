@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :events do
     member do
-      put :approve
+      post :approve
     end
     resources :applications, only: [:show, :new, :create]
   end
