@@ -47,6 +47,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
+      OrganizerMailer.submitted_event(@event).deliver
       redirect_to events_url, notice: "You have successfully created #{@event.name}."
     else
       render :new
