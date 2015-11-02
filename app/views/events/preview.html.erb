@@ -1,20 +1,22 @@
 <h1>This is a preview</h1>
 
 <%= render :partial => "events/event" %>
-
-<a href="javascript:history.back()">Go back to edit to make changes</a>
+<p><strong>Organizer Name:</strong>
+<%=@event.organizer_name%> (not visible to the public)</p>
+<p><strong>Organizer Email:</strong>
+<%=@event.organizer_email%> (not visible to the public)</p>
 
 <%= form_for @event, url: events_path do |f| %>
-
-
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :start_date %>
-      <%= f.hidden_field :end_date %>
-      <%= f.hidden_field :description %>
-      <%= f.hidden_field :organizer_name %>
-      <%= f.hidden_field :organizer_email %>
-      <%= f.hidden_field :organizer_email_confirmation %>
-      <%= f.submit("Submit New Event") %>
-
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :start_date %>
+  <%= f.hidden_field :end_date %>
+  <%= f.hidden_field :description %>
+  <%= f.hidden_field :organizer_name %>
+  <%= f.hidden_field :organizer_email %>
+  <%= f.hidden_field :organizer_email_confirmation %>
+  <div class="form_field">
+    <a class="button" href="javascript:history.back()">Edit</a>
+  <%= f.submit("Submit the event") %>
+  </div>
 <% end %>
 
