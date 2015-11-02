@@ -1,21 +1,6 @@
-<p><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
 
-<h1><%= @event.name %></h1>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.start_date %>
-
-  <% unless @event.start_date == @event.end_date %>
-    <strong>to</strong>
-    <%= @event.end_date %>
-  <% end %>
-</p>
+<%= render :partial => "events/event" %>
 
 <% if @event.open? %>
   <%= link_to 'Apply', new_event_application_path(params[:id]), class:'button' %><br>
