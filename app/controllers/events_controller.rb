@@ -33,6 +33,10 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def preview
+    @event = Event.new(event_params)
+  end
+
   def create
     @event = Event.new(event_params)
  

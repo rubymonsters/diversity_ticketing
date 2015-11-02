@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/past_events', to: 'events#index_past', as: :past_events
   get '/admin', to: 'events#admin_index'
   get '/events/:id/admin', to: 'events#admin_show', as: :event_admin
+  post '/events/preview', to: 'events#preview', as: :event_preview
    #The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
