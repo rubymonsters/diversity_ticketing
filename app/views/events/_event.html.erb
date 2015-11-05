@@ -1,10 +1,18 @@
-<p><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
-
-<h1><%= @event.name %></h1>
+<h3>Event Details</h3>
 
 <p>
-  <strong>Description:</strong>
-  <%= @event.description %>
+  <strong>Website:</strong>
+  <%= link_to @event.website, "http://#{@event.website}" %>
+</p>
+
+<p>
+  <strong>Code of Conduct:</strong>
+  <%= link_to @event.code_of_conduct, "http://#{@event.code_of_conduct}" %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.city %>, <%= @event.country %>
 </p>
 
 <p>
@@ -17,3 +25,26 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<h3>Application Details</h3>
+
+<p>
+  <strong>Deadline for Application</strong>
+  <%= @event.deadline %>
+</p>
+
+<p>
+  <strong>Number of available diversity tickets</strong>
+  <%= @event.number_of_tickets %>
+</p>
+
+<strong>Funded:</strong>
+<div>
+  <p>Ticket: <%= @event.ticket_funded ? 'Yes' : 'No' %></p>
+  <p>Accommodation: <%= @event.accommodation_funded ? 'Yes' : 'No' %></p>
+  <p>Travel: <%= @event.travel_funded ? 'Yes' : 'No' %></p>
+</div>

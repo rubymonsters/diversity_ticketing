@@ -1,10 +1,17 @@
-<h1>This is a preview</h1>
+<h1>This is a preview for <%= @event.name %></h1>
+
+<h3>Organizer Details</h3>
+<p class="description">(Not shown to the public.)<p>
+<p>
+  <strong>Organizer Name:</strong>
+  <%= @event.organizer_name %>
+</p>
+<p>
+  <strong>Organizer Email:</strong>
+  <%= @event.organizer_email %>
+</p>
 
 <%= render :partial => "events/event" %>
-<p><strong>Organizer Name:</strong>
-<%=@event.organizer_name%> (not visible to the public)</p>
-<p><strong>Organizer Email:</strong>
-<%=@event.organizer_email%> (not visible to the public)</p>
 
 <%= form_for @event, url: events_path do |f| %>
   <%= f.hidden_field :name %>
@@ -14,6 +21,15 @@
   <%= f.hidden_field :organizer_name %>
   <%= f.hidden_field :organizer_email %>
   <%= f.hidden_field :organizer_email_confirmation %>
+  <%= f.hidden_field :website %>
+  <%= f.hidden_field :code_of_conduct %>
+  <%= f.hidden_field :city %>
+  <%= f.hidden_field :country %>
+  <%= f.hidden_field :deadline %>
+  <%= f.hidden_field :number_of_tickets %>
+  <%= f.hidden_field :ticket_funded %>
+  <%= f.hidden_field :accommodation_funded %>
+  <%= f.hidden_field :travel_funded %>
   <div class="form_field">
     <a class="button" href="javascript:history.back()">Edit</a>
   <%= f.submit("Submit the event") %>

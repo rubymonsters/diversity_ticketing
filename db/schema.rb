@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905093436) do
+ActiveRecord::Schema.define(version: 20151028145014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,20 @@ ActiveRecord::Schema.define(version: 20150905093436) do
     t.text     "question_1"
     t.text     "question_2"
     t.text     "question_3"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.date     "end_date"
-    t.boolean  "approved",        default: false, null: false
+    t.boolean  "approved",             default: false, null: false
+    t.string   "logo"
+    t.text     "website"
+    t.text     "code_of_conduct"
+    t.string   "city"
+    t.string   "country"
+    t.date     "deadline"
+    t.integer  "number_of_tickets"
+    t.boolean  "ticket_funded",        default: false, null: false
+    t.boolean  "accommodation_funded", default: false, null: false
+    t.boolean  "travel_funded",        default: false, null: false
   end
 
   add_foreign_key "applications", "events"

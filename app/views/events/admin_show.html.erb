@@ -33,18 +33,5 @@
 
 
 <h2>Event</h2>
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.start_date %>
-
-  <% unless @event.start_date == @event.end_date %>
-    <strong>to</strong>
-    <%= @event.end_date %>
-  <% end %>
-</p>
-
+<%= render :partial => "events/event" %>
