@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :get_event, only: [:show, :new, :create]
-  skip_before_action :authenticate, only: [:new]
+  skip_before_action :authenticate, only: [:new, :create]
 
   def show
     @application = @event.applications.find(params[:id])
@@ -15,7 +15,7 @@ class ApplicationsController < ApplicationController
     @application.event = @event
     if @application.save
       redirect_to @event, notice: "You have successfully applied for #{@event.name}."
-    else 
+    else
       render :new
     end
   end
