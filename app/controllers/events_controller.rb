@@ -1,4 +1,4 @@
-class EventsController < ApplicationController   
+class EventsController < ApplicationController
   skip_before_action :authenticate, only: [:index, :index_past, :show, :create, :new]
   before_action :get_event, only: [:admin_show, :approve, :edit, :update, :destroy]
 
@@ -13,8 +13,8 @@ class EventsController < ApplicationController
   def admin_index
     @categorized_events = {
       "Unapproved Events" => Event.unapproved,
-      "Approved Events" => Event.approved.upcoming, 
-      "Past Events"=> Event.approved.past 
+      "Approved Events" => Event.approved.upcoming,
+      "Past Events"=> Event.approved.past
     }
   end
 
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
- 
+
     if @event.save
       redirect_to events_url, notice: "You have successfully created #{@event.name}."
     else
@@ -71,7 +71,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:organizer_name, :organizer_email, :organizer_email_confirmation, :description, :name, :start_date, :end_date, :question_1, :question_2, :question_3, :approved)
+      params.require(:event).permit(:organizer_name, :organizer_email, :organizer_email_confirmation, :description, :name, :start_date, :end_date, :question_1, :question_2, :question_3, :approved, :ticket_funded, :accommodation_funded, :travel_funded, :deadline, :number_of_tickets, :website, :code_of_conduct, :city, :country)
     end
 
     def get_event
