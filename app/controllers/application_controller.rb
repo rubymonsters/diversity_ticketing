@@ -6,16 +6,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
 
   def authenticate
-    if authenticate_or_request_with_http_basic { |u, p| u == ENV['DT_USERNAME'] && p == ENV['DT_PASSWORD'] }
-      session[:authenticated] = true
-    else
-      session[:authenticated] = false
-      request_http_basic_authentication
-    end
+    authenticate_or_request_with_http_basic { |u, p| u == ENV['DT_USERNAME'] && p == ENV['DT_PASSWORD'] }
   end
 
   def authenticated?
-    session[:authenticated]
+    not request.authorization.nil?
   end
 
   helper_method :authenticated?
