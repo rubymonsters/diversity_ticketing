@@ -58,6 +58,7 @@ body {
 .logo {
   @media (min-width: $medium) {
     display: inline-block;
+    font-size: 1.3em;
   }
 }
 
@@ -66,7 +67,25 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+    padding-left: 40px;
   }
+  a:link { /* Essentially means a[href], or that the link actually goes somewhere */
+    text-decoration: none;
+  }
+  a:visited {
+    color: blue;
+  }
+  a:hover {
+    color: green;
+  }
+  a:active {
+    color: red;
+  }
+
+ /* .nav-links {
+    padding-left: 20px;
+  }*/
+
   @media (min-width: $small) {
     li {
       float: left;
