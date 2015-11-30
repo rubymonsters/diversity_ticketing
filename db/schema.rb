@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20151028145014) do
     t.datetime "updated_at",                           null: false
     t.date     "end_date"
     t.boolean  "approved",             default: false, null: false
-    t.string   "logo"
     t.text     "website"
     t.text     "code_of_conduct"
     t.string   "city"
