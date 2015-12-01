@@ -14,7 +14,7 @@
     <div class="inner">
       <h1 class="logo"><%= link_to 'Diversity Ticketing', root_path %></h1>
       <nav class="navigation" role="navigation">
-        <ul class="nav-links">
+        <ul>
           <li><%= navbar_link_to 'Events', events_path %></li>
           <li><%= navbar_link_to 'Submit Event', new_event_path %></li>
           <% if authenticated? %>
