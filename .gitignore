@@ -15,3 +15,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore rubymine config folder
+/.idea
+
+# Ignore Apple created files
+.DS_Store
