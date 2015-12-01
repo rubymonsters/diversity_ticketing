@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
     where(approved: true)
   end
 
-  def self.unapproved
+  def self.dispproved
     where(approved: false)
   end
 
