@@ -12,9 +12,9 @@ class ActiveSupport::TestCase
     @request.headers['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(username, password)
   end
 
-  def make_event(approved = false, name = 'Event')
-    Event.create!(
-      name: name,
+  def make_event(event_params = {})
+    defaults = {
+      name: 'Event',
       start_date: '2015-12-20',
       end_date: '2015-12-22',
       description: 'Sed ut perspiciatis unde omnis.',
@@ -27,12 +27,14 @@ class ActiveSupport::TestCase
       country: 'Germany',
       deadline: '2015-12-01',
       number_of_tickets: 10,
-      approved: approved
-    )
+      approved: false
+    }
+    event_params = defaults.merge(event_params)
+    Event.create!(event_params)
   end
 
-  def make_application(event)
-    Application.create!(
+  def make_application(event, application_params = {})
+    defaults = {
       name: 'Joe',
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
@@ -40,7 +42,9 @@ class ActiveSupport::TestCase
       answer_1: 'Hi',
       answer_2: 'Hi',
       answer_3: 'Hi'
-    )
+    }
+    application_params = defaults.merge(application_params)
+    Application.create!(application_params)
   end
   # Add more helper methods to be used by all tests here...
 end
