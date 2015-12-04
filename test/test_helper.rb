@@ -15,8 +15,8 @@ class ActiveSupport::TestCase
   def make_event(event_params = {})
     defaults = {
       name: 'Event',
-      start_date: '2015-12-20',
-      end_date: '2015-12-22',
+      start_date: 1.week.from_now,
+      end_date: 2.weeks.from_now,
       description: 'Sed ut perspiciatis unde omnis.',
       organizer_name: 'Klaus Mustermann',
       organizer_email: 'klaus@example.com',
@@ -25,7 +25,7 @@ class ActiveSupport::TestCase
       code_of_conduct: 'coc.website',
       city: 'Berlin',
       country: 'Germany',
-      deadline: '2015-12-01',
+      deadline: 5.days.from_now,
       number_of_tickets: 10,
       approved: false
     }
