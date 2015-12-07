@@ -1,4 +1,5 @@
 language: ruby
 bundler_args: --without development production
 before_script:
+- cp config/database.yml.travis config/database.yml
 - bundle exec rake db:create db:migrate RAILS_ENV=test
