@@ -1,4 +1,6 @@
 language: ruby
+cache:
+  bundler: true
 bundler_args: --without development production
 before_script:
 - cp config/database.yml.travis config/database.yml
