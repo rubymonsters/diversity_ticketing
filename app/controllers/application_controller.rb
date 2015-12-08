@@ -6,11 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
 
   def authenticate
-    if authenticate_or_request_with_http_basic { |u, p| u == ENV['DT_USERNAME'] && p == ENV['DT_PASSWORD'] }
-      session[:authenticated] = true
+    if session[:authenticated]
+      return true
     else
-      session[:authenticated] = false
-      request_http_basic_authentication
+      redirect_to login_path
     end
   end
 

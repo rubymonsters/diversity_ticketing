@@ -19,6 +19,7 @@
           <li><%= navbar_link_to 'Submit Event', new_event_path %></li>
           <% if authenticated? %>
             <li><%= navbar_link_to 'Admin', admin_path %></li>
+            <li><%= link_to 'Logout', sessions_path, method: :delete %></li>
           <% end %>
         </ul>
       </nav>
