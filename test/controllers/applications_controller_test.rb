@@ -43,10 +43,7 @@ class ApplicationsControllerTest < ActionController::TestCase
                       name: 'Joe',
                       email: 'joe@test.com',
                       email_confirmation: 'joe@test.com',
-                      event: event,
-                      answer_1: 'Hi',
-                      answer_2: 'Hi',
-                      answer_3: 'Hi'
+                      event: event
                     }
 
       assert_redirected_to event
