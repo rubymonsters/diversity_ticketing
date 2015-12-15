@@ -22,7 +22,7 @@ class ApplicationsController < ApplicationController
 
   private
     def application_params
-      params.require(:application).permit(:name, :email, :email_confirmation, :answer_1, :answer_2, :answer_3)
+      params.require(:application).permit(:name, :email, :email_confirmation)
     end
 
     def get_event

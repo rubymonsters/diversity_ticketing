@@ -38,10 +38,7 @@ class ActiveSupport::TestCase
       name: 'Joe',
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
-      event: event,
-      answer_1: 'Hi',
-      answer_2: 'Hi',
-      answer_3: 'Hi'
+      event: event
     }
     application_params = defaults.merge(application_params)
     Application.create!(application_params)
