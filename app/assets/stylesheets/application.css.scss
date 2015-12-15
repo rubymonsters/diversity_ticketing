@@ -10,185 +10,137 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+@import "normalize.scss";
+
+$grey-dark: #606060;
+$grey-light: #E7E8E9;
+$red: #EA5755;
+$blue: #25AAE1;
+$green: #65BE66;
+$yellow: #F8BA3F;
+$black: #4C5052;
+
+$small: 600px;
+$medium: 900px;
+$large: 1100px;
+$x-large: 1400px;
+
+$topbar-height: 48px;
+
+html,
 body {
-  margin: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $grey-dark;
+}
+
+h1, h2, h3, h4 {
+  margin-top: 0;
+  color: $black;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+a {
+  color: $grey-dark;
+  &:hover,
+  &:active {
+    color: $green;
+  }
+}
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid #E2E3E4;
+
+  @media (min-width: $large) {
+    height: $topbar-height;
+  }
 }
 
 .content {
-  padding: 0 15px;
-  color: #898989;
+  padding: 1em 0 2em;
+  background: $grey-light;
+}
 
-  a {
-    color: #898989;
-  }
-
-  h1 {
-    color: #337389;
-  }
-
-  .button {
-    background-color: #dc4136;
-    color: #ffffff;
-    padding: 0.5em;
-    border-radius: 5px;
-    text-decoration: none;
+.inner {
+  padding: 0 1em;
+  @media (min-width: $large) {
+    width: 1000px;
+    margin: auto;
   }
 }
 
-.two_column {
-  overflow: hidden;
-
-  .left, .right {
-    float: left;
-    width: 50%;
-    text-align: center
-  }
-
-  .button {
+.logo {
+  margin: 0;
+  vertical-align: middle;
+  font-size: 1.3em;
+  @media (min-width: $medium) {
     display: inline-block;
-  }
-}
-
-/* Navigation Bar */
-.topbar {
-  padding: 0 15px;
-  background-color: #eff0ec;
-  font-family: sans-serif;
-
-  a {
-    text-decoration: none;
-    color: #898989;
-  }
-
-  h1 {
-    display: inline-block;
+    height: $topbar-height;
+    line-height: $topbar-height;
   }
 }
 
 .navigation {
-  display: inline-block;
-
-  li {
-    color: #898989;
-    padding: 0 5px;
-    display: inline-block;
+  vertical-align: middle;
+  ul {
     list-style: none;
+    margin: 0;
+    padding: 0px 0px 0px 20px;
+    overflow: auto;
   }
 
+  li {
+    padding-left: 10px; 
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+
+  a:hover,
   .active {
-    font-weight: bold;
+    color: $green;
   }
-}
 
-/* Admin Index Page */
-.category {
-  background-color: #D6D6D6;
-  padding: 5px 15px;
-  margin: 10px 0;
-  width: 650px;
-  border-radius: 5px;
-}
-
-.admin {
-  display: inline-block;
-
-  li {
-    padding: 5px 10px;
+  @media (min-width: $small) {
+    li {
+      float: left;
+      margin-right: 1em;
+    }
+  }
+  @media (min-width: $medium) {
     display: inline-block;
-    list-style: none;
-  }
-
-  li:first-child {
-    width: 150px;
-  }
-
-  li:nth-child(2) {
-    width: 108px;
+    height: $topbar-height;
+    line-height: $topbar-height;
   }
 }
 
-/* Admin Show Page */
-.row li {
-  display: inline-block;
-  width: 150px;
-}
-
-/* New Events Page (Form) */
-.description {
+.breadcrumb {
+  margin: 0;
+  padding: 0 0 1em;
   font-size: 14px;
 }
 
-.form_field {
-  margin-top: 0.75em;
+.category {
+  background: white;
+  padding: 1em;
+  border: 2px solid darken($grey-light, 5);
+  border-radius: 4px;
+  margin-bottom: 1em;
 
-  p {
-    margin: 0;
-  }
-
-  input[type=text] {
-    width: 35em;
-  }
-
-  textarea {
-    width: 35em;
-    height: 10em;
-  }
-
-  input[type=submit] {
-    font-family: sans-serif;
-    font-size: 14px;
-    background-color: #898989;
-    color: #eff0ec;
-    padding: 0.5em;
-    border-radius: 5px;
-    margin: 0;
-    text-decoration: none;
-  }
-
-  .small {
-    font-size: 13px;
+  h2 {
+    border-bottom: 1px solid darken($grey-light, 5);
+    padding-bottom: 0.4em;
   }
 }
-
-.date {
-  overflow: hidden;
-
-  .left {
-    float: left;
-    margin-right: 10px;
-  }
-
-  .right {
-    float: left;
-  }
-}
-
-/* Event Show Page */
-.event {
-  background-color: #EBCDC3;
-  padding: 5px 15px 30px 15px;
-  margin: 10px 0;
-  width: 650px;
-  border-radius: 5px;
-
-  p {
-    margin-bottom: 25px;
-  }
-}
-
-/* Messages */
-.notice {
-  padding: 15px;
-  color: #08a308;
-}
-
-.error {
-  padding: 15px;
-  color: #dc4136;
-}
-
