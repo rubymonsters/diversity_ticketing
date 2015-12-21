@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ApplicationsControllerTest < ActionController::TestCase
-  
+
 
   # GET show
   test 'shows application to admin users' do
@@ -21,7 +21,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
     get :show, event_id: event.id, id: application.id
 
-    assert_response 401
+    assert_redirected_to login_path
   end
 
   test 'raise exception if application does not exist' do

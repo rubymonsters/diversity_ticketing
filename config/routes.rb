@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :applications, only: [:show, :new, :create]
   end
 
+  get '/login', to: 'sessions#login', as: :login
+
+  resource :sessions
+
   get '/past_events', to: 'events#index_past', as: :past_events
   get '/admin', to: 'events#admin_index'
   get '/events/:id/admin', to: 'events#admin_show', as: :event_admin
