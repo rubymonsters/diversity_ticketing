@@ -8,8 +8,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def admin_login
-    username, password = ENV['DT_USERNAME'], ENV['DT_PASSWORD']
-    @request.headers['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(username, password)
+    session[:authenticated] = true
   end
 
   def make_event(event_params = {})
