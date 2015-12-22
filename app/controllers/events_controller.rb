@@ -35,6 +35,12 @@ class EventsController < ApplicationController
 
   def preview
     @event = Event.new(event_params)
+
+    if @event.valid?
+      render :preview
+    else
+      render :new
+    end
   end
 
   def create
