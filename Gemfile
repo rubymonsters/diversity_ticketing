@@ -48,4 +48,6 @@ group :development, :test do
   gem 'pry'
 end
 
+gem 'simplecov', require: false, group: :test
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

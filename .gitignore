@@ -21,3 +21,6 @@
 
 # Ignore Apple created files
 .DS_Store
+
+# Ignore test coverage results (--> simplecov gem)
+coverage
