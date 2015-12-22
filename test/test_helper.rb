@@ -2,7 +2,7 @@
 # are run and what doesn't: Run your tests, open up coverage/index.html
 # in your browser and check out what you've missed so far.
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
