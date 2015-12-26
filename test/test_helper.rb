@@ -34,9 +34,12 @@ class ActiveSupport::TestCase
 
   def make_application(event, application_params = {})
     defaults = {
+      attendee_info_1: 'some text',
+      attendee_info_2: 'some text',
       name: 'Joe',
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
+      terms_and_conditions: '1',
       event: event
     }
     application_params = defaults.merge(application_params)
