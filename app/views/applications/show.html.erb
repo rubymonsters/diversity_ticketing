@@ -1,4 +1,16 @@
+<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Admin', admin_path %> > <%= link_to @event.name, event_admin_path(@event.id) %> > Application from <%= @application.name %></p>
+
 <h1>Application for <%= @event.name %></h1>
+
+<p>
+  <strong>Why do you want to attend <%= @event.name %> and what especially do you look forward to learning?</strong><br>
+  <%= @application.attendee_info_1 %>
+</p>
+
+<p>
+  <strong>Please share with us why you're applying for a diversity ticket.</strong><br>
+  <%= @application.attendee_info_2 %>
+</p>
 
 <p>
   <strong>Name:</strong>
@@ -10,5 +22,8 @@
   <%= @application.email %>
 </p>
 
+<p>
+<%= link_to 'Delete this application', event_application_path(@event.id, @application.id), method: :delete, data: { confirm: "You sure?" } %>
+</p>
 
-<%= link_to 'Show Event', event_path(@event.id) %>
+<%= link_to 'Show Event Details', event_admin_path(@event.id) %>

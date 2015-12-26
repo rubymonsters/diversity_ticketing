@@ -8,7 +8,7 @@
   <% if @application.errors.any? %>
     <div class="error">
       <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
-   
+
       <ul>
       <% @application.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -16,6 +16,21 @@
       </ul>
     </div>
   <% end %>
+
+
+  <div class="form_field">
+    <p>
+      <%= f.label :attendee_info_1, "Why do you want to attend #{@event.name} and what especially do you look forward to learning?" %><br>
+      <%= f.text_area :attendee_info_1 %>
+    </p>
+  </div>
+
+  <div class="form_field">
+    <p>
+      <%= f.label :attendee_info_2, "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)" %><br>
+      <%= f.text_area :attendee_info_2 %>
+    </p>
+  </div>
 
   <div class="form_field">
     <p>
@@ -36,6 +51,28 @@
       <%= f.label :email_confirmation %><br>
       <%= f.text_field :email_confirmation %>
     </p>
+  </div>
+
+  <div class="form_field">
+    <p>
+      <%= f.check_box :terms_and_conditions %>
+      <%= f.label :terms_and_conditions, "Terms and Conditions" %>
+    </p>
+    <p>
+      This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details, answers remain protected, we will raffle out the tickets. We will not share any data with those, who sponsor these tickets. This application is for one conference ticket only. The ticket includes
+    </p>
+    <ul>
+      <% if @event.ticket_funded? %>
+        <li>admission to the conference</li>
+      <% end %>
+      <% if @event.travel_funded? %>
+        <li>travel costs</li>
+      <% end %>
+      <% if @event.accommodation_funded? %>
+        <li>accomodation</li>
+      <% end %>
+    </ul>
+    <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of Conduct', "http://www.#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
   </div>
 
   <div class="form_field">

@@ -15,8 +15,9 @@
 
 <% @event.applications.each do |application| %>
   <ul class="row">
-    <li><%= application.name %></li>
+    <li><%= link_to application.name, event_application_path(@event, application) %></li>
     <li><%= application.email %></li>
+    <li><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "You sure?" } %></li>
   </ul>
 <% end %>
 
