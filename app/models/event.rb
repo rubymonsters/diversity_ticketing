@@ -31,9 +31,9 @@ class Event < ActiveRecord::Base
 
   def to_csv
     CSV.generate do |csv|
-      csv << ["name", "email"]
+      csv << ["name", "email", "Why do you want to attend #{self.name} and what especially do you look forward to learning?", "Please share with us why you're applying for a diversity ticket."]
       applications.each do |application|
-        csv << [application.name, application.email]
+        csv << [application.name, application.email, application.attendee_info_1, application.attendee_info_2]
       end
     end
   end
