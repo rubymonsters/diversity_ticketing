@@ -1,15 +1,14 @@
-<h1>Welcome</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p>
+<h1>We help events reach a more diverse audience. And we help you to find these events.</h1>
+<h1>Because diversity is what makes communities whole.</h1>
 
 <div class="two_column">
 	<div class="left">
-		<h3>For Attendees: Click here for all events</h3>
-		<%= link_to 'Events', events_path, class:"button" %>
+		<h3><%= link_to 'Attendees', events_path, class:"button" %></h3>
+    <p>Find and apply for upcoming events.</p>
 	</div>
 
 	<div class="right">
-		<h3>For organizers: Click here to submit your event</h3>
-		<%= link_to 'Submit Event', new_event_path, class:"button" %>
+		<h3><%= link_to 'Organizers', new_event_path, class:"button" %></h3>
+    <p>Submit your upcoming events.</p>
 	</div>
 </div>
-<p>imprint</p>
