@@ -1,3 +1,9 @@
+# Use simplecov gem to track what code gets executed when tests
+# are run and what doesn't: Run your tests, open up coverage/index.html
+# in your browser and check out what you've missed so far.
+require 'simplecov'
+SimpleCov.start 'rails'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
