@@ -15,6 +15,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
 @import "normalize.scss";
+@import "form.scss";
 
 $grey-dark: #606060;
 $grey-light: #E7E8E9;
@@ -158,4 +159,12 @@ a {
     border-bottom: 1px solid darken($grey-light, 5);
   }
 
+}
+
+.page-title {
+  margin-bottom: 0;
+}
+.page-description {
+  margin-top: 0;
+  margin-bottom: 2em;
 }
