@@ -17,7 +17,7 @@
   <ul class="row">
     <li><%= link_to application.name, event_application_path(@event, application) %></li>
     <li><%= application.email %></li>
-    <li><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "You sure?" } %></li>
+    <li><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %></li>
   </ul>
 <% end %>
 
