@@ -100,7 +100,7 @@ a {
   }
 
   li {
-    padding-left: 10px; 
+    padding-left: 10px;
   }
 
   a {
@@ -132,15 +132,30 @@ a {
   font-size: 14px;
 }
 
-.category {
+.category,
+.box {
   background: white;
   padding: 1em;
   border: 2px solid darken($grey-light, 5);
   border-radius: 4px;
   margin-bottom: 1em;
 
-  h2 {
+  h2,
+  .box-title {
     border-bottom: 1px solid darken($grey-light, 5);
     padding-bottom: 0.4em;
   }
+
+  .box-noborder {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .border {
+    padding-bottom: 0.4em;
+    margin-top: 0;
+    border-bottom: 1px solid darken($grey-light, 5);
+  }
+
 }
