@@ -1,38 +1,35 @@
 <p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Admin', admin_path %> > <%= @event.name %></p>
 
 <h1>Details for <%= @event.name %></h1>
+<section class="box">
+  <h2 class="box-title">Applications</h2>
 
-<h2>Applications</h2>
+  <p><%= pluralize(@event.applications.count, "application") %> currently</p>
 
-<p>Currently <%= pluralize(@event.applications.count, "application") %> for this event.</p>
+  <% unless @event.applications.empty? %>
+    <ul class="row">
+      <li>Name</li>
+      <li>Email</li>
+    </ul>
+  <% end %>
 
-<% unless @event.applications.empty? %>
-  <ul class="row">
-    <li>Name</li>
-    <li>Email</li>
-  </ul>
-<% end %>
-
-<% @event.applications.each do |application| %>
-  <ul class="row">
-    <li><%= link_to application.name, event_application_path(@event, application) %></li>
-    <li><%= application.email %></li>
-    <li><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %></li>
-  </ul>
-<% end %>
-
-
-<h2>Organizer</h2>
-<p>
-  <strong>Name:</strong>
+  <% @event.applications.each do |application| %>
+    <ul class="row">
+      <li><%= link_to application.name, event_application_path(@event, application) %></li>
+      <li><%= application.email %></li>
+      <li><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %></li>
+    </ul>
+  <% end %>
+</section>
+<section class="box">
+  <h2 class="box-title">Organizer Details</h2>
+  <div class="detail-pair">
+  <strong>Name</strong>
   <%= @event.organizer_name %>
-</p>
-<p>
-  <strong>Email:</strong>
+  </div>
+  <div class="detail-pair">
+  <strong>Email</strong>
   <%= @event.organizer_email %>
-</p>
-
-
-<h2>Event</h2>
-
+  </div>
+</section>
 <%= render :partial => "events/event" %>
