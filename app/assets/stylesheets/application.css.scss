@@ -89,12 +89,21 @@ a {
     text-decoration: none;
     color: $grey-dark;
   }
+
+  img {
+    max-height: 35px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
   @media (min-width: $medium) {
     display: inline-block;
     height: $topbar-height;
     line-height: $topbar-height;
   }
 }
+
+
 
 .navigation {
   vertical-align: middle;
