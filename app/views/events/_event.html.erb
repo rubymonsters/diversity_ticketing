@@ -24,9 +24,8 @@
 <div class="detail-pair">
   <strong>Dates</strong>
   <%= @event.start_date %>
-
   <% unless @event.start_date == @event.end_date %>
-    <strong>to</strong>
+    to
     <%= @event.end_date %>
   <% end %>
 </div>
@@ -53,9 +52,15 @@
   <div class="detail-pair">
     <strong>What's funded?</strong>
     <div>
-      <p>Ticket: <%= @event.ticket_funded ? 'Yes' : 'No' %></p>
-      <p>Accommodation: <%= @event.accommodation_funded ? 'Yes' : 'No' %></p>
-      <p>Travel: <%= @event.travel_funded ? 'Yes' : 'No' %></p>
+      <% if @event.ticket_funded %>
+        &#10004; Ticket
+      <% end %>
+      <% if @event.accommodation_funded %>
+        &#10004; Accommodation
+      <% end %>
+      <% if @event.travel_funded %>
+        &#10004; Travel
+      <% end %>
     </div>
   </div>
 </section>
