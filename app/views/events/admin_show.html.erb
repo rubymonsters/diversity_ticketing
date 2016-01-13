@@ -3,8 +3,9 @@
 <h1 class="page-title">Details for <%= @event.name %></h1>
 <section class="box">
   <h2 class="box-title">Applications</h2>
-
-  <p><%= pluralize(@event.applications.count, "application") %> currently</p>
+  <div class="detail-pair">
+    <%= pluralize(@event.applications.count, "application") %> currently
+  </div>
 
   <% unless @event.applications.empty? %>
     <ul class="row">
