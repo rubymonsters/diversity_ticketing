@@ -47,7 +47,7 @@
 
   <div class="detail-pair">
     <strong>Number of available diversity tickets</strong>
-    <%= @event.number_of_tickets %>
+    <%= pluralize(@event.number_of_tickets, "ticket") %>
   </div>
 
   <div class="detail-pair">

@@ -169,7 +169,15 @@ a {
   margin-bottom: 2em;
 }
 
+.detail-pair {
+  font-weight: 300;
+  font-size: 18px;
+  color: #232323;
+  margin-top: 20px;
+}
+
 .detail-pair strong {
   display: block;
-  width: 100%;
+  font-weight: 600;
+  font-size: 14px;
 }
