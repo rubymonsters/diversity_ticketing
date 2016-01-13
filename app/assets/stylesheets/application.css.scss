@@ -30,7 +30,7 @@ $medium: 900px;
 $large: 1100px;
 $x-large: 1400px;
 
-$topbar-height: 48px;
+$topbar-height: 55px;
 
 html,
 body {
@@ -60,7 +60,7 @@ a {
 
 .topbar {
   background: white;
-  border-bottom: 1px solid #E2E3E4;
+  border-bottom: 1px solid #DDDEDF;
 
   @media (min-width: $large) {
     height: $topbar-height;
@@ -83,7 +83,12 @@ a {
 .logo {
   margin: 0;
   vertical-align: middle;
-  font-size: 1.3em;
+  font-size: 1.25em;
+  font-weight: 400;
+  a {
+    text-decoration: none;
+    color: $grey-dark;
+  }
   @media (min-width: $medium) {
     display: inline-block;
     height: $topbar-height;
@@ -96,8 +101,9 @@ a {
   ul {
     list-style: none;
     margin: 0;
-    padding: 0px 0px 0px 20px;
+    padding: 0px 0px 0px 30px;
     overflow: auto;
+    font-size: 15px;
   }
 
   li {
