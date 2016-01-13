@@ -1,4 +1,4 @@
-[Travis says](https://travis-ci.org/code-dot-org/code-dot-org): [![Build Status](https://travis-ci.org/rubymonsters/diversity_ticketing.svg?branch=master)](https://travis-ci.org/rubymonsters/diversity_ticketing)
+[Travis says](https://travis-ci.org/rubymonsters/diversity_ticketing): [![Build Status](https://travis-ci.org/rubymonsters/diversity_ticketing.svg?branch=master)](https://travis-ci.org/rubymonsters/diversity_ticketing)
 
 This is a Ruby on Rails app made by the RubyMonstas (a RailsGirls study group based in Berlin), to make diversifying conferences easier.
 
