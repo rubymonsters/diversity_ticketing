@@ -181,3 +181,24 @@ a {
   font-weight: 600;
   font-size: 14px;
 }
+
+.btn-edit {
+  background-color: $blue;
+}
+
+.btn-delete {
+  background-color: $red;
+}
+
+.btn {
+  text-decoration: none;
+  border-radius: 7px;
+  padding: 0.5em 0.8em;
+  color: #ffffff;
+  margin-inline-end: 0.5em;
+  &:hover,
+  &:active {
+    color: #ffffff;
+  }
+}
+
