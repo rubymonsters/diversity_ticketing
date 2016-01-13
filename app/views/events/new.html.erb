@@ -1,6 +1,8 @@
 <p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > New Event</p>
 
-<h1>Create New Event</h1>
+<h1 class="page-title">Create New Event</h1>
+<p class="page-description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
+
 
 <% if @event.errors.any? %>
   <div class="error">
@@ -15,13 +17,8 @@
 <% end %>
 
 <%= form_for :event, url: event_preview_path do |f| %>
-  <p class="description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
-
   <%= render partial: "form", locals: {f: f} %>
-
   <div class="form_field">
-    <p>
       <%= f.submit("Preview Event") %>
-    </p>
   </div>
 <% end %>
