@@ -1,15 +1,17 @@
-<h1>This is a preview for <%= @event.name %></h1>
+<h1 class="page-title">Preview of <%= @event.name %></h1>
 
-<h3>Organizer Details</h3>
-<p class="description">(Not shown to the public.)<p>
-<p>
-  <strong>Organizer Name:</strong>
-  <%= @event.organizer_name %>
-</p>
-<p>
-  <strong>Organizer Email:</strong>
-  <%= @event.organizer_email %>
-</p>
+<section class="box">
+  <h2 class="box-title box-noborder">Organizer Details</h2>
+  <p class="border">Not shown to the public.<p>
+  <div class="detail-pair">
+    <strong>Name</strong>
+    <%= @event.organizer_name %>
+  </div>
+  <div class="detail-pair">
+    <strong>Email</strong>
+    <%= @event.organizer_email %>
+  </div>
+</section>
 
 <%= render :partial => "events/event" %>
 
@@ -31,8 +33,8 @@
   <%= f.hidden_field :accommodation_funded %>
   <%= f.hidden_field :travel_funded %>
   <div class="form_field">
-    <a class="button" href="javascript:history.back()">Edit</a>
-  <%= f.submit("Submit the event") %>
+    <a class="btn btn-edit" href="javascript:history.back()">Edit event</a>
+    <%= f.submit "Save your event", :class => "btn btn-save" %>
   </div>
 <% end %>
 
