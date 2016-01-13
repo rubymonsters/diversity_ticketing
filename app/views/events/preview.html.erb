@@ -33,8 +33,8 @@
   <%= f.hidden_field :accommodation_funded %>
   <%= f.hidden_field :travel_funded %>
   <div class="form_field">
-    <a class="button" href="javascript:history.back()">Edit event</a>
-    <%= f.submit("Save your event") %>
+    <a class="btn btn-edit" href="javascript:history.back()">Edit event</a>
+    <%= f.submit "Save your event", :class => "btn btn-save" %>
   </div>
 <% end %>
 

@@ -190,6 +190,12 @@ a {
   background-color: $red;
 }
 
+.btn-save {
+  background-color: $green;
+  display: inline;
+  width: auto;
+}
+
 .btn {
   text-decoration: none;
   border-radius: 7px;
@@ -199,6 +205,7 @@ a {
   &:hover,
   &:active {
     color: #ffffff;
+    cursor: pointer;
   }
 }
 
