@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
   end
 
   def open?
-    end_date > DateTime.now
+    deadline >= Date.today
   end
 
   def to_csv

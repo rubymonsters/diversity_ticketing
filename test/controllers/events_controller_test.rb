@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
-  test "successfully creates event and sends email" do 
+  test "successfully creates event and sends email" do
     #create admin
     make_admin
 
@@ -93,5 +93,53 @@ class EventsControllerTest < ActionController::TestCase
     post :create, event: params
 
     assert_equal false, Event.last.selection_by_organizer
+  end
+
+  test "index action has apply link for event with deadline in the future" do
+    @event = make_event(approved: true)
+
+    get :index
+
+    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+  end
+
+  test "index action has apply link for event where deadline is today" do
+    @event = make_event(approved: true, deadline: Date.today)
+
+    get :index
+
+    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+  end
+
+  test "index action has no apply link for event with deadline in the past" do
+    @past_event = make_event(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 2.weeks.ago, approved: true, name: 'Other')
+
+    get :index
+
+    assert_select "a", {count: 0, text: "Apply"}, "This page should not contain 'Apply' link"
+  end
+
+  test "show action has apply link for event with deadline in the future" do
+    @event = make_event(approved: true)
+
+    get :show, :id => @event.id
+
+    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+  end
+
+  test "show action has apply link for event where deadline is today" do
+    @event = make_event(approved: true, deadline: Date.today)
+
+    get :show, :id => @event.id
+
+    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+  end
+
+  test "show action has no apply link for event with deadline in the past" do
+    @past_event = make_event(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 2.weeks.ago, approved: true, name: 'Other')
+
+    get :show, :id => @past_event.id
+
+    assert_select "a", {count: 0, text: "Apply"}, "This page should not contain 'Apply' link"
   end
 end

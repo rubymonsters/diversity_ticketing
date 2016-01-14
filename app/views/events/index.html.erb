@@ -2,7 +2,9 @@
   <div class="box event">
     <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
     <p class="markdownize"><%= event.description %></p>
-    <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'btn btn-save' %>
+    <% if event.open? %>
+      <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'btn btn-save' %>
+    <% end %>
   </div>
 <% end %>
 
