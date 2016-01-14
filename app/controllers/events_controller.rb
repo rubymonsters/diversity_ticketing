@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.approved.upcoming
+    @past_events = Event.approved.past
   end
 
   def index_past
