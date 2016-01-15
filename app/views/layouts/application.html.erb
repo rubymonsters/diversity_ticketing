@@ -9,10 +9,10 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller.controller_name  %>">
   <header class="topbar" role="banner">
     <div class="inner">
-      <h1 class="logo"><%= link_to 'Diversity Tickets', root_path %></h1>
+      <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => "Logo"), root_path)%><%= link_to 'Diversity Tickets', root_path %></h1>
       <nav class="navigation" role="navigation">
         <ul>
           <li><%= navbar_link_to 'Events', events_path %></li>
@@ -26,9 +26,14 @@
     </div>
   </header>
 
- 	<% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-  <% end -%>
+
+  <div class="flashes">
+    <% flash.each do |name, msg| -%>
+    <div class="inner">
+      <%= content_tag :div, msg, class: name %>
+    </div>
+    <% end -%>
+  </div>
 
   <main class="content">
     <div class="inner">

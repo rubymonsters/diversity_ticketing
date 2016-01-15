@@ -1,0 +1,99 @@
+$grey-front: #606060
+$green-bg: #66be66
+$green-em: #449b45
+$blue-bg: #27aae1
+$blue-em: #028aaf
+$red-em: #f8a89b
+$yellow-em: #f7d56b
+
+
+=coloredEm ($color)
+  position: relative
+  display: inline-block
+  z-index: 1
+  &:before
+    content: ""
+    display: block
+    height: 30%
+    width: 100%
+    background: $color
+    position: absolute
+    bottom: 5%
+    z-index: -1
+
+=wobble ($speed: 1300ms)
+  &:before
+    animation: wobble infinite $speed linear
+    animation-direction: alternate
+
+.home
+  .content
+    background: white
+  .topbar
+    border-bottom: none
+
+
+.front-title
+  font-size: 40px
+  color: $grey-front
+  font-weight: 300
+  @media (min-width: $medium)
+    font-size: 50px
+
+.front-cta
+  padding-top: 3em
+  @media (min-width: $medium)
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+
+.front-apply
+  display: block
+  padding: 2em 1em
+  text-decoration: none
+  text-align: center
+  transition: background 200ms ease
+  h3
+    margin: 0
+    font-weight: 400
+    color: white
+    font-size: 28px
+  p
+    margin: 0
+    color: white
+    font-size: 21px
+    font-weight: 300
+
+  @media (min-width: $medium)
+    flex: 0 0 49%
+
+  &.attendee
+    background-color: $green-bg
+    h3
+      +coloredEm($green-em)
+    &:hover,
+    &:active
+      background: $green-em
+
+  &.organizer
+    background-color: $blue-bg
+    h3
+      +coloredEm($blue-em)
+    &:hover,
+    &:active
+      background: $blue-em
+
+[class^="em--"]
+  font-style: normal
+
+.em--red
+  +coloredEm($red-em)
+  +wobble(1700ms)
+.em--yellow
+  +coloredEm($yellow-em)
+  +wobble(1500ms)
+
+
+@keyframes wobble
+  100%
+    height: 40%
