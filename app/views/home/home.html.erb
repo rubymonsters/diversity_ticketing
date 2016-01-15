@@ -1,14 +1,14 @@
-<h1>We help events reach a more diverse audience. And we help you to find these events.</h1>
-<h1>Because diversity is what makes communities whole.</h1>
+<h1 class="front-title">We help events reach a <em class="em--yellow">more diverse</em> audience. And we help you to <em class="em--yellow">find these events</em>.</h1>
+<h2 class="front-title">Because <em class="em--red">diversity</em> is what <em class="em--red">makes communities whole</em>.</h2>
 
-<div class="two_column">
-	<div class="left">
-		<h3><%= link_to 'Attendees', events_path, class:"button" %></h3>
+<div class="front-cta">
+  <%= link_to events_path, class:"front-apply attendee" do %>
+    <h3>Attendees</h3>
     <p>Find and apply for upcoming events.</p>
-	</div>
+  <% end %>
 
-	<div class="right">
-		<h3><%= link_to 'Organizers', new_event_path, class:"button" %></h3>
+  <%= link_to new_event_path, class: "front-apply organizer" do %>
+    <h3>Organizers</h3>
     <p>Submit your upcoming events.</p>
-	</div>
+  <% end %>
 </div>

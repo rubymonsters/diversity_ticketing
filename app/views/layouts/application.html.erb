@@ -9,7 +9,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller.controller_name  %>">
   <header class="topbar" role="banner">
     <div class="inner">
       <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => "Logo"), root_path)%><%= link_to 'Diversity Tickets', root_path %></h1>
