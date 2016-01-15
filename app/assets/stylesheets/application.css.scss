@@ -257,11 +257,15 @@ a {
   border-radius: 7px;
   padding: 0.5em 0.8em;
   font-size: 15px;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-inline-end: 0.5em;
+  line-height: 1.5 !important;
   &:hover,
   &:active {
     color: #ffffff;
     cursor: pointer;
+  }
+  &:before {
+    content: none !important;
   }
 }
