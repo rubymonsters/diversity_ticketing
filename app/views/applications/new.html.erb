@@ -1,63 +1,44 @@
 <p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= link_to @event.name, event_path(@event) %> > Application</p>
 
-<h1>Application for <%= @event.name %></h1>
+<h1 class="page-title">Application for <%= @event.name %></h1>
+<p class="page-description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
+
+
 
 <%= form_for :application, url: event_applications_path(params[:event_id]) do |f| %>
-  <p class="description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
 
   <% if @application.errors.any? %>
-    <div class="error">
-      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
-
-      <ul>
-      <% @application.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <div class="error"><p>There are some errors that prevent your application from being saved.</p></div>
   <% end %>
 
-
+<section class="box">
   <div class="form_field">
-    <p>
-      <%= f.label :attendee_info_1, "Why do you want to attend #{@event.name} and what especially do you look forward to learning?" %><br>
-      <%= f.text_area :attendee_info_1 %>
-    </p>
+    <%= f.label :attendee_info_1, "Why do you want to attend #{@event.name} and what especially do you look forward to learning?" %>
+    <%= f.text_area :attendee_info_1 %>
   </div>
 
   <div class="form_field">
-    <p>
-      <%= f.label :attendee_info_2, "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)" %><br>
-      <%= f.text_area :attendee_info_2 %>
-    </p>
+    <%= f.label :attendee_info_2, "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)" %>
+    <%= f.text_area :attendee_info_2 %>
   </div>
 
   <div class="form_field">
-    <p>
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
-    </p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="form_field">
-    <p>
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="form_field">
+    <%= f.label :email_confirmation %>
+    <%= f.text_field :email_confirmation %>
   </div>
 
   <div class="form_field">
-    <p>
-      <%= f.label :email_confirmation %><br>
-      <%= f.text_field :email_confirmation %>
-    </p>
-  </div>
-
-  <div class="form_field">
-    <p>
-      <%= f.check_box :terms_and_conditions %>
-      <%= f.label :terms_and_conditions, "I agree with the following Terms and Conditions:" %>
-    </p>
+    <%= f.check_box :terms_and_conditions %>
+    <%= f.label :terms_and_conditions, "I agree with the following Terms and Conditions:" %>
     <p>
       This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers remain protected; we will raffle out the tickets. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes
     </p>
@@ -77,9 +58,9 @@
     <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of Conduct', "http://www.#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
   </div>
 
+
+  </section>
   <div class="form_field">
-    <p>
-      <%= f.submit("Submit Application") %>
-    </p>
+      <%= f.submit("Submit Application", class: "btn btn-save") %>
   </div>
 <% end %>

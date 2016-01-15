@@ -1,6 +1,83 @@
-label,
-input,
+$border-grey: #a1a3a6;
+$grey-placeholder: #a5a3a4;
+$grey-input: #4d4f51;
+$error-red: #e85754;
+$error-bg: #c43e3d;
+
+input[type="hidden"],
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+}
+
+:placeholder-shown {
+  font-size: 14px;
+  color: $grey-placeholder;
+}
+
+.form_field {
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: .2em;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
 textarea {
   display: block;
   width: 100%;
+  font-size: 14px;
+  padding: .3em;
+  border: 1px solid $border-grey;
+  border-radius: 2px;
+}
+
+
+.field_with_errors {
+
+  label {
+    font-weight: 600;
+    color: $error-red;
+  }
+  input,
+  textarea {
+    border-color: $error-red;
+  }
+}
+
+.error {
+  background: $error-red;
+  color: white;
+  font-size: 14px;
+  padding: 0;
+  margin-bottom: .8em;
+  border-radius: 2px;
+  overflow: hidden;
+  p {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin-right: .5em;
+    vertical-align: middle;
+    background: {
+      color: $error-bg;
+      image: url(image_path('icon-alert.svg'));
+      size: 12px 12px;
+      position: center center;
+      repeat: no-repeat;
+    }
+  }
 }

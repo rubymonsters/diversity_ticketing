@@ -6,7 +6,7 @@
 
 <% if @event.errors.any? %>
   <div class="error">
-    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <p><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</p>
 
     <ul>
     <% @event.errors.full_messages.each do |msg| %>
@@ -19,6 +19,6 @@
 <%= form_for :event, url: event_preview_path do |f| %>
   <%= render partial: "form", locals: {f: f} %>
   <div class="form_field">
-      <%= f.submit("Preview Event") %>
+      <%= f.submit("Preview Event", class: 'btn btn-save') %>
   </div>
 <% end %>
