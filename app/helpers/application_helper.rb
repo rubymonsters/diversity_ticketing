@@ -4,4 +4,9 @@ module ApplicationHelper
       content_tag(:span, name, class: 'active')
     }
   end
+
+  def join_messages(messages)
+    *head, tail = messages
+    [head.join(", "), tail].reject { |s| s.blank? }.join(" and ")
+  end
 end
