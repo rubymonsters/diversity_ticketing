@@ -6,4 +6,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Show past events', past_events_path if !@past_events.empty? %>
+<%= link_to 'Show past events', past_events_path if @past_events.any? %>
