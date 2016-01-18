@@ -37,6 +37,7 @@
   </div>
 
   <div class="form_field">
+<<<<<<< HEAD
     <% if @event.ticket_funded %>
     <%= label_tag do %>
       <%= f.check_box(:ticket_needed) %> I need a ticket 
@@ -53,10 +54,12 @@
     <% end %>
     <% end %>
   </div>
-
   <div class="form_field">
-    <%= f.check_box :terms_and_conditions %>
-    <%= f.label :terms_and_conditions, "I agree with the following Terms and Conditions:" %>
+    <%= label_tag do %>
+      <%= f.check_box :terms_and_conditions %>
+      I agree with the following Terms and Conditions
+    <% end %>
+  </div>
     <p>
       This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers remain protected; we will raffle out the tickets. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes
     </p>
