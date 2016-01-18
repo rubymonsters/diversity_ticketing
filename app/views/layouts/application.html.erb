@@ -26,16 +26,14 @@
     </div>
   </header>
 
-
-  <div class="flashes">
-    <% flash.each do |name, msg| -%>
-    <div class="inner">
-      <%= content_tag :div, msg, class: name %>
-    </div>
-    <% end -%>
-  </div>
-
   <main class="content">
+    <div class="flashes">
+      <% flash.each do |name, msg| -%>
+      <div class="inner">
+        <%= content_tag :div, msg, class: name %>
+      </div>
+      <% end -%>
+    </div>
     <div class="inner">
       <%= yield %>
     </div>

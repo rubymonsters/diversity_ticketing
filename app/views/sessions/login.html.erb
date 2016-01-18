@@ -1,11 +1,8 @@
 <%= form_tag sessions_path do %>
-
-	<%= label_tag(:username, "Username") %>
+  <%= label_tag(:username, "Username") %>
   <%= text_field_tag(:username) %>
   <%= label_tag(:password, "Password") %>
   <%= password_field_tag(:password) %>
 
-  <%= submit_tag("Log in") %>
-
-
+  <%= submit_tag("Log in", class: "btn btn-save") %>
 <% end %>

@@ -7,20 +7,16 @@
     <%= pluralize(@event.applications.count, "application") %> currently
   </div>
 
-  <% unless @event.applications.empty? %>
-    <ul class="row">
-      <li>Name</li>
-      <li>Email</li>
-    </ul>
-  <% end %>
+  <ul>
+    <% @event.applications.each do |application| %>
+      <li>
+        <%= link_to application.name, event_application_path(@event, application) %>
+        <%= application.email %>
+        <%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %>
+      </li>
 
-  <% @event.applications.each do |application| %>
-    <ul class="row">
-      <li><%= link_to application.name, event_application_path(@event, application) %></li>
-      <li><%= application.email %></li>
-      <li><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %></li>
-    </ul>
-  <% end %>
+    <% end %>
+  </ul>
 </section>
 <section class="box">
   <h2 class="box-title">Organizer Details</h2>

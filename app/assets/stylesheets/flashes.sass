@@ -1,7 +1,30 @@
+@mixin notice($background, $highlight, $icon)
+  background: $background
+  color: white
+  font-size: 14px
+  padding: 0
+  margin-bottom: .8em
+  border-radius: 2px
+  overflow: hidden
+  p
+    display: inline-block
+    margin: 0
+    vertical-align: middle
+
+  &:before
+    content: $icon
+    display: inline-block
+    width: 2em
+    height: 2em
+    text-align: center
+    line-height: 2
+    margin-right: .5em
+    vertical-align: middle
+    background-color: $highlight
+
+
+
 .flashes
 
-
   .notice
-    padding: 1em 0
-    background: #66be66
-    color: white
+    @include notice(#66be66, #4f994f, "\02713")

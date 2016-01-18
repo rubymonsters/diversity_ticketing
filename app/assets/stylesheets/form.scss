@@ -30,6 +30,7 @@ input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
+input[type="password"],
 textarea {
   display: block;
   width: 100%;
@@ -38,7 +39,6 @@ textarea {
   border: 1px solid $border-grey;
   border-radius: 2px;
 }
-
 
 .field_with_errors {
 
@@ -53,31 +53,5 @@ textarea {
 }
 
 .error {
-  background: $error-red;
-  color: white;
-  font-size: 14px;
-  padding: 0;
-  margin-bottom: .8em;
-  border-radius: 2px;
-  overflow: hidden;
-  p {
-    display: inline-block;
-    margin: 0;
-    vertical-align: middle;
-  }
-  &:before {
-    content: "";
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    margin-right: .5em;
-    vertical-align: middle;
-    background: {
-      color: $error-bg;
-      image: url(image_path('icon-alert.svg'));
-      size: 12px 12px;
-      position: center center;
-      repeat: no-repeat;
-    }
-  }
+  @include notice($error-bg, $error-red, "!");
 }
