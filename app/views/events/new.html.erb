@@ -5,7 +5,7 @@
 
 <% if @event.errors.any? %>
   <div class="error">
-    <p><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</p>
+    <p><%= pluralize(@event.errors.count, "error") %> stopped this event from being saved:</p>
 
     <ul>
       <% @event.errors.messages.each do |field, messages| %>

@@ -36,6 +36,6 @@ en:
         event:
           attributes:
             website:
-              invalid: "should be a full url, e.g. https://myconference.com"
+              invalid: "should be a full URL, e.g. https://myconference.com"
             code_of_conduct:
-              invalid: "should be a full url, e.g. https://myconference.com/code_of_conduct"
+              invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
