@@ -10,7 +10,7 @@
     <%= f.text_field :organizer_email %>
   </div>
 
-<% if action_name == 'new' || 'preview' %>
+<% if action_name == 'new' || action_name == 'preview' %>
   <div class="form_field">
     <%= f.label :organizer_email_confirmation, 'Email Confirmation' %>
     <%= f.text_field :organizer_email_confirmation %>
