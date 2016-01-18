@@ -22,4 +22,18 @@ class EventsControllerTest < ActionController::TestCase
 
   	assert(css_select("h3").none? { |element| element.text == past_event.name })
  	end
+
+  test "index action shows link to past events if there are past events" do
+    make_event(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 2.weeks.ago, approved: true, name: 'Other')
+
+    get :index
+
+    assert_select "a", {count: 1, text: "Show past events"}, "This page must contain anchor that says 'Show past events'"
+  end
+
+  test "index action does not show link to past events if there are no past events" do
+    get :index
+
+    assert_select "a", {count: 0, text: "Show past events"}, "This page must contain no anchors that say 'Show past events'"
+  end
 end
