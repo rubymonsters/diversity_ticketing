@@ -37,19 +37,6 @@
   </div>
 
   <div class="form_field">
-    <% if @event.ticket_funded %>
-    <%= label_tag do %>
-      <%= f.check_box(:ticket_needed) %> I need a ticket 
-    <% end %>
-    <% end %>
-    <% if @event.travel_funded %>
-    <%= label_tag do %>
-      <%= f.check_box(:travel_needed) %> I need travel funding
-    <% end %>
-    <% end %>
-  </div>
-
-  <div class="form_field">
     <%= f.check_box :terms_and_conditions %>
     <%= f.label :terms_and_conditions, "I agree with the following Terms and Conditions:" %>
     <p>
