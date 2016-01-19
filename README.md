@@ -31,10 +31,10 @@ This following text describes how to set up your workstation to develop for [div
 1. Check that you have the correct ruby version:
   1. open a new Terminal window
   1. `ruby --version  # --> ruby 2.1.5`
-1. Install bundler `gem install bundler`
-1. Run `bundle install`
+1. Install bundler by running `gem install bundler`
+1. Run `bundle install` to install the dependencies specified in your Gemfile
 1. Postgresql setup
-  1. For OS X:
+  1. for OS X:
     1. in your terminal, run:
       1. `createuser -s pguser`
       1. `psql postgres`
@@ -42,7 +42,7 @@ This following text describes how to set up your workstation to develop for [div
         1. Enter `\password pguser`
         1. Enter the password `pguser_password` (twice)
     1. when done, quit the postgresql console with `\q`
-  1. For Ubuntu:
+  1. for Ubuntu:
     1. in your terminal, run:
       1. `sudo -u postgres createuser -s pguser`
       1. `sudo -u postgres psql`
@@ -50,15 +50,15 @@ This following text describes how to set up your workstation to develop for [div
         1. Enter `\password pguser`
         1. Enter the password `pguser_password` (twice)
     1. when done, quit the postgresql console with `\q`
-1. Update the config/database.yml,  
-  1. add this to the default group:
-    host: localhost
-    username: pguser
-    password: pguser_password
-  1. Change the names of the databases to:
-    diversity_ticketing_development
-    diversity_ticketing_test
-    diversity_ticketing_production
+1. Update the config/database.yml
+  1. add this to the default group: <br>
+        host: localhost <br>
+        username: pguser <br>
+        password: pguser_password <br>
+  1. Change the names of the databases to: <br>
+        diversity_ticketing_development <br>
+        diversity_ticketing_test <br>
+        diversity_ticketing_production <br>
 1. Run `rake db:create` to create the database.
 
 ## License
