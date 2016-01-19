@@ -42,20 +42,15 @@
     </div>
 
     <div class="form_field">
-      <% if @event.ticket_funded %>
-      <%= label_tag do %>
-        <%= f.check_box(:ticket_needed) %> I need a ticket
-      <% end %>
-      <% end %>
       <% if @event.travel_funded %>
-      <%= label_tag do %>
-        <%= f.check_box(:travel_needed) %> I need travel funding
-      <% end %>
+        <%= label_tag do %>
+          <%= f.check_box(:travel_needed) %> I can only attend if my travel is funded
+        <% end %>
       <% end %>
       <% if @event.accommodation_funded %>
-      <%= label_tag do %>
-        <%= f.check_box(:travel_needed) %> I need accommodation funding
-      <% end %>
+        <%= label_tag do %>
+          <%= f.check_box(:accommodation_needed) %> I can only attend if my accommodation is funded
+        <% end %>
       <% end %>
     </div>
 
