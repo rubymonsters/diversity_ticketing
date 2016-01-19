@@ -5,7 +5,7 @@ This is a Ruby on Rails app made by the RubyMonstas (a RailsGirls study group ba
 Supported by the [Travis Foundation](http://foundation.travis-ci.org/).
 
 
-# Contributing workflow
+## Contributing workflow
 If you want to contribute, you can look at the [open issues](https://github.com/rubymonsters/diversity_ticketing/issues). We are happy to answer your questions if you consider to help.
 
 If you have other ideas to enhance the site, or if you've found a bug, feel free to open an [issue](https://github.com/rubymonsters/diversity_ticketing/issues)!
@@ -27,7 +27,7 @@ by automatically forking the project and prompting to send a pull request.
 [pr]: https://help.github.com/articles/using-pull-requests/
 
 
-# Build setup
+## Build setup
 This following text describes how to set up your workstation to develop for [diversity tickets](https://diversitytickets.org).
 
 1. Check that you have the correct ruby version:
@@ -44,17 +44,19 @@ This following text describes how to set up your workstation to develop for [div
     1. in your terminal, run:
       1. `createuser -s pguser`
       1. `psql postgres`
-    1. postgresql console is now opened. Enter the following command and then enter the password pguser_password (twice)...
-      1.`\password pguser`
+      1. postgresql console is now opened. 
+        1. Enter `\password pguser`
+        1. Enter the password `pguser_password` (twice)
     1. when done, quit the postgresql console with `\q`
 
-1. For Ubuntu:
-  1. in your terminal, run:
-    1. `sudo -u postgres createuser -s pguser`
-    1. `sudo -u postgres psql`
-  1. postgresql console is now opened. Enter the following command and then enter the password pguser_password (twice)...
-      1.`\password pguser`
-  1. when done, quit the postgresql console with `\q`
+    1. For Ubuntu:
+      1. in your terminal, run:
+        1. `sudo -u postgres createuser -s pguser`
+        1. `sudo -u postgres psql`
+      1. postgresql console is now opened. 
+        1. Enter `\password pguser`
+        1. Enter the password `pguser_password` (twice)
+      1. when done, quit the postgresql console with `\q`
 
 1. Update the config/database.yml,  
   1. add this to the default group:
@@ -69,5 +71,5 @@ This following text describes how to set up your workstation to develop for [div
 1. Run `rake db:create` to create the database.
 
 
-# License
+## License
 [MIT](https://github.com/rubymonsters/diversity_ticketing/blob/master/LICENSE.md).
