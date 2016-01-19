@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   validates :end_date, date: { after_or_equal_to: :start_date }
   validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true
   validates :organizer_email_confirmation, presence: true, on: :create
-  validates :website, :code_of_conduct, format: { with: /.+\..+/}
+  validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   def self.approved
@@ -31,9 +31,9 @@ class Event < ActiveRecord::Base
 
   def to_csv
     CSV.generate do |csv|
-      csv << ["name", "email", question_1, question_2, question_3]
+      csv << ["Name", "Email", "Why do you want to attend #{self.name} and what especially do you look forward to learning?", "Please share with us why you're applying for a diversity ticket."]
       applications.each do |application|
-        csv << [application.name, application.email, application.answer_1, application.answer_2, application.answer_3]
+        csv << [application.name, application.email, application.attendee_info_1, application.attendee_info_2]
       end
     end
   end

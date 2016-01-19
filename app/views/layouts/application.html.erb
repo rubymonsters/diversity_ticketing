@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>DiversityTickets</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div class="topbar">
-    <h1><%= link_to 'Diversity Ticketing', root_path %></h1>
-    <div class="navigation">
-      <ul>
-        <li><%= navbar_link_to 'Home', root_path %></li>
-        <li><%= navbar_link_to 'Events', events_path %></li>
-        <li><%= navbar_link_to 'Submit Event', new_event_path %></li>
-        <% if authenticated? %>
-          <li><%= navbar_link_to 'Admin', admin_path %></li>
-        <% end %>
-      </ul>
+<body class="<%= controller.controller_name  %>">
+  <header class="topbar" role="banner">
+    <div class="inner">
+      <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => "Logo"), root_path)%><%= link_to 'Diversity Tickets', root_path %></h1>
+      <nav class="navigation" role="navigation">
+        <ul>
+          <li><%= navbar_link_to 'Events', events_path %></li>
+          <li><%= navbar_link_to 'Submit Event', new_event_path %></li>
+          <% if authenticated? %>
+            <li><%= navbar_link_to 'Admin', admin_path %></li>
+            <li><%= link_to 'Logout', sessions_path, method: :delete %></li>
+          <% end %>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
- 	<% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-  <% end -%>
+  <main class="content">
+    <div class="flashes">
+      <% flash.each do |name, msg| -%>
+      <div class="inner">
+        <%= content_tag :div, msg, class: name %>
+      </div>
+      <% end -%>
+    </div>
+    <div class="inner">
+      <%= yield %>
+    </div>
+  </main>
 
-  <div class="content">
-  <%= yield %>
-  </div>
+  <footer class="footer">
+    <div class="inner">
+      <p>Built by <%= link_to 'RubyMonstas', 'http://rubymonstas.org' %>, supported by <%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org' %>. See <%= link_to 'GitHub', 'https://github.com/rubymonsters/diversity_ticketing/' %> for code and <%= link_to 'Impressum', 'http://foundation.travis-ci.org/imprint/' %> for legal things.</p>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1,11 +1,11 @@
-<p><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
+<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
 
 <h1><%= @event.name %></h1>
 
 <%= render :partial => "events/event" %>
 
 <% if @event.open? %>
-  <%= link_to 'Apply', new_event_application_path(params[:id]), class:'button' %><br>
+  <%= link_to 'Apply', new_event_application_path(params[:id]), class:'btn btn-save' %><br>
 <% else %>
   <strong>Sorry, application for <%= @event.name %> is closed.</strong>
 <% end %>

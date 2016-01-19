@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ApplicationsControllerTest < ActionController::TestCase
-  
 
   # GET show
   test 'shows application to admin users' do
@@ -21,7 +20,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
     get :show, event_id: event.id, id: application.id
 
-    assert_response 401
+    assert_redirected_to login_path
   end
 
   test 'raise exception if application does not exist' do
@@ -40,13 +39,13 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       post :create, event_id: event.id,
                     application: {
+                      attendee_info_1: 'some text',
+                      attendee_info_2: 'some text',
                       name: 'Joe',
                       email: 'joe@test.com',
                       email_confirmation: 'joe@test.com',
-                      event: event,
-                      answer_1: 'Hi',
-                      answer_2: 'Hi',
-                      answer_3: 'Hi'
+                      terms_and_conditions: '1',
+                      event: event
                     }
 
       assert_redirected_to event
@@ -61,5 +60,34 @@ class ApplicationsControllerTest < ActionController::TestCase
                   }
 
     assert_response :success
+  end
+
+  test 'no redirection when terms and conditions are not accepted' do
+    event = make_event
+
+    post :create, event_id: event.id,
+                  application: {
+                    attendee_info_1: 'some text',
+                    attendee_info_2: 'some text',
+                    name: 'Joe',
+                    email: 'joe@test.com',
+                    email_confirmation: 'joe@test.com',
+                    terms_and_conditions: '0',
+                    event: event
+                  }
+
+    assert_response :success
+  end
+
+  # DELETE destroy
+  test 'proper redirection after successful deletion' do
+    admin_login
+
+    event = make_event
+    application = make_application(event)
+
+    delete :destroy, event_id: event.id, id: application.id
+
+    assert_redirected_to event_admin_path(event)
   end
 end

@@ -24,4 +24,26 @@ class EventTest < ActiveSupport::TestCase
       assert_attribute_invalid(event, :organizer_email)
     end
   end
+
+  describe "validating website" do
+    it 'should allow a valid url' do
+      event = Event.new(website: "http://www.example.com")
+      assert_attribute_valid(event, :website)
+    end
+
+    it 'should allow a valid url without www' do
+      event = Event.new(website: "http://example.com")
+      assert_attribute_valid(event, :website)
+    end
+
+    it 'should not allow an url without http or https' do
+      event = Event.new(website: "www.example.com")
+      assert_attribute_invalid(event, :website)
+    end
+
+    it 'should not allow an invalid url' do
+      event = Event.new(website: "http://examplecom")
+      assert_attribute_invalid(event, :website)
+    end
+  end
 end

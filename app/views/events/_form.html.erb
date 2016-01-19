@@ -1,152 +1,104 @@
-<h3>Organizer Details:</h3>
-<p class="description">Not shown to the public.<p>
-<div class="form_field">
-  <p>
-    <%= f.label :organizer_name, 'Full Name' %>
-  </p>
-  <p>
-    <%= f.text_field :organizer_name %>
-  </p>
-</div>
-
-<div class="form_field">
-  <p>
-    <%= f.label :organizer_email, 'Email' %>
-  </p>
-  <p>
-    <%= f.text_field :organizer_email %>
-  </p>
-</div>
-
-<% if action_name == 'new' %>
+<section class="box">
+  <h2 class="box-title box-noborder">Organizer Details</h2>
+  <p class="border">Not shown to the public.<p>
   <div class="form_field">
-    <p>
-      <%= f.label :organizer_email_confirmation, 'Email Confirmation' %>
-    </p>
-    <p>
-      <%= f.text_field :organizer_email_confirmation %>
-    </p>
+    <%= f.label :organizer_name, 'Full Name' %>
+    <%= f.text_field :organizer_name %>
+  </div>
+  <div class="form_field">
+    <%= f.label :organizer_email, 'Email' %>
+    <%= f.text_field :organizer_email %>
+  </div>
+
+<% if action_name == 'new' || action_name == 'preview' %>
+  <div class="form_field">
+    <%= f.label :organizer_email_confirmation, 'Email Confirmation' %>
+    <%= f.text_field :organizer_email_confirmation %>
   </div>
 <% end %>
+</section>
 
-<h3>Event Details:</h3>
-<div class="form_field">
-  <p>
+
+<section class="box">
+  <h2>Event Details</h2>
+  <div class="form_field">
     <%= f.label :name, 'Name' %>
-
-  </p>
-  <p>
     <%= f.text_field :name %>
-  </p>
-</div>
+  </div>
 
-<div class="form_field">
-  <p>
+  <div class="form_field">
     <%= f.label :website, 'Website' %>
-  </p>
-  <p>
-    <%= f.text_field :website, :placeholder => "i.e. myconference.com" %>
-  </p>
-</div>
-
-<div class="form_field">
-  <p>
+    <%= f.text_field :website, :placeholder => "e.g. https://myconference.com" %>
+  </div>
+  <div class="form_field">
     <%= f.label :code_of_conduct, 'Link to Code of Conduct' %>
-  </p>
-  <p>
-    <%= f.text_field :code_of_conduct, :placeholder => "i.e. myconference.com/code_of_conduct" %>
-  </p>
-</div>
+    <%= f.text_field :code_of_conduct, :placeholder => "e.g. https://myconference.com/code_of_conduct" %>
+  </div>
 
-<p>Location</p>
-<div class="form_field">
-  <p>
+  <h3 class="box-subtitle">Location</h3>
+  <div class="form_field">
     <%= f.label :city, 'City' %>
-  </p>
-  <p>
     <%= f.text_field :city %>
-  </p>
-</div>
+  </div>
 
-<div class="form_field">
-  <p>
+  <div class="form_field">
     <%= f.label :country, 'Country' %>
-  </p>
-  <p>
     <%= f.text_field :country %>
-  </p>
-</div>
+  </div>
 
-<p>Date</p>
-<div class="date">
+  <h3>Dates</h3>
+
   <div class="form_field left">
-    <p>
-      <%= f.label :start_date, 'From' %>
-    </p>
-    <p>
-      <%= f.date_field :start_date, :placeholder => "dd.mm.yyyy" %>
-    </p>
+    <%= f.label :start_date, 'From' %>
+    <%= f.date_field :start_date, :placeholder => "dd.mm.yyyy" %>
   </div>
 
   <div class="form_field right">
-    <p>
-      <%= f.label :end_date, 'To' %>
-    </p>
-    <p>
-      <%= f.date_field :end_date, :placeholder => "dd.mm.yyyy" %>
-    </p>
+    <%= f.label :end_date, 'To' %>
+    <%= f.date_field :end_date, :placeholder => "dd.mm.yyyy" %>
   </div>
-</div>
 
-<div class="form_field">
-  <p>
-    <%= f.label :description, 'Description' %>
-  </p>
-  <p>
-    <%= f.text_area :description %>
-  </p>
-</div>
-
-<h3>Application Details</h3>
-<div class="form_field">
-  <p>
-    <%= f.label :deadline, 'Deadline for Application' %>
-  </p>
-  <p>
-    <%= f.date_field :deadline, :placeholder => "dd.mm.yyyy" %>
-  </p>
-</div>
-
-<div class="form_field">
-  <p>
-    <%= f.label :number_of_tickets, 'Number of available diversity tickets' %>
-  </p>
-  <p>
-    <%= f.number_field :number_of_tickets, min: 1 %>
-  </p>
-</div>
-
-<p>Funded</p>
-<div class="form_field">
-  <p class="small"><%= label_tag do %>
-    <%= f.check_box(:ticket_funded) %> Ticket
-  <% end %></p>
-  <p class="small"><%= label_tag do %>
-    <%= f.check_box(:accommodation_funded) %> Accommodation
-  <% end %></p>
-  <p class="small"><%= label_tag do %>
-    <%= f.check_box(:travel_funded) %> Travel
-  <% end %></p>
-</div>
-
-<% if action_name == 'edit' %>
-<h3>Approve Event?</h3>
   <div class="form_field">
-    <p class="small"><%= label_tag do %>
-      <%= f.radio_button(:approved, true) %> Yes
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description %>
+  </div>
+</section>
+
+
+<section class="box">
+  <h2 class="box-title">Application Details</h2>
+  <div class="form_field">
+    <%= f.label :deadline, 'Deadline for Application' %>
+    <%= f.date_field :deadline, :placeholder => "dd.mm.yyyy" %>
+  </div>
+
+  <div class="form_field">
+    <%= f.label :number_of_tickets, 'Number of available diversity tickets' %>
+    <%= f.number_field :number_of_tickets, min: 1 %>
+  </div>
+
+  <h3 class="box-subtitle">Funded</h3>
+  <div class="form_field">
+    <%= label_tag do %>
+      <%= f.check_box(:ticket_funded) %> Ticket
     <% end %>
     <%= label_tag do %>
-      <%= f.radio_button(:approved, false) %> No
-    <% end %></p>
+      <%= f.check_box(:accommodation_funded) %> Accommodation
+    <% end %>
+    <%= label_tag do %>
+      <%= f.check_box(:travel_funded) %> Travel
+    <% end %>
   </div>
-<% end %>
+
+  <% if action_name == 'edit' %>
+    <h3 class="box-subtitle">Approve Event?</h3>
+    <div class="form_field">
+      <%= label_tag do %>
+        <%= f.radio_button(:approved, true) %> Yes
+      <% end %>
+      <%= label_tag do %>
+        <%= f.radio_button(:approved, false) %> No
+      <% end %>
+    </div>
+  <% end %>
+</section>

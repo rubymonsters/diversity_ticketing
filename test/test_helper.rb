@@ -1,3 +1,9 @@
+# Use simplecov gem to track what code gets executed when tests
+# are run and what doesn't: Run your tests, open up coverage/index.html
+# in your browser and check out what you've missed so far.
+require 'simplecov'
+SimpleCov.start 'rails'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
@@ -8,8 +14,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def admin_login
-    username, password = ENV['DT_USERNAME'], ENV['DT_PASSWORD']
-    @request.headers['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(username, password)
+    session[:authenticated] = true
   end
 
   def make_event(event_params = {})
@@ -21,8 +26,8 @@ class ActiveSupport::TestCase
       organizer_name: 'Klaus Mustermann',
       organizer_email: 'klaus@example.com',
       organizer_email_confirmation: 'klaus@example.com',
-      website: 'google.com',
-      code_of_conduct: 'coc.website',
+      website: 'http://google.com',
+      code_of_conduct: 'http://coc.website',
       city: 'Berlin',
       country: 'Germany',
       deadline: 5.days.from_now,
@@ -35,13 +40,13 @@ class ActiveSupport::TestCase
 
   def make_application(event, application_params = {})
     defaults = {
+      attendee_info_1: 'some text',
+      attendee_info_2: 'some text',
       name: 'Joe',
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
-      event: event,
-      answer_1: 'Hi',
-      answer_2: 'Hi',
-      answer_3: 'Hi'
+      terms_and_conditions: '1',
+      event: event
     }
     application_params = defaults.merge(application_params)
     Application.create!(application_params)

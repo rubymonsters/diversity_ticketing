@@ -3,8 +3,12 @@ Rails.application.routes.draw do
     member do
       post :approve
     end
-    resources :applications, only: [:show, :new, :create]
+    resources :applications, only: [:show, :new, :create, :destroy]
   end
+
+  get '/login', to: 'sessions#login', as: :login
+
+  resource :sessions
 
   get '/past_events', to: 'events#index_past', as: :past_events
   get '/admin', to: 'events#admin_index'

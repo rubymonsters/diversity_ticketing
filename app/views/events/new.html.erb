@@ -1,27 +1,23 @@
-<p><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > New Event</p>
+<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > New Event</p>
 
-<h1>Create New Event</h1>
+<h1 class="page-title">Create New Event</h1>
+<p class="page-description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
 
 <% if @event.errors.any? %>
   <div class="error">
-    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <p><%= pluralize(@event.errors.count, "error") %> stopped this event from being saved:</p>
 
     <ul>
-    <% @event.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @event.errors.messages.each do |field, messages| %>
+        <li><%= @event.class.human_attribute_name(field) %> <%= join_messages(messages) %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
 
 <%= form_for :event, url: event_preview_path do |f| %>
-  <p class="description">Please fill out this form. Unless otherwise specified, all fields are required.</p>
-
   <%= render partial: "form", locals: {f: f} %>
-
   <div class="form_field">
-    <p>
-      <%= f.submit("Preview Event") %>
-    </p>
+      <%= f.submit("Preview Event", class: 'btn btn-save') %>
   </div>
 <% end %>

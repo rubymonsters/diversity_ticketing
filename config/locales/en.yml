@@ -20,4 +20,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      application:
+        attendee_info_1: ""
+        attendee_info_2: ""
+    errors:
+      models:
+        application:
+          attributes:
+            attendee_info_1:
+              blank: "Please state why you want to attend this event"
+            attendee_info_2:
+              blank: "Please state why you're applying for a diversity ticket"
+        event:
+          attributes:
+            website:
+              invalid: "should be a full URL, e.g. https://myconference.com"
+            code_of_conduct:
+              invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
