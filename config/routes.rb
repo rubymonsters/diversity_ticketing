@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get '/admin', to: 'events#admin_index'
   get '/events/:id/admin', to: 'events#admin_show', as: :event_admin
   post '/events/preview', to: 'events#preview', as: :event_preview
-   #The priority is based upon order of creation: first created -> highest priority.
+  get '/about', to: 'home#about', as: :about
+  get '/faq', to: 'home#faq', as: :faq
+
+  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
