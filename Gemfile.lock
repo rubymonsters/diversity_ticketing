@@ -40,10 +40,16 @@ GEM
     autoprefixer-rails (6.3.1)
       execjs
       json
+    bcrypt (3.1.10)
+    bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.1)
+    clearance (1.12.1)
+      bcrypt
+      email_validator (~> 1.4)
+      rails (>= 3.1)
     coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -58,6 +64,8 @@ GEM
       activesupport
     debug_inspector (0.0.2)
     docile (1.1.5)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -169,6 +177,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   byebug
+  clearance
   coffee-rails (~> 4.1.0)
   date_validator
   jbuilder (~> 2.0)

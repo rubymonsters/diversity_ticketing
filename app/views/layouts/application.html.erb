@@ -21,7 +21,9 @@
           <li><%= navbar_link_to 'FAQ', faq_path %></li>
           <% if authenticated? %>
             <li><%= navbar_link_to 'Admin', admin_path %></li>
-            <li><%= link_to 'Logout', sessions_path, method: :delete %></li>
+            <li><%= button_to 'Sign out', sign_out_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign in', sign_in_path %></li>
           <% end %>
         </ul>
       </nav>
@@ -29,6 +31,7 @@
   </header>
 
   <main class="content">
+
     <div class="flashes">
       <% flash.each do |name, msg| -%>
       <div class="inner">

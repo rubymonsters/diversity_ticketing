@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate, only: [:index, :index_past, :show, :create, :new, :preview]
+  skip_before_action :require_login, only: [:index, :index_past, :show, :create, :new, :preview]
   before_action :get_event, only: [:admin_show, :approve, :edit, :update, :destroy]
 
   def index

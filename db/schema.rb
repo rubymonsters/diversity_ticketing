@@ -19,15 +19,14 @@ ActiveRecord::Schema.define(version: 20160212104941) do
   create_table "applications", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "event_id"
     t.text     "attendee_info_1"
     t.text     "attendee_info_2"
-    t.boolean  "ticket_needed",        default: false, null: false
-    t.boolean  "travel_needed",        default: false, null: false
-    t.boolean  "accommodation_needed", default: false, null: false
-    t.boolean  "visa_needed",          default: false, null: false
+    t.boolean  "ticket_needed",   default: false, null: false
+    t.boolean  "travel_needed",   default: false, null: false
+    t.boolean  "visa_needed",     default: false, null: false
   end
 
   add_index "applications", ["event_id"], name: "index_applications_on_event_id", using: :btree
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 20160212104941) do
     t.boolean  "ticket_funded",        default: false, null: false
     t.boolean  "accommodation_funded", default: false, null: false
     t.boolean  "travel_funded",        default: false, null: false
-    t.text     "logo"
     t.text     "applicant_directions"
   end
 

@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :get_event, only: [:show, :new, :create, :destroy]
-  skip_before_action :authenticate, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
 
   def show
     @application = @event.applications.find(params[:id])
