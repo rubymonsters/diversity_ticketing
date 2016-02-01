@@ -19,6 +19,16 @@ input[type="radio"] {
   margin-bottom: 1em;
 }
 
+.form_field--check {
+  @extend .form_field;
+  .field_with_errors {
+    display: inline;
+  }
+  .field_with_errors ~ .check-label {
+    color: $error-red;
+  }
+}
+
 label {
   display: block;
   margin-bottom: .2em;

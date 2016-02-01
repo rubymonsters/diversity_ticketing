@@ -26,8 +26,13 @@
     <%= f.form_field :text_field, :email, 'Email' %>
     <%= f.form_field :text_field, :email_confirmation, 'Email Confirmation' %>
 
-    <% if @event.travel_funded? %>
-      <div class="form_field">
+    <div class="form_field">
+      <% if @event.travel_funded %>
+        <%= label_tag do %>
+          <%= f.check_box(:travel_needed) %> I can only attend if my travel is funded
+        <% end %>
+      <% end %>
+      <% if @event.accommodation_funded %>
         <%= label_tag do %>
         <%= f.check_box :visa_needed %>
           I will need a visa to attend
@@ -35,10 +40,10 @@
       </div>
     <% end %>
 
-    <div class="form_field">
+    <div class="form_field--check">
       <%= label_tag do %>
       <%= f.check_box :terms_and_conditions %>
-        I agree with the following Terms and Conditions
+      <span class="check-label">I agree with the following Terms and Conditions</span>
       <% end %>
       <p>
         This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of <%= @event.name %>. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes
