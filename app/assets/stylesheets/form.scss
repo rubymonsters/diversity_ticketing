@@ -26,6 +26,10 @@ label {
   font-size: 14px;
 }
 
+div.required label:after {
+  content: " *";
+}
+
 input[type="text"],
 input[type="email"],
 input[type="date"],

@@ -2,12 +2,12 @@ class Event < ActiveRecord::Base
   has_many :applications, dependent: :destroy
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
-  validates :start_date, :deadline, date: true
-  validates :end_date, date: { after_or_equal_to: :start_date }
+  validates :start_date, :deadline, date: true, presence: true
+  validates :end_date, date: { after_or_equal_to: :start_date }, presence: true
   validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true
   validates :organizer_email_confirmation, presence: true, on: :create
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
-  validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+  validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
 
   def self.approved
     where(approved: true)
