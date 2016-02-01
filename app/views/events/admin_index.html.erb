@@ -11,9 +11,9 @@
         <li>
             <strong><%= link_to event.name, event_admin_path(:id => event.id) %></strong>
             <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_event_path(event), :method => :post %>
-            <%= link_to 'Edit', edit_event_path(:id => event.id) %>
-            <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?" } %>
-            <%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class:'button' %>
+            <%= link_to 'Edit', edit_event_path(:id => event.id), class: "icon-edit" %>
+            <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon-delete" %>
+            <%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class: "btn btn-save" %>
            </li>
           <% end %>
           </ul>

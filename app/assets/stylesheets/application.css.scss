@@ -187,7 +187,7 @@ a {
     border-bottom: 1px solid darken($grey-light, 5);
   }
 
-  a {
+  a:not([class^="icon"]) {
     text-decoration: none;
     color: $black;
     position: relative;
@@ -297,3 +297,20 @@ a {
 }
 
 }
+
+%icon {
+  text-indent: 999%;
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.icon-edit {
+  @extend %icon;
+  background-image: image-url("icon-edit.svg");
+}
+.icon-delete {
+  @extend %icon;
+  background-image: image-url("icon-delete.svg");
+}
+
