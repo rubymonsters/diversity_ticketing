@@ -31,6 +31,7 @@
 
 <section class="box">
   <h2 class="box-title">Application Details</h2>
+  <%= f.form_field :text_area, :applicant_directions, 'Directions for Applicants' %>
   <%= f.form_field :date_field, :deadline, 'Deadline for Application', class: ['right'], placeholder: "dd.mm.yyyy" %>
   <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
