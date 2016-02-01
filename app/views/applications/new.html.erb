@@ -24,19 +24,6 @@
     <%= f.form_field :text_field, :email_confirmation, 'Email Confirmation' %>
 
     <div class="form_field">
-      <% if @event.travel_funded %>
-        <%= label_tag do %>
-          <%= f.check_box(:travel_needed) %> I can only attend if my travel is funded
-        <% end %>
-      <% end %>
-      <% if @event.accommodation_funded %>
-        <%= label_tag do %>
-          <%= f.check_box(:accommodation_needed) %> I can only attend if my accommodation is funded
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="form_field">
       <%= label_tag do %>
       <%= f.check_box :terms_and_conditions %>
        I agree with the following Terms and Conditions
@@ -49,10 +36,10 @@
           <li>admission to the conference,</li>
         <% end %>
         <% if @event.travel_funded? %>
-          <li>travel costs (if applied for and eligible),</li>
+          <li>travel costs,</li>
         <% end %>
         <% if @event.accommodation_funded? %>
-          <li>accommodation (if applied for and eligible),</li>
+          <li>accommodation,</li>
         <% end %>
         <li>catering for the day of the conference,</li>
         <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>
