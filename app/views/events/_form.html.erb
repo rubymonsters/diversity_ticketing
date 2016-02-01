@@ -2,87 +2,37 @@
   <h2 class="box-title box-noborder">Organizer Details</h2>
   <p class="border">Not shown to the public.<p>
 
-  <% if @event.class.validators_on(:organizer_name).any? { |v| v.kind == :presence }
-      required = 'required'
-    else
-      required = nil
-    end -%>
-  <%= content_tag(:div, "Hello world!", class: ["form_field", required]) do -%>
-    <%= f.label :organizer_name, 'Full Name' %>
-    <%= f.text_field :organizer_name %>
-  <% end -%>
-
-  <div class="form_field">
-    <%= f.label :organizer_email, 'Email' %>
-    <%= f.text_field :organizer_email %>
-  </div>
+  <%= f.form_field :text_field, :organizer_name, 'Full Name' %>
+  <%= f.form_field :text_field, :organizer_email, 'Email' %>
 
 <% if action_name == 'new' || action_name == 'preview' %>
-  <div class="form_field">
-    <%= f.label :organizer_email_confirmation, 'Email Confirmation' %>
-    <%= f.text_field :organizer_email_confirmation %>
-  </div>
+  <%= f.form_field :text_field, :organizer_email_confirmation, 'Email Confirmation' %>
 <% end %>
 </section>
 
 
 <section class="box">
   <h2>Event Details</h2>
-  <div class="form_field">
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="form_field">
-    <%= f.label :website, 'Website' %>
-    <%= f.text_field :website, :placeholder => "e.g. https://myconference.com" %>
-  </div>
-  <div class="form_field">
-    <%= f.label :code_of_conduct, 'Link to Code of Conduct' %>
-    <%= f.text_field :code_of_conduct, :placeholder => "e.g. https://myconference.com/code_of_conduct" %>
-  </div>
+  <%= f.form_field :text_field, :name, 'Name' %>
+  <%= f.form_field :text_field, :website, 'Website', placeholder: "e.g. https://myconference.com" %>
+  <%= f.form_field :text_field, :code_of_conduct, 'Link to Code of Conduct', placeholder: "e.g. https://myconference.com/code_of_conduct" %>
 
   <h3 class="box-subtitle">Location</h3>
-  <div class="form_field">
-    <%= f.label :city, 'City' %>
-    <%= f.text_field :city %>
-  </div>
-
-  <div class="form_field">
-    <%= f.label :country, 'Country' %>
-    <%= f.text_field :country %>
-  </div>
+  <%= f.form_field :text_field, :city, 'City' %>
+  <%= f.form_field :text_field, :country, 'Country' %>
 
   <h3>Dates</h3>
+  <%= f.form_field :date_field, :start_date, 'From', class: ['left'], placeholder: "dd.mm.yyyy" %>
+  <%= f.form_field :date_field, :end_date, 'To', class: ['right'], placeholder: "dd.mm.yyyy" %>
 
-  <div class="form_field left">
-    <%= f.label :start_date, 'From' %>
-    <%= f.date_field :start_date, :placeholder => "dd.mm.yyyy" %>
-  </div>
-
-  <div class="form_field right">
-    <%= f.label :end_date, 'To' %>
-    <%= f.date_field :end_date, :placeholder => "dd.mm.yyyy" %>
-  </div>
-
-  <div class="form_field">
-    <%= f.label :description, 'Description' %>
-    <%= f.text_area :description %>
-  </div>
+  <%= f.form_field :text_area, :description, 'Description' %>
 </section>
 
 
 <section class="box">
   <h2 class="box-title">Application Details</h2>
-  <div class="form_field">
-    <%= f.label :deadline, 'Deadline for Application' %>
-    <%= f.date_field :deadline, :placeholder => "dd.mm.yyyy" %>
-  </div>
-
-  <div class="form_field">
-    <%= f.label :number_of_tickets, 'Number of available diversity tickets' %>
-    <%= f.number_field :number_of_tickets, min: 1 %>
-  </div>
+  <%= f.form_field :date_field, :deadline, 'Deadline for Application', class: ['right'], placeholder: "dd.mm.yyyy" %>
+  <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
   <h3 class="box-subtitle">Funded</h3>
   <div class="form_field">
