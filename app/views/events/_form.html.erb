@@ -1,10 +1,17 @@
 <section class="box">
   <h2 class="box-title box-noborder">Organizer Details</h2>
   <p class="border">Not shown to the public.<p>
-  <div class="form_field">
+
+  <% if @event.class.validators_on(:organizer_name).any? { |v| v.kind == :presence }
+      required = 'required'
+    else
+      required = nil
+    end -%>
+  <%= content_tag(:div, "Hello world!", class: ["form_field", required]) do -%>
     <%= f.label :organizer_name, 'Full Name' %>
     <%= f.text_field :organizer_name %>
-  </div>
+  <% end -%>
+
   <div class="form_field">
     <%= f.label :organizer_email, 'Email' %>
     <%= f.text_field :organizer_email %>
