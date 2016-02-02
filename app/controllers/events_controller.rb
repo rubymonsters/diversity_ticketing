@@ -69,6 +69,9 @@ class EventsController < ApplicationController
   def approve
     @event.toggle(:approved)
     @event.save
+    if @event.approved?
+      OrganizerMailer.approved_event(@event).deliver
+    end
     redirect_to admin_url
   end
 
