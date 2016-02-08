@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   skip_before_action :require_login, only: [:index, :index_past, :show, :create, :new, :preview]
-  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
+  before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
 
   def index
     @events = Event.approved.upcoming
