@@ -5,19 +5,19 @@
     <h2><%= heading %></h2>
 
     <div class="admin">
-      <div>
-        <ul>
-      <% events.each do |event| %>
+      <ul class="admin-list">
+        <% events.each do |event| %>
         <li>
-            <strong><%= link_to event.name, event_admin_path(:id => event.id) %></strong>
-            <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_event_path(event), :method => :post %>
-            <%= link_to 'Edit', edit_event_path(:id => event.id), class: "icon-edit" %>
-            <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon-delete" %>
-            <%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class: "btn btn-save" %>
-           </li>
-          <% end %>
-          </ul>
-      </div>
+          <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
+          <p>
+            <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_event_path(event), :method => :post, title: "Unapprove event" %>
+            <%= link_to 'Edit', edit_event_path(:id => event.id), class: "icon-edit", title: "Edit event" %>
+            <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon-delete", title: "Delete event" %>
+          </p>
+          <p><%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class: "btn btn-save", title: "Download data" %></p>
+        </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 <% end %>
