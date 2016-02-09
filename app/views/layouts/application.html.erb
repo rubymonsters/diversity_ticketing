@@ -43,7 +43,10 @@
 
   <footer class="footer">
     <div class="inner">
-      <p>Built by <%= link_to 'RubyMonstas', 'http://rubymonstas.org' %>, supported by <%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org' %>. See <%= link_to 'GitHub', 'https://github.com/rubymonsters/diversity_ticketing/' %> for code and <%= link_to 'Impressum', 'http://foundation.travis-ci.org/imprint/' %> for legal things.</p>
+      <ul>
+        <li><%= image_tag("icon-heart.svg", :alt => "heart-icon") %><p>Proudly built by <%= link_to 'RubyMonstas', 'http://rubymonstas.org', :target => "_blank" %><br>Supported by <%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org', :target => "_blank" %></p></li> 
+        <li><%= image_tag("icon-legal.svg", :alt => "legal-icon") %><p>Checkout the code on <%= link_to 'GitHub', 'https://github.com/rubymonsters/diversity_ticketing/', :target => "_blank" %><br>Legal <%= link_to 'impressum here', 'http://foundation.travis-ci.org/imprint/', :target => "_blank" %></p></li>
+      </ul>
     </div>
   </footer>
 </body>
