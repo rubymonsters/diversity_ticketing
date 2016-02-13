@@ -1,6 +1,6 @@
 <p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= link_to @event.name, event_path(@event) %> > Application</p>
 
-<h1 class="page-title">Application for <%= @event.name %></h1>
+<h1 class="page-title"><span class="page-title-firstword">Application for</span> <%= @event.name %></h1>
 <p class="page-description">Please fill out this form. Fields marked with * are required.</p>
 <% if @event.applicant_directions.present? %>
   <p class="page-description"><%= @event.applicant_directions %></p>
