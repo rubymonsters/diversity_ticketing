@@ -140,6 +140,11 @@ a {
   a:hover,
   .active {
     color: $green;
+    border-bottom: 1px solid $green;
+    @media (min-width: $medium) {
+    padding-bottom:15px;
+    }
+
   }
 
   @media (min-width: $small) {
@@ -147,6 +152,7 @@ a {
       float: left;
       margin-right: 1em;
     }
+
   }
   @media (min-width: $medium) {
     display: inline-block;
