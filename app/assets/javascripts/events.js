@@ -36,9 +36,8 @@ $(function() {
         var key   = $(data.jqXHR.responseXML).find("Key").text();
         var url   = '//' + form.data('host') + '/' + key;
 
-        // create hidden field
-        var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
-        form.append(input);
+        // update hidden field
+        $("input[type=hidden][name = '"+fileInput.attr('name')+"']").val(url);
       },
       fail: function(e, data) {
         submitButton.prop('disabled', false);
