@@ -2,7 +2,7 @@
 <% @events.each do |event| %>
   <div class="event">
     <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
-    <p><%= event.description %></p>
+    <p><%= raw event.rendered_description %></p>
   </div>
 <% end %>
 

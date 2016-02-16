@@ -44,6 +44,10 @@ textarea {
   border-radius: 2px;
 }
 
+textarea[name="event[description]"] {
+  height: 200px;
+}
+
 .field_with_errors {
 
   label {

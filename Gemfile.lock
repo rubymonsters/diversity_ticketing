@@ -75,6 +75,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    markdownizer (0.3.7)
+      activerecord (>= 3.0.3)
+      coderay
+      rdiscount
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -118,6 +122,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
+    rdiscount (2.1.8)
     rdoc (4.2.1)
       json (~> 1.4)
     sass (3.4.21)
@@ -173,6 +178,7 @@ DEPENDENCIES
   date_validator
   jbuilder (~> 2.0)
   jquery-rails
+  markdownizer
   pg
   pry
   rails (= 4.2.5.1)
@@ -186,4 +192,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
