@@ -38,6 +38,7 @@ $(function() {
 
         // update hidden field
         $("input[type=hidden][name = '"+fileInput.attr('name')+"']").val(url);
+        $(".event-logo").replaceWith('<img class="event-logo" src='+url+'>');
       },
       fail: function(e, data) {
         submitButton.prop('disabled', false);
