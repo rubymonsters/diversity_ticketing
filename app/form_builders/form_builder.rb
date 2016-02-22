@@ -22,7 +22,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
       t.capture do
         t.concat label(attribute, name)
         t.concat(t.content_tag(:p) {
-          t.image_tag(image_name, class: "event-logo")
+          t.image_tag(image_name)
         })
         t.concat file_field(attribute, objectify_options(options))
       end
