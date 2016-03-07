@@ -15,10 +15,4 @@
   </div>
 <% end %>
 
-<%= form_for @event, url: event_preview_path, builder: ::FormBuilder, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f| %>
-
-  <%= render partial: "form", locals: {f: f} %>
-  <div class="form_field">
-      <%= f.submit("Preview Event", class: 'btn btn-save') %>
-  </div>
-<% end %>
+<%= render partial: "form", locals: {submit_tag_text: "Preview Event", form_url: event_preview_path} %>

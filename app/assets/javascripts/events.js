@@ -42,11 +42,17 @@ $(function() {
       },
       fail: function(e, data) {
         submitButton.prop('disabled', false);
-
+        console.log(e);
+        console.table(data);
         progressBar.
           css("background", "red").
           text("Failed");
-      }
+      },
+      
+      disableImageResize: false,
+      imageMaxWidth: 800,
+      imageMaxHeight: 800,
+      imageCrop: false
     });
   });
 });
