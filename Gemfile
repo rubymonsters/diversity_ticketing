@@ -53,6 +53,8 @@ group :development, :test do
   gem 'spring'
   # Pry
   gem 'pry'
+  # Load ENV from .env
+  gem 'dotenv-rails'
 end
 
 gem 'simplecov', require: false, group: :test
