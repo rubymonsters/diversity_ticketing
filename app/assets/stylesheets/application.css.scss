@@ -187,7 +187,7 @@ a {
     border-bottom: 1px solid darken($grey-light, 5);
   }
 
-  a {
+  a:not([class^="icon"]) {
     text-decoration: none;
     color: $black;
     position: relative;
@@ -239,10 +239,18 @@ a {
 
 .btn-edit {
   background-color: $blue;
+  &:hover,
+  &:active {
+    background-color: darken($blue, 15);
+  }
 }
 
 .btn-delete {
   background-color: $red;
+  &:hover,
+  &:active  {
+    background-color: darken($red, 15);
+  }
 }
 
 .btn-save {
@@ -252,18 +260,19 @@ a {
   border: none;
   &:hover,
   &:active {
-
+    background-color: darken($green, 15);
   }
 }
 
 .btn {
   text-decoration: none;
-  border-radius: 7px;
+  border-radius: 4px;
   padding: 0.5em 0.8em;
   font-size: 15px;
   color: #ffffff !important;
   margin-inline-end: 0.5em;
-  line-height: 1.5 !important;
+  line-height: 1.3 !important;
+  height: 36px;
   &:hover,
   &:active {
     color: #ffffff;
@@ -296,4 +305,50 @@ a {
     }
 }
 
+}
+
+%icon {
+  text-indent: 999%;
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.icon-edit {
+  @extend %icon;
+  background-image: image-url("icon-edit.svg");
+  background-size: 19px;
+  background-position: 3px 4px;
+}
+.icon-delete {
+  @extend %icon;
+  background-image: image-url("icon-delete.svg");
+  background-size: 18px 21px;
+  background-position: 3px 1px;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 1em;
+    border-bottom: 3px solid #f1f1f1;
+    @media (min-width: $medium) {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+  }
+
+  .event-name {
+    flex-grow: 1;
+  }
+  p {
+    margin: 0 0 1em;
+  }
 }
