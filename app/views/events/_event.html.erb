@@ -6,10 +6,12 @@
   <%= @event.name %>
 </div>
 
-<div class="detail-pair">
-  <strong>Logo:</strong>
-  <%= image_tag @event.logo %>
-</div>
+<% if @event.logo.present? %>
+  <div class="detail-pair">
+    <strong>Logo:</strong>
+    <%= image_tag @event.logo %>
+  </div>
+<% end %>
 
 <div class="detail-pair">
   <strong>Website</strong>
