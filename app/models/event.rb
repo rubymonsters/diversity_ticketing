@@ -30,7 +30,11 @@ class Event < ActiveRecord::Base
   end
 
   def open?
-    deadline >= Date.today
+    deadline_as_time >= Time.now
+  end
+
+  def deadline_as_time
+    (deadline + 1).in_time_zone("Pacific Time (US & Canada)")
   end
 
   def to_csv

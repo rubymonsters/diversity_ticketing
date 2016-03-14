@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  describe "#open?" do
+  describe "checking the deadline" do
     it 'returns true when the deadline is in the future' do
       event = Event.new(deadline: 1.week.from_now)
       assert_equal true, event.open?
@@ -11,6 +11,12 @@ class EventTest < ActiveSupport::TestCase
       event = Event.new(deadline: 1.week.ago)
       assert_equal false, event.open?
     end
+
+    it 'deadline is midnight Pacific Time' do
+      event = Event.new(deadline: Date.new(2016, 4, 8))
+      assert_equal event.deadline_as_time, ActiveSupport::TimeZone["Pacific Time (US & Canada)"].local(2016, 4, 9, 0, 0, 0)
+    end
+
   end
 
   describe "validating organizer_email" do
