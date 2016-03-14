@@ -141,8 +141,16 @@ a {
   .active {
     color: $green;
     border-bottom: 1px solid $green;
+    padding-bottom: 1px;
     @media (min-width: $medium) {
-    padding-bottom:16px;
+      border: none;
+      &:after {
+        content: "";
+        display: block;
+        height: 1px;
+        margin-top: -1px;
+        background-color: $green;
+      }
     }
 
   }
