@@ -35,6 +35,8 @@ $topbar-height: 55px;
 @import "form.scss";
 @import "front.sass";
 @import "grid.sass";
+@import "icons.sass";
+@import "tooltip.sass";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -331,29 +333,6 @@ a {
 }
 
 }
-
-%icon {
-  text-indent: 999%;
-  width: 26px;
-  height: 26px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: middle;
-}
-.icon-edit {
-  @extend %icon;
-  background-image: image-url("icon-edit.svg");
-  background-size: 19px;
-  background-position: 3px 4px;
-}
-.icon-delete {
-  @extend %icon;
-  background-image: image-url("icon-delete.svg");
-  background-size: 18px 21px;
-  background-position: 3px 1px;
-}
-
 .admin-list {
   list-style: none;
   padding: 0;
