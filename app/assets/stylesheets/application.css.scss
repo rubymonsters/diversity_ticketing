@@ -17,7 +17,7 @@
 $grey-dark: #606060;
 $grey-light: #E7E8E9;
 $red: #EA5755;
-$blue: #25AAE1;
+$blue: #27AAE1;
 $green: #65BE66;
 $yellow: #F8BA3F;
 $black: #4C5052;
@@ -140,6 +140,19 @@ a {
   a:hover,
   .active {
     color: $green;
+    border-bottom: 1px solid $green;
+    padding-bottom: 1px;
+    @media (min-width: $medium) {
+      border: none;
+      &:after {
+        content: "";
+        display: block;
+        height: 1px;
+        margin-top: -1px;
+        background-color: $green;
+      }
+    }
+
   }
 
   @media (min-width: $small) {
@@ -147,6 +160,7 @@ a {
       float: left;
       margin-right: 1em;
     }
+
   }
   @media (min-width: $medium) {
     display: inline-block;
@@ -215,6 +229,9 @@ a {
 
 .page-title {
   margin-bottom: 0;
+}
+.page-title-firstword {
+  color:$blue;
 }
 .page-description {
   margin-top: 0;
