@@ -7,12 +7,12 @@
     <%= pluralize(@event.applications.count, "application") %> currently
   </div>
 
-  <ul>
+  <ul class="admin-list">
     <% @event.applications.each do |application| %>
       <li>
-        <%= link_to application.name, event_application_path(@event, application) %>
-        <%= application.email %>
-        <%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %>
+        <p class="event-name"><%= link_to application.name, event_application_path(@event, application) %></p>
+        <p class="application-mail"><%= application.email %></p>
+        <p><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %></p>
       </li>
 
     <% end %>
