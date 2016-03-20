@@ -254,6 +254,14 @@ a {
   font-size: 14px;
 }
 
+.detail-pair-count {
+  font-weight: 600;
+  font-size: 18px;
+  color:  $blue;
+  margin-top: 20px;
+}
+
+
 .btn-edit {
   background-color: $blue;
   &:hover,
