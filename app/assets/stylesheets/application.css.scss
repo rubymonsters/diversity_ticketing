@@ -369,19 +369,17 @@ a {
       margin-bottom: 0;
     }
   }
-
-  .event-name {
-    flex-grow: 1;
+  .application-name {
+    flex: 0 0 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 1em;        
   }
   p {
     margin: 0 0 1em;
   }
-
   .application-mail {
     flex-grow: 1;
-  }
-  p {
-    margin: 0 0 1em;
   }
 }
 
