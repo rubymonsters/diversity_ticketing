@@ -4,7 +4,7 @@
 <section class="box">
   <h2 class="box-title">Applications</h2>
   <div class="detail-pair">
-    <span class="detail-pair-count"><%= pluralize(@event.applications.count,"application") %></span> currently
+   <%= pluralize_highlight_count(@event.applications.count,"application") %> currently
   </div>
 
   <ul class="admin-list">
