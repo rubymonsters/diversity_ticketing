@@ -3,8 +3,10 @@
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
 <section class="box">
   <h2 class="box-title">Applications</h2>
+  <%= pluralize_highlight_count(@event.applications.count,"application") %> currently
+
   <div class="detail-pair">
-   <%= pluralize_highlight_count(@event.applications.count,"application") %> currently
+   <strong>Applicants</strong>
   </div>
 
   <ul class="admin-list">
