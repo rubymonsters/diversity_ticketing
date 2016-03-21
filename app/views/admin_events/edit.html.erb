@@ -14,8 +14,8 @@
   </div>
 <% end %>
 
-<%= form_for @event, url: event_path(@event), method: :put, builder: ::FormBuilder do |f| %>
-  <%= render partial: "form", locals: {f: f} %>
+<%= form_for @event, url: admin_event_path(@event), method: :put, builder: ::FormBuilder do |f| %>
+  <%= render partial: "events/form", locals: {f: f} %>
 
   <div class="form_field">
       <%= f.submit("Edit Event", class: 'btn btn-save') %>

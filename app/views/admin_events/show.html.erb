@@ -34,6 +34,6 @@
 <%= render :partial => "events/event" %>
 
 <div class="form_field">
-  <%= link_to "Edit event", edit_event_path(@event.id), :class => "btn btn-edit" %>
+  <%= link_to "Edit event", edit_admin_event_path(@event.id), :class => "btn btn-edit" %>
   <%= link_to "Delete event", event_path(@event.id), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-delete" %>
 </div>

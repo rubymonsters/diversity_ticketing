@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   resources :events do
-    member do
-      post :approve
-    end
     resources :applications, only: [:show, :new, :create, :destroy]
   end
 
+  resources :admin_events do
+    member do
+      post :approve
+    end
+  end
+
   get '/past_events', to: 'events#index_past', as: :past_events
-  get '/admin', to: 'events#admin_index'
-  get '/events/:id/admin', to: 'events#admin_show', as: :event_admin
+  get '/admin', to: 'admin_events#index'
+  get '/events/:id/admin', to: 'admin_events#show', as: :event_admin
   post '/events/preview', to: 'events#preview', as: :event_preview
   get '/about', to: 'home#about', as: :about
   get '/faq', to: 'home#faq', as: :faq
