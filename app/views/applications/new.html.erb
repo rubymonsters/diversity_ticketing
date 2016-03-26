@@ -3,7 +3,7 @@
 <h1 class="page-title"><span class="page-title-firstword">Application for</span> <%= @event.name %></h1>
 <p class="page-description">Please fill out this form. Fields marked with * are required.</p>
 <% if @event.applicant_directions.present? %>
-  <p class="page-description"><%= @event.applicant_directions %></p>
+  <p class="page-description markdownize"><%= @event.applicant_directions %></p>
 <% end %>
 
 <%= form_for @application, url: event_applications_path(params[:event_id]), builder: ::FormBuilder do |f| %>

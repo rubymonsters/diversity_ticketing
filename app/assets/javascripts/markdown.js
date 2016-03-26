@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+  // Markdown previewer for textareas
+
   $(".markdown textarea").before("<div class='tab active markdown_btn'>Write</div>" +
                                  "<div class='tab markdown_preview_btn'>Preview</div>" +
                                  "<span class='hint'>Styling with Markdown is supported</span>");
@@ -33,4 +35,11 @@ $( document ).ready(function() {
     }
     return false;
   })
+
+
+  // convert and show the text in views
+
+  $(".markdownize").replaceWith(function() {
+    return marked($(this).text());
+  });
 });
