@@ -59,3 +59,49 @@ textarea {
 .error {
   @include notice($error-bg, $error-red, "!");
 }
+
+.markdown textarea {
+  height: 200px;
+}
+
+.markdown .hint {
+  font-size: 10px;
+  float: right;
+  padding-right: 2px;
+}
+
+.markdown_preview {
+  display: block;
+  width: 100%;
+  border: 1px solid $border-grey;
+  padding: .3em 0;
+  background-color: white;
+  border-radius: 2px;
+  height: 200px;
+}
+
+.markdown_preview_inner {
+  overflow: scroll;
+  display: block;
+  width: 98%;
+  padding: .3em;
+  height: 190px;
+}
+
+.tab {
+  display: inline;
+  padding: 3px 5px;
+  font-size: 14px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border: 1px solid $border-grey;
+  cursor: pointer;
+  background-color: #E7E8E9;
+  overflow: scroll;
+}
+
+.active {
+  border-bottom: 1px solid white;
+  cursor: auto;
+  background-color: white;
+}
