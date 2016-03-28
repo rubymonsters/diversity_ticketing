@@ -1,5 +1,6 @@
 class AdminEventsController < ApplicationController
   before_action :get_event, only: [:show, :approve, :edit, :update, :destroy]
+  before_action :require_admin
 
 	def index
     @categorized_events = {
@@ -49,5 +50,13 @@ class AdminEventsController < ApplicationController
 
     def get_event
       @event = Event.find(params[:id])
+    end
+
+    def require_admin
+      if current_user == nil
+        redirect_to sign_in_path
+      elsif !current_user.admin?
+        redirect_to root_path
+      end
     end
 end
