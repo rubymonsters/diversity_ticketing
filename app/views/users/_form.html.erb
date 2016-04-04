@@ -1,9 +1,3 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
+<%= form.form_field :email_field, :email, "Email" %>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+<%= form.form_field :password_field, :password, "Password" %>

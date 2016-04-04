@@ -1,11 +1,11 @@
 <div id="clearance" class="sign-up">
   <h2><%= t(".title") %></h2>
 
-  <%= form_for @user do |form| %>
+  <%= form_for @user, builder: ::FormBuilder do |form| %>
     <%= render partial: '/users/form', object: form %>
 
     <div class="submit-field">
-      <%= form.submit %>
+      <%= form.submit(class: "btn btn-save") %>
     </div>
 
     <div class="other-links">

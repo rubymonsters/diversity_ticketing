@@ -6,13 +6,13 @@
   <%= form_for :password_reset,
         url: user_password_path(@user, token: @user.confirmation_token),
         html: { method: :put } do |form| %>
-    <div class="password-field">
+    <div class="form_field password-field">
       <%= form.label :password %>
       <%= form.password_field :password %>
     </div>
 
-    <div class="submit-field">
-      <%= form.submit %>
+    <div class="form_field submit-field">
+      <%= form.submit(class: "btn btn-save") %>
     </div>
   <% end %>
 </div>

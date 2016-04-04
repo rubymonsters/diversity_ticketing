@@ -1,16 +1,10 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
-  </div>
+<%= form_for User.new, as: :session, url: session_path, builder: ::FormBuilder do |form| %>
+  <%= form.form_field :email_field, :email, "Email" %>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+  <%= form.form_field :password_field, :password, "Password" %>
 
-  <div class="submit-field">
-    <%= form.submit %>
+  <div class="form_field">
+    <%= form.submit("Sign in", class: "btn btn-save") %>
   </div>
 
   <div class="other-links">
