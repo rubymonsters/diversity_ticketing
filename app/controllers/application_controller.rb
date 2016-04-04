@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :require_login
+
+  def admin_user?
+  	signed_in? && current_user.admin?
+  end
+
+  helper_method :admin_user?
 end

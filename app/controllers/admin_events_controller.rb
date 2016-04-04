@@ -53,10 +53,6 @@ class AdminEventsController < ApplicationController
     end
 
     def require_admin
-      if current_user == nil
-        redirect_to sign_in_path
-      elsif !current_user.admin?
-        redirect_to root_path
-      end
+      redirect_to root_path unless admin_user?
     end
 end
