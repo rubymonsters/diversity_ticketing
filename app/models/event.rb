@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
 
+  markdownize! :description
+
   def self.approved
     where(approved: true)
   end

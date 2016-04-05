@@ -1,7 +1,7 @@
 <% @events.each do |event| %>
   <div class="box event">
     <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
-    <p><%= event.description %></p>
+    <p><%= raw event.rendered_description %></p>
     <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'btn btn-save' %>
   </div>
 <% end %>
