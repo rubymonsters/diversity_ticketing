@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).ready(function() {
   // Markdown previewer for textareas
 
   $(".markdown textarea").before("<div class='tab active markdown_btn'>Write</div>" +
