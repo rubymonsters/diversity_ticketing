@@ -248,7 +248,7 @@ a {
   margin-top: 20px;
 }
 
-.detail-pair strong {
+.detail-pair>strong {
   display: block;
   font-weight: 600;
   font-size: 14px;
@@ -373,7 +373,7 @@ a {
     flex: 0 0 40%;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 1em;        
+    margin-right: 1em;
   }
   p {
     margin: 0 0 1em;
@@ -381,10 +381,10 @@ a {
   .application-mail {
     flex-grow: 1;
   }
-  .event-name {  
+  .event-name {
     flex-grow: 1;
   }
 }
 
 
- 
+

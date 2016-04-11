@@ -32,17 +32,19 @@
 
 <div class="detail-pair">
   <strong>Description</strong>
-  <%= @event.description %>
+  <div class="markdownize"><%= @event.description %></div>
 </div>
 </section>
 
 <section class="box">
   <h2 class="box-title">Application Details</h2>
 
-  <div class="detail-pair">
-    <strong>Directions for Applicants</strong>
-    <%= @event.applicant_directions %>
-  </div>
+  <% if @event.applicant_directions.present? %>
+    <div class="detail-pair">
+      <strong>Directions for Applicants</strong>
+      <div class="markdownize"><%= @event.applicant_directions %></div>
+    </div>
+  <% end %>
 
   <div class="detail-pair">
     <strong>Deadline for applications</strong>

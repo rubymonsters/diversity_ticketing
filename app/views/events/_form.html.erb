@@ -25,13 +25,13 @@
   <%= f.form_field :date_field, :start_date, 'From', class: ['left'], placeholder: "dd.mm.yyyy" %>
   <%= f.form_field :date_field, :end_date, 'To', class: ['right'], placeholder: "dd.mm.yyyy" %>
 
-  <%= f.form_field :text_area, :description, 'Description' %>
+  <%= f.form_field :text_area, :description, 'Description', class: ['markdown'] %>
 </section>
 
 
 <section class="box">
   <h2 class="box-title">Application Details</h2>
-  <%= f.form_field :text_area, :applicant_directions, 'Directions for Applicants' %>
+  <%= f.form_field :text_area, :applicant_directions, 'Directions for Applicants', class: ['markdown'] %>
   <%= f.form_field :date_field, :deadline, 'Deadline for Application', class: ['right'], placeholder: "dd.mm.yyyy" %>
   <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
