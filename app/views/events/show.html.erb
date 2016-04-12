@@ -5,7 +5,11 @@
 <%= render :partial => "events/event" %>
 
 <% if @event.open? %>
-  <%= link_to 'Apply', new_event_application_path(params[:id]), class:'btn btn-save' %><br>
+  <% if @event.application_link.present? %>
+    <%= link_to 'Apply', @event.application_link, class:'btn btn-save' %><br>
+  <% else %>
+    <%= link_to 'Apply', new_event_application_path(params[:id]), class:'btn btn-save' %><br>
+  <% end %>
 <% else %>
   <strong>Sorry, application for <%= @event.name %> is closed.</strong>
 <% end %>

@@ -72,6 +72,12 @@
     <% end %>
   </div>
 
+  <h3 class="box-subtitle">Manage Application</h3>
+  <p>You can manage the diversity applications for your event by yourself or let Travis Foundation do the work for you. If you wish to manage the applications by yourself, fill in a link below, where applicants will find your application form. If you wish Travis Foundation to mangage the applications for your event, leave this blank.</p>
+  <div class="form_field">
+    <%= f.form_field :text_field, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %>
+  </div>
+
   <% if action_name == 'edit' %>
     <h3 class="box-subtitle">Approve Event?</h3>
     <div class="form_field">
