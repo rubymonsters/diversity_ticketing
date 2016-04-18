@@ -1,21 +1,14 @@
 class ApplicationController < ActionController::Base
+  include Clearance::Controller
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :authenticate
+  before_action :require_login
 
-  def authenticate
-    if session[:authenticated]
-      return true
-    else
-      redirect_to login_path
-    end
+  def admin_user?
+  	signed_in? && current_user.admin?
   end
 
-  def authenticated?
-    session[:authenticated]
-  end
-
-  helper_method :authenticated?
+  helper_method :admin_user?
 end

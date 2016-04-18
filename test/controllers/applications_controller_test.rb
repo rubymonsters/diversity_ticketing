@@ -4,7 +4,8 @@ class ApplicationsControllerTest < ActionController::TestCase
 
   # GET show
   test 'shows application to admin users' do
-    admin_login
+    user = make_user(admin: true)
+    sign_in_as(user)
 
     event = make_event
     application = make_application(event)
@@ -14,17 +15,18 @@ class ApplicationsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'does not show application to non-admin users' do
+  test 'does not show application to non-logged-in users' do
     event = make_event
     application = make_application(event)
 
     get :show, event_id: event.id, id: application.id
 
-    assert_redirected_to login_path
+    assert_redirected_to sign_in_path
   end
 
   test 'raise exception if application does not exist' do
-    admin_login
+    user = make_user(admin: true)
+    sign_in_as(user)
 
     event = make_event
 
@@ -81,7 +83,9 @@ class ApplicationsControllerTest < ActionController::TestCase
 
   # DELETE destroy
   test 'proper redirection after successful deletion' do
-    admin_login
+    user = make_user(admin: true)
+    sign_in_as(user)
+
 
     event = make_event
     application = make_application(event)

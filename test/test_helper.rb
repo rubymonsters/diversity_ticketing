@@ -8,13 +8,19 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/autorun'
+require 'clearance/test_unit'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  def admin_login
-    session[:authenticated] = true
+  def make_user(user_params = {})
+    defaults = {
+      email: "yay@woo.hoo",
+      password: "awesome_password"
+    }
+    user_params = defaults.merge(user_params)
+    User.create!(user_params)
   end
 
   def make_event(event_params = {})
