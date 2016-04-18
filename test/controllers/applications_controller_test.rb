@@ -4,7 +4,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
   # GET show
   test 'shows application to admin users' do
-    user = User.create(admin: true)
+    user = make_user(admin: true)
     sign_in_as(user)
 
     event = make_event
@@ -25,7 +25,7 @@ class ApplicationsControllerTest < ActionController::TestCase
   end
 
   test 'raise exception if application does not exist' do
-    user = User.create(admin: true)
+    user = make_user(admin: true)
     sign_in_as(user)
 
     event = make_event
@@ -83,7 +83,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
   # DELETE destroy
   test 'proper redirection after successful deletion' do
-    user = User.create(admin: true)
+    user = make_user(admin: true)
     sign_in_as(user)
 
 

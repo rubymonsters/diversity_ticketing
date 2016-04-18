@@ -8,7 +8,7 @@ class AdminEventsControllerTest < ActionController::TestCase
   end
 
   test 'protect admin index from logged-in non-admins, redirects to root' do
-    user = User.create
+    user = make_user
     sign_in_as(user)
 
     get :index
@@ -17,7 +17,7 @@ class AdminEventsControllerTest < ActionController::TestCase
   end
 
   test 'shows admin index to logged-in admins' do
-    user = User.create(admin: true)
+    user = make_user(admin: true)
     sign_in_as(user)
 
     get :index

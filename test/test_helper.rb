@@ -14,6 +14,15 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  def make_user(user_params = {})
+    defaults = {
+      email: "yay@woo.hoo",
+      password: "awesome_password"
+    }
+    user_params = defaults.merge(user_params)
+    User.create!(user_params)
+  end
+
   def make_event(event_params = {})
     defaults = {
       name: 'Event',
