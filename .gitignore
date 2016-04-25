@@ -24,3 +24,5 @@
 
 # Ignore test coverage results (--> simplecov gem)
 coverage
+
+.env
