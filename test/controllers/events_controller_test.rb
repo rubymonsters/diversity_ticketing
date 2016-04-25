@@ -146,4 +146,22 @@ class EventsControllerTest < ActionController::TestCase
 
     assert_select ".event", {count: 1}, "This page must contain an event."
   end
+
+  test "new action requires logged-in user" do
+    get :new
+
+    assert_redirected_to sign_in_path
+  end
+
+  test "create action requires logged-in user" do
+    post :create, event: make_event_params
+
+    assert_redirected_to sign_in_path
+  end
+
+  test "preview action requires logged-in user" do
+    post :preview, event: make_event_params
+
+    assert_redirected_to sign_in_path
+  end
 end
