@@ -23,7 +23,7 @@ class ActiveSupport::TestCase
     User.create!(user_params)
   end
 
-  def make_event(event_params = {})
+  def make_event_params(event_params = {})
     defaults = {
       name: 'Event',
       start_date: 1.week.from_now,
@@ -40,8 +40,11 @@ class ActiveSupport::TestCase
       number_of_tickets: 10,
       approved: false
     }
-    event_params = defaults.merge(event_params)
-    Event.create!(event_params)
+    defaults.merge(event_params)
+  end
+
+  def make_event(event_params = {})
+    Event.create!(make_event_params(event_params))
   end
 
   def make_application(event, application_params = {})
