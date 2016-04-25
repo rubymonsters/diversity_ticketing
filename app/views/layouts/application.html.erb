@@ -25,8 +25,6 @@
             <% end %>
             <li><%= navbar_link_to 'Edit profile', edit_user_path(current_user) %></li>
             <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Sign in', sign_in_path %></li>
           <% end %>
         </ul>
       </nav>
@@ -50,7 +48,7 @@
   <footer class="footer">
     <div class="inner">
       <ul>
-        <li><%= image_tag("icon-heart.svg", :alt => "heart-icon") %><p>Proudly built by <%= link_to 'RubyMonstas', 'http://rubymonstas.org', :target => "_blank" %><br>Supported by <%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org', :target => "_blank" %></p></li> 
+        <li><%= image_tag("icon-heart.svg", :alt => "heart-icon") %><p>Proudly built by <%= link_to 'RubyMonstas', 'http://rubymonstas.org', :target => "_blank" %><br>Supported by <%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org', :target => "_blank" %></p></li>
         <li><%= image_tag("icon-legal.svg", :alt => "legal-icon") %><p>Checkout the code on <%= link_to 'GitHub', 'https://github.com/rubymonsters/diversity_ticketing/', :target => "_blank" %><br>Legal <%= link_to 'impressum here', 'http://foundation.travis-ci.org/imprint/', :target => "_blank" %></p></li>
       </ul>
     </div>
