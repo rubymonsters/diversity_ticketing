@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  belongs_to :organizer, class_name: 'User'
+
   has_many :applications, dependent: :destroy
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
