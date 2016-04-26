@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "noreply@diversitytickets.org"
+  default from: "info@diversitytickets.org"
   layout 'mailer'
 end
