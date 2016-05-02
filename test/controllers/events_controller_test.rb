@@ -50,5 +50,8 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "preview action requires logged-in user" do
+    post :preview, event: make_event_params
+
+    assert_redirected_to sign_in_path
   end
 end

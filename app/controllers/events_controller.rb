@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :require_login, only: [:index, :index_past, :show, :preview]
+  skip_before_action :require_login, only: [:index, :index_past, :show]
 
   def index
     @events = Event.approved.upcoming
