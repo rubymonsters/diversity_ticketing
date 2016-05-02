@@ -30,6 +30,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.organizer_id = current_user.id
 
     if @event.save
       OrganizerMailer.submitted_event(@event).deliver
