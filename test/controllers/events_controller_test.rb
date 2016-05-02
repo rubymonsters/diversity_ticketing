@@ -164,4 +164,16 @@ class EventsControllerTest < ActionController::TestCase
 
     assert_redirected_to sign_in_path
   end
+
+  test "create actions assigns event to correct organizer" do
+    user = make_user
+    sign_in_as(user)
+    event_params = make_event_params(name: "MonsterConf")
+
+    post :create, event: event_params
+
+    event = Event.find_by(name: "MonsterConf")
+    
+    assert_equal user.id, event.organizer_id
+  end
 end

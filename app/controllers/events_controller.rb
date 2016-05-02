@@ -32,6 +32,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(ApplicationProcess::Params.clean(event_params))
+    @event.organizer_id = current_user.id
 
     if @event.save
       User.admin.each do |user|
