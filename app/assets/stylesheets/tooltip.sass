@@ -1,5 +1,6 @@
 .tooltip
   position: relative
+  text-decoration: none
   &:after
     content: attr(title)
     position: absolute
@@ -17,7 +18,20 @@
     z-index: 20
     border-radius: 2px
     display: none
+  &:before
+    content: ""
+    position: absolute
+    width: 1em
+    height: .5em
+    top: -1.1em
+    left: 0
+    right: 0
+    transform: rotate(45deg)
+    background-color: $blue
+    display: none
   &:hover
-    &:after
+    &:after,
+    &:before
       display: block
+      
 
