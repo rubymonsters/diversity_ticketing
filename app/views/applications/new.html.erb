@@ -26,13 +26,8 @@
     <%= f.form_field :text_field, :email, 'Email' %>
     <%= f.form_field :text_field, :email_confirmation, 'Email Confirmation' %>
 
-    <div class="form_field">
-      <% if @event.travel_funded %>
-        <%= label_tag do %>
-          <%= f.check_box(:travel_needed) %> I can only attend if my travel is funded
-        <% end %>
-      <% end %>
-      <% if @event.accommodation_funded %>
+    <% if @event.travel_funded? %>
+      <div class="form_field">
         <%= label_tag do %>
         <%= f.check_box :visa_needed %>
           I will need a visa to attend
