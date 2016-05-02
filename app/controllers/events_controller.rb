@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  skip_before_action :require_login, only: [:index, :index_past, :show, :preview]
+  skip_before_action :require_login, only: [:index, :index_past, :show]
 
   def index
     @open_events   = Event.approved.upcoming.open.order(:deadline)
