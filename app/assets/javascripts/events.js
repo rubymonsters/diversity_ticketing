@@ -23,14 +23,16 @@ $(function() {
         submitButton.prop('disabled', true);
 
         progressBar.
-          css('background', 'green').
+          css('background', '#E7E8E9').
           css('display', 'block').
           css('width', '0%').
           text("Loading...");
       },
       done: function(e, data) {
         submitButton.prop('disabled', false);
-        progressBar.text("Uploading done");
+        progressBar.text("Uploading done")
+          .css('background', '#66be66')
+          .addClass('image-flash');
 
         // extract key and generate URL from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
@@ -45,7 +47,8 @@ $(function() {
         console.log(e);
         console.table(data);
         progressBar.
-          css("background", "red").
+          css("background", "#c43e3d").
+          addClass("image-flash-error").
           text("Failed");
       },
       
