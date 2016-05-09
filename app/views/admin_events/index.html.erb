@@ -11,8 +11,12 @@
           <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
           <p>
             <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_admin_event_path(event), :method => :post, title: "Unapprove event" %>
-            <%= link_to 'Edit', edit_admin_event_path(:id => event.id), class: "icon-edit", title: "Edit event" %>
-            <%= link_to 'Delete', url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon-delete", title: "Delete event" %>
+            <%= link_to edit_event_path(:id => event.id), class: "icon tooltip", title: "edit" do %>
+             <span class="icon-edit" aria-label="edit icon"></span>
+            <% end %>
+            <%= link_to url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+              <span class="icon-delete" aria-label="trashcan icon"></span>
+            <% end %>
           </p>
           <p><%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class: "btn btn-save", title: "Download data" %></p>
         </li>
