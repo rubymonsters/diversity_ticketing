@@ -14,7 +14,7 @@ class ApplicationsController < ApplicationController
     @application = Application.new(application_params)
     @application.event = @event
     if @application.save
-      ApplicantMailer.application_received(@application).deliver
+      ApplicantMailer.application_received(@application).deliver_later
       redirect_to @event, notice: "You have successfully applied for #{@event.name}."
     else
       render :new
