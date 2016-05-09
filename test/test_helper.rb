@@ -26,6 +26,16 @@ class ActiveSupport::TestCase
     User.create!(user_params)
   end
 
+  def make_admin(user_params = {})
+    defaults = {
+      email: "admin@woo.hoo",
+      password: "awesome_password",
+      admin: true
+    }
+    user_params = defaults.merge(user_params)
+    User.create!(user_params)
+  end
+
   def make_event(event_params = {})
     defaults = {
       name: 'Event',

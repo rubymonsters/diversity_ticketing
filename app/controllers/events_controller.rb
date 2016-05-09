@@ -32,6 +32,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
+      User.admin.each do |user|
+        AdminMailer.submitted_event(@event, user.email).deliver_later
+      end
       OrganizerMailer.submitted_event(@event).deliver_later
       redirect_to events_url, notice: "You have successfully created #{@event.name}."
     else
