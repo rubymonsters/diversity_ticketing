@@ -21,6 +21,7 @@ $red: #EA5755;
 $blue: #27AAE1;
 $green: #65BE66;
 $yellow: #F8BA3F;
+$orange: #F0AD4E;
 $black: #4C5052;
 
 $small: 600px;
@@ -243,6 +244,14 @@ a {
   &:hover,
   &:active {
     background-color: darken($green, 15);
+  }
+}
+
+.btn-external {
+  background-color: $orange;
+  &:hover,
+  &:active {
+    background-color: darken($orange, 15);
   }
 }
 

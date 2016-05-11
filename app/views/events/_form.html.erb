@@ -71,11 +71,26 @@
       <%= f.check_box(:travel_funded) %> Travel
     <% end %>
   </div>
+</section>
 
-  <h3 class="box-subtitle">Manage Application</h3>
-  <p>You can manage the diversity applications for your event by yourself or let Travis Foundation do the work for you. If you wish to manage the applications by yourself, fill in a link below, where applicants will find your application form. If you wish Travis Foundation to mangage the applications for your event, leave this blank.</p>
+<section class="box">
+  <h2 class="box-title">Manage Diversity Tickets</h2>
+  <p>There are 3 possibilities how you can use diversitytickets.org:<p>
   <div class="form_field">
-    <%= f.form_field :text_field, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %>
+    <%= label_tag do %>
+      <%= f.radio_button(:manage_applications, "listing") %> You can advertise your events diversity tickets here and add a link to your application form.
+
+      <div class="form_field">
+        <p><%= f.form_field :text_field, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
+      </div>
+
+    <% end %>
+    <%= label_tag do %>
+      <%= f.radio_button(:manage_applications, "applications") %> Applicants can apply for your diversity tickets here, but you will do the selection by yourself.
+    <% end %>
+    <%= label_tag do %>
+      <%= f.radio_button(:manage_applications, "selection") %> You let Travis Foundation do the selection for you.
+    <% end %>
   </div>
 
   <% if action_name == 'edit' %>

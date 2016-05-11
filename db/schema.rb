@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160612105514) do
     t.integer  "organizer_id"
     t.boolean  "selection_by_organizer", default: false, null: false
     t.text     "application_link"
+    t.string   "manage_applications"
   end
 
   create_table "users", force: :cascade do |t|

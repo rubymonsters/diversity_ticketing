@@ -15,6 +15,20 @@
 
 <%= render :partial => "events/event" %>
 
+<section class="box">
+  <h2 class="box-title box-noborder">Manage Applications</h2>
+  <p class="border">Not shown to the public.<p>
+  <div>
+    <% if @event.manage_applications == "listing" %>
+      I only want to advertise my events diversity tickets on diversitytickets.org, please send applicants to this link to apply: <%= link_to @event.application_link, "#{@event.application_link}" %>
+    <% elsif @event.manage_applications == "applications" %>
+      Applicants apply via diversitytickets.org, I will do the selection by myself.
+    <% elsif @event.manage_applications == "selection" %>
+      Applicants apply via diversitytickets.org, Travis Foundation will to do the selection for the diversity tickets winners.
+    <% end %>
+  </div>
+</section>
+
 <%= form_for @event, url: events_path do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :logo %>
@@ -34,9 +48,11 @@
   <%= f.hidden_field :ticket_funded %>
   <%= f.hidden_field :accommodation_funded %>
   <%= f.hidden_field :travel_funded %>
+  <%= f.hidden_field :application_link %>
+  <%= f.hidden_field :manage_applications %>
+
   <div class="form_field">
     <a class="btn btn-edit" href="javascript:history.back()">Edit event</a>
     <%= f.submit "Save your event", :class => "btn btn-save" %>
   </div>
 <% end %>
-
