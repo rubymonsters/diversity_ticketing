@@ -45,7 +45,8 @@ class AdminEventsController < ApplicationController
         :organizer_name, :organizer_email, :organizer_email_confirmation,
         :description, :name, :start_date, :end_date, :approved, :ticket_funded,
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
-        :website, :code_of_conduct, :city, :country, :applicant_directions)
+        :website, :code_of_conduct, :city, :country, :applicant_directions,
+        :selection_by_organizer)
     end
 
     def get_event
