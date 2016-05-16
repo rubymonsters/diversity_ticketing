@@ -94,4 +94,22 @@ class ApplicationsControllerTest < ActionController::TestCase
 
     assert_redirected_to event_admin_path(event)
   end
+
+  # Below: Tests in case we end up wanting different T&C depending on who handles applicant selection
+
+  # test 'show correct type of T&C if organizer handles selection' do
+  #   event = make_event(selection_by_organizer: true)
+
+  #   get :new, event_id: event.id
+
+  #   assert_select '#terms-and-conditions', /Your privacy, details and answers will only be shared with the organizers of #{event.name}/
+  # end
+
+  # test 'show correct type of T&C if organizer does not handle selection' do   
+  #   event = make_event(selection_by_organizer: false)
+
+  #   get :new, event_id: event.id
+
+  #   assert_select '#terms-and-conditions', /Your privacy, details and answers remain protected; we will raffle out the tickets/
+  # end
 end
