@@ -12,7 +12,7 @@ require 'clearance/test_unit'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+  # fixtures :all
 
   def make_user(user_params = {})
     defaults = {
@@ -42,6 +42,25 @@ class ActiveSupport::TestCase
     }
     event_params = defaults.merge(event_params)
     Event.create!(event_params)
+  end
+
+  def make_event_form_params(event_params = {})
+    defaults = {
+      name: 'Event',
+      start_date: 1.week.from_now,
+      end_date: 2.weeks.from_now,
+      description: 'Sed ut perspiciatis unde omnis.',
+      organizer_name: 'Klaus Mustermann',
+      organizer_email: 'klaus@example.com',
+      organizer_email_confirmation: 'klaus@example.com',
+      website: 'http://google.com',
+      code_of_conduct: 'http://coc.website',
+      city: 'Berlin',
+      country: 'Germany',
+      deadline: 5.days.from_now,
+      number_of_tickets: 10
+    }
+    defaults.merge(event_params)
   end
 
   def make_application(event, application_params = {})

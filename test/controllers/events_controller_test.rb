@@ -36,4 +36,31 @@ class EventsControllerTest < ActionController::TestCase
 
     assert_select "a", {count: 0, text: "Show past events"}, "This page must contain no anchors that say 'Show past events'"
   end
+
+  test "choosing selection by organizer and agreeing to protect data creates event correctly" do
+    params = make_event_form_params(  selection_by_organizer: true,
+                                      data_protection_confirmation: '1')
+
+    post :create, event: params
+
+    assert_response :redirect
+    assert Event.first.selection_by_organizer
+  end
+
+  test "choosing selection by organizer and not agreeing to protect data fails" do
+    params = make_event_form_params(  selection_by_organizer: true,
+                                      data_protection_confirmation: nil)
+
+    post :create, event: params
+
+    assert Event.all.empty?
+  end
+
+  test "choosing selection not by organizer (instead e.g. Travis Foundation) and not agreeing to protect data still creates event correctly" do
+    params = make_event_form_params
+
+    post :create, event: params
+
+    assert_equal false, Event.last.selection_by_organizer
+  end
 end
