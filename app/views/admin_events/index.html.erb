@@ -1,27 +1,31 @@
 <h1>Admin Page</h1>
 
-<% @categorized_events.each do |heading, events| %>
-  <div class="category">
-    <h2><%= heading %></h2>
+<div class="flex-container">
 
-    <div class="admin">
-      <ul class="admin-list">
-        <% events.each do |event| %>
-        <li>
-          <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
-          <p>
-            <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_admin_event_path(event), :method => :post, title: "Unapprove event" %>
-            <%= link_to edit_admin_event_path(:id => event.id), class: "icon tooltip", title: "edit" do %>
-             <span class="icon-edit" aria-label="edit icon"></span>
-            <% end %>
-            <%= link_to url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
-              <span class="icon-delete" aria-label="trashcan icon"></span>
-            <% end %>
-          </p>
-          <p><%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class: "btn btn-save", title: "Download data" %></p>
-        </li>
-        <% end %>
-      </ul>
+  <% @categorized_events.each do |heading, events| %>
+    <div class="category flex-half">
+      <h2><%= heading %></h2>
+
+      <div class="admin">
+        <ul class="admin-list">
+          <% events.each do |event| %>
+          <li>
+            <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
+            <p>
+              <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_admin_event_path(event), :method => :post, title: "Unapprove event" %>
+              <%= link_to edit_admin_event_path(:id => event.id), class: "icon tooltip", title: "edit" do %>
+               <span class="icon-edit" aria-label="edit icon"></span>
+              <% end %>
+              <%= link_to url_for(action: :destroy, id: event.id), method: :delete, data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+                <span class="icon-delete" aria-label="trashcan icon"></span>
+              <% end %>
+            </p>
+            <p><%= link_to 'Download CSV', event_admin_path(:id => event.id, :format => :csv), class: "btn btn-save", title: "Download data" %></p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+
+</div>

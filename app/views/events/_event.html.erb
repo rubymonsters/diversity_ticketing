@@ -1,47 +1,49 @@
-<section class="box">
-<h2 class="box-title">Event Details</h2>
+<div class="flex-container">
 
-<div class="detail-pair">
-  <strong>Event name</strong>
-  <%= @event.name %>
-</div>
+  <section class="box flex-half">
+    <h2 class="box-title">Event Details</h2>
 
-<% if @event.logo.present? %>
-  <div class="detail-pair">
-    <strong>Logo:</strong>
-    <%= image_tag @event.logo %>
-  </div>
-<% end %>
+    <% if @event.logo.present? %>
+      <div class="detail-pair">
+        <strong>Logo:</strong>
+        <%= image_tag @event.logo %>
+      </div>
+    <% end %>
 
-<div class="detail-pair">
-  <strong>Website</strong>
-  <%= link_to @event.website, "#{@event.website}" %>
-</div>
+    <div class="detail-pair">
+      <strong>Event name</strong>
+      <%= @event.name %>
+    </div>
 
-<div class="detail-pair">
-  <strong>Code of Conduct link</strong>
-  <%= link_to @event.code_of_conduct, "#{@event.code_of_conduct}" %>
-</div>
+    <div class="detail-pair">
+      <strong>Website</strong>
+      <%= link_to @event.website, "#{@event.website}" %>
+    </div>
 
-<div class="detail-pair">
-  <strong>Location</strong>
-  <%= @event.city %>, <%= @event.country %>
-</div>
+    <div class="detail-pair">
+      <strong>Code of Conduct link</strong>
+      <%= link_to @event.code_of_conduct, "#{@event.code_of_conduct}" %>
+    </div>
 
-<div class="detail-pair">
-  <strong>Dates</strong>
-  <%= @event.start_date %>
-  <% unless @event.start_date == @event.end_date %>
-    to
-    <%= @event.end_date %>
-  <% end %>
-</div>
+    <div class="detail-pair">
+      <strong>Location</strong>
+      <%= @event.city %>, <%= @event.country %>
+    </div>
 
-<div class="detail-pair">
-  <strong>Description</strong>
-  <div class="markdownize"><%= @event.description %></div>
-</div>
-</section>
+    <div class="detail-pair">
+      <strong>Dates</strong>
+      <%= @event.start_date %>
+      <% unless @event.start_date == @event.end_date %>
+      to
+      <%= @event.end_date %>
+      <% end %>
+    </div>
+
+    <div class="detail-pair">
+      <strong>Description</strong>
+      <div class="markdownize"><%= @event.description %></div>
+    </div>
+  </section>
 
 <% unless controller_name == 'events' && action_name == 'show' %>
   <section class="box">
@@ -57,38 +59,40 @@
   </section>
 <% end %>
 
-<section class="box">
+<section class="box flex-half">
   <h2 class="box-title">Application Details</h2>
 
-  <% if @event.applicant_directions.present? %>
+    <% if @event.applicant_directions.present? %>
     <div class="detail-pair">
       <strong>Directions for Applicants</strong>
       <div class="markdownize"><%= @event.applicant_directions %></div>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="detail-pair">
-    <strong>Deadline for applications</strong>
-    <%= @event.deadline %> midnight Pacific Time (US & Canada)
-  </div>
-
-  <div class="detail-pair">
-    <strong>Number of available diversity tickets</strong>
-    <%= pluralize(@event.number_of_tickets, "ticket") %>
-  </div>
-
-  <div class="detail-pair">
-    <strong>What's funded?</strong>
-    <div>
-      <% if @event.ticket_funded %>
-        &#10004; Ticket
-      <% end %>
-      <% if @event.accommodation_funded %>
-        &#10004; Accommodation
-      <% end %>
-      <% if @event.travel_funded %>
-        &#10004; Travel
-      <% end %>
+    <div class="detail-pair">
+      <strong>Deadline for applications</strong>
+      <%= @event.deadline %> midnight Pacific Time (US & Canada)
     </div>
-  </div>
-</section>
+
+    <div class="detail-pair">
+      <strong>Number of available diversity tickets</strong>
+      <%= pluralize(@event.number_of_tickets, "ticket") %>
+    </div>
+
+    <div class="detail-pair">
+      <strong>What's funded?</strong>
+      <div>
+        <% if @event.ticket_funded %>
+        &#10004; Ticket
+        <% end %>
+        <% if @event.accommodation_funded %>
+        &#10004; Accommodation
+        <% end %>
+        <% if @event.travel_funded %>
+        &#10004; Travel
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+</div>
