@@ -1,8 +1,8 @@
 <p>These events provided diversity tickets in the past. Many thanks to the organizers.</p>
 <% @events.each do |event| %>
-  <div class="event">
+  <div class="box event">
     <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
-    <p><%= event.description %></p>
+    <p class="markdownize"><%= event.description %></p>
   </div>
 <% end %>
 
