@@ -8,7 +8,11 @@ class Event < ActiveRecord::Base
   validates :organizer_email_confirmation, presence: true, on: :create
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
-
+  validates_acceptance_of(:data_protection_confirmation, {
+    allow_nil: false,
+    if: ->(event) { !event.persisted? && event.selection_by_organizer? }
+  })
+  
   def self.approved
     where(approved: true)
   end

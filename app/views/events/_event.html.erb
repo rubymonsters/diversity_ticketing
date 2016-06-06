@@ -36,6 +36,20 @@
 </div>
 </section>
 
+<% unless controller_name == 'events' && action_name == 'show' %>
+  <section class="box">
+    <h2 class="box-title">Selection Process Details</h2>
+    <div class="detail-pair">
+      <strong>Event organizers ask Travis Foundation to handle the applicant selection process:</strong>
+      <% if @event.selection_by_organizer? %>
+        No
+      <% else %>
+        Yes
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
 <section class="box">
   <h2 class="box-title">Application Details</h2>
 

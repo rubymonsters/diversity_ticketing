@@ -28,6 +28,26 @@
   <%= f.form_field :text_area, :description, 'Description', class: ['markdown'] %>
 </section>
 
+<section class="box">
+  <h2 class="box-title">Selection Process</h2>
+  <div class="form_field">
+    <%= label_tag do %>
+      <%= f.radio_button(:selection_by_organizer, false) %> We ask Travis Foundation to handle the applicant selection process for our event's diversity tickets.
+    <% end %>
+    <%= label_tag do %>
+      <%= f.radio_button(:selection_by_organizer, true) %> We will handle the applicant selection process for our event's diversity tickets ourselves.
+    <% end %>
+  </div>
+  <div class="form_field--check">
+    <%= label_tag do %>
+      <%= f.check_box :data_protection_confirmation %>
+      <span class="check-label">If we choose to handle the applicant selection process ourselves, we agree with the following Terms and Conditions:</span>
+    <% end %>
+    <p id="terms-and-conditions">
+      We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+    </p>
+  </div>
+</section>
 
 <section class="box">
   <h2 class="box-title">Application Details</h2>
