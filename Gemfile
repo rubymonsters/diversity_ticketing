@@ -54,6 +54,8 @@ group :development, :test do
   gem 'pry'
 
   gem 'foreman'
+
+  gem 'mocha'
 end
 
 group :development do
