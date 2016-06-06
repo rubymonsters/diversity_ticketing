@@ -1,0 +1,72 @@
+
+.popup
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba($grey-light, 0.6)
+
+.popup-inner
+  position: relative
+  background: white
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  width: 90%
+  height: 50vh
+  max-height: 90vh
+  margin: auto
+  padding: 3em 1.5em
+  border-radius: 4px
+  text-align: center
+
+  @media (min-width: $small)
+    max-width: 25em
+    max-height: 20em
+
+.popup-header
+  color: $red
+  font-size: 24px
+  @media (min-width: $medium)
+    font-size: 30px
+
+.popup-text
+  margin-bottom: 2em
+  font-size: 18px
+  br
+    display: none
+    @media (min-width: $medium)
+      display: block
+
+.popup-close
+  position: absolute
+  top: 0
+  right: 0
+  text-indent: 999%
+  overflow: hidden
+  white-space: nowrap
+  border: none
+  background-color: transparent
+  &:after
+    content: "\00d7"
+    text-indent: 0
+    display: block
+    color: darken($grey-light, 20)
+    font-size: 40px
+    line-height: 0
+    width: 40px
+    height: 24px
+      
+.btn-signin
+  background-color: $blue
+.btn-signup
+  background-color: $green
+
+.btn-signin,
+.btn-signup
+  @media (max-width: $small)
+    display: block
+    margin-bottom: 1em
