@@ -12,7 +12,11 @@ class Event < ActiveRecord::Base
     allow_nil: false,
     if: ->(event) { !event.persisted? && event.selection_by_organizer? }
   })
-  validates :application_link, format: { with: /(http|https):\/\/.+\..+/ }, allow_blank: true
+  validates :application_link, {
+    if: ->(event) { !event.persisted? && event.application_by_organizer? },
+    presence: true,
+    format: { with: /(http|https):\/\/.+\..+/ }
+  }
 
   def self.approved
     where(approved: true)

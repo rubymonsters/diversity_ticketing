@@ -51,7 +51,7 @@ class EventsController < ApplicationController
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
         :website, :code_of_conduct, :city, :country, :applicant_directions,
         :selection_by_organizer, :data_protection_confirmation,
-        :application_link, :manage_applications)
+        :application_link, :application_by_organizer)
     end
 
     def set_s3_direct_post

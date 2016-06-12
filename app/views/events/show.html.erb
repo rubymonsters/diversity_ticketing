@@ -5,7 +5,7 @@
 <%= render :partial => "events/event" %>
 
 <% if @event.open? %>
-  <% if @event.manage_applications == "listing" %>
+  <% if @event.application_by_organizer? %>
     <%= link_to "Apply at #{@event.name}", @event.application_link, class:'btn btn-save btn-external' %><br>
   <% else %>
     <%= link_to 'Apply', new_event_application_path(params[:id]), class:'btn btn-save' %><br>
