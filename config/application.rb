@@ -23,5 +23,10 @@ module DiversityTicketing
     config.active_job.queue_adapter = :sidekiq
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # set default url options for mailers
+    config.action_mailer.default_url_options = {host: 'localhost'}
+    # set default url options for Sidekiq workers
+    config.x.worker_routes.default_url_options = {host: 'localhost'}
   end
 end

@@ -75,8 +75,6 @@ Rails.application.configure do
     :authentication => :cram_md5, # or :plain for plain-text authentication
     :enable_starttls_auto => true
   }
-  config.action_mailer.default_url_options = { host: 'diversitytickets.org' }
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -91,4 +89,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.middleware.insert(0, RedirectWWW)
+
+  # set default url options for mailers
+  config.action_mailer.default_url_options = {host: 'diversitytickets.org', protocol: 'https'}
+  # set default url options for Sidekiq workers
+  config.x.worker_routes.default_url_options = {host: 'diversitytickets.org', protocol: 'https'}
 end

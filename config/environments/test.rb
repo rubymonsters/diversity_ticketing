@@ -41,4 +41,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # set default url options for Sidekiq workers
+  config.x.worker_routes.default_url_options = {host: 'test.host', protocol: 'https'}
 end

@@ -37,7 +37,7 @@ class AdminEventsControllerTest < ActionController::TestCase
     user = make_user(admin: true)
     sign_in_as(user)
 
-    TWITTER_CLIENT.expects(:update).once
+    TwitterWorker.expects(:announce_event).with(event).once
 
     post :approve, id: event.id
 
