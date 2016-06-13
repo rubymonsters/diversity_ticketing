@@ -1,0 +1,9 @@
+<div class="popup is-hidden">
+  <div class="popup-inner">
+    <h3 class="popup-header">You're not signed in!</h3>
+    <p class="popup-text">Sign into your existing account<br> or create a new one to submit events.</p>
+    <button class="popup-close" title="Close popup" type="button">close</button>
+    <%= link_to 'Sign into account', sign_in_path, class: "btn btn-signin", title: "Sign into an existing account" %>
+    <%= link_to 'Create new account', sign_up_path, class: "btn btn-signup", title: "Create a new account" %>
+  </div>
+</div>
