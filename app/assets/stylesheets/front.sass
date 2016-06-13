@@ -35,11 +35,12 @@ $yellow-em: #f7d56b
   a:hover
     border-bottom: none
 
-
 .front-title
-  font-size: 40px
+  font-size: 36px
   color: $grey-front
   font-weight: 300
+  @media (min-width: $small)
+    font-size: 40px
   @media (min-width: $medium)
     font-size: 50px
 
@@ -90,11 +91,17 @@ $yellow-em: #f7d56b
   font-style: normal
 
 .em--red
-  +coloredEm($red-em)
-  +wobble(1700ms)
+  border-bottom: solid 5px $red-em
+  @media (min-width: $small)
+    border-bottom: none
+    +coloredEm($red-em)
+    +wobble(1700ms)
 .em--yellow
-  +coloredEm($yellow-em)
-  +wobble(1500ms)
+  border-bottom: solid 5px $yellow-em
+  @media (min-width: $small)
+    border-bottom: none
+    +coloredEm($yellow-em)
+    +wobble(1500ms)
 
 
 @keyframes wobble
