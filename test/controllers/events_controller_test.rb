@@ -181,6 +181,16 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to sign_in_path
   end
 
+  test "preview loads correctly with logged-in user" do
+    user = make_user
+    sign_in_as(user)
+    event_params = make_event_params
+
+    post :preview, event: event_params
+
+    assert_response :success
+  end
+
   test "create actions assigns event to correct organizer" do
     user = make_user
     sign_in_as(user)
