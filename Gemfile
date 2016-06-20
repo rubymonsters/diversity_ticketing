@@ -50,13 +50,13 @@ group :development, :test do
   gem 'spring'
   # Pry
   gem 'pry'
-  # Load ENV from .env
-  gem 'dotenv-rails'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  # Load ENV from .env
+  gem 'dotenv-rails'
 end
 
 gem 'simplecov', require: false, group: :test
