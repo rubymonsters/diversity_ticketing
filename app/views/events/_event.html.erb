@@ -6,6 +6,13 @@
   <%= @event.name %>
 </div>
 
+<% if @event.logo.present? %>
+  <div class="detail-pair">
+    <strong>Logo:</strong>
+    <%= image_tag @event.logo %>
+  </div>
+<% end %>
+
 <div class="detail-pair">
   <strong>Website</strong>
   <%= link_to @event.website, "#{@event.website}" %>

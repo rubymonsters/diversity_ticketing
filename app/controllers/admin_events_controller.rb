@@ -1,6 +1,7 @@
 class AdminEventsController < ApplicationController
   before_action :get_event, only: [:show, :approve, :edit, :update, :destroy]
   before_action :require_admin
+  before_action :set_s3_direct_post, only: [:edit, :update]
 
 	def index
     @categorized_events = {
@@ -43,7 +44,7 @@ class AdminEventsController < ApplicationController
     def event_params
       params.require(:event).permit(
         :organizer_name, :organizer_email, :organizer_email_confirmation,
-        :description, :name, :start_date, :end_date, :approved, :ticket_funded,
+        :description, :name, :logo, :start_date, :end_date, :approved, :ticket_funded,
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
         :website, :code_of_conduct, :city, :country, :applicant_directions,
         :selection_by_organizer)
@@ -55,5 +56,9 @@ class AdminEventsController < ApplicationController
 
     def require_admin
       redirect_to root_path unless admin_user?
+    end
+
+    def set_s3_direct_post
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
 end

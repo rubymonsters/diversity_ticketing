@@ -17,6 +17,7 @@
 
 <%= form_for @event, url: events_path do |f| %>
   <%= f.hidden_field :name %>
+  <%= f.hidden_field :logo %>
   <%= f.hidden_field :start_date %>
   <%= f.hidden_field :end_date %>
   <%= f.hidden_field :description %>
