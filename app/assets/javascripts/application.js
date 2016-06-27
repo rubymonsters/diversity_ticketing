@@ -20,4 +20,5 @@
 //= require jquery.fileupload-process.js
 //= require jquery.fileupload-image.js
 //= require events.js
-
+//= require markdown.js
+//= require marked.min.js
