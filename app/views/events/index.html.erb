@@ -13,7 +13,7 @@
       <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
       <p class="markdownize"><%= event.description %></p>
       <% if event.open? %>
-        <% if event.application_by_organizer? %>
+        <% if event.application_process == 'application_by_organizer' %>
           <%= link_to "Apply at #{event.name}", event.application_link, class:'btn btn-save btn-external' %>
         <% else %>
           <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'btn btn-save' %>

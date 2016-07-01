@@ -38,28 +38,24 @@ ActiveRecord::Schema.define(version: 20160612105514) do
     t.text     "description"
     t.text     "name"
     t.date     "start_date"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.date     "end_date"
-    t.boolean  "approved",                 default: false, null: false
+    t.boolean  "approved",               default: false, null: false
     t.text     "website"
     t.text     "code_of_conduct"
     t.string   "city"
     t.string   "country"
     t.date     "deadline"
     t.integer  "number_of_tickets"
-    t.boolean  "ticket_funded",            default: false, null: false
-    t.boolean  "accommodation_funded",     default: false, null: false
-    t.boolean  "travel_funded",            default: false, null: false
+    t.boolean  "ticket_funded",          default: false, null: false
+    t.boolean  "accommodation_funded",   default: false, null: false
+    t.boolean  "travel_funded",          default: false, null: false
     t.text     "logo"
     t.text     "applicant_directions"
-    t.text     "rendered_description"
-    t.text     "application_link"
-    t.boolean  "application_by_organizer", default: false, null: false
-    t.integer  "organizer_id"
     t.boolean  "selection_by_organizer", default: false, null: false
-    t.text     "applicant_directions"
-    t.boolean  "application_by_organizer", default: false, null: false
+    t.text     "application_link"
+    t.string   "application_process"
   end
 
   create_table "users", force: :cascade do |t|
