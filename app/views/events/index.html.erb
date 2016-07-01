@@ -1,5 +1,6 @@
+<div class="flex-container">
 <% @events.each do |event| %>
-  <div class="box event">
+  <div class="box event flex-half">
     <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
     <p class="markdownize"><%= event.description %></p>
     <% if event.open? %>
@@ -7,5 +8,5 @@
     <% end %>
   </div>
 <% end %>
-
+</div>
 <%= link_to 'Show past events', past_events_path if @past_events.any? %>

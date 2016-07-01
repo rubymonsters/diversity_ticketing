@@ -4,3 +4,16 @@
 
 .center
   margin: auto
+
+.flex-container
+  @media (min-width: $small)
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+    align-items: flex-start
+    
+
+.flex-half
+  @media (min-width: $small)
+    flex: 0 0 49%
+  
