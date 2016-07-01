@@ -55,7 +55,7 @@
 
     <section class="box">
       <h2 class="box-title box-noborder">Organizer Details</h2>
-      <p class="border">Not shown to the public.<p>
+      <p class="border">Not shown to the public.</p>
 
       <%= f.form_field :text_field, :organizer_name, 'Full Name' %>
       <%= f.form_field :text_field, :organizer_email, 'Email' %>
@@ -85,5 +85,9 @@
         </p>
       </div>
     </section>
-  <% end %>
-</div>
+
+    <div class="form_field">
+      <%= f.submit(submit_tag_text, class: 'btn btn-save') %>
+    </div>
+  </div>
+<% end %>
