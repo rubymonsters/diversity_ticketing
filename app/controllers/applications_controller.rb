@@ -7,7 +7,7 @@ class ApplicationsController < ApplicationController
   end
 
 	def new
-    if @event.application_by_organizer?
+    if @event.application_process == 'application_by_organizer'
       redirect_to @event
     else
       @application = @event.applications.build
@@ -15,7 +15,7 @@ class ApplicationsController < ApplicationController
 	end
 
   def create
-    if @event.application_by_organizer?
+    if @event.application_process == 'application_by_organizer'
       redirect_to @event
     else
       @application = Application.new(application_params)
