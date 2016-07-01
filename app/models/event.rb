@@ -10,10 +10,10 @@ class Event < ActiveRecord::Base
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
   validates_acceptance_of(:data_protection_confirmation, {
     allow_nil: false,
-    if: ->(event) { !event.persisted? && event.selection_by_organizer? }
+    if: ->(event) { !event.persisted? && event.application_process == 'selection_by_organizer' }
   })
   validates :application_link, {
-    if: ->(event) { !event.persisted? && event.application_by_organizer? },
+    if: ->(event) { !event.persisted? && event.application_process == 'application_by_organizer' },
     presence: true,
     format: { with: /(http|https):\/\/.+\..+/ }
   }

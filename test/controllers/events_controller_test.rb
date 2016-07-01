@@ -69,18 +69,18 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "choosing selection by organizer and agreeing to protect data creates event correctly" do
-    params = make_event_form_params(  selection_by_organizer: true,
-                                      data_protection_confirmation: '1')
+    params = make_event_form_params(application_process: 'selection_by_organizer',
+                                    data_protection_confirmation: '1')
 
     post :create, event: params
 
     assert_response :redirect
-    assert Event.first.selection_by_organizer
+    assert Event.first.application_process == 'selection_by_organizer'
   end
 
   test "choosing selection by organizer and not agreeing to protect data fails" do
-    params = make_event_form_params(  selection_by_organizer: true,
-                                      data_protection_confirmation: nil)
+    params = make_event_form_params(application_process: 'selection_by_organizer',
+                                    data_protection_confirmation: nil)
 
     post :create, event: params
 
@@ -88,11 +88,11 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "choosing selection not by organizer (instead e.g. Travis Foundation) and not agreeing to protect data still creates event correctly" do
-    params = make_event_form_params
+    params = make_event_form_params(application_process: 'selection_by_travis')
 
     post :create, event: params
 
-    assert_equal false, Event.last.selection_by_organizer
+    assert_equal false, Event.last.application_process == 'selection_by_organizer'
   end
 
   test "index action has apply link for event with deadline in the future" do
