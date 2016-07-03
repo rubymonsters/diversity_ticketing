@@ -80,15 +80,9 @@
   <div class="detail-pair">
     <strong>What's funded?</strong>
     <div>
-      <% if @event.ticket_funded %>
-        &#10004; Ticket
-      <% end %>
-      <% if @event.accommodation_funded %>
-        &#10004; Accommodation
-      <% end %>
-      <% if @event.travel_funded %>
-        &#10004; Travel
-      <% end %>
+      <%= @event.ticket_funded ? "\u2714" : "\u2718" %> Ticket
+      <%= @event.accommodation_funded ? "\u2714" : "\u2718" %> Accommodation
+      <%= @event.travel_funded ? "\u2714" : "\u2718" %> Travel
     </div>
   </div>
 </section>
