@@ -52,4 +52,11 @@ class EventTest < ActiveSupport::TestCase
       assert_attribute_invalid(event, :website)
     end
   end
+
+  describe "validating application process" do
+    it 'should not allow invalid application process' do
+      event = Event.new(application_process: 'bad')
+      assert_attribute_invalid(event, :application_process)
+    end
+  end
 end

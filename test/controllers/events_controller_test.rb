@@ -5,31 +5,16 @@ class EventsControllerTest < ActionController::TestCase
     #create admin
     make_admin
 
-    post :create, event: {
-          name: 'Event',
-          start_date: 1.week.from_now,
-          end_date: 2.weeks.from_now,
-          description: 'Sed ut perspiciatis unde omnis.',
-          organizer_name: 'Klaus Mustermann',
-          organizer_email: 'klaus@example.com',
-          organizer_email_confirmation: 'klaus@example.com',
-          website: 'http://google.com',
-          code_of_conduct: 'http://coc.website',
-          city: 'Berlin',
-          country: 'Germany',
-          deadline: 5.days.from_now,
-          number_of_tickets: 10,
-          approved: false
-        }
+    post :create, event: make_event_form_params
 
-      assert_equal 'You have successfully created Event.', flash[:notice]
-      assert_redirected_to events_path
-      admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ["admin@woo.hoo"]}
-      assert_equal admin_email.subject, "A new event has been submitted."
-      organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ["klaus@example.com"]}
-      assert_equal organizer_email.subject, "You submitted a new event."
-      assert_equal Event.last.name, 'Event'
-      assert_equal Event.last.approved, false
+    assert_equal 'You have successfully created Event.', flash[:notice]
+    assert_redirected_to events_path
+    admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ["admin@woo.hoo"]}
+    assert_equal admin_email.subject, "A new event has been submitted."
+    organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ["klaus@example.com"]}
+    assert_equal organizer_email.subject, "You submitted a new event."
+    assert_equal Event.last.name, 'Event'
+    assert_equal Event.last.approved, false
   end
 
   test "index action shows only approved events" do
