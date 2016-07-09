@@ -15,6 +15,7 @@
 
 
 $grey-dark: #606060;
+$grey-mid: #9C9C9C;
 $grey-light: #E7E8E9;
 $red: #EA5755;
 $blue: #27AAE1;
@@ -37,6 +38,7 @@ $topbar-height: 55px;
 @import "grid.sass";
 @import "icons.sass";
 @import "tooltip.sass";
+@import "events.scss";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -117,7 +119,6 @@ a {
     line-height: $topbar-height;
   }
 }
-
 
 
 .navigation {
@@ -330,9 +331,9 @@ a {
     img {
       max-width: 35px;
     }
+  }
 }
 
-}
 .admin-list {
   list-style: none;
   padding: 0;
@@ -364,6 +365,3 @@ a {
     flex-grow: 1;
   }
 }
-
-
-

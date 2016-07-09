@@ -8,8 +8,22 @@
 }
 
 .progress .bar {
-  height:  1.2em;
   padding-left: 0.2em;
   color:   white;
   display: none;
+}
+
+.funded, .not-funded {
+  padding-right: 0.5em;
+}
+
+.funded:before {
+  content: "\2714";
+}
+
+.not-funded {
+  color: $grey-mid;
+  &:before {
+    content: "\2718";
+  }
 }

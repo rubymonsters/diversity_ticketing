@@ -80,9 +80,9 @@
   <div class="detail-pair">
     <strong>What's funded?</strong>
     <div>
-      <%= @event.ticket_funded ? "\u2714" : "\u2718" %> Ticket
-      <%= @event.accommodation_funded ? "\u2714" : "\u2718" %> Accommodation
-      <%= @event.travel_funded ? "\u2714" : "\u2718" %> Travel
+      <%= span_for_funded('Ticket', @event.ticket_funded) %>
+      <%= span_for_funded('Accomodation', @event.accommodation_funded) %>
+      <%= span_for_funded('Travel', @event.travel_funded) %>
     </div>
   </div>
 </section>
