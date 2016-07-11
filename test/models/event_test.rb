@@ -58,5 +58,19 @@ class EventTest < ActiveSupport::TestCase
       event = Event.new(application_process: 'bad')
       assert_attribute_invalid(event, :application_process)
     end
+
+    describe "application_link" do
+      it 'must be blank if application process not handled by organizer' do
+        event = Event.new(application_process: 'selection_by_travis', application_link: 'https://something.org')
+
+        assert_attribute_invalid(event, :application_link)
+      end
+
+      it 'should contain a valid link if application is handled by organizer' do
+        event = Event.new(application_process: 'application_by_organizer')
+
+        assert_attribute_invalid(event, :application_link)
+      end
+    end
   end
 end

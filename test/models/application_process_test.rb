@@ -13,5 +13,17 @@ class ApplicationProcessTest < ActiveSupport::TestCase
 
       assert_equal false, choice.valid?
     end
+
+    it 'reports it is a selection by travis event' do
+      choice = ApplicationProcess::Choice.new('selection_by_travis')
+
+      assert choice.selection_by_travis?
+    end
+
+    it 'reports it is not an application by organizer event' do
+      choice = ApplicationProcess::Choice.new('selection_by_travis')
+
+      assert !choice.application_by_organizer?      
+    end
   end
 end
