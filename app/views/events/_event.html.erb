@@ -6,10 +6,11 @@
   <%= @event.name %>
 </div>
 
-<% if @event.logo.present? %>
+<% if @event.logo.present? && controller_name == 'admin_events'%>
+
   <div class="detail-pair">
-    <strong>Logo:</strong>
-    <%= image_tag @event.logo %>
+    <strong>Logo</strong>
+    <div class="conflogo--large"><%= image_tag @event.logo %></div>
   </div>
 <% end %>
 
