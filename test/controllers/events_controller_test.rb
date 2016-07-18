@@ -59,7 +59,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :index
 
-    assert_select "a", {count: 1, text: "Show past events"}, "This page must contain anchor that says 'Show past events'"
+    assert_select "a", {count: 1, text: "past events"}, "This page must contain anchor that says 'Show past events'"
   end
 
   test "index action does not show link to past events if there are no past events" do
