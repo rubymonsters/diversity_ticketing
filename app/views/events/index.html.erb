@@ -1,6 +1,11 @@
 <% if @events.empty? %>
-  New events will be coming soon!
-  <%=link_to 'Submit yours now.', new_event_path %>
+
+<div class="events-empty">
+  <h2>We currently have no events lined up.</h2>
+  <p>But we'll add new ones soon!<p>
+  <p>You can <%=link_to 'submit your own conference', new_event_path %> now or browse through <%= link_to 'past events', past_events_path if @past_events.any? %>.</p>
+</div>
+
 <% else %>
   <% @events.each do |event| %>
     <div class="box event">
@@ -11,6 +16,6 @@
       <% end %>
     </div>
   <% end %>
-<% end %>
 
-<%= link_to 'Show past events', past_events_path if @past_events.any? %>
+  <%= link_to 'Show past events', past_events_path if @past_events.any? %>
+<% end %>
