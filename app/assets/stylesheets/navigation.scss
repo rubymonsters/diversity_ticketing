@@ -1,0 +1,50 @@
+.navigation {
+  vertical-align: middle;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px 0px 0px 30px;
+    overflow: auto;
+    font-size: 15px;
+  }
+
+  li {
+    padding-left: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+
+  a:hover,
+  .active {
+    color: $green;
+    border-bottom: 1px solid $green;
+    padding-bottom: 1px;
+    @media (min-width: $medium) {
+      border: none;
+      &:after {
+        content: "";
+        display: block;
+        height: 1px;
+        margin-top: -1px;
+        background-color: $green;
+      }
+    }
+
+  }
+
+  @media (min-width: $small) {
+    li {
+      float: left;
+      margin-right: 1em;
+    }
+
+  }
+  @media (min-width: $medium) {
+    display: inline-block;
+    height: $topbar-height;
+    line-height: $topbar-height;
+  }
+}

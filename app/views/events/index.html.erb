@@ -1,11 +1,21 @@
-<% @events.each do |event| %>
-  <div class="box event">
-    <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
-    <p class="markdownize"><%= event.description %></p>
-    <% if event.open? %>
-      <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'btn btn-save' %>
-    <% end %>
-  </div>
-<% end %>
+<% if @events.empty? %>
 
-<%= link_to 'Show past events', past_events_path if @past_events.any? %>
+<div class="events-empty">
+  <h2>We currently have no events lined up.</h2>
+  <p>But we'll add new ones soon!<p>
+  <p>You can <%=link_to 'submit your own conference', new_event_path %> now or browse through <%= link_to 'past events', past_events_path if @past_events.any? %>.</p>
+</div>
+
+<% else %>
+  <% @events.each do |event| %>
+    <div class="box event">
+      <h3><%= link_to event.name, event_path(:id => event.id) %></h3>
+      <p class="markdownize"><%= event.description %></p>
+      <% if event.open? %>
+        <%= link_to 'Apply', new_event_application_path(:event_id => event.id), class:'btn btn-save' %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Show past events', past_events_path if @past_events.any? %>
+<% end %>

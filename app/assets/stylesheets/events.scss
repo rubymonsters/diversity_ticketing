@@ -27,3 +27,11 @@
     content: "\2718";
   }
 }
+
+.events-empty {
+  margin-top: 3em;
+  a {
+    @extend %anchor;
+    font-weight: 600;
+  }
+}
