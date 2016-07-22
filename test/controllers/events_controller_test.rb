@@ -65,7 +65,7 @@ class EventsControllerTest < ActionController::TestCase
 
   test "choosing selection by organizer and not agreeing to protect data fails" do
     params = make_event_form_params(application_process: 'selection_by_organizer',
-                                    data_protection_confirmation: nil)
+                                    data_protection_confirmation: '0')
 
     post :create, event: params
 
@@ -78,6 +78,18 @@ class EventsControllerTest < ActionController::TestCase
     post :create, event: params
 
     assert_equal false, Event.last.application_process == 'selection_by_organizer'
+  end
+
+  test "irrelevant selection & application process data is thrown away" do
+    params = make_event_form_params(
+      application_process: 'selection_by_travis',
+      data_protection_confirmation: '1',
+      application_link: 'somelink.tada'
+    )
+
+    post :create, event: params
+
+    assert_equal false, Event.last.application_process == 'selection_by_organizer'   
   end
 
   test "index action has apply link for event with deadline in the future" do

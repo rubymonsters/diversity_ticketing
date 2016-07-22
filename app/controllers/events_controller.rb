@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   end
 
   def preview
-    @event = Event.new(event_params)
+    @event = Event.new(ApplicationProcess::Params.clean(event_params))
 
     if @event.valid?
       render :preview
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(ApplicationProcess::Params.clean(event_params))
 
     if @event.save
       User.admin.each do |user|

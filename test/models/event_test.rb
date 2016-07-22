@@ -59,6 +59,18 @@ class EventTest < ActiveSupport::TestCase
       assert_attribute_invalid(event, :application_process)
     end
 
+    describe "T&C confirmation checkbox" do
+      it 'must be checked if organizers handle selection by themselves' do
+        event = Event.new(application_process: 'selection_by_organizer', data_protection_confirmation: "0")
+        assert_attribute_invalid(event, :data_protection_confirmation)
+      end
+
+      it 'should not be checked if organizers do not handle selection by themselves' do
+        event = Event.new(application_process: 'selection_by_travis', data_protection_confirmation: "1")
+        assert_attribute_invalid(event, :data_protection_confirmation)
+      end
+    end
+
     describe "application_link" do
       it 'must be blank if application process not handled by organizer' do
         event = Event.new(application_process: 'selection_by_travis', application_link: 'https://something.org')

@@ -34,9 +34,16 @@ module ApplicationProcess
       end
 
       base.validates_acceptance_of(:data_protection_confirmation, {
-        allow_nil: false,
         if: ->(event) { Choice.new(event.application_process).selection_by_organizer? }
       })
+
+      base.validates_acceptance_of(:data_protection_confirmation, {
+        accept: '0',
+        if: ->(event) {
+          choice = Choice.new(event.application_process)
+          !choice.selection_by_organizer?
+        }
+      })    
 
       base.validates :application_link, {
         if: ->(event) {
@@ -54,6 +61,22 @@ module ApplicationProcess
         },
         absence: true
       }
+    end
+  end
+
+  module Params
+    def self.clean(params)
+      choice = Choice.new(params[:application_process])
+      params = params.dup
+      if choice.selection_by_travis?
+        params.delete(:data_protection_confirmation)
+        params.delete(:application_link)
+      elsif choice.selection_by_organizer?
+        params.delete(:application_link)
+      elsif choice.application_by_organizer?
+        params.delete(:data_protection_confirmation)
+      end
+      params
     end
   end
 end
