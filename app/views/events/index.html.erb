@@ -22,6 +22,5 @@
     </div>
   <% end %>
 
+  <%= link_to 'Show past events', past_events_path if @past_events.any? %>
 <% end %>
-
-<%= link_to 'Show past events', past_events_path if @past_events.any? %>
