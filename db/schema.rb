@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612105514) do
+ActiveRecord::Schema.define(version: 20160722160616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,15 +19,14 @@ ActiveRecord::Schema.define(version: 20160612105514) do
   create_table "applications", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "event_id"
     t.text     "attendee_info_1"
     t.text     "attendee_info_2"
-    t.boolean  "ticket_needed",        default: false, null: false
-    t.boolean  "travel_needed",        default: false, null: false
-    t.boolean  "accommodation_needed", default: false, null: false
-    t.boolean  "visa_needed",          default: false, null: false
+    t.boolean  "ticket_needed",   default: false, null: false
+    t.boolean  "travel_needed",   default: false, null: false
+    t.boolean  "visa_needed",     default: false, null: false
   end
 
   add_index "applications", ["event_id"], name: "index_applications_on_event_id", using: :btree
@@ -38,25 +37,27 @@ ActiveRecord::Schema.define(version: 20160612105514) do
     t.text     "description"
     t.text     "name"
     t.date     "start_date"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.date     "end_date"
-    t.boolean  "approved",               default: false, null: false
+    t.boolean  "approved",             default: false, null: false
     t.text     "website"
     t.text     "code_of_conduct"
     t.string   "city"
     t.string   "country"
     t.date     "deadline"
     t.integer  "number_of_tickets"
-    t.boolean  "ticket_funded",          default: false, null: false
-    t.boolean  "accommodation_funded",   default: false, null: false
-    t.boolean  "travel_funded",          default: false, null: false
-    t.text     "logo"
+    t.boolean  "ticket_funded",        default: false, null: false
+    t.boolean  "accommodation_funded", default: false, null: false
+    t.boolean  "travel_funded",        default: false, null: false
     t.text     "applicant_directions"
-    t.boolean  "selection_by_organizer", default: false, null: false
+    t.integer  "organizer_id"
+    t.text     "logo"
     t.text     "application_link"
     t.string   "application_process"
   end
+
+  add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -72,4 +73,5 @@ ActiveRecord::Schema.define(version: 20160612105514) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "applications", "events"
+  add_foreign_key "events", "users", column: "organizer_id"
 end
