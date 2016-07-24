@@ -5,31 +5,16 @@ class EventsControllerTest < ActionController::TestCase
     #create admin
     make_admin
 
-    post :create, event: {
-          name: 'Event',
-          start_date: 1.week.from_now,
-          end_date: 2.weeks.from_now,
-          description: 'Sed ut perspiciatis unde omnis.',
-          organizer_name: 'Klaus Mustermann',
-          organizer_email: 'klaus@example.com',
-          organizer_email_confirmation: 'klaus@example.com',
-          website: 'http://google.com',
-          code_of_conduct: 'http://coc.website',
-          city: 'Berlin',
-          country: 'Germany',
-          deadline: 5.days.from_now,
-          number_of_tickets: 10,
-          approved: false
-        }
+    post :create, event: make_event_form_params
 
-      assert_equal 'You have successfully created Event.', flash[:notice]
-      assert_redirected_to events_path
-      admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ["admin@woo.hoo"]}
-      assert_equal admin_email.subject, "A new event has been submitted."
-      organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ["klaus@example.com"]}
-      assert_equal organizer_email.subject, "You submitted a new event."
-      assert_equal Event.last.name, 'Event'
-      assert_equal Event.last.approved, false
+    assert_equal 'You have successfully created Event.', flash[:notice]
+    assert_redirected_to events_path
+    admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ["admin@woo.hoo"]}
+    assert_equal admin_email.subject, "A new event has been submitted."
+    organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ["klaus@example.com"]}
+    assert_equal organizer_email.subject, "You submitted a new event."
+    assert_equal Event.last.name, 'Event'
+    assert_equal Event.last.approved, false
   end
 
   test "index action shows only approved events" do
@@ -69,18 +54,18 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "choosing selection by organizer and agreeing to protect data creates event correctly" do
-    params = make_event_form_params(  selection_by_organizer: true,
-                                      data_protection_confirmation: '1')
+    params = make_event_form_params(application_process: 'selection_by_organizer',
+                                    data_protection_confirmation: '1')
 
     post :create, event: params
 
     assert_response :redirect
-    assert Event.first.selection_by_organizer
+    assert Event.first.application_process == 'selection_by_organizer'
   end
 
   test "choosing selection by organizer and not agreeing to protect data fails" do
-    params = make_event_form_params(  selection_by_organizer: true,
-                                      data_protection_confirmation: nil)
+    params = make_event_form_params(application_process: 'selection_by_organizer',
+                                    data_protection_confirmation: '0')
 
     post :create, event: params
 
@@ -88,11 +73,23 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "choosing selection not by organizer (instead e.g. Travis Foundation) and not agreeing to protect data still creates event correctly" do
-    params = make_event_form_params
+    params = make_event_form_params(application_process: 'selection_by_travis')
 
     post :create, event: params
 
-    assert_equal false, Event.last.selection_by_organizer
+    assert_equal false, Event.last.application_process == 'selection_by_organizer'
+  end
+
+  test "irrelevant selection & application process data is thrown away" do
+    params = make_event_form_params(
+      application_process: 'selection_by_travis',
+      data_protection_confirmation: '1',
+      application_link: 'somelink.tada'
+    )
+
+    post :create, event: params
+
+    assert_equal false, Event.last.application_process == 'selection_by_organizer'   
   end
 
   test "index action has apply link for event with deadline in the future" do

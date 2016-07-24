@@ -34,9 +34,12 @@
   <%= f.hidden_field :ticket_funded %>
   <%= f.hidden_field :accommodation_funded %>
   <%= f.hidden_field :travel_funded %>
+  <%= f.hidden_field :application_link %>
+  <%= f.hidden_field :application_process %>
+  <%= f.hidden_field :data_protection_confirmation %>
+
   <div class="form_field">
     <a class="btn btn-edit" href="javascript:history.back()">Edit event</a>
     <%= f.submit "Save your event", :class => "btn btn-save" %>
   </div>
 <% end %>
-

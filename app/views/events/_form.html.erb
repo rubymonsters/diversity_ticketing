@@ -33,27 +33,6 @@
 </section>
 
 <section class="box">
-  <h2 class="box-title">Selection Process</h2>
-  <div class="form_field">
-    <%= label_tag do %>
-      <%= f.radio_button(:selection_by_organizer, false) %> We ask Travis Foundation to handle the applicant selection process for our event's diversity tickets.
-    <% end %>
-    <%= label_tag do %>
-      <%= f.radio_button(:selection_by_organizer, true) %> We will handle the applicant selection process for our event's diversity tickets ourselves.
-    <% end %>
-  </div>
-  <div class="form_field--check">
-    <%= label_tag do %>
-      <%= f.check_box :data_protection_confirmation %>
-      <span class="check-label">If we choose to handle the applicant selection process ourselves, we agree with the following Terms and Conditions:</span>
-    <% end %>
-    <p id="terms-and-conditions">
-      We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
-    </p>
-  </div>
-</section>
-
-<section class="box">
   <h2 class="box-title">Application Details</h2>
   <%= f.form_field :text_area, :applicant_directions, 'Directions for Applicants', class: ['markdown'] %>
   <%= f.form_field :date_field, :deadline, 'Deadline for Application', class: ['right'], placeholder: "dd.mm.yyyy" %>
@@ -71,8 +50,45 @@
       <%= f.check_box(:travel_funded) %> Travel
     <% end %>
   </div>
+</section>
 
-  <% if action_name == 'edit' %>
+<section class="box">
+  <h2 class="box-title">Application & Selection</h2>
+  <div class="form_field">
+    <%= label_tag do %>
+      <%= f.radio_button(:application_process, 'selection_by_travis', checked: 'checked') %> Both, the application and selection process shall be handled by diversitytickets.org*.
+    <% end %>
+
+    <%= label_tag do %>
+      <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org.
+
+      <div class="form_field--check indent">
+        <%= label_tag do %>
+          <%= f.check_box :data_protection_confirmation %>
+          <span class="check-label">We agree with the following Terms and Conditions:</span>
+        <% end %>
+        <p id="terms-and-conditions">
+          We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+        </p>
+      </div>
+
+    <% end %>
+
+    <%= label_tag do %>
+      <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app.
+
+      <div class="form_field indent">
+        <p><%= f.form_field :text_field, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
+      </div>
+
+    <% end %>
+  </div>
+
+  <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+</section>
+
+<% if action_name == 'edit' %>
+  <section class="box">
     <h3 class="box-subtitle">Approve Event?</h3>
     <div class="form_field">
       <%= label_tag do %>
@@ -84,7 +100,8 @@
     </div>
   <% end %>
 </section>
+
 <div class="form_field">
-      <%= f.submit(submit_tag_text, class: 'btn btn-save') %>
-  </div>
+  <%= f.submit(submit_tag_text, class: 'btn btn-save') %>
+</div>
 <% end %>

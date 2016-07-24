@@ -51,7 +51,8 @@ class ActiveSupport::TestCase
       country: 'Germany',
       deadline: 5.days.from_now,
       number_of_tickets: 10,
-      approved: false
+      approved: false,
+      application_process: 'selection_by_travis'
     }
     event_params = defaults.merge(event_params)
     Event.create!(event_params)
@@ -71,7 +72,8 @@ class ActiveSupport::TestCase
       city: 'Berlin',
       country: 'Germany',
       deadline: 5.days.from_now,
-      number_of_tickets: 10
+      number_of_tickets: 10,
+      application_process: 'selection_by_travis'
     }
     defaults.merge(event_params)
   end

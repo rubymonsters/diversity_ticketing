@@ -7,17 +7,25 @@ class ApplicationsController < ApplicationController
   end
 
 	def new
-    @application = @event.applications.build
+    if @event.application_process == 'application_by_organizer'
+      redirect_to @event
+    else
+      @application = @event.applications.build
+    end
 	end
 
   def create
-    @application = Application.new(application_params)
-    @application.event = @event
-    if @application.save
-      ApplicantMailer.application_received(@application).deliver_later
-      redirect_to @event, notice: "You have successfully applied for #{@event.name}."
+    if @event.application_process == 'application_by_organizer'
+      redirect_to @event
     else
-      render :new
+      @application = Application.new(application_params)
+      @application.event = @event
+      if @application.save
+        ApplicantMailer.application_received(@application).deliver_later
+        redirect_to @event, notice: "You have successfully applied for #{@event.name}."
+      else
+        render :new
+      end
     end
   end
 

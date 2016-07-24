@@ -52,4 +52,37 @@ class EventTest < ActiveSupport::TestCase
       assert_attribute_invalid(event, :website)
     end
   end
+
+  describe "validating application process" do
+    it 'should not allow invalid application process' do
+      event = Event.new(application_process: 'bad')
+      assert_attribute_invalid(event, :application_process)
+    end
+
+    describe "T&C confirmation checkbox" do
+      it 'must be checked if organizers handle selection by themselves' do
+        event = Event.new(application_process: 'selection_by_organizer', data_protection_confirmation: "0")
+        assert_attribute_invalid(event, :data_protection_confirmation)
+      end
+
+      it 'should not be checked if organizers do not handle selection by themselves' do
+        event = Event.new(application_process: 'selection_by_travis', data_protection_confirmation: "1")
+        assert_attribute_invalid(event, :data_protection_confirmation)
+      end
+    end
+
+    describe "application_link" do
+      it 'must be blank if application process not handled by organizer' do
+        event = Event.new(application_process: 'selection_by_travis', application_link: 'https://something.org')
+
+        assert_attribute_invalid(event, :application_link)
+      end
+
+      it 'should contain a valid link if application is handled by organizer' do
+        event = Event.new(application_process: 'application_by_organizer')
+
+        assert_attribute_invalid(event, :application_link)
+      end
+    end
+  end
 end

@@ -43,20 +43,6 @@
 </div>
 </section>
 
-<% unless controller_name == 'events' && action_name == 'show' %>
-  <section class="box">
-    <h2 class="box-title">Selection Process Details</h2>
-    <div class="detail-pair">
-      <strong>Event organizers ask Travis Foundation to handle the applicant selection process:</strong>
-      <% if @event.selection_by_organizer? %>
-        No
-      <% else %>
-        Yes
-      <% end %>
-    </div>
-  </section>
-<% end %>
-
 <section class="box">
   <h2 class="box-title">Application Details</h2>
 
@@ -86,3 +72,21 @@
     </div>
   </div>
 </section>
+
+<% unless controller_name == 'events' && action_name == 'show' %>
+  <section class="box">
+    <h2 class="box-title box-noborder">Application and Selection</h2>
+    <p class="border">Not shown to the public.<p>
+    <div>
+      <% if @event.application_process == 'selection_by_travis' %>
+        Both, the application and selection process shall be handled by diversitytickets.org*.
+        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+      <% elsif @event.application_process == 'selection_by_organizer'  %>
+        We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+      <% elsif @event.application_process == 'application_by_organizer' %>
+        We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app:
+        <%= link_to @event.application_link, "#{@event.application_link}" %>
+      <% end %>
+    </div>
+  </section>
+<% end %>

@@ -122,3 +122,15 @@ textarea {
   border: 1px solid $border-grey;
   border-radius: 2px;
 }
+
+.indent {
+  margin-left: 20px;
+}
+
+input.has-dependent + div.form_field {
+  display: none;
+}
+
+input.has-dependent:checked + div.form_field {
+  display: block;
+}
