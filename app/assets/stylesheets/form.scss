@@ -71,7 +71,10 @@ textarea {
 }
 
 .markdown textarea {
+  position: relative;
   height: 200px;
+  padding-top: 15px;
+  background: white;
 }
 
 .markdown .hint {
@@ -100,7 +103,7 @@ textarea {
 
 .tab {
   display: inline;
-  padding: 3px 5px;
+  padding: 3px 8px;
   font-size: 14px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -108,12 +111,17 @@ textarea {
   cursor: pointer;
   background-color: #E7E8E9;
   overflow: scroll;
+  margin-left: -1px;
+  position: relative;
+  left: 1px;
+
 }
 
 .active {
   border-bottom: 1px solid white;
   cursor: auto;
   background-color: white;
+  z-index: 1;
 }
 
 .event-logo img {
