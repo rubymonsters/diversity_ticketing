@@ -17,6 +17,7 @@
 
   <%= f.image_upload_field :logo, 'Logo', image_name: @event.logo.present? ? @event.logo : "DT-logo.svg", class: ['event-logo'] %>
   <%= f.hidden_field :logo %>
+  <div class="form-hint">Choose a square image for best displaying results.</div>
 
   <%= f.form_field :text_field, :website, 'Website', placeholder: "e.g. https://myconference.com" %>
   <%= f.form_field :text_field, :code_of_conduct, 'Link to Code of Conduct', placeholder: "e.g. https://myconference.com/code_of_conduct" %>

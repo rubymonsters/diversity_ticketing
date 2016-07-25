@@ -134,3 +134,9 @@ input.has-dependent + div.form_field {
 input.has-dependent:checked + div.form_field {
   display: block;
 }
+
+.form-hint {
+  margin-bottom: 2rem;
+  margin-left: .4em;
+  font-size: 12px;
+}
