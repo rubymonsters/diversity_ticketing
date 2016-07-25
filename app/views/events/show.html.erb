@@ -1,6 +1,6 @@
 <p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
 
-<h1><% if @event.logo %><span class="conflogo--medium"><%= image_tag @event.logo %></span><% end %><%= @event.name %></h1>
+<h1><span class="conflogo--medium"><%= image_tag @event.logo %></span><%= @event.name %></h1>
 
 <%= render :partial => "events/event" %>
 

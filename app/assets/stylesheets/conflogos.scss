@@ -1,20 +1,20 @@
 %conflogo {
   overflow: hidden;
-  border-radius: 10px;
-  background-color: $grey-dark;
+  border-radius: 10%;
+  background-color: mix($grey-light, $grey-dark);
 }
 
 .conflogo--small {
   @extend %conflogo;
   display: inline-block;
   vertical-align: middle;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   margin-right: .5em;
   
   img {
-    width: 20px;
-    height: auto;
+    width: auto;
+    height: 24px;
     vertical-align: top
   }
 }
@@ -28,8 +28,8 @@
   margin-right: .5em;
   
   img {
-    width: 50px;
-    height: auto;
+    width: auto;
+    height: 50px;
     vertical-align: top
   }
 }
@@ -39,7 +39,7 @@
   width: 120px;
   height: 120px;
   img {
-      width: 120px;
-      height: auto;
+      width: auto;
+      height: 120px;
   }
 }

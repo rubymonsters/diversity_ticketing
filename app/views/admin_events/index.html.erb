@@ -8,6 +8,7 @@
       <ul class="admin-list">
         <% events.each do |event| %>
         <li>
+          <div class="conflogo--small"><%= image_tag event.logo %></div>
           <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
           <p>
             <%= link_to "#{ event.approved ? 'Unapprove' : 'Approve' }", approve_admin_event_path(event), :method => :post, title: "Unapprove event" %>
