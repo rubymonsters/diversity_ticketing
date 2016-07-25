@@ -37,7 +37,7 @@ class EventsController < ApplicationController
         AdminMailer.submitted_event(@event, user.email).deliver_later
       end
       OrganizerMailer.submitted_event(@event).deliver_later
-      redirect_to events_url, notice: "You have successfully created #{@event.name}."
+      redirect_to events_url, notice: "Thank you for submitting #{@event.name}. We will review it shortly."
     else
       render :new
     end
