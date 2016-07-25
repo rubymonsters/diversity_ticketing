@@ -146,20 +146,4 @@ class EventsControllerTest < ActionController::TestCase
 
     assert_select ".event", {count: 1}, "This page must contain an event."
   end
-
-  test "index action does not show event with end_date in the past" do
-    @event = make_event(approved: true, start_date: 3.weeks.ago, end_date: 2.weeks.ago)
-
-    get :index
-
-    assert_select ".event", {count: 0}, "This page must not contain an event."
-  end
-
-  test "index action shows event with end_date today" do
-    @event = make_event(approved: true, start_date: 1.day.ago, end_date: Date.today)
-
-    get :index
-
-    assert_select ".event", {count: 1}, "This page must contain an event."
-  end
 end

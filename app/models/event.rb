@@ -18,8 +18,8 @@ class Event < ActiveRecord::Base
     where(approved: false)
   end
 
-  def self.upcoming
-    where('end_date >= ?', DateTime.now)
+  def self.upcoming(now = DateTime.now)
+    where('end_date >= ?', now)
   end
 
   def self.past
