@@ -6,7 +6,7 @@ class EventsControllerTest < ActionController::TestCase
 
     post :create, event: make_event_form_params
 
-    assert_equal 'You have successfully created Event.', flash[:notice]
+    assert_equal "Thank you for submitting Event. We will review it shortly.", flash[:notice]
     assert_redirected_to events_path
     admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ["admin@woo.hoo"]}
     assert_equal admin_email.subject, "A new event has been submitted."
