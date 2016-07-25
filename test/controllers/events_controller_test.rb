@@ -2,7 +2,6 @@ require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
   test "successfully creates event and sends email" do
-    #create admin
     make_admin
 
     post :create, event: make_event_form_params
@@ -18,26 +17,26 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "index action shows only approved events" do
-  	approved_event = make_event(approved: true)
-  	unapproved_event = make_event(name: 'Other')
+    approved_event = make_event(approved: true)
+    unapproved_event = make_event(name: 'Other')
 
-  	get :index
+    get :index
 
-  	assert_select "h3", {count: 1, text: approved_event.name}
+    assert_select "h3", {count: 1, text: approved_event.name}
 
-  	assert(css_select("h3").none? { |element| element.text == unapproved_event.name })
+    assert(css_select("h3").none? { |element| element.text == unapproved_event.name })
   end
 
   test "index action shows only future events" do
- 		future_event = make_event(approved: true)
- 		past_event = make_event(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 2.weeks.ago, approved: true, name: 'Other')
+    future_event = make_event(approved: true)
+    past_event = make_event(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 2.weeks.ago, approved: true, name: 'Other')
 
- 		get :index
+    get :index
 
-  	assert_select "h3", {count: 1, text: future_event.name}
+    assert_select "h3", {count: 1, text: future_event.name}
 
-  	assert(css_select("h3").none? { |element| element.text == past_event.name })
- 	end
+    assert(css_select("h3").none? { |element| element.text == past_event.name })
+  end
 
   test "index action shows link to past events if there are past events" do
     make_event(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 2.weeks.ago, approved: true, name: 'Other')
@@ -89,7 +88,7 @@ class EventsControllerTest < ActionController::TestCase
 
     post :create, event: params
 
-    assert_equal false, Event.last.application_process == 'selection_by_organizer'   
+    assert_equal false, Event.last.application_process == 'selection_by_organizer'
   end
 
   test "index action has apply link for event with deadline in the future" do
@@ -138,5 +137,13 @@ class EventsControllerTest < ActionController::TestCase
     get :show, :id => @past_event.id
 
     assert_select "a", {count: 0, text: "Apply"}, "This page should not contain 'Apply' link"
+  end
+
+  test "index action shows event with end_date in the future" do
+    @event = make_event(approved: true, start_date: 1.weeks.from_now, end_date: 2.weeks.from_now)
+
+    get :index
+
+    assert_select ".event", {count: 1}, "This page must contain an event."
   end
 end

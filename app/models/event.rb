@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   validates :organizer_email_confirmation, presence: true, on: :create
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
-  
+
   def self.approved
     where(approved: true)
   end
@@ -18,8 +18,8 @@ class Event < ActiveRecord::Base
     where(approved: false)
   end
 
-  def self.upcoming
-    where('end_date > ?', DateTime.now)
+  def self.upcoming(now = DateTime.now)
+    where('end_date >= ?', now)
   end
 
   def self.past

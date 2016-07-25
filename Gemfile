@@ -59,6 +59,10 @@ group :development do
   gem 'dotenv-rails'
 end
 
+group :test do
+  gem 'minitest-spec-rails'
+end
+
 gem 'simplecov', require: false, group: :test
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

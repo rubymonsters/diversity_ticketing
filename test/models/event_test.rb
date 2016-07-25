@@ -16,7 +16,6 @@ class EventTest < ActiveSupport::TestCase
       event = Event.new(deadline: Date.new(2016, 4, 8))
       assert_equal event.deadline_as_time, ActiveSupport::TimeZone["Pacific Time (US & Canada)"].local(2016, 4, 9, 0, 0, 0)
     end
-
   end
 
   describe "validating organizer_email" do
@@ -83,6 +82,20 @@ class EventTest < ActiveSupport::TestCase
 
         assert_attribute_invalid(event, :application_link)
       end
+    end
+  end
+
+  describe "upcoming events" do
+    it "gets event with enddate on the same day" do
+      make_event(start_date: "2016-07-24", end_date: "2016-07-25")
+
+      assert_equal Event.upcoming("2016-07-25 23:59:59").length, 1
+    end
+
+    it " doesn't get event with enddate on the day before" do
+      make_event(start_date: "2016-07-24", end_date: "2016-07-25")
+
+      assert_equal Event.upcoming("2016-07-26 00:00:00").length, 0
     end
   end
 end
