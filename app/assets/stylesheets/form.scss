@@ -79,9 +79,13 @@ textarea {
 }
 
 .markdown .hint {
+  display: block;
   font-size: 10px;
-  float: right;
   padding-right: 2px;
+  @media (min-width: $medium){
+    float: right;
+  }
+
 }
 
 .markdown_preview {

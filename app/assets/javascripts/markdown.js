@@ -1,9 +1,9 @@
 $(document).ready(function() {
   // Markdown previewer for textareas
 
-  $(".markdown textarea").before("<div class='tab active markdown_btn'>Write</div>" +
-                                 "<div class='tab markdown_preview_btn'>Preview</div>" +
-                                 "<span class='hint'>Styling with Markdown is supported</span>");
+  $(".markdown textarea").before("<span class='hint'>Styling with Markdown is supported</span>" +
+                                 "<div class='tab active markdown_btn'>Write</div>" +
+                                 "<div class='tab markdown_preview_btn'>Preview</div>");
   $(".markdown textarea").after("<div class='markdown_preview'>" +
                                   "<div class='markdown_preview_inner'></div>" +
                                 "</div>");
