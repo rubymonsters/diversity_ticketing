@@ -1,11 +1,10 @@
 module EventsHelper
 
   def event_image(event)
-    if event.logo != ''
+    if event.logo && event.logo != ''
       image_tag event.logo
     else
-      image_tag "event-default"
+      image_tag "event-default.png"
     end
   end
-    
 end
