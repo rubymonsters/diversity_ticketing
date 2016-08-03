@@ -19,12 +19,14 @@
 
 .funded:before {
   content: "\2714";
+  padding-right: 0.25em;
 }
 
 .not-funded {
   color: $grey-mid;
   &:before {
     content: "\2718";
+    padding-right: 0.25em;
   }
 }
 
