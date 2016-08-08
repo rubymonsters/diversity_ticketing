@@ -2,10 +2,17 @@
 
 <h1><span class="conflogo--medium"><%= event_image @event %></span><%= @event.name %></h1>
 
+<div class="two-columns">
 <%= render :partial => "events/event" %>
 
-<% if @event.application_process == 'application_by_organizer' %>
-  <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get, class:'btn btn-save btn-external', disabled: @event.closed? %>
+<% if @event.open? %>
+
+  <% if @event.application_process == 'application_by_organizer' %>
+    <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get, class:'btn btn-save btn-external', disabled: @event.closed? %>
+  <% else %>
+    <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class:'btn btn-save', disabled: @event.closed? %>
+  <% end %>
+
 <% else %>
   <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class:'btn btn-save', disabled: @event.closed? %>
 <% end %>
@@ -13,3 +20,4 @@
 <% if @event.closed? %>
   <span class="hint">Sorry, applications for <%= @event.name %> are closed.</span>
 <% end %>
+</div>

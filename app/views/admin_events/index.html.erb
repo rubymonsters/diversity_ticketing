@@ -1,15 +1,17 @@
 <h1>Admin Page</h1>
 
+<div class="two-columns">
 <% @categorized_events.each do |heading, events| %>
-  <div class="category">
+  <div class="box">
     <h2><%= heading %></h2>
 
     <div class="admin">
       <ul class="admin-list">
         <% events.each do |event| %>
         <li>
-          <div class="conflogo--small"><%= event_image event %></div>
-          <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
+          <p class="event-name">
+            <span class="conflogo--small"><%= event_image event %></span>
+            <%= link_to event.name, event_admin_path(:id => event.id) %></p>
           <p>
             <%= link_to approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'), method: :post, class: "icon tooltip-large", title: event.approved ? 'unapprove' : 'approve' do %>
               <% if event.approved %>
@@ -32,3 +34,4 @@
     </div>
   </div>
 <% end %>
+</div>

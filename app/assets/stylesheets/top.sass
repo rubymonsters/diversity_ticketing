@@ -1,0 +1,31 @@
+.topbar
+  background: white
+  border-bottom: 1px solid #DDDEDF
+
+  @media (min-width: $large)
+    height: $topbar-height
+
+  a
+    color: $grey-dark
+    &:hover,
+    &:active
+      color: $green
+
+.logo
+  margin: 0
+  vertical-align: middle
+  font-size: 20px
+  font-weight: 400
+  a
+    text-decoration: none
+    color: $grey-dark
+
+  img
+    max-height: 35px
+    margin-right: 5px
+    vertical-align: middle
+
+  @media (min-width: $medium)
+    display: inline-block
+    height: $topbar-height
+    line-height: $topbar-height
