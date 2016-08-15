@@ -69,6 +69,9 @@ class EventsControllerTest < ActionController::TestCase
     params = make_event_form_params(application_process: 'selection_by_organizer',
                                     data_protection_confirmation: '0')
 
+    user = make_user
+    sign_in_as(user)
+
     post :create, event: params
 
     assert Event.all.empty?
@@ -76,6 +79,9 @@ class EventsControllerTest < ActionController::TestCase
 
   test "choosing selection not by organizer (instead e.g. Travis Foundation) and not agreeing to protect data still creates event correctly" do
     params = make_event_form_params(application_process: 'selection_by_travis')
+
+    user = make_user
+    sign_in_as(user)
 
     post :create, event: params
 
