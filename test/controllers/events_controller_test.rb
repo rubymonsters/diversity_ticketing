@@ -54,16 +54,10 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "choosing selection by organizer and agreeing to protect data creates event correctly" do
-<<<<<<< HEAD
     params = make_event_form_params(application_process: 'selection_by_organizer',
                                     data_protection_confirmation: '1')
-=======
     user = make_user
     sign_in_as(user)
-
-    params = make_event_form_params(  selection_by_organizer: true,
-                                      data_protection_confirmation: '1')
->>>>>>> fix tests that were broken by rebase
 
     post :create, event: params
 
@@ -81,7 +75,6 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "choosing selection not by organizer (instead e.g. Travis Foundation) and not agreeing to protect data still creates event correctly" do
-<<<<<<< HEAD
     params = make_event_form_params(application_process: 'selection_by_travis')
 
     post :create, event: params
@@ -95,12 +88,9 @@ class EventsControllerTest < ActionController::TestCase
       data_protection_confirmation: '1',
       application_link: 'somelink.tada'
     )
-=======
+
     user = make_user
     sign_in_as(user)
-
-    params = make_event_form_params
->>>>>>> fix tests that were broken by rebase
 
     post :create, event: params
 
