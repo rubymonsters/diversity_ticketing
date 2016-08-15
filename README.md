@@ -1,5 +1,8 @@
 [Travis says](https://travis-ci.org/rubymonsters/diversity_ticketing): [![Build Status](https://travis-ci.org/rubymonsters/diversity_ticketing.svg?branch=master)](https://travis-ci.org/rubymonsters/diversity_ticketing)
 
+CodeClimate says [![Code Climate](https://codeclimate.com/github/rubymonsters/diversity_ticketing/badges/gpa.svg)](https://codeclimate.com/github/rubymonsters/diversity_ticketing)
+
+
 This is a Ruby on Rails app made by the RubyMonstas (a RailsGirls study group based in Berlin), to make diversifying conferences easier.
 
 Supported by the [Travis Foundation](http://foundation.travis-ci.org/).
