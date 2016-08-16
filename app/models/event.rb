@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
   end
 
   def deadline_as_time
-    (deadline + 1).in_time_zone("Pacific Time (US & Canada)")
+    (deadline + 1).in_time_zone("UTC")
   end
 
   def to_csv
