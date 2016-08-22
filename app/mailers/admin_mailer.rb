@@ -3,4 +3,10 @@ class AdminMailer < ApplicationMailer
     @event = event
     mail(to: email, subject: 'A new event has been submitted.')
   end
+
+  def upcoming_event_deadline
+    @event = event
+    mail(to: email, subject: 'Event deadline in two days.')
+    
+  end
 end
