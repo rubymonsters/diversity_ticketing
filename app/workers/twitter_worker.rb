@@ -3,7 +3,7 @@ class TwitterWorker
 
   def self.announce_event(event)
     event_url = routes.event_url(event)
-    perform_async(event.name, event_url)
+    perform_async(event.name, event.deadline, event_url)
   end
 
   def self.routes
@@ -16,7 +16,7 @@ class TwitterWorker
     }.new
   end
 
-  def perform(event_name, event_url)
-    TWITTER_CLIENT.update("#{event_name} is a new event on #{event_url} ! Check it out :)")
+  def perform(event_name, event_deadline, event_url)
+    TWITTER_CLIENT.update("So great! #{event_name} is offering free diversity tickets! Apply until #{event_deadline} at #{event_url}!")
   end
 end
