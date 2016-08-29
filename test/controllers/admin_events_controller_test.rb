@@ -24,4 +24,25 @@ class AdminEventsControllerTest < ActionController::TestCase
 
     assert_response :success
   end
+
+  # The following test should
+  # - make an event
+  # - make an admin user
+  # - sign in as that user
+  # - approve the event
+  # - show the correct results: event is approved (default: unapproved)
+  # - check if a tweet was made
+  test 'approve action correctly approves event' do
+    event = make_event
+    user = make_user(admin: true)
+    sign_in_as(user)
+
+    TwitterWorker.expects(:announce_event).with(event).once
+
+    post :approve, id: event.id
+
+    event.reload
+
+    assert_equal(true, event.approved?)
+  end
 end

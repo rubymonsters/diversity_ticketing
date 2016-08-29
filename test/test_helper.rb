@@ -9,6 +9,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/autorun'
 require 'clearance/test_unit'
+require 'mocha/mini_test'
 
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
@@ -105,3 +106,4 @@ module Minitest::Assertions
     refute_equal [], event.errors[attribute]
   end
 end
+

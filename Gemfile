@@ -33,6 +33,8 @@ gem 'puma'
 
 gem 'aws-sdk', '~> 2'
 
+gem 'twitter'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -50,6 +52,10 @@ group :development, :test do
   gem 'spring'
   # Pry
   gem 'pry'
+
+  gem 'foreman'
+
+  gem 'mocha'
 end
 
 group :development do
