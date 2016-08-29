@@ -5,9 +5,10 @@ class AdminEventsController < ApplicationController
 
 	def index
     @categorized_events = {
-      "Unapproved Events" => Event.unapproved.upcoming,
-      "Approved Events" => Event.approved.upcoming,
-      "Past Events"=> Event.past
+      "Unapproved Events" => Event.unapproved.upcoming.order(deadline: :desc),
+      "Approved Events" => Event.approved.upcoming.order(deadline: :desc),
+      "Past Approved Events"=> Event.approved.past.order(deadline: :desc),
+      "Past Unapproved Events" => Event.unapproved.past.order(deadline: :desc)
     }
   end
 
