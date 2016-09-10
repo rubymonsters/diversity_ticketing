@@ -96,7 +96,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :index
 
-    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+    assert_select ".button_to", {count: 1, value: "Apply", disabled: false}, "This page must contain 'Apply' link"
   end
 
   test "index action has apply link for event where deadline is today" do
@@ -104,7 +104,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :index
 
-    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+    assert_select ".button_to", {count: 1, value: "Apply", disabled: false}, "This page must contain 'Apply' link"
   end
 
   test "index action has no apply link for event with deadline in the past" do
@@ -112,7 +112,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :index
 
-    assert_select "a", {count: 0, text: "Apply"}, "This page should not contain 'Apply' link"
+    assert_select ".button_to", {count: 0, value: "Apply"}, "This page should not contain 'Apply' button"
   end
 
   test "show action has apply link for event with deadline in the future" do
@@ -120,7 +120,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :show, :id => @event.id
 
-    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+    assert_select ".button_to", {count: 1, value: "Apply", disabled: false}, "This page must contain 'Apply' button"
   end
 
   test "show action has apply link for event where deadline is today" do
@@ -128,7 +128,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :show, :id => @event.id
 
-    assert_select "a", {count: 1, text: "Apply"}, "This page must contain 'Apply' link"
+    assert_select ".button_to", {count: 1, value: "Apply", disabled: false}, "This page must contain 'Apply' button"
   end
 
   test "show action has no apply link for event with deadline in the past" do
@@ -136,7 +136,7 @@ class EventsControllerTest < ActionController::TestCase
 
     get :show, :id => @past_event.id
 
-    assert_select "a", {count: 0, text: "Apply"}, "This page should not contain 'Apply' link"
+    assert_select ".button_to", {count: 1, value: "Apply", disabled: true}, "This page should contain disabled 'Apply' button"
   end
 
   test "index action shows event with end_date in the future" do

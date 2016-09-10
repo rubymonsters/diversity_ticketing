@@ -85,7 +85,7 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-  describe "upcoming events" do
+  describe "upcoming" do
     it "gets event with enddate on the same day" do
       make_event(start_date: "2016-07-24", end_date: "2016-07-25")
 
@@ -96,6 +96,48 @@ class EventTest < ActiveSupport::TestCase
       make_event(start_date: "2016-07-24", end_date: "2016-07-25")
 
       assert_equal Event.upcoming("2016-07-26 00:00:00").length, 0
+    end
+  end
+
+  describe "past" do
+    it "doesn't get event with enddate on the same day" do
+      make_event(start_date: "2016-07-24", end_date: "2016-07-25")
+
+      assert_equal Event.past("2016-07-25 23:59:59").length, 0
+    end
+
+    it "gets event with enddate on the day before" do
+      make_event(start_date: "2016-07-24", end_date: "2016-07-25")
+
+      assert_equal Event.past("2016-07-26 00:00:00").length, 1
+    end
+  end
+
+  describe "open" do
+    it "gets event with deadline on the same day" do
+      make_event(deadline: "2016-07-25")
+
+      assert_equal Event.open("2016-07-25 23:59:59").length, 1
+    end
+
+    it "doesn't get event with deadline on the day before" do
+      make_event(deadline: "2016-07-25")
+
+      assert_equal Event.open("2016-07-26 00:00:00").length, 0
+    end
+  end
+
+  describe "closed" do
+    it "doesn't get event with deadline on the same day" do
+      make_event(deadline: "2016-07-25")
+
+      assert_equal Event.closed("2016-07-25 23:59:59").length, 0
+    end
+
+    it "gets event with deadline on the day before" do
+      make_event(deadline: "2016-07-25")
+
+      assert_equal Event.closed("2016-07-26 00:00:00").length, 1
     end
   end
 end

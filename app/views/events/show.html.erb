@@ -4,12 +4,12 @@
 
 <%= render :partial => "events/event" %>
 
-<% if @event.open? %>
-  <% if @event.application_process == 'application_by_organizer' %>
-    <%= link_to "Apply at #{@event.name}", @event.application_link, class:'btn btn-save btn-external' %><br>
-  <% else %>
-    <%= link_to 'Apply', new_event_application_path(params[:id]), class:'btn btn-save' %><br>
-  <% end %>
+<% if @event.application_process == 'application_by_organizer' %>
+  <%= button_to "Apply at #{@event.name}", @event.application_link, class:'btn btn-save btn-external', disabled: @event.closed? %>
 <% else %>
-  <strong>Sorry, application for <%= @event.name %> is closed.</strong>
+  <%= button_to 'Apply', new_event_application_path(params[:id]), class:'btn btn-save', disabled: @event.closed? %>
+<% end %>
+
+<% if @event.closed? %>
+  <span class="hint">Sorry, application for <%= @event.name %> is closed.</span>
 <% end %>
