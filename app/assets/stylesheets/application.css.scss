@@ -273,6 +273,21 @@ a {
   &:before {
     content: none !important;
   }
+  &:disabled {
+    background-color: lighten($grey-mid, 15);
+    pointer-events: none;
+  }
+}
+
+.button_to {
+  display: inline-block;
+}
+
+.hint {
+  color: lighten($grey-dark, 10);
+  margin-left: .4em;
+  font-size: 12px;
+  vertical-align: bottom;
 }
 
 .footer {

@@ -22,12 +22,24 @@ class Event < ActiveRecord::Base
     where('end_date >= ?', now)
   end
 
-  def self.past
-    where('end_date < ?', DateTime.now)
+  def self.past(now = DateTime.now)
+    where('end_date < ?', now)
+  end
+
+  def self.open(now = DateTime.now)
+    where('deadline >= ?', now)
+  end
+
+  def self.closed(now = DateTime.now)
+    where('deadline < ?', now)
   end
 
   def open?
     deadline_as_time >= Time.now
+  end
+
+  def closed?
+    deadline_as_time < Time.now
   end
 
   def deadline_as_time

@@ -3,8 +3,9 @@ class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
 
   def index
-    @events = Event.approved.upcoming
-    @past_events = Event.approved.past
+    @open_events   = Event.approved.upcoming.open.order(:deadline)
+    @closed_events = Event.approved.upcoming.closed.order(:deadline)
+    @past_events   = Event.approved.past
   end
 
   def index_past
