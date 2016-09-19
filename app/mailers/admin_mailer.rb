@@ -6,7 +6,6 @@ class AdminMailer < ApplicationMailer
 
   def upcoming_event_deadline(event, email)
     @event = event
-    mail(to: email, subject: 'Event deadline in two days.')
-    
+    mail(to: email, subject: "#{@event.name} deadline in two days.")
   end
 end
