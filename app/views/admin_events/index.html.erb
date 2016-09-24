@@ -11,8 +11,12 @@
           <div class="conflogo--small"><%= event_image event %></div>
           <p class="event-name"><%= link_to event.name, event_admin_path(:id => event.id) %></p>
           <p>
-            <%= link_to approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'), :method => :post, title: "Unapprove event", class: "icon tooltip", title: "approve" do %>
+            <%= link_to approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'), :method => :post, title: "Unapprove event", class: "icon tooltip", title: event.approved ? 'unapprove' : 'approve' do %>
+              <% if event.approved %>                
+              <span class="icon-unapprove" aria-label="unapprove icon"></span>
+              <% else %>                
               <span class="icon-approve" aria-label="approve icon"></span>
+              <% end %>
             <% end %>
             <%= link_to edit_admin_event_path(:id => event.id), class: "icon tooltip", title: "edit" do %>
              <span class="icon-edit" aria-label="edit icon"></span>
