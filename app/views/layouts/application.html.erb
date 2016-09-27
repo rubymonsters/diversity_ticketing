@@ -23,7 +23,7 @@
             <% if admin_user? %>
               <li><%= navbar_link_to 'Admin', admin_path %></li>
             <% end %>
-            <li><%= navbar_link_to 'Edit profile', edit_user_path(current_user) %></li>
+            <li><%= navbar_link_to 'Settings', edit_user_path(current_user) %></li>
             <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Sign in', sign_in_path %></li>
