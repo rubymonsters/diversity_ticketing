@@ -1,4 +1,4 @@
-<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= @event.name %></p>
+<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %></p>
 
 <h1><span class="conflogo--medium"><%= event_image @event %></span><%= @event.name %></h1>
 
