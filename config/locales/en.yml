@@ -41,4 +41,4 @@ en:
               invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
   users:
     edit:
-      title: "Edit your profile"
+      title: "Edit your credentials"
