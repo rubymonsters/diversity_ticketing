@@ -92,7 +92,7 @@ class EventTest < ActiveSupport::TestCase
       assert_equal Event.upcoming("2016-07-25 23:59:59").length, 1
     end
 
-    it " doesn't get event with enddate on the day before" do
+    it "doesn't get event with enddate on the day before" do
       make_event(start_date: "2016-07-24", end_date: "2016-07-25")
 
       assert_equal Event.upcoming("2016-07-26 00:00:00").length, 0
@@ -139,5 +139,15 @@ class EventTest < ActiveSupport::TestCase
 
       assert_equal Event.closed("2016-07-26 00:00:00").length, 1
     end
+  end
+
+  describe "events with deadline in two days" do
+    it "fetches only these events" do
+      make_event(start_date: "2016-08-12", end_date: "2016-08-14", deadline: "2016-08-01")
+      make_event(start_date: "2016-07-03", end_date: "2016-07-05", deadline: "2016-06-15")
+      make_event(start_date: "2016-06-23", end_date: "2016-06-25", deadline: "2016-06-01")
+
+      assert_equal 1, Event.deadline_in_two_days(DateTime.parse("2016-06-13")).length
+    end 
   end
 end

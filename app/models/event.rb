@@ -34,6 +34,10 @@ class Event < ActiveRecord::Base
     where('deadline < ?', now)
   end
 
+  def self.deadline_in_two_days(now = DateTime.now)
+    where('deadline = ?', now + 2.days)
+  end
+
   def open?
     deadline_as_time >= Time.now
   end
