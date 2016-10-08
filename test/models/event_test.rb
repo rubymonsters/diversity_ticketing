@@ -148,6 +148,18 @@ class EventTest < ActiveSupport::TestCase
       make_event(start_date: "2016-06-23", end_date: "2016-06-25", deadline: "2016-06-01")
 
       assert_equal 1, Event.deadline_in_two_days(DateTime.parse("2016-06-13")).length
-    end 
+    end
+  end
+
+  describe "location" do
+    it "formats the loacation for event without state/province" do
+      event = Event.new(city: 'Berlin', country: "Germany")
+      assert_equal event.location, "Berlin, Germany"
+    end
+
+    it "formats the loacation for event with state/province" do
+      event = Event.new(city: 'Berlin', country: "United States", state_province: "Wisconsin")
+      assert_equal event.location, "Berlin, United States (Wisconsin)"
+    end
   end
 end

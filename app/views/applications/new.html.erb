@@ -6,7 +6,7 @@
   <p class="page-description markdownize"><%= @event.applicant_directions %></p>
 <% end %>
 
-<p>The application deadline is: <%= @event.deadline %> midnight UTC</p>
+<p>The application deadline is: <%= format_date(@event.deadline) %> (midnight UTC)</p>
 
 <%= form_for @application, url: event_applications_path(params[:event_id]), builder: ::FormBuilder do |f| %>
 

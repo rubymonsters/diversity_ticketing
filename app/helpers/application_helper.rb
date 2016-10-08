@@ -25,4 +25,20 @@ module ApplicationHelper
 
     output.join(' ').html_safe
   end
+
+  def format_date(date)
+    date = Date.parse(date.to_s)
+    date.strftime("%B #{date.mday.ordinalize}, %Y")
+  end
+
+  def format_date_range(start_date, end_date)
+    start_date = Date.parse(start_date.to_s)
+    end_date = Date.parse(end_date.to_s)
+
+    if start_date.mon == end_date.mon
+      start_date.strftime("%B #{start_date.mday.ordinalize}") + " to #{end_date.mday.ordinalize}, #{end_date.year}"
+    else
+      start_date.strftime("%B #{start_date.mday.ordinalize}") + " to " + end_date.strftime("%B #{end_date.mday.ordinalize}") + ", #{end_date.year}"
+    end
+  end
 end
