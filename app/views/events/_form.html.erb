@@ -91,22 +91,21 @@
     <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
   </section>
 
-  <% if action_name == 'edit' %>
-  <section class="box">
-    <h3 class="box-subtitle">Approve Event?</h3>
-    <div class="form_field">
-      <%= label_tag do %>
-      <%= f.radio_button(:approved, true) %> Yes
-      <% end %>
-      <%= label_tag do %>
-      <%= f.radio_button(:approved, false) %> No
-      <% end %>
-    </div>
-    <% end %>
-  </section>
+  <% if current_user.admin? && action_name == 'edit' %>
+    <section class="box">
+      <h3 class="box-subtitle">Approve Event?</h3>
+      <div class="form_field">
+        <%= label_tag do %>
+          <%= f.radio_button(:approved, true) %> Yes
+        <% end %>
+        <%= label_tag do %>
+          <%= f.radio_button(:approved, false) %> No
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 
   <div class="form_field">
     <%= f.submit(submit_tag_text, class: 'btn btn-save') %>
   </div>
-  <% end %>
 </div>

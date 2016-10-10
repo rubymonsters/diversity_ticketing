@@ -6,8 +6,11 @@
 <%= render :partial => "events/event" %>
 
 <% if @event.open? %>
-
-  <% if @event.application_process == 'application_by_organizer' %>
+  <% if !@event.approved && (@event.organizer_id == current_user.id || current_user.admin?) %>
+    <p>
+      <%= link_to "Edit", edit_event_path(@event), id: @event.id, class: 'btn btn-save btn-external' %>
+    </p>    
+  <% elsif @event.application_process == 'application_by_organizer' %>
     <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get, class:'btn btn-save btn-external', disabled: @event.closed? %>
   <% else %>
     <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class:'btn btn-save', disabled: @event.closed? %>

@@ -45,6 +45,28 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+
+    unless current_user.admin? || !@event.approved && @event.open?
+      redirect_to :show, alert: "Your event can't be edited, because it has already been approved, or the deadline has passed."
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      if current_user.admin?
+        redirect_to admin_path, notice: "You have successfully updated #{@event.name}."
+      else
+        redirect_to user_path(current_user), notice: "You have successfully updated #{@event.name}."
+      end
+    else
+      render :edit
+    end
+  end
+
   private
     def event_params
       params.require(:event).permit(
