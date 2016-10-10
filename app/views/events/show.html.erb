@@ -15,9 +15,6 @@
   <% else %>
     <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class:'btn btn-save', disabled: @event.closed? %>
   <% end %>
-
-<% else %>
-  <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class:'btn btn-save', disabled: @event.closed? %>
 <% end %>
 
 <% if @event.closed? %>
