@@ -13,7 +13,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.approved.find(params[:id])
+    @event = Event.find(params[:id])
+    unless @event.approved || @event.organizer_id == current_user.id
+      redirect_to :back, alert: "You are not allowed to access this event."
+    end
   end
 
   def new
@@ -69,13 +72,20 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(
-        :organizer_name, :organizer_email, :organizer_email_confirmation,
-        :description, :name, :logo, :start_date, :end_date, :approved, :ticket_funded,
-        :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
-        :website, :code_of_conduct, :city, :country, :applicant_directions,
-        :data_protection_confirmation, :application_link, :application_process,
-        :twitter_handle, :state_province)
+      permitted_params_for_event_organizers = [:organizer_name, :organizer_email, :organizer_email_confirmation,
+          :description, :name, :logo, :start_date, :end_date, :ticket_funded,
+          :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
+          :website, :code_of_conduct, :city, :country, :applicant_directions,
+          :data_protection_confirmation, :application_link, :application_process]
+      permitted_params_for_admins = permitted_params_for_event_organizers + [:approved]
+
+      if current_user.admin?
+        params.require(:event).permit permitted_params_for_admins
+      elsif @event && @event.approved?
+        params.require(:event).permit()
+      else
+        params.require(:event).permit permitted_params_for_event_organizers
+      end
     end
 
     def set_s3_direct_post
