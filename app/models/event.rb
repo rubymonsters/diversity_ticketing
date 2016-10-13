@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   validates :organizer_email_confirmation, presence: true, on: :create
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
-  validates :twitter_handle, format: { with: /\A@\w+/ }, allow_nil: true
+  validates :twitter_handle, format: { with: /\A@\w+\z/ }, allow_nil: true
 
   def self.approved
     where(approved: true)

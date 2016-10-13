@@ -38,11 +38,7 @@
 
 <div class="detail-pair">
   <strong>Date</strong>
-  <% if @event.start_date == @event.end_date %>
-    <%= format_date(@event.start_date) %>
-  <% else %>
-    <%= format_date_range(@event.start_date, @event.end_date) %>
-  <% end %>
+  <%= format_date_range(@event.start_date, @event.end_date) %>
 </div>
 
 <div class="detail-pair">
