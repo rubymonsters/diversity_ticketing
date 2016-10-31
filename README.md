@@ -33,7 +33,7 @@ This following text describes how to set up your workstation to develop for [div
 
 1. Check that you have the correct ruby version:
   1. open a new Terminal window
-  1. `ruby --version  # --> ruby 2.1.5`
+  1. `ruby --version  # --> ruby 2.3.1`
 1. Install bundler by running `gem install bundler`
 1. Run `bundle install` to install the dependencies specified in your Gemfile
 1. Postgresql setup
