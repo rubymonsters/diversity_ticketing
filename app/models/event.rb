@@ -52,7 +52,7 @@ class Event < ActiveRecord::Base
   end
 
   def location
-    [city, state_province, country].compact.delete_if(&:empty?).join(", ")
+    [city, state_province, country].reject(&:blank?).join(", ")
   end
 
   def to_csv
