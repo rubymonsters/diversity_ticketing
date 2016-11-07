@@ -51,7 +51,7 @@ class AdminEventsController < ApplicationController
         :description, :name, :logo, :start_date, :end_date, :approved, :ticket_funded,
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
         :website, :code_of_conduct, :city, :country, :applicant_directions,
-        :application_link, :application_process)
+        :application_link, :application_process, :twitter_handle, :state_province)
     end
 
     def get_event

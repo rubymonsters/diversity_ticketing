@@ -6,11 +6,17 @@
   <%= @event.name %>
 </div>
 
-<% if @event.logo.present? && controller_name == 'admin_events'%>
-
+<% if @event.logo.present? && (controller_name == 'admin_events' || action_name == 'preview') %>
   <div class="detail-pair">
     <strong>Logo</strong>
     <div class="conflogo--large"><%= image_tag @event.logo %></div>
+  </div>
+<% end %>
+
+<% if @event.twitter_handle.present? %>
+  <div class="detail-pair">
+    <strong>Twitter</strong>
+    <%= link_to "@#{@event.twitter_handle}", "https://twitter.com/#{@event.twitter_handle}" %>
   </div>
 <% end %>
 
@@ -26,16 +32,12 @@
 
 <div class="detail-pair">
   <strong>Location</strong>
-  <%= @event.city %>, <%= @event.country %>
+  <%= @event.location %>
 </div>
 
 <div class="detail-pair">
-  <strong>Dates</strong>
-  <%= @event.start_date %>
-  <% unless @event.start_date == @event.end_date %>
-    to
-    <%= @event.end_date %>
-  <% end %>
+  <strong>Date</strong>
+  <%= format_date_range(@event.start_date, @event.end_date) %>
 </div>
 
 <div class="detail-pair">
@@ -56,7 +58,7 @@
 
   <div class="detail-pair">
     <strong>Deadline for applications</strong>
-    <%= @event.deadline %> UTC
+    <%= format_date(@event.deadline) %> (midnight UTC)
   </div>
 
   <div class="detail-pair">

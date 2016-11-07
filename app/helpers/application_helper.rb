@@ -25,4 +25,26 @@ module ApplicationHelper
 
     output.join(' ').html_safe
   end
+
+  def format_date_range(start_date, end_date)
+    if start_date == end_date
+      format_date(end_date)
+    elsif start_date.mon == end_date.mon
+      format_date_range_same_month(start_date, end_date)
+    else
+      format_date_range_different_month(start_date, end_date)
+    end
+  end
+
+  def format_date(date)
+    date.strftime("%B #{date.mday.ordinalize}, %Y")
+  end
+
+  def format_date_range_same_month(start_date, end_date)
+    start_date.strftime("%B #{start_date.mday.ordinalize}") + " to #{end_date.mday.ordinalize}, #{end_date.year}"
+  end
+
+  def format_date_range_different_month(start_date, end_date)
+    start_date.strftime("%B #{start_date.mday.ordinalize}") + " to " + end_date.strftime("%B #{end_date.mday.ordinalize}") + ", #{end_date.year}"
+  end
 end
