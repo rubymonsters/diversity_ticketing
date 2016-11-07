@@ -21,6 +21,13 @@
 <% end %>
 
 <div class="detail-pair">
+  <strong>Tags</strong>
+  <% @event.tags.each do |tag| %>
+   <%= tag.name %>
+   <% end %>
+</div>
+
+<div class="detail-pair">
   <strong>Website</strong>
   <%= link_to @event.website, "#{@event.website}", target: "_blank" %>
 </div>

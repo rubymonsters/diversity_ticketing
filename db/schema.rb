@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008115835) do
+ActiveRecord::Schema.define(version: 20161121200712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20161008115835) do
 
   add_index "applications", ["event_id"], name: "index_applications_on_event_id", using: :btree
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "organizer_name"
     t.string   "organizer_email"
@@ -51,8 +57,8 @@ ActiveRecord::Schema.define(version: 20161008115835) do
     t.boolean  "ticket_funded",        default: false, null: false
     t.boolean  "accommodation_funded", default: false, null: false
     t.boolean  "travel_funded",        default: false, null: false
-    t.text     "applicant_directions"
     t.text     "logo"
+    t.text     "applicant_directions"
     t.text     "application_link"
     t.string   "application_process"
     t.string   "twitter_handle"
@@ -61,6 +67,23 @@ ActiveRecord::Schema.define(version: 20161008115835) do
   end
 
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "taggings", ["event_id"], name: "index_taggings_on_event_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
