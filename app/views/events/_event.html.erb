@@ -6,8 +6,7 @@
   <%= @event.name %>
 </div>
 
-<% if @event.logo.present? && controller_name == 'admin_events' || action_name == 'preview' %>
-
+<% if @event.logo.present? && (controller_name == 'admin_events' || action_name == 'preview') %>
   <div class="detail-pair">
     <strong>Logo</strong>
     <div class="conflogo--large"><%= image_tag @event.logo %></div>
@@ -17,7 +16,7 @@
 <% if @event.twitter_handle.present? %>
   <div class="detail-pair">
     <strong>Twitter</strong>
-    <%= link_to @event.twitter_handle, "https://twitter.com/#{@event.twitter_handle}" %>
+    <%= link_to "@#{@event.twitter_handle}", "https://twitter.com/#{@event.twitter_handle}" %>
   </div>
 <% end %>
 

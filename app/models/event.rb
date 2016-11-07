@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   validates :organizer_email_confirmation, presence: true, on: :create
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
-  validates :twitter_handle, format: { with: /\A@\w+\z/ }, allow_nil: true
+  validates :twitter_handle, format: { with: /\A@?\w+\z/ }, allow_nil: true
 
   def self.approved
     where(approved: true)
@@ -52,7 +52,7 @@ class Event < ActiveRecord::Base
   end
 
   def location
-    state_province ? "#{city}, #{country} (#{state_province})" : "#{city}, #{country}"
+    [city, state_province, country].compact.delete_if(&:empty?).join(", ")
   end
 
   def to_csv
@@ -62,5 +62,9 @@ class Event < ActiveRecord::Base
         csv << [application.name, application.email, application.attendee_info_1, application.attendee_info_2]
       end
     end
+  end
+
+  def twitter_handle=(value)
+    super(value.blank? ? nil : value.sub(/\A@/, ''))
   end
 end

@@ -19,8 +19,8 @@ class TwitterWorker
 
   def perform(event_name, event_deadline, event_url, twitter_handle)
     message = "So great! #{event_name}"
-    message.concat(" (#{twitter_handle})") if twitter_handle
-    message.concat(" is offering free diversity tickets! Apply until #{event_deadline} at #{event_url}!")
+    message.concat(" (@#{twitter_handle})") if twitter_handle
+    message.concat(" is offering free diversity tickets! Apply before #{event_deadline} at #{event_url}!")
 
     TWITTER_CLIENT.update(message)
   end

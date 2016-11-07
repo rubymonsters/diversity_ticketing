@@ -153,13 +153,31 @@ class EventTest < ActiveSupport::TestCase
 
   describe "location" do
     it "formats the loacation for event without state/province" do
-      event = Event.new(city: 'Berlin', country: "Germany")
+      event = Event.new(city: 'Berlin', country: "Germany", state_province: "")
       assert_equal event.location, "Berlin, Germany"
     end
 
     it "formats the loacation for event with state/province" do
       event = Event.new(city: 'Berlin', country: "United States", state_province: "Wisconsin")
-      assert_equal event.location, "Berlin, United States (Wisconsin)"
+      assert_equal event.location, "Berlin, Wisconsin, United States"
+    end
+  end
+
+
+  describe "twitter_handle" do
+    it "leading @'s are removed before saving to the database" do
+      event = make_event(twitter_handle: "@lisbethmarianne")
+      assert_equal event.twitter_handle, "lisbethmarianne"
+    end
+
+     it "isn't altered if there is no leading @" do
+      event = make_event(twitter_handle: "lisbethmarianne")
+      assert_equal event.twitter_handle, "lisbethmarianne"
+    end
+
+    it "event can be saved with no twitter handle" do
+      event = make_event
+      assert_equal event.twitter_handle, nil
     end
   end
 end
