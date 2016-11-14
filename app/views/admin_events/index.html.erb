@@ -11,7 +11,7 @@
         <li>
           <p class="event-name">
             <span class="conflogo--small"><%= event_image event %></span>
-            <%= link_to event.name, event_admin_path(:id => event.id) %></p>
+            <%= link_to event.name, event_admin_path(:id => event.id), title: event.name  %></p>
           <p>
             <%= link_to approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'), method: :post, class: "icon tooltip-large", title: event.approved ? 'unapprove' : 'approve' do %>
               <% if event.approved %>
