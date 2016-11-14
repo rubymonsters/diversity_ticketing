@@ -1,6 +1,9 @@
 <p>These events provided diversity tickets in the past. Many thanks to the organizers.</p>
-<% @events.each do |event| %>
-  <%= render partial: "index_list_item", locals: { event: event } %>
-<% end %>
+
+<div class="<%= 'two-columns' if @events.count > 1  %>">
+  <% @events.each do |event| %>
+    <%= render partial: "index_list_item", locals: { event: event } %>
+  <% end %>
+</div>
 
 <%= link_to 'Show upcoming events', events_path %>

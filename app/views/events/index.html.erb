@@ -10,16 +10,20 @@
 
   <% if @open_events.any? %>
     <h2>Open for applications</h2>
-    <% @open_events.each do |event| %>
-      <%= render partial: "index_list_item", locals: { event: event } %>
-    <% end %>
+    <div class="<%= 'two-columns' if @open_events.count > 1  %>">
+      <% @open_events.each do |event| %>
+        <%= render partial: "index_list_item", locals: { event: event } %>
+      <% end %>
+    </div>
   <% end %>
 
   <% if @closed_events.any? %>
     <h2>Closed for applications</h2>
-    <% @closed_events.each do |event| %>
-      <%= render partial: "index_list_item", locals: { event: event } %>
-    <% end %>
+    <div class="<%= 'two-columns' if @closed_events.count > 1  %>">
+      <% @closed_events.each do |event| %>
+        <%= render partial: "index_list_item", locals: { event: event } %>
+      <% end %>
+    </div>
   <% end %>
 
   <%= link_to 'Show past events', past_events_path if @past_events.any? %>
