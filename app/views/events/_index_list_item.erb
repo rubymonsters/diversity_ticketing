@@ -7,6 +7,11 @@
   <p><%= icon('map-marker', event.location) %></p>
 
   <p class="markdownize"><%= event.description %></p>
+  <p> 
+    <% event.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %> 
+  </p>
 
   <% if event.application_process == 'application_by_organizer' %>
     <%= button_to "Apply at #{event.name}", event.application_link, method: :get,
