@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20161008115835) do
     t.text     "logo"
     t.text     "application_link"
     t.string   "application_process"
+    t.string   "twitter_handle"
+    t.string   "state_province"
     t.integer  "organizer_id"
   end
 
