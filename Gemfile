@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Let's Encrypt
+gem 'platform-api', github: 'jalada/platform-api', branch: 'master'
+gem 'letsencrypt-rails-heroku', group: 'production'
+
 gem 'date_validator'
 
 gem 'sidekiq'

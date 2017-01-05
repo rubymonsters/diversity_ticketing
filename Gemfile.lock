@@ -1,6 +1,16 @@
+GIT
+  remote: git://github.com/jalada/platform-api.git
+  revision: 45ddb3c1a7e2c7f85d979c0791db18e99affb237
+  branch: master
+  specs:
+    platform-api (0.8.0)
+      heroics (~> 0.0.17)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    acme-client (0.4.1)
+      faraday (~> 0.9, >= 0.9.1)
     actionmailer (4.2.5.1)
       actionpack (= 4.2.5.1)
       actionview (= 4.2.5.1)
@@ -81,6 +91,7 @@ GEM
       activemodel
     equalizer (0.0.10)
     erubis (2.7.0)
+    excon (0.54.0)
     execjs (2.7.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
@@ -88,6 +99,12 @@ GEM
       thor (~> 0.19.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    heroics (0.0.17)
+      erubis (~> 2.0)
+      excon
+      moneta
+      multi_json (>= 1.9.2)
+      netrc
     http (1.0.4)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -109,6 +126,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     json_pure (1.8.3)
+    letsencrypt-rails-heroku (0.3.0)
+      acme-client (~> 0.4.0)
+      platform-api
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -127,9 +147,11 @@ GEM
       rails (>= 4.1)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
+    moneta (0.8.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     naught (1.1.0)
+    netrc (0.11.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -243,9 +265,11 @@ DEPENDENCIES
   foreman
   jbuilder (~> 2.0)
   jquery-rails
+  letsencrypt-rails-heroku
   minitest-spec-rails
   mocha
   pg
+  platform-api!
   pry
   puma
   rails (= 4.2.5.1)
@@ -261,4 +285,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6

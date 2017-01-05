@@ -90,6 +90,9 @@ Rails.application.configure do
 
   config.middleware.insert(0, RedirectWWW)
 
+  # Let's Encrypt
+  config.middleware.insert_before ActionDispatch::SSL, Letsencrypt::Middleware
+
   # set default url options for mailers
   config.action_mailer.default_url_options = {host: 'diversitytickets.org', protocol: 'https'}
   # set default url options for Sidekiq workers
