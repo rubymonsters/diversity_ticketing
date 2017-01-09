@@ -198,4 +198,143 @@ class EventsControllerTest < ActionController::TestCase
     
     assert_equal user.id, event.organizer_id
   end
+
+  test "admin can reach edit event form" do
+    user = make_user(admin: true)
+    sign_in_as(user)
+    event = make_event
+
+    get :edit, id: event.id
+
+    assert_response :success
+  end
+
+  test "admin can update event" do
+    user = make_user(admin: true)
+    sign_in_as(user)
+    event = make_event(name: "BoringConf")
+
+    put :update, id: event.id, event: {name: "MonstersConf"}
+
+    event.reload
+
+    assert_equal "MonstersConf", event.name
+    assert_redirected_to admin_url
+  end
+
+  test "event owner can reach edit form" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      organizer_id: user.id,
+      approved: false,
+      deadline: 5.days.from_now
+      )
+
+    get :edit, id: event.id
+
+    assert_response :success
+  end
+
+  test "event owner cannot reach edit form if event approved" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      organizer_id: user.id,
+      approved: true,
+      deadline: 5.days.from_now
+      )
+
+    get :edit, id: event.id
+
+    assert_redirected_to event_url(event)
+  end
+
+  test "event owner cannot reach edit form if event closed" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      organizer_id: user.id,
+      approved: false,
+      deadline: 5.days.ago
+      )
+
+    get :edit, id: event.id
+
+    assert_redirected_to event_url(event)
+  end
+
+  test "event owner can update event" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      name: "BoringConf",
+      organizer_id: user.id,
+      approved: false,
+      deadline: 5.days.from_now
+      )
+
+    put :update, id: event.id, event: {name: "MonstersConf"}
+
+    event.reload
+
+    assert_equal "MonstersConf", event.name
+    assert_redirected_to user_url(user)
+  end
+
+  test "user cannot edit other people's events" do
+    user = make_user(admin: false)
+    event_owner = make_user(email: "different_address@example.org")
+    sign_in_as(user)
+    event = make_event(
+      name: "BoringConf",
+      organizer_id: event_owner.id,
+      approved: false,
+      deadline: 5.days.from_now
+      )
+
+    get :edit, id: event.id
+
+    assert_redirected_to event_url(event)
+  end
+
+  test "event owner cannot change own events' approval status" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      approved: false,
+      organizer_id: user.id,
+      deadline: 5.days.from_now
+      )
+
+    put :update, id: event.id, event: {approved: true}
+
+    event.reload
+
+    assert_redirected_to user_url(user)
+    assert_equal false, event.approved?
+  end
+
+  # Not a security risk
+  test "admin can approve unapproved event" do
+    admin = make_user(admin: true)
+    event_owner = make_user(
+      admin: false,
+      email: "different_address@example.org"
+    )
+    event = make_event(
+      approved: false,
+      organizer_id: event_owner.id,
+      deadline: 5.days.from_now
+    )
+
+    sign_in_as(admin)
+
+    put :update, id: event.id, event: {approved: true}
+
+    event.reload
+
+    assert_redirected_to admin_url
+    assert_equal true, event.approved?
+  end
 end

@@ -20,7 +20,7 @@ class ActiveSupport::TestCase
 
   def make_user(user_params = {})
     defaults = {
-      email: "yay@woo.hoo",
+      email: "awesome@example.org",
       password: "awesome_password"
     }
     user_params = defaults.merge(user_params)

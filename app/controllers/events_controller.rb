@@ -51,20 +51,22 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
 
-    unless current_user.admin? || !@event.approved && @event.open?
-      redirect_to :show, alert: "Your event can't be edited, because it has already been approved, or the deadline has passed."
+    if @event.uneditable_by?(current_user)
+      redirect_to event_url(@event), alert: "Your event can't be edited, because it has already been approved, or the deadline has passed."
     end
   end
 
   def update
     @event = Event.find(params[:id])
 
+    if @event.uneditable_by?(current_user)
+      render status: :forbidden && return
+    end
+
     if @event.update(event_params)
-      if current_user.admin?
-        redirect_to admin_path, notice: "You have successfully updated #{@event.name}."
-      else
-        redirect_to user_path(current_user), notice: "You have successfully updated #{@event.name}."
-      end
+      url = current_user.admin? ? admin_url : user_url(current_user)
+
+      redirect_to url, notice: "You have successfully updated #{@event.name}."
     else
       render :edit
     end
@@ -72,20 +74,31 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      permitted_params_for_event_organizers = [:organizer_name, :organizer_email, :organizer_email_confirmation,
-          :description, :name, :logo, :start_date, :end_date, :ticket_funded,
-          :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
-          :website, :code_of_conduct, :city, :country, :applicant_directions,
-          :data_protection_confirmation, :application_link, :application_process]
-      permitted_params_for_admins = permitted_params_for_event_organizers + [:approved]
-
       if current_user.admin?
-        params.require(:event).permit permitted_params_for_admins
-      elsif @event && @event.approved?
-        params.require(:event).permit()
+        admin_event_params
       else
-        params.require(:event).permit permitted_params_for_event_organizers
+        organizer_event_params
       end
+    end
+
+    def organizer_event_params
+      params.require(:event).permit permitted_params_for_event_organizers
+    end
+
+    def admin_event_params
+      params.require(:event).permit(
+        permitted_params_for_event_organizers + [:approved]
+      )
+    end
+
+    def permitted_params_for_event_organizers
+      [
+        :organizer_name, :organizer_email, :organizer_email_confirmation,
+        :description, :name, :logo, :start_date, :end_date, :ticket_funded,
+        :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
+        :website, :code_of_conduct, :city, :country, :applicant_directions,
+        :data_protection_confirmation, :application_link, :application_process
+      ]
     end
 
     def set_s3_direct_post
