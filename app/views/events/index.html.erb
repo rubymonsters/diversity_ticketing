@@ -10,7 +10,7 @@
 
   <% if @open_events.any? %>
     <h2>Open for applications</h2>
-    <div class="<%= 'two-columns' if @open_events.count > 1  %>">
+    <div class="two-columns">
       <% @open_events.each do |event| %>
         <%= render partial: "index_list_item", locals: { event: event } %>
       <% end %>
@@ -19,7 +19,7 @@
 
   <% if @closed_events.any? %>
     <h2>Closed for applications</h2>
-    <div class="<%= 'two-columns' if @closed_events.count > 1  %>">
+    <div class="two-columns">
       <% @closed_events.each do |event| %>
         <%= render partial: "index_list_item", locals: { event: event } %>
       <% end %>

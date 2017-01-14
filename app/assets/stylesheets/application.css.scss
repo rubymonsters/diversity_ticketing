@@ -33,7 +33,7 @@ $topbar-height: 55px;
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
 @import "normalize.scss";
-@import "layout.sass";  
+@import "layout.sass";
 @import "top.sass";
 @import "navigation.scss";
 @import "footer.sass";
@@ -102,7 +102,7 @@ a {
     flex-grow: 1;
   }
   .event-name {
-      flex-basis: 9em;
+      flex-basis: 13em;
       white-space: nowrap;
       overflow: hidden;
   }
