@@ -16,6 +16,12 @@
       <h2>Event Details</h2>
       <%= f.form_field :text_field, :name, 'Name' %>
 
+      <label>Tags</label>
+      <% Tag.all.each do |tag| %>
+        <input id="tag-<%= tag.id %>" type="checkbox" name="event[tags][]" value="<%= tag.id %>" />
+        <label for="tag-<%= tag.id %>"><%= tag.name %></label>
+      <% end %>
+
       <%= f.image_upload_field :logo, 'Logo', image_name: @event.logo.present? ? @event.logo : "DT-logo.svg", class: ['event-logo'] %>
       <%= f.hidden_field :logo %>
       <div class="form-hint">Choose a square image for best displaying results.</div>
