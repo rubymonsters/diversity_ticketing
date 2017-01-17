@@ -2,7 +2,7 @@
   <%= form_for @event, url: form_url, builder: ::FormBuilder, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f| %>
   <section class="box">
     <h2 class="box-title box-noborder">Organizer Details</h2>
-    <p class="border">Not shown to the public.<p>
+    <p class="border">Not shown to the public.</p>
 
       <%= f.form_field :text_field, :organizer_name, 'Full Name' %>
       <%= f.form_field :text_field, :organizer_email, 'Email' %>
