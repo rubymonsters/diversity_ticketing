@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
   include ApplicationProcess::Validator
+  belongs_to :organizer, class_name: 'User'
+
   has_many :applications, dependent: :destroy
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
@@ -66,5 +68,17 @@ class Event < ActiveRecord::Base
 
   def twitter_handle=(value)
     super(value.blank? ? nil : value.sub(/\A@/, ''))
+  end
+
+  def owned_by?(user)
+    organizer_id == user.id
+  end
+
+  def editable_by?(user)
+    user.admin? || (owned_by?(user) && !approved? && open?)
+  end
+
+  def uneditable_by?(user)
+    !editable_by?(user)
   end
 end

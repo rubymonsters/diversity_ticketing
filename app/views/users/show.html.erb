@@ -1,0 +1,25 @@
+<h1><%= t(".title") %></h1>
+
+<% @categorized_user_events.each do |heading, events| %>
+	<% if events.any? %>
+		<div class="category">
+			<h2><%= t(".#{heading}") %></h2>
+			<div class="admin">
+				<ul class="admin-list">
+					<% events.each do |event| %>
+						<li>
+							<div class="conflogo--small"><%= event_image event %></div>
+							<p class="event-name"><%= link_to event.name, event_path(id: event.id) %></p>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+
+<% if @categorized_user_events.values.flatten.empty? %>
+	<p>
+		There are currently no events for this user account.
+	</p>
+<% end %>

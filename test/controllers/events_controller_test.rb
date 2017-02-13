@@ -2,7 +2,8 @@ require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
   test "successfully creates event and sends email" do
-    make_admin
+    admin_user = make_admin
+    sign_in_as(admin_user)
 
     post :create, event: make_event_form_params
 
@@ -55,6 +56,8 @@ class EventsControllerTest < ActionController::TestCase
   test "choosing selection by organizer and agreeing to protect data creates event correctly" do
     params = make_event_form_params(application_process: 'selection_by_organizer',
                                     data_protection_confirmation: '1')
+    user = make_user
+    sign_in_as(user)
 
     post :create, event: params
 
@@ -66,6 +69,9 @@ class EventsControllerTest < ActionController::TestCase
     params = make_event_form_params(application_process: 'selection_by_organizer',
                                     data_protection_confirmation: '0')
 
+    user = make_user
+    sign_in_as(user)
+
     post :create, event: params
 
     assert Event.all.empty?
@@ -73,6 +79,9 @@ class EventsControllerTest < ActionController::TestCase
 
   test "choosing selection not by organizer (instead e.g. Travis Foundation) and not agreeing to protect data still creates event correctly" do
     params = make_event_form_params(application_process: 'selection_by_travis')
+
+    user = make_user
+    sign_in_as(user)
 
     post :create, event: params
 
@@ -85,6 +94,9 @@ class EventsControllerTest < ActionController::TestCase
       data_protection_confirmation: '1',
       application_link: 'somelink.tada'
     )
+
+    user = make_user
+    sign_in_as(user)
 
     post :create, event: params
 
@@ -145,5 +157,184 @@ class EventsControllerTest < ActionController::TestCase
     get :index
 
     assert_select ".event", {count: 1}, "This page must contain an event."
+  end
+
+  test "new action requires logged-in user" do
+    get :new
+
+    assert_redirected_to sign_in_path
+  end
+
+  test "create action requires logged-in user" do
+    post :create, event: make_event_params
+
+    assert_redirected_to sign_in_path
+  end
+
+  test "preview action requires logged-in user" do
+    post :preview, event: make_event_params
+
+    assert_redirected_to sign_in_path
+  end
+
+  test "preview loads correctly with logged-in user" do
+    user = make_user
+    sign_in_as(user)
+    event_params = make_event_params
+
+    post :preview, event: event_params
+
+    assert_response :success
+  end
+
+  test "create actions assigns event to correct organizer" do
+    user = make_user
+    sign_in_as(user)
+    event_params = make_event_params(name: "MonsterConf")
+
+    post :create, event: event_params
+
+    event = Event.find_by(name: "MonsterConf")
+    
+    assert_equal user.id, event.organizer_id
+  end
+
+  test "admin can reach edit event form" do
+    user = make_user(admin: true)
+    sign_in_as(user)
+    event = make_event
+
+    get :edit, id: event.id
+
+    assert_response :success
+  end
+
+  test "admin can update event" do
+    user = make_user(admin: true)
+    sign_in_as(user)
+    event = make_event(name: "BoringConf")
+
+    put :update, id: event.id, event: {name: "MonstersConf"}
+
+    event.reload
+
+    assert_equal "MonstersConf", event.name
+    assert_redirected_to admin_url
+  end
+
+  test "event owner can reach edit form" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      organizer_id: user.id,
+      approved: false,
+      deadline: 5.days.from_now
+      )
+
+    get :edit, id: event.id
+
+    assert_response :success
+  end
+
+  test "event owner cannot reach edit form if event approved" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      organizer_id: user.id,
+      approved: true,
+      deadline: 5.days.from_now
+      )
+
+    get :edit, id: event.id
+
+    assert_redirected_to event_url(event)
+  end
+
+  test "event owner cannot reach edit form if event closed" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      organizer_id: user.id,
+      approved: false,
+      deadline: 5.days.ago
+      )
+
+    get :edit, id: event.id
+
+    assert_redirected_to event_url(event)
+  end
+
+  test "event owner can update event" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      name: "BoringConf",
+      organizer_id: user.id,
+      approved: false,
+      deadline: 5.days.from_now
+      )
+
+    put :update, id: event.id, event: {name: "MonstersConf"}
+
+    event.reload
+
+    assert_equal "MonstersConf", event.name
+    assert_redirected_to user_url(user)
+  end
+
+  test "user cannot edit other people's events" do
+    user = make_user(admin: false)
+    event_owner = make_user(email: "different_address@example.org")
+    sign_in_as(user)
+    event = make_event(
+      name: "BoringConf",
+      organizer_id: event_owner.id,
+      approved: false,
+      deadline: 5.days.from_now
+      )
+
+    get :edit, id: event.id
+
+    assert_redirected_to event_url(event)
+  end
+
+  test "event owner cannot change own events' approval status" do
+    user = make_user(admin: false)
+    sign_in_as(user)
+    event = make_event(
+      approved: false,
+      organizer_id: user.id,
+      deadline: 5.days.from_now
+      )
+
+    put :update, id: event.id, event: {approved: true}
+
+    event.reload
+
+    assert_redirected_to user_url(user)
+    assert_equal false, event.approved?
+  end
+
+  # Not a security risk
+  test "admin can approve unapproved event" do
+    admin = make_user(admin: true)
+    event_owner = make_user(
+      admin: false,
+      email: "different_address@example.org"
+    )
+    event = make_event(
+      approved: false,
+      organizer_id: event_owner.id,
+      deadline: 5.days.from_now
+    )
+
+    sign_in_as(admin)
+
+    put :update, id: event.id, event: {approved: true}
+
+    event.reload
+
+    assert_redirected_to admin_url
+    assert_equal true, event.approved?
   end
 end

@@ -1,5 +1,13 @@
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:show, :edit, :update]
+
+  def show
+    @categorized_user_events = {
+      approved: @user.events.approved.upcoming,
+      unapproved: @user.events.unapproved.upcoming,
+      past: @user.events.past
+    }
+  end
 
   def edit
   end

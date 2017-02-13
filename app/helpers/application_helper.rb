@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def navbar_link_to(name, url)
-    link_to_unless_current(name, url) {
+  def navbar_link_to(name, url, classes = [])
+    link_to_unless_current(name, url, class: classes) {
       content_tag(:span, name, class: 'active')
     }
   end

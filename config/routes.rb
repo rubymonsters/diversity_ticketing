@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :applications, only: [:show, :new, :create, :destroy]
   end
 
-  resources :admin_events do
+  resources :admin_events, except: [:edit, :update] do
     member do
       post :approve
     end

@@ -20,7 +20,7 @@ class ActiveSupport::TestCase
 
   def make_user(user_params = {})
     defaults = {
-      email: "yay@woo.hoo",
+      email: "awesome@example.org",
       password: "awesome_password"
     }
     user_params = defaults.merge(user_params)
@@ -37,7 +37,7 @@ class ActiveSupport::TestCase
     User.create!(user_params)
   end
 
-  def make_event(event_params = {})
+  def make_event_params(event_params = {})
     defaults = {
       name: 'Event',
       start_date: 1.week.from_now,
@@ -55,8 +55,11 @@ class ActiveSupport::TestCase
       approved: false,
       application_process: 'selection_by_travis'
     }
-    event_params = defaults.merge(event_params)
-    Event.create!(event_params)
+    defaults.merge(event_params)
+  end
+
+  def make_event(event_params = {})
+    Event.create!(make_event_params(event_params))
   end
 
   def make_event_form_params(event_params = {})

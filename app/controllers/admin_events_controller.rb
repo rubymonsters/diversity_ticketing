@@ -19,17 +19,6 @@ class AdminEventsController < ApplicationController
     end
   end
 
- 	def edit
-  end
-
-  def update
-    if @event.update(event_params)
-      redirect_to admin_path, notice: "You have successfully updated #{@event.name}."
-    else
-      render :edit
-    end
-  end
-
   def approve
     @event.toggle(:approved)
     @event.save
