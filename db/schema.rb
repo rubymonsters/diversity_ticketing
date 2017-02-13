@@ -51,13 +51,16 @@ ActiveRecord::Schema.define(version: 20161008115835) do
     t.boolean  "ticket_funded",        default: false, null: false
     t.boolean  "accommodation_funded", default: false, null: false
     t.boolean  "travel_funded",        default: false, null: false
-    t.text     "logo"
     t.text     "applicant_directions"
+    t.text     "logo"
     t.text     "application_link"
     t.string   "application_process"
     t.string   "twitter_handle"
     t.string   "state_province"
+    t.integer  "organizer_id"
   end
+
+  add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -73,4 +76,5 @@ ActiveRecord::Schema.define(version: 20161008115835) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "applications", "events"
+  add_foreign_key "events", "users", column: "organizer_id"
 end
