@@ -1,0 +1,59 @@
+---
+fr:
+  clearance:
+    models:
+      clearance_mailer:
+        change_password: Changez votre mot de passe
+  clearance_mailer:
+    change_password:
+      closing: Si vous ne l'avez pas demandé, ignorez ce courriel. Votre mot de passe n'a
+         pas été changé.
+      link_text: Changer mon mot de passe
+      opening: "Quelqu'un, espérons-le vous, a demandé que nous vous envoyions un lien pour changer
+         votre mot de passe:"
+  flashes:
+    failure_after_create: Mauvais e-mail ou mot de passe.
+    failure_after_update: Le mot de passe ne peut pas être vide.
+    failure_when_forbidden: Veuillez vérifier l'URL ou essayer de soumettre
+       le formulaire à nouveau.
+    failure_when_not_signed_in: Veuillez vous connecter pour continuer.
+  helpers:
+    label:
+      password:
+        email: Adresse email
+      password_reset:
+        password: Choisissez un mot de passe
+    submit:
+      password:
+        submit: Réinitialiser le mot de passe
+      password_reset:
+        submit: Sauvegarder ce mot de passe
+      session:
+        submit: S'identifier
+      user:
+        create: S'inscrire
+  layouts:
+    application:
+      sign_in: S'identifier
+      sign_out: Déconnexion
+  passwords:
+    create:
+      description: Vous recevrez un courriel dans les prochaines minutes. Il
+         contient des instructions pour changer votre mot de passe.
+    edit:
+      description: Votre mot de passe a été réinitialisé. Choisissez un nouveau mot de passe ci-dessous.
+       title: Changez votre mot de passe
+    new:
+      description: Pour recevoir par courrier électronique un lien pour réinitialiser votre mot de passe, veuillez entrer
+         votre adresse email.
+       title: Réinitialisez votre mot de passe
+  sessions:
+    form:
+      forgot_password: Mot de passe oublié?
+      sign_up: S'inscrire
+    new:
+      title: S'identifier
+  users:
+    new:
+      sign_in: S'identifier
+      title: S'inscrire
