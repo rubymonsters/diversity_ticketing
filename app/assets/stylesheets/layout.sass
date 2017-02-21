@@ -1,26 +1,26 @@
-.content 
+.content
   padding: 1em 0 4em
   background: $grey-light
 
-.inner 
+.inner
   padding: 0 1em
-  @media (min-width: $large) 
+  @media (min-width: $large)
     width: 1000px
     margin: auto
-  
-.breadcrumb 
+
+.breadcrumb
   margin: 0
   padding: 0 0 1em
   font-size: 14px
 
-%anchor 
+%anchor
   text-decoration: none
   color: $black
   position: relative
   display: inline-block
   z-index: 1
   line-height: 1.1
-  &:before 
+  &:before
     content: ""
     display: block
     position: absolute
@@ -30,28 +30,27 @@
     z-index: -1
     background: #27A8DF
     transition: height 200ms ease, background 200ms ease
-  
+
   &:hover:before,
-  &:active:before 
-    height: 26px
+  &:active:before
+    height: 110%
     background: #b1eefc
-  
-.page-title 
+
+.page-title
   margin-bottom: 0
 
-.page-title-firstword 
+.page-title-firstword
   color: $blue
 
-.page-description 
+.page-description
   margin-top: 0
   margin-bottom: 2em
 
-.page-subtitle 
+.page-subtitle
   margin: 1.5em 0 1em
 
-.highlight 
+.highlight
   font-weight: 600
   font-size: 18px
   color:  $blue
   margin-top: 20px
-
