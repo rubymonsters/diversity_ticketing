@@ -4,23 +4,30 @@
     <section class="box">
       <h2 class="box-title box-noborder">Organizer Details</h2>
       <p class="border">Not shown to the public.</p>
-        <%= f.form_field :text_field, :organizer_name, 'Full Name' %>
-        <%= f.form_field :text_field, :organizer_email, 'Email' %>
+      <%= f.form_field :text_field, :organizer_name, 'Full Name' %>
+      <%= f.form_field :text_field, :organizer_email, 'Email' %>
 
-        <% if action_name == 'new' || action_name == 'preview' %>
-          <%= f.form_field :text_field, :organizer_email_confirmation, 'Email Confirmation' %>
-        <% end %>
+      <% if action_name == 'new' || action_name == 'preview' %>
+        <%= f.form_field :text_field, :organizer_email_confirmation, 'Email Confirmation' %>
+      <% end %>
     </section>
 
     <section class="box">
       <h2>Event Details</h2>
       <%= f.form_field :text_field, :name, 'Name' %>
 
-      <label>Tags</label>
-      <% Tag.all.each do |tag| %>
-        <input id="tag-<%= tag.id %>" type="checkbox" name="event[tags][]" value="<%= tag.id %>" />
-        <label for="tag-<%= tag.id %>"><%= tag.name %></label>
-      <% end %>
+      <div class="tags">
+        <label>Tags</label>
+
+        <% Category.all.each do |category| %>
+          <div class="category-tags">
+            <p class="border"><%= category.name.capitalize %></p>
+            <%= f.collection_check_boxes(:tag_ids, category.tags, :id, :name) do |tag| %>
+              <%= tag.label { tag.check_box + " " + tag.text } %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
       <%= f.image_upload_field :logo, 'Logo', image_name: @event.logo.present? ? @event.logo : "DT-logo.svg", class: ['event-logo'] %>
       <%= f.hidden_field :logo %>

@@ -23,8 +23,8 @@
 <div class="detail-pair">
   <strong>Tags</strong>
   <% @event.tags.each do |tag| %>
-   <%= tag.name %>
-   <% end %>
+    <li class="tag <%= tag.category.name %>"><%= tag.name %></li>
+  <% end %>
 </div>
 
 <div class="detail-pair">
