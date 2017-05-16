@@ -6,5 +6,12 @@ namespace :admin do
       DeadlineMailService.send_deadline_mail
       puts "Done."
     end
+
+    desc "Send emails for passed deadlines to admins"
+    task :passed_deadline => :environment do
+      puts "Sending emails for passed deadlines to admins."
+      DeadlinePassedMailService.send_deadline_passed_mail
+      puts "Done."
+    end
   end
 end
