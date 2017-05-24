@@ -3,12 +3,12 @@ class AdminEventsController < ApplicationController
   before_action :require_admin
   before_action :set_s3_direct_post, only: [:edit, :update]
 
-	def index
+  def index
     @categorized_events = {
-      "Unapproved Events" => Event.unapproved.upcoming.order(deadline: :desc),
-      "Approved Events" => Event.approved.upcoming.order(deadline: :desc),
-      "Past Approved Events"=> Event.approved.past.order(deadline: :desc),
-      "Past Unapproved Events" => Event.unapproved.past.order(deadline: :desc)
+      "Unapproved Events" => Event.unapproved.upcoming.order(deadline: :asc),
+      "Approved Events" => Event.approved.upcoming.order(deadline: :asc),
+      "Past Approved Events"=> Event.approved.past.order(deadline: :asc),
+      "Past Unapproved Events" => Event.unapproved.past.order(deadline: :asc)
     }
   end
 

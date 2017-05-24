@@ -96,15 +96,24 @@ a {
     overflow: hidden;
     margin-right: 1em;
   }
+  .application-mail {
+    flex-basis: 40%;
+    overflow: hidden;
+    margin-right: 1em;
+    flex-grow: 1;
+  }
   p {
     margin: 0 0 1em;
   }
-  .application-mail {
-    flex-grow: 1;
-  }
   .event-name {
-      flex-basis: 13em;
-      white-space: nowrap;
-      overflow: hidden;
+    flex-basis: 20em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .application-process {
+    flex-basis: 12em;
+  }
+  .application-deadline {
+    flex-basis: 11em;
   }
 }
