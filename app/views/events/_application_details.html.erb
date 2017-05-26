@@ -1,0 +1,29 @@
+<section class="box">
+  <h2 class="box-title">Application Details</h2>
+
+  <% if @event.applicant_directions.present? %>
+    <div class="detail-pair">
+      <strong>Directions for Applicants</strong>
+      <div class="markdownize"><%= @event.applicant_directions %></div>
+    </div>
+  <% end %>
+
+  <div class="detail-pair">
+    <strong>Deadline for applications</strong>
+    <%= format_date(@event.deadline) %> (midnight UTC)
+  </div>
+
+  <div class="detail-pair">
+    <strong>Number of available diversity tickets</strong>
+    <%= pluralize(@event.number_of_tickets, "ticket") %>
+  </div>
+
+  <div class="detail-pair">
+    <strong>What's funded?</strong>
+    <div>
+      <%= span_for_funded('Ticket', @event.ticket_funded) %>
+      <%= span_for_funded('Accomodation', @event.accommodation_funded) %>
+      <%= span_for_funded('Travel', @event.travel_funded) %>
+    </div>
+  </div>
+</section>
