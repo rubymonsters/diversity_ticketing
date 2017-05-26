@@ -1,44 +1,59 @@
-<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Admin', admin_path %> > <%= @event.name %></p>
+<p class="breadcrumb">
+  <%= link_to 'Home', root_path %> > <%= link_to 'Admin', admin_path %> > <%= @event.name %>
+</p>
 
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
 
+<% unless @event.application_process == "application_by_organizer" %>
+  <section class="box">
+    <h2 class="box-title">Applications</h2>
+    <%= pluralize_highlight_count(@event.applications.count, "application") %> currently
+
+    <% if @event.applications.any? %>
+      <div class="detail-pair">
+       <strong>Applicants</strong>
+      </div>
+
+      <ul class="admin-list">
+        <% @event.applications.each do |application| %>
+          <li>
+            <p class="application-name">
+              <%= link_to application.name, event_application_path(@event, application) %>
+            </p>
+            <p class="application-mail">
+              <%= application.email %>
+            </p>
+            <p>
+              <%= link_to 'Delete', event_application_path(@event.id, application.id),
+                  method: :delete,
+                  data: {confirm: "Are you sure you want to delete this application?"},
+                  class: "icon-delete", title: "Delete application" %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+<% end %>
 
 <div class="two-columns">
-<section class="box">
-  <h2 class="box-title">Applications</h2>
-  <%= pluralize_highlight_count(@event.applications.count,"application") %> currently
+  <section class="box">
+    <h2 class="box-title">Organizer Details</h2>
+    <div class="detail-pair">
+      <strong>Name</strong>
+      <%= @event.organizer_name %>
+    </div>
+    <div class="detail-pair">
+      <strong>Email</strong>
+      <%= @event.organizer_email %>
+    </div>
+  </section>
 
-  <div class="detail-pair">
-   <strong>Applicants</strong>
-  </div>
-
-  <ul class="admin-list">
-    <% @event.applications.each do |application| %>
-      <li>
-        <p class="application-name"><%= link_to application.name, event_application_path(@event, application) %></p>
-        <p class="application-mail"><%= application.email %></p>
-        <p><%= link_to 'Delete', event_application_path(@event.id, application.id), method: :delete, data: { confirm: "Are you sure you want to delete this application?"},class: "icon-delete", title: "Delete application" %></p>
-      </li>
-
-    <% end %>
-  </ul>
-</section>
-<section class="box">
-  <h2 class="box-title">Organizer Details</h2>
-  <div class="detail-pair">
-    <strong>Name</strong>
-    <%= @event.organizer_name %>
-  </div>
-  <div class="detail-pair">
-    <strong>Email</strong>
-    <%= @event.organizer_email %>
-  </div>
-</section>
-<%= render :partial => "events/event" %>
-
+  <%= render partial: "events/event" %>
 </div>
 
 <div class="form_field">
-  <%= link_to "Edit event", edit_event_path(@event.id), :class => "btn btn-edit" %>
-  <%= link_to "Delete event", event_path(@event.id), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-delete" %>
+  <%= link_to "Edit event", edit_event_path(@event.id), class: "btn btn-edit" %>
+  <%= link_to "Delete event", event_path(@event.id), method: :delete,
+      data: {confirm: "Are you sure?"}, class: "btn btn-delete" %>
 </div>
