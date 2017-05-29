@@ -67,11 +67,11 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => ENV['POSTMARK_SMTP_SERVER'],
+    :address => ENV['MAILGUN_SMTP_SERVER'],
     :port => '25', # or 2525
     :domain => 'diversitytickets.org',
-    :user_name => ENV['POSTMARK_API_TOKEN'],
-    :password => ENV['POSTMARK_API_TOKEN'],
+    :user_name => ENV['MAILGUN_USER'],
+    :password => ENV['MAILGUN_PASSWORD'],
     :authentication => :cram_md5, # or :plain for plain-text authentication
     :enable_starttls_auto => true
   }
