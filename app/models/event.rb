@@ -13,6 +13,10 @@ class Event < ActiveRecord::Base
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
   validates :twitter_handle, format: { with: /\A@?\w+\z/ }, allow_nil: true
 
+  def self.application_via_diversitytickets
+    where.not(application_process: 'application_by_organizer')
+  end
+
   def self.approved
     where(approved: true)
   end

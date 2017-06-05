@@ -1,4 +1,7 @@
 Dear Admin,
 
-the new event <%= @event.name %> has been submitted. 
+the new event <%= @event.name %> has been submitted.
 
+Follow the link below to view details:
+
+<%= event_admin_url(@event) %>

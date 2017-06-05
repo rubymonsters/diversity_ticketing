@@ -5,6 +5,8 @@ class EventsControllerTest < ActionController::TestCase
     admin_user = make_admin
     sign_in_as(admin_user)
 
+    ActionMailer::Base.deliveries.clear
+
     post :create, event: make_event_form_params
 
     assert_equal "Thank you for submitting Event. We will review it shortly.", flash[:notice]
@@ -195,7 +197,7 @@ class EventsControllerTest < ActionController::TestCase
     post :create, event: event_params
 
     event = Event.find_by(name: "MonsterConf")
-    
+
     assert_equal user.id, event.organizer_id
   end
 
