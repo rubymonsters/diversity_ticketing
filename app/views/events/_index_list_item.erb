@@ -1,14 +1,19 @@
 <div class="box event">
   <h3 class="conf-title">
     <div class="conflogo--medium"><%= event_image event %></div>
-    <%= link_to event.name, event_path(:id => event.id) %>
+    <%= link_to event.name, event_path(id: event.id) %>
   </h3>
+
+  <p><%= icon('map-marker', event.location) %></p>
+
   <p class="markdownize"><%= event.description %></p>
 
   <% if event.application_process == 'application_by_organizer' %>
-    <%= button_to "Apply at #{event.name}", event.application_link, method: :get, class:"btn btn-save btn-external", disabled: event.closed? %>
+    <%= button_to "Apply at #{event.name}", event.application_link, method: :get,
+        class: "btn btn-save btn-external", disabled: event.closed? %>
   <% else %>
-    <%= button_to 'Apply', new_event_application_path(:event_id => event.id), method: :get, class: "btn btn-save", disabled: event.closed? %>
+    <%= button_to 'Apply', new_event_application_path(event_id: event.id), method: :get,
+        class: "btn btn-save", disabled: event.closed? %>
   <% end %>
 
   <% if event.closed? %>
