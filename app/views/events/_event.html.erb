@@ -16,18 +16,18 @@
 <% if @event.twitter_handle.present? %>
   <div class="detail-pair">
     <strong>Twitter</strong>
-    <%= link_to "@#{@event.twitter_handle}", "https://twitter.com/#{@event.twitter_handle}" %>
+    <%= link_to "@#{@event.twitter_handle}", "https://twitter.com/#{@event.twitter_handle}", target: "_blank" %>
   </div>
 <% end %>
 
 <div class="detail-pair">
   <strong>Website</strong>
-  <%= link_to @event.website, "#{@event.website}" %>
+  <%= link_to @event.website, "#{@event.website}", target: "_blank" %>
 </div>
 
 <div class="detail-pair">
   <strong>Code of Conduct link</strong>
-  <%= link_to @event.code_of_conduct, "#{@event.code_of_conduct}" %>
+  <%= link_to @event.code_of_conduct, "#{@event.code_of_conduct}", target: "_blank" %>
 </div>
 
 <div class="detail-pair">
@@ -62,7 +62,7 @@
         We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
       <% elsif @event.application_process == 'application_by_organizer' %>
         We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app:
-        <%= link_to @event.application_link, "#{@event.application_link}" %>
+        <%= link_to @event.application_link, "#{@event.application_link}", target: "_blank" %>
       <% end %>
     </div>
   </section>
