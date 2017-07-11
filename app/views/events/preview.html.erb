@@ -43,6 +43,10 @@
     <% @event.tags.map(&:id).each do |id| %>
       <%= hidden_field_tag "event[tag_ids][]", id %>
     <% end %>
+    <%= f.fields_for :tags do |tags_form| %>
+      <%= tags_form.hidden_field :name %>
+      <%= tags_form.hidden_field :category_id %>
+    <% end %>
 
     <div class="form_field">
       <a class="btn btn-edit" href="javascript:history.back()">Edit event</a>
