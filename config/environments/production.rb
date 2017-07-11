@@ -66,14 +66,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'diversitytickets.org' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_options = { from: 'email@notifications.diversitytickets.org' }
   config.action_mailer.smtp_settings = {
     :address => ENV['MAILGUN_SMTP_SERVER'],
     :port => 587,
     :domain => 'notifications.diversitytickets.org',
     :user_name => ENV['MAILGUN_SMTP_USERNAME'],
     :password => ENV['MAILGUN_SMTP_PASSWORD'],
-    :authentication => :plain, # or :plain for plain-text authentication
+    :authentication => :plain,
     :enable_starttls_auto => true
   }
 
