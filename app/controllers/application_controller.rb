@@ -6,8 +6,12 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
+  def require_admin
+    redirect_to root_path unless admin_user?
+  end
+
   def admin_user?
-  	signed_in? && current_user.admin?
+    signed_in? && current_user.admin?
   end
 
   helper_method :admin_user?

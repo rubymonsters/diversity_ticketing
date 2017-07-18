@@ -1,0 +1,22 @@
+<h1 class="page-title">Tags Managment</h1>
+
+<div class="two-columns">
+  <% @tags.each do |category, tags| %>
+    <div class="box">
+      <h2><%= category.name.capitalize %></h2>
+
+      <ul class="tags-list">
+        <% tags.each do |tag| %>
+          <li>
+            <%= tag.name %>
+            <%= link_to url_for(action: :destroy, id: tag.id), method: :delete,
+                data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+              <span class="icon-delete" aria-label="trashcan icon"></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div></div>
+  <% end %>
+</div>
