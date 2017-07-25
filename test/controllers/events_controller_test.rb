@@ -238,20 +238,6 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "event owner cannot reach edit form if event approved" do
-    user = make_user(admin: false)
-    sign_in_as(user)
-    event = make_event(
-      organizer_id: user.id,
-      approved: true,
-      deadline: 5.days.from_now
-      )
-
-    get :edit, id: event.id
-
-    assert_redirected_to event_url(event)
-  end
-
   test "event owner cannot reach edit form if event closed" do
     user = make_user(admin: false)
     sign_in_as(user)
