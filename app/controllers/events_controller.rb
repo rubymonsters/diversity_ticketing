@@ -52,7 +52,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.uneditable_by?(current_user)
-      redirect_to event_url(@event), alert: "Your event can't be edited, because it has already been approved, or the deadline has passed."
+      redirect_to event_url(@event), alert: "Your event can't be edited, because the deadline has passed."
     end
   end
 
