@@ -1,21 +1,23 @@
-<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %></p>
+<p class="breadcrumb">
+  <%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
+</p>
 
 <h1><span class="conflogo--medium"><%= event_image @event %></span><%= @event.name %></h1>
 
 <div class="two-columns">
-<%= render :partial => "events/event" %>
+  <%= render partial: "events/event" %>
 
-<% if !@event.approved && (@event.organizer_id == current_user.id || current_user.admin?) %>
-  <p>
-    <%= link_to "Edit", edit_event_path(@event), id: @event.id, class: 'btn btn-save btn-external' %>
-  </p>
-<% elsif @event.application_process == 'application_by_organizer' %>
-  <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get, class:'btn btn-save btn-external', disabled: @event.closed? %>
-<% else %>
-  <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class:'btn btn-save', disabled: @event.closed? %>
-<% end %>
+  <% if current_user && (@event.organizer_id == current_user.id || current_user.admin?) %>
+    <%= link_to "Edit", edit_event_path(@event), id: @event.id, class: 'btn btn-edit' %>
+  <% end %>
 
-<% if @event.closed? %>
+  <% if @event.application_process == 'application_by_organizer' %>
+    <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get, class: 'btn btn-save btn-external', disabled: @event.closed? %>
+  <% else %>
+    <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get, class: 'btn btn-save', disabled: @event.closed? %>
+  <% end %>
+
+  <% if @event.closed? %>
     <span class="hint">Sorry, applications for <%= @event.name %> are closed.</span>
-<% end %>
+  <% end %>
 </div>

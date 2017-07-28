@@ -83,7 +83,7 @@ class Event < ActiveRecord::Base
   end
 
   def editable_by?(user)
-    user.admin? || (owned_by?(user) && !approved? && open?)
+    user.admin? || (owned_by?(user) && open?)
   end
 
   def uneditable_by?(user)
