@@ -16,6 +16,11 @@
           </li>
         <% end %>
       </ul>
+
+      <%= form_for Tag.new, url: {action: "create"} do |f| %>
+        <%= f.text_field :name %>
+        <%= f.hidden_field :category_id, value: category.id %>
+      <% end %>
     </div>
     <div></div>
   <% end %>
