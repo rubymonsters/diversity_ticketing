@@ -25,13 +25,6 @@
             <%= f.collection_check_boxes(:tag_ids, category.tags, :id, :name) do |tag| %>
               <%= tag.label { tag.check_box + " " + tag.text } %>
             <% end %>
-
-            <%= f.fields_for :tags do |tags_form| %>
-              <p>Suggest a new tag:</p>
-              <%= tags_form.text_field :name %>
-              <%= tags_form.hidden_field :category_id, value: category.id %>
-            <% end %>
-
           </div>
         <% end %>
       </div>
