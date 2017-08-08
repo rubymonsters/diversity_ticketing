@@ -30,20 +30,20 @@ en:
         application:
           attributes:
             attendee_info_1:
-              blank: "Please state why you want to attend this event"
+              blank: "Veuillez indiquer pourquoi vous souhaitez participer à cet événement"
             attendee_info_2:
-              blank: "Please state why you're applying for a diversity ticket"
+              blank: "Veuillez indiquer pourquoi vous demandez un billet de diversité"
         event:
           attributes:
             website:
-              invalid: "should be a full URL, e.g. https://myconference.com"
+              invalid: "doit être une URL complète, ex: https://myconference.com"
             code_of_conduct:
-              invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
+              invalid: "doit être une URL complète, ex: https://myconference.com/code_of_conduct"
   users:
     edit:
-      title: "Edit your credentials"
+      title: "Modifier vos informations d'identification"
     show:
-      title: "Your Events"
-      approved: "Approved"
-      unapproved: "Not approved so far"
-      past: "Past"
+      title: "Vos événements"
+      approved: "Approuvé"
+      unapproved: "Pas encore approuvé"
+      past: "Passé"
