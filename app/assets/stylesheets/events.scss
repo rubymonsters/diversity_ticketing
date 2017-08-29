@@ -93,6 +93,9 @@
     justify-content: space-between;
     border-bottom: none;
     margin-bottom: 0;
+    p:not(:last-child) {
+      margin-right: 1em;
+    }
   }
   p {
     margin: 0 0 1em;

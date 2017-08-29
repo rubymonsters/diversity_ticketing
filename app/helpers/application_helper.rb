@@ -15,13 +15,10 @@ module ApplicationHelper
   end
 
   def pluralize_highlight_count(count, word)
-
     output = Array.new
     output << "<span class='highlight'>#{count}</span>"
 
-    if count != 0
-      count == 1 ? output << "#{word}" : output << "#{word.pluralize}"
-    end
+    count == 1 ? output << "#{word}" : output << "#{word.pluralize}"
 
     output.join(' ').html_safe
   end
