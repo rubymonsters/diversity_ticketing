@@ -1,5 +1,10 @@
 <h1>Admin Page</h1>
 
+<p>
+  <%= link_to 'Download Events Report', admin_path(format: :csv),
+    class: "btn btn-save", title: "Download Events Report" %>
+</p>
+
 <% @categorized_events.each do |heading, events| %>
   <div class="box">
     <h2><%= heading %></h2>

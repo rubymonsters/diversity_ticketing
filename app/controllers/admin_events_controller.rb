@@ -1,3 +1,5 @@
+require "report_exporter"
+
 class AdminEventsController < ApplicationController
   before_action :get_event, only: [:show, :approve, :edit, :update, :destroy]
   before_action :require_admin
@@ -10,6 +12,11 @@ class AdminEventsController < ApplicationController
       "Past Approved Events"=> Event.approved.past.order(:deadline),
       "Past Unapproved Events" => Event.unapproved.past.order(:deadline)
     }
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data ReportExporter.events_report, filename: "events_report_#{DateTime.now.strftime("%F")}.csv" }
+    end
   end
 
   def show
