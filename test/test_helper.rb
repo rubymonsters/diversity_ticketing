@@ -10,6 +10,7 @@ require 'rails/test_help'
 require 'minitest/autorun'
 require 'clearance/test_unit'
 require 'mocha/mini_test'
+require 'minitest/rails/capybara'
 
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
