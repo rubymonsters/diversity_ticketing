@@ -38,6 +38,15 @@ class ActiveSupport::TestCase
     User.create!(user_params)
   end
 
+  def sign_in_as_admin
+    visit '/'
+    click_link 'Sign in'
+
+    fill_in 'Email', with: 'admin@woo.hoo'
+    fill_in 'Password', with: 'awesome_password'
+    click_button 'Sign in'
+  end
+
   def make_event_params(event_params = {})
     defaults = {
       name: 'Event',
