@@ -1,5 +1,5 @@
 class AddCategoryIdToTags < ActiveRecord::Migration
   def change
-    add_column :tags, :category_id, :integer
+    add_reference :tags, :category, index: true
   end
 end
