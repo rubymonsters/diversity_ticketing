@@ -21,7 +21,7 @@ class AdminEventsController < ApplicationController
 
   def approve
     @event.toggle(:approved)
-    @event.save
+    @event.save!
     if @event.approved?
       TwitterWorker.announce_event(@event)
     end

@@ -10,6 +10,7 @@ require 'rails/test_help'
 require 'minitest/autorun'
 require 'clearance/test_unit'
 require 'mocha/mini_test'
+require 'minitest/rails/capybara'
 
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
@@ -35,6 +36,15 @@ class ActiveSupport::TestCase
     }
     user_params = defaults.merge(user_params)
     User.create!(user_params)
+  end
+
+  def sign_in_as_admin
+    visit '/'
+    click_link 'Sign in'
+
+    fill_in 'Email', with: 'admin@woo.hoo'
+    fill_in 'Password', with: 'awesome_password'
+    click_button 'Sign in'
   end
 
   def make_event_params(event_params = {})

@@ -51,6 +51,8 @@ gem 'twitter'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'minitest-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -74,6 +76,7 @@ end
 
 group :test do
   gem 'minitest-spec-rails'
+  gem 'minitest-rails-capybara'
 end
 
 gem 'simplecov', require: false, group: :test
