@@ -15,7 +15,6 @@ namespace :admin do
     end
   end
 
- 
   namespace :categories do
     desc "create categories"
     task :create => :environment do

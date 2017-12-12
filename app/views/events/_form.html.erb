@@ -26,7 +26,7 @@
               <%= tag.label { tag.check_box + " " + tag.text } %>
             <% end %>
 
-            <p class="hint"><%= link_to "Can’t find the tag you want? Suggest a new one.", faq_path, target: "_blank" %></p>
+            <p class="hint"><%= link_to "Can’t find the tag you want? Suggest a new one.", faq_path(anchor: "conf_5"), target: "_blank" %></p>
           </div>
         <% end %>
       </div>

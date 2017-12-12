@@ -1,31 +1,49 @@
 # category:
 #   - tag
 
-# You can add categories or tags, 
-# they will be loaded into the database when running 'rake admin:categories:create'. 
+# You can add categories or tags,
+# they will be loaded into the database when running 'rake admin:categories:create'.
 # You can't delete or change them from here.
 
-programming:
-  - Java 
-  - Ruby 
-  - JavaScript
-  - Elixir 
+programming language:
+  - C
+  - C++
+  - C#
   - Clojure
-  - C++ 
-  - CSS
-  - React 
-  - Python 
-  - Erlang 
-  - Rails 
-  - Rust 
+  - Crystal
+  - Elixir
+  - Elm
+  - Erlang
+  - F#
+  - Go
+  - Groovy
+  - Haskell
+  - Idris
+  - Java
+  - JavaScript+
+  - Julia
+  - Kotlin
+  - Lisp
+  - Lua
+  - Objective-C
+  - OCaml
+  - Perl
+  - PHP
+  - Pony
+  - Prolog
+  - Python
+  - R
+  - Rust
+  - Scala
+  - Swift
 
 language:
-  - english 
-  - german 
-  - french 
-  - spanish
-  - japanese
-  - chinese 
-  - russian 
-  - portuguese 
-  - polish
+  - English
+  - German
+  - French
+  - Spanish
+  - Japanese
+  - Chinese
+  - Russian
+  - Portuguese
+  - Polish
