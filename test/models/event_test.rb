@@ -177,7 +177,7 @@ class EventTest < ActiveSupport::TestCase
 
     it "event can be saved with no twitter handle" do
       event = make_event
-      assert_equal event.twitter_handle, nil
+      assert_nil event.twitter_handle
     end
   end
 end
