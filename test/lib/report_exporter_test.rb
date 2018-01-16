@@ -34,7 +34,7 @@ class ReportExporterTest < ActiveSupport::TestCase
 
       assert_equal(report[0], "Event ID,Name,City,Country,Start Date,End Date,Application Process,"\
         "Number of Tickets,Number of Applications")
-      assert_equal(report[1], nil)
+      assert_nil(report[1])
     end
 
     it 'does not include events where applications are still open' do
@@ -44,7 +44,7 @@ class ReportExporterTest < ActiveSupport::TestCase
 
       assert_equal(report[0], "Event ID,Name,City,Country,Start Date,End Date,Application Process,"\
         "Number of Tickets,Number of Applications")
-      assert_equal(report[1], nil)
+      assert_nil(report[1])
     end
   end
 end
