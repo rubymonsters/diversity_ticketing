@@ -82,7 +82,7 @@
         <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app.
 
         <div class="form_field indent">
-          <p><%= f.form_field :text_field, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
+          <p><%= f.form_field :text_area, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
         </div>
 
         <% end %>
