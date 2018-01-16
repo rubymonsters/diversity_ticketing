@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :require_admin
 
   def index
-    @tags = Tag.includes(:category).group_by(&:category)
+    @tags = Tag.includes(:category).order(:name).group_by(&:category)
   end
 
   def create

@@ -22,7 +22,7 @@
         <% Category.all.each do |category| %>
           <div class="category-tags">
             <p class="border"><%= category.name.capitalize %></p>
-            <%= f.collection_check_boxes(:tag_ids, category.tags, :id, :name) do |tag| %>
+            <%= f.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
               <%= tag.label { tag.check_box + " " + tag.text } %>
             <% end %>
 
