@@ -7,15 +7,28 @@ class EventsControllerTest < ActionController::TestCase
 
     ActionMailer::Base.deliveries.clear
 
-    post :create, event: make_event_form_params
+    post :create, event: make_event_form_params({
+      name: 'Ruby Conf',
+      organizer_name: 'Ruby Fakename',
+      organizer_email: 'ruby@example.com',
+      organizer_email_confirmation: 'ruby@example.com',
+      application_process: 'selection_by_travis'
+    })
 
-    assert_equal "Thank you for submitting Event. We will review it shortly.", flash[:notice]
+    assert_equal "Thank you for submitting Ruby Conf. We will review it shortly.", flash[:notice]
     assert_redirected_to events_path
+
     admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ["admin@woo.hoo"]}
     assert_equal admin_email.subject, "A new event has been submitted."
-    organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ["klaus@example.com"]}
+    assert_match admin_email.body, /Ruby Conf/
+    assert_match admin_email.body, /Organizer Name: Ruby Fakename/
+    assert_match admin_email.body, /Organizer Email: ruby@example.com/
+    assert_match admin_email.body, /Application Process: Selection by travis/
+
+    organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ['ruby@example.com']}
     assert_equal organizer_email.subject, "You submitted a new event."
-    assert_equal Event.last.name, 'Event'
+
+    assert_equal Event.last.name, 'Ruby Conf'
     assert_equal Event.last.approved, false
   end
 
