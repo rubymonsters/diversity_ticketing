@@ -2,6 +2,10 @@ Dear Admin,
 
 the new event <%= @event.name %> has been submitted.
 
+Organizer Name: <%= @event.organizer_name %>
+Organizer Email: <%= @event.organizer_email %>
+Application Process: <%= @event.application_process.humanize %>
+
 Follow the link below to view details:
 
 <%= event_admin_url(@event) %>
