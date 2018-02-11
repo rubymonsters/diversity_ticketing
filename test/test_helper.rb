@@ -21,8 +21,8 @@ class ActiveSupport::TestCase
 
   def make_user(user_params = {})
     defaults = {
-      email: "awesome@example.org",
-      password: "awesome_password"
+      email: 'awesome@example.org',
+      password: 'awesome_password'
     }
     user_params = defaults.merge(user_params)
     User.create!(user_params)
@@ -30,8 +30,8 @@ class ActiveSupport::TestCase
 
   def make_admin(user_params = {})
     defaults = {
-      email: "admin@woo.hoo",
-      password: "awesome_password",
+      email: 'admin@woo.hoo',
+      password: 'awesome_password',
       admin: true
     }
     user_params = defaults.merge(user_params)
@@ -105,6 +105,7 @@ class ActiveSupport::TestCase
     application_params = defaults.merge(application_params)
     Application.create!(application_params)
   end
+
   # Add more helper methods to be used by all tests here...
 end
 
@@ -119,4 +120,3 @@ module Minitest::Assertions
     refute_equal [], event.errors[attribute]
   end
 end
-

@@ -34,7 +34,7 @@ feature 'Admin Events' do
   before do
     make_admin
     sign_in_as_admin
-    event = make_event(name: "The Event", approved: false)
+    event = make_event(name: 'The Event', approved: false)
     TwitterWorker.expects(:announce_event).with(event).once
   end
 
