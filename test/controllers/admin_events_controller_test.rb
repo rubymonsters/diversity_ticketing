@@ -1,48 +1,71 @@
 require 'test_helper'
 
 class AdminEventsControllerTest < ActionController::TestCase
-  test 'protect admin index from anonymous visitors, redirects to sign in' do
-    get :index
+  describe '#index' do
+    it 'protect admin index from anonymous visitors, redirects to sign in' do
+      get :index
 
-    assert_redirected_to sign_in_path
+      assert_redirected_to sign_in_path
+    end
+
+    it 'protect admin index from logged-in non-admins, redirects to root' do
+      user = make_user
+      sign_in_as(user)
+
+      get :index
+
+      assert_redirected_to root_path
+    end
+
+    it 'shows admin index to logged-in admins' do
+      user = make_user(admin: true)
+      sign_in_as(user)
+
+      get :index
+
+      assert_response :success
+    end
   end
 
-  test 'protect admin index from logged-in non-admins, redirects to root' do
-    user = make_user
-    sign_in_as(user)
+  describe '#approve' do
+    it 'correctly approves event' do
+      event = make_event
+      user = make_user(admin: true)
+      sign_in_as(user)
 
-    get :index
+      TwitterWorker.expects(:announce_event).with(event).once
 
-    assert_redirected_to root_path
-  end
+      post :approve, id: event.id
 
-  test 'shows admin index to logged-in admins' do
-    user = make_user(admin: true)
-    sign_in_as(user)
+      event.reload
 
-    get :index
+      assert_equal(true, event.approved?)
+    end
 
-    assert_response :success
-  end
+    it 'correctly redirects non-admin users' do
+      event = make_event
+      user = make_user(admin: false)
+      sign_in_as(user)
 
-  # The following test should
-  # - make an event
-  # - make an admin user
-  # - sign in as that user
-  # - approve the event
-  # - show the correct results: event is approved (default: unapproved)
-  # - check if a tweet was made
-  test 'approve action correctly approves event' do
-    event = make_event
-    user = make_user(admin: true)
-    sign_in_as(user)
+      post :approve, id: event.id
 
-    TwitterWorker.expects(:announce_event).with(event).once
+      assert_redirected_to root_path
 
-    post :approve, id: event.id
+      event.reload
 
-    event.reload
+      assert_equal(false, event.approved?)
+    end
 
-    assert_equal(true, event.approved?)
+    it 'correctly redirects visitors' do
+      event = make_event
+
+      post :approve, id: event.id
+
+      assert_redirected_to sign_in_path
+
+      event.reload
+
+      assert_equal(false, event.approved?)
+    end
   end
 end

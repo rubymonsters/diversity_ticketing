@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+  before_action :require_admin, only: [:show, :destroy]
   before_action :get_event, only: [:show, :new, :create, :destroy]
   skip_before_action :require_login, only: [:new, :create]
 
@@ -6,13 +7,13 @@ class ApplicationsController < ApplicationController
     @application = @event.applications.find(params[:id])
   end
 
-	def new
+  def new
     if @event.application_process == 'application_by_organizer'
       redirect_to @event
     else
       @application = @event.applications.build
     end
-	end
+  end
 
   def create
     if @event.application_process == 'application_by_organizer'
