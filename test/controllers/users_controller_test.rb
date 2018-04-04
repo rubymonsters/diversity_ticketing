@@ -68,4 +68,48 @@ class UsersControllerTest < ActionController::TestCase
       assert_redirected_to sign_in_url
     end
   end
+
+  describe '#show' do
+    it 'does not allow logged-in user to see anyone else\'s data' do
+      user1 = make_user(email: 'a@example.org')
+      user2 = make_user(email: 'b@example.org')
+      sign_in_as(user1)
+
+      get :show, id: user2.id
+
+      assert_response :forbidden
+    end
+
+    it 'does not allow anonymous user to see anyone\'s data' do
+      user = make_user(email: 'a@example.org')
+
+      get :show, id: user.id
+
+      assert_redirected_to sign_in_url
+    end
+
+    it 'shows categorized events for the user' do
+      user = make_user(email: 'a@example.org')
+      approved_event = make_event(approved: true, organizer_id: user.id, end_date: 10.days.from_now)
+      unapproved_event = make_event(organizer_id: user.id, end_date: 10.days.from_now)
+      past_event = make_event(organizer_id: user.id, start_date: Time.now.yesterday, end_date: Time.now.yesterday)
+
+      categorized_user_events = {
+        approved: user.events.approved.upcoming,
+        unapproved: user.events.unapproved.upcoming,
+        past: user.events.past
+      }
+
+      hash = { approved: approved_event, unapproved: unapproved_event, past: past_event }
+
+      sign_in_as(user)
+
+      get :show, id: user.id
+
+      pp categorized_user_events[:approved].to_sql
+      pp approved_event.to_sql
+
+      assert_same categorized_user_events[:approved], approved_event.to_sql
+    end
+  end
 end
