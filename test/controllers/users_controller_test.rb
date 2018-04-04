@@ -100,16 +100,14 @@ class UsersControllerTest < ActionController::TestCase
         past: user.events.past
       }
 
-      hash = { approved: approved_event, unapproved: unapproved_event, past: past_event }
-
       sign_in_as(user)
 
       get :show, id: user.id
 
-      pp categorized_user_events[:approved].to_sql
-      pp approved_event.to_sql
-
-      assert_same categorized_user_events[:approved], approved_event.to_sql
+      assert categorized_user_events.length, 3
+      assert categorized_user_events[:approved].include?(approved_event)
+      assert categorized_user_events[:unapproved].include?(unapproved_event)
+      assert categorized_user_events[:past].include?(past_event)
     end
   end
 end
