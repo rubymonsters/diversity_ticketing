@@ -47,6 +47,28 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
   end
 
+  describe '#new' do
+    it 'redirects to the event if the application process is run by the organizer' do
+      event = make_event(application_process: 'application_by_organizer',
+                         application_link: 'http://www.something.org')
+
+      post :new,
+        event_id: event.id
+
+      assert_redirected_to event
+    end
+
+    it 'adds a new application if the selection process is not run by organizer' do
+      event = make_event
+
+      post :new,
+        event_id: event.id
+
+      assert_response :success
+    end
+
+  end
+
   describe '#create' do
     it 'proper redirects after successful application' do
       event = make_event
@@ -62,6 +84,16 @@ class ApplicationsControllerTest < ActionController::TestCase
           terms_and_conditions: '1',
           event: event
         }
+
+      assert_redirected_to event
+    end
+
+    it 'redirects to the event if the application process is run by the organizer' do
+      event = make_event(application_process: 'application_by_organizer',
+                         application_link: 'http://www.something.org')
+
+      post :create,
+        event_id: event.id
 
       assert_redirected_to event
     end
