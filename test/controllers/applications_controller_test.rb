@@ -134,7 +134,6 @@ class ApplicationsControllerTest < ActionController::TestCase
       user = make_user(admin: true)
       sign_in_as(user)
 
-
       event = make_event
       application = make_application(event)
 
