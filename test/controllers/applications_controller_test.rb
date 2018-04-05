@@ -134,7 +134,6 @@ class ApplicationsControllerTest < ActionController::TestCase
       user = make_user(admin: true)
       sign_in_as(user)
 
-
       event = make_event
       application = make_application(event)
 
@@ -146,7 +145,6 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'proper redirects non-admin users' do
       user = make_user(admin: false)
       sign_in_as(user)
-
 
       event = make_event
       application = make_application(event)
