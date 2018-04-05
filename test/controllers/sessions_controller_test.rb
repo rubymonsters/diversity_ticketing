@@ -10,7 +10,7 @@ class SessionsControllerTest < ActionController::TestCase
       assert_redirected_to :root
     end
 
-    it 'shows an unauthorized response when the user is not authenticated' do
+    it 'shows an unauthorized status (401) when the user is not authenticated' do
       post :create, session: { email: 'email@test.org' }
 
       assert_equal 'Bad email or password.', flash[:alert]
