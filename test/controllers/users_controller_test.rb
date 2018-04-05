@@ -104,7 +104,7 @@ class UsersControllerTest < ActionController::TestCase
 
       get :show, id: user.id
 
-      assert categorized_user_events.length, 3
+      assert_equal categorized_user_events.length, 3
       assert categorized_user_events[:approved].include?(approved_event)
       assert categorized_user_events[:unapproved].include?(unapproved_event)
       assert categorized_user_events[:past].include?(past_event)
