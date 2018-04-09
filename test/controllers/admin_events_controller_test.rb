@@ -79,6 +79,7 @@ class AdminEventsControllerTest < ActionController::TestCase
       get :show, id: event.id
 
       assert_response :success
+      assert_template :show
     end
 
     it 'correctly redirects non-admin users' do
@@ -111,12 +112,14 @@ class AdminEventsControllerTest < ActionController::TestCase
   end
 
   describe '#destroy' do
-    it 'destroys event on delete and redirects to admin page' do
+    it 'destroys event on delete and redirects to admin page if user is admin' do
       admin = make_user(admin: true)
       event = make_event
       events = Event.all
 
       sign_in_as(admin)
+
+      assert_equal 1, events.count
 
       get :destroy, id: event.id
 
