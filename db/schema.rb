@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20161008115835) do
     t.boolean  "ticket_funded",        default: false, null: false
     t.boolean  "accommodation_funded", default: false, null: false
     t.boolean  "travel_funded",        default: false, null: false
-    t.text     "applicant_directions"
     t.text     "logo"
+    t.text     "applicant_directions"
     t.text     "application_link"
+    t.integer  "organizer_id"
     t.string   "application_process"
     t.string   "twitter_handle"
     t.string   "state_province"
-    t.integer  "organizer_id"
   end
 
   add_index "events", ["organizer_id"], name: "index_events_on_organizer_id", using: :btree

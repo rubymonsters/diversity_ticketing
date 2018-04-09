@@ -180,4 +180,18 @@ class EventTest < ActiveSupport::TestCase
       assert_nil event.twitter_handle
     end
   end
+
+  describe 'to_csv' do
+    it 'loads the correct information in the csv file' do
+      event = make_event
+      application = make_application(event)
+
+      event.to_csv
+
+      assert event.to_csv.include?(application.email)
+      assert event.to_csv.include?(application.name)
+      assert event.to_csv.include?(application.attendee_info_1)
+      assert event.to_csv.include?(application.attendee_info_2)
+    end
+  end
 end
