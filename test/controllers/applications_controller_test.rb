@@ -52,8 +52,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event(application_process: 'application_by_organizer',
                          application_link: 'http://www.something.org')
 
-      post :new,
-        event_id: event.id
+      get :new, event_id: event.id
 
       assert_redirected_to event
     end
@@ -61,8 +60,7 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'adds a new application if the selection process is not run by organizer' do
       event = make_event
 
-      post :new,
-        event_id: event.id
+      get :new, event_id: event.id
 
       assert_response :success
     end
@@ -92,8 +90,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event(application_process: 'application_by_organizer',
                          application_link: 'http://www.something.org')
 
-      post :create,
-        event_id: event.id
+      post :create, event_id: event.id
 
       assert_redirected_to event
     end
@@ -130,37 +127,49 @@ class ApplicationsControllerTest < ActionController::TestCase
   end
 
   describe '#destroy' do
-    it 'proper redirects after successful deletion' do
+    it 'properly redirects after successful deletion' do
       user = make_user(admin: true)
       sign_in_as(user)
 
       event = make_event
       application = make_application(event)
+      applications = event.applications
+
+      assert_equal 1, applications.count
 
       delete :destroy, event_id: event.id, id: application.id
 
       assert_redirected_to event_admin_path(event)
+      assert_equal 0, applications.count
     end
 
-    it 'proper redirects non-admin users' do
+    it 'properly redirects non-admin users' do
       user = make_user(admin: false)
       sign_in_as(user)
 
       event = make_event
       application = make_application(event)
+      applications = event.applications
+
+      assert_equal 1, applications.count
 
       delete :destroy, event_id: event.id, id: application.id
 
       assert_redirected_to root_path
+      assert_equal 1, applications.count
     end
 
     it 'proper redirects visitors' do
       event = make_event
       application = make_application(event)
+      applications = event.applications
+
+      assert_equal 1, applications.count
 
       delete :destroy, event_id: event.id, id: application.id
 
       assert_redirected_to sign_in_path
+      assert_equal 1, applications.count
     end
   end
 end

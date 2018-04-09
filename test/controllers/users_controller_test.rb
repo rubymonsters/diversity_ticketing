@@ -81,7 +81,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     it 'does not allow anonymous user to see anyone\'s data' do
-      user = make_user(email: 'a@example.org')
+      user = make_user
 
       get :show, id: user.id
 
@@ -89,7 +89,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     it 'shows categorized events for the user' do
-      user = make_user(email: 'a@example.org')
+      user = make_user
       approved_event = make_event(approved: true, organizer_id: user.id, end_date: 10.days.from_now)
       unapproved_event = make_event(organizer_id: user.id, end_date: 10.days.from_now)
       past_event = make_event(organizer_id: user.id, start_date: Time.now.yesterday, end_date: Time.now.yesterday)

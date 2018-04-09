@@ -351,7 +351,7 @@ class EventsControllerTest < ActionController::TestCase
       assert_template :preview
     end
 
-    it 'loads new view with logged-in user and invalid event' do
+    it 'loads new view with logged-in user and invalid event params' do
       user = make_user
       event_params = { organizer_email: 'email.de' }
 
@@ -508,7 +508,7 @@ class EventsControllerTest < ActionController::TestCase
       assert_template :edit
     end
 
-    it 'renders 403 when unauthorized user tries to update event info' do
+    it 'renders a forbidden 403 status code when unauthorized user tries to update event info' do
       user = make_user
       organizer = make_user( email: 'other@example.org' )
       event = make_event( organizer_id: organizer.id )
@@ -517,7 +517,8 @@ class EventsControllerTest < ActionController::TestCase
 
       put :update, id: event.id, event: { name: 'Fakename' }
 
-      assert_response(403)
+      assert_response :forbidden
+      assert_equal event.name, 'Event'
     end
   end
 end

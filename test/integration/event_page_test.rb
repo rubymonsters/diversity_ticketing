@@ -27,7 +27,7 @@ feature 'Event' do
     assert page.body.include?('event-default')
   end
 
-  test 'shows Your events in the breadcrumb is the user is an organizer' do
+  test 'shows Your events in the breadcrumb if the user is an organizer' do
     sign_in_as_user
     make_event(name: 'The Event', approved: true, organizer_id: @user.id)
 
@@ -38,7 +38,7 @@ feature 'Event' do
     assert page.text.include?('Your Events')
   end
 
-  test 'shows Events in the breadcrumb is the user is not an organizer' do
+  test 'shows Events in the breadcrumb if the user is not an organizer' do
     sign_in_as_user
     make_event(name: 'The Event', approved: true)
 
@@ -49,7 +49,7 @@ feature 'Event' do
     assert page.text.include?('Events')
   end
 
-  test 'shows Admin in the breadcrumb is the user is an Admin' do
+  test 'shows Admin in the breadcrumb if the user is an Admin' do
     sign_in_as_admin
     make_event(name: 'The Event', approved: true, organizer_id: @user.id)
 
