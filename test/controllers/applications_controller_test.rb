@@ -126,7 +126,7 @@ class ApplicationsControllerTest < ActionController::TestCase
   end
 
   describe '#destroy' do
-    it 'proper redirects after successful deletion' do
+    it 'properly redirects after successful deletion' do
       user = make_user(admin: true)
       sign_in_as(user)
 
@@ -139,7 +139,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       assert_redirected_to event_admin_path(event)
     end
 
-    it 'proper redirects non-admin users' do
+    it 'properly redirects non-admin users' do
       user = make_user(admin: false)
       sign_in_as(user)
 
