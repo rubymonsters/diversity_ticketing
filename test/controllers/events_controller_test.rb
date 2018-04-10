@@ -335,14 +335,15 @@ class EventsControllerTest < ActionController::TestCase
       assert_redirected_to sign_in_path
     end
 
-    it 'loads correctly with logged-in user' do
+    it 'loads preview view correctly with logged-in user' do
       user = make_user
-      sign_in_as(user)
       event_params = make_event_params
+
+      sign_in_as(user)
 
       post :preview, event: event_params
 
-      assert_response :success
+      assert_template :preview
     end
   end
 
