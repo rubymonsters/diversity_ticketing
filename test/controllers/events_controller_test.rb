@@ -313,6 +313,19 @@ class EventsControllerTest < ActionController::TestCase
         {count: 1, value: 'Apply', disabled: true},
         "This page should contain disabled 'Apply' button"
     end
+
+    it 'redirects back and sends alert if event is not approved and current_user is not organizer' do
+      user = make_user
+      event = make_event(approved: false)
+      request.env["HTTP_REFERER"] = 'http://www.somewhere.net'
+
+      sign_in_as(user)
+
+      get :show, id: event.id
+
+      assert_equal 'You are not allowed to access this event.', flash[:alert]
+      assert_redirected_to :back
+    end
   end
 
   describe '#preview' do
