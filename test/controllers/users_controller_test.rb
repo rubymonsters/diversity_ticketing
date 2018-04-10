@@ -7,7 +7,7 @@ class UsersControllerTest < ActionController::TestCase
       user2 = make_user(email: 'b@example.org')
       sign_in_as(user1)
 
-      put :update, id: user2.id, user: {email: 'c@example.org'}
+      put :update, params: { id: user2.id, user: {email: 'c@example.org'} }
 
       user2.reload
 
@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
     it 'does not anonymous user to edit anyone\'s data' do
       user = make_user(email: 'a@example.org')
 
-      put :update, id: user.id, user: {email: 'b@example.org'}
+      put :update, params: { id: user.id, user: {email: 'b@example.org'} }
 
       user.reload
 
@@ -30,7 +30,7 @@ class UsersControllerTest < ActionController::TestCase
       user = make_user(email: 'la@le.lu')
       sign_in_as(user)
 
-      put :update, id: user.id, user: { email: 'cool@email.add', password: '654321' }
+      put :update, params: { id: user.id, user: { email: 'cool@email.add', password: '654321' } }
       user.reload
 
       assert_equal user.email, 'cool@email.add'
@@ -41,7 +41,7 @@ class UsersControllerTest < ActionController::TestCase
       user = make_user(email: 'ta@da.aa')
       sign_in_as(user)
 
-      put :update, id: user.id, user: { email: '' }
+      put :update, params: { id: user.id, user: { email: '' } }
       user.reload
 
       assert_equal user.email, 'ta@da.aa'
@@ -55,7 +55,7 @@ class UsersControllerTest < ActionController::TestCase
       user2 = make_user(email: 'b@example.org')
       sign_in_as(user1)
 
-      get :edit, id: user2.id
+      get :edit, params: { id: user2.id }
 
       assert_response :forbidden
     end
@@ -63,7 +63,7 @@ class UsersControllerTest < ActionController::TestCase
     it 'does not allow anonymous user to see anyone\'s data' do
       user = make_user(email: 'a@example.org')
 
-      get :edit, id: user.id
+      get :edit, params: { id: user.id }
 
       assert_redirected_to sign_in_url
     end
@@ -75,7 +75,7 @@ class UsersControllerTest < ActionController::TestCase
       user2 = make_user(email: 'b@example.org')
       sign_in_as(user1)
 
-      get :show, id: user2.id
+      get :show, params: { id: user2.id }
 
       assert_response :forbidden
     end
@@ -83,7 +83,7 @@ class UsersControllerTest < ActionController::TestCase
     it 'does not allow anonymous user to see anyone\'s data' do
       user = make_user
 
-      get :show, id: user.id
+      get :show, params: { id: user.id }
 
       assert_redirected_to sign_in_url
     end
@@ -102,7 +102,7 @@ class UsersControllerTest < ActionController::TestCase
 
       sign_in_as(user)
 
-      get :show, id: user.id
+      get :show, params: { id: user.id }
 
       assert_equal categorized_user_events.length, 3
       assert categorized_user_events[:approved].include?(approved_event)
