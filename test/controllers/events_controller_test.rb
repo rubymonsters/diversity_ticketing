@@ -473,7 +473,7 @@ class EventsControllerTest < ActionController::TestCase
       )
       sign_in_as(admin)
 
-      put :update, id: event.id, event: {approved: true}
+      put :update, id: event.id, event: { approved: true }
 
       event.reload
 
