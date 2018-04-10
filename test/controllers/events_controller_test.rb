@@ -325,7 +325,7 @@ class EventsControllerTest < ActionController::TestCase
       get :show, params: { id: event.id }
 
       assert_equal 'You are not allowed to access this event.', flash[:alert]
-      # assert_redirect_back(fallback_location:)
+      assert_redirected_to request.env["HTTP_REFERER"]
     end
   end
 
