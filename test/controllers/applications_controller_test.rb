@@ -133,10 +133,14 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       event = make_event
       application = make_application(event)
+      applications = event.applications
+
+      assert_equal 1, applications.count
 
       delete :destroy, event_id: event.id, id: application.id
 
       assert_redirected_to event_admin_path(event)
+      assert_equal 0, applications.count
     end
 
     it 'properly redirects non-admin users' do
@@ -146,19 +150,27 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       event = make_event
       application = make_application(event)
+      applications = event.applications
+
+      assert_equal 1, applications.count
 
       delete :destroy, event_id: event.id, id: application.id
 
       assert_redirected_to root_path
+      assert_equal 1, applications.count
     end
 
     it 'proper redirects visitors' do
       event = make_event
       application = make_application(event)
+      applications = event.applications
+
+      assert_equal 1, applications.count
 
       delete :destroy, event_id: event.id, id: application.id
 
       assert_redirected_to sign_in_path
+      assert_equal 1, applications.count
     end
   end
 end
