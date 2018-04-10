@@ -13,8 +13,8 @@ feature 'Event' do
     visit events_path
 
     assert page.text.include?('The Event')
-    assert page.body.include?('logo-image')
-    assert_not page.body.include?('event-default')
+    assert_match /logo-image/, page.body
+    assert_no_match /event-default-.*\.png/, page.body
   end
 
   test 'shows a default image if the event does not have a logo' do
@@ -24,7 +24,7 @@ feature 'Event' do
     visit events_path
 
     assert page.text.include?('The Event')
-    assert page.body.include?('event-default')
+    assert_match /event-default-.*\.png/, page.body
   end
 
   test 'shows Your events in the breadcrumb if the user is an organizer' do
