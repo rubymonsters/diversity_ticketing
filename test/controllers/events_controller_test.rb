@@ -98,8 +98,8 @@ class EventsControllerTest < ActionController::TestCase
 
     it 'assigns event to correct organizer' do
       user = make_user
-      sign_in_as(user)
       event_params = make_event_params(name: 'MonsterConf')
+      sign_in_as(user)
 
       post :create, event: event_params
 
@@ -318,7 +318,6 @@ class EventsControllerTest < ActionController::TestCase
       user = make_user
       event = make_event(approved: false)
       request.env["HTTP_REFERER"] = 'http://www.somewhere.net'
-
       sign_in_as(user)
 
       get :show, id: event.id
@@ -338,7 +337,6 @@ class EventsControllerTest < ActionController::TestCase
     it 'loads preview view correctly with logged-in user' do
       user = make_user
       event_params = make_event_params
-
       sign_in_as(user)
 
       post :preview, event: event_params
@@ -349,7 +347,6 @@ class EventsControllerTest < ActionController::TestCase
     it 'loads new view with logged-in user and invalid event params' do
       user = make_user
       event_params = { organizer_email: 'email.de' }
-
       sign_in_as(user)
 
       post :preview, event: event_params
@@ -361,8 +358,8 @@ class EventsControllerTest < ActionController::TestCase
   describe '#edit' do
     it 'loads correctly for admin users' do
       user = make_user(admin: true)
-      sign_in_as(user)
       event = make_event
+      sign_in_as(user)
 
       get :edit, id: event.id
 
@@ -371,12 +368,12 @@ class EventsControllerTest < ActionController::TestCase
 
     it 'loads correctly for event owner' do
       user = make_user(admin: false)
-      sign_in_as(user)
       event = make_event(
         organizer_id: user.id,
         approved: false,
         deadline: 5.days.from_now
       )
+      sign_in_as(user)
 
       get :edit, id: event.id
 
@@ -385,12 +382,12 @@ class EventsControllerTest < ActionController::TestCase
 
     it 'redirects event owner if event is closed' do
       user = make_user(admin: false)
-      sign_in_as(user)
       event = make_event(
         organizer_id: user.id,
         approved: false,
         deadline: 5.days.ago
       )
+      sign_in_as(user)
 
       get :edit, id: event.id
 
@@ -400,13 +397,13 @@ class EventsControllerTest < ActionController::TestCase
     it 'redirects if user is not owner of event' do
       user = make_user(admin: false)
       event_owner = make_user(email: 'different_address@example.org')
-      sign_in_as(user)
       event = make_event(
         name: 'BoringConf',
         organizer_id: event_owner.id,
         approved: false,
         deadline: 5.days.from_now
       )
+      sign_in_as(user)
 
       get :edit, id: event.id
 
@@ -417,8 +414,8 @@ class EventsControllerTest < ActionController::TestCase
   describe '#update' do
     it 'loads correctly for admin users' do
       user = make_user(admin: true)
-      sign_in_as(user)
       event = make_event(name: 'BoringConf')
+      sign_in_as(user)
 
       put :update, id: event.id, event: {name: 'MonstersConf'}
 
@@ -430,13 +427,13 @@ class EventsControllerTest < ActionController::TestCase
 
     it 'loads correctly for event owner' do
       user = make_user(admin: false)
-      sign_in_as(user)
       event = make_event(
         name: 'BoringConf',
         organizer_id: user.id,
         approved: false,
         deadline: 5.days.from_now
         )
+      sign_in_as(user)
 
       put :update, id: event.id, event: {name: 'MonstersConf'}
 
@@ -448,12 +445,12 @@ class EventsControllerTest < ActionController::TestCase
 
     it 'does not change approval status when event owner is updating' do
       user = make_user(admin: false)
-      sign_in_as(user)
       event = make_event(
         approved: false,
         organizer_id: user.id,
         deadline: 5.days.from_now
         )
+      sign_in_as(user)
 
       put :update, id: event.id, event: {approved: true}
 
@@ -474,7 +471,6 @@ class EventsControllerTest < ActionController::TestCase
         organizer_id: event_owner.id,
         deadline: 5.days.from_now
       )
-
       sign_in_as(admin)
 
       put :update, id: event.id, event: {approved: true}
@@ -488,7 +484,6 @@ class EventsControllerTest < ActionController::TestCase
     it 'rerenders edit when event update was not successful' do
       organizer = make_user
       event = make_event(organizer_id: organizer.id)
-
       sign_in_as(organizer)
 
       put :update, id: event.id, event: { name: '' }
@@ -500,7 +495,6 @@ class EventsControllerTest < ActionController::TestCase
       user = make_user
       organizer = make_user( email: 'other@example.org' )
       event = make_event( organizer_id: organizer.id )
-
       sign_in_as(user)
 
       put :update, id: event.id, event: { name: 'Fakename' }
