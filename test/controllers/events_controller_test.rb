@@ -213,6 +213,53 @@ class EventsControllerTest < ActionController::TestCase
     end
   end
 
+  describe '#index_past' do
+    it 'shows only and all past and approved events' do
+      past_event1 = make_event(
+        start_date: 1.week.ago,
+        end_date: 1.week.ago,
+        deadline: 2.weeks.ago,
+        approved: true,
+        name: 'Past1'
+      )
+      past_event2 = make_event(
+        start_date: 2.weeks.ago,
+        end_date: 2.weeks.ago,
+        deadline: 3.weeks.ago,
+        approved: true,
+        name: 'Past2'
+      )
+      past_unapproved_event = make_event(
+        start_date: 2.weeks.ago,
+        end_date: 2.weeks.ago,
+        deadline: 3.weeks.ago,
+        approved: false,
+        name: 'Past3'
+      )
+      future_approved_event = make_event(
+        start_date: 1.week.ago,
+        end_date: 10.days.from_now,
+        deadline: 10.days.from_now,
+        approved: true,
+        name: 'Approved'
+      )
+      future_unapproved_event = make_event(
+        start_date: 1.week.ago,
+        end_date: 10.days.from_now,
+        deadline: 10.days.from_now,
+        approved: false,
+        name: 'Unapproved'
+      )
+
+      events = Event.approved.past
+
+      get :index_past
+
+      assert_equal events.length, 2
+      assert_equal events.sort, [past_event1, past_event2].sort
+    end
+  end
+
   describe '#new' do
     it 'redirects not logged-in user' do
       get :new
