@@ -345,6 +345,17 @@ class EventsControllerTest < ActionController::TestCase
 
       assert_template :preview
     end
+
+    it 'loads new view with logged-in user and invalid event params' do
+      user = make_user
+      event_params = { organizer_email: 'email.de' }
+
+      sign_in_as(user)
+
+      post :preview, event: event_params
+
+      assert_template :new
+    end
   end
 
   describe '#edit' do
