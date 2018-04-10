@@ -8,13 +8,15 @@ class EventsControllerTest < ActionController::TestCase
 
       ActionMailer::Base.deliveries.clear
 
-      post :create, event: make_event_form_params({
-        name: 'Ruby Conf',
-        organizer_name: 'Ruby Fakename',
-        organizer_email: 'ruby@example.com',
-        organizer_email_confirmation: 'ruby@example.com',
-        application_process: 'selection_by_travis'
-      })
+      post :create, params: {
+        event: make_event_form_params({
+          name: 'Ruby Conf',
+          organizer_name: 'Ruby Fakename',
+          organizer_email: 'ruby@example.com',
+          organizer_email_confirmation: 'ruby@example.com',
+          application_process: 'selection_by_travis'
+        })
+    }
 
       assert_equal 'Thank you for submitting Ruby Conf. We will review it shortly.', flash[:notice]
       assert_redirected_to events_path
@@ -42,7 +44,7 @@ class EventsControllerTest < ActionController::TestCase
         user = make_user
         sign_in_as(user)
 
-        post :create, event: params
+        post :create, params: { event: params }
 
         assert_response :redirect
         assert Event.first.application_process == 'selection_by_organizer'
@@ -58,7 +60,7 @@ class EventsControllerTest < ActionController::TestCase
         user = make_user
         sign_in_as(user)
 
-        post :create, event: params
+        post :create, params: { event: params }
 
         assert Event.all.empty?
       end
@@ -70,7 +72,7 @@ class EventsControllerTest < ActionController::TestCase
         user = make_user
         sign_in_as(user)
 
-        post :create, event: params
+        post :create, params: { event: params }
 
         assert_equal false, Event.last.application_process == 'selection_by_organizer'
       end
@@ -85,13 +87,13 @@ class EventsControllerTest < ActionController::TestCase
       user = make_user
       sign_in_as(user)
 
-      post :create, event: params
+      post :create, params: { event: params }
 
       assert_equal false, Event.last.application_process == 'selection_by_organizer'
     end
 
     it 'requires logged-in user' do
-      post :create, event: make_event_params
+      post :create, params: { event: make_event_params }
 
       assert_redirected_to sign_in_path
     end
@@ -101,7 +103,7 @@ class EventsControllerTest < ActionController::TestCase
       event_params = make_event_params(name: 'MonsterConf')
       sign_in_as(user)
 
-      post :create, event: event_params
+      post :create, params: { event: event_params }
 
       event = Event.find_by(name: 'MonsterConf')
 
@@ -281,7 +283,7 @@ class EventsControllerTest < ActionController::TestCase
     it 'has apply link for event with deadline in the future' do
       event = make_event(approved: true)
 
-      get :show, id: event.id
+      get :show, params: { id: event.id }
 
       assert_select '.button_to',
         {count: 1, value: 'Apply', disabled: false},
@@ -291,7 +293,7 @@ class EventsControllerTest < ActionController::TestCase
     it 'has apply link for event where deadline is today' do
       event = make_event(approved: true, deadline: Date.today)
 
-      get :show, id: event.id
+      get :show, params: { id: event.id }
 
       assert_select '.button_to',
         {count: 1, value: 'Apply', disabled: false},
@@ -307,7 +309,7 @@ class EventsControllerTest < ActionController::TestCase
         name: 'Other'
       )
 
-      get :show, id: past_event.id
+      get :show, params: { id: past_event.id }
 
       assert_select '.button_to',
         {count: 1, value: 'Apply', disabled: true},
@@ -320,16 +322,16 @@ class EventsControllerTest < ActionController::TestCase
       request.env["HTTP_REFERER"] = 'http://www.somewhere.net'
       sign_in_as(user)
 
-      get :show, id: event.id
+      get :show, params: { id: event.id }
 
       assert_equal 'You are not allowed to access this event.', flash[:alert]
-      assert_redirected_to :back
+      # assert_redirect_back(fallback_location:)
     end
   end
 
   describe '#preview' do
     it 'redirects not logged-in user' do
-      post :preview, event: make_event_params
+      post :preview, params: { event: make_event_params }
 
       assert_redirected_to sign_in_path
     end
@@ -339,7 +341,7 @@ class EventsControllerTest < ActionController::TestCase
       event_params = make_event_params
       sign_in_as(user)
 
-      post :preview, event: event_params
+      post :preview, params: { event: event_params }
 
       assert_template :preview
     end
@@ -349,7 +351,7 @@ class EventsControllerTest < ActionController::TestCase
       event_params = { organizer_email: 'email.de' }
       sign_in_as(user)
 
-      post :preview, event: event_params
+      post :preview, params: { event: event_params }
 
       assert_template :new
     end
@@ -361,7 +363,7 @@ class EventsControllerTest < ActionController::TestCase
       event = make_event
       sign_in_as(user)
 
-      get :edit, id: event.id
+      get :edit, params: { id: event.id }
 
       assert_response :success
     end
@@ -375,7 +377,7 @@ class EventsControllerTest < ActionController::TestCase
       )
       sign_in_as(user)
 
-      get :edit, id: event.id
+      get :edit, params: { id: event.id }
 
       assert_response :success
     end
@@ -389,7 +391,7 @@ class EventsControllerTest < ActionController::TestCase
       )
       sign_in_as(user)
 
-      get :edit, id: event.id
+      get :edit, params: { id: event.id }
 
       assert_redirected_to event_url(event)
     end
@@ -405,7 +407,7 @@ class EventsControllerTest < ActionController::TestCase
       )
       sign_in_as(user)
 
-      get :edit, id: event.id
+      get :edit, params: { id: event.id }
 
       assert_redirected_to event_url(event)
     end
@@ -417,7 +419,7 @@ class EventsControllerTest < ActionController::TestCase
       event = make_event(name: 'BoringConf')
       sign_in_as(user)
 
-      put :update, id: event.id, event: {name: 'MonstersConf'}
+      put :update, params: { id: event.id, event: {name: 'MonstersConf'} }
 
       event.reload
 
@@ -435,7 +437,7 @@ class EventsControllerTest < ActionController::TestCase
         )
       sign_in_as(user)
 
-      put :update, id: event.id, event: {name: 'MonstersConf'}
+      put :update, params: { id: event.id, event: {name: 'MonstersConf'} }
 
       event.reload
 
@@ -452,7 +454,7 @@ class EventsControllerTest < ActionController::TestCase
         )
       sign_in_as(user)
 
-      put :update, id: event.id, event: {approved: true}
+      put :update, params: { id: event.id, event: {approved: true} }
 
       event.reload
 
@@ -473,7 +475,7 @@ class EventsControllerTest < ActionController::TestCase
       )
       sign_in_as(admin)
 
-      put :update, id: event.id, event: { approved: true }
+      put :update, params: { id: event.id, event: { approved: true } }
 
       event.reload
 
@@ -486,7 +488,7 @@ class EventsControllerTest < ActionController::TestCase
       event = make_event(organizer_id: organizer.id)
       sign_in_as(organizer)
 
-      put :update, id: event.id, event: { name: '' }
+      put :update, params: { id: event.id, event: { name: '' } }
 
       assert_template :edit
     end
@@ -497,7 +499,7 @@ class EventsControllerTest < ActionController::TestCase
       event = make_event( organizer_id: organizer.id )
       sign_in_as(user)
 
-      put :update, id: event.id, event: { name: 'Fakename' }
+      put :update, params: { id: event.id, event: { name: 'Fakename' } }
 
       assert_response :forbidden
       assert_equal event.name, 'Event'
