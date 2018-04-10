@@ -484,5 +484,29 @@ class EventsControllerTest < ActionController::TestCase
       assert_redirected_to admin_url
       assert_equal true, event.approved?
     end
+
+    it 'rerenders edit when event update was not successful' do
+      organizer = make_user
+      event = make_event(organizer_id: organizer.id)
+
+      sign_in_as(organizer)
+
+      put :update, id: event.id, event: { name: '' }
+
+      assert_template :edit
+    end
+
+    it 'renders a forbidden 403 status code when unauthorized user tries to update event info' do
+      user = make_user
+      organizer = make_user( email: 'other@example.org' )
+      event = make_event( organizer_id: organizer.id )
+
+      sign_in_as(user)
+
+      put :update, id: event.id, event: { name: 'Fakename' }
+
+      assert_response :forbidden
+      assert_equal event.name, 'Event'
+    end
   end
 end
