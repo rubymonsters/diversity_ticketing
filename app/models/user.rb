@@ -1,6 +1,6 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Clearance::User
-  
+
   has_many :events, foreign_key: :organizer_id, dependent: :nullify
 
   def self.admin
