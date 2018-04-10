@@ -60,10 +60,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.uneditable_by?(current_user)
-      render status: :forbidden && return
-    end
-
-    if @event.update(event_params)
+      head :forbidden
+    elsif @event.update(event_params)
       url = current_user.admin? ? admin_url : user_url(current_user)
 
       redirect_to url, notice: "You have successfully updated #{@event.name}."

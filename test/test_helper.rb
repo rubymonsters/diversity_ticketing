@@ -47,6 +47,15 @@ class ActiveSupport::TestCase
     click_button 'Sign in'
   end
 
+  def sign_in_as_user
+    visit '/'
+    click_link 'Sign in'
+
+    fill_in 'Email', with: 'awesome@example.org'
+    fill_in 'Password', with: 'awesome_password'
+    click_button 'Sign in'
+  end
+
   def make_event_params(event_params = {})
     defaults = {
       name: 'Event',
