@@ -25,6 +25,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= render partial: "layouts/open_graph_tags" %>
 </head>
 <body class="<%= controller.controller_name %> <%= action_name.pluralize %>">
   <header class="topbar" role="banner">
