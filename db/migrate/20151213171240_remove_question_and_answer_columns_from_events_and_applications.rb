@@ -1,4 +1,4 @@
-class RemoveQuestionAndAnswerColumnsFromEventsAndApplications < ActiveRecord::Migration
+class RemoveQuestionAndAnswerColumnsFromEventsAndApplications < ActiveRecord::Migration[5.1]
   def change
   	remove_column :events, :question_1
   	remove_column :events, :question_2
