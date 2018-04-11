@@ -6,7 +6,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_application(event)
 
-      get :show, event_id: event.id, id: application.id
+      get :show, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to sign_in_path
     end
@@ -18,7 +18,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_application(event)
 
-      get :show, event_id: event.id, id: application.id
+      get :show, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to root_path
     end
@@ -30,7 +30,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_application(event)
 
-      get :show, event_id: event.id, id: application.id
+      get :show, params: { event_id: event.id, id: application.id }
 
       assert_response :success
     end
@@ -42,7 +42,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
 
       assert_raises(ActiveRecord::RecordNotFound) do
-        get :show, event_id: event.id, id: 1
+        get :show, params: { event_id: event.id, id: 1 }
       end
     end
   end
@@ -52,7 +52,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event(application_process: 'application_by_organizer',
                          application_link: 'http://www.something.org')
 
-      get :new, event_id: event.id
+      get :new, params: { event_id: event.id }
 
       assert_redirected_to event
     end
@@ -60,7 +60,7 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'adds a new application if the selection process is not run by organizer' do
       event = make_event
 
-      get :new, event_id: event.id
+      get :new, params: { event_id: event.id }
 
       assert_response :success
     end
@@ -70,7 +70,7 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'proper redirects after successful application' do
       event = make_event
 
-      post :create,
+      post :create, params: {
         event_id: event.id,
         application: {
           attendee_info_1: 'some text',
@@ -81,6 +81,7 @@ class ApplicationsControllerTest < ActionController::TestCase
           terms_and_conditions: '1',
           event: event
         }
+      }
 
       assert_redirected_to event
     end
@@ -89,7 +90,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event(application_process: 'application_by_organizer',
                          application_link: 'http://www.something.org')
 
-      post :create, event_id: event.id
+      post :create, params: { event_id: event.id }
 
       assert_redirected_to event
     end
@@ -97,11 +98,7 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'does not redirect after failed validations' do
       event = make_event
 
-      post :create,
-        event_id: event.id,
-        application: {
-          name: 'Joe'
-        }
+      post :create, params: { event_id: event.id, application: { name: 'Joe' } }
 
       assert_response :success
     end
@@ -109,7 +106,7 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'does not redirect when terms and conditions are not accepted' do
       event = make_event
 
-      post :create,
+      post :create, params: {
         event_id: event.id,
         application: {
           attendee_info_1: 'some text',
@@ -120,6 +117,7 @@ class ApplicationsControllerTest < ActionController::TestCase
           terms_and_conditions: '0',
           event: event
         }
+      }
 
       assert_response :success
     end
@@ -137,7 +135,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       assert_equal 1, applications.count
 
-      delete :destroy, event_id: event.id, id: application.id
+      delete :destroy, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to event_admin_path(event)
       assert_equal 0, applications.count
@@ -154,7 +152,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       assert_equal 1, applications.count
 
-      delete :destroy, event_id: event.id, id: application.id
+      delete :destroy, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to root_path
       assert_equal 1, applications.count
@@ -167,7 +165,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       assert_equal 1, applications.count
 
-      delete :destroy, event_id: event.id, id: application.id
+      delete :destroy, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to sign_in_path
       assert_equal 1, applications.count

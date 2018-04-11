@@ -35,7 +35,7 @@ class AdminEventsControllerTest < ActionController::TestCase
 
       TwitterWorker.expects(:announce_event).with(event).once
 
-      post :approve, id: event.id
+      post :approve, params: { id: event.id }
 
       event.reload
 
@@ -47,7 +47,7 @@ class AdminEventsControllerTest < ActionController::TestCase
       user = make_user(admin: false)
       sign_in_as(user)
 
-      post :approve, id: event.id
+      post :approve, params: { id: event.id }
 
       assert_redirected_to root_path
 
@@ -59,7 +59,7 @@ class AdminEventsControllerTest < ActionController::TestCase
     it 'correctly redirects visitors' do
       event = make_event
 
-      post :approve, id: event.id
+      post :approve, params: { id: event.id }
 
       assert_redirected_to sign_in_path
 
@@ -76,7 +76,7 @@ class AdminEventsControllerTest < ActionController::TestCase
 
       sign_in_as(admin)
 
-      get :show, id: event.id
+      get :show, params: { id: event.id }
 
       assert_response :success
       assert_template :show
@@ -88,13 +88,13 @@ class AdminEventsControllerTest < ActionController::TestCase
 
       sign_in_as(user)
 
-      get :show, id: event.id
+      get :show, params: { id: event.id }
 
       assert_redirected_to root_path
     end
 
     it 'correctly redirects visitors' do
-      get :show, id: make_event.id
+      get :show, params: { id: make_event.id }
 
       assert_redirected_to sign_in_path
     end
@@ -105,7 +105,7 @@ class AdminEventsControllerTest < ActionController::TestCase
 
       sign_in_as(admin)
 
-      get :show, id: event.id, format: :csv
+      get :show, params: { id: event.id }, format: :csv
 
       assert_equal request.format, :csv
     end
@@ -121,7 +121,7 @@ class AdminEventsControllerTest < ActionController::TestCase
 
       assert_equal 1, events.count
 
-      get :destroy, id: event.id
+      get :destroy, params: { id: event.id }
 
       assert_equal 0, events.count
       assert_redirected_to admin_url

@@ -44,4 +44,7 @@ Rails.application.configure do
 
   # set default url options for Sidekiq workers
   config.x.worker_routes.default_url_options = {host: 'test.host', protocol: 'https'}
+
+  # Sets the tests to run in order
+  config.active_support.test_order = :sorted
 end
