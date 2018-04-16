@@ -9,7 +9,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/autorun'
 require 'clearance/test_unit'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 require 'minitest/rails/capybara'
 
 require 'sidekiq/testing'
@@ -21,8 +21,8 @@ class ActiveSupport::TestCase
 
   def make_user(user_params = {})
     defaults = {
-      email: "awesome@example.org",
-      password: "awesome_password"
+      email: 'awesome@example.org',
+      password: 'awesome_password'
     }
     user_params = defaults.merge(user_params)
     User.create!(user_params)
@@ -30,8 +30,8 @@ class ActiveSupport::TestCase
 
   def make_admin(user_params = {})
     defaults = {
-      email: "admin@woo.hoo",
-      password: "awesome_password",
+      email: 'admin@woo.hoo',
+      password: 'awesome_password',
       admin: true
     }
     user_params = defaults.merge(user_params)
@@ -43,6 +43,15 @@ class ActiveSupport::TestCase
     click_link 'Sign in'
 
     fill_in 'Email', with: 'admin@woo.hoo'
+    fill_in 'Password', with: 'awesome_password'
+    click_button 'Sign in'
+  end
+
+  def sign_in_as_user
+    visit '/'
+    click_link 'Sign in'
+
+    fill_in 'Email', with: 'awesome@example.org'
     fill_in 'Password', with: 'awesome_password'
     click_button 'Sign in'
   end
@@ -105,6 +114,7 @@ class ActiveSupport::TestCase
     application_params = defaults.merge(application_params)
     Application.create!(application_params)
   end
+
   # Add more helper methods to be used by all tests here...
 end
 
@@ -119,4 +129,3 @@ module Minitest::Assertions
     refute_equal [], event.errors[attribute]
   end
 end
-

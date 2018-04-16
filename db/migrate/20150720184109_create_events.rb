@@ -1,10 +1,10 @@
-class CreateEvents < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration[5.1]
   def change
     create_table :events do |t|
       t.string :organizer_name
-      t.string :organizer_email 
+      t.string :organizer_email
       t.text :description
-      t.text :name 
+      t.text :name
       t.date :date
       t.text :question_1
       t.text :question_2

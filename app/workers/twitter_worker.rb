@@ -18,8 +18,8 @@ class TwitterWorker
   end
 
   def perform(event_name, event_deadline, event_url, twitter_handle)
-    message = ["So great! #{event_name}"]
-    message << "(@#{twitter_handle})" if twitter_handle
+    message = ["So great!"]
+    message << (twitter_handle ? "@#{twitter_handle}" : event_name.truncate(30, separator: ' '))
     message << "is offering free diversity tickets! Apply before #{event_deadline} at #{event_url}!"
 
     TWITTER_CLIENT.update(message.join(' '))

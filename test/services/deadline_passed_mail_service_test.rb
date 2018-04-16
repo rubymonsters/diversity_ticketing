@@ -1,12 +1,12 @@
 require 'test_helper'
 
 class DeadlinePassedMailServiceTest < ActiveSupport::TestCase
-  describe "sending emails about events with passed deadlines to admins" do
-    it "send emails about right events to the right people" do
-      make_event(deadline: 1.days.ago, approved: true, name: "Valid Event")
+  describe 'sending emails about events with passed deadlines to admins' do
+    it 'send emails about right events to the right people' do
+      make_event(deadline: 1.days.ago, approved: true, name: 'Valid Event')
       make_event(deadline: 1.week.ago)
-      make_user(email: "bad@example.com")
-      make_admin(email: "good@example.com")
+      make_user(email: 'bad@example.com')
+      make_admin(email: 'good@example.com')
 
       ActionMailer::Base.deliveries.clear
 
@@ -15,22 +15,22 @@ class DeadlinePassedMailServiceTest < ActiveSupport::TestCase
       mails = ActionMailer::Base.deliveries
       assert_equal 1, mails.length
       mail = mails.first
-      assert_equal ["good@example.com"], mail.to
+      assert_equal ['good@example.com'], mail.to
       assert mail.subject =~ /Valid Event/
     end
 
-    it "excludes events that are listings (applications & selection are handled by organizer)" do
+    it 'excludes events that are listings (applications & selection are handled by organizer)' do
       make_event(
-        deadline: 1.days.ago, approved: true, name: "Valid Event",
-        application_process: "selection_by_travis"
+        deadline: 1.days.ago, approved: true, name: 'Valid Event',
+        application_process: 'selection_by_travis'
       )
       make_event(
-        deadline: 1.days.ago, approved: true, name: "Valid Event",
-        application_process: "selection_by_organizer"
+        deadline: 1.days.ago, approved: true, name: 'Valid Event',
+        application_process: 'selection_by_organizer'
       )
       make_event(
-        deadline: 1.days.ago, name: "Listed Event",
-        application_process: "application_by_organizer", application_link: "https://myconf.com"
+        deadline: 1.days.ago, name: 'Listed Event',
+        application_process: 'application_by_organizer', application_link: 'https://myconf.com'
       )
       make_admin
 
@@ -46,14 +46,14 @@ class DeadlinePassedMailServiceTest < ActiveSupport::TestCase
       assert mail2.subject =~ /Valid Event/
     end
 
-    it "excludes events that are not approved" do
+    it 'excludes events that are not approved' do
       make_event(
-        deadline: 1.days.ago, approved: true, name: "Valid Event",
-        application_process: "selection_by_travis"
+        deadline: 1.days.ago, approved: true, name: 'Valid Event',
+        application_process: 'selection_by_travis'
       )
       make_event(
-        deadline: 1.days.ago, approved: false, name: "Unapproved Event",
-        application_process: "selection_by_organizer"
+        deadline: 1.days.ago, approved: false, name: 'Unapproved Event',
+        application_process: 'selection_by_organizer'
       )
       make_admin
 

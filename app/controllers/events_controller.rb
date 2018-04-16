@@ -15,7 +15,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     unless @event.approved || @event.organizer_id == current_user.id
-      redirect_to :back, alert: "You are not allowed to access this event."
+      flash[:alert] = "You are not allowed to access this event."
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -61,10 +62,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.uneditable_by?(current_user)
-      render status: :forbidden && return
-    end
-
-    if @event.update(event_params)
+      head :forbidden
+    elsif @event.update(event_params)
       url = current_user.admin? ? admin_url : user_url(current_user)
 
       redirect_to url, notice: "You have successfully updated #{@event.name}."

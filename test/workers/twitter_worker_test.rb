@@ -3,15 +3,49 @@ require 'test_helper'
 class TwitterWorkerTest < ActiveSupport::TestCase
   include ApplicationHelper
 
-  test 'it sends a tweet correctly' do
-    event = Event.new(name: "Awesome Event", id: 101, deadline: 2.weeks.from_now)
-    TWITTER_CLIENT.expects(:update).with("So great! Awesome Event is offering free diversity tickets! Apply before #{format_date(2.weeks.from_now)} at https://test.host/events/101!").once
+  it 'sends a tweet with name if event has no twitter handle' do
+    event = Event.new(
+      name: 'Awesome Event',
+      id: 101,
+      deadline: 2.weeks.from_now
+    )
+
+    TWITTER_CLIENT.expects(:update).with(
+      "So great! Awesome Event is offering free diversity tickets! Apply before "\
+      "#{format_date(2.weeks.from_now)} at https://test.host/events/101!"
+    ).once
+
     TwitterWorker.announce_event(event)
   end
 
-  test 'it sends a tweet with event twitter handle' do
-    event = Event.new(name: "Awesome Event", id: 101, deadline: 2.weeks.from_now, twitter_handle: "awesome_event")
-    TWITTER_CLIENT.expects(:update).with("So great! Awesome Event (@awesome_event) is offering free diversity tickets! Apply before #{format_date(2.weeks.from_now)} at https://test.host/events/101!").once
+  it 'sends a tweet with twitter handle if event has a twitter handle' do
+    event = Event.new(
+      name: 'Awesome Event',
+      id: 101,
+      deadline: 2.weeks.from_now,
+      twitter_handle: 'awesome_event'
+    )
+
+    TWITTER_CLIENT.expects(:update).with(
+      "So great! @awesome_event is offering free diversity tickets! Apply before "\
+      "#{format_date(2.weeks.from_now)} at https://test.host/events/101!"
+    ).once
+
+    TwitterWorker.announce_event(event)
+  end
+
+  it 'uses shortened name if name is longer than 30 characters' do
+     event = Event.new(
+      name: 'Super Duper Mega Crazy Awesome Event',
+      id: 101,
+      deadline: 2.weeks.from_now
+    )
+
+    TWITTER_CLIENT.expects(:update).with(
+      "So great! Super Duper Mega Crazy... is offering free diversity tickets! Apply before "\
+      "#{format_date(2.weeks.from_now)} at https://test.host/events/101!"
+    ).once
+
     TwitterWorker.announce_event(event)
   end
 end

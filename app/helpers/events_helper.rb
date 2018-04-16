@@ -2,7 +2,7 @@ module EventsHelper
 
   def event_image(event)
     if event.logo && event.logo != ''
-      image_tag event.logo
+      image_tag event.logo, skip_pipeline: true
     else
       image_tag "event-default.png"
     end

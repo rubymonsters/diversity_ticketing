@@ -15,7 +15,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Configure static file server for tests with Cache-Control for performance.
-  config.serve_static_files   = true
+  config.public_file_server.enabled   = true
   config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
@@ -44,4 +44,7 @@ Rails.application.configure do
 
   # set default url options for Sidekiq workers
   config.x.worker_routes.default_url_options = {host: 'test.host', protocol: 'https'}
+
+  # Sets the tests to run in order
+  config.active_support.test_order = :sorted
 end

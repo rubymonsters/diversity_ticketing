@@ -1,4 +1,4 @@
-class Application < ActiveRecord::Base
+class Application < ApplicationRecord
   belongs_to :event
   validates :name, :attendee_info_1, :attendee_info_2, presence: true
   validates :email, presence: true, confirmation: true, format: { with: /.+@.+\..+/ }
