@@ -14,4 +14,11 @@ namespace :admin do
       puts "Done."
     end
   end
+
+  namespace :categories do
+    desc "create categories"
+    task :create => :environment do
+      CreateCategoriesService.create_categories
+    end
+  end
 end

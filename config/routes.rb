@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tags, only: [:index, :destroy, :create]
+
   get '/sign_in', to: 'clearance/sessions#new', as: 'sign_in'
   delete '/sign_out', to: 'clearance/sessions#destroy', as: 'sign_out'
   get '/sign_up', to: 'clearance/users#new', as: 'sign_up'

@@ -156,3 +156,15 @@ input.has-dependent:checked + div.form_field {
   margin-left: .4em;
   font-size: 12px;
 }
+
+.category-tags {
+  padding: 1em;
+  border: 1px solid $border-grey;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  label {
+    display: inline-block;
+    margin-right: 5px;
+    white-space: nowrap;
+  }
+}

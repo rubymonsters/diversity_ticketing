@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   belongs_to :organizer, class_name: 'User'
 
   has_many :applications, dependent: :destroy
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
   validates :start_date, :deadline, date: true, presence: true
@@ -12,6 +14,8 @@ class Event < ApplicationRecord
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
   validates :twitter_handle, format: { with: /\A@?\w+\z/ }, allow_nil: true
+
+  accepts_nested_attributes_for :tags
 
   def self.application_via_diversitytickets
     where.not(application_process: 'application_by_organizer')

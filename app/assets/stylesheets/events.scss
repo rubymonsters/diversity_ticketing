@@ -38,7 +38,7 @@
   }
 }
 
-.admin-list {
+.admin-list, .tags-list {
   list-style: none;
   padding: 0;
 
@@ -104,5 +104,18 @@
     flex-grow: 1;
     white-space: nowrap;
     overflow: hidden;
+  }
+}
+
+li.tag {
+  list-style: none;
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  display: inline;
+  &.programming-language {
+    background-color: lighten($blue-bg, 30%);
+  }
+  &.language {
+    background-color: lighten($green-bg, 20%);
   }
 }
