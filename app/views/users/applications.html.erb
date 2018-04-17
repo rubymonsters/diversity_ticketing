@@ -1,0 +1,25 @@
+<h1><%= t(".title") %></h1>
+<div class="two-columns">
+  <% @categorized_user_applications.each do |heading, events| %>
+    <% if @user.applications.any? %>
+      <section class="category">
+        <h2><%= t(".#{heading}") %></h2>
+        <div class="organizer">
+          <ul class="organizer-list">
+            <% @user.applications.each do |application| %>
+              <li>
+                <div class="conflogo--small"><%= event_image application.event %></div>
+                <p class="event-name"><%= link_to application.event.name, event_path(id: application.event.id) %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+      <div></div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @categorized_user_applications.values.flatten.empty? %>
+  <p>There are currently no applications for this user account.</p>
+<% end %>
