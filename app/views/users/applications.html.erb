@@ -4,8 +4,8 @@
     <% if @user.applications.any? %>
       <section class="category">
         <h2><%= t(".#{heading}") %></h2>
-        <div class="organizer">
-          <ul class="organizer-list">
+        <div class="applicant">
+          <ul class="applicant-list">
             <% @user.applications.each do |application| %>
               <li>
                 <div class="conflogo--small"><%= event_image application.event %></div>
