@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post '/events/preview', to: 'events#preview', as: :event_preview
   get '/about', to: 'home#about', as: :about
   get '/faq', to: 'home#faq', as: :faq
+  get '/users/:id/applications', to: 'users#applications', as: :user_applications
 
   root 'home#home'
 end
