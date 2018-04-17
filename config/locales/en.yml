@@ -47,3 +47,6 @@ en:
       approved: "Approved"
       unapproved: "Not approved so far"
       past: "Past"
+    applications:
+      title: "Your applications"
+      all: "All"
