@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:show, :edit, :update]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :applications]
 
   def show
     @categorized_user_events = {
@@ -18,6 +18,12 @@ class UsersController < Clearance::UsersController
     else
       render :edit
     end
+  end
+
+  def applications
+    @categorized_user_applications = {
+      all: @user.applications
+    }
   end
 
   private
