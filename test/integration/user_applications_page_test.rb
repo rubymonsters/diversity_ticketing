@@ -4,11 +4,11 @@ feature 'User Applications Page' do
   def setup
     @applicant = make_user
     @event = make_event(name: 'Applicants event')
-    @application = make_application(event: @event, applicant_id: @applicant.id)
+    @application = make_application(@event, applicant_id: @applicant.id)
   end
 
   test 'shows a section to Your applications where the users applications are displayed' do
-    sign_in_as(@applicant)
+    sign_in_as_user
 
     visit root_path
 
