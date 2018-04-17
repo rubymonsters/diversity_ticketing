@@ -12,9 +12,9 @@ feature 'User Applications Page' do
 
     visit root_path
 
-    click_link 'Your applications'
+    click_link 'Your Applications'
 
     assert page.text.include?('Applicants event')
-    assert_select 'h2', 'Your applications'
+    page.must_have_content 'Your applications'
   end
 end
