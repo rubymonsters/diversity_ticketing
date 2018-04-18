@@ -24,6 +24,8 @@
   </p>
 </section>
 
+<% if current_user.admin? %>
 <%= link_to 'Delete this application', event_application_path(@event.id, @application.id), class: "btn btn-delete",  method: :delete, data: { confirm: "Are you sure you want to delete this application?" } %>
+<% end %>
 
 <%= link_to 'Show Event Details', event_admin_path(@event.id) %>
