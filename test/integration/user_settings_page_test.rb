@@ -15,6 +15,7 @@ feature 'User Settings Page' do
     assert page.text.include?('Edit your credentials')
     page.must_have_selector("form input[name='user[name]']")
     page.fill_in 'user_name', with: 'My Name'
+    page.fill_in 'user_password', with: @user.password
 
     click_button 'Update User'
 
