@@ -1,5 +1,6 @@
 class ApplicationsController < ApplicationController
-  before_action :require_admin, only: [:show, :destroy]
+  before_action :require_admin, only: [:destroy]
+  before_action :ensure_correct_user, only: [:show]
   before_action :get_event, only: [:show, :new, :create, :destroy]
   skip_before_action :require_login, only: [:new, :create]
 
@@ -44,5 +45,12 @@ class ApplicationsController < ApplicationController
 
     def get_event
       @event = Event.find(params[:event_id])
+    end
+
+    def ensure_correct_user
+      @user = User.find_by(id: Application.find(params[:id]).applicant_id)
+      unless @user == current_user || admin_user?
+        head :forbidden
+      end
     end
 end
