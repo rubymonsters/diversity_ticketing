@@ -48,8 +48,8 @@ class ApplicationsController < ApplicationController
     end
 
     def ensure_correct_user
-      @user = User.find_by(id: Application.find(params[:id]).applicant_id)
-      unless @user == current_user || admin_user?
+      @applicant = User.find_by(id: Application.find(params[:id]).applicant_id)
+      unless @applicant == current_user || admin_user?
         head :forbidden
       end
     end
