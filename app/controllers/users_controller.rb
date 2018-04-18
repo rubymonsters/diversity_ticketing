@@ -15,6 +15,9 @@ class UsersController < Clearance::UsersController
   def update
     if @user.update(user_params)
       redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+    elsif user_params[:password] === ''
+      flash.now[:error] = "Password is a mandatory field"
+      render :edit
     else
       render :edit
     end
