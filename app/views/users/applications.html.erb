@@ -11,6 +11,10 @@
                 <div class="conflogo--small"><%= event_image application.event %></div>
                 <p class="event-name"><%= link_to application.event.name, event_path(id: application.event.id) %></p>
               </li>
+
+              <li>
+                <p class="event-name"><%= link_to application.event.name, event_application_path(id: application.id, event_id: application.event.id) %></p>
+              </li>
             <% end %>
           </ul>
         </div>
