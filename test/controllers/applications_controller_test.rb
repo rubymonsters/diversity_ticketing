@@ -11,12 +11,13 @@ class ApplicationsControllerTest < ActionController::TestCase
       assert_redirected_to sign_in_path
     end
 
-    it 'does not show application to non-admin users' do
+    it 'does not show application of other users to non-admin users' do
       user = make_user(admin: false)
+      other_user = make_user(email: 'other@email.com')
       sign_in_as(user)
 
       event = make_event
-      application = make_application(event)
+      application = make_application(event, applicant_id: other_user.id)
 
       get :show, params: { event_id: event.id, id: application.id }
 
