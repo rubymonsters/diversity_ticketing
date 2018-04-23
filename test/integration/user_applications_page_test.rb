@@ -7,7 +7,7 @@ feature 'User Applications Page' do
     @application = make_application(@event, applicant_id: @applicant.id, attendee_info_1: 'I want to learn to code')
   end
 
-  test 'shows a section to Your applications where the users applications are displayed' do
+  test 'shows a section to Your Applications where the users applications are displayed' do
     sign_in_as_user
 
     visit root_path
@@ -25,9 +25,9 @@ feature 'User Applications Page' do
 
     click_link 'Your Applications'
 
-    assert page.text.include?('Your application')
+    assert page.text.include?('Your Application')
 
-    click_link 'Your application'
+    click_link 'Your Application'
 
     assert page.text.include?('I want to learn to code')
     assert_not page.text.include?('Delete this application')
