@@ -17,13 +17,7 @@ feature 'Application' do
 
     assert_equal current_path, event_application_path(event.id,application.id)
 
-    # pp page.body
-    assert page.has_content?('Your Applications')
-    # assert_select "a[href=?]", user_applications_path(@user.id), count: 2
-    # assert_equal page.find_link('Your Applications')[:href], "/users/#{@user.id}/applications"
-    # pp page.find_link('Your Applications').count
-    # assert_select "a:match('href', ?)", "/users/#{@user.id}/applications"
-    # assert page.has_link('Your Applications', href: user_applications_path(@user.id))
-    # assert_select "href=", "/users/#{@user.id}/applications"
+    assert page.has_content?('Your Application')
+    assert_equal 2, page.all("a[href='/users/#{@user.id}/applications']").count
   end
 end
