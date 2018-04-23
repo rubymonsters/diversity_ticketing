@@ -40,4 +40,20 @@ feature 'Application' do
 
     assert_not page.has_content?('Delete this application')
   end
+
+  test 'does show the correct content of the application' do
+    sign_in_as_user
+    event = make_event(name: 'The Event', approved: true)
+    application = make_application(
+                  event,
+                  applicant_id: @user.id,
+                  attendee_info_1: 'I would like to learn Ruby',
+                  attendee_info_2: 'I can not afford the ticket'
+                )
+
+    visit event_application_path(event.id, application.id)
+
+    assert page.has_content?('I would like to learn Ruby')
+    assert page.has_content?('I can not afford the ticket')
+  end
 end
