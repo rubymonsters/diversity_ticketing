@@ -2,9 +2,9 @@ require 'test_helper'
 
 feature 'User Applications Page' do
   def setup
-    @applicant = make_user
+    @user = make_user
     @event = make_event(name: 'Applicants event')
-    @application = make_application(@event, applicant_id: @applicant.id, attendee_info_1: 'I want to learn to code')
+    @application = make_application(@event, applicant_id: @user.id)
   end
 
   test 'shows a section to Your Applications where the users applications are displayed' do
@@ -14,27 +14,11 @@ feature 'User Applications Page' do
 
     click_link 'Your Applications'
 
-    assert page.text.include?('Applicants event')
-    page.must_have_content 'Your applications'
-  end
+    assert_equal current_path, user_applications_path(@user.id)
 
-  test 'shows a link to Your application where the application for the event is displayed' do
-    sign_in_as_user
-
-    visit root_path
-
-    click_link 'Your Applications'
-
-    assert page.text.include?('Your Application')
-
-    click_link 'Your Application'
-
-    assert page.text.include?('I want to learn to code')
-    assert_not page.text.include?('Delete this application')
-    assert page.text.include?('Show Event Details')
-
-    click_link 'Show Event Details'
-
-    assert page.text.include?(@event.name)
+    assert page.find_link('Applicants event')
+    assert_equal event_path(@event.id), page.find_link('Applicants event')[:href]
+    assert page.find_link('Your Application')
+    assert_equal event_application_path(@event.id, @application.id), page.find_link('Your Application')[:href]
   end
 end
