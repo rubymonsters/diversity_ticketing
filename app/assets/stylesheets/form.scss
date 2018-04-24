@@ -33,11 +33,16 @@ input[type="radio"] {
   display: none;
 }
 
-.form_field--edit {
+.form_field--headline {
+  font-size: 16px;
+  font-weight: 600;
   margin-bottom: 1em;
-  font-size: 12px;
 }
 
+.form_field--edit {
+  font-size: 12px;
+  font-weight: 400;
+}
 
 label {
   display: block;
