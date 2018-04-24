@@ -21,19 +21,39 @@ feature 'Application' do
     assert_equal 2, page.all("a[href='/users/#{@user.id}/applications']").count
   end
 
-  test 'shows Admin link in the breadcrumb if the user is an admin' do
+  test 'shows link to delete this application if user is an admin' do
     sign_in_as_admin
     event = make_event(name: 'The Event', approved: true)
-    application = make_application(event, applicant_id: @admin.id)
+    application = make_application(event, applicant_id: @user.id)
 
-    visit user_applications_path(@admin.id)
+    visit event_application_path(event.id, application.id)
 
-    click_link 'Your Application'
+    assert page.has_content?('Delete this application')
+  end
 
-    assert_equal current_path, event_application_path(event.id,application.id)
+  test 'does not show link to delete this application if you are an applicant' do
+    sign_in_as_user
+    event = make_event(name: 'The Event', approved: true)
+    application = make_application(event, applicant_id: @user.id)
 
-    assert page.has_content?('Your Application')
-    assert_equal 1, page.all("a[href='/users/#{@admin.id}/applications']").count
-    assert_equal 2, page.all("a[href='/admin']").count
+    visit event_application_path(event.id, application.id)
+
+    assert_not page.has_content?('Delete this application')
+  end
+
+  test 'does show the correct content of the application' do
+    sign_in_as_user
+    event = make_event(name: 'The Event', approved: true)
+    application = make_application(
+                  event,
+                  applicant_id: @user.id,
+                  attendee_info_1: 'I would like to learn Ruby',
+                  attendee_info_2: 'I can not afford the ticket'
+                )
+
+    visit event_application_path(event.id, application.id)
+
+    assert page.has_content?('I would like to learn Ruby')
+    assert page.has_content?('I can not afford the ticket')
   end
 end
