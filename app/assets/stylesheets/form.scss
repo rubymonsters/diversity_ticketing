@@ -29,9 +29,15 @@ input[type="radio"] {
   }
 }
 
-.hidden {
+.form_field--hidden {
   display: none;
 }
+
+.form_field--edit {
+  margin-bottom: 1em;
+  font-size: 12px;
+}
+
 
 label {
   display: block;
@@ -170,5 +176,13 @@ input.has-dependent:checked + div.form_field {
     display: inline-block;
     margin-right: 5px;
     white-space: nowrap;
+  }
+}
+
+.user_information {
+  font-size: 14px;
+  label {
+    font-weight: 600;
+    display: inline-block;
   }
 }
