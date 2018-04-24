@@ -9,6 +9,16 @@ class UsersController < Clearance::UsersController
     }
   end
 
+  def create
+    @user = user_from_params
+    if @user.save
+      sign_in @user
+      redirect_to root_path
+    else
+      render template: "users/new"
+    end
+  end
+
   def edit
   end
 
@@ -38,6 +48,18 @@ class UsersController < Clearance::UsersController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :name)
+      params.require(:user).permit(:name, :email, :password)
+    end
+
+    def user_from_params
+      email = user_params.delete(:email)
+      password = user_params.delete(:password)
+      name = user_params.delete(:name)
+
+      Clearance.configuration.user_model.new(user_params).tap do |user|
+        user.name = name
+        user.email = email
+        user.password = password
+      end
     end
 end
