@@ -56,7 +56,16 @@
       position: relative;
       top: -25px;
       .dropdown-item {
-        background-color: $grey-light;
+        background-color: $grey-dark;
+        opacity: 0.8;
+        a {
+          color: white;
+        }
+        a:hover,
+        .active {
+          color: $green;
+          background-color: transparent;
+        }
         padding-right: 10px;
         &:first-child {
           border-top-left-radius: 5px;
