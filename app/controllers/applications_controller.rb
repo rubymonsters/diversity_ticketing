@@ -39,8 +39,9 @@ class ApplicationsController < ApplicationController
 
   private
     def application_params
+      check_signed_user
       params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
-        :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
+      :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
     end
 
     def get_event
@@ -51,6 +52,14 @@ class ApplicationsController < ApplicationController
       @applicant = User.find_by(id: Application.find(params[:id]).applicant_id)
       unless @applicant == current_user || admin_user?
         redirect_to root_path
+      end
+    end
+
+    def check_signed_user
+      if signed_in?
+        params[:application][:name] = current_user.name if params[:application][:name] === ""
+        params[:application][:email] = current_user.email if params[:application][:email] === ""
+        params[:application][:email_confirmation] = current_user.email if params[:application][:email_confirmation] === ""
       end
     end
 end
