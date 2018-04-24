@@ -57,8 +57,9 @@ class ApplicationsController < ApplicationController
 
     def check_signed_user
       if signed_in?
-        params[:application][:name] = current_user.name if params[:application][:name] === ""
-        params[:application][:email] = current_user.email if params[:application][:email] === ""
+        user_values = [:name, :email]
+        user_values.each { |value| params[:application][value] = current_user[value] if params[:application][value] === "" }
+        params[:application][:applicant_id] = current_user.id
         params[:application][:email_confirmation] = current_user.email if params[:application][:email_confirmation] === ""
       end
     end
