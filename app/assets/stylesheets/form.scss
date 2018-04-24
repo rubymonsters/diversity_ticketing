@@ -15,10 +15,6 @@ input[type="radio"] {
   color: $grey-placeholder;
 }
 
-.form_field {
-  margin-bottom: 1em;
-}
-
 .form_field--check {
   @extend .form_field;
   .field_with_errors {
@@ -27,16 +23,6 @@ input[type="radio"] {
   .field_with_errors ~ .check-label {
     color: $error-red;
   }
-}
-
-.form_field--hidden {
-  display: none;
-}
-
-.form_field--headline {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 1em;
 }
 
 .form_field--edit {
@@ -67,6 +53,7 @@ textarea {
   padding: .3em;
   border: 1px solid $border-grey;
   border-radius: 2px;
+  margin-bottom: 2em;
 }
 
 .field_with_errors {
