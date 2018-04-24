@@ -15,10 +15,6 @@ input[type="radio"] {
   color: $grey-placeholder;
 }
 
-.form_field {
-  margin-bottom: 1em;
-}
-
 .form_field--check {
   @extend .form_field;
   .field_with_errors {
@@ -52,6 +48,7 @@ textarea {
   padding: .3em;
   border: 1px solid $border-grey;
   border-radius: 2px;
+  margin-bottom: 2em;
 }
 
 .field_with_errors {
@@ -166,5 +163,13 @@ input.has-dependent:checked + div.form_field {
     display: inline-block;
     margin-right: 5px;
     white-space: nowrap;
+  }
+}
+
+.user_information {
+  font-size: 14px;
+  label {
+    font-weight: 600;
+    display: inline-block;
   }
 }
