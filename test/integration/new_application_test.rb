@@ -33,6 +33,7 @@ feature 'New Application' do
 
     page.fill_in 'application_attendee_info_1', with: 'I want to learn how to code'
     page.fill_in 'application_attendee_info_2', with: 'I am an underrepresented minority'
+    page.fill_in 'application_email_confirmation', with: @user.email
     page.check 'application[terms_and_conditions]'
 
     click_button "Submit Application"
@@ -49,7 +50,7 @@ feature 'New Application' do
 
     click_button "Submit Application"
 
-    assert page.text.include?("3 errors stopped this application from being saved")
+    assert page.text.include?("5 errors stopped this application from being saved")
   end
 
   test 'keeps information introduced in the application event if the user is signed in' do
@@ -62,6 +63,7 @@ feature 'New Application' do
     page.fill_in 'application_name', with: "New name"
     page.fill_in 'application_attendee_info_1', with: 'I want to learn how to code'
     page.fill_in 'application_attendee_info_2', with: 'I am an underrepresented minority'
+    page.fill_in 'application_email_confirmation', with: @user.email
     page.check 'application[terms_and_conditions]'
 
     click_button "Submit Application"
