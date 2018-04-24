@@ -28,32 +28,8 @@
   <%= render partial: "layouts/open_graph_tags" %>
 </head>
 <body class="<%= controller.controller_name %> <%= action_name.pluralize %>">
-  <header class="topbar" role="banner">
-    <div class="inner">
-      <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => "Logo"), root_path)%><%= link_to 'Diversity Tickets', root_path %></h1>
-      <nav class="navigation" role="navigation">
-        <ul>
-          <li><%= navbar_link_to 'Events', events_path %></li>
-          <li><%= navbar_link_to 'Submit Event', new_event_path, (signed_in? ? [] : ["signed_out"]) %></li>
-          <li><%= navbar_link_to 'About', about_path %></li>
-          <li><%= navbar_link_to 'FAQ', faq_path %></li>
-          <% if signed_in? %>
-            <% if admin_user? %>
-              <li><%= navbar_link_to 'Admin', admin_path %></li>
-              <li><%= navbar_link_to 'Tags', tags_path %></li>
-            <% end %>
-            <li><%= navbar_link_to 'Settings', edit_user_path(current_user) %></li>
-            <li><%= navbar_link_to 'Your Events', user_path(current_user) %></li>
-            <li><%= navbar_link_to 'Your Applications', user_applications_path(current_user) %></li>
-            <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Sign in', sign_in_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
+  <%= render partial: "layouts/header" %>
   <%= render partial: "layouts/signin_popup" %>
 
   <main class="content">
@@ -78,5 +54,6 @@
       </ul>
     </div>
   </footer>
+
 </body>
 </html>
