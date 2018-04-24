@@ -43,13 +43,18 @@
       line-height: $topbar-height;
     }
     .btn {
-      line-height: $topbar-height !important;
-      margin: 0;
+      text-align: center;
+      display: inline-block;
+      width: 143px;
+      margin: 10px 0;
+    }
+    .fa-sort-down {
+      float: right;
     }
     .dropdown-content {
       display: none;
       position: relative;
-      top: -5px;
+      top: -25px;
       .dropdown-item {
         background-color: $grey-light;
         padding-right: 10px;
