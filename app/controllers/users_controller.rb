@@ -52,9 +52,9 @@ class UsersController < Clearance::UsersController
     end
 
     def user_from_params
+      name = user_params.delete(:name)
       email = user_params.delete(:email)
       password = user_params.delete(:password)
-      name = user_params.delete(:name)
 
       Clearance.configuration.user_model.new(user_params).tap do |user|
         user.name = name
