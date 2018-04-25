@@ -7,7 +7,7 @@ feature 'New Application' do
     @event = make_event(organizer_id: @admin.id, approved: true)
   end
 
-  test 'creates an application after an unlogged user introduced their information' do
+  test 'creates an application for logged-out user' do
     visit event_path(@event.id)
 
     click_button "Apply"
@@ -53,7 +53,7 @@ feature 'New Application' do
     assert page.text.include?("5 errors stopped this application from being saved")
   end
 
-  test 'keeps information introduced in the application event if the user is signed in' do
+  test 'entered information has precedence over user-information if the user is signed in' do
     sign_in_as_user
 
     visit event_path(@event.id)
@@ -70,6 +70,7 @@ feature 'New Application' do
 
     assert page.text.include?("You have successfully applied for #{@event.name}")
 
-    assert_equal Application.find_by(applicant_id: @user.id).name, "New name"
+    assert_equal "New name", Application.find_by(applicant_id: @user.id).name
+    assert_equal "Awesome name", @user.name
   end
 end
