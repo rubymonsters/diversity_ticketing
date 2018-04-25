@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20180418085858) do
     t.boolean "travel_needed", default: false, null: false
     t.boolean "accommodation_needed", default: false, null: false
     t.boolean "visa_needed", default: false, null: false
-    t.string "application"
     t.integer "applicant_id"
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
