@@ -5233,6 +5233,8 @@ th {
 .topbar {
   background: white;
   border-bottom: 1px solid #DDDEDF;
+  position: relative;
+  z-index: 2;
 }
 @media (min-width: 1100px) {
   /* line 1, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
@@ -5240,35 +5242,35 @@ th {
     height: 55px;
   }
 }
-/* line 8, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
+/* line 11, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
 .topbar a {
   color: #606060;
 }
-/* line 10, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
+/* line 13, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
 .topbar a:hover, .topbar a:active {
   color: #65BE66;
 }
 
-/* line 14, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
+/* line 17, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
 .logo {
   margin: 0;
   vertical-align: middle;
   font-size: 20px;
   font-weight: 400;
 }
-/* line 19, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
+/* line 22, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
 .logo a {
   text-decoration: none;
   color: #606060;
 }
-/* line 23, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
+/* line 26, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
 .logo img {
   max-height: 35px;
   margin-right: 5px;
   vertical-align: middle;
 }
 @media (min-width: 900px) {
-  /* line 14, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
+  /* line 17, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/top.sass */
   .logo {
     display: inline-block;
     height: 55px;
@@ -5320,9 +5322,65 @@ th {
     background-color: #65BE66;
   }
 }
+/* line 38, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown {
+  display: table;
+  line-height: 2em;
+}
 @media (min-width: 600px) {
-  /* line 39, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
-  .navigation li {
+  /* line 38, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+  .navigation #dropdown {
+    float: right;
+    line-height: 55px;
+  }
+}
+/* line 45, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .btn {
+  text-align: center;
+  display: inline-block;
+  width: 143px;
+  margin: 10px 0;
+}
+/* line 51, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .fa-sort-down {
+  float: right;
+}
+/* line 54, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .dropdown-content {
+  display: none;
+  position: relative;
+  top: -25px;
+}
+/* line 58, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .dropdown-content .dropdown-item {
+  background-color: #606060;
+  opacity: 0.8;
+  padding-right: 10px;
+}
+/* line 61, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .dropdown-content .dropdown-item a {
+  color: white;
+}
+/* line 64, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .dropdown-content .dropdown-item a:hover,
+.navigation #dropdown .dropdown-content .dropdown-item .active {
+  color: #65BE66;
+  background-color: transparent;
+}
+/* line 70, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .dropdown-content .dropdown-item:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+/* line 74, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+.navigation #dropdown .dropdown-content .dropdown-item:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-weight: bold;
+}
+@media (min-width: 600px) {
+  /* line 84, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/navigation.scss */
+  .navigation li:not(.dropdown-item) {
     float: left;
     margin-right: 1em;
   }
@@ -5333,6 +5391,7 @@ th {
     display: inline-block;
     height: 55px;
     line-height: 55px;
+    width: 80%;
   }
 }
 
@@ -5490,21 +5549,16 @@ input[type="radio"] {
   color: #a5a3a4;
 }
 
-/* line 18, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
-.form_field, .form_field--check {
-  margin-bottom: 1em;
-}
-
-/* line 24, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 20, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .form_field--check .field_with_errors {
   display: inline;
 }
-/* line 27, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 23, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .form_field--check .field_with_errors ~ .check-label {
   color: #e85754;
 }
 
-/* line 32, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 28, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 label {
   display: block;
   margin-bottom: .2em;
@@ -5512,12 +5566,12 @@ label {
   font-size: 14px;
 }
 
-/* line 39, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 35, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 div.required label:after {
   content: " *";
 }
 
-/* line 43, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 39, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 input[type="text"],
 input[type="email"],
 input[type="date"],
@@ -5530,20 +5584,21 @@ textarea {
   padding: .3em;
   border: 1px solid #a1a3a6;
   border-radius: 2px;
+  margin-bottom: 2em;
 }
 
-/* line 59, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 56, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .field_with_errors label {
   font-weight: 600;
   color: #e85754;
 }
-/* line 63, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 60, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .field_with_errors input,
 .field_with_errors textarea {
   border-color: #e85754;
 }
 
-/* line 69, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 66, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .error {
   background: #c43e3d;
   color: white;
@@ -5572,7 +5627,7 @@ textarea {
   background-color: #e85754;
 }
 
-/* line 73, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 70, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .markdown textarea {
   position: relative;
   height: 200px;
@@ -5581,20 +5636,20 @@ textarea {
   z-index: 1;
 }
 
-/* line 81, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 78, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .markdown .hint {
   display: block;
   font-size: 10px;
   padding-right: 2px;
 }
 @media (min-width: 900px) {
-  /* line 81, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+  /* line 78, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
   .markdown .hint {
     float: right;
   }
 }
 
-/* line 91, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 88, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .markdown_preview {
   display: block;
   width: 100%;
@@ -5607,7 +5662,7 @@ textarea {
   z-index: 0;
 }
 
-/* line 103, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 100, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .markdown_preview_inner {
   overflow: scroll;
   display: block;
@@ -5616,7 +5671,7 @@ textarea {
   height: 190px;
 }
 
-/* line 111, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 108, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .tab {
   display: inline-block;
   padding: 3px 8px;
@@ -5634,7 +5689,7 @@ textarea {
   border-bottom: none;
 }
 
-/* line 128, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 125, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .active {
   border-bottom: 1px solid white;
   cursor: auto;
@@ -5642,7 +5697,7 @@ textarea {
   z-index: 2;
 }
 
-/* line 135, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 132, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .event-logo img {
   height: 80px;
   padding: .3em;
@@ -5650,40 +5705,50 @@ textarea {
   border-radius: 2px;
 }
 
-/* line 142, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 139, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .indent {
   margin-left: 20px;
 }
 
-/* line 146, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 143, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 input.has-dependent + div.form_field, input.has-dependent + div.form_field--check {
   display: none;
 }
 
-/* line 150, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 147, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 input.has-dependent:checked + div.form_field, input.has-dependent:checked + div.form_field--check {
   display: block;
 }
 
-/* line 154, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 151, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .form-hint {
   margin-bottom: 2rem;
   margin-left: .4em;
   font-size: 12px;
 }
 
-/* line 160, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 157, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .category-tags {
   padding: 1em;
   border: 1px solid #a1a3a6;
   border-radius: 4px;
   margin-bottom: 1em;
 }
-/* line 165, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+/* line 162, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
 .category-tags label {
   display: inline-block;
   margin-right: 5px;
   white-space: nowrap;
+}
+
+/* line 169, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+.user_information {
+  font-size: 14px;
+}
+/* line 171, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/form.scss */
+.user_information label {
+  font-weight: 600;
+  display: inline-block;
 }
 
 /* line 30, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/front.sass */
@@ -6135,12 +6200,12 @@ input.has-dependent:checked + div.form_field, input.has-dependent:checked + div.
 }
 
 /* line 84, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/events.scss */
-.organizer-list {
+.organizer-list, .applicant-list {
   list-style: none;
   padding: 0;
 }
 /* line 88, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/events.scss */
-.organizer-list li {
+.organizer-list li, .applicant-list li {
   margin-bottom: 1em;
   border-bottom: 3px solid #f1f1f1;
   display: flex;
@@ -6150,15 +6215,15 @@ input.has-dependent:checked + div.form_field, input.has-dependent:checked + div.
   margin-bottom: 0;
 }
 /* line 96, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/events.scss */
-.organizer-list li p:not(:last-child) {
+.organizer-list li p:not(:last-child), .applicant-list li p:not(:last-child) {
   margin-right: 1em;
 }
 /* line 100, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/events.scss */
-.organizer-list p {
+.organizer-list p, .applicant-list p {
   margin: 0 0 1em;
 }
 /* line 103, /Users/GrrrlPower/projects/diversity_ticketing/app/assets/stylesheets/events.scss */
-.organizer-list .event-name {
+.organizer-list .event-name, .applicant-list .event-name {
   flex-grow: 1;
   white-space: nowrap;
   overflow: hidden;

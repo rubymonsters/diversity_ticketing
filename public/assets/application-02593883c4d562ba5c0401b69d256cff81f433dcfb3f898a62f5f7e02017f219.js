@@ -14596,6 +14596,11 @@ $(window).load(function() {
   }
 
 });
+$(document).ready(function(){
+  $( "#dropdown-btn" ).click(function() {
+    $(".dropdown-content").toggle();
+  });
+});
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -14608,6 +14613,7 @@ $(window).load(function() {
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 
 
 
