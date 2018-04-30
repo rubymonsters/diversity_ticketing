@@ -23,7 +23,7 @@ feature 'Application' do
     assert page.has_content?(@application.attendee_info_2)
     assert page.has_content?("Name")
     assert page.has_content?("Email")
-    assert page.has_content?("Save")
+    assert page.has_content?("Apply Changes")
   end
 
   test 'does not allow a user to edit other users application' do
