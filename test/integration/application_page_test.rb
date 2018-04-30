@@ -31,18 +31,27 @@ feature 'Application' do
 
     visit event_application_path(@event.id, @application.id)
 
-    assert page.has_content?('Delete this application')
+    assert page.has_content?('Delete')
   end
 
-  test 'does not show link to delete this application if user is an applicant' do
+  test 'shows link to Delete if user is an applicant and event-deadline has not passed' do
     sign_in_as_user
 
     visit event_application_path(@event.id, @application.id)
 
-    assert_not page.has_content?('Delete this application')
+    assert page.has_content?('Delete')
   end
 
-  test 'does show the correct content of the application' do
+  test 'does not show link to Delete if user is an applicant and event-deadline has passed' do
+    @event.update_attributes(deadline: 1.day.ago)
+    sign_in_as_user
+
+    visit event_application_path(@event.id, @application.id)
+
+    assert_not page.has_content?('Delete')
+  end
+
+  test 'shows the correct content of the application' do
     sign_in_as_user
 
     visit event_application_path(@event.id, @application.id)
@@ -51,7 +60,7 @@ feature 'Application' do
     assert page.has_content?('I can not afford the ticket')
   end
 
-  test 'shows a button to edit the application if deadline has not passed' do
+  test 'shows a button to the applicant to edit their application if deadline has not passed' do
     sign_in_as_user
 
     visit event_application_path(@event.id, @application.id)
@@ -59,7 +68,7 @@ feature 'Application' do
     assert page.has_content?('Edit')
   end
 
-  test 'shows no edit-button if deadline has already passed' do
+  test 'shows no edit-button to the applicant if deadline has already passed' do
     sign_in_as_user
 
     visit event_application_path(@event.id, @application.id)
@@ -71,5 +80,15 @@ feature 'Application' do
     visit event_application_path(@event.id, @application.id)
 
     assert_not page.has_content?('Edit')
+  end
+
+  test 'does not allow non-admin-users to see other users applications' do
+    other_user = make_user(email: 'other@email.de')
+    other_application = make_application(@event, applicant_id: other_user.id)
+    sign_in_as_user
+
+    visit event_application_path(@event.id, other_application.id)
+
+    assert_equal root_path, current_path
   end
 end
