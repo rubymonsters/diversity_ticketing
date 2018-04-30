@@ -1,0 +1,38 @@
+require 'test_helper'
+
+feature 'Application' do
+  def setup
+    @user = make_user
+    @event = make_event(name: 'The Event', approved: true)
+    @application = make_application(
+                  @event,
+                  applicant_id: @user.id,
+                  attendee_info_1: 'I would like to learn Ruby',
+                  attendee_info_2: 'I can not afford the ticket'
+                )
+  end
+
+  test 'allows the user to edit their own application' do
+    sign_in_as_user
+
+    visit edit_event_application_path(@event.id, @application.id)
+
+    assert page.has_content?("Why do you want to attend #{@event.name} and what especially do you look forward to learning?")
+    assert page.has_content?(@application.attendee_info_1)
+    assert page.has_content?("Please share with us why you're applying for a diversity ticket.")
+    assert page.has_content?(@application.attendee_info_2)
+    assert page.has_content?("Name")
+    assert page.has_content?("Email")
+    assert page.has_content?("Save")
+  end
+
+  test 'does not allow a user to edit other users application' do
+    other_user = make_user(email: "other@user.de")
+    other_application = make_application(@event, applicant_id: other_user.id)
+    sign_in_as_user
+
+    visit edit_event_application_path(@event.id, other_application.id)
+
+    assert_equal root_path, current_path
+  end
+end
