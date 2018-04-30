@@ -56,7 +56,7 @@ feature 'Application' do
 
     visit event_application_path(@event.id, @application.id)
 
-    assert page.has_content?('Edit Application')
+    assert page.has_content?('Edit')
   end
 
   test 'shows no edit-button if deadline has already passed' do
@@ -64,12 +64,12 @@ feature 'Application' do
 
     visit event_application_path(@event.id, @application.id)
 
-    assert page.has_content?('Edit Application')
+    assert page.has_content?('Edit')
 
     @event.update_attributes(deadline: 1.day.ago)
 
     visit event_application_path(@event.id, @application.id)
 
-    assert_not page.has_content?('Edit Application')
+    assert_not page.has_content?('Edit')
   end
 end
