@@ -50,4 +50,24 @@ feature 'Application' do
     assert page.has_content?('I would like to learn Ruby')
     assert page.has_content?('I can not afford the ticket')
   end
+
+  test 'shows a button to edit the application if deadline has not passed' do
+    sign_in_as_user
+
+    visit event_application_path(@event.id,@application.id)
+
+    assert page.has_content?('Edit Application')
+  end
+
+  test 'shows no edit-button if deadline has already passed' do
+    sign_in_as_user
+
+    visit event_application_path(@event.id,@application.id)
+
+    assert page.has_content?('Edit Application')
+
+    @event.deadline = 1.day.ago
+
+    assert_not page.has_content?('Edit Application')
+  end
 end
