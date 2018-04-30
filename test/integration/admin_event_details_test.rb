@@ -5,8 +5,8 @@ feature 'Admin Event Details' do
   def setup
     @admin = make_admin
     @event = make_event
-    @application_1 = make_application(@event)
-    @application_2 = make_application(@event)
+    @application_1 = make_application(@event, submitted: true)
+    @application_2 = make_application(@event, submitted: true)
     @application_draft = make_application(@event, submitted: false)
   end
 
