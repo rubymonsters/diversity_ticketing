@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
   before_action :require_admin, only: [:destroy]
   before_action :ensure_correct_user, only: [:show, :edit]
-  before_action :get_event, only: [:show, :new, :create, :destroy]
+  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy]
   skip_before_action :require_login, only: [:new, :create]
 
   def show
@@ -9,6 +9,17 @@ class ApplicationsController < ApplicationController
   end
 
   def edit
+    @application = @event.applications.find(params[:id])
+  end
+
+  def update
+    @application = @event.applications.find(params[:id])
+    if @application.update(application_params)
+      redirect_to event_application_path(@event.id, @application.id),
+      notice: "You have successfully updated your application for #{@event.name}."
+    else
+      render :edit
+    end
   end
 
   def new
