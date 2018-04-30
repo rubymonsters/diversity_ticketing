@@ -16,7 +16,7 @@
       </div>
 
       <ul class="admin-list">
-        <% @event.applications.each do |application| %>
+        <% @event.applications.submitted.each do |application| %>
           <li>
             <p class="application-name">
               <%= link_to application.name, event_application_path(@event, application) %>
