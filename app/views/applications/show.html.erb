@@ -43,4 +43,7 @@
   <%= link_to 'Show Event Details', event_admin_path(@event.id) %>
 <% else %>
   <%= link_to 'Show Event Details', event_path(@event.id) %>
+  <% if @application.event.open? %>
+    <%= link_to 'Edit Application', edit_event_application_path(@event.id, @application.id) %>
+  <% end %>
 <% end %>
