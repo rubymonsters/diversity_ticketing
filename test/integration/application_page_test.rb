@@ -20,7 +20,7 @@ feature 'Application' do
 
     click_link 'Your Application'
 
-    assert_equal current_path, event_application_path(@event.id,@application.id)
+    assert_equal current_path, event_application_path(@event.id, @application.id)
 
     assert page.has_content?('Your Application')
     assert_equal 2, page.all("a[href='/users/#{@user.id}/applications']").count
@@ -54,7 +54,7 @@ feature 'Application' do
   test 'shows a button to edit the application if deadline has not passed' do
     sign_in_as_user
 
-    visit event_application_path(@event.id,@application.id)
+    visit event_application_path(@event.id, @application.id)
 
     assert page.has_content?('Edit Application')
   end
@@ -62,11 +62,13 @@ feature 'Application' do
   test 'shows no edit-button if deadline has already passed' do
     sign_in_as_user
 
-    visit event_application_path(@event.id,@application.id)
+    visit event_application_path(@event.id, @application.id)
 
     assert page.has_content?('Edit Application')
 
-    @event.deadline = 1.day.ago
+    @event.update_attributes(deadline: 1.day.ago)
+
+    visit event_application_path(@event.id, @application.id)
 
     assert_not page.has_content?('Edit Application')
   end
