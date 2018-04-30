@@ -17,8 +17,8 @@ feature 'User Applications Page' do
 
     assert_equal current_path, user_path(@user.id)
 
-    assert page.find_link('Applicants event')
-    assert_equal event_path(@event.id), page.find_link('Applicants event')[:href]
+    assert page.find_link(@event.name)
+    assert_equal event_path(@event.id), page.find_link(@event.name)[:href]
     assert page.find_link('Your Application')
     assert_equal event_application_path(@event.id, @application.id), page.find_link('Your Application')[:href]
   end
