@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :require_admin, only: [:destroy]
-  before_action :ensure_correct_user, only: [:show]
+  before_action :ensure_correct_user, only: [:show, :edit]
   before_action :get_event, only: [:show, :new, :create, :destroy]
   skip_before_action :require_login, only: [:new, :create]
 
@@ -10,7 +10,7 @@ class ApplicationsController < ApplicationController
 
   def edit
   end
-  
+
   def new
     if @event.application_process == 'application_by_organizer'
       redirect_to @event
