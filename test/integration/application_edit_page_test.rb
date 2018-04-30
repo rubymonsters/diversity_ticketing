@@ -36,4 +36,13 @@ feature 'Application' do
 
     assert_equal root_path, current_path
   end
+
+  test 'does not allow applicant to edit application after the deadline has passed' do
+    @event.update_attributes(deadline: 1.day.ago)
+    sign_in_as_user
+
+    visit edit_event_application_path(@event.id, @application.id)
+
+    assert page.has_content?("You cannot edit your application as the #{@event.name} deadline has already passed")
+  end
 end
