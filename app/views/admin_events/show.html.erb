@@ -7,7 +7,8 @@
 <% unless @event.application_process == "application_by_organizer" %>
   <section class="box">
     <h2 class="box-title">Applications</h2>
-    <%= pluralize_highlight_count(@event.applications.count, "application") %> currently
+    <%= pluralize_highlight_count(@event.applications.submitted.count, "application") %> currently
+    <%= pluralize_highlight_count(@event.applications.drafts.count, "draft") %> currently
 
     <% if @event.applications.any? %>
       <div class="detail-pair">
@@ -15,7 +16,7 @@
       </div>
 
       <ul class="admin-list">
-        <% @event.applications.each do |application| %>
+        <% @event.applications.submitted.each do |application| %>
           <li>
             <p class="application-name">
               <%= link_to application.name, event_application_path(@event, application) %>
