@@ -9,7 +9,12 @@ class ApplicationsController < ApplicationController
   end
 
   def edit
-    @application = @event.applications.find(params[:id])
+    if @event.open?
+      @application = @event.applications.find(params[:id])
+    else
+      @application = @event.applications.find(params[:id])
+      redirect_to event_application_path(@event.id, @application.id), alert: "You cannot edit your application as the #{@event.name} deadline has already passed"
+    end
   end
 
   def update
