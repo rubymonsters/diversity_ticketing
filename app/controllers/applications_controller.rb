@@ -8,6 +8,9 @@ class ApplicationsController < ApplicationController
     @application = @event.applications.find(params[:id])
   end
 
+  def edit
+  end
+  
   def new
     if @event.application_process == 'application_by_organizer'
       redirect_to @event
