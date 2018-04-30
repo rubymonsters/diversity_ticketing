@@ -73,4 +73,19 @@ feature 'New Application' do
     assert_equal "New name", Application.find_by(applicant_id: @user.id).name
     assert_equal "Awesome name", @user.name
   end
+
+  test 'a user is able to save an application as a draft before submitting it' do
+    sign_in_as_user
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    page.fill_in 'application_name', with: "New name"
+    page.fill_in 'application_attendee_info_1', with: 'I want to learn how to code'
+    page.fill_in 'application_attendee_info_2', with: 'I am an underrepresented minority'
+    page.fill_in 'application_email_confirmation', with: @user.email
+    page.check 'application[terms_and_conditions]'
+
+    click_button "Save as a Draft"
+  end
 end
