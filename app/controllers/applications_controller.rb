@@ -42,9 +42,12 @@ class ApplicationsController < ApplicationController
     else
       @application = Application.new(application_params)
       @application.event = @event
-      if @application.save
+      if @application.save && params[:commit] == 'Submit Application'
+        @application.update_attributes(submitted: true)
         ApplicantMailer.application_received(@application).deliver_later
         redirect_to @event, notice: "You have successfully applied for #{@event.name}."
+      elsif @application.save && params[:commit] == 'Save as a Draft'
+        redirect_to @event, notice: "You have successfully saved an application draft for #{@event.name}."
       else
         render :new
       end
