@@ -81,7 +81,8 @@ class ApplicationsControllerTest < ActionController::TestCase
           email_confirmation: 'joe@test.com',
           terms_and_conditions: '1',
           event: event
-        }
+        },
+        commit: 'Submit Application'
       }
 
       assert_redirected_to event
