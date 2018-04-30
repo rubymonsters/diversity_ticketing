@@ -20,5 +20,9 @@ feature 'User Settings Page' do
     click_button 'Update User'
 
     assert page.text.include?('You have successfully updated your user data.')
+
+    @user.reload
+
+    assert_equal 'My Name', @user.name
   end
 end

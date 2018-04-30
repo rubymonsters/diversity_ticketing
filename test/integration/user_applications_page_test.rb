@@ -7,7 +7,7 @@ feature 'User Applications Page' do
     @application = make_application(@event, applicant_id: @user.id)
   end
 
-  test 'shows a section to Your Applications where the users applications are displayed' do
+  test 'shows a section in Your Applications where the users applications are displayed' do
     sign_in_as_user
 
     visit root_path
