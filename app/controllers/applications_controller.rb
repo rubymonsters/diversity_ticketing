@@ -1,25 +1,21 @@
 class ApplicationsController < ApplicationController
   before_action :require_admin, only: [:destroy]
+  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy, :ensure_correct_user]
+  before_action :get_application, only: [:edit, :show, :update, :destroy, :ensure_correct_user]
   before_action :ensure_correct_user, only: [:show, :edit]
-  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy]
   skip_before_action :require_login, only: [:new, :create]
 
   def show
-    @application = @event.applications.find(params[:id])
   end
 
   def edit
-    if @event.open?
-      @application = @event.applications.find(params[:id])
-    else
-      @application = @event.applications.find(params[:id])
+    if @event.closed?
       redirect_to event_application_path(@event.id, @application.id),
       alert: "You cannot edit your application as the #{@event.name} deadline has already passed"
     end
   end
 
   def update
-    @application = @event.applications.find(params[:id])
     if @application.update(application_params)
       redirect_to event_application_path(@event.id, @application.id),
       notice: "You have successfully updated your application for #{@event.name}."
@@ -55,7 +51,6 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
-    @application = Application.find(params[:id])
     @application.destroy
     redirect_to event_admin_path(@event.id)
   end
@@ -67,13 +62,15 @@ class ApplicationsController < ApplicationController
       :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
     end
 
+    def get_application
+      @application = @event.applications.find(params[:id])
+    end
+
     def get_event
       @event = Event.find(params[:event_id])
     end
 
     def ensure_correct_user
-      get_event
-      @application = @event.applications.find(params[:id])
       @applicant = User.find_by(id: Application.find(params[:id]).applicant_id)
       unless @applicant == current_user || (admin_user? && @application.submitted)
         redirect_to root_path
