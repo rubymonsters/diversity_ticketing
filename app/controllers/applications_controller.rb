@@ -71,7 +71,7 @@ class ApplicationsController < ApplicationController
     end
 
     def ensure_correct_user
-      @applicant = User.find_by(id: Application.find(params[:id]).applicant_id)
+      @applicant = User.find_by(id: @application.applicant_id)
       unless @applicant == current_user || (admin_user? && @application.submitted)
         redirect_to root_path
       end
