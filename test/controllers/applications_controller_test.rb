@@ -24,16 +24,28 @@ class ApplicationsControllerTest < ActionController::TestCase
       assert_redirected_to root_path
     end
 
-    it 'shows application to admin users' do
+    it 'shows submitted application to admin users' do
       user = make_user(admin: true)
       sign_in_as(user)
 
       event = make_event
-      application = make_application(event)
+      application = make_application(event, submitted: true)
 
       get :show, params: { event_id: event.id, id: application.id }
 
       assert_response :success
+    end
+
+    it 'redirects admin users to root if they try to see drafted applications' do
+      user = make_user(admin: true)
+      sign_in_as(user)
+
+      event = make_event
+      application = make_application(event, submitted: false)
+
+      get :show, params: { event_id: event.id, id: application.id }
+
+      assert_redirected_to root_path
     end
 
     it 'raise exception if application does not exist' do
