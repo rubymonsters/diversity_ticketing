@@ -64,7 +64,9 @@
   </section>
 
   <div class="form_field">
-    <%= f.submit("Save as a Draft", class: "btn btn-edit") %>
+    <% if current_user %>
+      <%= f.submit("Save as a Draft", class: "btn btn-edit") %>
+    <% end %>
     <%= f.submit("Submit Application", class: "btn btn-save") %>
   </div>
 <% end %>
