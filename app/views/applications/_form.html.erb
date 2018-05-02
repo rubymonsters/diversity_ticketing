@@ -15,7 +15,10 @@
     <h2 class="box-title">Please fill out this form. Fields marked with * are required.</h2>
     <% unless current_user %>
       <p>
-        Would you like to <%= link_to 'Sign In', sign_in_path %> to use your profile information and save this application?
+        <em>
+          Would you like to <%= link_to 'Sign In', sign_in_path %>
+          to use your profile information and save this application?
+        </em>
       </p>
     <% end %>
     <%= f.form_field :text_area, :attendee_info_1, "Why do you want to attend #{@event.name} and what especially do you look forward to learning?" %>
