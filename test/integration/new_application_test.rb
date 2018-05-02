@@ -94,6 +94,24 @@ feature 'New Application' do
 
     click_button "Apply"
 
-    assert_not page.has_content?('Save as a Draft')  
+    assert_not page.has_content?('Save as a Draft')
+  end
+
+  test 'shows sign-in link to not logged in users to allow them to use their credentials for this application' do
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    assert page.has_content?('Would you like to Sign In to use your profile information and save this application?')
+  end
+
+  test 'does not show sign-in link to logged in users inside the application' do
+    sign_in_as_user
+
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    assert_not page.has_content?('Would you like to Sign In to use your profile information and save this application?')
   end
 end
