@@ -9,7 +9,8 @@ feature 'Application' do
                   @event,
                   applicant_id: @user.id,
                   attendee_info_1: 'I would like to learn Ruby',
-                  attendee_info_2: 'I can not afford the ticket'
+                  attendee_info_2: 'I can not afford the ticket',
+                  submitted: true
                 )
   end
 
