@@ -88,4 +88,12 @@ feature 'New Application' do
 
     click_button "Save as a Draft"
   end
+
+  test 'shows Save as Draft Button only to logged in users' do
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    assert_not page.has_content?('Save as a Draft')  
+  end
 end
