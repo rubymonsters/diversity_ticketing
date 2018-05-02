@@ -72,8 +72,10 @@ class ApplicationsController < ApplicationController
     end
 
     def ensure_correct_user
+      get_event
+      @application = @event.applications.find(params[:id])
       @applicant = User.find_by(id: Application.find(params[:id]).applicant_id)
-      unless @applicant == current_user || admin_user?
+      unless @applicant == current_user || (admin_user? && @application.submitted)
         redirect_to root_path
       end
     end

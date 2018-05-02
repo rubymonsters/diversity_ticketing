@@ -10,7 +10,7 @@
     <%= pluralize_highlight_count(@event.applications.submitted.count, "application") %> currently
     <%= pluralize_highlight_count(@event.applications.drafts.count, "draft") %> currently
 
-    <% if @event.applications.any? %>
+    <% if @event.applications.submitted.any? %>
       <div class="detail-pair">
        <strong>Applicants</strong>
       </div>
