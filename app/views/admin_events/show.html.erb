@@ -8,6 +8,7 @@
   <section class="box">
     <h2 class="box-title">Applications</h2>
     <%= pluralize_highlight_count(@event.applications.submitted.count, "application") %> currently
+    <br>
     <%= pluralize_highlight_count(@event.applications.drafts.count, "draft") %> currently
 
     <% if @event.applications.submitted.any? %>
