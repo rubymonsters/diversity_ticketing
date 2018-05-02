@@ -13,6 +13,11 @@
 
   <section class="box">
     <h2 class="box-title">Please fill out this form. Fields marked with * are required.</h2>
+    <% unless current_user %>
+      <p>
+        Would you like to <%= link_to 'Sign In', sign_in_path %> to use your profile information and save this application?
+      </p>
+    <% end %>
     <%= f.form_field :text_area, :attendee_info_1, "Why do you want to attend #{@event.name} and what especially do you look forward to learning?" %>
     <%= f.form_field :text_area, :attendee_info_2, "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)" %>
     <% if current_user %>
