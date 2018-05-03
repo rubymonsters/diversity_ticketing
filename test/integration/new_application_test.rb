@@ -87,6 +87,9 @@ feature 'New Application' do
     page.check 'application[terms_and_conditions]'
 
     click_button "Save as a Draft"
+
+    assert_equal @event.applications.last.email, @user.email
+    assert_equal Application.last.submitted, false
   end
 
   test 'shows Save as Draft Button only to logged in users' do
@@ -113,5 +116,33 @@ feature 'New Application' do
     click_button "Apply"
 
     assert_not page.has_content?('Would you like to Sign In to use your profile information and save this application?')
+  end
+
+  test 'shows an Your Application button if the user already submitted an application for the event' do
+    application = make_application(@event, applicant_id: @user.id, submitted: true)
+
+    sign_in_as_user
+
+    visit event_path(@event.id)
+
+    assert_not page.has_content?("Apply")
+
+    click_button "Your Application"
+
+    assert_equal current_path, event_application_path(@event.id, application.id)
+  end
+
+  test 'shows an Your Draft button if the user already saved a draft for the event' do
+    application = make_application(@event, applicant_id: @user.id, submitted: false)
+
+    sign_in_as_user
+
+    visit event_path(@event.id)
+
+    assert_not page.has_content?("Apply")
+
+    click_button "Your Draft"
+
+    assert_equal current_path, event_application_path(@event.id, application.id)
   end
 end
