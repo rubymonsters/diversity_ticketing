@@ -15,7 +15,7 @@ feature 'Application draft' do
   end
 
 
-  test 'does not show link to submit the application if user is an admin' do
+  test 'does not show link to Submit the application if user is an admin' do
     sign_in_as_admin
 
     visit event_application_path(@event.id, @draft.id)
