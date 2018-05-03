@@ -35,7 +35,8 @@ class UsersController < Clearance::UsersController
 
   def applications
     @categorized_user_applications = {
-      all: @user.applications
+      submitted: @user.applications.submitted,
+      drafts: @user.applications.drafts,
     }
   end
 

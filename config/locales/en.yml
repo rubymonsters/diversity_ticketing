@@ -49,4 +49,5 @@ en:
       past: "Past"
     applications:
       title: "Your applications"
-      all: "All"
+      submitted: "Submitted"
+      drafts: "Drafts"
