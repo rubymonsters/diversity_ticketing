@@ -87,6 +87,9 @@ feature 'New Application' do
     page.check 'application[terms_and_conditions]'
 
     click_button "Save as a Draft"
+
+    assert_equal @event.applications.last.email, @user.email
+    assert_equal Application.last.submitted, false
   end
 
   test 'shows Save as Draft Button only to logged in users' do
