@@ -116,7 +116,7 @@ feature 'New Application' do
   end
 
   test 'shows an Your Application button if the user already submitted an application for the event' do
-    application = make_application(@event, applicant_id: @user.id, submitted = true)
+    application = make_application(@event, applicant_id: @user.id, submitted: true)
 
     sign_in_as_user
 
@@ -130,7 +130,7 @@ feature 'New Application' do
   end
 
   test 'shows an Your Draft button if the user already saved a draft for the event' do
-    application = make_application(@event, applicant_id: @user.id, submitted = false)
+    application = make_application(@event, applicant_id: @user.id, submitted: false)
 
     sign_in_as_user
 
