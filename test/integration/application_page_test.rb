@@ -1,6 +1,6 @@
 require 'test_helper'
 
-feature 'Application' do
+feature 'Application Page' do
   def setup
     @user = make_user
     @admin = make_admin

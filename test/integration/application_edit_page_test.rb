@@ -1,6 +1,6 @@
 require 'test_helper'
 
-feature 'Application' do
+feature 'Application Edit' do
   def setup
     @user = make_user
     @event = make_event(name: 'The Event', approved: true)
