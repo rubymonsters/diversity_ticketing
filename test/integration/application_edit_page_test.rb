@@ -12,7 +12,23 @@ feature 'Application Edit' do
                 )
   end
 
-  test 'allows the user to edit their own application' do
+  test 'allows the user to edit their own application draft' do
+    sign_in_as_user
+
+    visit edit_event_application_path(@event.id, @application.id)
+
+    assert page.has_content?("Why do you want to attend #{@event.name} and what especially do you look forward to learning?")
+    assert page.has_content?(@application.attendee_info_1)
+    assert page.has_content?("Please share with us why you're applying for a diversity ticket.")
+    assert page.has_content?(@application.attendee_info_2)
+    assert page.has_content?("Name")
+    assert page.has_content?("Email")
+    assert page.has_content?("Back")
+    assert page.has_selector?("input[type=submit][value='Save Changes']")
+  end
+
+  test 'allows the user to edit their own submitted application' do
+    @application.update_attributes(submitted: true)
     sign_in_as_user
 
     visit edit_event_application_path(@event.id, @application.id)
