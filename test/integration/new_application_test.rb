@@ -114,4 +114,32 @@ feature 'New Application' do
 
     assert_not page.has_content?('Would you like to Sign In to use your profile information and save this application?')
   end
+
+  test 'shows an Your Application button if the user already submitted an application for the event' do
+    application = make_application(@event, applicant_id: @user.id, submitted = true)
+
+    sign_in_as_user
+
+    visit event_path(@event.id)
+
+    assert_not page.has_content?("Apply")
+
+    click_button "Your Application"
+
+    assert_equal current_path, event_application_path(@event.id, application.id)
+  end
+
+  test 'shows an Your Draft button if the user already saved a draft for the event' do
+    application = make_application(@event, applicant_id: @user.id, submitted = false)
+
+    sign_in_as_user
+
+    visit event_path(@event.id)
+
+    assert_not page.has_content?("Apply")
+
+    click_button "Your Draft"
+
+    assert_equal current_path, event_application_path(@event.id, application.id)
+  end
 end
