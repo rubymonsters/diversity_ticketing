@@ -43,15 +43,6 @@ feature 'Application Page' do
     assert page.has_content?('Delete')
   end
 
-  test 'shows link to Delete if application is a draft and deadline-has passed' do
-    @event.update_attributes(deadline: 1.day.ago)
-    sign_in_as_user
-
-    visit event_application_path(@event.id, @application.id)
-
-    assert page.has_content?('Delete')
-  end
-
   test 'does not show link to Delete if user is an applicant and event-deadline has passed' do
     @event.update_attributes(deadline: 1.day.ago)
     sign_in_as_user

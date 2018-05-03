@@ -49,4 +49,13 @@ feature 'Application draft' do
 
     assert_equal true, @draft.submitted
   end
+
+  test 'shows link to Delete if application is a draft and deadline-has passed' do
+    @event.update_attributes(deadline: 1.day.ago)
+    sign_in_as_user
+
+    visit event_application_path(@event.id, @draft.id)
+
+    assert page.has_content?('Delete')
+  end
 end
