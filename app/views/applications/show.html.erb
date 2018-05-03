@@ -44,7 +44,7 @@
           class: "btn btn-delete",  method: :delete,
           data: { confirm: "Are you sure you want to delete this application?" } %>
       <% if !@application.submitted %>
-        <%= link_to 'Submit Application', update_event_application_path(@event.id, @application.id),
+        <%= link_to 'Submit Application', submit_event_application_path(@event.id, @application.id),
             class: "btn btn-save", method: :post %>
       <% end %>
     </div>

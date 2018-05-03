@@ -22,10 +22,6 @@ class ApplicationsController < ApplicationController
     elsif @application.update(application_params) && params[:commit] == 'Save Changes'
       redirect_to event_application_path(@event.id, @application.id),
       notice: "You have successfully saved your changes to the draft."
-    elsif params[:commit] == 'Submit Application'
-      @application.update_attributes(submitted: true)
-      redirect_to event_application_path(@event.id, @application.id),
-      notice: "You have successfully submitted your application for #{@event.name}."
     else
       render :edit
     end
@@ -55,6 +51,14 @@ class ApplicationsController < ApplicationController
         render :new
       end
     end
+  end
+
+  def submit
+    @application = Application.find_by(id: params[:id])
+    @event = Event.find_by(id: params[:event_id])
+    @application.update_attributes(submitted: true)
+    Rails.logger.info(@application.errors.messages.inspect)
+    redirect_to user_applications_path(@application.applicant_id), notice: "You have successfully submitted an application for #{@event.name}."
   end
 
   def destroy
