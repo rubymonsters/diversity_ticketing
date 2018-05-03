@@ -16,9 +16,12 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    if @application.update(application_params)
+    if @application.update(application_params) && params[:commit] == 'Apply Changes'
       redirect_to event_application_path(@event.id, @application.id),
       notice: "You have successfully updated your application for #{@event.name}."
+    elsif @application.update(application_params) && params[:commit] == 'Save Changes'
+      redirect_to event_application_path(@event.id, @application.id),
+      notice: "You have successfully saved your changes to the draft."
     else
       render :edit
     end
