@@ -25,9 +25,9 @@ feature 'Event Overview' do
 
     assert_not page.has_content?("Apply")
 
-    click_link("Your Draft")
+    click_button("Your Draft")
 
-    assert_equal current_path, event_application_path(@event.id, application.id)
+    assert_equal event_application_path(@event.id, application.id), current_path
   end
 
   test 'shows a link to Your Application if the user already submitted an application for the event' do
