@@ -39,8 +39,9 @@ feature 'Event Overview' do
 
     assert_not page.has_content?("Apply")
 
-    page.all('a', text:"Your Application")[1].click
+    page.all('a', text:"Your Application")
+    click_button("Your Application")
 
-    assert_equal current_path, event_application_path(@event.id, application.id)
+    assert_equal event_application_path(@event.id, application.id), current_path
   end
 end
