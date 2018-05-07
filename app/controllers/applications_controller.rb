@@ -1,11 +1,12 @@
 class ApplicationsController < ApplicationController
   before_action :require_admin, only: [:destroy]
-  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy, :ensure_correct_user, :submit]
-  before_action :get_application, only: [:edit, :show, :update, :destroy, :ensure_correct_user, :submit]
+  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy, :ensure_correct_user, :submit, :admin_destroy]
+  before_action :get_application, only: [:edit, :show, :update, :destroy, :ensure_correct_user, :submit, :admin_destroy]
   before_action :ensure_correct_user, only: [:show, :edit]
   skip_before_action :require_login, only: [:new, :create]
 
   def show
+    @referer = request.env["HTTP_REFERER"]
   end
 
   def edit
@@ -61,6 +62,11 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
+    @application.destroy
+    redirect_to user_applications_path(current_user.id)
+  end
+
+  def admin_destroy
     @application.destroy
     redirect_to event_admin_path(@event.id)
   end
