@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def self.admin
   	where(admin: true)
   end
+
+  def self.applicant(event)
+    where(event.applicant_id == self.id)
+  end
 end
