@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
   before_action :require_admin, only: [:destroy]
-  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy, :ensure_correct_user]
-  before_action :get_application, only: [:edit, :show, :update, :destroy, :ensure_correct_user]
+  before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy, :ensure_correct_user, :submit]
+  before_action :get_application, only: [:edit, :show, :update, :destroy, :ensure_correct_user, :submit]
   before_action :ensure_correct_user, only: [:show, :edit]
   skip_before_action :require_login, only: [:new, :create]
 
@@ -54,8 +54,7 @@ class ApplicationsController < ApplicationController
   end
 
   def submit
-    @application = Application.find_by(id: params[:id])
-    @event = Event.find_by(id: params[:event_id])
+    @application.skip_validation = true
     @application.update_attributes(submitted: true)
     Rails.logger.info(@application.errors.messages.inspect)
     redirect_to user_applications_path(@application.applicant_id), notice: "You have successfully submitted an application for #{@event.name}."
