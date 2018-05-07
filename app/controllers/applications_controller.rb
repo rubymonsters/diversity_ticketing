@@ -6,7 +6,6 @@ class ApplicationsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
   def show
-    @referer = request.env["HTTP_REFERER"]
   end
 
   def edit
@@ -45,7 +44,11 @@ class ApplicationsController < ApplicationController
       if @application.save && params[:commit] == 'Submit Application'
         @application.update_attributes(submitted: true)
         ApplicantMailer.application_received(@application).deliver_later
-        redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully applied for #{@event.name}."
+        if current_user
+          redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully applied for #{@event.name}."
+        else
+          redirect_to @event, notice: "You have successfully applied for #{@event.name}."
+        end
       elsif @application.save && params[:commit] == 'Save as a Draft'
         redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully saved an application draft for #{@event.name}."
       else
