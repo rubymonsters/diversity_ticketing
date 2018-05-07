@@ -20,7 +20,7 @@ feature 'New Application' do
     page.check 'application[terms_and_conditions]'
 
     click_button "Submit Application"
-
+    
     assert page.text.include?("You have successfully applied for #{@event.name}")
   end
 

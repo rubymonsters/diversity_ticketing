@@ -12,7 +12,7 @@ class UsersControllerTest < ActionController::TestCase
       user2.reload
 
       assert_equal 'b@example.org', user2.email
-      assert_response :forbidden
+      assert_redirected_to root_path
     end
 
     it 'does not anonymous user to edit anyone\'s data' do
@@ -57,7 +57,7 @@ class UsersControllerTest < ActionController::TestCase
 
       get :edit, params: { id: user2.id }
 
-      assert_response :forbidden
+      assert_redirected_to root_path
     end
 
     it 'does not allow anonymous user to see anyone\'s data' do
@@ -77,7 +77,7 @@ class UsersControllerTest < ActionController::TestCase
 
       get :show, params: { id: user2.id }
 
-      assert_response :forbidden
+      assert_redirected_to root_path
     end
 
     it 'does not allow anonymous user to see anyone\'s data' do
