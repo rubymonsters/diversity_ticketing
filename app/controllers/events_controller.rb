@@ -14,7 +14,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @applications = Application.where(event_id: @event.id)
     unless @event.approved || @event.organizer_id == current_user.id
       flash[:alert] = "You are not allowed to access this event."
       redirect_back(fallback_location: root_path)
