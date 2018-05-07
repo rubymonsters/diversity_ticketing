@@ -8,7 +8,4 @@ class User < ApplicationRecord
   	where(admin: true)
   end
 
-  def self.applicant(event)
-    where(event.applicant_id == self.id)
-  end
 end

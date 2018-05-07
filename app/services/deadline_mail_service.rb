@@ -6,4 +6,12 @@ class DeadlineMailService
       end
     end
   end
+
+  def self.send_deadline_reminder_applicants
+    Event.approved.deadline_in_two_days.each do |event|
+      event.applications.each do |application|
+        ApplicantMailer.deadline_reminder(application)
+      end
+    end
+  end
 end
