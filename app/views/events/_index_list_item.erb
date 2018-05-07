@@ -26,8 +26,12 @@
         ),
         method: :get, class: "btn btn-save" %>
   <% else %>
-    <%= button_to 'Your Draft', new_event_application_path(event_id: event.id), method: :get,
-        class: "btn btn-save" %>
+    <%= button_to 'Your Draft',
+        event_application_path(
+        event_id: event.id,
+        id: event.applications.find_by(applicant_id: current_user.id).id
+        ),
+        method: :get, class: "btn btn-save" %>
   <% end %>
 
   <% if event.closed? %>
