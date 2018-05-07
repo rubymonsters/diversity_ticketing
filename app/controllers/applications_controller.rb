@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  before_action :require_admin, only: [:destroy]
+  before_action :require_admin, only: [:admin_destroy]
   before_action :get_event, only: [:show, :edit, :update, :new, :create, :destroy, :ensure_correct_user, :submit, :admin_destroy]
   before_action :get_application, only: [:edit, :show, :update, :destroy, :ensure_correct_user, :submit, :admin_destroy]
   before_action :ensure_correct_user, only: [:show, :edit]
