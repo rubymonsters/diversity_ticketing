@@ -6,7 +6,7 @@ feature 'Event Overview' do
     @event = make_event(approved: true)
   end
 
-  test 'shows a link to Apply if the user didnt applied or created a draft to the event' do
+  test 'shows a link to Apply if the user did not apply or create a draft for the event' do
     sign_in_as_user
 
     visit events_path
