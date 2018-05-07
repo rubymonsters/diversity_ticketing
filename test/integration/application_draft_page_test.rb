@@ -45,7 +45,7 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    click_button('Submit Application')
+    click_link('Submit Application')
 
     @draft.reload
 
