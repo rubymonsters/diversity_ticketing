@@ -7,6 +7,7 @@ class UsersController < Clearance::UsersController
       unapproved: @user.events.unapproved.upcoming,
       past: @user.events.past
     }
+    render "users/events"
   end
 
   def create
