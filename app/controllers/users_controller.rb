@@ -44,7 +44,7 @@ class UsersController < Clearance::UsersController
     def ensure_correct_user
       @user = User.find(params[:id])
       unless @user == current_user
-        head :forbidden
+        redirect_to root_path
       end
     end
 
