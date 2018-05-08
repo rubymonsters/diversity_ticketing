@@ -49,8 +49,8 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
 
     it 'raise exception if application does not exist' do
-      user = make_user(admin: true)
-      sign_in_as(user)
+      admin = make_admin
+      sign_in_as(admin)
 
       event = make_event
 
