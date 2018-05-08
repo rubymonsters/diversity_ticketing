@@ -19,22 +19,16 @@ class ApplicantMailerTest < ActionMailer::TestCase
     assert_equal "Your application for #{@application.event.name}.", email.subject
   end
 
-  test "deadline_reminder unsent" do
-    email = ApplicantMailer.deadline_reminder(@application)
-
-    assert_emails 0
-  end
-
   test "deadline_reminder sent" do
     @event.update_attributes(deadline: 2.days.from_now)
-    email = ApplicantMailer.deadline_reminder(@application)
+    email = ApplicantMailer.deadline_reminder(@draft)
 
     assert_emails 1 do
       email.deliver_now
     end
 
     assert_equal ['info@diversitytickets.org'], email.from
-    assert_equal [@application.email], email.to
-    assert_equal "Upcoming deadline for #{@application.event.name}.", email.subject
+    assert_equal [@draft.email], email.to
+    assert_equal "#{@draft.event.name} deadline in two days.", email.subject
   end
 end
