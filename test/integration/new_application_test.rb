@@ -20,7 +20,7 @@ feature 'New Application' do
     page.check 'application[terms_and_conditions]'
 
     click_button "Submit Application"
-    
+
     assert page.text.include?("You have successfully applied for #{@event.name}")
   end
 
@@ -119,7 +119,7 @@ feature 'New Application' do
   end
 
   test 'shows an Your Application button if the user already submitted an application for the event' do
-    application = make_application(@event, applicant_id: @user.id, submitted: true)
+    application = make_application(@event, applicant_id: @user.id)
 
     sign_in_as_user
 
@@ -133,7 +133,7 @@ feature 'New Application' do
   end
 
   test 'shows an Your Draft button if the user already saved a draft for the event' do
-    application = make_application(@event, applicant_id: @user.id, submitted: false)
+    draft = make_draft(@event, applicant_id: @user.id)
 
     sign_in_as_user
 
@@ -143,6 +143,6 @@ feature 'New Application' do
 
     click_button "Your Draft"
 
-    assert_equal current_path, event_application_path(@event.id, application.id)
+    assert_equal current_path, event_application_path(@event.id, draft.id)
   end
 end
