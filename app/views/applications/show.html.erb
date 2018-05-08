@@ -1,12 +1,14 @@
 <p class="breadcrumb">
   <%= link_to 'Home', root_path %> >
   <% if current_user.admin? %>
-    <%= link_to 'Admin', admin_path %>
+    <%= link_to 'Admin', admin_path %> >
+    <%= link_to @event.name, event_admin_path(@event.id) %>
+    > Application by <%= @application.name %>
   <% else %>
     <%= link_to 'Your Applications', user_applications_path(current_user.id) %>
-  <% end %> >
-  <%= link_to @event.name, event_admin_path(@event.id) %> >
-  Application from <%= @application.name %>
+    > Application for <%= @event.name %>
+  <% end %>
+
 </p>
 
   <h1 class="box-title">Application for <%= @event.name %></h1>
