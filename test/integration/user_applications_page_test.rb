@@ -5,8 +5,8 @@ feature 'User Applications Page' do
     @user = make_user
     @event = make_event(name: 'Applicants event')
     @event2 = make_event(name: 'Second Event')
-    @application = make_application(@event, applicant_id: @user.id, submitted: true)
-    @draft = make_application(@event2, applicant_id: @user.id, submitted: false)
+    @application = make_application(@event, applicant_id: @user.id)
+    @draft = make_draft(@event2, applicant_id: @user.id)
   end
 
   test 'shows a section in Your Applications where the users applications and drafts are displayed' do

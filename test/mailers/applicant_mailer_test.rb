@@ -3,7 +3,7 @@ require 'test_helper'
 class ApplicantMailerTest < ActionMailer::TestCase
   def setup
     @event = make_event
-    @draft = make_application(@event, submitted: false)
+    @draft = make_draft(@event)
   end
 
   test "application_received" do
