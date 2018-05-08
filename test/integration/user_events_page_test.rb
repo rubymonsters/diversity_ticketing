@@ -4,8 +4,8 @@ feature 'User Events Page' do
   def setup
     @user = make_user
     @event = make_event(name: 'Applicants event', approved: true, organizer_id: @user.id)
-    @application = make_application(@event, applicant_id: @user.id, submitted: true)
-    @draft = make_application(@event, applicant_id: @user.id)
+    @application = make_application(@event, applicant_id: @user.id)
+    @draft = make_draft(@event, applicant_id: @user.id)
   end
 
   test 'shows a section in Your Events where the count of submitted applications are displayed' do
