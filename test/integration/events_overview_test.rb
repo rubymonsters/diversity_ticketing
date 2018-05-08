@@ -31,7 +31,7 @@ feature 'Event Overview' do
   end
 
   test 'shows a link to Your Application if the user already submitted an application for the event' do
-    application = make_draft(@event, applicant_id: @user.id)
+    application = make_application(@event, applicant_id: @user.id)
 
     sign_in_as_user
 
