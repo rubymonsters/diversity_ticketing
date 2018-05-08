@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :applications, only: [:edit, :update, :show, :new, :create, :destroy, :admin_destroy]
+    resources :applications, only: [:edit, :update, :show, :new, :create, :destroy]
   end
 
   resources :admin_events, except: [:edit, :update] do
