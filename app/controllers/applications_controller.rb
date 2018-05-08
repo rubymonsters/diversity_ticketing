@@ -46,11 +46,8 @@ class ApplicationsController < ApplicationController
       if @application.save && params[:commit] == 'Submit Application'
         @application.update_attributes(submitted: true)
         ApplicantMailer.application_received(@application).deliver_later
-        if current_user
-          redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully applied for #{@event.name}."
-        else
-          redirect_to @event, notice: "You have successfully applied for #{@event.name}."
-        end
+        current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
+        redirect_to path, notice: "You have successfully applied for #{@event.name}."
       elsif @application.save && params[:commit] == 'Save as a Draft'
         redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully saved an application draft for #{@event.name}."
       else
@@ -62,7 +59,6 @@ class ApplicationsController < ApplicationController
   def submit
     @application.skip_validation = true
     @application.update_attributes(submitted: true)
-    Rails.logger.info(@application.errors.messages.inspect)
     redirect_to user_applications_path(@application.applicant_id), notice: "You have successfully submitted an application for #{@event.name}."
   end
 
