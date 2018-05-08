@@ -5,12 +5,11 @@ feature 'Application draft' do
     @user = make_user
     @admin = make_admin
     @event = make_event(name: 'The Event', approved: true)
-    @draft = make_application(
+    @draft = make_draft(
                   @event,
                   applicant_id: @user.id,
                   attendee_info_1: 'I would like to learn Ruby',
-                  attendee_info_2: 'I can not afford the ticket',
-                  submitted: false
+                  attendee_info_2: 'I can not afford the ticket'
                 )
   end
 
