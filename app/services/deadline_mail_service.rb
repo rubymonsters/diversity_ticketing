@@ -9,7 +9,7 @@ class DeadlineMailService
 
   def self.send_deadline_reminder_applicants
     Event.approved.deadline_in_two_days.each do |event|
-      event.applications.each do |application|
+      event.applications.where(submitted: false).each do |application|
         ApplicantMailer.deadline_reminder(application)
       end
     end
