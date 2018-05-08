@@ -1,5 +1,4 @@
 class ApplicantMailer < ApplicationMailer
-
 	def application_received(application)
 		@application = application
     mail(to: @application.email, subject: "Your application for #{@application.event.name}.")
@@ -9,5 +8,4 @@ class ApplicantMailer < ApplicationMailer
 		@application = application
 		mail(to: @application.email, subject: "#{@application.event.name} deadline in two days.")
 	end
-
 end
