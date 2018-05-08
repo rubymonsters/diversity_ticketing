@@ -1,18 +1,40 @@
 require 'test_helper'
 
-feature 'Application' do
+feature 'Application Edit' do
   def setup
     @user = make_user
     @event = make_event(name: 'The Event', approved: true)
+    @event2 = make_event(name: 'Second Event', approved: true)
     @application = make_application(
                   @event,
                   applicant_id: @user.id,
                   attendee_info_1: 'I would like to learn Ruby',
                   attendee_info_2: 'I can not afford the ticket'
                 )
+    @draft = make_draft(
+            @event2,
+            applicant_id: @user.id,
+            attendee_info_1: 'I would like to learn Ruby',
+            attendee_info_2: 'I can not afford the ticket'
+          )
   end
 
-  test 'allows the user to edit their own application' do
+  test 'allows the user to edit their own application draft' do
+    sign_in_as_user
+
+    visit edit_event_application_path(@event2.id, @draft.id)
+
+    assert page.has_content?("Why do you want to attend #{@event2.name} and what especially do you look forward to learning?")
+    assert page.has_content?(@draft.attendee_info_1)
+    assert page.has_content?("Please share with us why you're applying for a diversity ticket.")
+    assert page.has_content?(@draft.attendee_info_2)
+    assert page.has_content?("Name")
+    assert page.has_content?("Email")
+    assert page.has_content?("Back")
+    assert page.has_selector?("input[type=submit][value='Save Changes']")
+  end
+
+  test 'allows the user to edit their own submitted application' do
     sign_in_as_user
 
     visit edit_event_application_path(@event.id, @application.id)

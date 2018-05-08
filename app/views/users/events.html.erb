@@ -12,7 +12,7 @@
                 <p class="event-name"><%= link_to event.name, event_path(id: event.id) %></p>
                 <p class="application-count">
                   <% if event.approved && event.application_process != "application_by_organizer" %>
-                    <%= pluralize_highlight_count(event.applications.count, "application") %>
+                    <%= pluralize_highlight_count(event.applications.submitted.count, "application") %>
                   <% end %>
                 </p>
                 <p>

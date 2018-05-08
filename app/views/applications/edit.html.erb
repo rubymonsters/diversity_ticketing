@@ -65,6 +65,10 @@
 
   <div class="form_field">
     <%= link_to 'Back', event_application_path(@event.id, @application.id), class: "btn btn-edit" %>
-    <%= f.submit("Apply Changes", class: "btn btn-save") %>
+    <% if @application.submitted %>
+      <%= f.submit("Apply Changes", class: "btn btn-save") %>
+    <% else %>
+      <%= f.submit("Save Changes", class: "btn btn-save") %>
+    <% end %>
   </div>
 <% end %>
