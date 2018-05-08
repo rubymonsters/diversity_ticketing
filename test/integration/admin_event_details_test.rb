@@ -5,9 +5,9 @@ feature 'Admin Event Details' do
   def setup
     @admin = make_admin
     @event = make_event
-    @application_1 = make_application(@event, name: 'Peter', submitted: true)
-    @application_2 = make_application(@event, name: 'Paul', submitted: true)
-    @application_draft = make_application(@event, name: 'Mary', submitted: false)
+    @application_1 = make_application(@event, name: 'Peter')
+    @application_2 = make_application(@event, name: 'Paul')
+    @application_draft = make_draft(@event, name: 'Mary')
   end
 
   test 'shows number of submitted applications' do
