@@ -18,7 +18,6 @@ feature 'Event Overview' do
 
   test 'shows a link to Your Draft if the user already created a draft for the event' do
     application = make_draft(@event, applicant_id: @user.id)
-
     sign_in_as_user
 
     visit events_path
@@ -32,7 +31,6 @@ feature 'Event Overview' do
 
   test 'shows a link to Your Application if the user already submitted an application for the event' do
     application = make_application(@event, applicant_id: @user.id)
-
     sign_in_as_user
 
     visit events_path
