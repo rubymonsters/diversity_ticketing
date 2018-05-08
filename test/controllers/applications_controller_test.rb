@@ -12,7 +12,7 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
 
     it 'does not show application of other users to non-admin users' do
-      user = make_user(admin: false)
+      user = make_user
       other_user = make_user(email: 'other@email.com')
       sign_in_as(user)
 
@@ -25,8 +25,8 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
 
     it 'shows submitted application to admin users' do
-      user = make_user(admin: true)
-      sign_in_as(user)
+      admin = make_admin
+      sign_in_as(admin)
 
       event = make_event
       application = make_application(event)
@@ -37,8 +37,8 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
 
     it 'redirects admin users to root if they try to see drafted applications' do
-      user = make_user(admin: true)
-      sign_in_as(user)
+      admin = make_admin
+      sign_in_as(admin)
 
       event = make_event
       draft = make_draft(event)
