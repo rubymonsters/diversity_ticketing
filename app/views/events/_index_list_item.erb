@@ -12,13 +12,20 @@
       <li class="tag <%= tag.category.name.gsub(" ", "-") %>"><%= tag.name %></li>
     <% end %>
   </p>
-
   <% if event.application_process == 'application_by_organizer' %>
     <%= button_to "Apply at #{event.name}", event.application_link, method: :get,
         class: "btn btn-save btn-external", disabled: event.closed? %>
-  <% else %>
+  <% elsif current_user == nil || event.applications.find_by(applicant_id: current_user.id) == nil %>
     <%= button_to 'Apply', new_event_application_path(event_id: event.id), method: :get,
         class: "btn btn-save", disabled: event.closed? %>
+  <% else %>
+  <% event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = 'Your Application' : button_text = 'Your Draft' %>
+    <%= button_to button_text,
+        event_application_path(
+        event_id: event.id,
+        id: event.applications.find_by(applicant_id: current_user.id).id
+        ),
+        method: :get, class: "btn btn-save" %>
   <% end %>
 
   <% if event.closed? %>

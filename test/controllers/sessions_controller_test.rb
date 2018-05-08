@@ -5,7 +5,7 @@ class SessionsControllerTest < ActionController::TestCase
     it 'redirects back to the homepage when the user is authenticated' do
       user = make_user
 
-      post :create, params: { session: { email: user.email, password: user.password } }
+      post :create, params: { referer: '/', session: { email: user.email, password: user.password } }
 
       assert_redirected_to :root
     end

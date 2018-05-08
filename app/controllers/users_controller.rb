@@ -7,6 +7,7 @@ class UsersController < Clearance::UsersController
       unapproved: @user.events.unapproved.upcoming,
       past: @user.events.past
     }
+    render "users/events"
   end
 
   def create
@@ -35,7 +36,8 @@ class UsersController < Clearance::UsersController
 
   def applications
     @categorized_user_applications = {
-      all: @user.applications
+      submitted: @user.applications.submitted,
+      drafts: @user.applications.drafts,
     }
   end
 
@@ -43,7 +45,7 @@ class UsersController < Clearance::UsersController
     def ensure_correct_user
       @user = User.find(params[:id])
       unless @user == current_user
-        head :forbidden
+        redirect_to root_path, alert: "We're sorry. You don't have permission to access this page."
       end
     end
 
@@ -52,9 +54,9 @@ class UsersController < Clearance::UsersController
     end
 
     def user_from_params
+      name = user_params.delete(:name)
       email = user_params.delete(:email)
       password = user_params.delete(:password)
-      name = user_params.delete(:name)
 
       Clearance.configuration.user_model.new(user_params).tap do |user|
         user.name = name
