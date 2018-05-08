@@ -29,7 +29,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       sign_in_as(user)
 
       event = make_event
-      application = make_application(event, submitted: true)
+      application = make_application(event)
 
       get :show, params: { event_id: event.id, id: application.id }
 
@@ -41,9 +41,9 @@ class ApplicationsControllerTest < ActionController::TestCase
       sign_in_as(user)
 
       event = make_event
-      application = make_application(event, submitted: false)
+      draft = make_draft(event)
 
-      get :show, params: { event_id: event.id, id: application.id }
+      get :show, params: { event_id: event.id, id: draft.id }
 
       assert_redirected_to root_path
     end
