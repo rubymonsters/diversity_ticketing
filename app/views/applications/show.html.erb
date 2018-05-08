@@ -11,52 +11,52 @@
 
 </p>
 
-  <h1 class="box-title">Application for <%= @event.name %></h1>
+<h1 class="box-title">Application for <%= @event.name %></h1>
 
-  <section class="box">
-    <p class="detail-pair">
-      <strong>
-        Why do you want to attend <%= @event.name %>
-        and what especially do you look forward to learning?
-      </strong>
-      <%= @application.attendee_info_1 %>
-    </p>
+<section class="box">
+  <p class="detail-pair">
+    <strong>
+      Why do you want to attend <%= @event.name %>
+      and what especially do you look forward to learning?
+    </strong>
+    <%= @application.attendee_info_1 %>
+  </p>
 
-    <p class="detail-pair">
-      <strong>Please share with us why you're applying for a diversity ticket.</strong>
-      <%= @application.attendee_info_2 %>
-    </p>
+  <p class="detail-pair">
+    <strong>Please share with us why you're applying for a diversity ticket.</strong>
+    <%= @application.attendee_info_2 %>
+  </p>
 
-    <p class="detail-pair">
-      <strong>Name</strong>
-      <%= @application.name %>
-    </p>
+  <p class="detail-pair">
+    <strong>Name</strong>
+    <%= @application.name %>
+  </p>
 
-    <p class="detail-pair">
-      <strong>Email</strong>
-      <%= @application.email %>
-    </p>
-  </section>
+  <p class="detail-pair">
+    <strong>Email</strong>
+    <%= @application.email %>
+  </p>
+</section>
 
-  <% if @application.event.open? %>
-    <div>
-      <%= link_to 'Edit', edit_event_application_path(@event.id, @application.id),
-          class: "btn btn-edit" %>
-      <%= link_to 'Delete', event_application_path(@event.id, @application.id),
-          class: "btn btn-delete",  method: :delete,
-          data: { confirm: "Are you sure you want to delete this application?" } %>
-      <% if !@application.submitted %>
-        <%= link_to 'Submit Application', submit_event_application_path(@event.id, @application.id),
-            class: "btn btn-save", method: :post %>
-      <% end %>
-    </div>
-  <% elsif current_user.admin? || @application.submitted == false %>
-    <div>
-      <%= link_to 'Delete', event_application_path(@event.id, @application.id),
-          class: "btn btn-delete",  method: :delete,
-          data: { confirm: "Are you sure you want to delete this application?" } %>
-    </div>
-  <% end %>
-    <p>
-      <%= link_to 'Show Event Details', event_path(@event.id) %>
-    </p>
+<% if @application.event.open? %>
+  <div>
+    <%= link_to 'Edit', edit_event_application_path(@event.id, @application.id),
+        class: "btn btn-edit" %>
+    <%= link_to 'Delete', event_application_path(@event.id, @application.id),
+        class: "btn btn-delete",  method: :delete,
+        data: { confirm: "Are you sure you want to delete this application?" } %>
+    <% if !@application.submitted %>
+      <%= link_to 'Submit Application', submit_event_application_path(@event.id, @application.id),
+          class: "btn btn-save", method: :post %>
+    <% end %>
+  </div>
+<% elsif current_user.admin? || @application.submitted == false %>
+  <div>
+    <%= link_to 'Delete', event_application_path(@event.id, @application.id),
+        class: "btn btn-delete",  method: :delete,
+        data: { confirm: "Are you sure you want to delete this application?" } %>
+  </div>
+<% end %>
+  <p>
+    <%= link_to 'Show Event Details', event_path(@event.id) %>
+  </p>
