@@ -45,7 +45,7 @@ class UsersController < Clearance::UsersController
     def ensure_correct_user
       @user = User.find(params[:id])
       unless @user == current_user
-        redirect_to root_path
+        redirect_to root_path, alert: "We're sorry. You don't have permission to access this page."
       end
     end
 
