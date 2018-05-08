@@ -8,7 +8,7 @@ namespace :admin do
     end
 
     desc "Send emails for upcoming deadlines to applicants"
-    task :upcoming_deadline_deadline => :environment do
+    task :upcoming_deadline_applicants => :environment do
       puts "Sending emails for upcoming deadlines to applicants."
       DeadlineMailService.send_deadline_reminder_applicants
       puts "Done."
