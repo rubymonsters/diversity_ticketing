@@ -27,10 +27,18 @@
                   <%= link_to application.event.name, event_admin_path(id: application.event.id), title: application.event.name %>
                 </p>
                 <p>
-                  <%= link_to approve_event_application_path(application.event_id, application.id),
-                      method: :post, class: "icon tooltip",
-                      title: 'approve' do %>
-                    <span class="fas fa-check" aria-label="approved icon"></span>
+                  <% if application.status == "approved" %>
+                    <%= link_to unapprove_event_application_path(application.event_id, application.id),
+                        method: :post, class: "icon tooltip",
+                        title: 'unapprove' do %>
+                        Undo
+                      <% end %>
+                  <% else %>
+                    <%= link_to approve_event_application_path(application.event_id, application.id),
+                        method: :post, class: "icon tooltip",
+                        title: 'approve' do %>
+                      <span class="fas fa-check" aria-label="approved icon"></span>
+                    <% end %>
                   <% end %>
 
                   <%= link_to admin_event_application_path(application.id, application.event_id), method: :delete,
