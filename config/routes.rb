@@ -33,9 +33,9 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about', as: :about
   get '/faq', to: 'home#faq', as: :faq
   get '/users/:id/applications', to: 'users#applications', as: :user_applications
-  post '/events/:event_id/applications:id', to: 'applications#approve', as: :approve_event_application
-  post '/events/:event_id/applications:id', to: 'applications#reject', as: :reject_event_application
-  post '/events/:event_id/applications:id', to: 'applications#unapprove', as: :unapprove_event_application
+  post '/events/:event_id/applications/:id', to: 'applications#approve', as: :approve_event_application
+  post '/events/:event_id/applications/:id', to: 'applications#reject', as: :reject_event_application
+  post '/events/:event_id/applications/:id', to: 'applications#unapprove', as: :unapprove_event_application
 
   root 'home#home'
 end
