@@ -18,7 +18,6 @@
       <div class="box">
         <h2><%= heading %></h2>
 
-<<<<<<< HEAD
         <div class="admin">
           <ul class="admin-list">
             <% applications.each do |application| %>
@@ -44,32 +43,6 @@
           </ul>
         </div>
       </div>
-=======
-      <ul class="admin-list">
-        <% @event.applications.submitted.each do |application| %>
-          <li>
-            <p class="application-name">
-              <%= link_to application.name, event_application_path(@event, application) %>
-            </p>
-            <p class="application-mail">
-              <%= application.email %>
-            </p>
-            <p class="application-approve">
-              <i class="fas fa-check"></i>
-            </p>
-            <p class="application-reject">
-              <i class="fas fa-times"></i>
-            </p>
-            <p>
-              <%= link_to 'Delete', admin_event_application_path(@event.id, application.id),
-                  method: :delete,
-                  data: {confirm: "Are you sure you want to delete this application?"},
-                  class: "icon-delete", title: "Delete application" %>
-            </p>
-          </li>
-        <% end %>
-      </ul>
->>>>>>> a2be413439767061a767ab822b5676f5852fde65
     <% end %>
   <% end %>
 <% end %>
