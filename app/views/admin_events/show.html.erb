@@ -25,6 +25,12 @@
             <p class="application-mail">
               <%= application.email %>
             </p>
+            <p class="application-approve">
+              <i class="fas fa-check"></i>
+            </p>
+            <p class="application-reject">
+              <i class="fas fa-times"></i>
+            </p>
             <p>
               <%= link_to 'Delete', admin_event_application_path(@event.id, application.id),
                   method: :delete,
