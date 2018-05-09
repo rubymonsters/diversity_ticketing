@@ -74,6 +74,12 @@ class ApplicationsController < ApplicationController
     redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been rejected" }
   end
 
+  def undo
+    @application.skip_validation = true
+    @application.update_attributes(status: "pending")
+    redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been changed to pending" }
+  end
+
   def destroy
     @application.destroy
     redirect_to user_applications_path(current_user.id)
