@@ -43,4 +43,13 @@ feature 'Admin Event Details' do
     assert page.has_content?('Peter')
     assert page.has_content?('Paul')
   end
+
+  test 'shows icons for approve and reject' do
+    sign_in_as_admin
+
+    visit admin_event_path(@event.id)
+
+    page.assert_selector('i.fas fa-check')
+    page.assert_selector('i.fas fa-times')
+  end
 end
