@@ -16,7 +16,7 @@
     <% @categorized_applications.each do |heading, applications| %>
 
       <div class="box">
-        <h2><%= heading %></h2>
+        <h2><%= heading %> (<%= applications.count %>)</h2>
 
         <div class="admin">
           <ul class="admin-list">
