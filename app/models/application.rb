@@ -15,4 +15,16 @@ class Application < ApplicationRecord
   def self.drafts
     where(submitted: false)
   end
+
+  def self.pending
+    where(status: "pending")
+  end
+
+  def self.approved
+    where(status: "approved")
+  end
+
+  def self.rejected
+    where(status: "rejected")
+  end
 end

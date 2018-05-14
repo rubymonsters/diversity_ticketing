@@ -19,6 +19,12 @@ class AdminEventsController < ApplicationController
   end
 
   def show
+    @categorized_applications = {
+      "Pending Applications" => @event.applications.pending,
+      "Approved Applications" => @event.applications.approved,
+      "Rejected Applications" => @event.applications.rejected
+    }
+
     respond_to do |format|
       format.html
       format.csv { send_data @event.to_csv, filename: "#{@event.name} #{DateTime.now.strftime("%F")}.csv" }
