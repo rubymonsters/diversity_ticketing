@@ -1,3 +1,7 @@
+<p class="breadcrumb">
+  <%= link_to 'Home', root_path %> > Events
+</p>
+
 <% if @open_events.empty? && @closed_events.empty? %>
 
   <div class="events-empty">
