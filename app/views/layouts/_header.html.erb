@@ -22,6 +22,7 @@
                 <li class="dropdown-item"><%= navbar_link_to 'Admin', admin_path %></li>
                 <li class="dropdown-item"><%= navbar_link_to 'Tags', tags_path %></li>
               <% end %>
+              <li class="dropdown-item"><%= navbar_link_to 'Account Settings', edit_user_path(current_user) %></li>
               <li class="dropdown-item"><%= navbar_link_to 'Your Events', user_path(current_user) %></li>
               <li class="dropdown-item"><%= navbar_link_to 'Your Applications', user_applications_path(current_user) %></li>
               <li class="dropdown-item"><%= navbar_link_to 'Account Settings', edit_user_path(current_user) %></li>
