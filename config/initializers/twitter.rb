@@ -4,4 +4,3 @@ TWITTER_CLIENT = Twitter::REST::Client.new do |config|
   config.access_token        = ENV.fetch("TWITTER_ACCESS_TOKEN")
   config.access_token_secret = ENV.fetch("TWITTER_ACCESS_SECRET")
 end
-
