@@ -6,7 +6,7 @@ $(document).ready(function(){
   //makes menu disappear when you click somewhere else on the page:
   $(document).click(function() {
     if ($(".dropdown-content").is( ":visible" )) {
-      if ($(event.target).is('#dropdown-btn')) {
+      if ($(event.target).is('#dropdown *')) {
         return;
       }
       else {
