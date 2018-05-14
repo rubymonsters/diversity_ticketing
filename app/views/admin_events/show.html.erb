@@ -37,13 +37,13 @@
                     <%= link_to approve_event_application_path(application.event_id, application.id),
                         method: :post, class: "icon tooltip",
                         title: 'approve' do %>
-                      <span class="fas fa-check" aria-label="approve icon"></span>
+                      <span class="approve-application-icon" aria-label="approve icon">&#x2714;</span>
                     <% end %>
 
                     <%= link_to reject_event_application_path(application.event_id, application.id),
                         method: :post, class: "icon tooltip",
                         title: 'reject' do %>
-                      <span class="fas fa-times" aria-label="reject icon"></span>
+                      <span class="reject-application-icon" aria-label="reject icon">&#x2718;</span>
                     <% end %>
                   <% end %>
 
