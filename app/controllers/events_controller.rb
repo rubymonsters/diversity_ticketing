@@ -21,8 +21,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
-    @event.tags.build
+    if !current_user
+      redirect_to sign_in_path, flash: { :info => "Please sign into your existing account or create a new one to submit events." }
+    else
+      @event = Event.new
+      @event.tags.build
+    end
   end
 
   def preview
