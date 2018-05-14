@@ -1,7 +1,7 @@
 class SessionsController < Clearance::SessionsController
 
   def create
-    if User.find_by(email: params[:session][:email]).encrypted_password === 'x'
+    if params[:passcode] && User.find_by(email: params[:session][:email]).encrypted_password === 'x'
       redirect_to  new_password_path, flash: { :info => "Due to a security update from our side we kindly ask you to reset your password." }
 
     else @user = authenticate(params)
