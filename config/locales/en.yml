@@ -42,8 +42,12 @@ en:
   users:
     edit:
       title: "Edit your credentials"
-    show:
+    events:
       title: "Your Events"
       approved: "Approved"
       unapproved: "Not approved so far"
       past: "Past"
+    applications:
+      title: "Your Applications"
+      submitted: "Submitted"
+      drafts: "Drafts"

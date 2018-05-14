@@ -1,0 +1,15 @@
+Dear <%= @application.name %>,
+
+the deadline for <%= @application.event.name %> is only two days away!
+
+Do you want to submit your application? Follow the link to further details:
+
+<%= event_application_url(@application.event_id, @application.id) %>
+
+If you have further questions, you can reach us at foundation@travis-ci.org
+
+We cross our fingers for you,
+
+The Travis Foundation Team
+
+—

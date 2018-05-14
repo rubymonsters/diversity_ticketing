@@ -1,0 +1,37 @@
+<header class="topbar" role="banner">
+  <div class="inner">
+    <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => "Logo"), root_path)%><%= link_to 'Diversity Tickets', root_path %></h1>
+    <nav class="navigation" role="navigation">
+      <ul>
+        <li><%= navbar_link_to 'Events', events_path %></li>
+        <li><%= navbar_link_to 'Submit Event', new_event_path, (signed_in? ? [] : ["signed_out"]) %></li>
+        <li><%= navbar_link_to 'About', about_path %></li>
+        <li><%= navbar_link_to 'FAQ', faq_path %></li>
+        <% if signed_in? %>
+          <div id="dropdown">
+            <span class="btn btn-save" id="dropdown-btn">
+              <% if current_user.name && current_user.name != "" %>
+                <%= current_user.name %>
+              <% else %>
+                Your Account
+              <% end %>
+              <i class="fas fa-sort-down"></i></i>
+            </span>
+            <div class="dropdown-content">
+              <% if admin_user? %>
+                <li class="dropdown-item"><%= navbar_link_to 'Admin', admin_path %></li>
+                <li class="dropdown-item"><%= navbar_link_to 'Tags', tags_path %></li>
+              <% end %>
+              <li class="dropdown-item"><%= navbar_link_to 'Your Events', user_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to 'Your Applications', user_applications_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to 'Account Settings', edit_user_path(current_user) %></li>
+              <li class="dropdown-item"><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+            </div>
+          </div>
+        <% else %>
+          <li><%= link_to 'Sign in', sign_in_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -27,3 +27,6 @@ coverage
 
 # Ignore .env with ENVs
 .env
+
+# Ignore public assets folder
+/public/assets

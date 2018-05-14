@@ -1,0 +1,30 @@
+<p class="breadcrumb">
+  <%= link_to 'Home', root_path %> > Your Applications
+</p>
+
+<h1><%= t(".title") %></h1>
+<div class="two-columns">
+  <% @categorized_user_applications.each do |heading, applications| %>
+    <% if applications.any? %>
+      <section class="category">
+        <h2><%= t(".#{heading}") %></h2>
+        <div class="applicant">
+          <ul class="applicant-list">
+            <% applications.each do |application| %>
+              <li>
+                <div class="conflogo--small"><%= event_image application.event %></div>
+                <p class="event-name"><%= link_to application.event.name, event_path(id: application.event.id) %></p>
+                <p class="application-count"><%= link_to "Your Application", event_application_path(id: application.id, event_id: application.event.id) %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+      <div></div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @categorized_user_applications.values.flatten.empty? %>
+  <p>There are currently no applications for this user account.</p>
+<% end %>

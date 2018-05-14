@@ -21,6 +21,7 @@ class ActiveSupport::TestCase
 
   def make_user(user_params = {})
     defaults = {
+      name: 'Awesome name',
       email: 'awesome@example.org',
       password: 'awesome_password'
     }
@@ -109,7 +110,23 @@ class ActiveSupport::TestCase
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
       terms_and_conditions: '1',
-      event: event
+      event: event,
+      submitted: true
+    }
+    application_params = defaults.merge(application_params)
+    Application.create!(application_params)
+  end
+
+  def make_draft(event, application_params = {})
+    defaults = {
+      attendee_info_1: 'some text',
+      attendee_info_2: 'some text',
+      name: 'Joe',
+      email: 'joe@test.com',
+      email_confirmation: 'joe@test.com',
+      terms_and_conditions: '1',
+      event: event,
+      submitted: false
     }
     application_params = defaults.merge(application_params)
     Application.create!(application_params)

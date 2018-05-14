@@ -1,0 +1,35 @@
+<h1><%= t(".title") %></h1>
+<div class="two-columns">
+  <% @categorized_user_events.each do |heading, events| %>
+    <% if events.any? %>
+      <section class="category">
+        <h2><%= t(".#{heading}") %></h2>
+        <div class="organizer">
+          <ul class="organizer-list">
+            <% events.each do |event| %>
+              <li>
+                <div class="conflogo--small"><%= event_image event %></div>
+                <p class="event-name"><%= link_to event.name, event_path(id: event.id) %></p>
+                <p class="application-count">
+                  <% if event.approved && event.application_process != "application_by_organizer" %>
+                    <%= pluralize_highlight_count(event.applications.submitted.count, "application") %>
+                  <% end %>
+                </p>
+                <p>
+                  <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
+                    <span class="icon-edit" aria-label="edit icon"></span>
+                  <% end %>
+                </p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+      <div></div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @categorized_user_events.values.flatten.empty? %>
+  <p>There are currently no events for this user account.</p>
+<% end %>
