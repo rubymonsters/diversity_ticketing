@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_02_080900) do
+ActiveRecord::Schema.define(version: 2018_05_15_153326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_05_02_080900) do
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
-  create_table "categories", id: :serial, force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,21 +68,29 @@ ActiveRecord::Schema.define(version: 2018_05_02_080900) do
     t.index ["organizer_id"], name: "index_events_on_organizer_id"
   end
 
-  create_table "taggings", id: :serial, force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "tag_id"
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_taggings_on_event_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_tags_on_category_id"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.bigint "event_id"
+    t.boolean "announced"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tweets_on_event_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
