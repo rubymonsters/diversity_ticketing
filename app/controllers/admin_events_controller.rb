@@ -37,7 +37,7 @@ class AdminEventsController < ApplicationController
     if @event.approved?
       TwitterWorker.announce_event(@event)
     end
-    redirect_to admin_url
+    redirect_to admin_url, notice: "#{@event.name} has been approved!"
   end
 
   def destroy
