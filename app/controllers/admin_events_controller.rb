@@ -20,7 +20,7 @@ class AdminEventsController < ApplicationController
 
   def show
     @categorized_applications = {
-      "Pending Applications" => @event.applications.pending,
+      "Pending Applications" => @event.applications.submitted.pending,
       "Approved Applications" => @event.applications.approved,
       "Rejected Applications" => @event.applications.rejected
     }
