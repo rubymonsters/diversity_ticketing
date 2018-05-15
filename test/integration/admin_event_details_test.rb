@@ -1,4 +1,5 @@
 require 'test_helper'
+include ApplicationHelper
 
 feature 'Admin Event Details' do
 
@@ -128,12 +129,18 @@ feature 'Admin Event Details' do
 
   test 'shows Approve event Button if event has not been approved' do
     sign_in_as_admin
+    @event.update_attributes(deadline: 2.weeks.from_now)
 
     visit admin_event_path(@event.id)
 
     assert page.has_content?("Approve event")
 
-    click_link('Approve event')
+    TWITTER_CLIENT.expects(:update).with(
+      "So great! Event is offering free diversity tickets! Apply before "\
+      "#{format_date(2.weeks.from_now)} at https://test.host/events/#{@event.id}!"
+    ).once
+
+    click_link("Approve event")
 
     assert page.has_content?("#{@event.name} has been approved!")
   end
