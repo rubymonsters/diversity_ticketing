@@ -22,13 +22,23 @@
 .icon-approve
   @extend %icon
   background-image: image-url("icon-approve.svg")
-  background-size: 20px 
+  background-size: 20px
   background-position: 3px 1px
 
 .icon-unapprove
   @extend %icon
   background-image: image-url("icon-unapprove.svg")
-  background-size: 20px 
+  background-size: 20px
   background-position: 3px 1px
 
+.approve-application-icon, .reject-application-icon
+  font-size: 23px
+  position: relative
+  top: 4px
+  padding: 0 30px 0 0
 
+.approve-application-icon
+  color: $green
+
+.reject-application-icon
+  color: $red
