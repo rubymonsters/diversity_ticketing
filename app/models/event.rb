@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :tweets
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
   validates :start_date, :deadline, date: true, presence: true
