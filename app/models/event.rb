@@ -53,6 +53,10 @@ class Event < ApplicationRecord
     where('deadline = ?', now + 2.days)
   end
 
+  def self.created_current_year(now = Time.zone.now)
+    where('created_at > ? AND created_at < ?', now.beginning_of_year, now.end_of_year )
+  end
+
   def open?
     deadline_as_time >= Time.now
   end
