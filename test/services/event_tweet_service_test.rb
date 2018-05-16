@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventTweetServiceTest < ActiveSupport::TestCase
   describe 'tweets about upcoming open events'  do
-    it 'tweets about upcoming open events' do
+    it 'if they are approved' do
       event = make_event(deadline: 2.days.from_now, approved: true, name: 'Valid Event')
 
       TWITTER_CLIENT.expects(:update)
