@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2018_05_15_153326) do
 
   create_table "tweets", force: :cascade do |t|
     t.bigint "event_id"
-    t.boolean "announced"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_tweets_on_event_id"
