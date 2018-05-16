@@ -11,8 +11,10 @@ class EventTweetServiceTest < ActiveSupport::TestCase
 
       assert_equal Tweet.last.event_id, event.id
     end
+  end
 
-    it 'does not tweet an event if it has already been tweeted' do
+  describe 'does not tweets about upcoming open events'  do
+    it 'if they have already been tweeted' do
       announced_event = make_event(deadline: 2.days.from_now, approved: true, name: 'Announced Event')
       event = make_event(deadline: 2.days.from_now, approved: true, name: 'Not Announced Event')
       Tweet.create(event_id: announced_event.id)
@@ -24,7 +26,7 @@ class EventTweetServiceTest < ActiveSupport::TestCase
       assert_equal Tweet.last.event_id, event.id
     end
 
-    it 'does not tweet about upcoming open unaproved events' do
+    it 'if they are not approved events' do
       event = make_event(deadline: 2.days.from_now, approved: false, name: 'Invalid Event')
 
       EventTweetService.tweet_approved_event
@@ -32,4 +34,5 @@ class EventTweetServiceTest < ActiveSupport::TestCase
       assert_nil Tweet.last
     end
   end
+  
 end
