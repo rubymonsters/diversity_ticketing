@@ -135,10 +135,7 @@ feature 'Admin Event Details' do
 
     assert page.has_content?("Approve event")
 
-    TWITTER_CLIENT.expects(:update).with(
-      "So great! Event is offering free diversity tickets! Apply before "\
-      "#{format_date(2.weeks.from_now)} at https://test.host/events/#{@event.id}!"
-    ).once
+    TWITTER_CLIENT.expects(:update).once
 
     click_link("Approve event")
 
