@@ -11,6 +11,10 @@
 
     <div class="admin">
       <ul class="admin-list">
+        <% if events.empty? %>
+        <p> We currently don't have any events to approve </p>
+        </ul>
+        <% else %>
         <% events.each do |event| %>
           <li>
             <p class="event-name">
@@ -48,6 +52,7 @@
                   class: "btn btn-save", title: "Download data" %>
             </p>
           </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
