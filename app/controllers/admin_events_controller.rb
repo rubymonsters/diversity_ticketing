@@ -34,9 +34,6 @@ class AdminEventsController < ApplicationController
   def approve
     @event.toggle(:approved)
     @event.save!
-    if @event.approved?
-      TwitterWorker.announce_event(@event)
-    end
     redirect_to admin_url
   end
 
