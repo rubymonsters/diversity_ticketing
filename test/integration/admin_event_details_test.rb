@@ -135,8 +135,6 @@ feature 'Admin Event Details' do
 
     assert page.has_content?("Approve event")
 
-    TWITTER_CLIENT.expects(:update).once
-
     click_link("Approve event")
 
     assert page.has_content?("#{@event.name} has been approved!")
