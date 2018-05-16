@@ -81,6 +81,8 @@
   <%= link_to "Edit event", edit_event_path(@event.id), class: "btn btn-edit" %>
   <%= link_to "Delete event", event_path(@event.id), method: :delete,
       data: {confirm: "Are you sure?"}, class: "btn btn-delete" %>
-  <%= link_to "Approve event", approve_admin_event_path(@event.id), method: :post,
+  <% unless @event.approved? %>
+    <%= link_to "Approve event", approve_admin_event_path(@event.id), method: :post,
       class: "btn btn-save" %>
+  <% end %>
 </div>
