@@ -1,6 +1,7 @@
 class EventTweetService
   def self.tweet_approved_event
     remaining_events = Event.open.approved
+    return if remaining_events.empty?
 
     if Tweet.last
       return if Tweet.last.event_id == remaining_events.last.id
