@@ -5,7 +5,8 @@ class EventTweetService
 
     if Tweet.last
       return if Tweet.last.event_id == remaining_events.last.id
-      event_index = remaining_events.find_index(Event.find_by(id: Tweet.last.event_id)) + 1
+      last_tweet = Event.find_by(id: Tweet.last.event_id)
+      event_index = remaining_events.index(last_tweet) + 1
     else
       event_index = 0
     end
