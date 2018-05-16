@@ -36,8 +36,10 @@ class AdminEventsController < ApplicationController
     @event.save!
     if @event.approved?
       TwitterWorker.announce_event(@event)
+      redirect_to admin_url, notice: "#{@event.name} has been approved!"
+    else
+      redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
     end
-    redirect_to admin_url
   end
 
   def destroy
