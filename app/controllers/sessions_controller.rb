@@ -11,7 +11,7 @@ class SessionsController < Clearance::SessionsController
         if status.success?
             redirect_to params[:referer]
         else
-          flash[:alert] = status.failure_message
+          flash.now[:alert] = status.failure_message
           render template: "sessions/new", status: :unauthorized
         end
       end

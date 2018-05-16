@@ -34,7 +34,11 @@ class AdminEventsController < ApplicationController
   def approve
     @event.toggle(:approved)
     @event.save!
-    redirect_to admin_url
+    if @event.approved?
+      redirect_to admin_url, notice: "#{@event.name} has been approved!"
+    else
+      redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
+    end
   end
 
   def destroy
