@@ -43,6 +43,7 @@ class ApplicationsController < ApplicationController
     else
       @application = Application.new(application_params)
       @application.event = @event
+      @application.status = 'pending'
       if @application.save && params[:commit] == 'Submit Application'
         @application.update_attributes(submitted: true)
         ApplicantMailer.application_received(@application).deliver_later

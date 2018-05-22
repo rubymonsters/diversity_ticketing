@@ -24,7 +24,7 @@
               <li>
                 <p class="event-name">
                   <span class="conflogo--small"><%= event_image application.event %></span>
-                  <%= link_to application.name, event_admin_path(id: application.event.id), title: application.event.name %>
+                  <%= link_to application.name, event_application_path(application.event_id, application.id), title: application.event.name %>
                 </p>
                 <p>
                   <% if (application.status == "approved") || (application.status == "rejected") %>
