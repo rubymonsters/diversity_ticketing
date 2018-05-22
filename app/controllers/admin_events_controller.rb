@@ -7,6 +7,7 @@ class AdminEventsController < ApplicationController
   def index
     @events = Event.all
     @new_users = User.all.created_last_30_days
+    @countries = Event.all.group_by(&:country).keys
     @categorized_events = {
       "Unapproved Events" => Event.unapproved.upcoming.order(:deadline),
       "Approved Events" => Event.approved.upcoming.order(:deadline),
