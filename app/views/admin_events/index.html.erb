@@ -7,20 +7,19 @@
       <li>Conferences since <%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
       <li class="border">New users in the last 30 days: <strong><%= @new_users.count %></strong></li>
     </ul>
-    <% if Event.all.group_by(&:country).count > 2 %>
-      <ul class="admin-list">
-        <li>
-          Most conferences:
-          <strong>
-            <ol>
-              <li>1. <%= @events.country_with_most_events(1) %> (<%= @events.number_of_events_per_country(1)%>)</li>
-              <li>2. <%= @events.country_with_most_events(2) %> (<%= @events.number_of_events_per_country(2)%>)</li>
-              <li>3. <%= @events.country_with_most_events(3) %> (<%= @events.number_of_events_per_country(3)%>)</li>
-            </ol>
-          </strong>
-        </li>
-      </ul>
-    <% end %>
+    <ul class="admin-list">
+      <li>
+        Most conferences:
+        <strong>
+          <ol>
+            <% for index in 1..@countries.length%>
+            <% break if index > 3 %>
+            <li><%= index %>. <%=@events.country_with_most_events(index) %> (<%= @events.number_of_events_per_country(index)%>)</li>
+          <% end %>
+          </ol>
+        </strong>
+      </li>
+    </ul>
 </div>
 
 <p>
