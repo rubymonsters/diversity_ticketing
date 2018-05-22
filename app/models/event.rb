@@ -98,13 +98,13 @@ class Event < ApplicationRecord
     !editable_by?(user)
   end
 
-  def self.number_of_events_per_country(country_rank)
-    @countries = Event.all.group_by(&:country)
-    @countries.map { |country, events| events.count }.sort[-country_rank]
+  def self.country_with_most_events(country_rank)
+    countries = Event.all.group_by(&:country)
+    @sorted_events = countries.sort_by{|country, events| events.count}
+    country = @sorted_events[-country_rank].first
   end
 
-  def self.country_with_most_events(country_rank)
-    most_events = self.number_of_events_per_country(country_rank)
-    @countries.select { |country, events| events.count == most_events }.keys[0]
+  def self.number_of_events_per_country(country_rank)
+    events_count = @sorted_events[-country_rank].last.count
   end
 end
