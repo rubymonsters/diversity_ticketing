@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def self.admin
   	where(admin: true)
   end
+
+  def self.created_last_30_days
+    where('created_at > ?', 31.days.ago)
+  end
 end
