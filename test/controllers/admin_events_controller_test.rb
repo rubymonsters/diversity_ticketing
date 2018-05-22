@@ -33,8 +33,6 @@ class AdminEventsControllerTest < ActionController::TestCase
       user = make_user(admin: true)
       sign_in_as(user)
 
-      TwitterWorker.expects(:announce_event).with(event).once
-
       post :approve, params: { id: event.id }
 
       event.reload

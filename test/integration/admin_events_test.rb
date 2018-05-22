@@ -35,7 +35,6 @@ feature 'Admin Events' do
     make_admin
     sign_in_as_admin
     event = make_event(name: 'The Event', approved: false)
-    TwitterWorker.expects(:announce_event).with(event).once
   end
 
   def unapproved_events_box
