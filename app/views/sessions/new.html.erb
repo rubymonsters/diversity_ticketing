@@ -2,5 +2,13 @@
   <h2><%= t(".title") %></h2>
 
   <%= render partial: '/sessions/form' %>
+  <% if Clearance.configuration.allow_sign_up? %>
+    <div class="col">
+      <h2>New to DiversityTickets?</h2>
+      <%= link_to sign_up_path do %>
+        <div class="btn btn-edit"><%=t(".sign_up")%></div>
+      <% end %>
+    </div>
+  <% end %>
 
 </div>
