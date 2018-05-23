@@ -7,9 +7,12 @@
     <div class="submit-field">
       <%= form.submit(class: "btn btn-save") %>
     </div>
-
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
   <% end %>
+
+  <div class="col">
+    <h2>Already registered?</h2>
+    <%= link_to sign_in_path do %>
+      <div class="btn btn-edit"><%=t(".sign_in")%> here</div>
+    <% end %>
+  </div>
 </div>

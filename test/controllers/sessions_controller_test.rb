@@ -11,7 +11,8 @@ class SessionsControllerTest < ActionController::TestCase
     end
 
     it 'shows an unauthorized status (401) when the user is not authenticated' do
-      post :create, params: { session: { email: 'email@test.org' } }
+      user = make_user
+      post :create, params: { session: { email: user.email, password: 'wrongpassword' } }
 
       assert_equal 'Bad email or password.', flash[:alert]
       assert_response :unauthorized
