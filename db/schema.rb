@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_05_15_153326) do
   create_table "applications", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "email_confirmation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
@@ -27,10 +28,12 @@ ActiveRecord::Schema.define(version: 2018_05_15_153326) do
     t.boolean "travel_needed", default: false, null: false
     t.boolean "accommodation_needed", default: false, null: false
     t.boolean "visa_needed", default: false, null: false
+    t.boolean "terms_and_conditions", default: false
     t.integer "applicant_id"
     t.boolean "submitted", default: false, null: false
     t.string "status", default: "pending"
     t.index ["event_id"], name: "index_applications_on_event_id"
+    t.boolean "terms_and_conditions", default: false
   end
 
   create_table "categories", force: :cascade do |t|
