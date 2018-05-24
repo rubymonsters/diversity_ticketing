@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_05_15_153326) do
   create_table "applications", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "email_confirmation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
