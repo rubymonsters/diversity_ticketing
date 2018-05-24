@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_153326) do
+ActiveRecord::Schema.define(version: 2018_05_24_154828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(version: 2018_05_15_153326) do
     t.boolean "terms_and_conditions", default: false
     t.integer "applicant_id"
     t.boolean "submitted", default: false, null: false
-    t.string "status", default: "pending"
+    t.string "status"
+    t.boolean "terms_and_conditions", default: false
     t.index ["event_id"], name: "index_applications_on_event_id"
     t.boolean "terms_and_conditions", default: false
   end
