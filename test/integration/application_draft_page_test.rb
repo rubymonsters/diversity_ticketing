@@ -42,16 +42,13 @@ feature 'Application draft' do
   end
 
   test 'sets the status of the application to submitted after clicking Submit' do
+    @draft.update_attributes(email_confirmation: '', terms_and_conditions: false)
     sign_in_as_user
 
     visit event_application_path(@event.id, @draft.id)
 
-    @draft.update_attributes(email_confirmation: '', terms_and_conditions: false)
-
     fill_in 'Email Confirmation', with: @user.email
-
     check('I agree with the following Terms and Conditions*')
-
     click_button('Submit Application')
 
     @draft.reload
