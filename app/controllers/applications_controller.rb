@@ -19,9 +19,17 @@ class ApplicationsController < ApplicationController
     if @application.update(application_params) && params[:commit] == 'Apply Changes'
       redirect_to event_application_path(@event.id, @application.id),
       notice: "You have successfully updated your application for #{@event.name}."
-    elsif @application.update(application_params) && params[:commit] == 'Save Changes'
-      redirect_to event_application_path(@event.id, @application.id),
-      notice: "You have successfully saved your changes to the draft."
+    elsif @application.update(application_params) && params[:commit] == 'Submit Application'
+      @application.update_attributes(submitted: true)
+      redirect_to user_applications_path(@application.applicant_id), notice: "You have successfully submitted an application for #{@event.name}."
+    elsif !@application.update(application_params) && params[:commit] == 'Submit Application'
+      render :show
+    elsif params[:commit] == 'Save Changes'
+      @application.skip_validation = true
+      if @application.update(application_params)
+        redirect_to event_application_path(@event.id, @application.id),
+        notice: "You have successfully saved your changes to the draft."
+      end
     else
       render :edit
     end
@@ -57,11 +65,6 @@ class ApplicationsController < ApplicationController
         render :new
       end
     end
-  end
-
-  def submit
-    @application.update_attributes(submitted: true)
-    redirect_to user_applications_path(@application.applicant_id), notice: "You have successfully submitted an application for #{@event.name}."
   end
 
   def approve
