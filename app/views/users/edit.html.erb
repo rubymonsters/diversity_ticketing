@@ -5,6 +5,10 @@
 
   <div class="submit-field">
     <%= form.submit(class: "btn btn-save") %>
+    <%= link_to 'Delete Account', user_path(@user.id),
+        class: "btn btn-delete",  method: :delete,
+        data: { confirm: "With this your data will be deleted from the system irrevocably.
+          Are you sure you want to delete your account?" } %>
   </div>
 
 <% end %>

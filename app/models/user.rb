@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def self.created_last_30_days
     where('created_at > ?', 31.days.ago)
   end
+
+  def validate_password
+    validates :password
+  end
 end

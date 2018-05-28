@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:show, :edit, :update, :applications]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications]
 
   def show
     @categorized_user_events = {
@@ -30,6 +30,16 @@ class UsersController < Clearance::UsersController
       flash.now[:error] = "Password is a mandatory field"
       render :edit
     else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:alert] = "Your Account has been deleted successfully."
+      redirect_to root_path
+    else
+      flash[:error] = "Something went wrong. Please try again."
       render :edit
     end
   end
