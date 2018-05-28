@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/sign_up', to: 'clearance/users#new', as: :sign_up
   get '/past_events', to: 'events#index_past', as: :past_events
   get '/admin', to: 'admin_events#index'
+  get '/admin_anual', to: 'admin_events#anual'
   delete '/events/:event_id/application/:id', to: 'applications#admin_destroy', as: :admin_event_application
   get '/events/:id/admin', to: 'admin_events#show', as: :event_admin
   post '/events/:event_id/applications/:id', to: 'applications#submit', as: :submit_event_application
