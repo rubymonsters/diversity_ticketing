@@ -8,6 +8,8 @@ feature 'Application draft' do
     @draft = make_draft(
                   @event,
                   applicant_id: @user.id,
+                  email: @user.email,
+                  email_confirmation: @user.email,
                   attendee_info_1: 'I would like to learn Ruby',
                   attendee_info_2: 'I can not afford the ticket'
                 )
@@ -27,7 +29,7 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    assert page.has_content?('Submit Application')
+    assert page.has_button?('Submit Application')
   end
 
   test 'does not show link to Submit if user is an applicant and event-deadline has passed' do
@@ -44,7 +46,13 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    click_link('Submit Application')
+    @draft.update_attributes(email_confirmation: '', terms_and_conditions: false)
+
+    fill_in 'Email Confirmation', with: @user.email
+
+    check('I agree with the following Terms and Conditions*')
+
+    click_button('Submit Application')
 
     @draft.reload
 
