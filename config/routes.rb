@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin_events#index'
   delete '/events/:event_id/application/:id', to: 'applications#admin_destroy', as: :admin_event_application
   get '/events/:id/admin', to: 'admin_events#show', as: :event_admin
-  post '/events/:event_id/applications/:id', to: 'applications#submit', as: :submit_event_application
   post '/events/preview', to: 'events#preview', as: :event_preview
   get '/about', to: 'home#about', as: :about
   get '/faq', to: 'home#faq', as: :faq
