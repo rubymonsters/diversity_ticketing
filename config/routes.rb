@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get '/users/:id/applications', to: 'users#applications', as: :user_applications
   post '/events/:event_id/applications:id/approve', to: 'applications#approve', as: :approve_event_application
   post '/events/:event_id/applications:id/reject', to: 'applications#reject', as: :reject_event_application
-  post '/events/:event_id/applications:id/undo', to: 'applications#undo', as: :undo_event_application
+  post '/events/:event_id/applications:id/revert', to: 'applications#revert', as: :revert_event_application
 
   root 'home#home'
 end

@@ -111,7 +111,7 @@ feature 'Admin Event Details' do
     assert page.has_content?("Rejected Applications (1)")
   end
 
-  test 'changes application status back to pending after clicking on undo link' do
+  test 'changes application status back to pending after clicking on revert link' do
     sign_in_as_admin
 
     visit admin_event_path(@event.id)
@@ -119,7 +119,7 @@ feature 'Admin Event Details' do
     assert page.has_content?("Approved Applications (1)")
     assert page.has_content?("Pending Applications (2)")
 
-    click_link('Undo')
+    click_link('Revert')
 
     assert page.has_content?("Lara's application has been changed to pending")
 

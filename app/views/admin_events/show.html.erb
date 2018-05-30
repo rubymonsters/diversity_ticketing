@@ -28,10 +28,10 @@
                 </p>
                 <p>
                   <% if (application.status == "approved") || (application.status == "rejected") %>
-                    <%= link_to undo_event_application_path(application.event_id, application.id),
+                    <%= link_to revert_event_application_path(application.event_id, application.id),
                         method: :post, class: "icon tooltip",
-                        title: 'undo' do %>
-                        Undo
+                        title: 'revert' do %>
+                        Revert
                       <% end %>
                   <% else %>
                     <%= link_to approve_event_application_path(application.event_id, application.id),
