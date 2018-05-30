@@ -51,8 +51,8 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    page.assert_selector('.approve-application-icon')
-    page.assert_selector('.reject-application-icon')
+    page.assert_selector('.approve-application')
+    page.assert_selector('.reject-application')
   end
 
   test 'shows a list of pending applications' do
