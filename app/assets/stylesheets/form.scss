@@ -4,7 +4,13 @@ $grey-input: #4d4f51;
 $error-red: #e85754;
 $error-bg: #c43e3d;
 
-form, select {
+input[type="checkbox"] {
+  max-width: 500px;
+  margin-right: 0.2em;
+  margin-bottom: 1em;
+}
+
+input, select {
   max-width: 250px
 }
 
