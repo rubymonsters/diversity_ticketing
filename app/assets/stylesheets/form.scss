@@ -4,6 +4,10 @@ $grey-input: #4d4f51;
 $error-red: #e85754;
 $error-bg: #c43e3d;
 
+form, select {
+  max-width: 250px
+}
+
 input[type="hidden"],
 input[type="checkbox"],
 input[type="radio"] {
@@ -48,6 +52,10 @@ textarea {
   padding: .3em;
   border: 1px solid $border-grey;
   border-radius: 2px;
+  margin-bottom: 1em;
+}
+
+select {
   margin-bottom: 1em;
 }
 
