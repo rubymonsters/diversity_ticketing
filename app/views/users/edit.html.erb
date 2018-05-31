@@ -5,10 +5,10 @@
 
   <%= form.form_field :email_field, :email, "Email" %>
 
-  <%= form.form_field :password_field, :password, "Password" %>
-
   <%= form.label "Country" %>
   <%= form.select :country, CS.countries.values%>
+
+  <%= form.form_field :password_field, :password, "Password" %>
 
   <div class="submit-field">
     <%= form.submit(class: "btn btn-save") %>
