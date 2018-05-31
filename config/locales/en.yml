@@ -45,6 +45,7 @@ en:
       email-notifications: "Email notifications"
       name: "Name"
       password: "Password"
+      receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I am based"
       save-changes: "Save changes"
       title: "Profile settings"
     events:
