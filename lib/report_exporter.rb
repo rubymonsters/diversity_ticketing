@@ -61,6 +61,16 @@ module ReportExporter
 
         csv << ["Number of events", Event.all.where('start_date <= ?', Date.new(year, 12, 31)).count]
 
+        results = Event.all.where('start_date <= ?', Date.new(year, 12, 31))
+
+        csv << ["Geographical distribution"]
+
+        countries = results.pluck(:country).uniq
+
+        countries.map do |c|
+          csv << [c, results.where(country: c).count ]
+        end
+
         csv << [
           "Event ID",
           "Name",
@@ -72,8 +82,6 @@ module ReportExporter
           "Number of Tickets",
           "Number of Applications"
         ]
-
-        results = Event.all.where('start_date <= ?', Date.new(year, 12, 31))
 
         results.each do |result|
           csv << [
