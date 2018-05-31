@@ -87,7 +87,7 @@ feature 'Admin Event Details' do
     assert page.has_content?("Approved Applications (1)")
     assert page.has_content?("Pending Applications (2)")
 
-    page.first('a.icon.tooltip').click
+    page.first('a.btn.btn-save.approve-application').click
 
     assert page.has_content?("Peter's application has been approved!")
 
@@ -103,7 +103,7 @@ feature 'Admin Event Details' do
     assert page.has_content?("Pending Applications (2)")
     assert page.has_content?("Rejected Applications (0)")
 
-    page.all('a.icon.tooltip')[1].click
+    page.first('a.btn.btn-external.reject-application').click
 
     assert page.has_content?("Peter's application has been rejected")
 
