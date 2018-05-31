@@ -1,4 +1,5 @@
 require 'test_helper'
+include ApplicationHelper
 
 feature 'Admin Event Details' do
 
@@ -124,5 +125,18 @@ feature 'Admin Event Details' do
 
     assert page.has_content?("Approved Applications (0)")
     assert page.has_content?("Pending Applications (3)")
+  end
+
+  test 'shows Approve event Button if event has not been approved' do
+    sign_in_as_admin
+    @event.update_attributes(deadline: 2.weeks.from_now)
+
+    visit admin_event_path(@event.id)
+
+    assert page.has_content?("Approve event")
+
+    click_link("Approve event")
+
+    assert page.has_content?("#{@event.name} has been approved!")
   end
 end

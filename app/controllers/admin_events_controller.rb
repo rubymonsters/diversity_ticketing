@@ -5,6 +5,9 @@ class AdminEventsController < ApplicationController
   before_action :require_admin
 
   def index
+    @events = Event.all
+    @new_users = User.all.created_last_30_days
+    @countries = Event.all.group_by(&:country).keys
     @categorized_events = {
       "Unapproved Events" => Event.unapproved.upcoming.order(:deadline),
       "Approved Events" => Event.approved.upcoming.order(:deadline),
@@ -35,9 +38,10 @@ class AdminEventsController < ApplicationController
     @event.toggle(:approved)
     @event.save!
     if @event.approved?
-      TwitterWorker.announce_event(@event)
+      redirect_to admin_url, notice: "#{@event.name} has been approved!"
+    else
+      redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
     end
-    redirect_to admin_url
   end
 
   def destroy

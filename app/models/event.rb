@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :tweets
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
   validates :start_date, :deadline, date: true, presence: true
@@ -53,6 +54,10 @@ class Event < ApplicationRecord
     where('deadline = ?', now + 2.days)
   end
 
+  def self.created_current_year(now = Time.zone.now)
+    where('created_at > ? AND created_at < ?', now.beginning_of_year, now.end_of_year )
+  end
+
   def open?
     deadline_as_time >= Time.now
   end
@@ -92,5 +97,15 @@ class Event < ApplicationRecord
 
   def uneditable_by?(user)
     !editable_by?(user)
+  end
+
+  def self.country_with_most_events(country_rank)
+    countries = Event.all.group_by(&:country)
+    @sorted_events = countries.sort_by{|country, events| events.count}
+    country = @sorted_events[-country_rank].first
+  end
+
+  def self.number_of_events_per_country(country_rank)
+    events_count = @sorted_events[-country_rank].last.count
   end
 end
