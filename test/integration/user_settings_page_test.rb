@@ -5,7 +5,7 @@ feature 'User Settings Page' do
     @user = make_user
   end
 
-  test 'that name input field is present in settings page and updates user name' do
+  test 'that name input field is present in settings page and updates users name' do
     sign_in_as_user
 
     visit root_path
@@ -24,5 +24,26 @@ feature 'User Settings Page' do
     @user.reload
 
     assert_equal 'My Name', @user.name
+  end
+
+  test 'that country input field is present in settings page and updates users country' do
+    sign_in_as_user
+
+    visit root_path
+
+    click_link 'Settings'
+
+    assert page.text.include?('Profile settings')
+    page.must_have_selector("select[name='user[country]']")
+    page.select 'Spain', from: :user_country
+    page.fill_in 'user_password', with: @user.password
+
+    click_button 'Save changes'
+
+    assert page.text.include?('You have successfully updated your user data.')
+
+    @user.reload
+
+    assert_equal 'Spain', @user.country
   end
 end
