@@ -38,6 +38,9 @@ class AdminEventsController < ApplicationController
     @event.toggle(:approved)
     @event.save!
     if @event.approved?
+      User.where(country: @event.country).where(country_email_notifications: true).each do |user|
+        UserNotificationsMailer.submitted_event(@event, user)
+      end
       redirect_to admin_url, notice: "#{@event.name} has been approved!"
     else
       redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
