@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2018_06_04_094835) do
     t.boolean "admin", default: false, null: false
     t.string "name"
     t.string "country"
-    t.boolean "email_notifications", default: false
+    t.boolean "country_email_notifications", default: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
