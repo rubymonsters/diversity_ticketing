@@ -51,3 +51,5 @@ en:
       title: "Your Applications"
       submitted: "Submitted"
       drafts: "Drafts"
+    delete_account:
+      title: "Are you sure?"

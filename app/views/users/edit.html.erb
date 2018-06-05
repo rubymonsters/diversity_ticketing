@@ -1,14 +1,9 @@
 <h2><%= t(".title") %></h2>
-
 <%= form_for @user, builder: ::FormBuilder do |form| %>
   <%= render partial: '/users/form', object: form %>
 
   <div class="submit-field">
     <%= form.submit(class: "btn btn-save") %>
-    <%= link_to 'Delete Account', user_path(@user.id),
-        class: "btn btn-delete",  method: :delete,
-        data: { confirm: "With this your data will be deleted from the system irrevocably.
-          Are you sure you want to delete your account?" } %>
+    <%= form.submit 'Delete Account', class: "btn btn-delete" %>
   </div>
-
 <% end %>

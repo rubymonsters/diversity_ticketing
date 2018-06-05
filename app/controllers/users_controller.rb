@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications, :delete_account]
 
   def show
     @categorized_user_events = {
@@ -24,13 +24,24 @@ class UsersController < Clearance::UsersController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
-    elsif user_params[:password] === ''
-      flash.now[:error] = "Password is a mandatory field"
+    if user_params[:password] === ''
+      flash[:error] = "Password is a mandatory field"
+      redirect_to edit_user_path(@user)
+    elsif @user.authenticated?(params[:user][:password])
+      if @user.update(user_params) && params[:commit] == "Delete Account"
+        redirect_to delete_account_path(@user)
+      elsif @user.update(user_params)
+        if user_params[:new_password] != ''
+          @user.update_attributes(password: user_params[:new_password])
+        end
+        redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+      else
+        pp "RENDER EDIT"
       render :edit
+      end
     else
-      render :edit
+      flash[:error] = "Incorrect password"
+      redirect_to edit_user_path(@user)
     end
   end
 
@@ -39,8 +50,13 @@ class UsersController < Clearance::UsersController
       flash[:alert] = "Your Account has been deleted successfully."
       redirect_to root_path
     else
-      flash[:error] = "Something went wrong. Please try again."
       render :edit
+    end
+  end
+
+  def delete_account
+    if request.env["HTTP_REFERER"] != edit_user_url(@user)
+      redirect_to root_path, alert: "We're sorry. You don't have permission to access this page."
     end
   end
 
@@ -60,7 +76,7 @@ class UsersController < Clearance::UsersController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password, :new_password)
     end
 
     def user_from_params
