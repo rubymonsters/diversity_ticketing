@@ -36,7 +36,6 @@ class UsersController < Clearance::UsersController
         end
         redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
       else
-        pp "RENDER EDIT"
       render :edit
       end
     else
