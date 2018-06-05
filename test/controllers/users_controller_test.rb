@@ -113,4 +113,21 @@ class UsersControllerTest < ActionController::TestCase
       assert categorized_user_events[:past].include?(past_event)
     end
   end
+
+  describe '#destroy' do
+    it 'deletes user from database' do
+      user1 = make_user(email: 'a@example.org')
+      user2 = make_user(email: 'b@example.org')
+
+      sign_in_as(user2)
+
+      assert_equal 'b@example.org', User.last.email
+
+      delete :destroy, params: { id: user2.id }
+
+      assert_redirected_to root_path
+      assert_equal "Your Account has been deleted successfully.", flash[:alert]
+      assert_equal 'a@example.org', User.last.email
+    end
+  end
 end
