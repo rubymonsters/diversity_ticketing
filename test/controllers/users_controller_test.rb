@@ -28,13 +28,14 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     it 'allows user to edit their data' do
-      user = make_user(email: 'la@le.lu')
+      user = make_user(email: 'la@le.lu', password: '654321')
       sign_in_as(user)
 
       put :update, params: { id: user.id, user: { email: 'cool@email.add', password: '654321' } }
       user.reload
 
-      assert_equal user.email, 'cool@email.add'
+      assert_equal "You have successfully updated your user data.", flash[:notice]
+      assert_equal 'cool@email.add', user.email
       assert_redirected_to edit_user_path(user)
     end
 
@@ -45,8 +46,9 @@ class UsersControllerTest < ActionController::TestCase
       put :update, params: { id: user.id, user: { email: '' } }
       user.reload
 
-      assert_equal user.email, 'ta@da.aa'
-      assert_response :success
+      assert_nil flash[:notice]
+      assert_equal 'ta@da.aa', user.email
+      assert_redirected_to edit_user_path(user)
     end
   end
 
