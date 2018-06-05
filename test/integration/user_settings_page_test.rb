@@ -43,11 +43,6 @@ feature 'User Settings Page' do
 
     click_button 'Delete Account'
     assert page.text.include?('Password is a mandatory field')
-
-    page.fill_in 'user_password', with: @user.password
-    click_button 'Delete Account'
-
-    assert page.text.include?("Are you sure?")
   end
 
   test 'that password validation works and Delete Account redirects to delete account page' do
