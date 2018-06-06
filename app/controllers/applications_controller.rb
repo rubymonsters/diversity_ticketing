@@ -40,8 +40,13 @@ class ApplicationsController < ApplicationController
 
   def save_draft
     @application.skip_validation = true
+    if Application.find_by(id: @application.id)
+      message = "You have successfully saved your changes to the draft."
+    else
+      message = "You have successfully saved an application draft for #{@event.name}."
+    end
     if @application.save
-      redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully saved an application draft for #{@event.name}."
+      redirect_to event_application_path(@event.id, @application.id), notice: message 
     end
   end
 
