@@ -23,9 +23,9 @@ class AdminEventsController < ApplicationController
 
   def show
     @categorized_applications = {
-      "Pending Applications" => @event.applications.submitted.pending,
-      "Approved Applications" => @event.applications.approved,
-      "Rejected Applications" => @event.applications.rejected
+      "Pending applications" => @event.applications.submitted.pending,
+      "Approved applications" => @event.applications.approved,
+      "Rejected applications" => @event.applications.rejected
     }
 
     respond_to do |format|

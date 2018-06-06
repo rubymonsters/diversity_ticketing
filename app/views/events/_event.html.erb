@@ -1,5 +1,5 @@
 <section class="box">
-<h2 class="box-title">Event Details</h2>
+<h2 class="box-title">Event details</h2>
 
 <div class="detail-pair">
   <strong>Event name</strong>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="detail-pair">
-  <strong>Code of Conduct link</strong>
+  <strong>Code of conduct link</strong>
   <%= link_to @event.code_of_conduct, "#{@event.code_of_conduct}", target: "_blank" %>
 </div>
 
@@ -59,7 +59,7 @@
 
 <% unless controller_name == 'events' && action_name == 'show' %>
   <section class="box">
-    <h2 class="box-title box-noborder">Application and Selection</h2>
+    <h2 class="box-title box-noborder">Application and selection</h2>
     <p class="border">Not shown to the public.<p>
     <div>
       <% if @event.application_process == 'selection_by_travis' %>
