@@ -66,6 +66,10 @@ class Event < ApplicationRecord
     deadline_as_time < Time.now
   end
 
+  def past?
+    end_date < Time.now
+  end
+
   def deadline_as_time
     (deadline + 1).in_time_zone("UTC")
   end
