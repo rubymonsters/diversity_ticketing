@@ -9,10 +9,10 @@ class AdminEventsController < ApplicationController
     @new_users = User.all.created_last_30_days
     @countries = Event.all.group_by(&:country).keys
     @categorized_events = {
-      "Unapproved Events" => Event.unapproved.upcoming.order(:deadline),
-      "Approved Events" => Event.approved.upcoming.order(:deadline),
-      "Past Approved Events"=> Event.approved.past.order(:deadline),
-      "Past Unapproved Events" => Event.unapproved.past.order(:deadline)
+      "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
+      "Approved events" => Event.approved.upcoming.order(:deadline),
+      "Past approved events"=> Event.approved.past.order(:deadline),
+      "Past unapproved events" => Event.unapproved.past.order(:deadline)
     }
 
     respond_to do |format|

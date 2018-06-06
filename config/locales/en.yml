@@ -43,11 +43,11 @@ en:
     edit:
       title: "Edit your credentials"
     events:
-      title: "Your Events"
+      title: "Your events"
       approved: "Approved"
       unapproved: "Not approved so far"
       past: "Past"
     applications:
-      title: "Your Applications"
+      title: "Your applications"
       submitted: "Submitted"
       drafts: "Drafts"
