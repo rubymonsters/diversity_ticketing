@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  before_action :get_event, only: [:show, :edit, :update; :destroy]
+  before_action :get_event, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
@@ -73,8 +73,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
-    redirect_to user_path(current_user)
+    attributes = @event.attributes.keys - ["id"]
+    attributes.each do |attr|
+      @event.update(attr => "")
+    end
   end
 
   private
