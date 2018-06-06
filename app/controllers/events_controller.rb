@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  skip_before_action :require_login, only: [:index, :index_past, :show]
+  skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
     @open_events   = Event.approved.upcoming.open.order(:deadline)
@@ -74,6 +74,12 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to user_path(current_user)
   end
 
   private
