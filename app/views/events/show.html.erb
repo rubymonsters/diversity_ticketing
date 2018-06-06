@@ -9,6 +9,8 @@
 
   <% if current_user && (@event.organizer_id == current_user.id || current_user.admin?) %>
     <%= link_to "Edit", edit_event_path(@event), id: @event.id, class: 'btn btn-edit' %>
+    <%= link_to "Delete", delete_event_path(id: @event.id), method: :delete,
+        data: { confirm: "Are you sure?"}, class: "btn btn-delete" if @event.past?%>
   <% end %>
 
   <% if @event.application_process == 'application_by_organizer' %>
