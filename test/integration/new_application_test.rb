@@ -143,4 +143,18 @@ feature 'New Application' do
 
     assert_equal current_path, event_application_path(@event.id, draft.id)
   end
+
+  test 'shows correct flash message for creating a draft' do
+    sign_in_as_user
+
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    assert page.has_button?("Save as a Draft")
+
+    click_button "Save as a Draft"
+
+    assert page.has_content?("You have successfully saved an application draft for #{@event.name}.")
+  end
 end
