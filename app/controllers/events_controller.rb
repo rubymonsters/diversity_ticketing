@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
+  before_action :get_event, only: [:show, :edit, :update; :destroy]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
@@ -13,7 +14,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     unless @event.approved || @event.organizer_id == current_user.id
       flash[:alert] = "You are not allowed to access this event."
       redirect_back(fallback_location: root_path)
@@ -55,16 +55,12 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
-
     if @event.uneditable_by?(current_user)
       redirect_to event_url(@event), alert: "Your event can't be edited, because the deadline has passed."
     end
   end
 
   def update
-    @event = Event.find(params[:id])
-
     if @event.uneditable_by?(current_user)
       head :forbidden
     elsif @event.update(event_params)
@@ -77,12 +73,15 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     redirect_to user_path(current_user)
   end
 
   private
+    def get_event
+      @event = Event.find(params[:id])
+    end
+
     def event_params
       if current_user.admin?
         admin_event_params
