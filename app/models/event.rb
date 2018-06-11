@@ -60,6 +60,10 @@ class Event < ApplicationRecord
     where('created_at > ? AND created_at < ?', now.beginning_of_year, now.end_of_year )
   end
 
+  def self.not_deleted
+    where(deleted: false)
+  end
+  
   def open?
     deadline_as_time >= Time.now
   end
