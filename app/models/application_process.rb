@@ -28,7 +28,7 @@ module ApplicationProcess
   module Validator
     def self.included(base)
       base.validates_each :application_process do |record, attr, value|
-        unless Choice.new(value).valid?
+        unless Choice.new(value).valid? || record.skip_validation
           record.errors.add(attr, 'must be a valid application process')
         end
       end
@@ -43,7 +43,7 @@ module ApplicationProcess
           choice = Choice.new(event.application_process)
           !choice.selection_by_organizer?
         }
-      })    
+      })
 
       base.validates :application_link, {
         if: ->(event) {
@@ -51,7 +51,8 @@ module ApplicationProcess
           choice.application_by_organizer?
         },
         presence: true,
-        format: { with: /(http|https):\/\/.+\..+/ }
+        format: { with: /(http|https):\/\/.+\..+/ },
+        unless: :skip_validation
       }
 
       base.validates :application_link, {
@@ -59,7 +60,8 @@ module ApplicationProcess
           choice = Choice.new(event.application_process)
           !choice.application_by_organizer?
         },
-        absence: true
+        absence: true,
+        unless: :skip_validation
       }
     end
   end
