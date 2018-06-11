@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  before_action :get_event, only: [:show, :edit, :update, :destroy]
+  before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
@@ -73,10 +73,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    attributes = @event.attributes.keys - ["id"]
-    attributes.each do |attr|
-      @event.update(attr => "")
-    end
+    @event.skip_validation = true
+    delete_event_data
+    @event.applications.delete_all
+    redirect_to user_path(current_user)
   end
 
   private
@@ -116,5 +116,18 @@ class EventsController < ApplicationController
 
     def set_s3_direct_post
       @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    end
+
+    def delete_event_data
+      attributes = @event.attributes.keys - ["id", "created_at", "updated_at", "deleted"]
+      columns = {deleted: true}
+      attributes.each do |attr|
+        if @event[attr].class == TrueClass || @event[attr].class == FalseClass
+          columns[attr] = false
+        else
+          columns[attr] = nil
+        end
+      end
+      @event.update_attributes(columns)
     end
 end
