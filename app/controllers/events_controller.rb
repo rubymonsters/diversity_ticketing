@@ -6,16 +6,19 @@ class EventsController < ApplicationController
   def index
     @open_events   = Event.approved.upcoming.open.order(:deadline)
     @closed_events = Event.approved.upcoming.closed.order(:deadline)
-    @past_events   = Event.approved.past
+    @past_events   = Event.approved.past.not_deleted
   end
 
   def index_past
-    @events = Event.approved.past
+    @events = Event.approved.past.not_deleted
   end
 
   def show
-    unless @event.approved || @event.organizer_id == current_user.id
-      flash[:alert] = "You are not allowed to access this event."
+    if @event.unapproved || @event.organizer_id != current_user.id
+      flash[:alert] = 'You are not allowed to access this event.'
+      redirect_back(fallback_location: root_path)
+    elsif @event.deleted
+      flash[:alert] = 'This event has been deleted by the organizer.'
       redirect_back(fallback_location: root_path)
     end
   end
