@@ -10,7 +10,7 @@ feature 'User Settings Page' do
 
     visit root_path
 
-    click_link 'Settings'
+    click_link 'Account settings'
 
     assert page.text.include?('Edit your credentials')
     page.must_have_selector("form input[name='user[name]']")

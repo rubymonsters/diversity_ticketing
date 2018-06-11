@@ -31,7 +31,7 @@ feature 'Application Edit' do
     assert page.has_content?("Name")
     assert page.has_content?("Email")
     assert page.has_content?("Back")
-    assert page.has_selector?("input[type=submit][value='Save Changes']")
+    assert page.has_selector?("input[type=submit][value='Save changes']")
   end
 
   test 'allows the user to edit their own submitted application' do
@@ -46,7 +46,7 @@ feature 'Application Edit' do
     assert page.has_content?("Name")
     assert page.has_content?("Email")
     assert page.has_content?("Back")
-    assert page.has_selector?("input[type=submit][value='Apply Changes']")
+    assert page.has_selector?("input[type=submit][value='Apply changes']")
   end
 
   test 'does not allow a user to edit other users application' do

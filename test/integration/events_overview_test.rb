@@ -16,7 +16,7 @@ feature 'Event Overview' do
     assert_equal current_path, new_event_application_path(@event.id)
   end
 
-  test 'shows a link to Your Draft if the user already created a draft for the event' do
+  test 'shows a link to Your draft if the user already created a draft for the event' do
     application = make_draft(@event, applicant_id: @user.id)
     sign_in_as_user
 
@@ -24,7 +24,7 @@ feature 'Event Overview' do
 
     assert_not page.has_content?("Apply")
 
-    click_button("Your Draft")
+    click_button("Your draft")
 
     assert_equal event_application_path(@event.id, application.id), current_path
   end
@@ -37,8 +37,8 @@ feature 'Event Overview' do
 
     assert_not page.has_content?("Apply")
 
-    page.all('a', text:"Your Application")
-    click_button("Your Application")
+    page.all('a', text:"Your application")
+    click_button("Your application")
 
     assert_equal event_application_path(@event.id, application.id), current_path
   end
