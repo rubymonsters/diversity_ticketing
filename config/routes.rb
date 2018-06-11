@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  resources :events do
+  resources :events, except: [:destroy] do
     resources :applications, except: [:index, :submit, :admin_destroy]
   end
 
