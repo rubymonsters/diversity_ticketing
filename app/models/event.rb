@@ -7,16 +7,18 @@ class Event < ApplicationRecord
   has_many :tags, through: :taggings
   has_many :tweets
 
-  validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
-  validates :start_date, :deadline, date: true, presence: true
-  validates :end_date, date: { after_or_equal_to: :start_date }, presence: true
-  validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true
-  validates :organizer_email_confirmation, presence: true, on: :create
-  validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
-  validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
+  validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true, unless: :skip_validation
+  validates :start_date, :deadline, date: true, presence: true, unless: :skip_validation
+  validates :end_date, date: { after_or_equal_to: :start_date }, presence: true, unless: :skip_validation
+  validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true, unless: :skip_validation
+  validates :organizer_email_confirmation, presence: true, on: :create, unless: :skip_validation
+  validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }, unless: :skip_validation
+  validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true, unless: :skip_validation
   validates :twitter_handle, format: { with: /\A@?\w+\z/ }, allow_nil: true
 
   accepts_nested_attributes_for :tags
+
+  attr_accessor :skip_validation
 
   def self.application_via_diversitytickets
     where.not(application_process: 'application_by_organizer')
