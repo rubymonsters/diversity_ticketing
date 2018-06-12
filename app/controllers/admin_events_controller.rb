@@ -21,6 +21,12 @@ class AdminEventsController < ApplicationController
     end
   end
 
+  def anual_events_report
+    respond_to do |format|
+      format.csv { send_data ReportExporter.anual_events_report, filename: "anual_events_report_#{DateTime.now.strftime("%F")}.csv" }
+    end
+  end
+
   def show
     @categorized_applications = {
       "Pending Applications" => @event.applications.submitted.pending,
@@ -38,6 +44,9 @@ class AdminEventsController < ApplicationController
     @event.toggle(:approved)
     @event.save!
     if @event.approved?
+      User.where(country: @event.country).where(country_email_notifications: true).each do |user|
+        UserNotificationsMailer.new_local_event(@event, user).deliver_later
+      end
       redirect_to admin_url, notice: "#{@event.name} has been approved!"
     else
       redirect_to admin_url, notice: "#{@event.name} has been unapproved!"

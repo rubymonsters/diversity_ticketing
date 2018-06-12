@@ -36,19 +36,69 @@
     <strong>Email</strong>
     <%= @application.email %>
   </p>
+
+  <% if @application.visa_needed %>
+    <p class="detail-pair">
+      <strong>I need a Visa.</strong>
+    </p>
+  <% end %>
 </section>
 
 <% if @application.event.open? %>
-  <div>
+  <% if !@application.submitted %>
+    <%= form_for @application, url: submit_event_application_path(@event.id, @application.id), builder: ::FormBuilder do |f| %>
+
+      <% if @application.errors.any? %>
+        <div class="error">
+          <p><%= pluralize(@application.errors.count, "error") %> stopped this application from being saved:</p>
+          <ul>
+            <% @application.errors.messages.each do |field, messages| %>
+              <li><%= @application.class.human_attribute_name(field) %> <%= join_messages(messages) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <section class="box">
+        <%= f.form_field :text_field, :email_confirmation, 'Email Confirmation' %>
+        <div class="form_field--check">
+          <%= label_tag do %>
+          <%= f.check_box :terms_and_conditions, checked: false %>
+          <span class="check-label">I agree with the following Terms and Conditions*</span>
+          <% end %>
+          <p id="terms-and-conditions">
+            This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of <%= @event.name %>. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes
+          </p>
+          <ul>
+            <% if @event.ticket_funded? %>
+              <li>admission to the conference,</li>
+            <% end %>
+            <% if @event.travel_funded? %>
+              <li>travel costs,</li>
+            <% end %>
+            <% if @event.accommodation_funded? %>
+              <li>accommodation,</li>
+            <% end %>
+            <li>catering for the day of the conference,</li>
+            <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>
+          </ul>
+          <% if @event.travel_funded? %>
+            <p>If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk.</p>
+          <% end %>
+          <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of Conduct', "#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
+        </div>
+      </section>
+      <div>
+        <%= f.submit("Submit Application", class: "btn btn-save") %>
+    <% end %>
+  <% else %>
+    <div>
+  <% end %>
     <%= link_to 'Edit', edit_event_application_path(@event.id, @application.id),
         class: "btn btn-edit" %>
     <%= link_to 'Delete', event_application_path(@event.id, @application.id),
         class: "btn btn-delete",  method: :delete,
         data: { confirm: "Are you sure you want to delete this application?" } %>
-    <% if !@application.submitted %>
-      <%= link_to 'Submit Application', submit_event_application_path(@event.id, @application.id),
-          class: "btn btn-save", method: :post %>
-    <% end %>
   </div>
 <% elsif current_user.admin? || @application.submitted == false %>
   <div>

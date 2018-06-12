@@ -5,7 +5,7 @@ feature 'User Settings Page' do
     @user = make_user
   end
 
-  test 'that name input field is present in settings page and updates user name' do
+  test 'that name input field is present in settings page and updates users name' do
     sign_in_as_user
 
     visit root_path
@@ -13,14 +13,15 @@ feature 'User Settings Page' do
     assert page.text.include?("#{@user.name}")
 
     page.find("#dropdown-btn").click
+
     click_link 'Account Settings'
 
-    assert page.text.include?('Edit your credentials')
+    assert page.text.include?('Profile settings')
     page.must_have_selector("form input[name='user[name]']")
     page.fill_in 'user_name', with: 'My Name'
     page.fill_in 'user_password', with: @user.password
 
-    click_button 'Update User'
+    click_button 'Save changes'
 
     assert page.text.include?('You have successfully updated your user data.')
 
@@ -29,11 +30,32 @@ feature 'User Settings Page' do
     assert_equal 'My Name', @user.name
   end
 
+
+  test 'that country input field is present in settings page and updates users country' do
+    sign_in_as_user
+
+    visit root_path
+    
+    click_link 'Account Settings'
+
+    page.must_have_selector("select[name='user[country]']")
+    page.select 'Spain', from: :user_country
+    page.fill_in 'user_password', with: @user.password
+
+    click_button 'Save changes'
+
+    assert page.text.include?('You have successfully updated your user data.')
+
+    @user.reload
+
+    assert_equal 'Spain', @user.country
+  end
+
   test 'that password is required for Delete Account' do
     sign_in_as_user
 
     visit root_path
-
+    
     assert page.text.include?("#{@user.name}")
 
     page.find("#dropdown-btn").click
@@ -59,5 +81,29 @@ feature 'User Settings Page' do
     click_button 'Delete Account'
 
     assert page.text.include?("Are you sure?")
+  end
+
+  test 'that country_email_notifications checkbox is present in settings page and updates users preferences' do
+    sign_in_as_user
+
+    visit root_path
+
+    assert page.text.include?("#{@user.name}")
+
+    page.find("#dropdown-btn").click
+    click_link 'Account Settings'
+
+    page.must_have_selector("input[name='user[country_email_notifications]']")
+    assert_equal false, @user.country_email_notifications
+    page.check 'user[country_email_notifications]'
+    page.fill_in 'user_password', with: @user.password
+
+    click_button 'Save changes'
+
+    assert page.text.include?('You have successfully updated your user data.')
+
+    @user.reload
+
+    assert_equal true, @user.country_email_notifications
   end
 end
