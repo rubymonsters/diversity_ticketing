@@ -21,7 +21,7 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    assert_not page.has_content?('Submit Application')
+    page.assert_no_selector('.submit-application')
   end
 
   test 'shows link to Submit if user is an applicant and event-deadline has not passed' do
@@ -29,7 +29,7 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    assert page.has_button?('Submit Application')
+    page.assert_selector('.submit-application')
   end
 
   test 'does not show link to Submit if user is an applicant and event-deadline has passed' do
@@ -38,7 +38,7 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    assert_not page.has_content?('Submit Application')
+    page.assert_no_selector('.submit-application')
   end
 
   test 'sets the status of the application to submitted after clicking Submit' do
@@ -47,9 +47,10 @@ feature 'Application draft' do
 
     visit event_application_path(@event.id, @draft.id)
 
-    fill_in 'Email Confirmation', with: @user.email
+    fill_in 'Email confirmation', with: @user.email
     check('I agree with the following Terms and Conditions*')
-    click_button('Submit Application')
+
+    click_button('Submit application')
 
     @draft.reload
 

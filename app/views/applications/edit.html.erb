@@ -24,7 +24,7 @@
       <%= f.form_field :text_field, :name, 'Name' %>
       <%= f.form_field :text_field, :email, 'Email' %>
     <% end %>
-    <%= f.form_field :text_field, :email_confirmation, 'Email Confirmation' %>
+    <%= f.form_field :text_field, :email_confirmation, 'Email confirmation' %>
 
     <% if @event.travel_funded? %>
       <div class="form_field">
@@ -59,16 +59,16 @@
       <% if @event.travel_funded? %>
         <p>If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk.</p>
       <% end %>
-      <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of Conduct', "#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
+      <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of conduct', "#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
     </div>
   </section>
 
   <div class="form_field">
     <%= link_to 'Back', event_application_path(@event.id, @application.id), class: "btn btn-edit" %>
     <% if @application.submitted %>
-      <%= f.submit("Apply Changes", class: "btn btn-save") %>
+      <%= f.submit("Apply changes", class: "btn btn-save") %>
     <% else %>
-      <%= f.submit("Save Changes", class: "btn btn-save") %>
+      <%= f.submit("Save changes", class: "btn btn-save") %>
     <% end %>
   </div>
 <% end %>

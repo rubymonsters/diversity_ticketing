@@ -14,7 +14,11 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
     if @user.save
       sign_in @user
-      redirect_to root_path
+      unless params[:referer].include?('continue_as_guest')
+        redirect_to root_path
+      else
+        redirect_to new_event_application_path(params[:event_id])
+      end
     else
       render template: "users/new"
     end
@@ -28,7 +32,7 @@ class UsersController < Clearance::UsersController
       flash[:error] = "Password is a mandatory field"
       redirect_to edit_user_path(@user)
     elsif @user.authenticated?(params[:user][:password])
-      if @user.update(user_params) && params[:commit] == "Delete Account"
+      if @user.update(user_params) && params[:commit] == "Delete account"
         redirect_to delete_account_path(@user)
       elsif @user.update(user_params)
         if user_params[:new_password] != ''
