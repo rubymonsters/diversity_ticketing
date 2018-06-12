@@ -51,8 +51,8 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    page.assert_selector('.approve-application-icon')
-    page.assert_selector('.reject-application-icon')
+    page.assert_selector('.approve-application')
+    page.assert_selector('.reject-application')
   end
 
   test 'shows a list of pending applications' do
@@ -87,7 +87,7 @@ feature 'Admin Event Details' do
     assert page.has_content?("Approved applications (1)")
     assert page.has_content?("Pending applications (2)")
 
-    page.first('a.icon.tooltip').click
+    page.first('a.btn.btn-save.approve-application').click
 
     assert page.has_content?("Peter's application has been approved!")
 
@@ -103,7 +103,7 @@ feature 'Admin Event Details' do
     assert page.has_content?("Pending applications (2)")
     assert page.has_content?("Rejected applications (0)")
 
-    page.all('a.icon.tooltip')[1].click
+    page.first('a.btn.btn-external.reject-application').click
 
     assert page.has_content?("Peter's application has been rejected")
 
@@ -111,15 +111,15 @@ feature 'Admin Event Details' do
     assert page.has_content?("Rejected applications (1)")
   end
 
-  test 'changes application status back to pending after clicking on undo link' do
+  test 'changes application status back to pending after clicking on revert link' do
     sign_in_as_admin
 
     visit admin_event_path(@event.id)
 
     assert page.has_content?("Approved applications (1)")
     assert page.has_content?("Pending applications (2)")
-
-    click_link('Undo')
+    
+    page.first('a.btn.btn-edit.revert-application').click
 
     assert page.has_content?("Lara's application has been changed to pending")
 

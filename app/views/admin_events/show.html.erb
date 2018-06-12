@@ -28,28 +28,28 @@
                 </p>
                 <p>
                   <% if (application.status == "approved") || (application.status == "rejected") %>
-                    <%= link_to undo_event_application_path(application.event_id, application.id),
-                        method: :post, class: "icon tooltip",
-                        title: 'undo' do %>
-                        Undo
+                    <%= link_to revert_event_application_path(application.event_id, application.id),
+                        method: :post, class: "btn btn-edit revert-application",
+                        title: 'revert' do %>
+                        Revert
                       <% end %>
                   <% else %>
                     <%= link_to approve_event_application_path(application.event_id, application.id),
-                        method: :post, class: "icon tooltip",
+                        method: :post, class: "btn btn-save approve-application",
                         title: 'approve' do %>
-                      <span class="approve-application-icon" aria-label="approve icon">&#x2714;</span>
+                      Approve
                     <% end %>
 
                     <%= link_to reject_event_application_path(application.event_id, application.id),
-                        method: :post, class: "icon tooltip",
+                        method: :post, class: "btn btn-external reject-application",
                         title: 'reject' do %>
-                      <span class="reject-application-icon" aria-label="reject icon">&#x2718;</span>
+                      Reject
                     <% end %>
                   <% end %>
 
                   <%= link_to admin_event_application_path(application.id, application.event_id), method: :delete,
                       data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
-                    <span class="icon-delete" aria-label="trashcan icon"></span>
+                    <span class="icon-delete-application" aria-label="trashcan icon"></span>
                   <% end %>
                 </p>
               </li>
