@@ -17,10 +17,10 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    if @application.update(application_params) && params[:commit] == 'Apply Changes'
+    if @application.update(application_params) && params[:commit] == 'Apply changes'
       redirect_to event_application_path(@event.id, @application.id),
       notice: "You have successfully updated your application for #{@event.name}."
-    elsif params[:commit] == 'Save Changes'
+    elsif params[:commit] == 'Save changes'
       save_draft
     else
       render :edit
@@ -40,24 +40,24 @@ class ApplicationsController < ApplicationController
 
   def save_draft
     @application.skip_validation = true
-    if Application.find_by(id: @application.id)
-      message = "You have successfully saved your changes to the draft."
-    else
-      message = "You have successfully saved an application draft for #{@event.name}."
-    end
-    if @application.save
-      redirect_to event_application_path(@event.id, @application.id), notice: message
-    end
+      if Application.find_by(id: @application.id)
+        message = "You have successfully saved your changes to the draft."
+      else
+        message = "You have successfully saved an application draft for #{@event.name}."
+      end
+      if @application.save
+        redirect_to event_application_path(@event.id, @application.id), notice: message
+      end
   end
 
   def new
-    if @event.application_process == 'application_by_organizer'
-      redirect_to @event
-    elsif !current_user && request.env["HTTP_REFERER"] != continue_as_guest_url(@event)
-      redirect_to continue_as_guest_path(@event)
-    else
-      @application = @event.applications.build
-    end
+   if @event.application_process == 'application_by_organizer'
+     redirect_to @event
+   elsif !current_user && request.env["HTTP_REFERER"] != continue_as_guest_url(@event)
+     redirect_to continue_as_guest_path(@event)
+   else
+     @application = @event.applications.build
+   end
   end
 
   def create
@@ -68,10 +68,9 @@ class ApplicationsController < ApplicationController
     else
       @application = Application.new(application_params)
       @application.event = @event
-      @application.status = 'pending'
-      if @application.save && params[:commit] == 'Submit Application'
+      if @application.save && params[:commit] == 'Submit application'
         submit
-      elsif params[:commit] == 'Save as a Draft'
+      elsif params[:commit] == 'Save as a draft'
         save_draft
       else
         render :new
@@ -88,7 +87,6 @@ class ApplicationsController < ApplicationController
     @application.update_attributes(status: "rejected")
     redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been rejected" }
   end
-
 
   def revert
     @application.update_attributes(status: "pending")
@@ -114,34 +112,34 @@ class ApplicationsController < ApplicationController
   end
 
   private
-    def application_params
-      set_applicant_id
-      params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
-      :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
-    end
+  def application_params
+    set_applicant_id
+    params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
+    :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
+  end
 
-    def get_application
-      @application = @event.applications.find(params[:id])
-    end
+  def get_application
+    @application = @event.applications.find(params[:id])
+  end
 
-    def get_event
-      @event = Event.find(params[:event_id])
-    end
+  def get_event
+    @event = Event.find(params[:event_id])
+  end
 
-    def ensure_correct_user
-      @applicant = User.find_by(id: @application.applicant_id)
-      unless @applicant == current_user || (admin_user? && @application.submitted)
-        redirect_to root_path
-      end
+  def ensure_correct_user
+    @applicant = User.find_by(id: @application.applicant_id)
+    unless @applicant == current_user || (admin_user? && @application.submitted)
+      redirect_to root_path
     end
+  end
 
-    def set_applicant_id
-      if signed_in?
-        params[:application][:applicant_id] = current_user.id
-      end
+  def set_applicant_id
+    if signed_in?
+      params[:application][:applicant_id] = current_user.id
     end
+  end
 
-    def skip_validation
-      @application.skip_validation = true
-    end
+  def skip_validation
+    @application.skip_validation = true
+  end
 end

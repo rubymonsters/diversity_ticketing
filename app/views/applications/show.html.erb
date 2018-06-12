@@ -8,6 +8,7 @@
     <%= link_to 'Your applications', user_applications_path(current_user.id) %>
     > Application for <%= @event.name %>
   <% end %>
+
 </p>
 
 <h1 class="box-title">Application for <%= @event.name %></h1>
@@ -59,7 +60,7 @@
       <% end %>
 
       <section class="box">
-        <%= f.form_field :text_field, :email_confirmation, 'Email Confirmation' %>
+        <%= f.form_field :text_field, :email_confirmation, 'Email confirmation' %>
         <div class="form_field--check">
           <%= label_tag do %>
           <%= f.check_box :terms_and_conditions, checked: false %>
@@ -88,7 +89,7 @@
         </div>
       </section>
       <div>
-        <%= f.submit("Submit Application", class: "btn btn-save") %>
+        <%= f.submit("Submit application", class: "btn btn-save submit-application") %>
     <% end %>
   <% else %>
     <div>
@@ -98,11 +99,6 @@
     <%= link_to 'Delete', event_application_path(@event.id, @application.id),
         class: "btn btn-delete",  method: :delete,
         data: { confirm: "Are you sure you want to delete this application?" } %>
-    <% if !@application.submitted %>
-      <%= link_to 'Submit application', submit_event_application_path(@event.id, @application.id),
-          class: "btn btn-save", method: :post %>
-    <% end %>
-
   </div>
 <% elsif current_user.admin? || @application.submitted == false %>
   <div>
