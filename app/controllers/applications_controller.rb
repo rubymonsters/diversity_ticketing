@@ -46,12 +46,12 @@ class ApplicationsController < ApplicationController
       @application = Application.new(application_params)
       @application.event = @event
       @application.status = 'pending'
-      if @application.save && params[:commit] == 'Submit Application'
+      if @application.save && params[:commit] == 'Submit application'
         @application.update_attributes(submitted: true)
         ApplicantMailer.application_received(@application).deliver_later
         current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
         redirect_to path, notice: "You have successfully applied for #{@event.name}."
-      elsif @application.save && params[:commit] == 'Save as a Draft'
+      elsif @application.save && params[:commit] == 'Save as a draft'
         redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully saved an application draft for #{@event.name}."
       else
         render :new

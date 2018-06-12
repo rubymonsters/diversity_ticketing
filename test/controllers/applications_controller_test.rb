@@ -96,7 +96,7 @@ class ApplicationsControllerTest < ActionController::TestCase
           terms_and_conditions: '1',
           event: event
         },
-        commit: 'Submit Application'
+        commit: 'Submit application'
       }
 
       assert_redirected_to event_path(event.id)

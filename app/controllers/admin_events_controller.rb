@@ -9,10 +9,10 @@ class AdminEventsController < ApplicationController
     @new_users = User.all.created_last_30_days
     @countries = Event.all.group_by(&:country).keys
     @categorized_events = {
-      "Unapproved Events" => Event.unapproved.upcoming.order(:deadline),
-      "Approved Events" => Event.approved.upcoming.order(:deadline),
-      "Past Approved Events"=> Event.approved.past.order(:deadline),
-      "Past Unapproved Events" => Event.unapproved.past.order(:deadline)
+      "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
+      "Approved events" => Event.approved.upcoming.order(:deadline),
+      "Past approved events"=> Event.approved.past.order(:deadline),
+      "Past unapproved events" => Event.unapproved.past.order(:deadline)
     }
 
     respond_to do |format|
@@ -23,9 +23,9 @@ class AdminEventsController < ApplicationController
 
   def show
     @categorized_applications = {
-      "Pending Applications" => @event.applications.submitted.pending,
-      "Approved Applications" => @event.applications.approved,
-      "Rejected Applications" => @event.applications.rejected
+      "Pending applications" => @event.applications.submitted.pending,
+      "Approved applications" => @event.applications.approved,
+      "Rejected applications" => @event.applications.rejected
     }
 
     respond_to do |format|

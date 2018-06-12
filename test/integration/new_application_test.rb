@@ -21,7 +21,7 @@ feature 'New Application' do
     page.fill_in 'application_attendee_info_2', with: 'I am an underrepresented minority'
     page.check 'application[terms_and_conditions]'
 
-    click_button "Submit Application"
+    click_button "Submit application"
 
     assert page.text.include?("You have successfully applied for #{@event.name}")
   end
@@ -38,7 +38,7 @@ feature 'New Application' do
     page.fill_in 'application_email_confirmation', with: @user.email
     page.check 'application[terms_and_conditions]'
 
-    click_button "Submit Application"
+    click_button "Submit application"
 
     assert page.text.include?("You have successfully applied for #{@event.name}")
   end
@@ -50,7 +50,7 @@ feature 'New Application' do
 
     click_button "Apply"
 
-    click_button "Submit Application"
+    click_button "Submit application"
 
     assert page.text.include?("5 errors stopped this application from being saved")
   end
@@ -68,7 +68,7 @@ feature 'New Application' do
     page.fill_in 'application_email_confirmation', with: @user.email
     page.check 'application[terms_and_conditions]'
 
-    click_button "Submit Application"
+    click_button "Submit application"
 
     assert page.text.include?("You have successfully applied for #{@event.name}")
 
@@ -88,7 +88,7 @@ feature 'New Application' do
     page.fill_in 'application_email_confirmation', with: @user.email
     page.check 'application[terms_and_conditions]'
 
-    click_button "Save as a Draft"
+    click_button "Save as a draft"
 
     assert_equal @event.applications.last.email, @user.email
     assert_equal Application.last.submitted, false
@@ -99,7 +99,7 @@ feature 'New Application' do
 
     click_button "Apply"
 
-    assert_not page.has_content?('Save as a Draft')
+    assert_not page.has_content?('Save as a draft')
   end
 
   test 'shows continue_as_guest? page to not logged in users' do
@@ -129,7 +129,7 @@ feature 'New Application' do
 
     click_button "Apply"
 
-    assert_not page.has_content?('Would you like to Sign In to use your profile information and save this application?')
+    assert_not page.has_content?('Would you like to Sign in to use your profile information and save this application?')
   end
 
   test 'shows an Your Application button if the user already submitted an application for the event' do
@@ -140,12 +140,12 @@ feature 'New Application' do
 
     assert_not page.has_content?("Apply")
 
-    click_button "Your Application"
+    click_button "Your application"
 
     assert_equal current_path, event_application_path(@event.id, application.id)
   end
 
-  test 'shows an Your Draft button if the user already saved a draft for the event' do
+  test 'shows an Your draft button if the user already saved a draft for the event' do
     draft = make_draft(@event, applicant_id: @user.id)
     sign_in_as_user
 
@@ -153,7 +153,7 @@ feature 'New Application' do
 
     assert_not page.has_content?("Apply")
 
-    click_button "Your Draft"
+    click_button "Your draft"
 
     assert_equal current_path, event_application_path(@event.id, draft.id)
   end

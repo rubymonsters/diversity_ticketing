@@ -60,7 +60,7 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Pending Applications (2)")
+    assert page.has_content?("Pending applications (2)")
   end
 
   test 'shows a list of approved applications' do
@@ -68,7 +68,7 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Approved Applications (1)")
+    assert page.has_content?("Approved applications (1)")
   end
 
   test 'shows a list of rejected applications' do
@@ -76,7 +76,7 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Rejected Applications (0)")
+    assert page.has_content?("Rejected applications (0)")
   end
 
   test 'changes application status after click on approved link' do
@@ -84,15 +84,15 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Approved Applications (1)")
-    assert page.has_content?("Pending Applications (2)")
+    assert page.has_content?("Approved applications (1)")
+    assert page.has_content?("Pending applications (2)")
 
     page.first('a.icon.tooltip').click
 
     assert page.has_content?("Peter's application has been approved!")
 
-    assert page.has_content?("Approved Applications (2)")
-    assert page.has_content?("Pending Applications (1)")
+    assert page.has_content?("Approved applications (2)")
+    assert page.has_content?("Pending applications (1)")
   end
 
   test 'changes application status after click on reject link' do
@@ -100,15 +100,15 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Pending Applications (2)")
-    assert page.has_content?("Rejected Applications (0)")
+    assert page.has_content?("Pending applications (2)")
+    assert page.has_content?("Rejected applications (0)")
 
     page.all('a.icon.tooltip')[1].click
 
     assert page.has_content?("Peter's application has been rejected")
 
-    assert page.has_content?("Pending Applications (1)")
-    assert page.has_content?("Rejected Applications (1)")
+    assert page.has_content?("Pending applications (1)")
+    assert page.has_content?("Rejected applications (1)")
   end
 
   test 'changes application status back to pending after clicking on undo link' do
@@ -116,15 +116,15 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Approved Applications (1)")
-    assert page.has_content?("Pending Applications (2)")
+    assert page.has_content?("Approved applications (1)")
+    assert page.has_content?("Pending applications (2)")
 
     click_link('Undo')
 
     assert page.has_content?("Lara's application has been changed to pending")
 
-    assert page.has_content?("Approved Applications (0)")
-    assert page.has_content?("Pending Applications (3)")
+    assert page.has_content?("Approved applications (0)")
+    assert page.has_content?("Pending applications (3)")
   end
 
   test 'shows Approve event Button if event has not been approved' do
