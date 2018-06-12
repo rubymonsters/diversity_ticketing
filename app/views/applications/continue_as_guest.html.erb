@@ -1,0 +1,4 @@
+Continue as guest?
+<%= link_to 'Yes, continue as guest', new_event_application_path(@event.id), class: "btn btn-edit" %>
+<%= link_to 'Sign me in', sign_in_path, class: "btn btn-edit" %>
+<%= link_to 'Create an account', sign_up_path(@event.id), class: "btn btn-edit" %>
