@@ -7,7 +7,7 @@ class UserNotificationsMailerTest < ActionMailer::TestCase
   end
 
   test "submitted_event" do
-    email = UserNotificationsMailer.submitted_event(@event, @user)
+    email = UserNotificationsMailer.new_local_event(@event, @user)
 
     assert_emails 1 do
       email.deliver_now
