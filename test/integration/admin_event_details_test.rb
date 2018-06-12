@@ -118,8 +118,8 @@ feature 'Admin Event Details' do
 
     assert page.has_content?("Approved Applications (1)")
     assert page.has_content?("Pending Applications (2)")
-
-    click_link('Revert')
+    
+    page.first('a.btn.btn-edit.revert-application').click
 
     assert page.has_content?("Lara's application has been changed to pending")
 
