@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
   resource :session, controller: 'sessions', only: [:create]
 
-  resources :users, controller: 'users', only: [:create, :show, :edit, :update]
+  resources :users, controller: 'users', only: [:create, :show, :edit, :update, :destroy]
   resources :users, controller: 'clearance/users', only: [:create] do
     resource :password,
       controller: 'clearance/passwords',
-      only: [:create, :edit, :update]
+      only: [:create, :edit, :update, :destroy]
   end
 
   resources :events do
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   post '/events/:event_id/applications:id/approve', to: 'applications#approve', as: :approve_event_application
   post '/events/:event_id/applications:id/reject', to: 'applications#reject', as: :reject_event_application
   post '/events/:event_id/applications:id/revert', to: 'applications#revert', as: :revert_event_application
-
+  delete 'users/:id', to: 'users#destroy', as: :destroy_user
+  get 'users/:id/delete', to: 'users#delete_account', as: :delete_account
   root 'home#home'
 end

@@ -1,5 +1,4 @@
 <h2><%= t(".title") %></h2>
-
 <%= form_for @user, builder: ::FormBuilder do |form| %>
   <%= form.form_field :text_field, :name, t('.name') %>
 
@@ -16,9 +15,6 @@
 
   <div class="submit-field">
     <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
+    <%= form.submit 'Delete Account', class: "btn btn-delete" %>
   </div>
-
-
-
-
 <% end %>
