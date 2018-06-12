@@ -72,6 +72,8 @@ class ApplicationsControllerTest < ActionController::TestCase
 
     it 'adds a new application if the selection process is not run by organizer' do
       event = make_event
+      user = make_user
+      sign_in_as(user)
 
       get :new, params: { event_id: event.id }
 
