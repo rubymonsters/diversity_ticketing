@@ -25,6 +25,9 @@
 <p>
   <%= link_to 'Download Events Report', admin_path(format: :csv),
     class: "btn btn-save", title: "Download Events Report" %>
+
+  <%= link_to 'Download Anual Events Report', admin_anual_path(format: :csv),
+    class: "btn btn-save", title: "Download Events Report" %>
 </p>
 
 <% @categorized_events.each do |heading, events| %>
