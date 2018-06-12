@@ -3,3 +3,7 @@
 <%= form.form_field :email_field, :email, "Email" %>
 
 <%= form.form_field :password_field, :password, "Password" %>
+
+<%= hidden_field_tag :referer, request.env["HTTP_REFERER"] %>
+
+<%= hidden_field_tag :event_id, params[:format] %>

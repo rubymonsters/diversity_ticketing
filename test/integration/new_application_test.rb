@@ -12,6 +12,8 @@ feature 'New Application' do
 
     click_button "Apply"
 
+    click_link "Continue as guest"
+
     page.fill_in 'application_name', with: @user.name
     page.fill_in 'application_email', with: @user.email
     page.fill_in 'application_email_confirmation', with: @user.email
@@ -100,12 +102,24 @@ feature 'New Application' do
     assert_not page.has_content?('Save as a draft')
   end
 
-  test 'shows sign-in link to not logged in users to allow them to use their credentials for this application' do
+  test 'shows continue_as_guest? page to not logged in users' do
     visit event_path(@event.id)
 
     click_button "Apply"
 
-    assert page.has_content?('Would you like to Sign in to use your profile information and save this application?')
+    assert page.has_content?('How would you like to apply?')
+  end
+
+  test 'shows sign-in link to not logged in users inside application to still allow to sign-in after continuing as guest' do
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    assert page.has_content?('How would you like to apply?')
+
+    click_link "Continue as guest"
+
+    assert page.has_content?('Would you like to Sign In to use your profile information and save this application?')
   end
 
   test 'does not show sign-in link to logged in users inside the application' do

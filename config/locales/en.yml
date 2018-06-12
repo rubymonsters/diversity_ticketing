@@ -51,3 +51,6 @@ en:
       title: "Your applications"
       submitted: "Submitted"
       drafts: "Drafts"
+  applications:
+    continue_as_guest:
+      title: "How would you like to apply?"

@@ -1,9 +1,9 @@
 class ApplicationsController < ApplicationController
   before_action :require_admin, only: [:admin_destroy]
   before_action :get_event
-  before_action :get_application, except: [:new, :create]
+  before_action :get_application, except: [:new, :create, :continue_as_guest]
   before_action :ensure_correct_user, only: [:show, :edit]
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :continue_as_guest]
 
   def show
   end
@@ -30,6 +30,8 @@ class ApplicationsController < ApplicationController
   def new
     if @event.application_process == 'application_by_organizer'
       redirect_to @event
+    elsif !current_user && request.env["HTTP_REFERER"] != continue_as_guest_url(@event)
+      redirect_to continue_as_guest_path(@event)
     else
       @application = @event.applications.build
     end
@@ -89,6 +91,14 @@ class ApplicationsController < ApplicationController
   def admin_destroy
     @application.destroy
     redirect_to event_admin_path(@event.id)
+  end
+
+  def continue_as_guest
+    if request.env["HTTP_REFERER"] == (sign_in_url || sign_up_url)
+      redirect_to new_event_application_path(@event.id)
+    else
+      render :continue_as_guest
+    end
   end
 
   private

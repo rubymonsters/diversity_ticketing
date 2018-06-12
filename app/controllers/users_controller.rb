@@ -14,7 +14,11 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
     if @user.save
       sign_in @user
-      redirect_to root_path
+      unless params[:referer].include?('continue_as_guest')
+        redirect_to root_path
+      else
+        redirect_to new_event_application_path(params[:event_id])
+      end
     else
       render template: "users/new"
     end
