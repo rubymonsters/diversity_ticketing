@@ -122,7 +122,7 @@ class EventsController < ApplicationController
     end
 
     def delete_event_data
-      attributes = @event.attributes.keys - ["id", "created_at", "updated_at", "deleted"]
+      attributes = @event.attributes.keys - ["id", "created_at", "updated_at", "deleted", "country"]
       columns = {deleted: true}
       attributes.each do |attr|
         if @event[attr].class == TrueClass || @event[attr].class == FalseClass
