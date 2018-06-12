@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   post '/events/:event_id/applications:id/approve', to: 'applications#approve', as: :approve_event_application
   post '/events/:event_id/applications:id/reject', to: 'applications#reject', as: :reject_event_application
   post '/events/:event_id/applications:id/undo', to: 'applications#undo', as: :undo_event_application
+  get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest
 
   root 'home#home'
 end
