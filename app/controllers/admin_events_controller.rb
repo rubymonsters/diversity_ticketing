@@ -39,7 +39,7 @@ class AdminEventsController < ApplicationController
     @event.save!
     if @event.approved?
       User.where(country: @event.country).where(country_email_notifications: true).each do |user|
-        UserNotificationsMailer.submitted_event(@event, user).deliver_later
+        UserNotificationsMailer.new_local_event(@event, user).deliver_later
       end
       redirect_to admin_url, notice: "#{@event.name} has been approved!"
     else
