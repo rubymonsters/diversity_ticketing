@@ -3,7 +3,7 @@ class ApplicationsController < ApplicationController
   before_action :get_event
   before_action :get_application, except: [:new, :create]
   before_action :ensure_correct_user, only: [:show, :edit]
-  before_action :skip_validation, only: [:save_draft, :approve, :reject, :undo]
+  before_action :skip_validation, only: [:save_draft, :approve, :reject, :revert]
   skip_before_action :require_login, only: [:new, :create]
 
   def show
@@ -46,7 +46,7 @@ class ApplicationsController < ApplicationController
       message = "You have successfully saved an application draft for #{@event.name}."
     end
     if @application.save
-      redirect_to event_application_path(@event.id, @application.id), notice: message 
+      redirect_to event_application_path(@event.id, @application.id), notice: message
     end
   end
 
@@ -87,7 +87,8 @@ class ApplicationsController < ApplicationController
     redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been rejected" }
   end
 
-  def undo
+
+  def revert
     @application.update_attributes(status: "pending")
     redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been changed to pending" }
   end
