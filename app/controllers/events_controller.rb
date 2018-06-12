@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    if @event.unapproved || @event.organizer_id != current_user.id
+    if @event.unapproved && @event.organizer_id != current_user.id
       flash[:alert] = 'You are not allowed to access this event.'
       redirect_back(fallback_location: root_path)
     elsif @event.deleted
