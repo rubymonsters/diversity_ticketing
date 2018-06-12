@@ -54,6 +54,7 @@ feature 'User Settings Page' do
     click_link 'Account Settings'
 
     page.must_have_selector("input[name='user[country_email_notifications]']")
+    assert_equal false, @user.country_email_notifications
     page.check 'user[country_email_notifications]'
     page.fill_in 'user_password', with: @user.password
 
