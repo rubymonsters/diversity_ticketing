@@ -3,6 +3,7 @@ class ApplicationsController < ApplicationController
   before_action :get_event
   before_action :get_application, except: [:new, :create]
   before_action :ensure_correct_user, only: [:show, :edit]
+  before_action :skip_validation, only: [:save_draft, :approve, :reject, :undo]
   skip_before_action :require_login, only: [:new, :create]
 
   def show
@@ -19,11 +20,33 @@ class ApplicationsController < ApplicationController
     if @application.update(application_params) && params[:commit] == 'Apply Changes'
       redirect_to event_application_path(@event.id, @application.id),
       notice: "You have successfully updated your application for #{@event.name}."
-    elsif @application.update(application_params) && params[:commit] == 'Save Changes'
-      redirect_to event_application_path(@event.id, @application.id),
-      notice: "You have successfully saved your changes to the draft."
+    elsif params[:commit] == 'Save Changes'
+      save_draft
     else
       render :edit
+    end
+  end
+
+  def submit
+    if @application.update(application_params)
+      @application.update_attributes(submitted: true)
+      ApplicantMailer.application_received(@application).deliver_later
+      current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
+      redirect_to path, notice: "You have successfully applied for #{@event.name}."
+    else
+      render :show
+    end
+  end
+
+  def save_draft
+    @application.skip_validation = true
+    if Application.find_by(id: @application.id)
+      message = "You have successfully saved your changes to the draft."
+    else
+      message = "You have successfully saved an application draft for #{@event.name}."
+    end
+    if @application.save
+      redirect_to event_application_path(@event.id, @application.id), notice: message 
     end
   end
 
@@ -45,38 +68,27 @@ class ApplicationsController < ApplicationController
       @application.event = @event
       @application.status = 'pending'
       if @application.save && params[:commit] == 'Submit Application'
-        @application.update_attributes(submitted: true)
-        ApplicantMailer.application_received(@application).deliver_later
-        current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
-        redirect_to path, notice: "You have successfully applied for #{@event.name}."
-      elsif @application.save && params[:commit] == 'Save as a Draft'
-        redirect_to event_application_path(@event.id, @application.id), notice: "You have successfully saved an application draft for #{@event.name}."
+        submit
+      elsif params[:commit] == 'Save as a Draft'
+        save_draft
       else
         render :new
       end
     end
   end
 
-  def submit
-    @application.skip_validation = true
-    @application.update_attributes(submitted: true)
-    redirect_to user_applications_path(@application.applicant_id), notice: "You have successfully submitted an application for #{@event.name}."
-  end
-
   def approve
-    @application.skip_validation = true
     @application.update_attributes(status: "approved")
     redirect_to admin_event_path(@application.event_id), notice: "#{@application.name}'s application has been approved!"
   end
 
   def reject
-    @application.skip_validation = true
     @application.update_attributes(status: "rejected")
     redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been rejected" }
   end
 
-  def revert
-    @application.skip_validation = true
+
+  def undo
     @application.update_attributes(status: "pending")
     redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been changed to pending" }
   end
@@ -117,5 +129,9 @@ class ApplicationsController < ApplicationController
       if signed_in?
         params[:application][:applicant_id] = current_user.id
       end
+    end
+
+    def skip_validation
+      @application.skip_validation = true
     end
 end
