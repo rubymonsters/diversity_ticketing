@@ -41,6 +41,6 @@ Rails.application.routes.draw do
   get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest
   delete 'users/:id', to: 'users#destroy', as: :destroy_user
   get 'users/:id/delete', to: 'users#delete_account', as: :delete_account
-  
+
   root 'home#home'
 end
