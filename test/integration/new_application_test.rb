@@ -119,7 +119,7 @@ feature 'New Application' do
 
     click_link "Continue as guest"
 
-    assert page.has_content?('Would you like to Sign In to use your profile information and save this application?')
+    assert page.has_content?('Would you like to Sign in to use your profile information and save this application?')
   end
 
   test 'does not show sign-in link to logged in users inside the application' do
@@ -165,9 +165,9 @@ feature 'New Application' do
 
     click_button "Apply"
 
-    assert page.has_button?("Save as a Draft")
+    assert page.has_button?("Save as a draft")
 
-    click_button "Save as a Draft"
+    click_button "Save as a draft"
 
     assert page.has_content?("You have successfully saved an application draft for #{@event.name}.")
   end

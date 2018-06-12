@@ -68,17 +68,6 @@ feature 'Application Edit' do
     assert page.has_content?("You cannot edit your application as the #{@event.name} deadline has already passed")
   end
 
-  test 'shows correct flash message after saving changes to the draft' do
-    sign_in_as_user
-
-    visit edit_event_application_path(@event2.id, @draft.id)
-
-    fill_in 'application[attendee_info_1]', with: "I made some changes."
-    click_button('Save Changes')
-
-    assert page.has_content?("You have successfully saved your changes to the draft.")
-  end
-
   test 'shows correct flash message after submitting changes to an application' do
     sign_in_as_user
 
@@ -88,7 +77,7 @@ feature 'Application Edit' do
     fill_in 'application[email_confirmation]', with: @user.email
     check 'application[terms_and_conditions]'
 
-    click_button('Apply Changes')
+    click_button('Apply changes')
 
     assert page.has_content?("You have successfully updated your application for #{@event.name}.")
   end
