@@ -63,7 +63,7 @@ class Event < ApplicationRecord
   def self.not_deleted
     where(deleted: false)
   end
-  
+
   def open?
     deadline_as_time >= Time.now
   end
@@ -82,6 +82,10 @@ class Event < ApplicationRecord
 
   def location
     [city, state_province, country].reject(&:blank?).join(", ")
+  end
+
+  def unapproved
+    approved == false
   end
 
   def to_csv
