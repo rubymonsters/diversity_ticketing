@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :events, foreign_key: :organizer_id, dependent: :nullify
   has_many :applications, foreign_key: :applicant_id
+  has_many :taggings
+  has_many :tags, through: :taggings, foreign_key: :user_id
 
   attr_accessor :new_password
 
