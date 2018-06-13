@@ -148,6 +148,7 @@ class EventsController < ApplicationController
         end
       end
       @event.applications.each do |application|
+        application.skip_validation = true
         application.update_attributes(columns)
       end
     end
