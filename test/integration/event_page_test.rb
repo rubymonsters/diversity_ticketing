@@ -25,4 +25,23 @@ feature 'Event' do
     visit event_path(@event.id)
     assert_not page.has_link?("Delete")
   end
+
+  test 'updates events attributes after clicking "Delete" button' do
+    sign_in_as_user
+    application = make_application(@event)
+
+
+    @event.update_attributes(start_date: 1.week.ago, end_date: 1.day.ago, deadline: 1.week.ago)
+
+    visit event_path(@event.id)
+
+    assert page.has_link?("Delete")
+    click_link("Delete")
+
+    @event.reload
+    application.reload
+
+    assert_nil @event.name
+    assert_nil application.name
+  end
 end
