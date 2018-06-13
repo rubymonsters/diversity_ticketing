@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def index_past
-    @events = Event.approved.past.not_deleted
+    @events = Event.approved.past.active
   end
 
   def show
