@@ -109,7 +109,7 @@ class ActiveSupport::TestCase
       name: 'Joe',
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
-      terms_and_conditions: '1',
+      terms_and_conditions: true,
       event: event,
       submitted: true
     }
@@ -124,7 +124,7 @@ class ActiveSupport::TestCase
       name: 'Joe',
       email: 'joe@test.com',
       email_confirmation: 'joe@test.com',
-      terms_and_conditions: '1',
+      terms_and_conditions: true,
       event: event,
       submitted: false
     }

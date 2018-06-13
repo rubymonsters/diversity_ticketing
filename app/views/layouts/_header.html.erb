@@ -4,7 +4,7 @@
     <nav class="navigation" role="navigation">
       <ul>
         <li><%= navbar_link_to 'Events', events_path %></li>
-        <li><%= navbar_link_to 'Submit Event', new_event_path %></li>
+        <li><%= navbar_link_to 'Submit event', new_event_path %></li>
         <li><%= navbar_link_to 'About', about_path %></li>
         <li><%= navbar_link_to 'FAQ', faq_path %></li>
         <% if signed_in? %>
@@ -13,7 +13,7 @@
               <% if current_user.name && current_user.name != "" %>
                 <%= current_user.name %>
               <% else %>
-                Your Account
+                Your account
               <% end %>
               <i class="fas fa-sort-down"></i></i>
             </span>
@@ -22,9 +22,9 @@
                 <li class="dropdown-item"><%= navbar_link_to 'Admin', admin_path %></li>
                 <li class="dropdown-item"><%= navbar_link_to 'Tags', tags_path %></li>
               <% end %>
-              <li class="dropdown-item"><%= navbar_link_to 'Your Events', user_path(current_user) %></li>
-              <li class="dropdown-item"><%= navbar_link_to 'Your Applications', user_applications_path(current_user) %></li>
-              <li class="dropdown-item"><%= navbar_link_to 'Account Settings', edit_user_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to 'Your events', user_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to 'Your applications', user_applications_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to 'Account settings', edit_user_path(current_user) %></li>
               <li class="dropdown-item"><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
             </div>
           </div>

@@ -5,43 +5,43 @@ feature 'Admin Events' do
     click_link 'Admin'
 
     within(approved_events_box) do
-      refute page.text.include?('The Event')
+      refute page.text.include?('The event')
     end
 
     within(unapproved_events_box) do
-      assert page.text.include?('The Event')
+      assert page.text.include?('The event')
       click_link 'approve'
     end
 
     within(unapproved_events_box) do
-      refute page.text.include?('The Event')
+      refute page.text.include?('The event')
     end
 
     within(approved_events_box) do
-      assert page.text.include?('The Event')
+      assert page.text.include?('The event')
       click_link 'approve'
     end
 
     within(approved_events_box) do
-      refute page.text.include?('The Event')
+      refute page.text.include?('The event')
     end
 
     within(unapproved_events_box) do
-      assert page.text.include?('The Event')
+      assert page.text.include?('The event')
     end
   end
 
   before do
     make_admin
     sign_in_as_admin
-    event = make_event(name: 'The Event', approved: false)
+    event = make_event(name: 'The event', approved: false)
   end
 
   def unapproved_events_box
-    first('.box', text: 'Unapproved Events')
+    first('.box', text: 'Unapproved events')
   end
 
   def approved_events_box
-    first('.box', text: 'Approved Events')
+    first('.box', text: 'Approved events')
   end
 end
