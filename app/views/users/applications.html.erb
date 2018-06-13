@@ -16,7 +16,7 @@
                 <!-- This conditional becomes ommitable if we delete applicant_id with application: -->
                 <% unless application.deleted == true %>
                   <p class="event-name"><%= link_to application.event.name, event_path(id: application.event.id) %></p>
-                  <p class="application-count"><%= link_to "Your Application", event_application_path(id: application.id, event_id: application.event.id) %></p>
+                  <p class="application-count"><%= link_to "Your application", event_application_path(id: application.id, event_id: application.event.id) %></p>
                 <% else %>
                  <p>
                    <p class="event-name">Removed event</p>
