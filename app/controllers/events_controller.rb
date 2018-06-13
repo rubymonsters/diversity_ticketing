@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data]
+  before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
     @open_events   = Event.approved.upcoming.open.order(:deadline)
     @closed_events = Event.approved.upcoming.closed.order(:deadline)
-    @past_events   = Event.approved.past.not_deleted
+    @past_events   = Event.approved.past.active
   end
 
   def index_past
@@ -78,7 +78,7 @@ class EventsController < ApplicationController
   def destroy
     @event.skip_validation = true
     delete_event_data
-    @event.applications.delete_all
+    delete_event_applications_data
     redirect_to user_path(current_user)
   end
 
@@ -132,5 +132,18 @@ class EventsController < ApplicationController
         end
       end
       @event.update_attributes(columns)
+    end
+
+    def delete_event_applications_data
+      attributes = @event.applications.attributes.keys - ["id", "event_id", "created_at", "updated_at", "submitted", "deleted"]
+      columns = {deleted: true}
+      attributes.each do |attr|
+        if @event.applications[attr].class == TrueClass || @event.applications[attr].class == FalseClass
+          columns[attr] = false
+        else
+          columns[attr] = nil
+        end
+      end
+      @event.applications.update_attributes(columns)
     end
 end
