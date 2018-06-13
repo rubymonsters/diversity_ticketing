@@ -1,16 +1,16 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data]
+  before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
     @open_events   = Event.approved.upcoming.open.order(:deadline)
     @closed_events = Event.approved.upcoming.closed.order(:deadline)
-    @past_events   = Event.approved.past.not_deleted
+    @past_events   = Event.approved.past.active
   end
 
   def index_past
-    @events = Event.approved.past.not_deleted
+    @events = Event.approved.past.active
   end
 
   def show

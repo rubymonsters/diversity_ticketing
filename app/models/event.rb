@@ -60,7 +60,7 @@ class Event < ApplicationRecord
     where('created_at > ? AND created_at < ?', now.beginning_of_year, now.end_of_year )
   end
 
-  def self.not_deleted
+  def self.active
     where(deleted: false)
   end
 
