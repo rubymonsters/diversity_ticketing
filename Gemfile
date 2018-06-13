@@ -6,9 +6,10 @@ gem 'rails', '5.2.0'
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2'
+gem 'city-state'
 gem 'clearance'
-gem 'date_validator'
 gem 'coffee-rails', '~> 4.2.0'
+gem 'date_validator'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'letsencrypt-rails-heroku', group: 'production'
@@ -21,6 +22,7 @@ gem 'sidekiq'
 gem 'uglifier'
 gem 'twitter'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
 
 group :development, :test do
   gem 'byebug'

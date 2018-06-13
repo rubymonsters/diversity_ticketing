@@ -20,7 +20,7 @@
     <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get,
         class: "btn btn-save", disabled: @event.closed? %>
   <% else %>
-  <% @event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = 'Your Application' : button_text = 'Your Draft'%>
+  <% @event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = 'Your application' : button_text = 'Your draft'%>
     <%= button_to button_text,
         event_application_path(
         event_id: @event.id,

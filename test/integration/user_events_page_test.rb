@@ -15,7 +15,7 @@ feature 'User Events Page' do
 
     assert_equal current_path, user_path(@user.id)
 
-    assert page.has_content?('Your Events')
+    assert page.has_content?('Your events')
     assert_equal event_path(@event.id), page.find_link(@event.name)[:href]
     assert page.has_content?('1 application')
   end

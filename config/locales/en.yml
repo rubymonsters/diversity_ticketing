@@ -41,13 +41,27 @@ en:
               invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
   users:
     edit:
-      title: "Edit your credentials"
+      country: "Country"
+      email-notifications: "Email notifications"
+      name: "Name"
+      password: "Password"
+      receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I am based"
+      save-changes: "Save changes"
+      title: "Profile settings"
     events:
-      title: "Your Events"
+      title: "Your events"
       approved: "Approved"
       unapproved: "Not approved so far"
       past: "Past"
     applications:
-      title: "Your Applications"
+      title: "Your applications"
       submitted: "Submitted"
       drafts: "Drafts"
+    delete_account:
+      title: "Are you sure?"
+      
+  applications:
+    continue_as_guest:
+      title: "How would you like to apply?"
+
+
