@@ -12,8 +12,19 @@
   <%= form.form_field :password_field, :password, "Password" %>
 
 <h2><%= t(".email-notifications") %></h2>
-
-  <%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %>
+  <p><%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %></p>
+  <p><%= form.check_box :tag_email_notifications %> <%= t('.receive-emails-tag') %><p>
+  <div class="tags">
+    <label>Fields of interest</label>
+    <div class="category-tags">
+    <% Category.all.each do |category| %>
+        <p class="border"><%= category.name.capitalize %></p>
+        <%= form.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
+          <%= tag.label { tag.check_box + " " + tag.text } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="submit-field">
     <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
