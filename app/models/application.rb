@@ -1,8 +1,8 @@
 class Application < ApplicationRecord
   belongs_to :event
   belongs_to :user
-  validates :name, :attendee_info_1, :attendee_info_2, presence: true
-  validates :email, presence: true, confirmation: true, format: { with: /.+@.+\..+/ }
+  validates :name, :attendee_info_1, :attendee_info_2, presence: true, unless: :skip_validation
+  validates :email, presence: true, confirmation: true, format: { with: /.+@.+\..+/ }, unless: :skip_validation
   validates :email_confirmation, presence: true, unless: :skip_validation
   validates :terms_and_conditions, acceptance: true, allow_nil: false, unless: :skip_validation
 
