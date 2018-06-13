@@ -28,13 +28,14 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     it 'allows user to edit their data' do
-      user = make_user(email: 'la@le.lu')
+      user = make_user(email: 'la@le.lu', password: '654321')
       sign_in_as(user)
 
       put :update, params: { id: user.id, user: { email: 'cool@email.add', password: '654321' } }
       user.reload
 
-      assert_equal user.email, 'cool@email.add'
+      assert_equal "You have successfully updated your user data.", flash[:notice]
+      assert_equal 'cool@email.add', user.email
       assert_redirected_to edit_user_path(user)
     end
 
@@ -45,8 +46,9 @@ class UsersControllerTest < ActionController::TestCase
       put :update, params: { id: user.id, user: { email: '' } }
       user.reload
 
-      assert_equal user.email, 'ta@da.aa'
-      assert_response :success
+      assert_nil flash[:notice]
+      assert_equal 'ta@da.aa', user.email
+      assert_redirected_to edit_user_path(user)
     end
   end
 
@@ -111,6 +113,23 @@ class UsersControllerTest < ActionController::TestCase
       assert categorized_user_events[:approved].include?(approved_event)
       assert categorized_user_events[:unapproved].include?(unapproved_event)
       assert categorized_user_events[:past].include?(past_event)
+    end
+  end
+
+  describe '#destroy' do
+    it 'deletes user from database' do
+      user1 = make_user(email: 'a@example.org')
+      user2 = make_user(email: 'b@example.org')
+
+      sign_in_as(user2)
+
+      assert_equal 'b@example.org', User.last.email
+
+      delete :destroy, params: { id: user2.id }
+
+      assert_redirected_to root_path
+      assert_equal "Your Account has been deleted successfully.", flash[:alert]
+      assert_equal 'a@example.org', User.last.email
     end
   end
 end
