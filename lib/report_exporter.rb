@@ -101,6 +101,8 @@ module ReportExporter
   end
 
   def self.user_data(user_params)
+    result = User.find_by(id: user_params.id)
+    applications = result.applications
 
     CSV.generate do |csv|
       csv << [
@@ -111,25 +113,8 @@ module ReportExporter
         "Created at",
         "Updated at",
         "Country email notifictaions on?",
-        "Number of applications",
-        "Application for event",
-        "Name on application",
-        "Email on application",
-        "Answer to question 1",
-        "Answer to question 2",
-        "Application created at",
-        "Application updated at",
-        "Ticket needed?",
-        "Travel needed?",
-        "Accommodation needed?",
-        "Visa needed?",
-        "Application submitted?",
-        "Status of application",
-        "Accepted Terms and Conditions?"
+        "Number of applications"
       ]
-
-      result = User.find_by(id: user_params.id)
-      applications = result.applications
 
       csv << [
         result["id"],
@@ -142,22 +127,42 @@ module ReportExporter
         result.applications.count
       ]
 
+      csv << []
+
+      csv << [
+        "Application for event",
+        "Name on application",
+        "Email on application",
+        "Accepted Terms and Conditions?",
+        "Application created at",
+        "Application updated at",
+        "Answer to question 1",
+        "Answer to question 2",
+        "Ticket needed?",
+        "Travel needed?",
+        "Accommodation needed?",
+        "Visa needed?",
+        "Application submitted?",
+        "Status of application",
+
+      ]
+
       applications.each do |application|
         csv << [
           application["event_id"],
           application["name"],
           application["email"],
-          application["attendee_info_1"],
-          application["attendee_info_2"],
+          application["terms_and_conditions"],
           application["created_at"],
           application["updated_at"],
+          application["attendee_info_1"],
+          application["attendee_info_2"],
           application["ticket_needed"],
           application["travel_needed"],
           application["accommodation_needed"],
           application["visa_needed"],
           application["submitted"],
-          application["status"],
-          application["terms_and_conditions"]
+          application["status"]
         ]
       end
     end
