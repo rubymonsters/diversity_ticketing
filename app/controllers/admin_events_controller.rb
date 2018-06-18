@@ -70,11 +70,7 @@ class AdminEventsController < ApplicationController
     end
 
     def inform_applicants_field_of_interest
-      users = []
-      @event.tags.each do |tag|
-        users << tag.taggings.pluck(:user_id).uniq
-      end
-      users.flatten.uniq.compact.each do |user|
+      @event.interested_users.where(tag_email_notifications: true).each do |user|
         UserNotificationsMailer.new_local_event(@event, user).deliver_later
       end
     end
