@@ -21,9 +21,9 @@ class AdminEventsController < ApplicationController
     end
   end
 
-  def anual_events_report
+  def annual_events_report
     respond_to do |format|
-      format.csv { send_data ReportExporter.anual_events_report, filename: "anual_events_report_#{DateTime.now.strftime("%F")}.csv" }
+      format.csv { send_data ReportExporter.annual_events_report, filename: "anual_events_report_#{DateTime.now.strftime("%F")}.csv" }
     end
   end
 
