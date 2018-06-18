@@ -19,4 +19,13 @@
     <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
     <%= form.submit 'Delete account', class: "btn btn-delete" %>
   </div>
+
+  <div class="submit-field">
+    <p>
+      Here you can download a CSV file that contains a list of all your user data
+      we store:
+    </p>
+    <%= link_to 'Download user data', edit_user_path(id: @user.id, format: :csv),
+      class: "btn btn-edit", title: "Download user data" %>
+  </div>
 <% end %>

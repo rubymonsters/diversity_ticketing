@@ -99,4 +99,67 @@ module ReportExporter
       end
     end
   end
+
+  def self.user_data(user_params)
+
+    CSV.generate do |csv|
+      csv << [
+        "User ID",
+        "Name",
+        "Email",
+        "Country",
+        "Created at",
+        "Updated at",
+        "Country email notifictaions on?",
+        "Number of applications",
+        "Application for event",
+        "Name on application",
+        "Email on application",
+        "Answer to question 1",
+        "Answer to question 2",
+        "Application created at",
+        "Application updated at",
+        "Ticket needed?",
+        "Travel needed?",
+        "Accommodation needed?",
+        "Visa needed?",
+        "Application submitted?",
+        "Status of application",
+        "Accepted Terms and Conditions?"
+      ]
+
+      result = User.find_by(id: user_params.id)
+      applications = result.applications
+
+      csv << [
+        result["id"],
+        result["name"],
+        result["email"],
+        result["country"],
+        result["created_at"],
+        result["updated_at"],
+        result["country_email_notifications"],
+        result.applications.count
+      ]
+
+      applications.each do |application|
+        csv << [
+          application["event_id"],
+          application["name"],
+          application["email"],
+          application["attendee_info_1"],
+          application["attendee_info_2"],
+          application["created_at"],
+          application["updated_at"],
+          application["ticket_needed"],
+          application["travel_needed"],
+          application["accommodation_needed"],
+          application["visa_needed"],
+          application["submitted"],
+          application["status"],
+          application["terms_and_conditions"]
+        ]
+      end
+    end
+  end
 end
