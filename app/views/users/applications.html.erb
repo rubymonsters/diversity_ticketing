@@ -15,8 +15,8 @@
                 <% unless application.deleted == true %>
                   <div class="conflogo--small"><%= event_image application.event %></div>
                   <p class="event-name"><%= link_to application.event.name, event_path(id: application.event.id) %></p>
-                  <p class="application-count"><%= link_to "Your Application", event_application_path(id: application.id, event_id: application.event.id) %></p>
-                <% end %>
+                  <p class="application-count"><%= link_to "Your application", event_application_path(id: application.id, event_id: application.event.id) %></p>
+                 <% end %>
               </li>
             <% end %>
           </ul>
