@@ -50,12 +50,13 @@ module ReportExporter
     end
   end
 
-  def self.anual_events_report
-    years = Event.all.group_by(&:start_date).keys.map{|date| date.year}.uniq.sort
+  def self.annual_events_report
+    years = Event.all.pluck(:start_date).compact.map{|date| date.year}.uniq.sort
 
     CSV.generate do |csv|
       years.each do |year|
-        csv << [ "Year", year ]
+        csv << [ "Year",
+                 year ]
 
         csv << ["User registrations", User.all.where('created_at <= ?', Date.new(year,12,31)).count]
 
