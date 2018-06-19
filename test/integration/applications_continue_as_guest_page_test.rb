@@ -54,7 +54,7 @@ feature 'Application Edit' do
     assert_current_path sign_up_path(@event.id)
     fill_in 'Email', with: 'new@example.org'
     fill_in 'Password', with: 'new_password'
-    click_button 'Sign up'
+    click_button 'Create your account'
 
     assert_current_path new_event_application_path(@event.id)
   end
