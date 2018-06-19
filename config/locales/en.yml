@@ -45,7 +45,7 @@ en:
       email-notifications: "Email notifications"
       name: "Name"
       password: "Password"
-      receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I am based"
+      receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I’ve selected for my account"
       receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
       save-changes: "Save changes"
       title: "Account settings"
@@ -60,6 +60,21 @@ en:
       drafts: "Drafts"
     delete_account:
       title: "Are you sure?"
+      subtitle: "Deleting your account is irreversible."
+      benefits-intro: "We would be sad to see you go and don't want you to miss out on the benefits of
+      being a signed up user."
+      list-of-benefits: "If you proceed with the account deletion the following things will happen:
+      <li> Your submitted applications will still be valid. <strong>However:</strong> </li>
+      <li> You will not be able to visit or manage your current applications or drafts anymore.</li>
+      <li> New applications can only be submitted as a guest, unless you sign up for a new user account again.</li>
+      <li> If you sign up again, you will not be able to retrieve your \"old\" data. </li>
+      <li> As a guest you will be missing out on the opportunity to receive updates about our latest conferences or other interesting events for you.</li>"
+      email-preferences: "<strong>Please note</strong> that you can manage your email preferences
+          in your account settings. You don't have to receive our newsletters if you
+          don't want to."
+      are-you-sure: "Are you sure you want to delete your user account?"
+      no-delete-button: "No, go back!"
+      delete-button: "Yes, delete account!"
 
   applications:
     continue_as_guest:
