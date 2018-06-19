@@ -67,37 +67,4 @@ feature 'Event Overview' do
     assert page.text.include?('The Event')
     assert_match /event-default-.*\.png/, page.body
   end
-
-  test 'shows Your events in the breadcrumb if the user is an organizer' do
-    sign_in_as_user
-    make_event(name: 'The Event', approved: true, organizer_id: @user.id)
-
-    visit events_path
-
-    click_link 'The Event'
-
-    assert page.text.include?('Your Events')
-  end
-
-  test 'shows Events in the breadcrumb if the user is not an organizer' do
-    sign_in_as_user
-    make_event(name: 'The Event', approved: true)
-
-    visit events_path
-
-    click_link 'The Event'
-
-    assert page.text.include?('Events')
-  end
-
-  test 'shows Admin in the breadcrumb if the user is an Admin' do
-    sign_in_as_admin
-    make_event(name: 'The Event', approved: true, organizer_id: @user.id)
-
-    visit events_path
-
-    click_link 'The Event'
-
-    assert page.text.include?('Admin')
-  end
 end

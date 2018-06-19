@@ -26,10 +26,9 @@ feature 'Event' do
     assert_not page.has_link?("Delete")
   end
 
-  test 'updates events attributes after clicking "Delete" button' do
+  test 'redirects to root after trying to visit a delete event page' do
     sign_in_as_user
     application = make_application(@event)
-
 
     @event.update_attributes(start_date: 1.week.ago, end_date: 1.day.ago, deadline: 1.week.ago)
 
@@ -38,10 +37,42 @@ feature 'Event' do
     assert page.has_link?("Delete")
     click_link("Delete")
 
-    @event.reload
-    application.reload
+    visit event_path(@event.id)
+    
+    assert page.text.include?('You are not allowed to access this event')
+    assert root_path, current_path
+  end
 
-    assert_nil @event.name
-    assert_nil application.name
+  test 'shows Your events in the breadcrumb if the user is an organizer' do
+    sign_in_as_user
+    make_event(name: 'The Event', approved: true, organizer_id: @user.id)
+
+    visit events_path
+
+    click_link 'The Event'
+
+    assert page.text.include?('Your Events')
+  end
+
+  test 'shows Events in the breadcrumb if the user is not an organizer' do
+    sign_in_as_user
+    make_event(name: 'The Event', approved: true)
+
+    visit events_path
+
+    click_link 'The Event'
+
+    assert page.text.include?('Events')
+  end
+
+  test 'shows Admin in the breadcrumb if the user is an Admin' do
+    sign_in_as_admin
+    make_event(name: 'The Event', approved: true, organizer_id: @user.id)
+
+    visit events_path
+
+    click_link 'The Event'
+
+    assert page.text.include?('Admin')
   end
 end
