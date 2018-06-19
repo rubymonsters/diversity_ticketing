@@ -48,7 +48,7 @@ en:
       receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I am based"
       receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
       save-changes: "Save changes"
-      title: "Profile settings"
+      title: "Account settings"
     events:
       title: "Your events"
       approved: "Approved"
