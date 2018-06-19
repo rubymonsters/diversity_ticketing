@@ -1,7 +1,7 @@
 <h1><%= t(".title") %></h1>
 <%= form_for @user, builder: ::FormBuilder do |form| %>
   <div class="two-columns">
-    <section class="tags box col-6">
+    <section class="box col-6">
     <%= form.form_field :text_field, :name, t('.name') %>
 
     <%= form.form_field :email_field, :email, t('.email') %>
