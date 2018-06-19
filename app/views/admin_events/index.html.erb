@@ -73,8 +73,10 @@
               <% end %>
             </p>
             <p>
+              <% if event.approved %>
               <%= link_to 'Download CSV', event_admin_path(id: event.id, format: :csv),
                   class: "btn btn-save", title: "Download data" %>
+              <% end %>
             </p>
           </li>
           <% end %>
