@@ -76,12 +76,16 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.skip_validation = true
-    delete_event_data
-    unless @event.applications.count == 0
-      delete_application_data
+    if @event.deletable_by?(current_user) && @event.past?
+      @event.skip_validation = true
+      delete_event_data
+      unless @event.applications.count == 0
+        delete_application_data
+      end
+      redirect_to user_path(current_user)
+    else
+      head :forbidden
     end
-    redirect_to user_path(current_user)
   end
 
   private
@@ -138,7 +142,7 @@ class EventsController < ApplicationController
 
     def delete_application_data
       application = @event.applications.first
-      attributes = application.attributes.keys - ["id", "event_id", "created_at", "updated_at", "submitted", "deleted"]
+      attributes = application.attributes.keys - ["id", "event_id", "created_at", "updated_at", "applicant_id", "submitted","deleted"]
       columns = {deleted: true}
       attributes.each do |attr|
         if application[attr].class == TrueClass || application[attr].class == FalseClass
