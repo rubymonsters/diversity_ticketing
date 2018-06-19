@@ -38,7 +38,7 @@ feature 'User Sign In' do
     assert page.has_content?("Create your account")
     click_link "Create your account"
 
-    assert page.has_content?("Sign up")
+    assert page.has_content?("Create your account")
   end
 
   test 'sign-up page shows link to sign in with a "Sign in here"-Button' do

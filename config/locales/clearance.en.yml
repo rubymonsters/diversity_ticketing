@@ -31,7 +31,7 @@ en:
       session:
         submit: Sign in
       user:
-        create: Sign up
+        create: Create your account
   layouts:
     application:
       sign_in: Sign in
@@ -50,10 +50,10 @@ en:
   sessions:
     form:
       forgot_password: Forgot password?
-      sign_up: Sign up
+      sign_up: Create your account
     new:
       title: Sign in
   users:
     new:
       sign_in: Sign in
-      title: Sign up
+      title: Create your account
