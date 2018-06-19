@@ -46,8 +46,9 @@ en:
       name: "Name"
       password: "Password"
       receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I’ve selected for my account"
+      receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
       save-changes: "Save changes"
-      title: "Profile settings"
+      title: "Account settings"
     events:
       title: "Your events"
       approved: "Approved"
@@ -74,7 +75,6 @@ en:
       are-you-sure: "Are you sure you want to delete your user account?"
       no-delete-button: "No, go back!"
       delete-button: "Yes, delete account!"
-
 
   applications:
     continue_as_guest:

@@ -1,5 +1,8 @@
 <p class="breadcrumb">
   <%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
+  <% if !@event.approved? %>
+  (Not approved so far)
+  <% end %>
 </p>
 
 <h1><span class="conflogo--medium"><%= event_image @event %></span><%= @event.name %></h1>
@@ -15,7 +18,7 @@
     <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get,
         class: "btn btn-save btn-external", disabled: @event.closed? %>
   <% elsif current_user == nil || @event.applications.find_by(applicant_id: current_user.id) == nil %>
-    <%= button_to 'Apply', new_event_application_path(params[:id]), method: :get,
+    <%= button_to 'Apply for a ticket', new_event_application_path(params[:id]), method: :get,
         class: "btn btn-save", disabled: @event.closed? %>
   <% else %>
   <% @event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = 'Your application' : button_text = 'Your draft'%>

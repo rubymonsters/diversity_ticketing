@@ -1,22 +1,51 @@
-<h2><%= t(".title") %></h2>
+<h1><%= t(".title") %></h1>
 <%= form_for @user, builder: ::FormBuilder do |form| %>
-  <%= form.form_field :text_field, :name, t('.name') %>
+  <div class="two-columns">
+    <section class="box col-6">
+    <%= form.form_field :text_field, :name, t('.name') %>
 
-  <%= form.form_field :email_field, :email, t('.email') %>
+    <%= form.form_field :email_field, :email, t('.email') %>
 
   <%= form.label t('.country') %>
   <%= form.select :country, CS.countries.values, {:include_blank => "Select your country"} %>
 
-  <%= form.form_field :password_field, :new_password, "New password" %>
+    <%= form.form_field :password_field, :new_password, "New password" %>
 
-  <%= form.form_field :password_field, :password, "Password" %>
+    <%= form.form_field :password_field, :password, "Password" %>
+    </section>
 
-<h2><%= t(".email-notifications") %></h2>
+    <section class="tags box col-6">
+      <h2>Fields of interest</h2>
+      <div class="category-tags">
+        <% Category.all.each do |category| %>
+          <p><%= category.name.capitalize %></p>
+          <%= form.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
+            <%= tag.label { tag.check_box + " " + tag.text } %>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
 
-  <%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %>
+    <section class="box col-6">
+        <h2><%= t(".email-notifications") %></h2>
+        <p><%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %></p>
+        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive-emails-tag') %><p>
+    </section>
 
+    <section class="box col-6">
+      <div class="submit-field">
+        <p>
+          Here you can download a CSV file that contains a list of all your user data
+          we store:
+        </p>
+        <%= link_to 'Download user data', edit_user_path(id: @user.id, format: :csv),
+          class: "btn btn-edit", title: "Download user data" %>
+      </div>
+    </section>
+  </div>
   <div class="submit-field">
     <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
     <%= form.submit 'Delete account', class: "btn btn-delete" %>
   </div>
+
 <% end %>

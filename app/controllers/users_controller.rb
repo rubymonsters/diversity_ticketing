@@ -1,3 +1,5 @@
+require "report_exporter"
+
 class UsersController < Clearance::UsersController
   before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications, :delete_account]
 
@@ -25,6 +27,10 @@ class UsersController < Clearance::UsersController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.csv { send_data ReportExporter.user_data(@user), filename: "user_data_#{DateTime.now.strftime("%F")}.csv" }
+    end
   end
 
   def update
@@ -79,7 +85,9 @@ class UsersController < Clearance::UsersController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :new_password, :country, :country_email_notifications)
+      params.require(:user).permit(:name, :email, :password, :new_password,
+        :country, :country_email_notifications, :tag_email_notifications,
+        { :tag_ids => [] }, tags_attributes: [:id, :name, :category_id])
     end
 
     def user_from_params
