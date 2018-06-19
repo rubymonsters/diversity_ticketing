@@ -1,42 +1,19 @@
 <h1><%= t(".title") %></h1>
 
 <section class="box">
-  <h3>Deleting your account is irreversible.</h3>
-  <p>
-    We would be sad to see you go and don't want you to miss out on the benefits of
-    being a signed up user.
-    <br>
-    If you proceed with the account deletion the following things will happen:
-    <li>
-      Your submitted applications will still be valid. <strong>However:</strong>
-    </li>
-    <li>
-      You will not be able to visit or manage your current applications or drafts
-      anymore.
-    </li>
-    <li>
-      New applications can only be submitted as a guest, unless you sign up for a
-      new user account again.
-    </li>
-    <li>
-      If you sign up again, you will not be able to retreive your "old" data.
-    </li>
-    <li>
-      As a guest you will be missing out on the opportunity to receive updates
-      about our latest conferences or other interesting events for you.
-    </li>
+  <h3><%= t(".subtitle") %></h3>
+  <p> <%= t(".benefits-intro") %>
+    <br> <%= raw t('.list-of-benefits') %>
   </p>
   <p>
-    <strong>Please note</strong> that you can manage your email-preferences
-    in your account settings. You don't have to receive our newsletters if you
-    don't want to.
+    <%= raw t('.email-preferences') %>
   </p>
 </section>
 
-<h3>Are you sure you want to delete your user account?</h3>
+<h3><%= t(".benefits-intro") %></h3>
 
 <div class="submit-field">
-  <%= link_to 'No, go back!', edit_user_path(@user), class: "btn btn-save" %>
-  <%= link_to 'Yes, delete account!', destroy_user_path(@user), class: "btn btn-delete",
+  <%= link_to t(".no-delete-button"), edit_user_path(@user), class: "btn btn-save" %>
+  <%= link_to t(".delete-button"), destroy_user_path(@user), class: "btn btn-delete",
       method: :delete %>
 </div>
