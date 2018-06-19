@@ -113,6 +113,10 @@ class Event < ApplicationRecord
     !editable_by?(user)
   end
 
+  def deletable_by?(user)
+    user.admin? || owned_by?(user)
+  end
+
   def self.country_with_most_events(country_rank)
     countries = Event.all.group_by(&:country)
     @sorted_events = countries.sort_by{|country, events| events.count}
