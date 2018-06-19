@@ -29,8 +29,9 @@ class UsersController < Clearance::UsersController
 
   def update
     if user_params[:password] === ''
+      @user.update(user_params)
       flash[:error] = "Password is a mandatory field"
-      redirect_to edit_user_path(@user)
+      render :edit
     elsif @user.authenticated?(params[:user][:password])
       if @user.update(user_params) && params[:commit] == "Delete account"
         redirect_to delete_account_path(@user)
