@@ -46,8 +46,9 @@ en:
       name: "Name"
       password: "Password"
       receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I am based"
+      receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
       save-changes: "Save changes"
-      title: "Profile settings"
+      title: "Account settings"
     events:
       title: "Your events"
       approved: "Approved"
@@ -59,9 +60,7 @@ en:
       drafts: "Drafts"
     delete_account:
       title: "Are you sure?"
-      
+
   applications:
     continue_as_guest:
       title: "How would you like to apply?"
-
-
