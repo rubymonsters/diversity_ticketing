@@ -7,6 +7,10 @@ class ApplicationsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :continue_as_guest]
 
   def show
+    if @application.deleted
+      redirect_to user_applications_path(@user.id),
+      alert: "You cannot view your application as the event you applied for has been removed from Diversity Tickets"
+    end
   end
 
   def edit

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update, :destroy]
   end
 
-  resources :events do
+  resources :events, except: [:destroy] do
     resources :applications, except: [:index, :submit, :admin_destroy]
   end
 
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin_events#index'
   get '/admin_annual', to: 'admin_events#annual_events_report'
   delete '/events/:event_id/application/:id', to: 'applications#admin_destroy', as: :admin_event_application
+  delete 'events/:id', to: 'events#destroy', as: :delete_event
   patch '/events/:event_id/application/:id/submit', to: 'applications#submit', as: :submit_event_application
   get '/events/:id/admin', to: 'admin_events#show', as: :event_admin
   post '/events/preview', to: 'events#preview', as: :event_preview

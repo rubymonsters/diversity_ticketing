@@ -1,21 +1,24 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
-  skip_before_action :require_login, only: [:index, :index_past, :show]
+  before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
+  skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
     @open_events   = Event.approved.upcoming.open.order(:deadline)
     @closed_events = Event.approved.upcoming.closed.order(:deadline)
-    @past_events   = Event.approved.past
+    @past_events   = Event.approved.past.active
   end
 
   def index_past
-    @events = Event.approved.past
+    @events = Event.approved.past.active
   end
 
   def show
-    @event = Event.find(params[:id])
-    unless @event.approved || @event.organizer_id == current_user.id
-      flash[:alert] = "You are not allowed to access this event."
+    if @event.unapproved && @event.organizer_id != current_user.id
+      flash[:alert] = 'You are not allowed to access this event.'
+      redirect_back(fallback_location: root_path)
+    elsif @event.deleted
+      flash[:alert] = 'This event has been deleted by the organizer.'
       redirect_back(fallback_location: root_path)
     end
   end
@@ -55,16 +58,12 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
-
     if @event.uneditable_by?(current_user)
       redirect_to event_url(@event), alert: "Your event can't be edited, because the deadline has passed."
     end
   end
 
   def update
-    @event = Event.find(params[:id])
-
     if @event.uneditable_by?(current_user)
       head :forbidden
     elsif @event.update(event_params)
@@ -76,7 +75,24 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    if @event.deletable_by?(current_user) && @event.past?
+      @event.skip_validation = true
+      delete_event_data
+      unless @event.applications.count == 0
+        delete_application_data
+      end
+      redirect_to user_path(current_user)
+    else
+      head :forbidden
+    end
+  end
+
   private
+    def get_event
+      @event = Event.find(params[:id])
+    end
+
     def event_params
       if current_user.admin?
         admin_event_params
@@ -109,5 +125,35 @@ class EventsController < ApplicationController
 
     def set_s3_direct_post
       @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    end
+
+    def delete_event_data
+      attributes = @event.attributes.keys - ["id", "created_at", "updated_at", "deleted", "country"]
+      columns = {deleted: true}
+      attributes.each do |attr|
+        if @event[attr].class == TrueClass || @event[attr].class == FalseClass
+          columns[attr] = false
+        else
+          columns[attr] = nil
+        end
+      end
+      @event.update_attributes(columns)
+    end
+
+    def delete_application_data
+      application = @event.applications.first
+      attributes = application.attributes.keys - ["id", "event_id", "applicant_id", "created_at", "updated_at", "submitted", "deleted"]
+      columns = {deleted: true}
+      attributes.each do |attr|
+        if application[attr].class == TrueClass || application[attr].class == FalseClass
+          columns[attr] = false
+        else
+          columns[attr] = nil
+        end
+      end
+      @event.applications.each do |application|
+        application.skip_validation = true
+        application.update_attributes(columns)
+      end
     end
 end
