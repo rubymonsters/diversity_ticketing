@@ -505,4 +505,63 @@ class EventsControllerTest < ActionController::TestCase
       assert_equal event.name, 'Event'
     end
   end
+
+  describe '#destroy' do
+    it 'deletes all the attributes of the event except the id and the country' do
+      organizer = make_user
+      event = make_event(name: "HOLA", organizer_id: organizer.id)
+      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago)
+      event_id = event.id
+      sign_in_as(organizer)
+
+      delete :destroy, params: { id: event.id }
+
+      assert_response :redirect
+      event.reload
+      assert_nil event.name
+      assert_equal event_id, event.id
+    end
+
+    it 'deletes all the attributes of the applications from the event except the id and applicant_id' do
+      organizer = make_user
+      event = make_event(organizer_id: organizer.id)
+      applicant = make_user(email: "other@example.com")
+      application = make_application(event, applicant_id: applicant.id )
+      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago)
+      application_id = application.id
+
+      sign_in_as(organizer)
+
+      delete :destroy, params: { id: event.id }
+
+      application.reload
+      assert_nil application.name
+      assert_equal application_id, application.id
+      assert_equal applicant.id, application.applicant_id
+    end
+
+    it 'renders a head forbidden if the user is not allowed to delete the event' do
+      organizer = make_user
+      user = make_user(email: "other@example.com")
+      event = make_event(organizer_id: organizer.id)
+      event.update_attributes(end_date: 1.week.ago)
+
+      sign_in_as(user)
+
+      delete :destroy, params: { id: event.id }
+
+      assert_response :forbidden
+    end
+
+    it 'does not allow to delete an event that is still open' do
+      organizer = make_user
+      event = make_event(organizer_id: organizer.id)
+
+      sign_in_as(organizer)
+
+      delete :destroy, params: { id: event.id }
+
+      assert_response :forbidden
+    end
+  end
 end

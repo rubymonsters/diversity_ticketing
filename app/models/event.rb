@@ -9,16 +9,18 @@ class Event < ApplicationRecord
   has_many :tag_taggings, through: :tags, source: 'taggings'
   has_many :interested_users, -> { distinct }, through: :tag_taggings, source: 'user'
 
-  validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true
-  validates :start_date, :deadline, date: true, presence: true
-  validates :end_date, date: { after_or_equal_to: :start_date }, presence: true
-  validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true
-  validates :organizer_email_confirmation, presence: true, on: :create
-  validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }
-  validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true
+  validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true, unless: :skip_validation
+  validates :start_date, :deadline, date: true, presence: true, unless: :skip_validation
+  validates :end_date, date: { after_or_equal_to: :start_date }, presence: true, unless: :skip_validation
+  validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true, unless: :skip_validation
+  validates :organizer_email_confirmation, presence: true, on: :create, unless: :skip_validation
+  validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }, unless: :skip_validation
+  validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true, unless: :skip_validation
   validates :twitter_handle, format: { with: /\A@?\w+\z/ }, allow_nil: true
 
   accepts_nested_attributes_for :tags
+
+  attr_accessor :skip_validation
 
   def self.application_via_diversitytickets
     where.not(application_process: 'application_by_organizer')
@@ -60,6 +62,10 @@ class Event < ApplicationRecord
     where('created_at > ? AND created_at < ?', now.beginning_of_year, now.end_of_year )
   end
 
+  def self.active
+    where(deleted: false)
+  end
+
   def open?
     deadline_as_time >= Time.now
   end
@@ -68,12 +74,20 @@ class Event < ApplicationRecord
     deadline_as_time < Time.now
   end
 
+  def past?
+    end_date < Time.now
+  end
+
   def deadline_as_time
     (deadline + 1).in_time_zone("UTC")
   end
 
   def location
     [city, state_province, country].reject(&:blank?).join(", ")
+  end
+
+  def unapproved
+    approved == false
   end
 
   def to_csv
@@ -99,6 +113,10 @@ class Event < ApplicationRecord
 
   def uneditable_by?(user)
     !editable_by?(user)
+  end
+
+  def deletable_by?(user)
+    user.admin? || owned_by?(user)
   end
 
   def self.country_with_most_events(country_rank)
