@@ -113,7 +113,8 @@ module ReportExporter
         "Country",
         "Created at",
         "Updated at",
-        "Country email notifictaions on?",
+        "Local event email notifictaions on?",
+        "Preferred language events email notifictaions on?",
         "Number of applications"
       ]
 
@@ -125,6 +126,7 @@ module ReportExporter
         result["created_at"],
         result["updated_at"],
         result["country_email_notifications"],
+        result["tag_email_notifications"],
         result.applications.count
       ]
 
