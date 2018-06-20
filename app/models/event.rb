@@ -6,6 +6,8 @@ class Event < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :tweets
+  has_many :tag_taggings, through: :tags, source: 'taggings'
+  has_many :interested_users, -> { distinct }, through: :tag_taggings, source: 'user'
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true, unless: :skip_validation
   validates :start_date, :deadline, date: true, presence: true, unless: :skip_validation
@@ -111,6 +113,10 @@ class Event < ApplicationRecord
 
   def uneditable_by?(user)
     !editable_by?(user)
+  end
+
+  def deletable_by?(user)
+    user.admin? || owned_by?(user)
   end
 
   def self.country_with_most_events(country_rank)
