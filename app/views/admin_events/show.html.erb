@@ -27,23 +27,25 @@
                   <%= link_to application.name, event_application_path(id: application.id, event_id: application.event_id), title: application.event.name %>
                 </p>
                 <p>
-                  <% if (application.status == "approved") || (application.status == "rejected") %>
-                    <%= link_to revert_event_application_path(application.event_id, application.id),
-                        method: :post, class: "btn btn-edit revert-application",
-                        title: 'revert' do %>
-                        Revert
+                  <% unless @event.application_process == "selection_by_organizer" %>
+                    <% if (application.status == "approved") || (application.status == "rejected") %>
+                      <%= link_to revert_event_application_path(application.event_id, application.id),
+                          method: :post, class: "btn btn-edit revert-application",
+                          title: 'revert' do %>
+                          Revert
+                        <% end %>
+                    <% else %>
+                      <%= link_to approve_event_application_path(application.event_id, application.id),
+                          method: :post, class: "btn btn-save approve-application",
+                          title: 'approve' do %>
+                        Approve
                       <% end %>
-                  <% else %>
-                    <%= link_to approve_event_application_path(application.event_id, application.id),
-                        method: :post, class: "btn btn-save approve-application",
-                        title: 'approve' do %>
-                      Approve
-                    <% end %>
 
-                    <%= link_to reject_event_application_path(application.event_id, application.id),
-                        method: :post, class: "btn btn-external reject-application",
-                        title: 'reject' do %>
-                      Reject
+                      <%= link_to reject_event_application_path(application.event_id, application.id),
+                          method: :post, class: "btn btn-external reject-application",
+                          title: 'reject' do %>
+                        Reject
+                      <% end %>
                     <% end %>
                   <% end %>
 
