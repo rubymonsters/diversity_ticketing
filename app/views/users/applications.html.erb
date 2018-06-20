@@ -12,19 +12,11 @@
           <ul class="applicant-list">
             <% applications.each do |application| %>
               <li>
-                <div class="conflogo--small"><%= event_image application.event %></div>
-                <!-- This conditional becomes ommitable if we delete applicant_id with application: -->
                 <% unless application.deleted == true %>
+                  <div class="conflogo--small"><%= event_image application.event %></div>
                   <p class="event-name"><%= link_to application.event.name, event_path(id: application.event.id) %></p>
                   <p class="application-count"><%= link_to "Your application", event_application_path(id: application.id, event_id: application.event.id) %></p>
-                <% else %>
-                 <p>
-                   <p class="event-name">Removed event</p>
-                   This event has been removed by the organizer - <br>
-                   Your application's data has been deleted.
-                 </p>
                  <% end %>
-                 <!-- END -->
               </li>
             <% end %>
           </ul>
@@ -38,3 +30,8 @@
 <% if @categorized_user_applications.values.flatten.empty? %>
   <p>There are currently no applications for this user account.</p>
 <% end %>
+
+<p>
+  Once an event date has passed your applications will vanish from your overview
+  and all sensitive data is being removed from the database.
+</p>
