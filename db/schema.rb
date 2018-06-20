@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_083147) do
+ActiveRecord::Schema.define(version: 2018_06_13_114549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(version: 2018_05_31_083147) do
     t.integer "applicant_id"
     t.boolean "submitted", default: false, null: false
     t.string "status", default: "pending"
-    t.boolean "terms_and_conditions", default: false
+    t.boolean "terms_and_conditions", default: false, null: false
+    t.boolean "deleted", default: false
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_083147) do
     t.string "twitter_handle"
     t.string "state_province"
     t.integer "organizer_id"
+    t.boolean "deleted", default: false
     t.index ["organizer_id"], name: "index_events_on_organizer_id"
   end
 
@@ -74,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_083147) do
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["event_id"], name: "index_taggings_on_event_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
@@ -102,6 +105,9 @@ ActiveRecord::Schema.define(version: 2018_05_31_083147) do
     t.string "remember_token", limit: 128, null: false
     t.boolean "admin", default: false, null: false
     t.string "name"
+    t.boolean "country_email_notifications", default: false
+    t.string "country"
+    t.boolean "tag_email_notifications", default: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

@@ -35,10 +35,10 @@ feature 'User Sign In' do
   test 'sign-in page shows link to sign up with a "Create your Account"-Button' do
     visit sign_in_path
 
-    assert page.has_content?("Create your Account")
-    click_link "Create your Account"
+    assert page.has_content?("Create your account")
+    click_link "Create your account"
 
-    assert page.has_content?("Sign up")
+    assert page.has_content?("Create your account")
   end
 
   test 'sign-up page shows link to sign in with a "Sign in here"-Button' do

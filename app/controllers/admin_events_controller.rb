@@ -1,7 +1,7 @@
 require "report_exporter"
 
 class AdminEventsController < ApplicationController
-  before_action :get_event, only: [:show, :approve, :edit, :update, :destroy]
+  before_action :get_event, except: [:index, :anual_events_report]
   before_action :require_admin
 
   def index
@@ -9,10 +9,10 @@ class AdminEventsController < ApplicationController
     @new_users = User.all.created_last_30_days
     @countries = Event.all.group_by(&:country).keys
     @categorized_events = {
-      "Unapproved Events" => Event.unapproved.upcoming.order(:deadline),
-      "Approved Events" => Event.approved.upcoming.order(:deadline),
-      "Past Approved Events"=> Event.approved.past.order(:deadline),
-      "Past Unapproved Events" => Event.unapproved.past.order(:deadline)
+      "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
+      "Approved events" => Event.approved.upcoming.order(:deadline),
+      "Past approved events"=> Event.approved.past.order(:deadline),
+      "Past unapproved events" => Event.unapproved.past.order(:deadline)
     }
 
     respond_to do |format|
@@ -21,11 +21,17 @@ class AdminEventsController < ApplicationController
     end
   end
 
+  def annual_events_report
+    respond_to do |format|
+      format.csv { send_data ReportExporter.annual_events_report, filename: "anual_events_report_#{DateTime.now.strftime("%F")}.csv" }
+    end
+  end
+
   def show
     @categorized_applications = {
-      "Pending Applications" => @event.applications.submitted.pending,
-      "Approved Applications" => @event.applications.approved,
-      "Rejected Applications" => @event.applications.rejected
+      "Pending applications" => @event.applications.submitted.pending,
+      "Approved applications" => @event.applications.approved,
+      "Rejected applications" => @event.applications.rejected
     }
 
     respond_to do |format|
@@ -38,6 +44,8 @@ class AdminEventsController < ApplicationController
     @event.toggle(:approved)
     @event.save!
     if @event.approved?
+      inform_applicants_country
+      inform_applicants_field_of_interest
       redirect_to admin_url, notice: "#{@event.name} has been approved!"
     else
       redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
@@ -53,5 +61,17 @@ class AdminEventsController < ApplicationController
 
     def get_event
       @event = Event.find(params[:id])
+    end
+
+    def inform_applicants_country
+      User.where(country: @event.country).where(country_email_notifications: true).each do |user|
+        UserNotificationsMailer.new_local_event(@event, user).deliver_later
+      end
+    end
+
+    def inform_applicants_field_of_interest
+      @event.interested_users.where(tag_email_notifications: true).each do |user|
+        UserNotificationsMailer.new_field_specific_event(@event, user).deliver_later
+      end
     end
 end

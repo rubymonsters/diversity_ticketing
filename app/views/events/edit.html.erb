@@ -1,4 +1,4 @@
-<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > Edit Event</p>
+<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > Edit event</p>
 
 <h1 class="page-title"><span class="page-title-firstword">Edit</span> <%= @event.name %></h1>
 
@@ -15,4 +15,4 @@
 <% end %>
 
 
-<%= render partial: "form", locals: {submit_tag_text: "Edit Event", form_url: event_path(@event)} %>
+<%= render partial: "form", locals: {submit_tag_text: "Submit changes", form_url: event_path(@event)} %>

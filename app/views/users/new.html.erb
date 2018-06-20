@@ -1,18 +1,19 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="sign-up two-columns">
 
-  <%= form_for @user, builder: ::FormBuilder do |form| %>
-    <%= render partial: '/users/form', object: form %>
-
-    <div class="submit-field">
-      <%= form.submit(class: "btn btn-save") %>
-    </div>
-  <% end %>
-
-  <div class="col">
+  <div class="alternative-registration">
     <h2>Already registered?</h2>
     <%= link_to sign_in_path do %>
       <div class="btn btn-edit"><%=t(".sign_in")%> here</div>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <h2><%= t(".title") %></h2>
+    <%= form_for @user, builder: ::FormBuilder do |form| %>
+      <%= render partial: '/users/form', object: form %>
+      <div class="submit-field">
+        <%= form.submit(class: "btn btn-save") %>
+      </div>
     <% end %>
   </div>
 </div>

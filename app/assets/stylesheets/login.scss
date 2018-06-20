@@ -1,7 +1,8 @@
 .sign-up, .sign-in {
-  column-count: 2;
-  .col {
-    break-before: column;
+  .other-links {
+    margin-top: 5px;
+  }
+  .alternative-registration {
     a {
       text-decoration: none;
       color: white;
@@ -9,8 +10,5 @@
     .btn {
       text-align: center;
     }
-  }
-  .other-links {
-    margin-top: 5px;
   }
 }
