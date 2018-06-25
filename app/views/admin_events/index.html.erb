@@ -58,14 +58,17 @@
                 <%= form_for :approve,
                       url: approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'),
                       html: { method: :post } do |form| %>
-                    <%= form.check_box :tweet, checked: true %>
-                    <span class="icon-twitter" aria-label="twitter icon"></span>
-                    <span><%= form.submit(class: "icon-approve") %>
+                    <span>
+                      <span class="icon tooltip" title="tweet">
+                      <%= form.check_box :tweet, checked: true %></span>
+                      <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
+                      <span class="icon tooltip" title="approve">
+                      <%= form.submit(class: "icon-approve", title: "approve") %></span>
                     <% end %>
               <% else %>
                 <%= link_to approve_admin_event_path(event, 'Unapprove'),
                     method: :post, class: "icon tooltip-large",
-                    title: event.approved ? 'unapprove' : 'approve' do %>
+                    title: 'unapprove' do %>
                     <span class="icon-unapprove" aria-label="unapprove icon"></span>
                   <% end %>
               <% end %>
