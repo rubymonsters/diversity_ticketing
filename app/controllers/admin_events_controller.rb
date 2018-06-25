@@ -44,6 +44,7 @@ class AdminEventsController < ApplicationController
     @event.toggle(:approved)
     @event.save!
     if @event.approved?
+      tweet_event
       inform_applicants_country
       inform_applicants_field_of_interest
       redirect_to admin_url, notice: "#{@event.name} has been approved!"
@@ -73,5 +74,9 @@ class AdminEventsController < ApplicationController
       @event.interested_users.where(tag_email_notifications: true).each do |user|
         UserNotificationsMailer.new_field_specific_event(@event, user).deliver_later
       end
+    end
+
+    def tweet_event
+      Tweet.new(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
     end
 end
