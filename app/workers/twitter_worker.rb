@@ -5,7 +5,7 @@ class TwitterWorker
   def self.announce_event(event)
     event_url = routes.event_url(event)
     perform_async(event.name, format_date(event.deadline), event_url, event.twitter_handle)
-    Tweet.create(event_id: event.id)
+    Tweet.create(event_id: event.id, published: true)
   end
 
   def self.routes
