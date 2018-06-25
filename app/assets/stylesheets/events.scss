@@ -68,6 +68,9 @@
   p {
     margin: 0 0 1em;
   }
+  div.admin-buttons{
+    display: inline-block;
+  }
   .event-name {
     flex-basis: 15em;
     white-space: nowrap;
