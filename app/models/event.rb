@@ -128,4 +128,21 @@ class Event < ApplicationRecord
   def self.number_of_events_per_country(country_rank)
     events_count = @sorted_events[-country_rank].last.count
   end
+
+  def delete_application_data
+    application = self.applications.first
+    attributes = application.attributes.keys - ["id", "event_id", "applicant_id", "created_at", "updated_at", "submitted", "deleted"]
+    columns = {deleted: true}
+    attributes.each do |attr|
+      if application[attr].class == TrueClass || application[attr].class == FalseClass
+        columns[attr] = false
+      else
+        columns[attr] = nil
+      end
+    end
+    self.applications.each do |application|
+      application.skip_validation = true
+      application.update_attributes(columns)
+    end
+  end
 end

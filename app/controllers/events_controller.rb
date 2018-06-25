@@ -80,7 +80,7 @@ class EventsController < ApplicationController
       @event.skip_validation = true
       delete_event_data
       unless @event.applications.count == 0
-        delete_application_data
+        @event.delete_application_data
       end
       redirect_to user_path(current_user)
     else
@@ -138,22 +138,5 @@ class EventsController < ApplicationController
         end
       end
       @event.update_attributes(columns)
-    end
-
-    def delete_application_data
-      application = @event.applications.first
-      attributes = application.attributes.keys - ["id", "event_id", "applicant_id", "created_at", "updated_at", "submitted", "deleted"]
-      columns = {deleted: true}
-      attributes.each do |attr|
-        if application[attr].class == TrueClass || application[attr].class == FalseClass
-          columns[attr] = false
-        else
-          columns[attr] = nil
-        end
-      end
-      @event.applications.each do |application|
-        application.skip_validation = true
-        application.update_attributes(columns)
-      end
     end
 end
