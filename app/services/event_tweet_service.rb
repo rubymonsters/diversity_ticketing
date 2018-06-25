@@ -1,6 +1,6 @@
 class EventTweetService
   def self.tweet_approved_event
-    remaining_events = Event.open.approved
+    remaining_events = Event.open.approved.order("deadline ASC")
     return if remaining_events.empty?
 
     if Tweet.last
