@@ -64,6 +64,18 @@ module ReportExporter
 
         results = Event.all.where('start_date <= ?', Date.new(year, 12, 31))
 
+        number_of_tickets_offered = results.map do |event|
+          event.number_of_tickets
+        end.inject { |sum,n| sum += n }
+
+        csv << ["Tickets offered", number_of_tickets_offered ]
+
+        number_of_tickets_provided = results.map do |event|
+          event.applications.where(status: "approved").count
+        end.inject { |sum,n| sum += n }
+
+        csv << ["Tickets provided via 'Travis Selection'", number_of_tickets_provided ]
+
         csv << ["Geographical distribution"]
 
         countries = results.pluck(:country).uniq
