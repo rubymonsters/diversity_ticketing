@@ -7,4 +7,13 @@ namespace :events do
       puts "Deleted."
     end
   end
+
+  namespace :all_past_events do
+    desc "Deletes personal data from all event applications of past events"
+    task :delete_all_data => :environment do
+      puts "Deletes all past applications data..."
+      PastEventDateService.delete_all_past_events_application_data
+      puts "All done."
+    end
+  end
 end
