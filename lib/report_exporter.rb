@@ -113,8 +113,8 @@ module ReportExporter
         "Country",
         "Created at",
         "Updated at",
-        "Local event email notifictaions on?",
-        "Preferred language events email notifictaions on?",
+        "Email notifications: Local event, on?",
+        "Email notifications: Events about fields of interest, on?",
         "Number of applications"
       ]
 
