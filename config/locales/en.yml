@@ -76,6 +76,11 @@ en:
       no-delete-button: "No, go back!"
       delete-button: "Yes, delete account!"
 
+  admin_events:
+    show:
+      approve-event: "Approve event"
+      tweet-event: "Tweet it"
+
   applications:
     continue_as_guest:
       title: "How would you like to apply?"
