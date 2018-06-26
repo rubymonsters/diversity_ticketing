@@ -56,7 +56,7 @@
             <div class="admin-buttons">
               <% if event.unapproved %>
                 <%= form_for :approve,
-                      url: approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'),
+                      url: approve_admin_event_path(event, 'Approve'),
                       html: { method: :post } do |form| %>
                     <span>
                       <span class="icon tooltip" title="tweet">

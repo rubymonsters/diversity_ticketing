@@ -84,7 +84,7 @@
   <% unless @event.approved? %>
   <span class="approve-button">
   <%= form_for :approve,
-        url: approve_admin_event_path(@event, @event.approved ? 'Unapprove' : 'Approve'),
+        url: approve_admin_event_path(@event, 'Approve'),
         html: { method: :post } do |form| %>
         <%= form.submit(t('.approve-event'), class: "btn btn-save", title: "approve") %>
         <span>
