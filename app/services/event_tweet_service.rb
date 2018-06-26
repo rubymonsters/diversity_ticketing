@@ -7,9 +7,10 @@ class EventTweetService
     return if remaining_events.empty?
 
     if Tweet.last
-      return if Tweet.where(published: true).last == remaining_events.last
-      last_tweet = Event.find_by(id: Tweet.where(published: true).last.event_id).id
-      event_index = remaining_events.index(last_tweet) + 1
+      last_tweet = Tweet.where(published: true).last
+      return if last_tweet == remaining_events.last
+      last_event_tweeted_id = Event.find_by(id: last_tweet.event_id).id
+      event_index = remaining_events.index(last_event_tweeted_id) + 1
     else
       event_index = 0
     end
