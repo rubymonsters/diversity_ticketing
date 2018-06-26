@@ -82,7 +82,17 @@
   <%= link_to "Delete event", event_path(@event.id), method: :delete,
       data: {confirm: "Are you sure?"}, class: "btn btn-delete" %>
   <% unless @event.approved? %>
-    <%= link_to "Approve event", approve_admin_event_path(@event.id), method: :post,
-      class: "btn btn-save" %>
+  <span class="approve-button">
+  <%= form_for :approve,
+        url: approve_admin_event_path(@event, @event.approved ? 'Unapprove' : 'Approve'),
+        html: { method: :post } do |form| %>
+        <%= form.submit(t('.approve-event'), class: "btn btn-save", title: "approve") %>
+        <span>
+          <%= form.check_box :tweet, checked: true %>
+          <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
+          <%= t('.tweet-event') %>
+        </span>
+      </span>
+      <% end %>
   <% end %>
 </div>
