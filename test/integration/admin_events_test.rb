@@ -10,7 +10,7 @@ feature 'Admin Events' do
 
     within(unapproved_events_box) do
       assert page.text.include?('The event')
-      click_link 'approve'
+      click_button 'approve'
     end
 
     within(unapproved_events_box) do
