@@ -58,6 +58,8 @@ en:
       title: "Your applications"
       submitted: "Submitted"
       drafts: "Drafts"
+      info-description: "<p> Once an event date has passed your applications
+      will vanish from this overview and all sensitive data will be removed from the database.</p>"
     delete_account:
       title: "Are you sure?"
       subtitle: "Deleting your account is irreversible."
