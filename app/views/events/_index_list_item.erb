@@ -4,7 +4,7 @@
     <%= link_to event.name, event_path(id: event.id) %>
   </h3>
 
-  <p><%= icon('map-marker', event.location) %></p>
+  <p><%= fa_icon('map-marker', text: event.location) %></p>
 
   <p class="markdownize"><%= event.description %></p>
   <p>
