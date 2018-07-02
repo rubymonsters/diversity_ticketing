@@ -1,7 +1,7 @@
 require "report_exporter"
 
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications, :delete_account]
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications, :confirm_delete, :delete_account]
 
   def show
     @categorized_user_events = {
@@ -39,32 +39,43 @@ class UsersController < Clearance::UsersController
       flash.now[:error] = "Password is a mandatory field"
       render :edit
     elsif @user.authenticated?(params[:user][:password])
-      if @user.update(user_params) && params[:commit] == "Delete account"
-        delete_account(@user)
-      elsif @user.update(user_params)
+      if @user.update(user_params)
         if user_params[:new_password] != ''
           @user.update_attributes(password: user_params[:new_password])
         end
         redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
       else
-      render :edit
+        render :edit
       end
     else
-      flash[:error] = "Incorrect password"
-      redirect_to edit_user_path(@user)
+      flash.now[:error] = "Incorrect password"
+      render :edit
     end
   end
 
   def destroy
-    if @user.destroy
-      flash[:alert] = "Your Account has been deleted successfully."
-      redirect_to root_path
+    if user_params[:password] === ''
+      @user.update(user_params)
+      flash.now[:error] = "Password is a mandatory field"
+      render :delete_account
+    elsif @user.authenticated?(params[:user][:password])
+      if @user.destroy
+        flash[:alert] = "Your Account has been deleted successfully."
+        redirect_to root_path
+      else
+        render :delete_account
+      end
     else
-      render :edit
+      flash.now[:error] = "Incorrect password"
+      render :delete_account
     end
   end
 
-  def delete_account(user)
+  def confirm_delete
+    render :confirm_delete
+  end
+
+  def delete_account
     render :delete_account
   end
 
