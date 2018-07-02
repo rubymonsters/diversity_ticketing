@@ -99,11 +99,6 @@
     <%= link_to 'Delete', event_application_path(@event.id, @application.id),
         class: "btn btn-delete",  method: :delete,
         data: { confirm: "Are you sure you want to delete this application?" } %>
-    <% if current_user.admin? && @event.open? && @application.unapproved && @application.submitted %>
-      <%= link_to 'Approve', approve_event_application_path(@application.event_id, @application.id),
-          method: :post, class: "btn btn-save approve-application",
-          title: 'approve' %>
-    <% end %>
   </div>
 <% elsif @application.submitted == false %>
   <div>
