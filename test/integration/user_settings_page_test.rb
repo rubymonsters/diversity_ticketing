@@ -100,15 +100,27 @@ feature 'User Settings Page' do
     page.find("#dropdown-btn").click
     click_link 'Account settings'
 
+    page.fill_in 'user_name', with: 'New Name'
+
+    click_button 'Save changes'
+
+    assert page.text.include?("You have successfully updated your user data.")
+
+    page.fill_in 'user_new_password', with: 'something'
+
     click_button 'Save changes'
 
     assert page.text.include?("Password is a mandatory field")
+
+    page.fill_in 'user_new_password', with: 'something'
 
     page.fill_in 'user_password', with: 'wrong_password'
 
     click_button 'Save changes'
 
     assert page.text.include?("Incorrect password")
+
+    page.fill_in 'user_new_password', with: 'something'
 
     page.fill_in 'user_password', with: @user.password
 
