@@ -42,18 +42,6 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  def save_draft
-    @application.skip_validation = true
-      if Application.find_by(id: @application.id)
-        message = "You have successfully saved your changes to the draft."
-      else
-        message = "You have successfully saved an application draft for #{@event.name}."
-      end
-      if @application.save
-        redirect_to event_application_path(@event.id, @application.id), notice: message
-      end
-  end
-
   def new
    if @event.application_process == 'application_by_organizer'
      redirect_to @event
@@ -72,10 +60,8 @@ class ApplicationsController < ApplicationController
     else
       @application = Application.new(application_params)
       @application.event = @event
-      if @application.save && params[:commit] == 'Submit application'
+      if @application.save
         submit
-      elsif params[:commit] == 'Save as a draft'
-        save_draft
       else
         render :new
       end
