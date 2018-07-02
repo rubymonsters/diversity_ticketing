@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :applications, except: [:index, :submit, :admin_destroy]
   end
 
+  resources :events, except: [:destroy] do
+    resources :drafts
+  end
+
   resources :admin_events, except: [:edit, :update] do
     member do
       post :approve
