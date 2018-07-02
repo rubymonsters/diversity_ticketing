@@ -34,28 +34,36 @@ class UsersController < Clearance::UsersController
   end
 
   def update
-    if user_params[:password] === ''
-      @user.update(user_params)
-      flash.now[:error] = "Password is a mandatory field"
-      render :edit
-    elsif @user.authenticated?(params[:user][:password])
-      if @user.update(user_params)
-        if user_params[:new_password] != ''
-          @user.update_attributes(password: user_params[:new_password])
+    if (user_params[:new_password] != '') || (user_params[:email] != @user.email)
+      if user_params[:password] === ''
+        @user.update(user_params)
+        flash.now[:error] = "Password is a mandatory field"
+        render :edit
+      elsif @user.authenticated?(params[:user][:password])
+        if @user.update(user_params)
+          if user_params[:new_password] != ''
+            @user.update_attributes(password: user_params[:new_password])
+          end
+          redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+        else
+          render :edit
         end
+      else
+        flash.now[:error] = "Incorrect password"
+        render :edit
+      end
+    else
+      @user.password_optional = true
+      if @user.update(user_params)
         redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
       else
         render :edit
       end
-    else
-      flash.now[:error] = "Incorrect password"
-      render :edit
     end
   end
 
   def destroy
     if user_params[:password] === ''
-      @user.update(user_params)
       flash.now[:error] = "Password is a mandatory field"
       render :delete_account
     elsif @user.authenticated?(params[:user][:password])
