@@ -42,10 +42,10 @@
           class: "btn btn-edit", title: "Download user data" %>
       </div>
     </section>
+    <div class="submit-field">
+      <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
+      <%= link_to t("users.delete_account.delete-button"), confirm_delete_path(id: @user.id),
+          class: "btn btn-delete" %>
+    </div>
   </div>
-  <div class="submit-field">
-    <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
-    <%= form.submit 'Delete account', class: "btn btn-delete" %>
-  </div>
-
 <% end %>
