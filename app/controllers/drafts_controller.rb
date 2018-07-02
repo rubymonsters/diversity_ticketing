@@ -5,22 +5,26 @@ class DraftsController < ApplicationController
   end
 
   def create
-    @application = Application.new(application_params)
-    @application.event = @event
+    @draft = Application.new(application_params)
+    @draft.event = @event
     save_draft("You have successfully saved an application draft for #{@event.name}.")
   end
 
   def update
-    @application = @event.applications.find(params[:id])
-    @application.skip_validation = true
-    @application.update(application_params)
-    save_draft("You have successfully saved your changes to the draft.")
+    @draft = @event.applications.find(params[:id])
+    @draft.skip_validation = true
+    if @draft.update(application_params)
+      save_draft("You have successfully saved your changes to the draft.")
+    else
+      redirect_to edit_event_applications_path(@event.id, @draft.id)
+    end
+
   end
 
   def save_draft(message)
-    @application.skip_validation = true
-    if @application.save
-      redirect_to event_application_path(@event.id, @application.id),
+    @draft.skip_validation = true
+    if @draft.save
+      redirect_to event_application_path(@event.id, @draft.id),
                   notice: message
     end
   end
