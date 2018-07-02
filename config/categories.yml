@@ -5,7 +5,7 @@
 # they will be loaded into the database when running 'rake admin:categories:create'.
 # You can't delete or change them from here.
 
-programming language:
+programming languages:
   - C
   - C++
   - C#
@@ -38,7 +38,7 @@ programming language:
   - Scala
   - Swift
 
-language:
+languages:
   - English
   - German
   - French
@@ -48,3 +48,7 @@ language:
   - Russian
   - Portuguese
   - Polish
+
+fields of interest:
+  - Math
+  - Biology
