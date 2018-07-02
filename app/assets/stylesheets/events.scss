@@ -114,7 +114,8 @@ ul.tags {
     list-style: none;
     padding: 0.2em 0.5em;
     border-radius: 3px;
-    display: inline;
+    display: inline-block;
+    margin: 0 0 0.5em;
     &.programming-languages {
       background-color: lighten($blue-bg, 30%);
     }
