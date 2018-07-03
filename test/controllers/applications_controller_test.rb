@@ -137,6 +137,25 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       assert_response :success
     end
+
+    it 'redirects to the event if the user already applied' do
+      user = make_user
+      event = make_event
+      application = make_application(event, applicant_id: user.id)
+
+      post :create, params: { event_id: event.id, application:
+        { applicant_id: user.id,
+          attendee_info_1: 'some text',
+          attendee_info_2: 'some text',
+          name: user.name,
+          email: user.email,
+          email_confirmation: user.email,
+          terms_and_conditions: '1',
+          event: event }
+        }
+
+      assert_redirected_to event, alert: "You have already applied for #{event.name}"
+    end
   end
 
   describe '#destroy' do
