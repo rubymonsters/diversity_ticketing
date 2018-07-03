@@ -1,7 +1,7 @@
 class AdminApplicationsController < ApplicationController
   before_action :require_admin
   before_action :get_application
-    before_action :skip_validation, only: [:approve, :reject, :revert]
+  before_action :skip_validation, only: [:approve, :reject, :revert]
 
   def approve
     @application.update_attributes(status: "approved")
@@ -24,11 +24,6 @@ class AdminApplicationsController < ApplicationController
   end
 
   private
-  def application_params
-    params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
-    :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
-  end
-
   def get_application
     get_event
     @application = @event.applications.find(params[:id])
