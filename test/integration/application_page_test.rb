@@ -91,4 +91,20 @@ feature 'Application Page' do
 
     assert_equal root_path, current_path
   end
+
+  test 'redirects users to their applications overview if the event has been deleted' do
+    sign_in_as_admin
+    @event.update_attributes(start_date: 1.week.ago, end_date: 1.week.ago)
+    visit event_path(@event.id)
+    click_link 'Delete'
+
+    @event.reload
+
+    sign_out
+    sign_in_as_user
+
+    visit event_application_path(@event.id, @application.id)
+    assert_equal user_applications_path(@user.id), current_path
+    assert page.has_content?("You cannot view your application as the event you applied for has been removed from Diversity Tickets")
+  end
 end
