@@ -17,10 +17,6 @@ Rails.application.routes.draw do
     resources :drafts, only: [:create, :show]
   end
 
-  resources :events, except: [:destroy] do
-    resources :admin_applications
-  end
-
   resources :admin_events, except: [:edit, :update] do
     member do
       post :approve
@@ -35,7 +31,6 @@ Rails.application.routes.draw do
   get '/past_events', to: 'events#index_past', as: :past_events
   get '/admin', to: 'admin_events#index'
   get '/admin_annual', to: 'admin_events#annual_events_report'
-  delete '/events/:event_id/application/:id', to: 'admin_applications#destroy', as: :admin_event_application
   delete 'events/:id', to: 'events#destroy', as: :delete_event
   patch '/events/:event_id/application/:id/submit', to: 'applications#submit', as: :submit_event_application
   get '/events/:id/admin', to: 'admin_events#show', as: :event_admin
@@ -44,6 +39,7 @@ Rails.application.routes.draw do
   get '/faq', to: 'home#faq', as: :faq
   get '/privacy', to: 'home#privacy', as: :privacy
   get '/users/:id/applications', to: 'users#applications', as: :user_applications
+  delete '/events/:event_id/application/:id', to: 'admin_applications#destroy', as: :admin_event_application
   post '/events/:event_id/applications/:id/approve', to: 'admin_applications#approve', as: :approve_event_application
   post '/events/:event_id/applications/:id/reject', to: 'admin_applications#reject', as: :reject_event_application
   post '/events/:event_id/applications/:id/revert', to: 'admin_applications#revert', as: :revert_event_application
