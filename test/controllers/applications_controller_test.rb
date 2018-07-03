@@ -161,6 +161,83 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
   end
 
+  describe '#update' do
+    it 'updates attributes of application' do
+      user = make_user
+      sign_in_as(user)
+      event = make_event
+      application = make_application(event, { applicant_id: user.id })
+
+      post :update, params: { event_id: event.id,
+                              id: application.id,
+                              application: { name: "New Name",
+                                email: user.email,
+                                email_confirmation: user.email,
+                                terms_and_conditions: '1'
+                              }
+                            }
+
+      application.reload
+
+      assert_equal "New Name", application.name
+    end
+
+    it 'checks validations before the application is updated' do
+      user = make_user
+      sign_in_as(user)
+      event = make_event
+      application = make_application(event, { applicant_id: user.id })
+
+      post :update, params: { event_id: event.id,
+                              id: application.id,
+                              application: { name: "New Name" }
+                            }
+
+      application.reload
+
+      assert_equal "Joe", application.name
+    end
+  end
+
+  describe '#submit' do
+    it 'submits an application if all their mandatory fields are present' do
+      user = make_user
+      sign_in_as(user)
+      event = make_event
+      application = make_draft(event, { applicant_id: user.id })
+
+      post :submit, params: { event_id: event.id,
+                              id: application.id,
+                              application: {
+                                email: user.email,
+                                email_confirmation: user.email,
+                                terms_and_conditions: '1'
+                              }
+                            }
+
+      application.reload
+
+      assert_equal true, application.submitted
+    end
+
+    it 'does not submit application if mandatory fields are missing' do
+      user = make_user
+      sign_in_as(user)
+      event = make_event
+      application = make_draft(event, { applicant_id: user.id })
+
+      post :submit, params: { event_id: event.id,
+                              id: application.id,
+                              application: { applicant_id: user.id }
+                            }
+
+      application.reload
+
+      assert_equal false, application.submitted
+    end
+  end
+
+
   describe '#destroy' do
     it 'non-admin users can delete their own applications' do
       user = make_user(admin: false)
