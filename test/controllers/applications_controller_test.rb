@@ -141,7 +141,9 @@ class ApplicationsControllerTest < ActionController::TestCase
     it 'redirects to the event if the user already applied' do
       user = make_user
       event = make_event
-      application = make_application(event, applicant_id: user.id)
+      make_application(event, applicant_id: user.id)
+
+      sign_in_as(user)
 
       post :create, params: { event_id: event.id, application:
         { applicant_id: user.id,
@@ -154,7 +156,8 @@ class ApplicationsControllerTest < ActionController::TestCase
           event: event }
         }
 
-      assert_redirected_to event, alert: "You have already applied for #{event.name}"
+      assert_redirected_to event
+      assert_equal "You have already applied for #{event.name}", flash[:alert]
     end
   end
 
