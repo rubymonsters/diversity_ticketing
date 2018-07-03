@@ -18,19 +18,9 @@ class DraftsController < ApplicationController
     else
       redirect_to edit_event_applications_path(@event.id, @draft.id)
     end
-
-  end
-
-  def save_draft(message)
-    @draft.skip_validation = true
-    if @draft.save
-      redirect_to event_application_path(@event.id, @draft.id),
-                  notice: message
-    end
   end
 
   private
-
   def application_params
     set_applicant_id
     params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
@@ -45,5 +35,13 @@ class DraftsController < ApplicationController
 
   def get_event
     @event = Event.find(params[:event_id])
+  end
+
+  def save_draft(message)
+    @draft.skip_validation = true
+    if @draft.save
+      redirect_to event_application_path(@event.id, @draft.id),
+                  notice: message
+    end
   end
 end
