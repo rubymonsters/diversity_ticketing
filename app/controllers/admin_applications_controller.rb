@@ -1,7 +1,7 @@
 class AdminApplicationsController < ApplicationController
   before_action :require_admin
   before_action :get_application
-  before_action :skip_validation, only: [:approve, :reject, :revert]
+  before_action :skip_validation, except: [:destroy]
 
   def approve
     @application.update_attributes(status: "approved")
