@@ -139,24 +139,6 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
   end
 
-  describe '#admin_destroy' do
-    it 'properly redirects after successful deletion' do
-      user = make_user(admin: true)
-      sign_in_as(user)
-
-      event = make_event
-      application = make_application(event)
-      applications = event.applications
-
-      assert_equal 1, applications.count
-
-      delete :admin_destroy, params: { event_id: event.id, id: application.id }
-
-      assert_redirected_to event_admin_path(event)
-      assert_equal 0, applications.count
-    end
-  end
-
   describe '#destroy' do
     it 'non-admin users can delete their own applications' do
       user = make_user(admin: false)
