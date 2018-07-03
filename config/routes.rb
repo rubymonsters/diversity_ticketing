@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :events, except: [:destroy] do
-    resources :drafts, only: [:create, :show]
+    resources :drafts, only: [:create, :show, :update]
   end
 
   resources :admin_events, except: [:edit, :update] do
