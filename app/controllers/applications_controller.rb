@@ -6,6 +6,32 @@ class ApplicationsController < ApplicationController
   before_action :skip_validation, only: [:save_draft, :approve, :reject, :revert]
   skip_before_action :require_login, only: [:new, :create, :continue_as_guest]
 
+  def new
+   if @event.application_process == 'application_by_organizer'
+     redirect_to @event
+   elsif !current_user && !guest
+     redirect_to continue_as_guest_path(@event)
+   else
+     @application = @event.applications.build
+   end
+  end
+
+  def create
+    if @event.application_process == 'application_by_organizer'
+      redirect_to @event
+    elsif current_user && @event.applications.find_by(applicant_id: current_user.id)
+      redirect_to @event, alert: "You have already applied for #{@event.name}"
+    else
+      @application = Application.new(application_params)
+      @application.event = @event
+      if @application.save
+        submit
+      else
+        render :new
+      end
+    end
+  end
+
   def show
     if @application.deleted
       redirect_to user_applications_path(@user.id),
@@ -40,31 +66,6 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  def new
-   if @event.application_process == 'application_by_organizer'
-     redirect_to @event
-   elsif !current_user && request.env["HTTP_REFERER"] != continue_as_guest_url(@event)
-     redirect_to continue_as_guest_path(@event)
-   else
-     @application = @event.applications.build
-   end
-  end
-
-  def create
-    if @event.application_process == 'application_by_organizer'
-      redirect_to @event
-    elsif current_user && @event.applications.find_by(applicant_id: current_user.id)
-      redirect_to @event, alert: "You have already applied for #{@event.name}"
-    else
-      @application = Application.new(application_params)
-      @application.event = @event
-      if @application.save
-        submit
-      else
-        render :new
-      end
-    end
-  end
 
   def approve
     @application.update_attributes(status: "approved")
@@ -92,9 +93,10 @@ class ApplicationsController < ApplicationController
   end
 
   def continue_as_guest
-    if request.env["HTTP_REFERER"] == (sign_in_url || sign_up_url)
+    if current_user
       redirect_to new_event_application_path(@event.id)
     else
+      @guest = true
       render :continue_as_guest
     end
   end
@@ -129,5 +131,9 @@ class ApplicationsController < ApplicationController
 
   def skip_validation
     @application.skip_validation = true
+  end
+
+  def guest
+    params[:guest]
   end
 end
