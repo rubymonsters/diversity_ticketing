@@ -106,10 +106,6 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  def skip_validation
-    @application.skip_validation = true
-  end
-
   def guest
     params[:guest]
   end
