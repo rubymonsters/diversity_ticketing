@@ -1,9 +1,7 @@
 class ApplicationsController < ApplicationController
-  before_action :require_admin, only: [:admin_destroy]
   before_action :get_event
   before_action :get_application, except: [:new, :create, :continue_as_guest]
   before_action :ensure_correct_user, only: [:show, :edit]
-  before_action :skip_validation, only: [:save_draft, :approve, :reject, :revert]
   skip_before_action :require_login, only: [:new, :create, :continue_as_guest]
 
   def new
@@ -66,30 +64,9 @@ class ApplicationsController < ApplicationController
     end
   end
 
-
-  def approve
-    @application.update_attributes(status: "approved")
-    redirect_to admin_event_path(@application.event_id), notice: "#{@application.name}'s application has been approved!"
-  end
-
-  def reject
-    @application.update_attributes(status: "rejected")
-    redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been rejected" }
-  end
-
-  def revert
-    @application.update_attributes(status: "pending")
-    redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been changed to pending" }
-  end
-
   def destroy
     @application.destroy
     redirect_to user_applications_path(current_user.id)
-  end
-
-  def admin_destroy
-    @application.destroy
-    redirect_to event_admin_path(@event.id)
   end
 
   def continue_as_guest
