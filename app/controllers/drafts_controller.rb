@@ -10,10 +10,7 @@ class DraftsController < ApplicationController
 
   def update
     @draft = @event.applications.find(params[:id])
-    @draft.skip_validation = true
-    if @draft.update(application_params)
-      save_draft("You have successfully saved your changes to the draft.")
-    end
+    save_draft("You have successfully saved your changes to the draft.")
   end
 
   private
