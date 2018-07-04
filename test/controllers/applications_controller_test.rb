@@ -58,6 +58,28 @@ class ApplicationsControllerTest < ActionController::TestCase
         get :show, params: { event_id: event.id, id: 1 }
       end
     end
+
+    it 'redirects users to applications overview if the event has been deleted' do
+      user = make_user
+      event = make_event(organizer_id: user.id)
+      application = make_application(event, applicant_id: user.id)
+      event.update_attributes(start_date: 1.week.ago, end_date: 1.week.ago)
+
+      sign_in_as(user)
+
+      get :show, params: { event_id: event.id, id: application.id }
+
+      applications_controller = @controller
+
+      @controller = EventsController.new
+      delete :destroy, params: { id: event.id }
+
+      @controller = applications_controller
+      get :show, params: { event_id: event.id, id: application.id }
+
+      assert_redirected_to user_applications_path(user.id)
+      assert_equal "You cannot view your application as the event you applied for has been removed from Diversity Tickets", flash[:alert]
+    end
   end
 
   describe '#new' do
