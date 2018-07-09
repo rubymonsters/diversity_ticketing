@@ -72,6 +72,7 @@ class ActiveSupport::TestCase
       country: 'Germany',
       deadline: 5.days.from_now,
       number_of_tickets: 10,
+      ticket_funded: true,
       approved: false,
       application_process: 'selection_by_travis'
     }
@@ -97,6 +98,8 @@ class ActiveSupport::TestCase
       country: 'Germany',
       deadline: 5.days.from_now,
       number_of_tickets: 10,
+      ticket_funded: true,
+      approved: false,
       application_process: 'selection_by_travis'
     }
     defaults.merge(event_params)

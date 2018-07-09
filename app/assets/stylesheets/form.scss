@@ -176,7 +176,7 @@ input.has-dependent:checked + div.form_field {
     white-space: nowrap;
   }
 }
-.tags-border {
+.tags-border, .terms_and_conditions-border {
   padding: 1em;
   border: 1px solid $border-grey;
   border-radius: 4px;
