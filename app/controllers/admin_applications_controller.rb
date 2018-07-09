@@ -4,18 +4,23 @@ class AdminApplicationsController < ApplicationController
   before_action :skip_validation, except: [:destroy]
 
   def approve
-    @application.update_attributes(status: "approved")
-    redirect_to admin_event_path(@application.event_id), notice: "#{@application.name}'s application has been approved!"
+    @application.update_attributes(status: 'approved')
+    redirect_to admin_event_path(@application.event_id),
+                notice: "#{@application.name}'s application has been approved!"
   end
 
   def reject
-    @application.update_attributes(status: "rejected")
-    redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been rejected" }
+    @application.update_attributes(status: 'rejected')
+    redirect_to admin_event_path(@application.event_id),
+                flash: { info: "#{@application.name}'s application
+                                 has been rejected" }
   end
 
   def revert
-    @application.update_attributes(status: "pending")
-    redirect_to admin_event_path(@application.event_id), flash: { :info => "#{@application.name}'s application has been changed to pending" }
+    @application.update_attributes(status: 'pending')
+    redirect_to admin_event_path(@application.event_id),
+                flash: { info: "#{@application.name}'s application
+                                 has been changed to pending" }
   end
 
   def destroy
@@ -24,6 +29,7 @@ class AdminApplicationsController < ApplicationController
   end
 
   private
+
   def get_application
     get_event
     @application = @event.applications.find(params[:id])
