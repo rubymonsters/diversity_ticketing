@@ -2,16 +2,7 @@ require 'test_helper'
 
 class ApplicationsControllerTest < ActionController::TestCase
   describe '#new' do
-    it 'redirects to the event if the application process is run by the organizer' do
-      event = make_event(application_process: 'application_by_organizer',
-                         application_link: 'http://www.something.org')
-
-      get :new, params: { event_id: event.id }
-
-      assert_redirected_to event
-    end
-
-    it 'adds a new application if the selection process is not run by organizer' do
+    it 'adds a new application for the event' do
       event = make_event
       user = make_user
       sign_in_as(user)
