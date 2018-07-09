@@ -34,15 +34,6 @@ class ApplicationsControllerTest < ActionController::TestCase
       assert_redirected_to event_path(event.id)
     end
 
-    it 'redirects to the event if the application process is run by the organizer' do
-      event = make_event(application_process: 'application_by_organizer',
-                         application_link: 'http://www.something.org')
-
-      post :create, params: { event_id: event.id }
-
-      assert_redirected_to event
-    end
-
     it 'does not redirect after failed validations' do
       event = make_event
 
