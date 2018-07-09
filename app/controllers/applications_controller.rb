@@ -13,9 +13,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    if @event.application_process == 'application_by_organizer'
-      redirect_to @event
-    elsif current_user && @event.applications.find_by(applicant_id: current_user.id)
+    if current_user && @event.applications.find_by(applicant_id: current_user.id)
       redirect_to @event, alert: "You have already applied for #{@event.name}"
     else
       @application = Application.new(application_params)
