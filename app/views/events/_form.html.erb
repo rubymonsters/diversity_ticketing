@@ -110,7 +110,9 @@
         <% end %>
       </div>
 
-      <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+      <%= label_tag do %>
+        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+      <% end %>
     </section>
 
     <% if current_user.admin? && action_name == 'edit' %>
