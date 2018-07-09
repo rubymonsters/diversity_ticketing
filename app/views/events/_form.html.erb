@@ -85,22 +85,23 @@
         <% end %>
 
         <%= label_tag do %>
-          <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org.
-        <% end %>
+          <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org.
 
-        <div class="form_field--check indent">
-          <%= label_tag do %>
-            <%= f.check_box :data_protection_confirmation %>
-            <span class="check-label">We agree with the following Terms and Conditions:</span>
-          <% end %>
-          <p id="terms-and-conditions">
-            We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
-          </p>
-        </div>
+          <div class="form_field--check indent terms_and_conditions-border">
+            <%= label_tag do %>
+              <%= f.check_box :data_protection_confirmation %>
+              <span class="check-label">We agree with the following Terms and Conditions:</span>
+            <% end %>
+            <p id="terms-and-conditions">
+              We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+            </p>
+          </div>
+
+        <% end %>
 
 
         <%= label_tag do %>
-        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app.
+        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> The organizer is handling both the selection and application process and only wants their event listed on this site. Applicants have to apply through their site / app.
 
         <div class="form_field indent">
           <p><%= f.form_field :text_area, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
