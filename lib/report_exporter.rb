@@ -55,22 +55,23 @@ module ReportExporter
 
     CSV.generate do |csv|
       years.each do |year|
-        csv << [ "Year",
-                 year ]
+        csv << [ "Year", year ]
 
-        csv << ["User registrations", User.all.where('created_at <= ?', Date.new(year,12,31)).count]
+        csv << ["User registrations", User.all.where('created_at > ? AND created_at < ?', Date.new(year, 01, 01), Date.new(year, 12, 31)).count]
 
-        csv << ["Number of events", Event.all.where('start_date <= ?', Date.new(year, 12, 31)).count]
+        csv << ["Event submissions", Event.all.where('start_date > ? AND start_date < ?', Date.new(year, 01, 01), Date.new(year, 12, 31)).count]
 
-        results = Event.all.where('start_date <= ?', Date.new(year, 12, 31))
+        events = Event.approved.where('start_date > ? AND start_date < ?', Date.new(year, 01, 01), Date.new(year, 12, 31))
 
-        number_of_tickets_offered = results.map do |event|
+        csv << ["Number of approved events", events.count]
+
+        number_of_tickets_offered = events.map do |event|
           event.number_of_tickets
         end.inject { |sum,n| sum += n }
 
         csv << ["Tickets offered", number_of_tickets_offered ]
 
-        number_of_tickets_provided = results.map do |event|
+        number_of_tickets_provided = events.map do |event|
           event.applications.where(status: "approved").count
         end.inject { |sum,n| sum += n }
 
@@ -78,10 +79,10 @@ module ReportExporter
 
         csv << ["Geographical distribution"]
 
-        countries = results.pluck(:country).uniq
+        countries = events.pluck(:country).uniq
 
         countries.map do |c|
-          csv << [c, results.where(country: c).count ]
+          csv << [c, events.where(country: c).count ]
         end
 
         csv << [
@@ -96,18 +97,20 @@ module ReportExporter
           "Number of Applications"
         ]
 
-        results.each do |result|
+        events.each do |event|
           csv << [
-            result.id,
-            result.name,
-            result.city,
-            result.country,
-            result.start_date,
-            result.end_date,
-            result.application_process,
-            result.number_of_tickets,
-            result.applications.count
+            event.id,
+            event.name,
+            event.city,
+            event.country,
+            event.start_date,
+            event.end_date,
+            event.application_process,
+            event.number_of_tickets,
+            event.applications.count
           ]
+
+          csv << []
         end
       end
     end
