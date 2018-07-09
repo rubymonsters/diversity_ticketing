@@ -5,13 +5,11 @@ class ApplicationsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :continue_as_guest]
 
   def new
-   if @event.application_process == 'application_by_organizer'
-     redirect_to @event
-   elsif !current_user && !guest
-     redirect_to continue_as_guest_path(@event)
-   else
-     @application = @event.applications.build
-   end
+    if !current_user && !guest
+      redirect_to continue_as_guest_path(@event)
+    else
+      @application = @event.applications.build
+    end
   end
 
   def create
