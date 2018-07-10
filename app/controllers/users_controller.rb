@@ -46,7 +46,7 @@ class UsersController < Clearance::UsersController
   def destroy
     if @user.authenticated?(params[:user][:password])
       @user.destroy
-      flash[:alert] = "Your Account has been deleted successfully."
+      flash[:alert] = "Your account has been deleted successfully."
       redirect_to root_path
     else
       if user_params[:password] === ''
