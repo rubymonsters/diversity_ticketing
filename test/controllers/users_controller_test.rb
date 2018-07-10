@@ -128,7 +128,7 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, params: { id: user2.id, user: { password: user2.password } }
 
       assert_redirected_to root_path
-      assert_equal "Your Account has been deleted successfully.", flash[:alert]
+      assert_equal "Your account has been deleted successfully.", flash[:alert]
       assert_equal 'a@example.org', User.last.email
     end
   end
