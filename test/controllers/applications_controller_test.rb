@@ -165,7 +165,6 @@ class ApplicationsControllerTest < ActionController::TestCase
     end
   end
 
-
   describe '#update' do
     it 'updates attributes of application' do
       user = make_user
@@ -229,19 +228,17 @@ class ApplicationsControllerTest < ActionController::TestCase
       user = make_user
       sign_in_as(user)
       event = make_event
-      application = make_draft(event, { applicant_id: user.id })
+      application = make_draft(event, applicant_id: user.id)
 
       post :submit, params: { event_id: event.id,
                               id: application.id,
-                              application: { applicant_id: user.id }
-                            }
+                              application: { applicant_id: user.id } }
 
       application.reload
 
       assert_equal false, application.submitted
     end
   end
-
 
   describe '#destroy' do
     it 'non-admin users can delete their own applications' do

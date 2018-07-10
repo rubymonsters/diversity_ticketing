@@ -28,14 +28,14 @@ class DraftsControllerTest < ActionController::TestCase
     it 'updates drafts attributes' do
       user = make_user
       event = make_event
-      draft = make_draft(event, { applicant_id: user.id })
+      draft = make_draft(event, applicant_id: user.id)
 
       sign_in_as(user)
 
       post :update, params: { event_id: event.id, id: draft.id, application: { name: "New name" } }
       draft.reload
 
-      assert_equal draft.name, "New name"
+      assert_equal draft.name, 'New name'
     end
   end
 end
