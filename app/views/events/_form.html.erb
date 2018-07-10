@@ -41,7 +41,7 @@
 
       <h3 class="box-subtitle">Location</h3>
       <%= f.form_field :text_field, :city, 'City' %>
-      <%= f.form_field :text_field, :country, 'Country' %>
+      <%= f.select :country, CS.countries.values, {:include_blank => "Select country *"} %>
       <%= f.form_field :text_field, :state_province, 'State/Province' %>
 
       <h3>Dates</h3>
