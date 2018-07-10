@@ -59,7 +59,7 @@ module ReportExporter
 
         csv << ["User registrations", User.all.where('created_at > ? AND created_at < ?', Date.new(year, 01, 01), Date.new(year, 12, 31)).count]
 
-        csv << ["Event submissions", Event.all.where('start_date > ? AND start_date < ?', Date.new(year, 01, 01), Date.new(year, 12, 31)).count]
+        csv << ["Total event submissions", Event.all.where('start_date > ? AND start_date < ?', Date.new(year, 01, 01), Date.new(year, 12, 31)).count]
 
         events = Event.approved.where('start_date > ? AND start_date < ?', Date.new(year, 01, 01), Date.new(year, 12, 31))
 
