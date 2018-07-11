@@ -1,6 +1,14 @@
 class DraftsController < ApplicationController
   before_action :get_event
 
+  def show
+    get_draft
+  end
+
+  def edit
+    get_draft
+  end
+
   def create
     @draft = Application.new(application_params)
     @draft.event = @event
@@ -21,6 +29,10 @@ class DraftsController < ApplicationController
   def application_params
     params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
     :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
+  end
+
+  def get_draft
+    @draft = Application.find(params[:id])
   end
 
   def set_applicant_id
