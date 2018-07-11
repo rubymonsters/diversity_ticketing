@@ -25,6 +25,6 @@ feature 'User Applications Page' do
     assert_equal event_path(@event.id), page.find_link(@event.name)[:href]
     assert_equal event_path(@event2.id), page.find_link(@event2.name)[:href]
     assert_equal event_application_path(@event.id, @application.id), page.all('a', text:'Your application')[0][:href]
-    assert_equal event_application_path(@event2.id, @draft.id), page.all('a', text:'Your application')[1][:href]
+    assert_equal event_draft_path(@event2.id, @draft.id), page.all('a', text:'Your draft')[0][:href]
   end
 end
