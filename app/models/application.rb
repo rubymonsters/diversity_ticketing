@@ -27,8 +27,4 @@ class Application < ApplicationRecord
   def self.rejected
     where(status: "rejected")
   end
-
-  def unapproved
-    status == "pending" || status == "rejected"
-  end
 end

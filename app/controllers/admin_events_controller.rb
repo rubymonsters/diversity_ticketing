@@ -1,7 +1,7 @@
 require "report_exporter"
 
 class AdminEventsController < ApplicationController
-  before_action :get_event, except: [:index, :anual_events_report]
+  before_action :get_event, except: [:index, :annual_events_report]
   before_action :require_admin
 
   def index
