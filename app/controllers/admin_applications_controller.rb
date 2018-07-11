@@ -3,6 +3,9 @@ class AdminApplicationsController < ApplicationController
   before_action :get_application
   before_action :skip_validation, except: [:destroy]
 
+  def show
+  end
+
   def approve
     @application.update_attributes(status: 'approved')
     redirect_to admin_event_path(@application.event_id),
