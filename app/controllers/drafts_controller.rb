@@ -48,7 +48,7 @@ class DraftsController < ApplicationController
   def save_draft(message)
     @draft.skip_validation = true
     if @draft.save
-      redirect_to event_application_path(@event.id, @draft.id),
+      redirect_to event_draft_path(@event.id, @draft.id),
                   notice: message
     end
   end
