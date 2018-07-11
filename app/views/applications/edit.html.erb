@@ -68,7 +68,7 @@
     <% if @application.submitted %>
       <%= f.submit("Apply changes", class: "btn btn-save") %>
     <% else %>
-      <%= f.submit("Save changes", class: "btn btn-save") %>
+      <%= f.submit("Save changes", class: "btn btn-save", formaction: event_draft_path(params[:event_id])) %>
     <% end %>
   </div>
 <% end %>

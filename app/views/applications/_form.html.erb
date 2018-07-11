@@ -1,4 +1,4 @@
-<%= form_for @application, url: form_url, builder: ::FormBuilder do |f| %>
+<%= form_for @application, url: event_applications_path(params[:event_id]), builder: ::FormBuilder do |f| %>
 
   <% if @application.errors.any? %>
     <div class="error">
@@ -73,7 +73,7 @@
 
   <div class="form_field">
     <% if current_user %>
-      <%= f.submit("Save as a draft", class: "btn btn-edit") %>
+      <%= f.submit("Save as a draft", class: "btn btn-edit", formaction: event_drafts_path(params[:event_id])) %>
     <% end %>
     <%= f.submit("Submit application", class: "btn btn-save") %>
   </div>
