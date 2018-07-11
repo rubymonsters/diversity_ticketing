@@ -25,7 +25,7 @@ feature 'Application Edit' do
 
     click_link 'Continue as guest'
 
-    assert_current_path new_event_application_path(@event.id)
+    assert_current_path new_event_application_path(@event.id, guest: true)
   end
 
   test 'successful redirect to new application form after clicking "Sign me in"' do
