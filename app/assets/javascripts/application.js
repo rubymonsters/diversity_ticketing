@@ -15,6 +15,7 @@
 //= require jquery.ui.widget.js
 //= require load-image.all.min.js
 //= require canvas-to-blob.min.js
+//= require customized_map.js
 //= require d3.js
 //= require topojson.js
 //= require datamaps.world.min.js
