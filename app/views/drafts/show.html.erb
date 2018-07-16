@@ -38,7 +38,7 @@
 </section>
 
 <% if @draft.event.open? %>
-  <%= form_for @draft, url: submit_event_application_path(@event.id, @draft.id), builder: ::FormBuilder do |f| %>
+  <%= form_for @draft, url: submit_draft_path(@event.id, @draft.id), builder: ::FormBuilder do |f| %>
 
     <% if @draft.errors.any? %>
       <div class="error">
