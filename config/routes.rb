@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about', as: :about
   get '/faq', to: 'home#faq', as: :faq
   get '/privacy', to: 'home#privacy', as: :privacy
+  get '/imprint', to: 'home#imprint', as: :imprint
   get '/users/:id/applications', to: 'users#applications', as: :user_applications
   post '/events/:event_id/applications:id/approve', to: 'applications#approve', as: :approve_event_application
   post '/events/:event_id/applications:id/reject', to: 'applications#reject', as: :reject_event_application
