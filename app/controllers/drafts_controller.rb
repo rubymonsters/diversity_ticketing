@@ -10,9 +10,9 @@ class DraftsController < ApplicationController
   end
 
   def create
+    set_applicant_id
     @draft = Application.new(application_params)
     @draft.event = @event
-    set_applicant_id
     save_draft("You have successfully saved an application draft for #{@event.name}.")
   end
 
