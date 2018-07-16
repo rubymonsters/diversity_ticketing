@@ -8,10 +8,13 @@ class DraftsControllerTest < ActionController::TestCase
 
       sign_in_as(user)
 
+      count = Application.all.count
+
       get :create, params: { event_id: event.id, application: { applicant_id: user.id } }
 
       assert_equal Application.last.applicant_id, user.id
       assert_equal Application.last.event, event
+      assert_equal (count + 1), Application.all.count
     end
 
     it 'does not allow to create drafts if the user is not logged in' do
