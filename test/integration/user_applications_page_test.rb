@@ -27,4 +27,19 @@ feature 'User Applications Page' do
     assert_equal event_application_path(@event.id, @application.id), page.all('a', text:'Your application')[0][:href]
     assert_equal event_draft_path(@event2.id, @draft.id), page.all('a', text:'Your draft')[0][:href]
   end
+
+  test 'adds new draft to user applications list after creating a draft' do
+    event = make_event(name: 'Event for user draft')
+    sign_in_as_user
+
+    visit new_event_application_path(event)
+
+    click_button 'Save as a draft'
+
+    assert page.has_content?("You have successfully saved an application draft for #{event.name}.")
+
+    page.all('a', text:'Your applications')[0].click
+
+    assert page.has_content?("#{event.name}")
+  end
 end
