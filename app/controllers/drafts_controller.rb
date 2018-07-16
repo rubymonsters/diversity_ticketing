@@ -24,6 +24,17 @@ class DraftsController < ApplicationController
     end
   end
 
+  def submit
+    get_draft
+    if @draft.update(application_params)
+      @draft.update_attributes(submitted: true)
+      ApplicantMailer.application_received(@draft).deliver_later
+      redirect_to event_application_path(@event.id, @draft.id), notice: "You have successfully applied for #{@event.name}."
+    else
+      render :show
+    end
+  end
+
   private
 
   def application_params
