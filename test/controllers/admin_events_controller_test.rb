@@ -33,7 +33,7 @@ class AdminEventsControllerTest < ActionController::TestCase
       user = make_user(admin: true)
       sign_in_as(user)
 
-      post :approve, params: { id: event.id }
+      post :approve, params: { id: event.id , approve: { tweet: "1" } }
 
       event.reload
 
@@ -45,7 +45,7 @@ class AdminEventsControllerTest < ActionController::TestCase
       user = make_user(admin: false)
       sign_in_as(user)
 
-      post :approve, params: { id: event.id }
+      post :approve, params: { id: event.id , approve: { tweet: "1" } }
 
       assert_redirected_to root_path
 
@@ -57,7 +57,7 @@ class AdminEventsControllerTest < ActionController::TestCase
     it 'correctly redirects visitors' do
       event = make_event
 
-      post :approve, params: { id: event.id }
+      post :approve, params: { id: event.id , approve: { tweet: "1" } }
 
       assert_redirected_to sign_in_path
 

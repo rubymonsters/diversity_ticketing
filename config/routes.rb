@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update, :destroy]
   end
 
-  resources :events do
+  resources :events, except: [:destroy] do
     resources :applications, except: [:index, :submit, :admin_destroy]
   end
 
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin_events#index'
   get '/admin_annual', to: 'admin_events#annual_events_report'
   delete '/events/:event_id/application/:id', to: 'applications#admin_destroy', as: :admin_event_application
+  delete 'events/:id', to: 'events#destroy', as: :delete_event
   patch '/events/:event_id/application/:id/submit', to: 'applications#submit', as: :submit_event_application
   get '/events/:id/admin', to: 'admin_events#show', as: :event_admin
   post '/events/preview', to: 'events#preview', as: :event_preview
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
   post '/events/:event_id/applications:id/revert', to: 'applications#revert', as: :revert_event_application
   get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest
   delete 'users/:id', to: 'users#destroy', as: :destroy_user
-  get 'users/:id/delete', to: 'users#delete_account', as: :delete_account
+  post 'users/:id/delete', to: 'users#delete_account', as: :delete_account
 
   root 'home#home'
 end

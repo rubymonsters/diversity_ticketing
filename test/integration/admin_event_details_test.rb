@@ -118,7 +118,7 @@ feature 'Admin Event Details' do
 
     assert page.has_content?("Approved applications (1)")
     assert page.has_content?("Pending applications (2)")
-    
+
     page.first('a.btn.btn-edit.revert-application').click
 
     assert page.has_content?("Lara's application has been changed to pending")
@@ -133,9 +133,8 @@ feature 'Admin Event Details' do
 
     visit admin_event_path(@event.id)
 
-    assert page.has_content?("Approve event")
-
-    click_link("Approve event")
+    assert page.has_selector?("input[type=submit][value='Approve event']")
+    click_button("Approve event")
 
     assert page.has_content?("#{@event.name} has been approved!")
   end

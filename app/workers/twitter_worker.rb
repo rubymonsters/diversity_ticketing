@@ -3,12 +3,11 @@ class TwitterWorker
   extend ApplicationHelper
 
   def self.announce_event(event)
-    event_url = routes.event_url(event)
-    perform_async(event.name, format_date(event.deadline), event_url, event.twitter_handle)
-    Tweet.create(event_id: event.id)
+    perform_async(event.id)
+    Tweet.create(event_id: event.id, published: true)
   end
 
-  def self.routes
+  def routes
     @routes ||= Class.new {
       include Rails.application.routes.url_helpers
 
@@ -18,19 +17,15 @@ class TwitterWorker
     }.new
   end
 
-  def perform(event_name, event_deadline, event_url, twitter_handle)
-    message_start = ["So great!","Hooray!","Amazing news!","Nice!!"]
-    message_end =
-    [
-      "is offering free diversity tickets! Apply before #{event_deadline} at #{event_url}!",
-      "just made free diversity tickets available! You can apply for them at #{event_url} until #{event_deadline}.",
-      "lets you apply for free diversity tickets! Submit your application before #{event_deadline} at #{event_url}!",
-      "has free diversity tickets available! Make sure to apply for them before #{event_deadline} here: #{event_url}!"
-    ]
-    message = [message_start.sample]
-    message << (twitter_handle ? "@#{twitter_handle}" : event_name.truncate(30, separator: ' '))
-    message << [message_end.sample]
+  def perform(event_id)
+    event = Event.find(event_id)
+    deadline = format_date(event.deadline)
+    event_url = routes.event_url(event)
+    name_or_handle = (event.twitter_handle ? "@#{event.twitter_handle}" : "#{event.name.truncate(30, separator: ' ')}")
+    message = ["So awesome! #{name_or_handle} is giving away #{event.number_of_tickets} #DiversityTickets — you can apply for them here: #{event_url} ",
+    "We have #{event.number_of_tickets} #DiversityTickets for #{name_or_handle} — apply by #{deadline} here: #{event_url}",
+    "Hooray, #{name_or_handle} are offering #DiversityTickets for their event! Apply for them before #{deadline}: #{event_url}"]
 
-    TWITTER_CLIENT.update(message.join(' '))
+    TWITTER_CLIENT.update(message.sample)
   end
 end

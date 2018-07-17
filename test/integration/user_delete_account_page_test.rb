@@ -27,9 +27,7 @@ feature 'User Delete Account Page' do
     admin = make_admin
     sign_in_as_admin
 
-    visit delete_account_path(@user)
-
-    assert page.text.include?("We're sorry. You don't have permission to access this page.")
+    assert_raises(ActionController::RoutingError) { visit delete_account_path(@user) }
   end
 
   test 'that no user can access the delete account page of other users' do
@@ -42,16 +40,12 @@ feature 'User Delete Account Page' do
     fill_in 'Password', with: 'awesome_password'
     click_button 'Sign in'
 
-    visit delete_account_path(@user)
-
-    assert page.text.include?("We're sorry. You don't have permission to access this page.")
+    assert_raises(ActionController::RoutingError) { visit delete_account_path(@user) }
   end
 
   test 'that users can only access the delete account page via "Delete Account"-Button on their settings page' do
     sign_in_as_user
 
-    visit delete_account_path(@user)
-
-    assert page.text.include?("We're sorry. You don't have permission to access this page.")
+    assert_raises(ActionController::RoutingError) { visit delete_account_path(@user) }
   end
 end

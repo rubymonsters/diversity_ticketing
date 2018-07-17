@@ -52,15 +52,25 @@
             <p class="application-deadline">
               <%= format_date(event.deadline) %>
             </p>
-            <p>
-              <%= link_to approve_admin_event_path(event, event.approved ? 'Unapprove' : 'Approve'),
-                  method: :post, class: "icon tooltip-large",
-                  title: event.approved ? 'unapprove' : 'approve' do %>
-                <% if event.approved %>
-                  <span class="icon-unapprove" aria-label="unapprove icon"></span>
-                <% else %>
-                  <span class="icon-approve" aria-label="approve icon"></span>
-                <% end %>
+
+            <div class="admin-buttons">
+              <% if event.unapproved %>
+                <%= form_for :approve,
+                      url: approve_admin_event_path(event, 'Approve'),
+                      html: { method: :post } do |form| %>
+                    <span>
+                      <span class="icon tooltip" title="tweet">
+                      <%= form.check_box :tweet, checked: true %></span>
+                      <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
+                      <span class="icon tooltip" title="approve">
+                      <%= form.submit(class: "icon-approve", title: "approve") %></span>
+                    <% end %>
+              <% else %>
+                <%= link_to approve_admin_event_path(event, 'Unapprove'),
+                    method: :post, class: "icon tooltip-large",
+                    title: 'unapprove' do %>
+                    <span class="icon-unapprove" aria-label="unapprove icon"></span>
+                  <% end %>
               <% end %>
 
               <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
@@ -71,7 +81,7 @@
                   data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
                 <span class="icon-delete" aria-label="trashcan icon"></span>
               <% end %>
-            </p>
+            </div>
             <p>
               <% if event.approved %>
               <%= link_to 'Download CSV', event_admin_path(id: event.id, format: :csv),
