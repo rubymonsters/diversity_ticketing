@@ -7,23 +7,8 @@
       <li>Conferences since <%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
       <li class="border">New users in the last 30 days: <strong><%= @new_users.count %></strong></li>
     </ul>
-    <ul class="admin-list">
-      <li>
-        Most conferences:
-        <strong>
-          <ol>
-            <% for index in 1..@countries.length%>
-            <% break if index > 3 %>
-            <li><%= index %>. <%=@events.country_with_most_events(index) %> (<%= @events.number_of_events_per_country(index)%>)</li>
-          <% end %>
-          </ol>
-        </strong>
-      </li>
-    </ul>
-    <div id="map_events" style="position: relative; width: 100%; height: 700px;"></div>
-    <script>
-        var map = new CustomizedMap([{"BOL": 3}, {"ESP": 4}]);
-    </script>
+    <div id="map_events" style="position: relative; width: 100%; height: 600px;"></div>
+    <%= javascript_tag "new CustomizedMap(#{@countries_codes.to_json});" %>
 </div>
 
 <p>
