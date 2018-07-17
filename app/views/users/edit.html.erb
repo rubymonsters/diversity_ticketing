@@ -43,9 +43,9 @@
       </div>
     </section>
     <div class="submit-field">
-      <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
       <%= link_to t("users.delete_account.delete-button"), confirm_delete_path(id: @user.id),
           class: "btn btn-delete" %>
+      <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
     </div>
   </div>
 <% end %>
