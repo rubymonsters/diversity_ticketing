@@ -1,11 +1,11 @@
 (function(){
   this.CustomizedMap = function(eventCountries) {
     var mapData = {};
-    eventCountries.forEach(function(element) {
-      key = Object.keys(element);
-      mapData[key] = { fillKey: "events", numberOfEvents: element[key] };
+    var keys = Object.keys(eventCountries);
+    keys.forEach(function(key){
+      mapData[key] = { fillKey: "events", numberOfEvents: eventCountries[key] };
     });
-    var map = new Datamap({
+    new Datamap({
       element: document.getElementById("map_events"),
       geographyConfig: {
         highlightBorderColor: '#bada55',
