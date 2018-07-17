@@ -3,7 +3,7 @@
     <div class="conflogo--medium"><%= event_image event %></div>
     <%= link_to event.name, event_path(id: event.id) %>
   </h3>
-  <p><i class="map-marker"><% event.location %></i></p>
+  <i class="fa fa-map-marker-alt"></i> <%= event.location %>
 
   <p class="markdownize"><%= event.description %></p>
   <ul class="tags">
