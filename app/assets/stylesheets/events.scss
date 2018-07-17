@@ -117,15 +117,20 @@
   }
 }
 
-li.tag {
-  list-style: none;
-  padding: 0.1em 0.5em;
-  border-radius: 3px;
-  display: inline;
-  &.programming-language {
-    background-color: lighten($blue-bg, 30%);
-  }
-  &.language {
-    background-color: lighten($green-bg, 20%);
+ul.tags {
+  padding-left: 0;
+
+  li.tag {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 0 0.5em;
+    &.programming-languages {
+      background-color: lighten($blue-bg, 30%);
+    }
+    &.languages {
+      background-color: lighten($green-bg, 20%);
+    }
   }
 }
