@@ -1,19 +1,11 @@
 <h1><%= t(".title") %></h1>
 
 <section class="box">
-  <h3><%= t(".subtitle") %></h3>
-  <p> <%= t(".benefits-intro") %>
-    <br> <%= raw t('.list-of-benefits') %>
-  </p>
-  <p>
-    <%= raw t('.email-preferences') %>
-  </p>
+<%= form_for @user, method: :delete, builder: ::FormBuilder do |form| %>
+  <%= form.form_field :password_field, :password, "Password" %>
+  <div class="submit-field">
+    <%= link_to t(".cancel"), edit_user_path(@user) %>
+    <%= form.submit(t(".delete-button"), class: "btn btn-delete indent", method: :delete) %>
+  </div>
+<% end %>
 </section>
-
-<h3><%= t(".benefits-intro") %></h3>
-
-<div class="submit-field">
-  <%= link_to t(".no-delete-button"), edit_user_path(@user), class: "btn btn-save" %>
-  <%= link_to t(".delete-button"), destroy_user_path(@user), class: "btn btn-delete",
-      method: :delete %>
-</div>
