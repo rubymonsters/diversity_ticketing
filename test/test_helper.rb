@@ -57,6 +57,10 @@ class ActiveSupport::TestCase
     click_button 'Sign in'
   end
 
+  def sign_out
+    click_link 'Sign out'
+  end
+
   def make_event_params(event_params = {})
     defaults = {
       name: 'Event',

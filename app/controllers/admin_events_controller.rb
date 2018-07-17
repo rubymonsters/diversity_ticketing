@@ -64,23 +64,23 @@ class AdminEventsController < ApplicationController
 
   private
 
-    def get_event
-      @event = Event.find(params[:id])
-    end
+  def get_event
+    @event = Event.find(params[:id])
+  end
 
-    def inform_applicants_country
-      User.where(country: @event.country).where(country_email_notifications: true).each do |user|
-        UserNotificationsMailer.new_local_event(@event, user).deliver_later
-      end
+  def inform_applicants_country
+    User.where(country: @event.country).where(country_email_notifications: true).each do |user|
+      UserNotificationsMailer.new_local_event(@event, user).deliver_later
     end
+  end
 
-    def inform_applicants_field_of_interest
-      @event.interested_users.where(tag_email_notifications: true).each do |user|
-        UserNotificationsMailer.new_field_specific_event(@event, user).deliver_later
-      end
+  def inform_applicants_field_of_interest
+    @event.interested_users.where(tag_email_notifications: true).each do |user|
+      UserNotificationsMailer.new_field_specific_event(@event, user).deliver_later
     end
+  end
 
-    def tweet_event_check
-      Tweet.new(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
-    end
+  def tweet_event_check
+    Tweet.new(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
+  end
 end

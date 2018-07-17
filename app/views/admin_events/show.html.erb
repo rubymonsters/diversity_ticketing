@@ -24,7 +24,7 @@
               <li>
                 <p class="event-name">
                   <span class="conflogo--small"><%= event_image application.event %></span>
-                  <%= link_to application.name, event_application_path(id: application.id, event_id: application.event_id), title: application.event.name %>
+                  <%= link_to application.name, show_admin_event_application_path(id: application.id, event_id: application.event_id), title: application.event.name %>
                 </p>
                 <p>
                   <% unless @event.application_process == "selection_by_organizer" %>
