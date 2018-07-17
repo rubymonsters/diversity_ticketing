@@ -1,6 +1,5 @@
 class TwitterWorker
   include Sidekiq::Worker
-  include ApplicationHelper
   extend ApplicationHelper
 
   def self.announce_event(event)
