@@ -38,8 +38,11 @@ class UsersController < Clearance::UsersController
       update_protected_params
     else
       @user.password_optional = true
-      @user.update(user_params)
-      redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+      if @user.update(user_params)
+        redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+      else
+        redirect_to edit_user_path(@user), alert: "Data could not be updated."
+      end
     end
   end
 
@@ -102,9 +105,12 @@ class UsersController < Clearance::UsersController
 
     def update_protected_params
       if @user.authenticated?(user_params[:password])
-        @user.update_attributes(user_params)
-        @user.update_attributes(password: user_params[:new_password]) if user_params[:new_password] != ''
-        redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+        if @user.update_attributes(user_params)
+          @user.update_attributes(password: user_params[:new_password]) if user_params[:new_password] != ''
+          redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+        else
+          redirect_to edit_user_path(@user), alert: "Data could not be updated."
+        end
       else
         if user_params[:password] === ''
           message = "Password is a mandatory field"
