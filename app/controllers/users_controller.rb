@@ -1,7 +1,7 @@
 require "report_exporter"
 
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications, :confirm_delete, :delete_account]
+  before_action :ensure_correct_user, except: [:new, :create]
 
   def show
     @categorized_user_events = {
