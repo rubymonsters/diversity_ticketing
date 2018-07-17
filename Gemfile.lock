@@ -47,16 +47,16 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.6.3)
+    autoprefixer-rails (9.0.0)
       execjs
-    aws-sdk (2.11.72)
-      aws-sdk-resources (= 2.11.72)
-    aws-sdk-core (2.11.72)
+    aws-sdk (2.11.89)
+      aws-sdk-resources (= 2.11.89)
+    aws-sdk-core (2.11.89)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.72)
-      aws-sdk-core (= 2.11.72)
-    aws-sigv4 (1.0.2)
+    aws-sdk-resources (2.11.89)
+      aws-sdk-core (= 2.11.89)
+    aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
     bindex (0.5.0)
     buftok (0.2.0)
@@ -92,9 +92,9 @@ GEM
     docile (1.3.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.4.0)
-    dotenv-rails (2.4.0)
-      dotenv (= 2.4.0)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
     email_validator (1.6.0)
       activemodel
@@ -108,6 +108,8 @@ GEM
     ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+    font-awesome-sass (5.0.13)
+      sassc (>= 1.11)
     foreman (0.85.0)
       thor (~> 0.19.1)
     globalid (0.4.1)
@@ -176,7 +178,7 @@ GEM
     multipart-post (2.0.0)
     naught (1.1.0)
     nio4r (2.3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     pg (0.20.0)
     platform-api (2.1.0)
@@ -186,7 +188,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
-    puma (3.11.4)
+    puma (3.12.0)
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
@@ -237,6 +239,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (1.12.1)
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
     sidekiq (5.1.3)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -273,7 +278,7 @@ GEM
       simple_oauth (~> 0.3.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.12)
+    uglifier (4.1.15)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -302,6 +307,7 @@ DEPENDENCIES
   date_validator
   dotenv-rails
   font-awesome-rails
+  font-awesome-sass
   foreman
   jquery-rails
   letsencrypt-rails-heroku
