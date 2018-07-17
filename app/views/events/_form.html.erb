@@ -4,11 +4,11 @@
     <section class="box">
       <h2 class="box-title box-noborder">Organizer details</h2>
       <p class="border">Not shown to the public.</p>
-      <%= f.form_field :text_field, :organizer_name, 'Full name' %>
-      <%= f.form_field :text_field, :organizer_email, 'Email' %>
+      <%= f.form_field :text_field, :organizer_name, 'Full name', value: (current_user.name != nil) ? current_user.name : '' %>
+      <%= f.form_field :text_field, :organizer_email, 'Email', value: current_user.email %>
 
       <% if action_name == 'new' || action_name == 'preview' %>
-        <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation' %>
+        <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation', value: current_user.email %>
       <% end %>
     </section>
 
@@ -41,26 +41,32 @@
 
       <h3 class="box-subtitle">Location</h3>
       <%= f.form_field :text_field, :city, 'City' %>
-      <%= f.form_field :text_field, :country, 'Country' %>
+      <%= f.select :country, CS.countries.values, {:include_blank => "Select country *"} %>
       <%= f.form_field :text_field, :state_province, 'State/Province' %>
 
       <h3>Dates</h3>
-      <%= f.form_field :date_field, :start_date, 'From', class: ['left'], placeholder: "dd.mm.yyyy" %>
-      <%= f.form_field :date_field, :end_date, 'To', class: ['right'], placeholder: "dd.mm.yyyy" %>
+      <%= f.form_field :date_field, :start_date, 'From', class: ['left'], placeholder: "dd.mm.yyyy", min: Date.today %>
+
+      <%= f.form_field :date_field, :end_date, 'To', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
 
       <%= f.form_field :text_area, :description, 'Description', class: ['markdown'] %>
     </section>
 
     <section class="box">
       <h2 class="box-title">Application details</h2>
-      <%= f.form_field :text_area, :applicant_directions, 'Directions for applicants', class: ['markdown'] %>
-      <%= f.form_field :date_field, :deadline, 'Deadline for application', class: ['right'], placeholder: "dd.mm.yyyy" %>
+      <%= f.form_field :text_area, :applicant_directions, 'Directions for applicants', class: ['markdown'],
+          placeholder: "Let the applicants know about any additional information like:
+  - What does the ticket include?
+    E.g.: The ticket is valid for both conference days, ...
+  - Additional organizational info
+  - ..." %>
+      <%= f.form_field :date_field, :deadline, 'Deadline for application', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
       <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
       <h3 class="box-subtitle">Funded</h3>
       <div class="form_field">
         <%= label_tag do %>
-          <%= f.check_box(:ticket_funded) %> Ticket
+          <%= f.check_box(:ticket_funded, checked: true) %> Ticket*
         <% end %>
         <%= label_tag do %>
           <%= f.check_box(:accommodation_funded) %> Accommodation
@@ -79,22 +85,23 @@
         <% end %>
 
         <%= label_tag do %>
-          <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org.
-        <% end %>
+          <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org.
 
-        <div class="form_field--check indent">
-          <%= label_tag do %>
-            <%= f.check_box :data_protection_confirmation %>
-            <span class="check-label">We agree with the following Terms and Conditions:</span>
-          <% end %>
-          <p id="terms-and-conditions">
-            We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
-          </p>
-        </div>
+          <div class="form_field--check indent terms_and_conditions-border">
+            <%= label_tag do %>
+              <%= f.check_box :data_protection_confirmation %>
+              <span class="check-label">I agree with the following Terms and Conditions:</span>
+            <% end %>
+            <p id="terms-and-conditions">
+              I will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+            </p>
+          </div>
+
+        <% end %>
 
 
         <%= label_tag do %>
-        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app.
+        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> The organizer is handling both the selection and application process and only wants their event listed on this site. Applicants have to apply through their site / app.
 
         <div class="form_field indent">
           <p><%= f.form_field :text_area, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
@@ -103,7 +110,9 @@
         <% end %>
       </div>
 
-      <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+      <%= label_tag do %>
+        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+      <% end %>
     </section>
 
     <% if current_user.admin? && action_name == 'edit' %>
