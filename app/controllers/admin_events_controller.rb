@@ -7,7 +7,8 @@ class AdminEventsController < ApplicationController
   def index
     @events = Event.all
     @new_users = User.all.created_last_30_days
-    @countries = Event.all.group_by(&:country).keys
+    @countries = Event.all.pluck(:country)
+    countries_codes
     @categorized_events = {
       "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
       "Approved events" => Event.approved.upcoming.order(:deadline),
@@ -78,5 +79,15 @@ class AdminEventsController < ApplicationController
 
     def tweet_event_check
       Tweet.new(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
+    end
+
+    def countries_codes
+      iso_alpha_2 = @countries.map { |country| CS.countries.key(country) }
+      pp iso_alpha_2
+      iso_alpha_3 = iso_alpha_2.compact.map { |code| IsoCountryCodes.find(code).alpha3 }
+      pp iso_alpha_3
+      @countries_codes = {}
+      iso_alpha_3.each { |code| @countries_codes[code] = iso_alpha_3.count(code) }
+      pp @countries_codes
     end
 end
