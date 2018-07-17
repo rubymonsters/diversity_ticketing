@@ -1,13 +1,14 @@
 class TwitterWorker
   include Sidekiq::Worker
+  include ApplicationHelper
   extend ApplicationHelper
 
   def self.announce_event(event)
-    perform_async(event)
+    perform_async(event.id)
     Tweet.create(event_id: event.id, published: true)
   end
 
-  def self.routes
+  def routes
     @routes ||= Class.new {
       include Rails.application.routes.url_helpers
 
@@ -17,7 +18,8 @@ class TwitterWorker
     }.new
   end
 
-  def perform(event)
+  def perform(event_id)
+    event = Event.find(event_id)
     deadline = format_date(event.deadline)
     event_url = routes.event_url(event)
     name_or_handle = (event.twitter_handle ? "@#{event.twitter_handle}" : "#{event.name.truncate(30, separator: ' ')}")
