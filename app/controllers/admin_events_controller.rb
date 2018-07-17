@@ -14,6 +14,10 @@ class AdminEventsController < ApplicationController
       "Past approved events"=> Event.approved.past.order(:deadline),
       "Past unapproved events" => Event.unapproved.past.order(:deadline)
     }
+    @approved_events_deadline = {
+      "Open deadline:" => Event.approved.upcoming.open.order(:deadline),
+      "Closed deadline:" => Event.approved.upcoming.closed.order(:deadline)
+    }
 
     respond_to do |format|
       format.html
