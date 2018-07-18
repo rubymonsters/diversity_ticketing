@@ -23,8 +23,6 @@ gem 'uglifier'
 gem 'twitter'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
-
-
 group :development, :test do
   gem 'byebug'
   gem 'foreman'
