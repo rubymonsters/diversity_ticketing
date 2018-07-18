@@ -51,7 +51,7 @@ feature 'User Settings Page' do
     assert_equal 'Spain', @user.country
   end
 
-  test 'that password is required for Delete Account' do
+  test 'that Delete Account redirects to confirm delete page' do
     sign_in_as_user
 
     visit root_path
@@ -61,24 +61,7 @@ feature 'User Settings Page' do
     page.find("#dropdown-btn").click
     click_link 'Account settings'
 
-    assert page.has_button?('Delete account')
-
-    click_button 'Delete account'
-    assert page.text.include?('Password is a mandatory field')
-  end
-
-  test 'that password validation works and Delete Account redirects to delete account page' do
-    sign_in_as_user
-
-    visit root_path
-
-    assert page.text.include?("#{@user.name}")
-
-    page.find("#dropdown-btn").click
-    click_link 'Account settings'
-
-    page.fill_in 'user_password', with: @user.password
-    click_button 'Delete account'
+    click_link 'Delete account'
 
     assert page.text.include?("Are you sure?")
   end
@@ -105,5 +88,44 @@ feature 'User Settings Page' do
     @user.reload
 
     assert_equal true, @user.country_email_notifications
+  end
+
+  test 'that password validation works' do
+    sign_in_as_user
+
+    visit root_path
+
+    assert page.text.include?("#{@user.name}")
+
+    page.find("#dropdown-btn").click
+    click_link 'Account settings'
+
+    page.fill_in 'user_name', with: 'New Name'
+
+    click_button 'Save changes'
+
+    assert page.text.include?("You have successfully updated your user data.")
+
+    page.fill_in 'user_new_password', with: 'something'
+
+    click_button 'Save changes'
+
+    assert page.text.include?("Password is a mandatory field")
+
+    page.fill_in 'user_new_password', with: 'something'
+
+    page.fill_in 'user_password', with: 'wrong_password'
+
+    click_button 'Save changes'
+
+    assert page.text.include?("Incorrect password")
+
+    page.fill_in 'user_new_password', with: 'something'
+
+    page.fill_in 'user_password', with: @user.password
+
+    click_button 'Save changes'
+
+    assert page.text.include?("You have successfully updated your user data.")
   end
 end

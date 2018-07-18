@@ -22,9 +22,11 @@
 
 <div class="detail-pair">
   <strong>Tags</strong>
-  <% @event.tags.each do |tag| %>
-    <li class="tag <%= tag.category.name.gsub(" ", "-") %>"><%= tag.name %></li>
-  <% end %>
+  <ul class="tags">
+    <% @event.tags.each do |tag| %>
+      <li class="tag <%= tag.category.name.gsub(" ", "-") %>"><%= tag.name %></li>
+    <% end %>
+  </ul>
 </div>
 
 <div class="detail-pair">

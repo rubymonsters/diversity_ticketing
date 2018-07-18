@@ -58,7 +58,9 @@ en:
       title: "Your applications"
       submitted: "Submitted"
       drafts: "Drafts"
-    delete_account:
+      info-description: "<p> Once an event date has passed your applications
+      will vanish from this overview and all sensitive data will be removed from the database.</p>"
+    confirm_delete:
       title: "Are you sure?"
       subtitle: "Deleting your account is irreversible."
       benefits-intro: "We would be sad to see you go and don't want you to miss out on the benefits of
@@ -74,7 +76,10 @@ en:
           don't want to."
       are-you-sure: "Are you sure you want to delete your user account?"
       no-delete-button: "No, go back!"
-      delete-button: "Yes, delete account!"
+      proceed-delete-button: "Yes, proceed!"
+    delete_account:
+      title: "Delete Account"
+      delete-button: "Delete account"
 
   admin_events:
     show:

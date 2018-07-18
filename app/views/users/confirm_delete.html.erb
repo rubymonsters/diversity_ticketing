@@ -1,0 +1,19 @@
+<h1><%= t(".title") %></h1>
+
+<section class="box">
+  <h3><%= t(".subtitle") %></h3>
+  <p> <%= t(".benefits-intro") %>
+    <br> <%= raw t('.list-of-benefits') %>
+  </p>
+  <p>
+    <%= raw t('.email-preferences') %>
+  </p>
+</section>
+
+<h3><%= t(".are-you-sure") %></h3>
+
+<div class="submit-field">
+  <%= link_to t(".no-delete-button"), edit_user_path(@user), class: "btn btn-delete" %>
+  <%= link_to t(".proceed-delete-button"), delete_account_path(@user), class: "btn btn-save",
+      method: :post %>
+</div>

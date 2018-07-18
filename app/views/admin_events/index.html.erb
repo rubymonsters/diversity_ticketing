@@ -28,6 +28,50 @@
         <% if events.empty? %>
         <p> We currently don't have any events to approve </p>
         </ul>
+        <% elsif heading == "Approved events" %>
+          <% @approved_events_deadline.each do |heading, events| %>
+            <% unless events.empty? %>
+              <div class="box">
+                <h3><%= heading %></h3>
+                <% events.each do |event| %>
+                <li>
+                  <p class="event-name">
+                    <span class="conflogo--small"><%= event_image event %></span>
+                    <%= link_to event.name, event_admin_path(id: event.id), title: event.name %>
+                  </p>
+                  <p class="application-process">
+                    <%= event.application_process.humanize %>
+                  </p>
+                  <p class="application-deadline">
+                    <%= format_date(event.deadline) %>
+                  </p>
+
+                  <div class="admin-buttons">
+
+                    <%= link_to approve_admin_event_path(event, 'Unapprove'),
+                        method: :post, class: "icon tooltip-large",
+                        title: 'unapprove' do %>
+                        <span class="icon-unapprove" aria-label="unapprove icon"></span>
+                      <% end %>
+
+                    <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
+                      <span class="icon-edit" aria-label="edit icon"></span>
+                    <% end %>
+
+                    <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
+                        data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+                      <span class="icon-delete" aria-label="trashcan icon"></span>
+                    <% end %>
+                  </div>
+                  <p>
+                    <%= link_to 'Download CSV', event_admin_path(id: event.id, format: :csv),
+                        class: "btn btn-save", title: "Download data" %>
+                  </p>
+                </li>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
         <% else %>
         <% events.each do |event| %>
           <li>

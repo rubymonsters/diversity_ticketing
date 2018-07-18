@@ -5,7 +5,7 @@ class EventTweetServiceTest < ActiveSupport::TestCase
     it 'if they are approved' do
       event = make_event(deadline: 2.days.from_now, approved: true, name: 'Valid Event')
 
-      TWITTER_CLIENT.expects(:update)
+      TWITTER_CLIENT.expects(:update).once
 
       EventTweetService.tweet_approved_event
 
@@ -19,7 +19,7 @@ class EventTweetServiceTest < ActiveSupport::TestCase
       event = make_event(deadline: 2.days.from_now, approved: true, name: 'Not Announced Event')
       Tweet.create(event_id: announced_event.id)
 
-      TWITTER_CLIENT.expects(:update)
+      TWITTER_CLIENT.expects(:update).once
 
       EventTweetService.tweet_approved_event
 

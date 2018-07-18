@@ -27,3 +27,4 @@
 //= require markdown.js
 //= require marked.min.js
 //= require dropdown.js
+//= require datepicker.js
