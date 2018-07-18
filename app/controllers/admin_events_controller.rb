@@ -87,11 +87,8 @@ class AdminEventsController < ApplicationController
 
     def countries_codes
       iso_alpha_2 = @countries.map { |country| CS.countries.key(country) }
-      pp iso_alpha_2
       iso_alpha_3 = iso_alpha_2.compact.map { |code| IsoCountryCodes.find(code).alpha3 }
-      pp iso_alpha_3
       @countries_codes = {}
       iso_alpha_3.each { |code| @countries_codes[code] = iso_alpha_3.count(code) }
-      pp @countries_codes
     end
 end
