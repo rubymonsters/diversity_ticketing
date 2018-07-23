@@ -22,7 +22,7 @@
     };
     var keys = Object.keys(eventCountries);
     keys.forEach(function(key){
-      mapData[key] = { fillKey: defineKeys(eventCountries[key]), numberOfEvents: eventCountries[key] };
+      mapData[key] = { fillKey: defineKeys(eventCountries[key]), numberOfEvents: eventCountries[key], opacityKey: defineKeys(eventCountries[key]) };
     });
     new Datamap({
       element: document.getElementById("map_events"),
@@ -40,9 +40,9 @@
         0.25: "#65BE66",
         0.5: "#F8BA3F",
         0.75:"#F0AD4E",
-        1: "#EA5755"
-      },
-      fillOpacity: 0.75
+        1: "#EA5755",
+        0.2: 0.2
+      }
     });
   }
 }).call(this);
