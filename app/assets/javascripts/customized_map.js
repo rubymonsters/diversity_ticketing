@@ -8,40 +8,34 @@
 
     var totalEvents = Object.values(eventCountries).reduce(sumEvents);
 
-    defineKeys = function(numberOfEvents) {
-      var score = numberOfEvents / totalEvents;
-      if (score < 0.25) {
-        return 0.25;
-      } else if (0.25 < score > 0.5) {
-        return 0.5;
-      } else if (0.5 < score > 0.75) {
-        return 0.75;
-      } else {
-        return 1;
-      }
+    var maxScore = Math.max.apply(null, Object.values(eventCountries)) / totalEvents;
+
+  // This "normalizes" the opacity based on the number of events each country has in order to avoid polarization of the values
+  // Maybe could be moved to the controller + deleted once the values are more evenly distributed
+    defineOpacity = function(numberOfEvents) {
+      score = numberOfEvents / totalEvents;
+      return (score / maxScore) + maxScore;
     };
+
     var keys = Object.keys(eventCountries);
     keys.forEach(function(key){
-      mapData[key] = { fillKey: defineKeys(eventCountries[key]), numberOfEvents: eventCountries[key], opacityKey: defineKeys(eventCountries[key]) };
+      mapData[key] = { fillKey: "events", numberOfEvents: eventCountries[key], opacityKey: defineOpacity(eventCountries[key]) };
     });
     new Datamap({
       element: document.getElementById("map_events"),
       geographyConfig: {
-        highlightBorderColor: '#bada55',
+        highlightBorderColor: '#27AAE1',
+        highlightFillColor: '#65BE66',
         popupTemplate: function(geography, data) {
           return '<div class="hoverinfo">' + geography.properties.name + ' <p>Number of events: ' +  data.numberOfEvents
         },
-        highlightBorderWidth: 3
+        highlightBorderWidth: 1
       },
       projection: 'mercator',
       data: mapData,
       fills: {
-        defaultFill: "#9C9C9C",
-        0.25: "#65BE66",
-        0.5: "#F8BA3F",
-        0.75:"#F0AD4E",
-        1: "#EA5755",
-        0.2: 0.2
+        defaultFill: "#E7E8E9",
+        events: "#EA5755"
       }
     });
   }
