@@ -17,7 +17,7 @@ class AdminApplicationsController < ApplicationController
   def reject
     @application.update_attributes(status: 'rejected')
     redirect_to admin_event_path(@application.event_id),
-                flash: {info: "#{@application.name}'s application
+                flash: { info: "#{@application.name}'s application
                                  has been rejected" }
   end
 
