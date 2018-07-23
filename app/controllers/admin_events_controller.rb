@@ -3,6 +3,7 @@ require "report_exporter"
 class AdminEventsController < ApplicationController
   before_action :get_event, except: [:index, :annual_events_report]
   before_action :require_admin
+  before_action :get_approved_tickets_count, only: [:show]
 
   def index
     @events = Event.all
@@ -82,5 +83,12 @@ class AdminEventsController < ApplicationController
 
   def tweet_event_check
     Tweet.new(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
+  end
+
+  def get_approved_tickets_count
+    if @event.approved_tickets == nil
+      @event.approved_tickets = Application.where(event_id: @event.id, status: 'approved').count
+      @event.update_attributes(approved_tickets: @event.approved_tickets.to_s)
+    end
   end
 end
