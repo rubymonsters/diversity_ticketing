@@ -67,9 +67,7 @@ class EventsController < ApplicationController
     if @event.uneditable_by?(current_user)
       head :forbidden
     elsif @event.update(event_params)
-      url = current_user.admin? ? admin_url : user_url(current_user)
-
-      redirect_to url, notice: "You have successfully updated #{@event.name}."
+      redirect_back fallback_location: '/', notice: "You have successfully updated #{@event.name}."
     else
       render :edit
     end
