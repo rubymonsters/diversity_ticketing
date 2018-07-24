@@ -11,17 +11,17 @@
     var maxScore = Math.max.apply(null, Object.values(eventCountries)) / totalEvents;
 
   // This "normalizes" the opacity based on the number of events each country has in order to avoid polarization of the values
-  // Maybe could be moved to the controller + deleted once the values are more evenly distributed
+  // Maybe could be moved to the controller
     defineOpacity = function(numberOfEvents) {
-      score = numberOfEvents / totalEvents;
-      return (score / maxScore) + maxScore;
+      countryScore = numberOfEvents / totalEvents;
+      return countryScore / maxScore;
     };
 
     var keys = Object.keys(eventCountries);
     keys.forEach(function(key){
       mapData[key] = { fillKey: "events", numberOfEvents: eventCountries[key], opacityKey: defineOpacity(eventCountries[key]) };
     });
-    new Datamap({
+    map = new Datamap({
       element: document.getElementById("map_events"),
       geographyConfig: {
         highlightBorderColor: '#27AAE1',
@@ -38,5 +38,6 @@
         events: "#EA5755"
       }
     });
+    map.legend();
   }
 }).call(this);
