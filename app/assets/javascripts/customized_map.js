@@ -38,6 +38,5 @@
         events: "#EA5755"
       }
     });
-    map.legend();
   }
 }).call(this);
