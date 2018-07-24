@@ -7,7 +7,10 @@
       <li>Conferences since <%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
       <li class="border">New users in the last 30 days: <strong><%= @new_users.count %></strong></li>
     </ul>
-    <div id="map_events" style="position: relative; width: 100%; height: 600px;"></div>
+    <div class="map-legend">
+       <span>&nbsp;</span> Countries that hosted events
+    </div>
+     <div id="map_events" style="position: relative; width: 100%; height: 600px;"></div>
     <%= javascript_tag "new CustomizedMap(#{@countries_codes.to_json});" %>
 </div>
 
