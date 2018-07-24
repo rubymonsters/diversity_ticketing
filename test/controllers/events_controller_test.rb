@@ -424,7 +424,7 @@ class EventsControllerTest < ActionController::TestCase
       event.reload
 
       assert_equal 'MonstersConf', event.name
-      assert_redirected_to admin_url
+      assert_redirected_to root_path
     end
 
     it 'loads correctly for event owner' do
@@ -442,7 +442,7 @@ class EventsControllerTest < ActionController::TestCase
       event.reload
 
       assert_equal 'MonstersConf', event.name
-      assert_redirected_to user_url(user)
+      assert_redirected_to root_path
     end
 
     it 'does not change approval status when event owner is updating' do
@@ -458,7 +458,7 @@ class EventsControllerTest < ActionController::TestCase
 
       event.reload
 
-      assert_redirected_to user_url(user)
+      assert_redirected_to root_path
       assert_equal false, event.approved?
     end
 
@@ -479,7 +479,7 @@ class EventsControllerTest < ActionController::TestCase
 
       event.reload
 
-      assert_redirected_to admin_url
+      assert_redirected_to root_path
       assert_equal true, event.approved?
     end
 
