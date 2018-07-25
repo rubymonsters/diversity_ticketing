@@ -11,7 +11,7 @@
        <span>&nbsp;</span> Countries that hosted events
     </div>
      <div id="map_events" style="position: relative; width: 100%; height: 600px;"></div>
-    <%= javascript_tag "new CustomizedMap(#{@countries_events.to_json}, #{@countries_tickets.to_json});" %>
+    <%= javascript_tag "new CustomizedMap(#{@countries_statistics.to_json});" %>
 </div>
 
 <p>
