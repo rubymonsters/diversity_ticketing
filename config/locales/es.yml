@@ -1,0 +1,104 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    attributes:
+      application:
+        attendee_info_1: ""
+        attendee_info_2: ""
+    errors:
+      models:
+        application:
+          attributes:
+            attendee_info_1:
+              blank: "Por favor, explica por qué quieres acudir a este evento"
+            attendee_info_2:
+              blank: "Por favor, explica por qué estás solicitando un diversity ticket"
+        event:
+          attributes:
+            website:
+              invalid: "URL completa, por ejemplo: https://miconferencia.com"
+            code_of_conduct:
+              invalid: "URL completa, por ejemplo: https://miconferencia.com/codigo-de-conducta"
+  users:
+    edit:
+      country: "País"
+      email-notifications: "Notificaciones de correo"
+      name: "Nombre"
+      password: "Contraseña"
+      receive-emails-country: "Sí, quiero recibir notificaciones vía correo electrónico sobre eventos que tomen lugar en en país seleccionado en mi cuenta"
+      receive-emails-tag: "Sí, quiero recibir notificaciones vía correo electrónico sobre eventos que traten los temas que me interesan seleccionados en mi cuenta"
+      save-changes: "Guardar cambios"
+      title: "Ajustes de la cuenta"
+    events:
+      title: "Tus eventos"
+      approved: "Aprobado"
+      unapproved: "Aún sin aprobar"
+      past: "Pasado"
+    applications:
+      title: "Tus solicitudes"
+      submitted: "Enviada"
+      drafts: "Bocetos"
+      info-description: "<p>Una vez haya pasado el evento, tu solicitud desaparecerá de esta página
+      y toda tu información susceptible de ser sensible será borrada de la base de datos</p>"
+    confirm_delete:
+      title: "¿Estás segura/o?"
+      subtitle: "Borrar tu cuenta es irreversible."
+      benefits-intro: "Nos entristecería que te marchases y no queremos que te pierdas los beneficios de un usuario registrado"
+      list-of-benefits: "Si procedes a borrar tu cuenta pasará lo siguiente:
+        <li> Tus solicitudes enviadas seguirán siendo válidas. <strong>Sin embargo:</strong></li>
+        <li> Ya no serás capaz de visitar o gestionar tus solicitudes o borradores actuales.</li>"
+        <li> Las nuevas solicitudes sólo se podrán enviar como usuario invitado, a no ser que registres una nueva cuenta. </li>
+        <li> Si te vuelves a registrar, no serás capaz de recuperar tus datos antiguos.</li>
+        <li> Como invitado perderás la oportunidad de recibir actualizaciones sobre las últimas conferencias o otros eventos interesantes para ti. </li>"
+      email-preferences: "<strong>Por favor, ten en cuenta</strong> que puedes gestionar tus emails
+          en tus ajustes de cuenta. No tienes por qué recibir nuestras newsletters si no quieres."
+      are-you-sure: "¿Estás segura/o de que quieres borrar tu cuenta de usuario?"
+      no-delete-button: "¡No, ve atrás!"
+      proceed-delete-button: "Sí, estoy segura/o"
+    delete_account:
+      title: "Borrar cuenta"
+      delete-button: "Borrar cuenta"
+
+  admin_events:
+    index:
+      title: "Página de administrador"
+      statistics: "Estadísticas"
+      total-conferences: "Número total de conferencias:"
+      conferences-since: "Conferencias desde "
+      new-users-last-30-days: "Usuarios nuevos en los últimos 30 días"
+      most-conferences: "Mayoría de conferencias"
+      download-events-report: "Descargar informe de eventos"
+      download-annual-events-report: "Descargar informe anual de eventos"
+      unapprove: "desaprobar"
+      edit: "editar"
+      delete: "borrar"
+      download-csv: "Descargar CSV"
+      download-data: "Descargar datos"
+      are-you-sure: "¿Estás seguro/a?"
+    show:
+      approve-event: "Aprobar evento"
+      tweet-event: "Twittealo"
+
+  applications:
+    continue_as_guest:
+      title: "¿Cómo te gustaría solicitar un ticket?"
