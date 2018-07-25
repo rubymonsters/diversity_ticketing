@@ -16,3 +16,17 @@ div.map-legend {
     float: left;
   }
 }
+
+div.hoverinfo {
+  padding: 5px;
+  background-color: #FFF;
+  text-align: center;
+  box-shadow: 0;
+  font-size: 12px;
+  border-radius: 3px;
+  border: 1px solid $border-grey;
+
+  p.hovertitle {
+    font-weight: 600;
+  }
+}
