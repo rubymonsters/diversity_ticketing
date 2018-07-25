@@ -82,6 +82,21 @@ en:
       delete-button: "Delete account"
 
   admin_events:
+    index:
+      title: "Admin page"
+      statistics: "Statistics"
+      total-conferences: "Total conferences:"
+      conferences-since: "Conferences since "
+      new-users-last-30-days: "New users in the last 30 days:"
+      most-conferences: "Most conferences"
+      download-events-report: "Download events report"
+      download-annual-events-report: "Download annual events report"
+      unapprove: "napprove"
+      edit: "edit"
+      delete: "delete"
+      download-csv: "Download CSV"
+      download-data: "Download data"
+      are-you-sure: "Are you sure?"
     show:
       approve-event: "Approve event"
       tweet-event: "Tweet it"
