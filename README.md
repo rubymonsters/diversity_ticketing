@@ -39,19 +39,19 @@ This following text describes how to set up your workstation to develop for [div
 ### macOS 
 
 Run the following in order in your terminal:
-    1. `createuser -s pguser`
-    2. `psql postgres` to open the PostgreSQL terminal then
-    3. Enter `pguser_password` (twice).
-    4. When done, quit the PostgreSQL console with `\q`.
+1. `createuser -s pguser`
+2. `psql postgres` to open the PostgreSQL terminal then
+3. Enter `pguser_password` (twice).
+4. When done, quit the PostgreSQL console with `\q`.
 
 ### Ubuntu
 
 Run the following in order in your terminal:
-    1. `sudo -u postgres createuser -s pguser`
-    2. `sudo -u postgres psql` to open the PostgreSQL terminal then
-    3. Enter `\password pguser`
-    4. Enter the password `pguser_password` (twice).
-    5. When done, quit the postgresql console with `\q`
+1. `sudo -u postgres createuser -s pguser`
+2. `sudo -u postgres psql` to open the PostgreSQL terminal then
+3. Enter `\password pguser`
+4. Enter the password `pguser_password` (twice).
+5. When done, quit the postgresql console with `\q`
 
 
 Finally, run `rails db:create db:migrate` to set up the database, followed by `rails s` to have the project running in your browswer at `0.0.0.0.:3000`.
