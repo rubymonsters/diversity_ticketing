@@ -54,4 +54,4 @@ Run the following in order in your terminal:
 5. When done, quit the postgresql console with `\q`
 
 
-Finally, run `rails db:create db:migrate` to set up the database, followed by `rails s` to have the project running in your browswer at `0.0.0.0.:3000`.
+Finally, run `rails db:create db:migrate` to set up the database, followed by `rails s` to have the project running in your browser at `0.0.0.0.:3000`.
