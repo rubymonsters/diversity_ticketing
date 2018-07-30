@@ -87,9 +87,8 @@ class AdminEventsController < ApplicationController
 
     def country_statistics
       @countries_statistics = {}
-
       Event.all.each { |event| @countries_statistics[CS.countries.key(event.country)] = [0, 0] }
-      @countries.map { |country| @countries_statistics[CS.countries.key(country)][0] = @countries.count(country) }
+      @countries.each { |country| @countries_statistics[CS.countries.key(country)][0] = @countries.count(country) }
       Event.all.each { |event| @countries_statistics[CS.countries.key(event.country)][1] = @countries_statistics[CS.countries.key(event.country)][1] + event.number_of_tickets if event.number_of_tickets }
       @countries_statistics.transform_keys! { |key| key = IsoCountryCodes.find(key).alpha3 if key }
     end
