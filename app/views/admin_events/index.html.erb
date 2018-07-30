@@ -36,19 +36,15 @@
                   <p class="application-deadline">
                     <%= format_date(event.deadline) %>
                   </p>
-
                   <div class="admin-buttons">
-
                     <%= link_to approve_admin_event_path(event, 'Unapprove'),
                         method: :post, class: "icon tooltip-large",
                         title: 'unapprove' do %>
                         <span class="icon-unapprove" aria-label="unapprove icon"></span>
                       <% end %>
-
                     <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
                       <span class="icon-edit" aria-label="edit icon"></span>
                     <% end %>
-
                     <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
                         data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
                       <span class="icon-delete" aria-label="trashcan icon"></span>
@@ -76,7 +72,6 @@
             <p class="application-deadline">
               <%= format_date(event.deadline) %>
             </p>
-
             <div class="admin-buttons">
               <% if event.unapproved %>
                 <%= form_for :approve,
@@ -96,11 +91,9 @@
                     <span class="icon-unapprove" aria-label="unapprove icon"></span>
                   <% end %>
               <% end %>
-
               <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
                 <span class="icon-edit" aria-label="edit icon"></span>
               <% end %>
-
               <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
                   data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
                 <span class="icon-delete" aria-label="trashcan icon"></span>
