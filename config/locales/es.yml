@@ -64,12 +64,7 @@ en:
       title: "¿Estás segura/o?"
       subtitle: "Borrar tu cuenta es irreversible."
       benefits-intro: "Nos entristecería que te marchases y no queremos que te pierdas los beneficios de un usuario registrado"
-      list-of-benefits: "Si procedes a borrar tu cuenta pasará lo siguiente:
-        <li> Tus solicitudes enviadas seguirán siendo válidas. <strong>Sin embargo:</strong></li>
-        <li> Ya no serás capaz de visitar o gestionar tus solicitudes o borradores actuales.</li>"
-        <li> Las nuevas solicitudes sólo se podrán enviar como usuario invitado, a no ser que registres una nueva cuenta. </li>
-        <li> Si te vuelves a registrar, no serás capaz de recuperar tus datos antiguos.</li>
-        <li> Como invitado perderás la oportunidad de recibir actualizaciones sobre las últimas conferencias o otros eventos interesantes para ti. </li>"
+      list-of-benefits: "Si procedes a borrar tu cuenta pasará lo siguiente: <li> Tus solicitudes enviadas seguirán siendo válidas. <strong>Sin embargo:</strong></li><li> Ya no serás capaz de visitar o gestionar tus solicitudes o borradores actuales.</li><li> Las nuevas solicitudes sólo se podrán enviar como usuario invitado, a no ser que registres una nueva cuenta. </li<li> Si te vuelves a registrar, no serás capaz de recuperar tus datos antiguos.</li><li> Como invitado perderás la oportunidad de recibir actualizaciones sobre las últimas conferencias o otros eventos interesantes para ti. </li>"
       email-preferences: "<strong>Por favor, ten en cuenta</strong> que puedes gestionar tus emails
           en tus ajustes de cuenta. No tienes por qué recibir nuestras newsletters si no quieres."
       are-you-sure: "¿Estás segura/o de que quieres borrar tu cuenta de usuario?"
