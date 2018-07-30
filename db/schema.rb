@@ -15,12 +15,12 @@ ActiveRecord::Schema.define(version: 2018_06_25_160332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", id: :serial, force: :cascade do |t|
+  create_table "applications", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "event_id"
+    t.bigint "event_id"
     t.text "attendee_info_1"
     t.text "attendee_info_2"
     t.boolean "ticket_needed", default: false, null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_160332) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", id: :serial, force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.string "organizer_name"
     t.string "organizer_email"
     t.text "description"
@@ -60,13 +60,13 @@ ActiveRecord::Schema.define(version: 2018_06_25_160332) do
     t.boolean "ticket_funded", default: false, null: false
     t.boolean "accommodation_funded", default: false, null: false
     t.boolean "travel_funded", default: false, null: false
-    t.text "applicant_directions"
     t.text "logo"
+    t.text "applicant_directions"
     t.text "application_link"
+    t.bigint "organizer_id"
     t.string "application_process"
     t.string "twitter_handle"
     t.string "state_province"
-    t.integer "organizer_id"
     t.boolean "deleted", default: false
     t.index ["organizer_id"], name: "index_events_on_organizer_id"
   end
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_160332) do
     t.index ["event_id"], name: "index_tweets_on_event_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", null: false
