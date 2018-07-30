@@ -14,7 +14,7 @@
   // This "normalizes" the opacity based on the number of events each country has in order to avoid polarization of the values
   // Maybe could be moved to the controller
     defineOpacity = function(numberOfEvents) {
-      countryScore = numberOfEvents / totalEvents;
+      var countryScore = numberOfEvents / totalEvents;
       return (countryScore / maxScore) + maxScore;
     };
 
