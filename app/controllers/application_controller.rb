@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :require_login
   before_action :set_locale
+  before_action :require_login
 
   def build_missing_translations(object)
     I18n.available_locales.each do |locale|
@@ -15,14 +15,9 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     desired_locale = request.headers['HTTP_ACCEPT_LANGUAGE'].to_s[0..1] == 'es' ? 'es' : 'en'
-    pp "PARAMS"
-    pp params[:locale]
-    pp "DESIRED LOCALE"
-    pp desired_locale
-    # I18n.locale = params[:locale] || desired_locale
-    pp I18n.locale
-    I18n.locale = :es
+    I18n.locale = params[:locale] || desired_locale
   end
+
   def require_admin
     redirect_to root_path unless admin_user?
   end
