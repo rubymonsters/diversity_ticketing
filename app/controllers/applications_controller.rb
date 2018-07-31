@@ -54,6 +54,7 @@ class ApplicationsController < ApplicationController
     if @application.update(application_params)
       @application.update_attributes(submitted: true)
       ApplicantMailer.application_received(@application).deliver_later
+      ticket_capacity_check
       current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
       redirect_to path, notice: "You have successfully applied for #{@event.name}."
     else
