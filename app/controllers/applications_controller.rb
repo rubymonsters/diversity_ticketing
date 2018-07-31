@@ -106,4 +106,8 @@ class ApplicationsController < ApplicationController
   def guest
     params[:guest]
   end
+
+  def ticket_capacity_notification
+    OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+  end
 end
