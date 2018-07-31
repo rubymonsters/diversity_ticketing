@@ -107,7 +107,9 @@ class ApplicationsController < ApplicationController
     params[:guest]
   end
 
-  def ticket_capacity_notification
-    OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+  def ticket_capacity_check
+    if @event.number_of_tickets == @event.applications.count - 1
+      OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+    end
   end
 end
