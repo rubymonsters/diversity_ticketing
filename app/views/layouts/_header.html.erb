@@ -32,7 +32,8 @@
         <% else %>
           <li><%= link_to 'Sign in', sign_in_path %></li>
         <% end %>
-        <div id="language-picker">
+        <% language_picker_class = "language-picker-signed" if signed_in? %>
+        <div id="language-picker" class=<%= language_picker_class %> >
           <span class="language-picker-btn" id="language-picker-btn">
             <%= I18n.locale.upcase %>
             <i class="icon-sort-down-black" id="icon-language"></i>

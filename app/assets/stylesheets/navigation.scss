@@ -94,12 +94,15 @@
     width: 80%;
   }
 
+.language-picker-signed {
+  margin-right: -40px;
+}
+
 #language-picker {
   display: inline-block;
   float: right;
   padding: 0 30px 0 0;
   width: 90px;
-  margin-right: -40px;
   &:active, &:hover {
     color: $green;
     cursor: pointer;
