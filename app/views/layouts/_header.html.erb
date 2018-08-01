@@ -33,12 +33,12 @@
           <li><%= link_to 'Sign in', sign_in_path %></li>
         <% end %>
         <div id="language-picker">
-          <span id="language-picker-btn">
-            EN
+          <span class="language-picker-btn" id="language-picker-btn">
+            <%= I18n.locale.upcase %>
           </span>
           <div class="language-picker-content">
-            <li class="language-picker-item"><%= link_to_unless I18n.locale == :en, 'EN', {locale: :en} %></li>
-            <li class="language-picker-item"><%= link_to_unless I18n.locale == :es, 'ES', {locale: :es} %></li>
+            <li class="language-picker-item"><%= link_to 'EN', {locale: :en} unless I18n.locale == :en %></li>
+            <li class="language-picker-item"><%= link_to 'ES', {locale: :es} unless I18n.locale == :es%></li>
           </div>
         </div>
       </ul>

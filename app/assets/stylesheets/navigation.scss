@@ -100,6 +100,10 @@
   padding: 0 30px 0 10px;
   margin-right: 10px;
   width: 10px;
+  &:active, &:hover {
+    color: $green;
+    cursor: pointer;
+  }
   @media (min-width: $small) {
     line-height: $topbar-height;
   }
