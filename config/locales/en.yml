@@ -39,6 +39,47 @@ en:
               invalid: "should be a full URL, e.g. https://myconference.com"
             code_of_conduct:
               invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
+
+  admin_applications:
+    show:
+      home-link: "Home"
+      admin-link: "Admin"
+      application-by: "Application by %{application_name}"
+      application-for: "Application for %{event_name}"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket."
+      name: "Name"
+      email: "Email"
+      visa-need: "I need a Visa."
+      application-status: "Application status: #{application_status}"
+      approve: "Approve"
+      reject: "Reject"
+      revert: "Revert"
+      delete-application: "Delete application"
+      are-you-sure: "Are you sure you want to delete this application?"
+      show-event-details: 'Show event details'
+
+admin_events:
+  index:
+    title: "Admin page"
+    statistics: "Statistics"
+    total-conferences: "Total conferences:"
+    conferences-since: "Conferences since "
+    new-users-last-30-days: "New users in the last 30 days:"
+    most-conferences: "Most conferences"
+    download-events-report: "Download events report"
+    download-annual-events-report: "Download annual events report"
+    unapprove: "unapprove"
+    edit: "edit"
+    delete: "delete"
+    download-csv: "Download CSV"
+    download-data: "Download data"
+    are-you-sure: "Are you sure?"
+    no-events-to-approve: "We currently don't have any events to approve"
+  show:
+    approve-event: "Approve event"
+    tweet-event: "Tweet it"
+
   users:
     edit:
       country: "Country"
@@ -80,26 +121,6 @@ en:
     delete_account:
       title: "Delete Account"
       delete-button: "Delete account"
-
-  admin_events:
-    index:
-      title: "Admin page"
-      statistics: "Statistics"
-      total-conferences: "Total conferences:"
-      conferences-since: "Conferences since "
-      new-users-last-30-days: "New users in the last 30 days:"
-      most-conferences: "Most conferences"
-      download-events-report: "Download events report"
-      download-annual-events-report: "Download annual events report"
-      unapprove: "unapprove"
-      edit: "edit"
-      delete: "delete"
-      download-csv: "Download CSV"
-      download-data: "Download data"
-      are-you-sure: "Are you sure?"
-    show:
-      approve-event: "Approve event"
-      tweet-event: "Tweet it"
 
   applications:
     continue_as_guest:

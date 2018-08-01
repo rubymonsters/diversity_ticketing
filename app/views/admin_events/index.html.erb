@@ -38,7 +38,7 @@
     <div class="admin">
       <ul class="admin-list">
         <% if events.empty? %>
-        <p> We currently don't have any events to approve </p>
+        <p><%= t(".no-events-to-approve")%></p>
         </ul>
         <% elsif events.first.approved? %>
           <% @approved_events_deadline.each do |heading, events| %>

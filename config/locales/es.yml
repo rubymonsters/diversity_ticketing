@@ -39,6 +39,47 @@ es:
               invalid: "URL completa, por ejemplo: https://miconferencia.com"
             code_of_conduct:
               invalid: "URL completa, por ejemplo: https://miconferencia.com/codigo-de-conducta"
+
+  admin_applications:
+    show:
+      home-link: "Página de inicio"
+      admin-link: "Admin"
+      application-by: "Solicitud de %{application_name}"
+      application-for: "Solicitud para %{event_name}"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket"
+      name: "Nombre"
+      email: "Email"
+      visa-need: "Necesito una visa"
+      application-status: "Estado de la solicitud: #{application_status}"
+      approve: "Aprobar"
+      reject: "Denegar"
+      revert: "Revertir"
+      delete-application: "Borrar solicitud"
+      are-you-sure: "¿Estás segura/o de que quieres borrar esta solicitud?"
+      show-event-details: 'Ir a detalles del evento'
+
+  admin_events:
+    index:
+      title: "Página de administrador"
+      statistics: "Estadísticas"
+      total-conferences: "Número total de conferencias:"
+      conferences-since: "Conferencias desde "
+      new-users-last-30-days: "Usuarios nuevos en los últimos 30 días"
+      most-conferences: "Mayoría de conferencias"
+      download-events-report: "Descargar informe de eventos"
+      download-annual-events-report: "Descargar informe anual de eventos"
+      unapprove: "desaprobar"
+      edit: "editar"
+      delete: "borrar"
+      download-csv: "Descargar CSV"
+      download-data: "Descargar datos"
+      are-you-sure: "¿Estás seguro/a?"
+      no-events-to-approve: "No existe ningún evento pendiente de revisión"
+    show:
+      approve-event: "Aprobar evento"
+      tweet-event: "Twittealo"
+
   users:
     edit:
       country: "País"
@@ -73,26 +114,6 @@ es:
     delete_account:
       title: "Borrar cuenta"
       delete-button: "Borrar cuenta"
-
-  admin_events:
-    index:
-      title: "Página de administrador"
-      statistics: "Estadísticas"
-      total-conferences: "Número total de conferencias:"
-      conferences-since: "Conferencias desde "
-      new-users-last-30-days: "Usuarios nuevos en los últimos 30 días"
-      most-conferences: "Mayoría de conferencias"
-      download-events-report: "Descargar informe de eventos"
-      download-annual-events-report: "Descargar informe anual de eventos"
-      unapprove: "desaprobar"
-      edit: "editar"
-      delete: "borrar"
-      download-csv: "Descargar CSV"
-      download-data: "Descargar datos"
-      are-you-sure: "¿Estás seguro/a?"
-    show:
-      approve-event: "Aprobar evento"
-      tweet-event: "Twittealo"
 
   applications:
     continue_as_guest:
