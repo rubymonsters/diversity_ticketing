@@ -10,12 +10,7 @@
         <% if signed_in? %>
           <div id="dropdown">
             <span class="btn btn-save" id="dropdown-btn">
-              <% if current_user.name && current_user.name != "" %>
-                <%= current_user.name %>
-              <% else %>
-                Your account
-              <% end %>
-              <i class="icon-sort-down"></i>
+              <span id="account-menu">Your account<i class="icon-sort-down"></i></span>
             </span>
             <div class="dropdown-content">
               <% if admin_user? %>
