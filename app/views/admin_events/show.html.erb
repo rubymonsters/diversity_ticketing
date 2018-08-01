@@ -67,11 +67,11 @@
   <section class="box">
     <h2 class="box-title"><%=t(".organizer-details")%></h2>
     <div class="detail-pair">
-      <strong>Name</strong>
+      <strong><%=t('.organizer-name')%></strong>
       <%= @event.organizer_name %>
     </div>
     <div class="detail-pair">
-      <strong>Email</strong>
+      <strong>t('.organizer-email')%></strong>
       <%= @event.organizer_email %>
     </div>
   </section>
@@ -80,15 +80,15 @@
 </div>
 
 <div class="form_field">
-  <%= link_to "Edit event", edit_event_path(@event.id), class: "btn btn-edit" %>
-  <%= link_to "Delete event", event_path(@event.id), method: :delete,
-      data: {confirm: "Are you sure?"}, class: "btn btn-delete" %>
+  <%= link_to t(".edit-event"), edit_event_path(@event.id), class: "btn btn-edit" %>
+  <%= link_to t("delete-event"), event_path(@event.id), method: :delete,
+      data: {confirm: t(".are-you-sure")}, class: "btn btn-delete" %>
   <% unless @event.approved? %>
   <span class="approve-button">
   <%= form_for :approve,
-        url: approve_admin_event_path(@event, 'Approve'),
+        url: approve_admin_event_path(@event, t(".approve")),
         html: { method: :post } do |form| %>
-        <%= form.submit(t('.approve-event'), class: "btn btn-save", title: "approve") %>
+        <%= form.submit(t('.approve-event'), class: "btn btn-save", title: t(".approve").downcase) %>
         <span>
           <%= form.check_box :tweet, checked: true %>
           <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>

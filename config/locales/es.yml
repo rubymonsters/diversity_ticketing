@@ -76,9 +76,22 @@ es:
       download-data: "Descargar datos"
       are-you-sure: "¿Estás seguro/a?"
       no-events-to-approve: "No existe ningún evento pendiente de revisión"
-    show:
-      approve-event: "Aprobar evento"
-      tweet-event: "Twittealo"
+  show:
+    admin-link: "Admin"
+    applications: "Solicitudes"
+    approve: "Aprobar"
+    approve-event: "Aprobar evento"
+    are-you-sure: "¿Estás segura/o?"
+    delete: "Borrar"
+    delete-event: "Borrar evento"
+    edit-event: "Editar evento"
+    home-link: "Página de inicio"
+    organizer-details: "Detalles del organizador"
+    organizer-email: "Email"
+    organizer-name: "Nombre"
+    tweet-event: "Twittéalo"
+    reject: "Rechazar"
+    revert: "Revertir"
 
   users:
     edit:

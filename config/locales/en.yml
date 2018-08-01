@@ -77,17 +77,22 @@ admin_events:
     are-you-sure: "Are you sure?"
     no-events-to-approve: "We currently don't have any events to approve"
   show:
-    home-link: "Home"
     admin-link: "Admin"
     applications: "Applications"
-    approve-event: "Approve event"
-    tweet-event: "Tweet it"
-    revert: "Revert"
     approve: "Approve"
-    reject: "Reject"
+    approve-event: "Approve event"
     are-you-sure: "Are you sure?"
     delete: "Delete"
+    delete-event: "Delete event"
+    edit-event: "Edit event"
+    home-link: "Home"
     organizer-details: "Organizer details"
+    organizer-email: "Email"
+    organizer-name: "Name"
+    tweet-event: "Tweet it"
+    reject: "Reject"
+    revert: "Revert"
+
   users:
     edit:
       country: "Country"
