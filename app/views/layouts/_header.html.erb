@@ -35,6 +35,7 @@
         <div id="language-picker">
           <span class="language-picker-btn" id="language-picker-btn">
             <%= I18n.locale.upcase %>
+            <i class="icon-sort-down-black" id="icon-language"></i>
           </span>
           <div class="language-picker-content">
             <li class="language-picker-item"><%= link_to 'EN', {locale: :en} unless I18n.locale == :en %></li>
