@@ -81,6 +81,6 @@ class AdminEventsController < ApplicationController
   end
 
   def tweet_event_check
-    Tweet.new(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
+    Tweet.create(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
   end
 end
