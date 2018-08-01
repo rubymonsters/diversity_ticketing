@@ -23,6 +23,7 @@ $(document).ready(function(){
 
   //makes menu disappear when you click somewhere else on the page:
   $(document).click(function() {
+    $(".icon-sort-down-black").toggleClass("rotated");
     if ($(".language-picker-content").is( ":visible" )) {
       if ($(event.target).is('#language-picker *')) {
         return;

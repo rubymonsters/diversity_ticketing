@@ -97,15 +97,19 @@
 #language-picker {
   display: inline-block;
   float: right;
-  padding: 0 30px 0 10px;
-  margin-right: 10px;
-  width: 10px;
+  padding: 0 30px 0 0;
+  width: 90px;
+  margin-right: -40px;
   &:active, &:hover {
     color: $green;
     cursor: pointer;
   }
   @media (min-width: $small) {
     line-height: $topbar-height;
+  }
+  .rotated {
+    transform: rotate(180deg);
+    background-position: 12px 2px;
   }
   .language-picker-content {
     display: none;
