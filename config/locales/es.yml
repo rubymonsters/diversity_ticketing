@@ -233,6 +233,18 @@ es:
       visa_need: "Necesito una visa para poder asistir"
       your_applications: "Tus solicitudes"
 
+  events:
+    application_details:
+      accomodation: "Alojamiento"
+      application_details: "Detalles de la solicitud"
+      deadline_applications: "Fecha límite para enviar solicitudes"
+      directions_applicants: "Directrices para las/os solicitantes"
+      midnight_utc: "(medianoche UTC)"
+      number_tickets: "Número de tickets disponibles"
+      tickets: "ticket"
+      travel: "Transporte"
+      whats_funded: "¿Qué incluye?"
+
   users:
     edit:
       country: "País"

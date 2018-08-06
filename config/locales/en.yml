@@ -233,6 +233,18 @@ en:
       visa_need: "I will need a visa to attend"
       your_applications: "Your applications"
 
+  events:
+    application_details:
+      accomodation: "Accomodation"
+      application_details: "Application details"
+      deadline_applications: "Deadline for applications"
+      directions_applicants: "Directions for applicants"
+      midnight_utc: "(midnight UTC)"
+      number_tickets: "Number of available diversity tickets"
+      tickets: "ticket"
+      travel: "Travel"
+      whats_funded: "What's funded?"
+
   users:
     edit:
       country: "Country"
