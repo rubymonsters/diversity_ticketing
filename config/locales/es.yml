@@ -93,6 +93,32 @@ es:
       reject: "Rechazar"
       revert: "Revertir"
 
+  applications:
+    form:
+      agree-terms-and-conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket"
+      code-of-conduct: "código de conducta"
+      email: "Email"
+      email-confirmation: "Confirmación de email"
+      name: "Nombre"
+      please-fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
+      save-as-draft: "Guardar como un borrador"
+      sign-in: "iniciar sesión"
+      sign-in-request: "¿Te gustaría %{href} para utilizar la información de tu cuenta y guardar esta solicitud?"
+      submit-application: "Enviar solicitud"
+      terms-and-conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas racializadas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms-and-conditions_2: "entrada a la conferencia,"
+      terms-and-conditions_3: "costes del viaje,"
+      terms-and-conditions_4: "alojamiento,"
+      terms-and-conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms-and-conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms-and-conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa-need: "Necesito una visa para poder asistir"
+    continue_as_guest:
+      title: "¿Cómo te gustaría solicitar un ticket?"
+
   users:
     edit:
       country: "País"
@@ -127,7 +153,3 @@ es:
     delete_account:
       delete-button: "Borrar cuenta"
       title: "Borrar cuenta"
-
-  applications:
-    continue_as_guest:
-      title: "¿Cómo te gustaría solicitar un ticket?"
