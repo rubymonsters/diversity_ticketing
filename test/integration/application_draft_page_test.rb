@@ -48,6 +48,7 @@ feature 'Application draft' do
     visit event_application_path(@event.id, @draft.id)
 
     fill_in 'Email confirmation', with: @user.email
+    
     check('I agree with the following Terms and Conditions*')
 
     click_button('Submit application')
