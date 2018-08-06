@@ -53,7 +53,7 @@ es:
       delete-application: "Borrar solicitud"
       name: "Nombre"
       email: "Email"
-      home-link: "Página de inicio"
+      home-link: "Inicio"
       reject: "Denegar"
       revert: "Revertir"
       show-event-details: 'Ir a detalles del evento'
@@ -85,7 +85,7 @@ es:
       delete: "Borrar"
       delete-event: "Borrar evento"
       edit-event: "Editar evento"
-      home-link: "Página de inicio"
+      home-link: "Inicio"
       organizer-details: "Detalles del organizador"
       organizer-email: "Email"
       organizer-name: "Nombre"
@@ -107,7 +107,7 @@ es:
       sign-in: "iniciar sesión"
       sign-in-request: "¿Te gustaría %{href} para utilizar la información de tu cuenta y guardar esta solicitud?"
       submit-application: "Enviar solicitud"
-      terms-and-conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas racializadas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms-and-conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
       terms-and-conditions_2: "entrada a la conferencia,"
       terms-and-conditions_3: "costes del viaje,"
       terms-and-conditions_4: "alojamiento,"
@@ -117,6 +117,25 @@ es:
       terms-and-conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       visa-need: "Necesito una visa para poder asistir"
     continue_as_guest:
+      application-for: "Solicitud para %{event_name}"
+      benefits-of-account: "Con una cuenta gratuita en Diversity Tickets puedes:
+        <ul><li>revisar y gestionar todas tus solicitudes en tu panel de solicitudes</li>
+        <li>guardar solicitudes como borradores antes de enviarlas</li>
+        <li>retornar a tu borrador más adelante para terminarlo y enviarlo</li>
+        <li>revisar tus solicitudes enviadas para editarlas o borrarlas si has cambiado de opinión
+          o tu situación ha cambiado antes de la fecha límite de la conferencia</li>
+        <li>guardar datos personales como nombre o email para solicitudes potenciales
+          (susceptible de modificación en todo momento)</li>
+        <li>gestionar tu información personal o preferencias de email en las preferencias de cuenta
+          y decidir qué información te gustaría compartir y/o recibir</li>
+        <li>elegir o recibir novedades sobre las últimas conferencias o otros eventos interesantes para ti</li></ul>"
+      benefits-of-account-title: "Beneficios de crear una cuenta"
+      create-an-account: "Crear una cuenta"
+      continue-as-guest: "Continuar como invitada/o"
+      events-link: "Evento"
+      home-link: "Inicio"
+      guest-warning: "Si continuas como invitado no podrás guardar o modificar tu solicitud más adelante"
+      sign-me-in: "Iniciar sesión"
       title: "¿Cómo te gustaría solicitar un ticket?"
 
   users:

@@ -119,7 +119,28 @@ en:
       visa-need: "I will need a visa to attend"
 
     continue_as_guest:
+      application-for: "Application for %{event_name}"
+      benefits-of-account: "If you have a free user account with Diversity Tickets you can:
+        <ul><li>review and manage all of your applications in your applications dashboard</li>
+        <li>save applications as a draft before submission</li>
+        <li>come back to your draft later to finish and submit it</li>
+        <li>come back to your submitted applications later to edit them or withdraw your application
+          in case you changed your mind or your situation has changed before the end of the application deadline</li>
+        <li>save personal data such as your name and email address that will be saved
+          for your future applications (you will still be able to individually adjust that information)</li>
+        <li>manage your personal information and email preferences in your account settings
+          and decide which information you would like to share and/or receive</li>
+        <li>choose to receive updates about our latest conferences or other interesting events for you</li></ul>"
+      benefits-of-account-title: "Benefits of creating account"
+      create-an-account: "Create an account"
+      continue-as-guest: "Continue as guest"
+      events-link: "Event"
+      home-link: "Home"
+      guest-warning: "If you continue as a guest you will not be able to save or come back to your application."
+      sign-me-in: "Sign me in"
       title: "How would you like to apply?"
+
+
 
   users:
     edit:
