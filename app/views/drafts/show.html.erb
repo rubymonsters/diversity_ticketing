@@ -1,6 +1,6 @@
 <p class="breadcrumb">
-  <%= link_to 'Home', root_path %> >
-  <%= link_to 'Your applications', user_applications_path(current_user.id) %> >
+  <%= link_to t('.home_link'), root_path %> >
+  <%= link_to t('.your_applications'), user_applications_path(current_user.id) %> >
   Draft for <%= @event.name %>
 </p>
 
