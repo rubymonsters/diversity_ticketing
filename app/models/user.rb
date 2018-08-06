@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :tags, through: :taggings, foreign_key: :user_id
 
   attr_accessor :new_password
+  attr_accessor :password_optional
 
   def self.admin
   	where(admin: true)
@@ -14,5 +15,9 @@ class User < ApplicationRecord
 
   def self.created_last_30_days
     where('created_at > ?', 31.days.ago)
+  end
+
+  def password_optional?
+    password_optional
   end
 end

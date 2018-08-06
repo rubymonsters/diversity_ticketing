@@ -57,6 +57,10 @@ class ActiveSupport::TestCase
     click_button 'Sign in'
   end
 
+  def sign_out
+    click_link 'Sign out'
+  end
+
   def make_event_params(event_params = {})
     defaults = {
       name: 'Event',
@@ -72,6 +76,7 @@ class ActiveSupport::TestCase
       country: 'Germany',
       deadline: 5.days.from_now,
       number_of_tickets: 10,
+      ticket_funded: true,
       approved: false,
       application_process: 'selection_by_travis'
     }
@@ -97,6 +102,8 @@ class ActiveSupport::TestCase
       country: 'Germany',
       deadline: 5.days.from_now,
       number_of_tickets: 10,
+      ticket_funded: true,
+      approved: false,
       application_process: 'selection_by_travis'
     }
     defaults.merge(event_params)

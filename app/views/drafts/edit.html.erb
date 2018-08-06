@@ -1,11 +1,11 @@
-<%= form_for @application, url: event_application_path(params[:event_id], @application.id), builder: ::FormBuilder do |f| %>
+<%= form_for @draft, url: event_application_path(params[:event_id], @draft.id), builder: ::FormBuilder do |f| %>
 
-  <% if @application.errors.any? %>
+  <% if @draft.errors.any? %>
     <div class="error">
-      <p><%= pluralize(@application.errors.count, "error") %> stopped this application from being saved:</p>
+      <p><%= pluralize(@draft.errors.count, "error") %> stopped this draft from being saved:</p>
       <ul>
-        <% @application.errors.messages.each do |field, messages| %>
-          <li><%= @application.class.human_attribute_name(field) %> <%= join_messages(messages) %></li>
+        <% @draft.errors.messages.each do |field, messages| %>
+          <li><%= @draft.class.human_attribute_name(field) %> <%= join_messages(messages) %></li>
         <% end %>
       </ul>
     </div>
@@ -64,7 +64,7 @@
   </section>
 
   <div class="form_field">
-    <%= link_to 'Back', event_application_path(@event.id, @application.id), class: "btn btn-edit" %>
-    <%= f.submit("Apply changes", class: "btn btn-save") %>
+    <%= link_to 'Back', event_draft_path(@event.id, @draft.id), class: "btn btn-edit" %>
+    <%= f.submit("Save changes", class: "btn btn-save", formaction: event_draft_path(params[:event_id])) %>
   </div>
 <% end %>

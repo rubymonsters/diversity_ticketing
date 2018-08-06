@@ -17,6 +17,7 @@ class Event < ApplicationRecord
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }, unless: :skip_validation
   validates :number_of_tickets, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, presence: true, unless: :skip_validation
   validates :twitter_handle, format: { with: /\A@?\w+\z/ }, allow_nil: true
+  validates :ticket_funded, inclusion: { in: [true] }, unless: :skip_validation
 
   accepts_nested_attributes_for :tags
 

@@ -1,7 +1,7 @@
 require "report_exporter"
 
 class UsersController < Clearance::UsersController
-  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy, :applications, :delete_account]
+  before_action :ensure_correct_user, except: [:new, :create]
 
   def show
     @categorized_user_events = {
@@ -34,37 +34,39 @@ class UsersController < Clearance::UsersController
   end
 
   def update
-    if user_params[:password] === ''
-      @user.update(user_params)
-      flash.now[:error] = "Password is a mandatory field"
-      render :edit
-    elsif @user.authenticated?(params[:user][:password])
-      if @user.update(user_params) && params[:commit] == "Delete account"
-        delete_account(@user)
-      elsif @user.update(user_params)
-        if user_params[:new_password] != ''
-          @user.update_attributes(password: user_params[:new_password])
-        end
+    if (user_params[:new_password] != '') || (user_params[:email] != @user.email)
+      update_protected_params
+    else
+      @user.password_optional = true
+      if @user.update(user_params)
         redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
       else
-      render :edit
+        redirect_to edit_user_path(@user), alert: "Data could not be updated."
       end
-    else
-      flash[:error] = "Incorrect password"
-      redirect_to edit_user_path(@user)
     end
   end
 
   def destroy
-    if @user.destroy
-      flash[:alert] = "Your Account has been deleted successfully."
+    if @user.authenticated?(params[:user][:password])
+      @user.destroy
+      flash[:alert] = "Your account has been deleted successfully."
       redirect_to root_path
     else
-      render :edit
+      if user_params[:password] === ''
+        message = "Password is a mandatory field"
+      else
+        message = "Incorrect password"
+      end
+      flash.now[:error] = message
+      render :delete_account
     end
   end
 
-  def delete_account(user)
+  def confirm_delete
+    render :confirm_delete
+  end
+
+  def delete_account
     render :delete_account
   end
 
@@ -98,6 +100,25 @@ class UsersController < Clearance::UsersController
         user.name = name
         user.email = email
         user.password = password
+      end
+    end
+
+    def update_protected_params
+      if @user.authenticated?(user_params[:password])
+        if @user.update_attributes(user_params)
+          @user.update_attributes(password: user_params[:new_password]) if user_params[:new_password] != ''
+          redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+        else
+          redirect_to edit_user_path(@user), alert: "Data could not be updated."
+        end
+      else
+        if user_params[:password] === ''
+          message = "Password is a mandatory field"
+        else
+          message = "Incorrect password"
+        end
+        flash.now[:error] = message
+        render :edit
       end
     end
 end

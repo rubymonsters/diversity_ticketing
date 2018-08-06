@@ -24,7 +24,7 @@
               <li>
                 <p class="event-name">
                   <span class="conflogo--small"><%= event_image application.event %></span>
-                  <%= link_to application.name, event_application_path(id: application.id, event_id: application.event.id), title: application.event.name %>
+                  <%= link_to application.name, show_admin_event_application_path(id: application.id, event_id: application.event_id), title: application.event.name %>
                 </p>
                 <p>
                   <% unless @event.application_process == "selection_by_organizer" %>
@@ -50,8 +50,8 @@
                   <% end %>
 
                   <%= link_to admin_event_application_path(application.id, application.event_id), method: :delete,
-                      data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
-                    <span class="icon-delete-application" aria-label="trashcan icon"></span>
+                      data: { confirm: "Are you sure?"}, class: "btn btn-delete delete-application", title: "delete" do %>
+                    Delete
                   <% end %>
                 </p>
               </li>
