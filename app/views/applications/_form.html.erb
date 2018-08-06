@@ -12,11 +12,11 @@
   <% end %>
 
   <section class="box">
-    <h2 class="box-title"><%= t(".please-fill") %></h2>
+    <h2 class="box-title"><%= t(".please_fill") %></h2>
     <% unless current_user %>
       <p>
         <em>
-          <%= t('.sign-in-request', href: link_to(t('.sign-in'), sign_in_path)).html_safe %>
+          <%= t('.sign_in_request', href: link_to(t('.sign_in'), sign_in_path)).html_safe %>
 
         </em>
       </p>
@@ -32,7 +32,7 @@
       <%= f.form_field :text_field, :name, t('.name') %>
       <%= f.form_field :text_field, :email, t('.email') %>
     <% end %>
-    <%= f.form_field :text_field, :email_confirmation, t('.email-confirmation') %>
+    <%= f.form_field :text_field, :email_confirmation, t('.email_confirmation') %>
 
     <% if @event.travel_funded? %>
       <div class="form_field">
@@ -46,35 +46,35 @@
     <div class="form_field--check">
       <%= label_tag do %>
       <%= f.check_box :terms_and_conditions %>
-      <span class="check-label"><%= t('.agree-terms-and-conditions')%></span>
+      <span class="check-label"><%= t('.agree_terms_and_conditions')%></span>
       <% end %>
       <p id="terms-and-conditions">
-        <%= t('.terms-and-conditions_1', event_name: @event.name)%>
+        <%= t('.terms_and_conditions_1', event_name: @event.name)%>
       </p>
       <ul>
         <% if @event.ticket_funded? %>
-          <li><%= t('.terms-and-conditions_2')%></li>
+          <li><%= t('.terms_and_conditions_2')%></li>
         <% end %>
         <% if @event.travel_funded? %>
-          <li><%= t('.terms-and-conditions_3')%></li>
+          <li><%= t('.terms_and_conditions_3')%></li>
         <% end %>
         <% if @event.accommodation_funded? %>
-          <li><%= t('.terms-and-conditions_4')%></li>
+          <li><%= t('.terms_and_conditions_4')%></li>
         <% end %>
-        <%= raw t('.terms-and-conditions_5') %>
+        <%= raw t('.terms_and_conditions_5') %>
 
       </ul>
       <% if @event.travel_funded? %>
-        <p><%=t('.terms-and-conditions_6') %></p>
+        <p><%=t('.terms_and_conditions_6') %></p>
       <% end %>
-       <%= t('.terms-and-conditions_7', event: @event.name, href: link_to(t('.code-of-conduct'), @event.code_of_conduct)).html_safe %>
+       <%= t('.terms_and_conditions_7', event: @event.name, href: link_to(t('.code_of_conduct'), @event.code_of_conduct)).html_safe %>
     </div>
   </section>
 
   <div class="form_field">
     <% if current_user %>
-      <%= f.submit(t('.save-as-draft'), class: "btn btn-edit", formaction: event_drafts_path(params[:event_id])) %>
+      <%= f.submit(t('.save_as_draft'), class: "btn btn-edit", formaction: event_drafts_path(params[:event_id])) %>
     <% end %>
-    <%= f.submit(t('.submit-application'), class: "btn btn-save") %>
+    <%= f.submit(t('.submit_application'), class: "btn btn-save") %>
   </div>
 <% end %>

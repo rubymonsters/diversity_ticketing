@@ -12,7 +12,7 @@
   <% end %>
 
   <section class="box">
-    <h2 class="box-title"><%=t('.please-fill')%></h2>
+    <h2 class="box-title"><%=t('.please_fill')%></h2>
     <%= f.form_field :text_area, :attendee_info_1, t('.attendee_info_1', event_name: @event.name) %>
     <%= f.form_field :text_area, :attendee_info_2, t('.attendee_info_2')%>
     <% if current_user %>
@@ -24,13 +24,13 @@
       <%= f.form_field :text_field, :name, t('.name') %>
       <%= f.form_field :text_field, :email, t('.email') %>
     <% end %>
-    <%= f.form_field :text_field, :email_confirmation, t('.email-confirmation')%>
+    <%= f.form_field :text_field, :email_confirmation, t('.email_confirmation')%>
 
     <% if @event.travel_funded? %>
       <div class="form_field">
         <%= label_tag do %>
         <%= f.check_box :visa_needed %>
-          <%= t('.visa-needed') %>
+          <%= t('.visa_needed') %>
         <% end %>
       </div>
     <% end %>
@@ -38,32 +38,32 @@
     <div class="form_field--check">
       <%= label_tag do %>
       <%= f.check_box :terms_and_conditions, checked: false %>
-        <span class="check-label"><%=t('.agree-terms-and-conditions') %></span>
+        <span class="check-label"><%=t('.agree_terms_and_conditions') %></span>
       <% end %>
       <p id="terms-and-conditions">
-        <%= t('.terms-and-conditions_1') %>
+        <%= t('.terms_and_conditions_1') %>
       </p>
       <ul>
         <% if @event.ticket_funded? %>
-          <li><%= t('.terms-and-conditions_2') %></li>
+          <li><%= t('.terms_and_conditions_2') %></li>
         <% end %>
         <% if @event.travel_funded? %>
-          <li><%= t('.terms-and-conditions_3') %></li>
+          <li><%= t('.terms_and_conditions_3') %></li>
         <% end %>
         <% if @event.accommodation_funded? %>
-          <li><%= t('.terms-and-conditions_4') %></li>
+          <li><%= t('.terms_and_conditions_4') %></li>
         <% end %>
-        <%=raw t('.terms-and-conditions_5') %>
+        <%=raw t('.terms_and_conditions_5') %>
       </ul>
       <% if @event.travel_funded? %>
-        <p><%= t('.terms-and-conditions_6') %></p>
+        <p><%= t('.terms_and_conditions_6') %></p>
       <% end %>
-      <p><%= t('.terms-and-conditions_7', event: @event.name, href: link_to(t('.code-of-conduct'), @event.code_of_conduct)).html_safe %></p>
+      <p><%= t('.terms_and_conditions_7', event: @event.name, href: link_to(t('.code_of_conduct'), @event.code_of_conduct)).html_safe %></p>
     </div>
   </section>
 
   <div class="form_field">
     <%= link_to t('.back'), event_draft_path(@event.id, @draft.id), class: "btn btn-edit" %>
-    <%= f.submit(t('.save-changes'), class: "btn btn-save", formaction: event_draft_path(params[:event_id])) %>
+    <%= f.submit(t('.save_changes'), class: "btn btn-save", formaction: event_draft_path(params[:event_id])) %>
   </div>
 <% end %>

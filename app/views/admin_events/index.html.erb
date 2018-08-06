@@ -3,13 +3,13 @@
 <div class="box">
   <h2><%= t('.statistics') %></h2>
     <ul class="admin-list">
-      <li><%= t('.total-conferences') %><strong><%= @events.count %></strong></li>
-      <li><%= t('.conferences-since') %><%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
-      <li class="border"><%=t('.new-users-last-30-days')%><strong><%= @new_users.count %></strong></li>
+      <li><%= t('.total_conferences') %><strong><%= @events.count %></strong></li>
+      <li><%= t('.conferences_since') %><%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
+      <li class="border"><%=t('.new_users_last_30_days')%><strong><%= @new_users.count %></strong></li>
     </ul>
     <ul class="admin-list">
       <li>
-        <%= t('.most-conferences')%>
+        <%= t('.most_conferences')%>
         <strong>
           <ol>
             <% for index in 1..@countries.length%>
@@ -24,10 +24,10 @@
 
 <p>
 
-  <%= link_to t('.download-events-report'), admin_path(format: :csv),
+  <%= link_to t('.download_events_report'), admin_path(format: :csv),
     class: "btn btn-save"%>
 
-  <%= link_to t('.download-annual-events-report'), admin_annual_path(format: :csv),
+  <%= link_to t('.download_annual_events_report'), admin_annual_path(format: :csv),
     class: "btn btn-save"%>
 </p>
 
@@ -38,7 +38,7 @@
     <div class="admin">
       <ul class="admin-list">
         <% if events.empty? %>
-        <p><%= t(".no-events-to-approve")%></p>
+        <p><%= t(".no_events_to_approve")%></p>
         </ul>
         <% elsif events.first.approved? %>
           <% @approved_events_deadline.each do |heading, events| %>
@@ -71,13 +71,13 @@
                     <% end %>
 
                     <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
-                        data: { confirm: t('.are-you-sure')}, class: "icon tooltip", title: t('.delete') do %>
+                        data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: t('.delete') do %>
                       <span class="icon-delete" aria-label="trashcan icon"></span>
                     <% end %>
                   </div>
                   <p>
-                    <%= link_to t('.download-csv'), event_admin_path(id: event.id, format: :csv),
-                        class: "btn btn-save", title: t('.download-data')%>
+                    <%= link_to t('.download_csv'), event_admin_path(id: event.id, format: :csv),
+                        class: "btn btn-save", title: t('.download_data')%>
                   </p>
                 </li>
                 <% end %>
@@ -123,14 +123,14 @@
               <% end %>
 
               <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
-                  data: { confirm: t('.are-you-sure')}, class: "icon tooltip", title: t('.delete') do %>
+                  data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: t('.delete') do %>
                 <span class="icon-delete" aria-label="trashcan icon"></span>
               <% end %>
             </div>
             <p>
               <% if event.approved %>
-              <%= link_to t('.download-csv'), event_admin_path(id: event.id, format: :csv),
-                  class: "btn btn-save", title: t('.download-data') %>
+              <%= link_to t('.download_csv'), event_admin_path(id: event.id, format: :csv),
+                  class: "btn btn-save", title: t('.download_data') %>
               <% end %>
             </p>
           </li>

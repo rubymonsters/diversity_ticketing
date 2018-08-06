@@ -1,15 +1,15 @@
-<p class="breadcrumb"><%= link_to t('.home-link'), root_path %> > <%= link_to t('.events-link'), events_path %> > <%= link_to @event.name, event_path(@event) %> ><%= t('.application-for', event_name: @event.name) %></p>
+<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= link_to t('.events_link'), events_path %> > <%= link_to @event.name, event_path(@event) %> ><%= t('.application_for', event_name: @event.name) %></p>
 
 <h2><%= t(".title") %></h2>
 <section class="box">
-  <h3><%=t('.benefits-of-account-title') %></h3>
+  <h3><%=t('.benefits_of_account_title') %></h3>
   <p>
-    <%= raw t('.benefits-of-account') %>
+    <%= raw t('.benefits_of_account') %>
     <strong>
-      <%= t('.guest-warning') %>
+      <%= t('.guest_warning') %>
     </strong>
   </p>
 </section>
-<%= link_to t('.sign-me-in'), sign_in_path, class: "btn btn-save" %>
-<%= link_to t('.create-an-account'), sign_up_path(@event.id), class: "btn btn-save" %>
-<%= link_to t('.continue-as-guest'), new_event_application_path(@event.id, guest: @guest), class: "btn btn-edit" %>
+<%= link_to t('.sign_me_in'), sign_in_path, class: "btn btn-save" %>
+<%= link_to t('.create_an_account'), sign_up_path(@event.id), class: "btn btn-save" %>
+<%= link_to t('.continue_as_guest'), new_event_application_path(@event.id, guest: @guest), class: "btn btn-edit" %>

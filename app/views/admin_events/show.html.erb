@@ -1,5 +1,5 @@
 <p class="breadcrumb">
-  <%= link_to t(".home-link"), root_path %> > <%= link_to t(".admin-link"), admin_path %> > <%= @event.name %>
+  <%= link_to t(".home_link"), root_path %> > <%= link_to t(".admin_link"), admin_path %> > <%= @event.name %>
 </p>
 
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
@@ -50,7 +50,7 @@
                   <% end %>
 
                   <%= link_to admin_event_application_path(application.id, application.event_id), method: :delete,
-                      data: { confirm: t(".are-you-sure")}, class: "btn btn-delete delete-application", title: t(".delete").downcase do %>
+                      data: { confirm: t(".are_you_sure")}, class: "btn btn-delete delete-application", title: t(".delete").downcase do %>
                     <%= t(".delete")%>
                   <% end %>
                 </p>
@@ -65,13 +65,13 @@
 
 <div class="two-columns">
   <section class="box">
-    <h2 class="box-title"><%=t(".organizer-details")%></h2>
+    <h2 class="box-title"><%=t(".organizer_details")%></h2>
     <div class="detail-pair">
-      <strong><%=t('.organizer-name')%></strong>
+      <strong><%=t('.organizer_name')%></strong>
       <%= @event.organizer_name %>
     </div>
     <div class="detail-pair">
-      <strong>t('.organizer-email')%></strong>
+      <strong>t('.organizer_email')%></strong>
       <%= @event.organizer_email %>
     </div>
   </section>
@@ -80,19 +80,19 @@
 </div>
 
 <div class="form_field">
-  <%= link_to t(".edit-event"), edit_event_path(@event.id), class: "btn btn-edit" %>
-  <%= link_to t("delete-event"), event_path(@event.id), method: :delete,
-      data: {confirm: t(".are-you-sure")}, class: "btn btn-delete" %>
+  <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
+  <%= link_to t("delete_event"), event_path(@event.id), method: :delete,
+      data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
   <% unless @event.approved? %>
   <span class="approve-button">
   <%= form_for :approve,
         url: approve_admin_event_path(@event, t(".approve")),
         html: { method: :post } do |form| %>
-        <%= form.submit(t('.approve-event'), class: "btn btn-save", title: t(".approve").downcase) %>
+        <%= form.submit(t('.approve_event'), class: "btn btn-save", title: t(".approve").downcase) %>
         <span>
           <%= form.check_box :tweet, checked: true %>
           <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
-          <%= t('.tweet-event') %>
+          <%= t('.tweet_event') %>
         </span>
       </span>
       <% end %>

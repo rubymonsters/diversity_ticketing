@@ -27,9 +27,9 @@
     </section>
 
     <section class="box col-6">
-        <h2><%= t(".email-notifications") %></h2>
-        <p><%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %></p>
-        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive-emails-tag') %><p>
+        <h2><%= t(".email_notifications") %></h2>
+        <p><%= form.check_box :country_email_notifications %> <%= t('.receive_emails_country') %></p>
+        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive_emails_tag') %><p>
     </section>
 
     <section class="box col-6">
@@ -43,9 +43,9 @@
       </div>
     </section>
     <div class="submit-field">
-      <%= link_to t("users.delete_account.delete-button"), confirm_delete_path(id: @user.id),
+      <%= link_to t("users.delete_account.delete_button"), confirm_delete_path(id: @user.id),
           class: "btn btn-delete" %>
-      <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
+      <%= form.submit(t(".save_changes"), class: "btn btn-save") %>
     </div>
   </div>
 <% end %>
