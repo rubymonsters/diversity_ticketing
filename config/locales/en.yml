@@ -26,6 +26,12 @@ en:
         attendee_info_1: ""
         attendee_info_2: ""
     errors:
+      event:
+        attributes:
+          website:
+            invalid: "should be a full URL, e.g. https://myconference.com"
+          code_of_conduct:
+            invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
       models:
         application:
           attributes:
@@ -33,49 +39,44 @@ en:
               blank: "Please state why you want to attend this event"
             attendee_info_2:
               blank: "Please state why you're applying for a diversity ticket"
-        event:
-          attributes:
-            website:
-              invalid: "should be a full URL, e.g. https://myconference.com"
-            code_of_conduct:
-              invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
 
-  admin_applications:
-    show:
-      home-link: "Home"
-      admin-link: "Admin"
-      application-by: "Application by %{application_name}"
-      application-for: "Application for %{event_name}"
-      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
-      attendee_info_2: "Please share with us why you're applying for a diversity ticket."
-      name: "Name"
-      email: "Email"
-      visa-need: "I need a Visa."
-      application-status: "Application status: #{application_status}"
-      approve: "Approve"
-      reject: "Reject"
-      revert: "Revert"
-      delete-application: "Delete application"
-      are-you-sure: "Are you sure you want to delete this application?"
-      show-event-details: 'Show event details'
+
+admin_applications:
+  show:
+    admin-link: "Admin"
+    application-by: "Application by %{application_name}"
+    application-for: "Application for %{event_name}"
+    application-status: "Application status: #{application_status}"
+    approve: "Approve"
+    are-you-sure: "Are you sure you want to delete this application?"
+    attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+    attendee_info_2: "Please share with us why you're applying for a diversity ticket."
+    delete-application: "Delete application"
+    email: "Email"
+    home-link: "Home"
+    name: "Name"
+    reject: "Reject"
+    revert: "Revert"
+    show-event-details: 'Show event details'
+    visa-need: "I need a Visa."
 
 admin_events:
   index:
-    title: "Admin page"
-    statistics: "Statistics"
-    total-conferences: "Total conferences:"
+    are-you-sure: "Are you sure?"
     conferences-since: "Conferences since "
-    new-users-last-30-days: "New users in the last 30 days:"
-    most-conferences: "Most conferences"
-    download-events-report: "Download events report"
-    download-annual-events-report: "Download annual events report"
-    unapprove: "unapprove"
     edit: "edit"
     delete: "delete"
+    download-annual-events-report: "Download annual events report"
     download-csv: "Download CSV"
     download-data: "Download data"
-    are-you-sure: "Are you sure?"
+    download-events-report: "Download events report"
+    most-conferences: "Most conferences"
+    new-users-last-30-days: "New users in the last 30 days:"
     no-events-to-approve: "We currently don't have any events to approve"
+    title: "Admin page"
+    total-conferences: "Total conferences:"
+    statistics: "Statistics"
+    unapprove: "unapprove"
   show:
     admin-link: "Admin"
     applications: "Applications"
@@ -104,33 +105,35 @@ admin_events:
       save-changes: "Save changes"
       title: "Account settings"
     events:
-      title: "Your events"
       approved: "Approved"
-      unapproved: "Not approved so far"
       past: "Past"
+      title: "Your events"
+      unapproved: "Not approved so far"
+
     applications:
-      title: "Your applications"
-      submitted: "Submitted"
       drafts: "Drafts"
       info-description: "<p> Once an event date has passed your applications
       will vanish from this overview and all sensitive data will be removed from the database.</p>"
+      submitted: "Submitted"
+      title: "Your applications"
+
     confirm_delete:
-      title: "Are you sure?"
-      subtitle: "Deleting your account is irreversible."
+      are-you-sure: "Are you sure you want to delete your user account?"
       benefits-intro: "We would be sad to see you go and don't want you to miss out on the benefits of
       being a signed up user."
+      email-preferences: "<strong>Please note</strong> that you can manage your email preferences
+          in your account settings. You don't have to receive our newsletters if you
+          don't want to."
       list-of-benefits: "If you proceed with the account deletion the following things will happen:
       <li> Your submitted applications will still be valid. <strong>However:</strong> </li>
       <li> You will not be able to visit or manage your current applications or drafts anymore.</li>
       <li> New applications can only be submitted as a guest, unless you sign up for a new user account again.</li>
       <li> If you sign up again, you will not be able to retrieve your \"old\" data. </li>
       <li> As a guest you will be missing out on the opportunity to receive updates about our latest conferences or other interesting events for you.</li>"
-      email-preferences: "<strong>Please note</strong> that you can manage your email preferences
-          in your account settings. You don't have to receive our newsletters if you
-          don't want to."
-      are-you-sure: "Are you sure you want to delete your user account?"
       no-delete-button: "No, go back!"
       proceed-delete-button: "Yes, proceed!"
+      subtitle: "Deleting your account is irreversible."
+      title: "Are you sure?"
     delete_account:
       title: "Delete Account"
       delete-button: "Delete account"
