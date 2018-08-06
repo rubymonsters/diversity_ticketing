@@ -218,6 +218,7 @@ en:
       email: "Email"
       edit: "Edit"
       delete: "Delete"
+      home_link: "Home"
       name: "Name"
       show_event_details: 'Show event details'
       submit_application: "Submit application"
@@ -230,6 +231,7 @@ en:
       terms_and_conditions_6: "If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk."
       terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
       visa_need: "I will need a visa to attend"
+      your_applications: "Your applications"
 
   users:
     edit:

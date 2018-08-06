@@ -218,6 +218,7 @@ es:
       edit: "Editar"
       email: "Email"
       delete: "Eliminar"
+      home_link: "Inicio"
       name: "Nombre"
       show_event_details: 'Mostrar detalles del evento'
       submit_application: "Enviar solicitud"
@@ -230,6 +231,7 @@ es:
       terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
       terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       visa_need: "Necesito una visa para poder asistir"
+      your_applications: "Tus solicitudes"
 
   users:
     edit:
