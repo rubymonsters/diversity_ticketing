@@ -56,7 +56,7 @@ es:
       home-link: "Inicio"
       reject: "Denegar"
       revert: "Revertir"
-      show-event-details: 'Ir a detalles del evento'
+      show-event-details: 'Mostrar detalles del evento'
       visa-need: "Necesito una visa"
 
   admin_events:
@@ -163,14 +163,16 @@ es:
       agree-terms-and-conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       application-by: "Solicitud de %{applicant_name}"
       application-for: "Solicitud para %{event_name}"
-      approve: "Approve"
+      approve: "Aprobar"
       are-you-sure: "¿Estás segura/o de que quieres eliminar esta solicitud?"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
       attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      code-of-conduct: "Código de conducta"
       delete: "Eliminar"
       delete-application: "Eliminar solicitud"
       edit: "Edit"
       email: "Email"
+      email-confirmation: "Email confirmation"
       home-link: "Inicio"
       name: "Nombre"
       reject: "Denegar"
@@ -209,6 +211,25 @@ es:
       terms-and-conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
       terms-and-conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       visa-need: "Necesito una visa para poder asistir"
+    show:
+      are-you-sure: "¿Estás segura/o de que quieres eliminar este borrador?"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      edit: "Editar"
+      email: "Email"
+      delete: "Eliminar"
+      name: "Nombre"
+      show-event-details: 'Mostrar detalles del evento'
+      submit-application: "Enviar solicitud"
+      terms-and-conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms-and-conditions_2: "entrada a la conferencia,"
+      terms-and-conditions_3: "costes del viaje,"
+      terms-and-conditions_4: "alojamiento,"
+      terms-and-conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms-and-conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms-and-conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa-need: "Necesito una visa para poder asistir"
 
   users:
     edit:
@@ -226,7 +247,7 @@ es:
       title: "Tus eventos"
       unapproved: "Aún sin aprobar"
     applications:
-      drafts: "Bocetos"
+      drafts: "Borradores"
       info-description: "<p>Una vez haya pasado el evento, tu solicitud desaparecerá de esta página
       y toda tu información susceptible de ser sensible será borrada de la base de datos</p>"
       submitted: "Enviada"
@@ -236,7 +257,12 @@ es:
       benefits-intro: "Nos entristecería que te marchases y no queremos que te pierdas los beneficios de un usuario registrado"
       email-preferences: "<strong>Por favor, ten en cuenta</strong> que puedes gestionar tus emails
           en tus ajustes de cuenta. No tienes por qué recibir nuestras newsletters si no quieres."
-      list-of-benefits: "Si procedes a eliminar tu cuenta pasará lo siguiente: <li> Tus solicitudes enviadas seguirán siendo válidas. <strong>Sin embargo:</strong></li><li> Ya no serás capaz de visitar o gestionar tus solicitudes o borradores actuales.</li><li> Las nuevas solicitudes sólo se podrán enviar como usuario invitado, a no ser que registres una nueva cuenta. </li<li> Si te vuelves a registrar, no serás capaz de recuperar tus datos antiguos.</li><li> Como invitado perderás la oportunidad de recibir actualizaciones sobre las últimas conferencias o otros eventos interesantes para ti. </li>"
+      list-of-benefits: "Si procedes a eliminar tu cuenta pasará lo siguiente:
+        <li> Tus solicitudes enviadas seguirán siendo válidas. <strong>Sin embargo:</strong></li>
+        <li> Ya no serás capaz de visitar o gestionar tus solicitudes o borradores actuales.</li>
+        <li> Las nuevas solicitudes sólo se podrán enviar como usuario invitado, a no ser que registres una nueva cuenta. </li>
+        <li> Si te vuelves a registrar, no serás capaz de recuperar tus datos antiguos.</li>
+        <li> Como invitado perderás la oportunidad de recibir actualizaciones sobre las últimas conferencias o otros eventos interesantes para ti. </li>"
       no-delete-button: "¡No, ve atrás!"
       proceed-delete-button: "Sí, estoy segura/o"
       subtitle: "Eliminar tu cuenta es irreversible."
