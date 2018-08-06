@@ -8,11 +8,11 @@
   </div>
 
   <div class="col">
-    <h2><%= t(".title") %></h2>
+    <h2>Create your account</h2>
     <%= form_for @user, builder: ::FormBuilder do |form| %>
       <%= render partial: '/users/form', object: form %>
       <div class="submit-field">
-        <%= form.submit(class: "btn btn-save") %>
+        <%= form.submit(class: "btn btn-save", value: "Create your account") %>
       </div>
     <% end %>
   </div>

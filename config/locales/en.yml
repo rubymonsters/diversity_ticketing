@@ -40,59 +40,59 @@ en:
             attendee_info_2:
               blank: "Please state why you're applying for a diversity ticket"
 
+  admin_applications:
+    show:
+      admin-link: "Admin"
+      application-by: "Application by %{application_name}"
+      application-for: "Application for %{event_name}"
+      application-status: "Application status: #{application_status}"
+      approve: "Approve"
+      are-you-sure: "Are you sure you want to delete this application?"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket."
+      delete-application: "Delete application"
+      email: "Email"
+      home-link: "Home"
+      name: "Name"
+      reject: "Reject"
+      revert: "Revert"
+      show-event-details: 'Show event details'
+      visa-need: "I need a Visa."
 
-admin_applications:
-  show:
-    admin-link: "Admin"
-    application-by: "Application by %{application_name}"
-    application-for: "Application for %{event_name}"
-    application-status: "Application status: #{application_status}"
-    approve: "Approve"
-    are-you-sure: "Are you sure you want to delete this application?"
-    attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
-    attendee_info_2: "Please share with us why you're applying for a diversity ticket."
-    delete-application: "Delete application"
-    email: "Email"
-    home-link: "Home"
-    name: "Name"
-    reject: "Reject"
-    revert: "Revert"
-    show-event-details: 'Show event details'
-    visa-need: "I need a Visa."
-
-admin_events:
-  index:
-    are-you-sure: "Are you sure?"
-    conferences-since: "Conferences since "
-    edit: "edit"
-    delete: "delete"
-    download-annual-events-report: "Download annual events report"
-    download-csv: "Download CSV"
-    download-data: "Download data"
-    download-events-report: "Download events report"
-    most-conferences: "Most conferences"
-    new-users-last-30-days: "New users in the last 30 days:"
-    no-events-to-approve: "We currently don't have any events to approve"
-    title: "Admin page"
-    total-conferences: "Total conferences:"
-    statistics: "Statistics"
-    unapprove: "unapprove"
-  show:
-    admin-link: "Admin"
-    applications: "Applications"
-    approve: "Approve"
-    approve-event: "Approve event"
-    are-you-sure: "Are you sure?"
-    delete: "Delete"
-    delete-event: "Delete event"
-    edit-event: "Edit event"
-    home-link: "Home"
-    organizer-details: "Organizer details"
-    organizer-email: "Email"
-    organizer-name: "Name"
-    tweet-event: "Tweet it"
-    reject: "Reject"
-    revert: "Revert"
+  admin_events:
+    index:
+      are-you-sure: "Are you sure?"
+      approve: "approve"
+      conferences-since: "Conferences since "
+      edit: "edit"
+      delete: "delete"
+      download-annual-events-report: "Download annual events report"
+      download-csv: "Download CSV"
+      download-data: "Download data"
+      download-events-report: "Download events report"
+      most-conferences: "Most conferences"
+      new-users-last-30-days: "New users in the last 30 days:"
+      no-events-to-approve: "We currently don't have any events to approve"
+      title: "Admin page"
+      total-conferences: "Total conferences:"
+      statistics: "Statistics"
+      unapprove: "unapprove"
+    show:
+      admin-link: "Admin"
+      applications: "Applications"
+      approve: "Approve"
+      approve-event: "Approve event"
+      are-you-sure: "Are you sure?"
+      delete: "Delete"
+      delete-event: "Delete event"
+      edit-event: "Edit event"
+      home-link: "Home"
+      organizer-details: "Organizer details"
+      organizer-email: "Email"
+      organizer-name: "Name"
+      tweet-event: "Tweet it"
+      reject: "Reject"
+      revert: "Revert"
 
   users:
     edit:
@@ -109,14 +109,12 @@ admin_events:
       past: "Past"
       title: "Your events"
       unapproved: "Not approved so far"
-
     applications:
       drafts: "Drafts"
       info-description: "<p> Once an event date has passed your applications
       will vanish from this overview and all sensitive data will be removed from the database.</p>"
       submitted: "Submitted"
       title: "Your applications"
-
     confirm_delete:
       are-you-sure: "Are you sure you want to delete your user account?"
       benefits-intro: "We would be sad to see you go and don't want you to miss out on the benefits of
