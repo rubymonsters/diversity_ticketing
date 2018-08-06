@@ -59,7 +59,7 @@
       <% end %>
 
       <section class="box">
-        <%= f.form_field :text_field, :email_confirmation, 'Email confirmation' %>
+        <%= f.form_field :text_field, :email_confirmation, t('.email-confirmation') %>
         <div class="form_field--check">
           <%= label_tag do %>
           <%= f.check_box :terms_and_conditions, checked: false %>
@@ -85,7 +85,7 @@
           <% end %>
           <p><%= t('.terms-and-conditions_7', event: @event.name, href: link_to(t('.code-of-conduct'), @event.code_of_conduct)).html_safe %></p>
           </div>
-          </section>
+        </section>
       <div>
         <%= f.submit(t('.submit-application'), class: "btn btn-save submit-application") %>
     <% end %>
