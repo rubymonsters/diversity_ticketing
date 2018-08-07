@@ -415,6 +415,13 @@ en:
       main_presentation_subtitle: "Because <em class=\"em--red\">diversity</em> is what <em class=\"em--red\">makes communities whole</em>."
       organizers: "Organizers"
       submit_event: "Submit your upcoming events."
+    privacy:
+      introduction: "We take the protection of our users (\"User/you/your\") personal data very seriously and strictly comply with applicable data protection laws and regulations. In our privacy policy below (\"Privacy Policy\") we provide you with an overview of what data we collect for what purpose and how we ensure the protection of the data."
+      introduction_title: "Introduction"
+      last_updated: "Last updated: May 25th, 2018"
+      title: "Privacy policy"
+
+
 
   users:
     edit:

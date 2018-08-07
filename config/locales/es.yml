@@ -410,6 +410,13 @@ es:
       why_even_not_approved: "¿Por qué no ha sido aprobado mi evento?"
       why_even_not_approved_anchor: "conf_4"
       why_event_not_approved_answer: "<p>Si tu evento no ha sido aprobado, puedes contactarnos para conocer más detalles.</p>"
+    home:
+      attendees: "Solicitantes"
+      find_event: "Encuentra e inscríbete en las próximas conferencias"
+      main_presentation: "Ayudamos a eventos a tener una comunidad <em class=\"em--yellow\">más diversa</em>. Y te ayudamos a <em class=\"em--yellow\">encontrar esos eventos</em>."
+      main_presentation_subtitle: "Porque <em class=\"em--red\">la diversidad</em> es lo que <em class=\"em--red\">completa las comunidades</em>."
+      organizers: "Organizadores"
+      submit_event: "Sube tu próxima conferencia"
 
 
   users:
