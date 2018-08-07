@@ -260,8 +260,50 @@ en:
       selection_by_organizer: "We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
       selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*.
         <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
-      not_shown: "Not shown to the public"
-
+      not_shown: "Not shown to the public."
+    form:
+      accomodation: "Accomodation"
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions:"
+      application_by_organizer: "The organizer is handling both the selection and application process and only wants their event listed on this site. Applicants have to apply through their site / app."
+      application_form_link: "Link to application form"
+      application_form_link_placeholder: "e.g. https://myconference.com/apply"
+      application_selection: "Application & Selection"
+      approve_event: "Approve event?"
+      cant_find_tag: "Can’t find the tag you want? Suggest a new one."
+      date_placeholder: "dd.mm.yyyy"
+      deadline_application: "Deadline for applications"
+      description: "Description"
+      directions_applicants: "Directions for applicants"
+      directions_applicants_placeholder: "Let the applicants know about any additional information like:
+        - What does the ticket include?
+        E.g.: The ticket is valid for both conference days, ...
+        - Additional organizational info
+        - ..."
+      diversity_tickets_info: "* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes."
+      from: "From"
+      funded: "Funded"
+      event_city: "City"
+      event_code_of_conduct: "Link to code of conduct"
+      event_code_of_conduct_placeholder: "e.g. https://myconference.com/code_of_conduct"
+      event_details: "Event details"
+      event_logo: "Logo"
+      event_logo_description: Choose a square image for best displaying results.
+      event_tags: "Tags"
+      event_twitter_handler: "Twitter handle"
+      event_twitter_placeholder: "my_conf"
+      event_website: "Website"
+      event_website_placeholder: "e.g. https://myconference.com"
+      not_shown: "Not shown to the public."
+      number_of_tickets: "Number of available diversity tickets"
+      organizer_details: "Organizer details"
+      selection_by_organizer: "The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org."
+      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*."
+      select_country: "Select country *"
+      state_province: "State/Province"
+      terms_and_conditions: "I will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
+      ticket: "Ticket*"
+      to: "To"
+      travel: "Travel"
 
   users:
     edit:

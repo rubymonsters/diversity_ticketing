@@ -261,6 +261,49 @@ es:
       selection_by_travis: "Los procesos de selección e inscripción serán llevados a cabo por diversitytickets.org*
         <p>* diversitytickets.org es una app de la Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de la Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
       not_shown: "No visible al público"
+    form:
+      accomodation: "Alojamiento"
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones:"
+      application_by_organizer: "El organizador se encargará de la selección e inscripción. Tan sólo ha solicitado la publicación de su evento en Diversity Tickets. Las/os solicitantes tendrán que inscribirse a través de su app/web."
+      application_form_link: "Link al formulario de solicitud"
+      application_form_link_placeholder: "p.ej. https://miconferencia.com/solicitud"
+      application_selection: "Solicitud y selección"
+      approve_event: "¿Aprobar evento?"
+      cant_find_tag: "¿No encuentras el tag que necesitas? Envíanos una sugerencia."
+      date_placeholder: "dd.mm.yyyy"
+      deadline_application: "Fecha límite para solicitudes"
+      description: "Descripción"
+      directions_applicants: "Directrices para solicitantes"
+      directions_applicants_placeholder: "Información relevante para las/os solicitantes como:
+        - ¿Qué incluye el ticket?
+        p. ej.: El ticket es válido para todos los días de la conferencia.
+        - Información organizativa adicional
+        - ..."
+      diversity_tickets_info: "* diversitytickets.org es una app de la Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de la Travis Foundation se harán cargo del proceso de selección y solicitud."
+      from: "Desde"
+      funded: "Financiado"
+      event_city: "Ciudad"
+      event_code_of_conduct: "Link al código de conducta"
+      event_code_of_conduct_placeholder: "p.ej. https://miconferencia.com/codigo_de_conducta"
+      event_details: "Detalles del evento"
+      event_logo: "Logo"
+      event_logo_description: "Elige una imagen cuadrada para los mejores resultados."
+      event_tags: "Tags"
+      event_twitter_handler: "Twitter"
+      event_twitter_placeholder: "mi_conf"
+      event_website: "Página web"
+      event_website_placeholder: "p.ej. https://miconferencia.com"
+      not_shown: "No visible para el público"
+      number_of_tickets: "Número de diversity tickets disponibles"
+      organizer_details: "Detalles del organizador"
+      selection_by_organizer: "Los organizadores se encargarán del proceso de selección por sí mismos, pero la solicitud se llevará a cabo a través de la plataforma de diversitytickets.org"
+      selection_by_travis: "Tanto la solicitud como la selección se llevará a cabo a través de diversitytickets.org*"
+      select_country: "Selecciona un país*"
+      state_province: "Estado/Provincia"
+      terms_and_conditions: "No compartiremos la privacidad, detalles o respuestas de las/os solicitantes a terceras partes, incluyendo los patrocinadores del evento."
+      ticket: "Ticket*"
+      to: "Hasta"
+      travel: "Transporte"
 
   users:
     edit:
