@@ -325,10 +325,18 @@ en:
       events: "Events"
       no_events: "<h2>We currently have no events lined up.</h2> <p>But we'll add new ones soon!</p>"
       open_for_application: "Open for applications"
+      past_events: "past events"
       show_past_events: "Show past events"
       submit_your_conference: "You can %{link_to_submission} now or browse through %{link_to_past_events}."
       submit_your_own_conference: "submit your own conference"
-      past_events: "past events"
+    new:
+      create_new_event: "Create</span> new event"
+      home_link: "Home"
+      events: "Events"
+      errors: "stopped this event from being saved:"
+      new_event: "New event"
+      please_fill: "Please fill out this form. Fields marked with * are required."
+      preview_event: "Preview event"
 
   users:
     edit:
