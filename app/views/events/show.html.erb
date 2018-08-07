@@ -1,7 +1,7 @@
 <p class="breadcrumb">
-  <%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
+  <%= link_to t('.home_link'), root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
   <% if !@event.approved? %>
-  (Approval: pending)
+    <%= t('.approval_pending') %>
   <% end %>
 </p>
 
@@ -11,19 +11,19 @@
   <%= render partial: "events/event" %>
 
   <% if current_user && (@event.organizer_id == current_user.id || current_user.admin?) %>
-    <%= link_to "Edit", edit_event_path(@event), id: @event.id, class: 'btn btn-edit' %>
-    <%= link_to "Delete", delete_event_path(id: @event.id), method: :delete,
-        data: { confirm: "Are you sure?"}, class: "btn btn-delete" if @event.past?%>
+    <%= link_to t('.edit'), edit_event_path(@event), id: @event.id, class: 'btn btn-edit' %>
+    <%= link_to t('.delete'), delete_event_path(id: @event.id), method: :delete,
+        data: { confirm: t('.are you sure')}, class: "btn btn-delete" if @event.past?%>
   <% end %>
 
   <% if @event.application_process == 'application_by_organizer' %>
-    <%= button_to "Apply at #{@event.name}", @event.application_link, method: :get,
+    <%= button_to t('.apply_at', event_name: @event.name), @event.application_link, method: :get,
         class: "btn btn-save btn-external", disabled: @event.closed? %>
   <% elsif current_user == nil || @event.applications.find_by(applicant_id: current_user.id) == nil %>
-    <%= button_to 'Apply for a ticket', new_event_application_path(params[:id]), method: :get,
+    <%= button_to t('.apply_for_ticket'), new_event_application_path(params[:id]), method: :get,
         class: "btn btn-save", disabled: @event.closed? %>
   <% else %>
-  <% @event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = 'Your application' : button_text = 'Your draft'%>
+  <% @event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = t('.your_application') : button_text = t('.your_draft')%>
     <%= button_to button_text,
         event_application_path(
         event_id: @event.id,
@@ -33,6 +33,6 @@
   <% end %>
 
   <% if @event.closed? %>
-    <span class="hint">Sorry, applications for <%= @event.name %> are closed.</span>
+    <span class="hint"><%= t('.applications_closed', event_name: @event.name) %></span>
   <% end %>
 </div>

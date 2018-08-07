@@ -345,6 +345,18 @@ en:
       organizer_details: "Organizer details"
       preview_of: "Preview of</span> %{event_name}"
       submit_your_event: "Submit your event"
+    show:
+      applications_closed: "Sorry, applications for %{event_name} are closed."
+      apply_at: "Apply at %{event_name}"
+      apply_for_ticket: "Apply for a ticket"
+      approval_pending: "(Approval: pending)"
+      are-you-sure: "Are you sure?"
+      delete: "Delete"
+      edit: "Edit"
+      home_link: "Home"
+      your_application: "Your application"
+      your_draft: "Your draft"
+
 
 
   users:
