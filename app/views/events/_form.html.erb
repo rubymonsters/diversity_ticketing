@@ -60,7 +60,10 @@
     E.g.: The ticket is valid for both conference days, ...
   - Additional organizational info
   - ..." %>
-      <%= f.form_field :date_field, :deadline, 'Deadline for application', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
+    <div class="two-columns">
+      <%= f.form_field :date_select, :deadline, 'Deadline for application', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
+      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'], ignore_date: true, default: {hour: '00', minute: '00'}, minute_step: 15 %>
+    </div>
       <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
       <h3 class="box-subtitle">Funded</h3>
