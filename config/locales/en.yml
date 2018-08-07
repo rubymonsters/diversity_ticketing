@@ -462,6 +462,23 @@ en:
       your_rights: "<p>For further information on your rights, to withdraw consent, or to ask for deletion of your data, you can contact us at <a href=\"mailto:foundation@travis-ci.org\">foundation@travis-ci.org</a>.</p>"
       your_rights_title: "Your rights"
 
+  layouts:
+    header:
+      about: "About"
+      account_settings: "Account settings"
+      admin: "Admin"
+      diversity_tickets: "Diversity tickets"
+      events: "Events"
+      faq: "FAQ"
+      logo: "Logo"
+      sign_in: "Sign in"
+      sign_out: "Sign out"
+      submit_event: "Submit event"
+      tags: "Tags"
+      your_account: "Your account"
+      your_events: "Your events"
+      your_application: "Your applications"
+
   users:
     edit:
       country: "Country"

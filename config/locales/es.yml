@@ -418,6 +418,22 @@ es:
       organizers: "Organizadores"
       submit_event: "Sube tu próxima conferencia"
 
+  layouts:
+    header:
+      about: "Info"
+      account_settings: "Preferencias de cuenta"
+      admin: "Admin"
+      diversity_tickets: "Diversity tickets"
+      events: "Eventos"
+      faq: "FAQ"
+      logo: "Logo"
+      sign_in: "Sign in"
+      sign_out: "Sign out"
+      submit_event: "Subir un evento"
+      tags: "Tags"
+      your_account: "Tu cuenta"
+      your_events: "Tus eventos"
+      your_application: "Tus solicitudes"
 
   users:
     edit:
