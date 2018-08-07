@@ -382,13 +382,13 @@ en:
       general: "General"
       how_can_i_submit_my_event: "How can I submit my event?"
       how_can_i_submit_my_event_anchor: "conf_2"
-      how_can_i_submit_my_event_answer: ""<p>To submit your event, click on “Submit Event” and fill out all the details. Your personal information (name and email) will not be public and is only asked so that we can contact you.</p>"
+      how_can_i_submit_my_event_answer: "<p>To submit your event, click on \"Submit Event\" and fill out all the details. Your personal information (name and email) will not be public and is only asked so that we can contact you.</p>"
       how_can_i_add_tags: "How can I add a new tag to my event?"
       how_can_i_add_tags_anchor: "conf_5"
       how_can_i_add_tags_answer: "<p>We currently only allow site administrators to add new tags; if you'd like to tag your event with a tag that is currently not available from the list, please drop us a line at %{travis_email}. We will try to process your request as quickly as possible and add your chosen tag to your event submission.</p>"
       how_can_i_apply: "How can I apply?"
       how_can_i_apply_anchor: "grant_1"
-      how_can_i_apply_answer: "<p>Find the event you wish to apply to in the %{events_link}event list</a>, and click the green "Apply" button underneath the event description. Please fill out all the form fields, and using the checkboxes, select the kind of support you are applying for (eg. ticket, travel grant) and accept the Terms and Conditions. That’s all!</p>"
+      how_can_i_apply_answer: "<p>Find the event you wish to apply to in the %{events_link}event list</a>, and click the green \"Apply\" button underneath the event description. Please fill out all the form fields, and using the checkboxes, select the kind of support you are applying for (eg. ticket, travel grant) and accept the Terms and Conditions. That’s all!</p>"
       how_long_event_approved: "How long will it take for my event to be approved?"
       how_long_event_approved_anchor: "conf_3"
       how_long_event_approved_answer: "<p>This usually depends on how many event submissions we get; we expect for it to take from 24 hours up to one week, so please factor that in when submitting your event. Once the event is approved, you will receive an automated email.</p>"
@@ -408,6 +408,13 @@ en:
       why_even_not_approved: "Why has my event not been approved?"
       why_even_not_approved_anchor: "conf_4"
       why_event_not_approved_answer: "<p>If your event has not been approved, you can contact us for more details.</p>"
+    home:
+      attendees: "Attendees"
+      find_event: "Find and apply for upcoming events."
+      main_presentation: "We help events reach a <em class=\"em--yellow\">more diverse</em> audience. And we help you to <em class=\"em--yellow\">find these events</em>."
+      main_presentation_subtitle: "Because <em class=\"em--red\">diversity</em> is what <em class=\"em--red\">makes communities whole</em>."
+      organizers: "Organizers"
+      submit_event: "Submit your upcoming events."
 
   users:
     edit:
