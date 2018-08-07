@@ -319,6 +319,16 @@ es:
     index_past:
       past_events_thanks: "Estos eventos proporcionaron diversity tickets en el pasado. Muchas gracias a los organizadores."
       show_upcoming_events: "Mostrar eventos futuros"
+    index:
+      closed_for_application: "Solicitudes cerradas"
+      home_link: "Inicio"
+      events: "Eventos"
+      no_events: "<h2>No tenemos ningún evento disponible.</h2> <p>¡Pero añadiremos nuevos pronto!</p>"
+      open_for_application: "Inscripción abierta"
+      show_past_events: "Mostrar eventos pasados"
+      submit_your_conference: "Puedes %{link_to_submission} o navegar por %{link_to_past_events}."
+      submit_your_own_conference: "subir una conferencia"
+      past_events: "eventos pasados"
 
   users:
     edit:

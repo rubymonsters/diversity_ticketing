@@ -327,6 +327,8 @@ en:
       open_for_application: "Open for applications"
       show_past_events: "Show past events"
       submit_your_conference: "You can %{link_to_submission} now or browse through %{link_to_past_events}."
+      submit_your_own_conference: "submit your own conference"
+      past_events: "past events"
 
   users:
     edit:

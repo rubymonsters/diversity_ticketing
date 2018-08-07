@@ -6,7 +6,7 @@
 
   <div class="events-empty">
     <%= raw t('.no_events') %>
-    <p><%= t('.submit_your_conference', link_to_submission: link_to('submit your own conference', new_event_path), link_to_past_events: (link_to('past events', past_events_path) if @past_events.any?)) %></p>
+    <p><%= t('.submit_your_conference', link_to_submission: link_to(t('.submit_your_own_conference'), new_event_path), link_to_past_events: (link_to(t('.past_events'), past_events_path) if @past_events.any?)) %></p>
   </div>
 
 <% else %>
