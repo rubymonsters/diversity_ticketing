@@ -44,20 +44,20 @@ class Event < ApplicationRecord
     where('end_date < ?', now)
   end
 
-  def self.open(now = DateTime.now)
+  def self.open(now = DateTime.current)
     where('deadline >= ?', now)
   end
 
-  def self.closed(now = DateTime.now)
+  def self.closed(now = DateTime.current)
     where('deadline < ?', now)
   end
 
-  def self.deadline_yesterday(now = DateTime.now)
-    where('deadline = ?', now - 1.day)
+  def self.deadline_yesterday(now = DateTime.current)
+    where('deadline BETWEEN ? AND ?', (now - 1.day).beginning_of_day, (now - 1.day).end_of_day)
   end
 
-  def self.deadline_in_two_days(now = DateTime.now)
-    where('deadline = ?', now + 2.days)
+  def self.deadline_in_two_days(now = DateTime.current)
+    where('deadline BETWEEN ? AND ?', (now + 2.days).beginning_of_day, (now + 2.days).end_of_day)
   end
 
   def self.created_current_year(now = Time.zone.now)
