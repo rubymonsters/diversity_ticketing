@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true, unless: :skip_validation
   validates :start_date, date: true, presence: true, unless: :skip_validation
   validates :end_date, date: { after_or_equal_to: :start_date }, presence: true, unless: :skip_validation
-  validates :deadline, date: { before_or_equal_to: :end_date }, presence: true, unless: :skip_validation
+  validates :deadline, date: { before: :end_date }, presence: true, unless: :skip_validation
   validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true, unless: :skip_validation
   validates :organizer_email_confirmation, presence: true, on: :create, unless: :skip_validation
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }, unless: :skip_validation
