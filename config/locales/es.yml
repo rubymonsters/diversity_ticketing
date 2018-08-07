@@ -337,6 +337,14 @@ es:
       new_event: "Nuevo evento"
       please_fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
       preview_event: "Previsualizar evento"
+    preview:
+      edit_event: "Editar evento"
+      email: "Email"
+      name: "Nombre"
+      not_visible: "No visible públicamente."
+      organizer_details: "Detalles del organizador/a"
+      preview_of: "Previsualización de </span> %{event_name}"
+      submit_your_event: "Subir tu evento"
 
   users:
     edit:
