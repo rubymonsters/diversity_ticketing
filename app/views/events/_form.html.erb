@@ -61,8 +61,10 @@
   - Additional organizational info
   - ..." %>
     <div class="two-columns">
-      <%= f.form_field :date_select, :deadline, 'Deadline for application', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
-      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'], ignore_date: true, default: {hour: '00', minute: '00'}, minute_step: 15 %>
+      <%= f.form_field :date_select, :deadline, 'Deadline for application', class: ['right'],
+          include_blank: true, default: nil, start_year: Date.today.year, use_short_month: true %>
+      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'],
+          ignore_date: true, default: {hour: '00', minute: '00'}, minute_step: 15 %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
