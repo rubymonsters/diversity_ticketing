@@ -51,6 +51,14 @@
     .fa-sort-down {
       float: right;
     }
+    #account-menu {
+      position: relative;
+      top: -2px;
+      i {
+        position: relative;
+        left: 10px;
+      }
+    }
     .dropdown-content {
       display: none;
       position: relative;
