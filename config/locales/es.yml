@@ -365,6 +365,49 @@ es:
         <p>Travis Foundation ha colaborado con %{ruby_monstas} para crear esta aplicación de Código Abierto y Libre, que la fundación utiliza en su trabajo con conferencias. La app se ofrece como parte de la cuota que se ha de pagar por los servicios de consulta de la fundación. Si estás interesada/o en proporcionar una experiencia en una conferencia más abierta para tus participantes, ¡%{email_foundation}ponte en contacto con nosotras!</p>
         <p>Lee más sobre la idea y el concepto en el blog de Travis Foundation: %{travis_blog} %{app_to_diversify}. </a></p>"
       app_to_diversify: "Una app para mejorar la diversidad"
+    faq:
+      am_i_eligible: "¿Soy eligible para solicitar un ticket?"
+      am_i_eligible_anchor: "grant_2"
+      am_i_eligible_answer: "<p>Si consideras que formas parte de un grupo infrarepresentado en tecnología (persona no blanca, persona LGTBIA+, mujer o persona discapacitada) y estás de acuerdo con nuestros Términos y condiciones, significa que tienes posibilidades de recibir un ticket.</p>"
+      diversity_tickets_options: "¿Qué opciones existen en diversitytickets.org?"
+      diversity_tickets_options_anchor: "general_options"
+      diversity_tickets_options_answer: "<ul> <li>1) Travis Foundation gestionael proceso de selección e inscripción para tu conferencia.</li>
+        <li>2) Travis Foundation gestiona el proceso de inscripción, pero el proceso de selección lo gestiona el evento.</li>
+        <li>3) El evento gestiona el proceso de selección e inscripción pero sólo publicaremos el evento en nuestra página web. </li>
+        Para la opción 2) te enviaremos un archivo csv con todas las solicitudes que hemos recibido a través de diversitytickets.org.
+        Como Travis Foundation es una organización sin ánimo de lucro, dependemos de tus donaciones para continuar los proyectos que construimos. Para ser capaz de trabajar en tus tickets, y también apoyar otros proyectos, pedimos una pequeña donación a la Travis Foundation por nuestros servicios. Tenemos en cuenta los recursos y el tamaño de la conferencia cuando pedimos una contribución y estamos seguras de que siempre encontraremos una solución juntas.
+        Para la opción 1) y 2) te pediremos una donación para cubrir el trabajo de consulta y gestión de Travis Foundation. Para la opción 3) el uso de la app es gratuita, pero pequeñas donaciones como 50 euros son bienvenidas y se utilizarán para apoyar el hosting, gestionar la página web e imprimir pegatinas para Rubymontas."
+      for_conference_organisers: "Para organizadores de conferencias"
+      for_grant_applicants: "Para las solicitantes de becas"
+      general: "General"
+      how_can_i_submit_my_event: "¿Cómo puedo subir un evento?"
+      how_can_i_submit_my_event_anchor: "conf_2"
+      how_can_i_submit_my_event_answer: "<p>Para subir un evento, click en "Subir evento" e incluye todos los detalles. Tu información personal (nombre y email) no serán visibles públicamente y sólo son necesarias para que podamos contactarte.</p>"
+      how_can_i_add_tags: "¿Cómo puedo añadir un nuevo tag a mi evento?"
+      how_can_i_add_tags_anchor: "conf_5"
+      how_can_i_add_tags_answer: "<p>Sólo los administradores de la página pueden añadir nuevas tags; si te gustaría añadir un tag que no está disponible a tu evento, envíanos un email: %{travis_email}". Intentaremos procesar tu petición tan rápido como sea posible y añadir el tag que has elegido a tu evento. </p>"
+      how_can_i_apply: "¿Cómo puedo solicitar un ticket?"
+      how_can_i_apply_anchor: "grant_1"
+      how_can_i_apply_answer: "<p>Encuentra el evento en el que te gustaría solicitar un ticket en la %{event_list}lista de eventos </a>, y haz click en el botón verde "Solicitar" que se encuentra debajo de la descripción del evento. Por favor, rellena todos los campos del formulario y utilizando las casillas de selección, selecta el tipo de apoyo que estás solicutando (p. ej: ticket, beca de transporte) y acepta los Términos y condciones. ¡Esto es todo!</p>"
+      how_long_event_approved: "¿Cuánto tiempo pasa hasta que mi evento sea aprobado?"
+      how_long_event_approved_anchor: "conf_3"
+      how_long_event_approved_answer: "<p>Esto normalmente depende de cuántos eventos recibamos; normalmente nos lleva entre 24 horas y una semana. Por favor, tenlo en cuenta a la hora de subir tu evento. Una vez tu evento ha sido aprobado, recibirás un email automático.</p>"
+      what_is_diversity_tickets: "¿Qué es diversitytickets.org?"
+      what_is_diversity_tickets_anchor: "general_org"
+      what_is_diversity_tickets_answer: "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde pueden encontrar eventos donde solicitar uno de estos tickets. Los organizadores de conferencias pueden subir sus propios eventos y conferencias y espeficiar cuántos tickets pueden ofrecer. Una vez un evento ha sido aprobado, se publica en nuestra página y las solicitantes pueden inscribirse en él"
+      when_find_application_approved_rejected: "¿Cuándo sabré si mi solicitud ha sido aceptada o rechazada?"
+      when_find_application_approved_rejected_anchor: "grant_3"
+      when_find_application_approved_rejected_answer: "<p>Cada conferencia es diferente, así que no podemos decirte de forma segura cuánto se tardará en el proceso de selección; normalmente con dos semanas tras la fecha límite nos proporciona tiempo suficiente para procesar todas las solicitudes. </p>"
+      which_events_eligible: "¿Qué eventos se pueden subir a la página?"
+      which_events_eligible_anchor: "conf_1"
+      which_events_eligible_answer: "<p>Aquellos organizadores que requieren ayuda de %{travis_website}Travis Foundation</a> para gestionar sus diversity tickets pueden subir cualquiera de sus eventos o conferencias para los cuales ofrecen tickets gratuitos o becase de transporte. Esto debe de ser discutido con Travis Foundation antes de subir el eventos. Todos los eventos tienen que ser inclusivos y tener un Código de conducta que deberá ser cumplido durante el evento.</p>"
+      why_diversity_tickets: "¿Por qué son los diversity tickets necesarios?"
+      why_diversity_tickets_anchor: "general_need"
+      why_diversity_tickets_answer: "<p>Desgraciadamente, la industria tecnológica está %{geekfeminism} lejos de ser diversa</a>. Existen algunos proyectos que dan visibilidad a este problema, pero el objetivo de diversitytickets.org es intentar aumentar la diversidad en las conferencias y llegar a aquellos grupos que de otro modo no tendrían la posibilidad de acudir a conferencias.</p>
+        <p>Lee más sobre este concepto en el blog de Travis Foundation: %{travis_blog} Una app para diversificar conferencias tecnológicas</a></p>"
+      why_even_not_approved: "¿Por qué no ha sido aprobado mi evento?"
+      why_even_not_approved_anchor: "conf_4"
+      why_event_not_approved_answer: "<p>Si tu evento no ha sido aprobado, puedes contactarnos para conocer más detalles.</p>"
 
   users:
     edit:
