@@ -146,7 +146,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       user = make_user
       event = make_event(organizer_id: user.id)
       application = make_application(event, applicant_id: user.id)
-      event.update_attributes(start_date: 1.week.ago, end_date: 1.week.ago)
+      event.update_attributes(start_date: 1.week.ago, end_date: 1.week.ago, deadline: 10.days.ago)
 
       sign_in_as(user)
 
