@@ -14,7 +14,7 @@ class EventTest < ActiveSupport::TestCase
 
     it 'deadline is midnight UTC' do
       event = Event.new(deadline: Date.new(2016, 4, 8))
-      assert_equal event.deadline, ActiveSupport::TimeZone['UTC'].local(2016, 4, 8, 0, 0, 0)
+      assert_equal ActiveSupport::TimeZone['UTC'].local(2016, 4, 8, 0, 0, 0), event.deadline
     end
   end
 
@@ -87,57 +87,57 @@ class EventTest < ActiveSupport::TestCase
 
   describe 'upcoming' do
     it 'gets event with enddate on the same day' do
-      make_event(start_date: '2016-07-24', end_date: '2016-07-25')
+      make_event(start_date: '2016-07-24', end_date: '2016-07-25', deadline: '2016-07-24')
 
-      assert_equal Event.upcoming('2016-07-25 23:59:59').length, 1
+      assert_equal 1, Event.upcoming('2016-07-25 23:59:59').length
     end
 
     it 'does not get event with enddate on the day before' do
-      make_event(start_date: '2016-07-24', end_date: '2016-07-25')
+      make_event(start_date: '2016-07-24', end_date: '2016-07-25', deadline: '2016-07-24')
 
-      assert_equal Event.upcoming('2016-07-26 00:00:00').length, 0
+      assert_equal 0, Event.upcoming('2016-07-26 00:00:00').length
     end
   end
 
   describe 'past' do
     it 'does not get event with enddate on the same day' do
-      make_event(start_date: '2016-07-24', end_date: '2016-07-25')
+      make_event(start_date: '2016-07-24', end_date: '2016-07-25', deadline: '2016-07-24')
 
-      assert_equal Event.past('2016-07-25 23:59:59').length, 0
+      assert_equal 0, Event.past('2016-07-25 23:59:59').length
     end
 
     it 'gets event with enddate on the day before' do
-      make_event(start_date: '2016-07-24', end_date: '2016-07-25')
+      make_event(start_date: '2016-07-24', end_date: '2016-07-25', deadline: '2016-07-24')
 
-      assert_equal Event.past('2016-07-26 00:00:00').length, 1
+      assert_equal 1, Event.past('2016-07-26 00:00:00').length
     end
   end
 
   describe 'open' do
     it 'gets event with deadline on the same day' do
-      make_event(deadline: '2016-07-25')
+      make_event(deadline: '2016-07-26')
 
-      assert_equal Event.open('2016-07-25 23:59:59').length, 1
+      assert_equal 1, Event.open('2016-07-25 23:59:59').length
     end
 
     it 'does not get event with deadline on the day before' do
-      make_event(deadline: '2016-07-25')
+      make_event(deadline: '2016-07-26')
 
-      assert_equal Event.open('2016-07-26 00:00:00').length, 0
+      assert_equal 0, Event.open('2016-07-26 00:00:01').length
     end
   end
 
   describe 'closed' do
     it 'does not get event with deadline on the same day' do
-      make_event(deadline: '2016-07-25')
+      make_event(deadline: '2016-07-26')
 
-      assert_equal Event.closed('2016-07-25 23:59:59').length, 0
+      assert_equal 0, Event.closed('2016-07-25 23:59:59').length
     end
 
     it 'gets event with deadline on the day before' do
-      make_event(deadline: '2016-07-25')
+      make_event(deadline: '2016-07-26')
 
-      assert_equal Event.closed('2016-07-26 00:00:00').length, 1
+      assert_equal 1, Event.closed('2016-07-26 00:00:01').length
     end
   end
 
@@ -154,12 +154,12 @@ class EventTest < ActiveSupport::TestCase
   describe 'location' do
     it 'formats the loacation for event without state/province' do
       event = Event.new(city: 'Berlin', country: 'Germany', state_province: '')
-      assert_equal event.location, 'Berlin, Germany'
+      assert_equal 'Berlin, Germany', event.location
     end
 
     it 'formats the loacation for event with state/province' do
       event = Event.new(city: 'Berlin', country: 'United States', state_province: 'Wisconsin')
-      assert_equal event.location, 'Berlin, Wisconsin, United States'
+      assert_equal 'Berlin, Wisconsin, United States', event.location
     end
   end
 
@@ -167,12 +167,12 @@ class EventTest < ActiveSupport::TestCase
   describe 'twitter_handle' do
     it 'leading @\'s are removed before saving to the database' do
       event = make_event(twitter_handle: '@lisbethmarianne')
-      assert_equal event.twitter_handle, 'lisbethmarianne'
+      assert_equal 'lisbethmarianne', event.twitter_handle
     end
 
      it 'is not altered if there is no leading @' do
       event = make_event(twitter_handle: 'lisbethmarianne')
-      assert_equal event.twitter_handle, 'lisbethmarianne'
+      assert_equal 'lisbethmarianne', event.twitter_handle
     end
 
     it 'event can be saved with no twitter handle' do
