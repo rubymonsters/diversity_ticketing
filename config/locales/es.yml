@@ -304,6 +304,18 @@ es:
       ticket: "Ticket*"
       to: "Hasta"
       travel: "Transporte"
+    index_list_item:
+      application_deadline: "Fecha límite de la solicitud"
+      apply: "Solicitar"
+      apply_at: "Solicitar en %{event_name}"
+      your_application: "Tu solicitud"
+      your_draft: "Tu boceto"
+    edit:
+      edit: "Editar"
+      edit_event: "Editar evento"
+      home_link: "Página de inicio"
+      errors: "impidieron la actualización de este evento"
+      submit_changes: "Aplicar cambios"
 
   users:
     edit:

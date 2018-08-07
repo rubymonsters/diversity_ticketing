@@ -304,6 +304,18 @@ en:
       ticket: "Ticket*"
       to: "To"
       travel: "Travel"
+    index_list_item:
+      application_deadline: "Application deadline passed"
+      apply: "Apply"
+      apply_at: "Apply at %{event_name}"
+      your_application: "Your application"
+      your_draft: "Your draft"
+    edit:
+      edit: "Edit"
+      edit_event: "Edit event"
+      home_link: "Home"
+      errors: "stopped this event from being updated:"
+      submit_changes: "Submit changes"
 
   users:
     edit:
