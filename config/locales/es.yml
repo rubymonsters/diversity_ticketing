@@ -434,6 +434,13 @@ es:
       your_account: "Tu cuenta"
       your_events: "Tus eventos"
       your_application: "Tus solicitudes"
+    open_graph_tags:
+      description: "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets
+        y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde solicitarlos"
+      title: "Ayudamos a las conferencias a llegar a una audiencia más diversa. Te ayudamos a ti a que encuentres estas conferencias."
+      diversity_tickets: "Diversity Tickets"
+      url: "https://diversitytickets.org/"
+      type: "website"
 
   users:
     edit:
