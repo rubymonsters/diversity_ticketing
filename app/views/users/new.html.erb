@@ -1,18 +1,18 @@
 <div id="clearance" class="sign-up two-columns">
 
   <div class="alternative-registration">
-    <h2>Already registered?</h2>
+    <h2><%= t('.already_registered') %></h2>
     <%= link_to sign_in_path do %>
-      <div class="btn btn-edit"><%=t(".sign_in")%> here</div>
+      <div class="btn btn-edit"><%=t(".sign_in_here")%></div>
     <% end %>
   </div>
 
   <div class="col">
-    <h2>Create your account</h2>
+    <h2><%= t('.create_your_account') %></h2>
     <%= form_for @user, builder: ::FormBuilder do |form| %>
       <%= render partial: '/users/form', object: form %>
       <div class="submit-field">
-        <%= form.submit(class: "btn btn-save", value: "Create your account") %>
+        <%= form.submit(class: "btn btn-save", value: t('.create_your_account') %>
       </div>
     <% end %>
   </div>

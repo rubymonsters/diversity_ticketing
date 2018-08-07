@@ -1,5 +1,5 @@
 <p class="breadcrumb">
-  <%= link_to 'Home', root_path %> > Your applications
+  <%= link_to t('.home_link'), root_path %> > <%= t('.your_applications') %>
 </p>
 
 <h1><%= t(".title") %></h1>
@@ -19,9 +19,9 @@
                   </p>
                   <p class="application-count">
                     <% if application.submitted == false %>
-                      <%= link_to "Your draft", event_draft_path(id: application.id, event_id: application.event.id) %>
+                      <%= link_to t('.your_draft'), event_draft_path(id: application.id, event_id: application.event.id) %>
                     <% else %>
-                      <%= link_to "Your application", event_application_path(id: application.id, event_id: application.event.id) %>
+                      <%= link_to t('.your_application'), event_application_path(id: application.id, event_id: application.event.id) %>
                     <% end %>
                   </p>
                  <% end %>
@@ -36,7 +36,7 @@
 </div>
 
 <% if @categorized_user_applications.values.flatten.empty? %>
-  <p>There are currently no applications for this user account.</p>
+  <p><%=t('.no_applications') %></p>
 <% end %>
 
 <%= raw t('.info_description') %>

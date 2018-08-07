@@ -16,7 +16,7 @@
                   <% end %>
                 </p>
                 <p>
-                  <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
+                  <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: t('.edit') do %>
                     <span class="icon-edit" aria-label="edit icon"></span>
                   <% end %>
                 </p>
@@ -31,5 +31,5 @@
 </div>
 
 <% if @categorized_user_events.values.flatten.empty? %>
-  <p>There are currently no events for this user account.</p>
+  <p><%= t('.no_events') %></p>
 <% end %>

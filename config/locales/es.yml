@@ -447,28 +447,60 @@ es:
       supported_by: "Con soporte de "
       legal: "Legal "
 
+  sessions:
+    form:
+      email: "Email"
+      password: "Contraseña"
+    login:
+      log_in: "Log in"
+      password: "Contraseña"
+      username: "Nombre de usuario"
+    new:
+      title: "Sign in"
+      create_your_account: "Crea tu propia cuenta"
+      new_to_diversity_tickets: "¿Nuevo en diversity tickets?"
+
+  tags:
+    index:
+      are_you_sure: "¿Estás segura/o?"
+      tags_management_title: "Gestión de tags"
 
   users:
+    form:
+      email: "Email"
+      password: "Contraseña"
+    applications:
+      drafts: "Borradores"
+      home_link: "Inicio"
+      info_description: "<p>Una vez haya pasado el evento, tu solicitud desaparecerá de esta página
+      y toda tu información susceptible de ser sensible será borrada de la base de datos</p>"
+      no_applications: "No existe ninguna solicitud asociada a esta cuenta."
+      submitted: "Enviada"
+      title: "Tus solicitudes"
+      your_application: "Tu solicitud"
+      your_applications: "Tus solicitudes"
+      your_draft: "Tu borrador"
     edit:
       country: "País"
+      download_user_data: "Aquí puedes descargarte un archivo CSV con toda la información que almacenamos sobre ti"
+      download_user_data_link: "Descarga datos de usuario"
       email_notifications: "Notificaciones de correo"
+      fields_of_interest: "Campos de interés"
       name: "Nombre"
+      new_password: "Nueva contraseña"
       password: "Contraseña"
       receive_emails_country: "Sí, quiero recibir notificaciones vía correo electrónico sobre eventos que tomen lugar en en país seleccionado en mi cuenta"
       receive_emails_tag: "Sí, quiero recibir notificaciones vía correo electrónico sobre eventos que traten los temas que me interesan seleccionados en mi cuenta"
       save_changes: "Guardar cambios"
+      select_your_country: "Selecciona tu país"
       title: "Ajustes de la cuenta"
     events:
       approved: "Aprobado"
+      edit: "Editar"
+      no_events: "Actualmente no existe ningún evento asociado a esta cuenta de usuario"
       past: "Pasado"
       title: "Tus eventos"
       unapproved: "Aún sin aprobar"
-    applications:
-      drafts: "Borradores"
-      info_description: "<p>Una vez haya pasado el evento, tu solicitud desaparecerá de esta página
-      y toda tu información susceptible de ser sensible será borrada de la base de datos</p>"
-      submitted: "Enviada"
-      title: "Tus solicitudes"
     confirm_delete:
       are_you_sure: "¿Estás segura/o de que quieres eliminar tu cuenta de usuario?"
       benefits_intro: "Nos entristecería que te marchases y no queremos que te pierdas los beneficios de un usuario registrado"
@@ -486,4 +518,9 @@ es:
       title: "¿Estás segura/o?"
     delete_account:
       delete_button: "Eliminar cuenta"
+      password: "Password"
       title: "Borrar cuenta"
+    new:
+      already_registered: "¿Ya registrado?"
+      create_your_account: "Crea tu propia cuenta"
+      sign_in_here: "Sign in"

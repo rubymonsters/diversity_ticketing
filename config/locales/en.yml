@@ -490,28 +490,60 @@ en:
       supported_by: "Supported by "
       legal: "Legal "
 
+  sessions:
+    form:
+      email: "Email"
+      password: "Password"
+    login:
+      log_in: "Log in"
+      password: "Password"
+      username: "Username"
+    new:
+      title: "Sign in"
+      create_your_account: "Create your account"
+      new_to_diversity_tickets: "New to diversity tickets?"
+
+  tags:
+    index:
+      are_you_sure: "Are you sure?"
+      tags_management_title: "Tags management"
 
   users:
+    form:
+      email: "Email"
+      password: "Password"
+    applications:
+      drafts: "Drafts"
+      home_link: "Home"
+      info_description: "<p> Once an event date has passed your applications
+      will vanish from this overview and all sensitive data will be removed from the database.</p>"
+      no_applications: "There are currently no applications for this user account."
+      submitted: "Submitted"
+      title: "Your applications"
+      your_application: "Your application"
+      your_applications: "Your applications"
+      your_draft: "Your draft"
     edit:
       country: "Country"
+      download_user_data: "Here you can download a CSV file that contains a list of all your user data we store:"
+      download_user_data_link: "Download user data"
       email_notifications: "Email notifications"
+      fields_of_interest: "Fields of interest"
       name: "Name"
+      new_password: "New password"
       password: "Password"
       receive_emails_country: "Yes, I want to get email notifications about new events taking place in the country I’ve selected for my account"
       receive_emails_tag: "Yes, I want to get email notifications about new events that match my fields of interest"
       save_changes: "Save changes"
+      select_your_country: "Select your country"
       title: "Account settings"
     events:
       approved: "Approved"
+      edit: "Edit"
+      no_events: "There are currently no events for this user account."
       past: "Past"
       title: "Your events"
       unapproved: "Not approved so far"
-    applications:
-      drafts: "Drafts"
-      info_description: "<p> Once an event date has passed your applications
-      will vanish from this overview and all sensitive data will be removed from the database.</p>"
-      submitted: "Submitted"
-      title: "Your applications"
     confirm_delete:
       are_you_sure: "Are you sure you want to delete your user account?"
       benefits_intro: "We would be sad to see you go and don't want you to miss out on the benefits of
@@ -530,5 +562,10 @@ en:
       subtitle: "Deleting your account is irreversible."
       title: "Are you sure?"
     delete_account:
-      title: "Delete Account"
       delete_button: "Delete account"
+      password: "Password"
+      title: "Delete Account"
+    new:
+      already_registered: "Already registered?"
+      create_your_account: "Create your account"
+      sign_in_here: "Sign in here"

@@ -2,7 +2,7 @@
 
 <section class="box">
 <%= form_for @user, method: :delete, builder: ::FormBuilder do |form| %>
-  <%= form.form_field :password_field, :password, "Password" %>
+  <%= form.form_field :password_field, :password, t('.password') %>
   <div class="submit-field">
     <%= link_to t(".cancel"), edit_user_path(@user) %>
     <%= form.submit(t(".delete_button"), class: "btn btn-delete indent", method: :delete) %>
