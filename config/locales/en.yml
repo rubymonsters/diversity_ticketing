@@ -244,6 +244,24 @@ en:
       tickets: "ticket"
       travel: "Travel"
       whats_funded: "What's funded?"
+    event:
+      application_and_selection: "Application and selection"
+      application_by_organizer: "We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app:"
+      event_code_of_conduct: "Code of conduct link"
+      event_date: "Date"
+      event_description: "Description"
+      event_details: "Event details"
+      event_location: "Location"
+      event_logo: "Logo"
+      event_name: "Event name"
+      event_tags: "Tags"
+      event_twitter: "Twitter"
+      event_website: "Website"
+      selection_by_organizer: "We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
+      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*.
+        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
+      not_shown: "Not shown to the public"
+
 
   users:
     edit:

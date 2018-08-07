@@ -244,6 +244,23 @@ es:
       tickets: "ticket"
       travel: "Transporte"
       whats_funded: "¿Qué incluye?"
+    event:
+      application_and_selection: "Solicitud y selección"
+      application_by_organizer: "Nos encargaremos de los procesos de solicitud y selección. Tan sólo nos gustaría publicitar nuestro evento en Diversity Tickets. Las/os solicitantes tendrán que inscribirse a través de nuestra app / web:"
+      event_code_of_conduct: "Link del código de conducta"
+      event_date: "Fecha"
+      event_description: "Descripción"
+      event_details: "Detalles del evento"
+      event_location: "Lugar"
+      event_logo: "Logo"
+      event_name: "Nombre del evento"
+      event_tags: "Tags"
+      event_twitter: "Twitter"
+      event_website: "Página web"
+      selection_by_organizer: "Nos encargaremos del proceso de selección, pero nos gustaría utilizar Diversity Tickets como plataforma de inscripción. No compartiremos la privacidad, detalles ni respuestas de las/os solicitantes con terceras partes, incluyendo los patrocinadores del evento."
+      selection_by_travis: "Los procesos de selección e inscripción serán llevados a cabo por diversitytickets.org*
+        <p>* diversitytickets.org es una app de la Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de la Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
+      not_shown: "No visible al público"
 
   users:
     edit:
