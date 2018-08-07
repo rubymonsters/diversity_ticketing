@@ -316,6 +316,9 @@ en:
       home_link: "Home"
       errors: "stopped this event from being updated:"
       submit_changes: "Submit changes"
+    index_past:
+      past_events_thanks: "These events provided diversity tickets in the past. Many thanks to the organizers."
+      show_upcoming_events: "Show upcoming events"
 
   users:
     edit:
