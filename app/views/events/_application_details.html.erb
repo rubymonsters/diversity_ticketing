@@ -10,7 +10,7 @@
 
   <div class="detail-pair">
     <strong><%= t('.deadline_applications') %></strong>
-    <%= format_date(@event.deadline) t('.midnight_utc') %>
+    <%= format_date(@event.deadline)%><%= t('.midnight_utc') %>
   </div>
 
   <div class="detail-pair">
@@ -19,7 +19,7 @@
   </div>
 
   <div class="detail-pair">
-    <strong>What's funded?</strong>
+    <strong><%=t('.whats_funded')%></strong>
     <div>
       <%= span_for_funded(t('.ticket').capitalize, @event.ticket_funded) %>
       <%= span_for_funded(t('.accomodation'), @event.accommodation_funded) %>
