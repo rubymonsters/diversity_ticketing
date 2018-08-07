@@ -14,7 +14,7 @@ class EventTest < ActiveSupport::TestCase
 
     it 'deadline is midnight UTC' do
       event = Event.new(deadline: Date.new(2016, 4, 8))
-      assert_equal event.deadline_as_time, ActiveSupport::TimeZone['UTC'].local(2016, 4, 9, 0, 0, 0)
+      assert_equal event.deadline, ActiveSupport::TimeZone['UTC'].local(2016, 4, 8, 0, 0, 0)
     end
   end
 
