@@ -69,19 +69,15 @@ class Event < ApplicationRecord
   end
 
   def open?
-    deadline_as_time >= Time.now
+    deadline >= Time.now
   end
 
   def closed?
-    deadline_as_time < Time.now
+    deadline < Time.now
   end
 
   def past?
     end_date < Time.now
-  end
-
-  def deadline_as_time
-    (deadline + 1).in_time_zone("UTC")
   end
 
   def location
