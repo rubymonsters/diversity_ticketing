@@ -45,6 +45,7 @@ feature 'User Sign In' do
     visit sign_up_path
 
     assert page.has_content?("Already registered?")
+
     click_link "Sign in here"
 
     assert page.has_content?("New to Diversity Tickets?")

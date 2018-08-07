@@ -3,7 +3,7 @@
   <div class="alternative-registration">
     <h2><%= t('.already_registered') %></h2>
     <%= link_to sign_in_path do %>
-      <div class="btn btn-edit"><%=t(".sign_in_here")%></div>
+      <div class="btn btn-edit"><%= t(".sign_in_here") %></div>
     <% end %>
   </div>
 
@@ -12,7 +12,7 @@
     <%= form_for @user, builder: ::FormBuilder do |form| %>
       <%= render partial: '/users/form', object: form %>
       <div class="submit-field">
-        <%= form.submit(class: "btn btn-save", value: t('.create_your_account') %>
+        <%= form.submit(class: "btn btn-save", value: t('.create_your_account')) %>
       </div>
     <% end %>
   </div>
