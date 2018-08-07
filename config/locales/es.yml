@@ -441,6 +441,12 @@ es:
       diversity_tickets: "Diversity Tickets"
       url: "https://diversitytickets.org/"
       type: "website"
+    application:
+      check_out_the_code: "Echa un vistazo al código "
+      proudly_built: "Desarrollado por "
+      supported_by: "Con soporte de "
+      legal: "Legal "
+
 
   users:
     edit:
