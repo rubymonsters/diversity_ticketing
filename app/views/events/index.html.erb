@@ -1,19 +1,18 @@
 <p class="breadcrumb">
-  <%= link_to 'Home', root_path %> > Events
+  <%= link_to t('.home_link'), root_path %> > <%= t('.events') %>
 </p>
 
 <% if @open_events.empty? && @closed_events.empty? %>
 
   <div class="events-empty">
-    <h2>We currently have no events lined up.</h2>
-    <p>But we'll add new ones soon!</p>
-    <p>You can <%=link_to 'submit your own conference', new_event_path %> now or browse through <%= link_to 'past events', past_events_path if @past_events.any? %>.</p>
+    <%= raw t('.no_events') %>
+    <p><%= t('.submit_your_conference', link_to_submission: link_to('submit your own conference', new_event_path), link_to_past_events: (link_to('past events', past_events_path) if @past_events.any?)) %></p>
   </div>
 
 <% else %>
 
   <% if @open_events.any? %>
-    <h2>Open for applications</h2>
+    <h2><%= t('.open_for_application') %></h2>
     <div class="two-columns">
       <% @open_events.each do |event| %>
         <%= render partial: "index_list_item", locals: { event: event } %>
@@ -22,7 +21,7 @@
   <% end %>
 
   <% if @closed_events.any? %>
-    <h2>Closed for applications</h2>
+    <h2><%= t('.closed_for_application') %></h2>
     <div class="two-columns">
       <% @closed_events.each do |event| %>
         <%= render partial: "index_list_item", locals: { event: event } %>
@@ -30,6 +29,6 @@
     </div>
   <% end %>
 
-  <%= link_to 'Show past events', past_events_path if @past_events.any? %>
-
 <% end %>
+
+<%= link_to(t('.show_past_events'), past_events_path) if @past_events.any? %>

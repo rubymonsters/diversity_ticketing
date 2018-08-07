@@ -319,6 +319,14 @@ en:
     index_past:
       past_events_thanks: "These events provided diversity tickets in the past. Many thanks to the organizers."
       show_upcoming_events: "Show upcoming events"
+    index:
+      closed_for_application: "Closed for applications"
+      home_link: "Home"
+      events: "Events"
+      no_events: "<h2>We currently have no events lined up.</h2> <p>But we'll add new ones soon!</p>"
+      open_for_application: "Open for applications"
+      show_past_events: "Show past events"
+      submit_your_conference: "You can %{link_to_submission} now or browse through %{link_to_past_events}."
 
   users:
     edit:
