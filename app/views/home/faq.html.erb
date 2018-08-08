@@ -49,7 +49,7 @@
   <h2 class="page-subtitle"><%= t('.for_grant_applicants') %></h2>
 
   <p id="grant_1"><strong><%= t('.how_can_i_apply') %></strong></p>
-  <%= raw t('.how_can_i_apply_answer', events_link: '<a href="https://diversitytickets.org/events" target="_blank">') %>
+  <%= raw t('.how_can_i_apply_answer', events_link: '<a href="https://diversitytickets.org/events" target="_blank">').html_safe %>
 
   <p id="grant_2"><strong><%= t('.am_i_eligible') %></strong></p>
   <%= raw t('.am_i_eligible_answer') %>
