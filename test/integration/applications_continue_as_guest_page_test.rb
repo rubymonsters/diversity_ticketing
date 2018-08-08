@@ -52,7 +52,7 @@ feature 'Application Edit' do
     click_link 'Create an account'
 
     assert_current_path sign_up_path(@event.id)
-    
+
     fill_in 'Email', with: 'new@example.org'
     fill_in 'Password', with: 'new_password'
     click_button 'Create your account'

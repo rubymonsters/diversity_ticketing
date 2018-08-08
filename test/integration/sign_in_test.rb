@@ -7,7 +7,7 @@ feature 'User Sign In' do
   end
 
   test 'redirects the user to the previous allowed page they were browing' do
-    visit '/events'
+    visit 'events'
 
     click_link 'Sign in'
 

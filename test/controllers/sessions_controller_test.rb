@@ -7,7 +7,7 @@ class SessionsControllerTest < ActionController::TestCase
 
       post :create, params: { referer: '/', session: { email: user.email, password: user.password } }
 
-      assert_redirected_to :root
+      assert_redirected_to 'http://test.host/'
     end
 
     it 'shows an unauthorized status (401) when the user is not authenticated' do
