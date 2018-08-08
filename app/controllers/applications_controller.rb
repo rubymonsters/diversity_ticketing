@@ -6,7 +6,7 @@ class ApplicationsController < ApplicationController
 
   def new
     if !current_user && !guest
-      redirect_to continue_as_guest_path(@event)
+      redirect_to continue_as_guest_path(@event.id)
     else
       @application = @event.applications.build
     end
