@@ -389,7 +389,7 @@ es:
       how_can_i_add_tags_answer: "<p>Sólo los administradores de la página pueden añadir nuevas tags; si te gustaría añadir un tag que no está disponible a tu evento, envíanos un email: %{travis_email}. Intentaremos procesar tu petición tan rápido como sea posible y añadir el tag que has elegido a tu evento. </p>"
       how_can_i_apply: "¿Cómo puedo solicitar un ticket?"
       how_can_i_apply_anchor: "grant_1"
-      how_can_i_apply_answer: "<p>Encuentra el evento en el que te gustaría solicitar un ticket en la %{event_list}lista de eventos </a>, y haz click en el botón verde \"Solicitar\" que se encuentra debajo de la descripción del evento. Por favor, rellena todos los campos del formulario y utilizando las casillas de selección, selecta el tipo de apoyo que estás solicutando (p. ej: ticket, beca de transporte) y acepta los Términos y condciones. ¡Esto es todo!</p>"
+      how_can_i_apply_answer: "<p>Encuentra el evento en el que te gustaría solicitar un ticket en la %{events_link}lista de eventos </a>, y haz click en el botón verde \"Solicitar\" que se encuentra debajo de la descripción del evento. Por favor, rellena todos los campos del formulario y utilizando las casillas de selección, selecta el tipo de apoyo que estás solicutando (p. ej: ticket, beca de transporte) y acepta los Términos y condciones. ¡Esto es todo!</p>"
       how_long_event_approved: "¿Cuánto tiempo pasa hasta que mi evento sea aprobado?"
       how_long_event_approved_anchor: "conf_3"
       how_long_event_approved_answer: "<p>Esto normalmente depende de cuántos eventos recibamos; normalmente nos lleva entre 24 horas y una semana. Por favor, tenlo en cuenta a la hora de subir tu evento. Una vez tu evento ha sido aprobado, recibirás un email automático.</p>"
