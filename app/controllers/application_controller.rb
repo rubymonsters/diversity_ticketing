@@ -13,9 +13,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   def set_locale
-    desired_locale = request.headers['HTTP_ACCEPT_LANGUAGE'].to_s[0..1] == 'es' ? 'es' : 'en'
-    I18n.locale = params[:locale] || desired_locale
+    pp params[:locale]
+    I18n.locale = params[:locale] || :en
   end
 
   def require_admin
