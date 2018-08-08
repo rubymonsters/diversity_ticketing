@@ -20,6 +20,7 @@ module DiversityTicketing
 
     # Where the I18n library should search for translation files
     I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+    I18n.available_locales = [:en, :es]
     config.i18n.default_locale = :en
 
     config.active_job.queue_adapter = :sidekiq

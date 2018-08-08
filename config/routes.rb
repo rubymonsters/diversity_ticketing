@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  scope '(:locale)', locale: /en|es/ do
-    
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :passwords, controller: 'clearance/passwords', only: [:create, :new]
     resource :session, controller: 'sessions', only: [:create]
 
@@ -30,6 +29,7 @@ Rails.application.routes.draw do
     get '/sign_in', to: 'clearance/sessions#new', as: :sign_in
     delete '/sign_out', to: 'clearance/sessions#destroy', as: :sign_out
     get '/sign_up', to: 'clearance/users#new', as: :sign_up
+    get '/:event_id/sign_up', to: 'clearance/users#new', as: :sign_up_event
     get '/past_events', to: 'events#index_past', as: :past_events
     get '/admin', to: 'admin_events#index'
     get '/admin_annual', to: 'admin_events#annual_events_report'
