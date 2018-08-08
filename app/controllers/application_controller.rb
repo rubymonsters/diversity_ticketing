@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    pp params[:locale]
     I18n.locale = params[:locale] || :en
   end
 

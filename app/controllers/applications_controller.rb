@@ -79,7 +79,7 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
-    :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
+    :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id, :locale)
   end
 
   def get_application
