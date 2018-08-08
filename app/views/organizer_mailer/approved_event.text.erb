@@ -2,6 +2,8 @@ Dear <%= @event.organizer_name %>,
 
 Your event <%= @event.name %> has been approved on diversitytickets.org and is now visible to the public. You can view it here: https://diversitytickets.org/events/<%= @event.id %>. As of now, applicants can apply for diversity tickets by clicking on the "Apply" link and filling out the form.
 
+You have the option of receiving an email reminder to be notified when the number of submitted applications for your event has exceeded the amount of tickets you provide. In order to receive this information, please adjust your email preferences in your account settings to allow us to send you notifications: https://diversitytickets.org/users/<%= @event.organizer_id %>/edit
+
 If you have any more questions, please read the FAQ (https://diversitytickets.org/faq). If you need more help, contact foundation@travis-ci.org.
 
 The Travis Foundation Team
