@@ -101,4 +101,46 @@
     line-height: $topbar-height;
     width: 80%;
   }
+
+.language-picker-signed {
+  margin-right: -40px;
+}
+
+#language-picker {
+  display: inline-block;
+  float: right;
+  padding: 0 30px 0 0;
+  width: 90px;
+  &:active, &:hover {
+    color: $green;
+    cursor: pointer;
+  }
+  @media (min-width: $small) {
+    line-height: $topbar-height;
+  }
+  .rotated {
+    transform: rotate(180deg);
+    background-position: 12px 2px;
+  }
+  .language-picker-content {
+    display: none;
+    padding-top: 10px;
+    .language-picker-item {
+      margin: -20px 0 0 -10px;
+      background-color: white;
+      padding: 0 30px 0 10px;
+      width: 30px;
+      display: block;
+      a {
+        color: $grey-dark;}
+      a:hover,
+      .active {
+        color: $green;
+      }
+      &:first-child, &:last-child {
+        border-radius: 5px;
+      }
+    }
+  }
+}
 }

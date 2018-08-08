@@ -1,4 +1,4 @@
-<h1 class="page-title">Tags Management</h1>
+<h1 class="page-title"><%= t('.tags_management_title') %></h1>
 
 <div class="two-columns">
   <% @tags.each do |category, tags| %>
@@ -10,7 +10,7 @@
           <li>
             <%= tag.name %>
             <%= link_to url_for(action: :destroy, id: tag.id), method: :delete,
-                data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+                data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: "delete" do %>
               <span class="icon-delete" aria-label="trashcan icon"></span>
             <% end %>
           </li>

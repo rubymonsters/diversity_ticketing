@@ -1,12 +1,12 @@
 <div class="box col-6 center">
-  <h2 class="box-title">Login</h2>
+  <h2 class="box-title"><%= t('.log_in') %></h2>
   <%= form_tag sessions_path do %>
     <div class="form_field">
-      <%= label_tag(:username, "Username") %>
+      <%= label_tag(:username, t('.username')) %>
       <%= text_field_tag(:username) %>
-      <%= label_tag(:password, "Password") %>
+      <%= label_tag(:password, t('.password')) %>
       <%= password_field_tag(:password) %>
     </div>
-    <%= submit_tag("Log in", class: "btn btn-save") %>
+    <%= submit_tag(t('.log_in'), class: "btn btn-save") %>
   <% end %>
 </div>

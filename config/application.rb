@@ -17,9 +17,11 @@ module DiversityTicketing
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+
+    # Where the I18n library should search for translation files
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+    config.i18n.default_locale = :en
+
     config.active_job.queue_adapter = :sidekiq
 
     # set default url options for mailers

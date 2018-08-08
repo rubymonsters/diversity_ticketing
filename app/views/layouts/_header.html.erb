@@ -1,31 +1,43 @@
 <header class="topbar" role="banner">
   <div class="inner">
-    <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => "Logo"), root_path)%><%= link_to 'Diversity Tickets', root_path %></h1>
+    <h1 class="logo"><%= link_to(image_tag("DT-logo.svg", :alt => t('.logo')), root_path)%><%= link_to t('.diversity_tickets'), root_path %></h1>
     <nav class="navigation" role="navigation">
       <ul>
-        <li><%= navbar_link_to 'Events', events_path %></li>
-        <li><%= navbar_link_to 'Submit event', new_event_path %></li>
-        <li><%= navbar_link_to 'About', about_path %></li>
-        <li><%= navbar_link_to 'FAQ', faq_path %></li>
+        <li><%= navbar_link_to t('.events'), events_path %></li>
+        <li><%= navbar_link_to t('.submit_event'), new_event_path %></li>
+        <li><%= navbar_link_to t('.about'), about_path %></li>
+        <li><%= navbar_link_to t('.faq'), faq_path %></li>
+
         <% if signed_in? %>
           <div id="dropdown">
             <span class="btn btn-save" id="dropdown-btn">
-              <span id="account-menu">Your account<i class="icon-sort-down"></i></span>
+              <span id="account-menu"><%= t('.your_account') %><i class="icon-sort-down"></i></span>
             </span>
             <div class="dropdown-content">
               <% if admin_user? %>
-                <li class="dropdown-item"><%= navbar_link_to 'Admin', admin_path %></li>
-                <li class="dropdown-item"><%= navbar_link_to 'Tags', tags_path %></li>
+                <li class="dropdown-item"><%= navbar_link_to t('.admin'), admin_path %></li>
+                <li class="dropdown-item"><%= navbar_link_to t('.tags'), tags_path %></li>
               <% end %>
-              <li class="dropdown-item"><%= navbar_link_to 'Your events', user_path(current_user) %></li>
-              <li class="dropdown-item"><%= navbar_link_to 'Your applications', user_applications_path(current_user) %></li>
-              <li class="dropdown-item"><%= navbar_link_to 'Account settings', edit_user_path(current_user) %></li>
-              <li class="dropdown-item"><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+              <li class="dropdown-item"><%= navbar_link_to t('.your_events'), user_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to t('.your_applications'), user_applications_path(current_user) %></li>
+              <li class="dropdown-item"><%= navbar_link_to t('.account_settings'), edit_user_path(current_user) %></li>
+              <li class="dropdown-item"><%= link_to t('.sign_out'), sign_out_path, method: :delete %></li>
             </div>
           </div>
         <% else %>
-          <li><%= link_to 'Sign in', sign_in_path %></li>
+          <li><%= link_to t('.sign_in'), sign_in_path %></li>
         <% end %>
+        <% language_picker_class = "language-picker-signed" if signed_in? %>
+        <div id="language-picker" class=<%= language_picker_class %> >
+          <span class="language-picker-btn" id="language-picker-btn">
+            <%= I18n.locale.upcase %>
+            <i class="icon-sort-down-black" id="icon-language"></i>
+          </span>
+          <div class="language-picker-content">
+            <li class="language-picker-item"><%= link_to 'EN', {locale: :en} unless I18n.locale == :en %></li>
+            <li class="language-picker-item"><%= link_to 'ES', {locale: :es} unless I18n.locale == :es%></li>
+          </div>
+        </div>
       </ul>
     </nav>
   </div>

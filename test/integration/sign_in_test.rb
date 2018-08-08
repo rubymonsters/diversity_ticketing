@@ -32,7 +32,7 @@ feature 'User Sign In' do
     assert_equal current_path, root_path
   end
 
-  test 'sign-in page shows link to sign up with a "Create your Account"-Button' do
+  test 'sign-in page shows link to sign up with a "Create your account"-Button' do
     visit sign_in_path
 
     assert page.has_content?("Create your account")
@@ -45,6 +45,7 @@ feature 'User Sign In' do
     visit sign_up_path
 
     assert page.has_content?("Already registered?")
+
     click_link "Sign in here"
 
     assert page.has_content?("New to Diversity Tickets?")
