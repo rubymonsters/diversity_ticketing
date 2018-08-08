@@ -110,7 +110,10 @@ class ApplicationsController < ApplicationController
 
   def ticket_capacity_check
     if @event.number_of_tickets == @event.applications.count - 1
-      OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+      if (@event.organizer.capacity_email_notifications == "Always") || (@event.organizer.capacity_email_notifications == "Once" && @event.capacity_reminder_count == 0)
+        OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+        @event.update_attributes(capacity_reminder_count: @event.capacity_reminder_count + 1)
+      end
     end
   end
 end
