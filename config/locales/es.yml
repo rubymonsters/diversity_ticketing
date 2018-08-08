@@ -427,7 +427,7 @@ es:
       events: "Eventos"
       faq: "FAQ"
       logo: "Logo"
-      sign_in: "Sign in"
+      sign_in: "Sign in / Crear cuenta"
       sign_out: "Sign out"
       submit_event: "Subir un evento"
       tags: "Tags"
@@ -446,6 +446,8 @@ es:
       proudly_built: "Desarrollado por "
       supported_by: "Con soporte de "
       legal: "Legal "
+      impressum: "Impressum aquí"
+      privacy_policy: "Privacy policy"
 
   sessions:
     form:

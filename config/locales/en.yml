@@ -241,7 +241,7 @@ en:
       directions_applicants: "Directions for applicants"
       midnight_utc: "(midnight UTC)"
       number_tickets: "Number of available diversity tickets"
-      tickets: "ticket"
+      ticket: "ticket"
       travel: "Travel"
       whats_funded: "What's funded?"
     event:
@@ -489,6 +489,8 @@ en:
       proudly_built: "Proudly built by "
       supported_by: "Supported by "
       legal: "Legal "
+      impressum: "Impressum here"
+      privacy_policy: "Privacy policy"
 
   sessions:
     form:
