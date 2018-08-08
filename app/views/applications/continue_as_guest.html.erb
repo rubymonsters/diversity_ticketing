@@ -11,5 +11,5 @@
   </p>
 </section>
 <%= link_to t('.sign_me_in'), sign_in_path, class: "btn btn-save" %>
-<%= link_to t('.create_an_account'), sign_up_event_path(@event.id), class: "btn btn-save" %>
-<%= link_to t('.continue_as_guest'), new_event_application_path(@event.id, guest: @guest), class: "btn btn-edit" %>
+<%= link_to t('.create_an_account'), sign_up_event_path(event_id: @event.id), class: "btn btn-save" %>
+<%= link_to t('.continue_as_guest'), new_event_application_path(event_id: @event.id, guest: @guest), class: "btn btn-edit" %>

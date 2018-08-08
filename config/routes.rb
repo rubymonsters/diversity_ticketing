@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     post '/events/:event_id/applications/:id/reject', to: 'admin_applications#reject', as: :reject_event_application
     post '/events/:event_id/applications/:id/revert', to: 'admin_applications#revert', as: :revert_event_application
     get '/events/:event_id/applications/:id/show_admin', to: 'admin_applications#show', as: :show_admin_event_application
-    get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest
+    get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest, constraints: { event_id: /\d.+/ }
     delete 'users/:id', to: 'users#destroy', as: :destroy_user
     get 'users/:id/delete', to: 'users#confirm_delete', as: :confirm_delete
     post 'users/:id/delete', to: 'users#delete_account', as: :delete_account
