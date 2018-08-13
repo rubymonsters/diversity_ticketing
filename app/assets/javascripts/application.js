@@ -23,4 +23,5 @@
 //= require markdown.js
 //= require marked.min.js
 //= require dropdown.js
+//= require language-picker.js
 //= require datepicker.js
