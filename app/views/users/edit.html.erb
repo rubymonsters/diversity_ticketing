@@ -31,7 +31,7 @@
         <p><%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %></p>
         <p><%= form.check_box :tag_email_notifications %> <%= t('.receive-emails-tag') %><p>
         <h3><%= t(".for-organizers") %></h3>
-        <h5><%= t(".capacity-email-notifictions-info") %></h5>
+        <h5><%= t(".capacity-email-notifications-info") %></h5>
         <p><%= form.radio_button :capacity_email_notifications, "OFF", checked: (@user.capacity_email_notifications == "OFF" ? true : false)%>
           <%= t('.receive-no-capacity-reminders') %></p>
         <p><%= form.radio_button :capacity_email_notifications, "Always", checked: (@user.capacity_email_notifications == "Always" ? true : false) %>
