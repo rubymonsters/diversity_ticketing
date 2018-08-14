@@ -28,7 +28,7 @@
       element: document.getElementById("map_events"),
       geographyConfig: {
         highlightBorderColor: '#27AAE1',
-        highlightFillColor: '#65BE66',
+        highlightFillColor: '#27AAE1',
         popupTemplate: function(geography, data) {
           return '<div class="hoverinfo"> <p class="hovertitle">' + geography.properties.name + '</p><p>Number of events: ' +  data.numberOfEvents + ' <p>Number of tickets: ' + data.numberOfTickets
         },
