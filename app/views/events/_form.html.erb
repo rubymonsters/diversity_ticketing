@@ -58,7 +58,8 @@
       <%= f.form_field :text_area, :applicant_directions, t('.directions_applicants'), class: ['markdown'],
           placeholder: t('.directions_applicants_placeholder') %>
     <div class="two-columns">
-      <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'], placeholder: t('.date_placeholder'), min: Date.today %>
+      <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'],
+          min: Date.today, use_short_month: true, start_year: Date.today.year %>
       <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'] %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>
