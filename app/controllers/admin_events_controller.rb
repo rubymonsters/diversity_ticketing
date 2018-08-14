@@ -7,7 +7,8 @@ class AdminEventsController < ApplicationController
   def index
     @events = Event.all
     @new_users = User.all.created_last_30_days
-    @countries = Event.all.group_by(&:country).keys
+    @countries = Event.all.pluck(:country).compact
+    @countries_statistics = CountriesStatistics.new(@events).to_json
     @categorized_events = {
       "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
       "Approved events" => Event.approved.upcoming.order(:deadline),
@@ -83,4 +84,5 @@ class AdminEventsController < ApplicationController
   def tweet_event_check
     Tweet.create(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
   end
+
 end
