@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_08_07_082714) do
 
   # These are extensions that must be enabled in order to support this database
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_082714) do
     t.integer "organizer_id"
     t.boolean "deleted", default: false
     t.string "approved_tickets"
+    t.integer "capacity_reminder_count", default: 0
     t.index ["organizer_id"], name: "index_events_on_organizer_id"
   end
 
@@ -110,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_08_07_082714) do
     t.boolean "country_email_notifications", default: false
     t.string "country"
     t.boolean "tag_email_notifications", default: false
+    t.string "capacity_email_notifications", default: "OFF"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

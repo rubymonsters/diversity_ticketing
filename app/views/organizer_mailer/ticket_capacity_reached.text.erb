@@ -1,0 +1,13 @@
+Dear <%= @event.organizer_name %>,
+
+Your event <%= @event.name %> has received more applications than there are diversity tickets available. You can view the current count of received applications here: https://diversitytickets.org/users/<%= @event.organizer_id %>.
+
+Would you like to open up more tickets for <%= @event.name %>?
+ -> Go to https://diversitytickets.org/events/<%= @event.id %>/edit to edit the number of available diversity tickets. When you are done make sure to click "Submit changes".
+
+If you have any more questions, please read the FAQ (https://diversitytickets.org/faq).
+If you need more help, contact foundation@travis-ci.org.
+
+The Travis Foundation Team
+
+-
