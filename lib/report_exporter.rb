@@ -130,6 +130,7 @@ module ReportExporter
         "Updated at",
         "Email notifications: Local event, on?",
         "Email notifications: Events about fields of interest, on?",
+        "Email notifictions: Send reminder when ticket capacity is reached",
         "Number of applications"
       ]
 
@@ -142,6 +143,7 @@ module ReportExporter
         result["updated_at"],
         result["country_email_notifications"],
         result["tag_email_notifications"],
+        result["capacity_email_notifications"],
         result.applications.count
       ]
 

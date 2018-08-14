@@ -49,13 +49,13 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.0.0)
       execjs
-    aws-sdk (2.11.89)
-      aws-sdk-resources (= 2.11.89)
-    aws-sdk-core (2.11.89)
+    aws-sdk (2.11.90)
+      aws-sdk-resources (= 2.11.90)
+    aws-sdk-core (2.11.90)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.89)
-      aws-sdk-core (= 2.11.89)
+    aws-sdk-resources (2.11.90)
+      aws-sdk-core (= 2.11.90)
     aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -126,6 +126,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    iso_country_codes (0.7.8)
     jmespath (1.4.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
@@ -300,6 +301,7 @@ DEPENDENCIES
   date_validator
   dotenv-rails
   foreman
+  iso_country_codes
   jquery-rails
   letsencrypt-rails-heroku
   minitest-rails (~> 3.0)

@@ -10,7 +10,7 @@ feature 'User Confirm Delete Page' do
 
     visit root_path
 
-    assert page.text.include?("#{@user.name}")
+    assert page.text.include?("Your account")
 
     page.find("#dropdown-btn").click
     click_link 'Account settings'

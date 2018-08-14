@@ -1,29 +1,29 @@
 <section class="box">
-  <h2 class="box-title">Application details</h2>
+  <h2 class="box-title"><%= t('.application_details') %></h2>
 
   <% if @event.applicant_directions.present? %>
     <div class="detail-pair">
-      <strong>Directions for applicants</strong>
+      <strong><%= t('.directions_applicants') %></strong>
       <div class="markdownize"><%= @event.applicant_directions %></div>
     </div>
   <% end %>
 
   <div class="detail-pair">
-    <strong>Deadline for applications</strong>
-    <%= format_date(@event.deadline) %> (midnight UTC)
+    <strong><%= t('.deadline_applications') %></strong>
+    <%= format_datetime(@event.deadline) %>
   </div>
 
   <div class="detail-pair">
-    <strong>Number of available diversity tickets</strong>
-    <%= pluralize(@event.number_of_tickets, "ticket") %>
+    <strong><%= t('.number_tickets') %></strong>
+    <%= pluralize(@event.number_of_tickets, t('.ticket')) %>
   </div>
 
   <div class="detail-pair">
-    <strong>What's funded?</strong>
+    <strong><%=t('.whats_funded')%></strong>
     <div>
-      <%= span_for_funded('Ticket', @event.ticket_funded) %>
-      <%= span_for_funded('Accommodation', @event.accommodation_funded) %>
-      <%= span_for_funded('Travel', @event.travel_funded) %>
+      <%= span_for_funded(t('.ticket').capitalize, @event.ticket_funded) %>
+      <%= span_for_funded(t('.accomodation'), @event.accommodation_funded) %>
+      <%= span_for_funded(t('.travel'), @event.travel_funded) %>
     </div>
   </div>
 </section>
