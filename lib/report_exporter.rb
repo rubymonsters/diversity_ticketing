@@ -72,8 +72,8 @@ module ReportExporter
         csv << ["Tickets offered", number_of_tickets_offered]
 
         number_of_tickets_provided = events.map do |event|
-          if event.approved_tickets != nil
-            event.approved_tickets.to_i
+          if event.approved_tickets != 0
+            event.approved_tickets
           else
             event.applications.where(status: 'approved').count
           end
