@@ -6,7 +6,7 @@
 
 <section class="box">
   <h2 class="box-title">
-    Distributed tickets: <%= @event.approved_tickets != nil ? @event.approved_tickets : 0 %>
+    Distributed tickets: <%= @event.approved_tickets %>
   </h2>
   <%= form_for @event, url: event_path(@event), builder: ::FormBuilder do |f| %>
     <%= f.form_field :text_field, :approved_tickets, 'Edit total of approved tickets:' %>
