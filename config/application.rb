@@ -29,5 +29,7 @@ module DiversityTicketing
     config.action_mailer.default_url_options = {host: 'localhost'}
     # set default url options for Sidekiq workers
     config.x.worker_routes.default_url_options = {host: 'localhost'}
+    # prints rails logs to heroku logs
+    config.logger = Logger.new(STDOUT)
   end
 end
