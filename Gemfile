@@ -9,6 +9,7 @@ gem 'aws-sdk', '~> 2'
 gem 'city-state'
 gem 'clearance'
 gem 'coffee-rails', '~> 4.2.0'
+gem 'iso_country_codes'
 gem 'date_validator'
 gem 'jquery-rails'
 gem 'letsencrypt-rails-heroku', group: 'production'
@@ -21,7 +22,6 @@ gem 'sidekiq'
 gem 'uglifier'
 gem 'twitter'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
 
 group :development, :test do
   gem 'byebug'
