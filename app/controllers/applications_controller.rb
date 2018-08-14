@@ -6,7 +6,7 @@ class ApplicationsController < ApplicationController
 
   def new
     if !current_user && !guest
-      redirect_to continue_as_guest_path(@event)
+      redirect_to continue_as_guest_path(@event.id)
     else
       @application = @event.applications.build
     end
@@ -69,7 +69,7 @@ class ApplicationsController < ApplicationController
 
   def continue_as_guest
     if current_user
-      redirect_to new_event_application_path(@event.id)
+      redirect_to new_event_application_path(event_id: params[:event_id])
     else
       @guest = true
       render :continue_as_guest
@@ -80,7 +80,7 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params.require(:application).permit(:name, :email, :email_confirmation, :attendee_info_1,
-    :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id)
+    :attendee_info_2, :visa_needed, :terms_and_conditions, :applicant_id, :locale, :event_id)
   end
 
   def get_application

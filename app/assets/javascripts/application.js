@@ -28,4 +28,5 @@
 //= require marked.min.js
 //= require map-expander.js
 //= require dropdown.js
+//= require language-picker.js
 //= require datepicker.js

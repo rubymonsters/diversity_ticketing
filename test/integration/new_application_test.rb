@@ -119,7 +119,7 @@ feature 'New Application' do
 
     click_link "Continue as guest"
 
-    assert page.has_content?('Would you like to Sign in to use your profile information and save this application?')
+    assert page.has_content?('Would you like to sign in to use your profile information and save this application?')
   end
 
   test 'does not show sign-in link to logged in users inside the application' do
