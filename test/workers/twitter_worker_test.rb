@@ -6,8 +6,7 @@ class TwitterWorkerTest < ActiveSupport::TestCase
   it 'sends a tweet with name if event has no twitter handle' do
     event = make_event(
       name: 'Awesome Event',
-      id: 101,
-      deadline: 2.weeks.from_now
+      id: 101
     )
 
     event.reload
@@ -21,7 +20,6 @@ class TwitterWorkerTest < ActiveSupport::TestCase
     event = make_event(
       name: 'Awesome Event',
       id: 101,
-      deadline: 2.weeks.from_now,
       twitter_handle: 'awesome_event'
     )
 
@@ -35,8 +33,7 @@ class TwitterWorkerTest < ActiveSupport::TestCase
   it 'uses shortened name if name is longer than 30 characters' do
      event = make_event(
       name: 'Super Duper Mega Crazy Awesome Event',
-      id: 101,
-      deadline: 2.weeks.from_now
+      id: 101
     )
 
     event.reload
