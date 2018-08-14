@@ -50,12 +50,12 @@ class AdminApplicationsController < ApplicationController
   end
 
   def add_to_approved_tickets_count
-    @event.update_attributes(approved_tickets: (@event.approved_tickets.to_i + 1).to_s)
+    @event.update_attributes(approved_tickets: @event.approved_tickets + 1)
   end
 
   def remove_from_approved_tickets_count
     if @application.status == 'approved'
-      @event.update_attributes(approved_tickets: (@event.approved_tickets.to_i - 1).to_s)
+      @event.update_attributes(approved_tickets: @event.approved_tickets - 1)
     end
   end
 end
