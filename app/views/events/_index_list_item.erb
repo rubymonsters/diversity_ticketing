@@ -12,13 +12,13 @@
     <% end %>
   </ul>
   <% if event.application_process == 'application_by_organizer' %>
-    <%= button_to "Apply at #{event.name}", event.application_link, method: :get,
+    <%= button_to t('.apply_at', event_name: event.name), event.application_link, method: :get,
         class: "btn btn-save btn-external", disabled: event.closed? %>
   <% elsif current_user == nil || event.applications.find_by(applicant_id: current_user.id) == nil %>
-    <%= button_to 'Apply', new_event_application_path(event_id: event.id), method: :get,
+    <%= button_to t('.apply'), new_event_application_path(event_id: event.id), method: :get,
         class: "btn btn-save", disabled: event.closed? %>
   <% else %>
-  <% event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = 'Your application' : button_text = 'Your draft' %>
+  <% event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = t('.your_application'): button_text = t('.your_draft') %>
     <%= button_to button_text,
         event_application_path(
         event_id: event.id,
@@ -28,6 +28,6 @@
   <% end %>
 
   <% if event.closed? %>
-    <span class="hint">Application deadline passed</span>
+    <span class="hint"><%= t('.application_deadline') %></span>
   <% end %>
 </div>

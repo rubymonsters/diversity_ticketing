@@ -116,7 +116,7 @@ class EventsController < ApplicationController
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
         :website, :code_of_conduct, :city, :country, :applicant_directions,
         :data_protection_confirmation, :application_link, :application_process,
-        :twitter_handle, :state_province, :approved_tickets,
+        :twitter_handle, :state_province, :approved_tickets, :locale,
         { :tag_ids => [] }, tags_attributes: [:id, :name, :category_id]
       ]
     end
