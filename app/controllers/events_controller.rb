@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
   before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
+  before_action :set_approved_tickets_count, only: [:show]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
@@ -67,9 +68,7 @@ class EventsController < ApplicationController
     if @event.uneditable_by?(current_user)
       head :forbidden
     elsif @event.update(event_params)
-      url = current_user.admin? ? admin_url : user_url(current_user)
-
-      redirect_to url, notice: "You have successfully updated #{@event.name}."
+      redirect_back fallback_location: '/', notice: "You have successfully updated #{@event.name}."
     else
       render :edit
     end
@@ -118,7 +117,7 @@ class EventsController < ApplicationController
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
         :website, :code_of_conduct, :city, :country, :applicant_directions,
         :data_protection_confirmation, :application_link, :application_process,
-        :twitter_handle, :state_province, :locale,
+        :twitter_handle, :state_province, :approved_tickets, :locale,
         { :tag_ids => [] }, tags_attributes: [:id, :name, :category_id]
       ]
     end
@@ -138,5 +137,12 @@ class EventsController < ApplicationController
         end
       end
       @event.update_attributes(columns)
+    end
+
+    def set_approved_tickets_count
+      if @event.approved_tickets == 0
+        approved_tickets = @event.applications.where(status: 'approved').count
+        @event.update_attributes(approved_tickets: approved_tickets)
+      end
     end
 end

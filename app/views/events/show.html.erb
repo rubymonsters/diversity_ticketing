@@ -11,6 +11,21 @@
   <%= render partial: "events/event" %>
 
   <% if current_user && (@event.organizer_id == current_user.id || current_user.admin?) %>
+    <% if @event.closed? %>
+      <section class="box">
+        <h2 class="box-title">
+          Distributed tickets: <%= @event.approved_tickets %>
+        </h2>
+        <h5>
+          This number displays the actual amount of tickets given out to applicants
+          and is only visible for the Travis Foundation for statistical purposes.
+        </h5>
+        <%= form_for @event, url: event_path(@event), builder: ::FormBuilder do |f| %>
+          <%= f.form_field :text_field, :approved_tickets, 'Update final number of approved tickets:' %>
+          <%= f.submit("Save", class: "btn btn-save") %>
+        <% end %>
+      </section>
+    <% end %>
     <%= link_to t('.edit'), edit_event_path(@event), id: @event.id, class: 'btn btn-edit' %>
     <%= link_to t('.delete'), delete_event_path(id: @event.id), method: :delete,
         data: { confirm: t('.are you sure')}, class: "btn btn-delete" if @event.past?%>

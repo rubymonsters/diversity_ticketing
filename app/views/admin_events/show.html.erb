@@ -4,6 +4,15 @@
 
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
 
+<section class="box">
+  <h2 class="box-title">
+    Distributed tickets: <%= @event.approved_tickets %>
+  </h2>
+  <%= form_for @event, url: event_path(@event), builder: ::FormBuilder do |f| %>
+    <%= f.form_field :text_field, :approved_tickets, 'Edit total of approved tickets:' %>
+    <%= f.submit("Save", class: "btn btn-save") %>
+  <% end %>
+</section>
 
 <% unless @event.application_process == "application_by_organizer" %>
 <section class="box">
@@ -77,24 +86,24 @@
   </section>
 
   <%= render partial: "events/event" %>
-</div>
 
-<div class="form_field">
-  <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
-  <%= link_to t("delete_event"), event_path(@event.id), method: :delete,
-      data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
-  <% unless @event.approved? %>
-  <span class="approve-button">
-  <%= form_for :approve,
-        url: approve_admin_event_path(@event),
-        html: { method: :post } do |form| %>
+  <div class="form_field">
+    <%= link_to t("delete_event"), event_path(@event.id), method: :delete,
+        data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
+    <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
+    <% unless @event.approved? %>
+      <span class="approve-button">
+        <%= form_for :approve,
+            url: approve_admin_event_path(@event),
+            html: { method: :post } do |form| %>
         <%= form.submit(t('.approve_event'), class: "btn btn-save", title: t(".approve").downcase) %>
-        <span>
-          <%= form.check_box :tweet, checked: true %>
-          <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
-          <%= t('.tweet_event') %>
-        </span>
-      </span>
+          <span>
+            <%= form.check_box :tweet, checked: true %>
+            <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
+            <%= t('.tweet_event') %>
+          </span>
+       </span>
       <% end %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_083204) do
     t.string "state_province"
     t.integer "organizer_id"
     t.boolean "deleted", default: false
-    t.string "approved_tickets"
+    t.integer "approved_tickets", default: 0
     t.integer "capacity_reminder_count", default: 0
     t.index ["organizer_id"], name: "index_events_on_organizer_id"
   end
