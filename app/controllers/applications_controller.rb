@@ -54,6 +54,7 @@ class ApplicationsController < ApplicationController
     if @application.update(application_params)
       @application.update_attributes(submitted: true)
       ApplicantMailer.application_received(@application).deliver_later
+      ticket_capacity_check
       current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
       redirect_to path, notice: "You have successfully applied for #{@event.name}."
     else
@@ -105,5 +106,14 @@ class ApplicationsController < ApplicationController
 
   def guest
     params[:guest]
+  end
+
+  def ticket_capacity_check
+    if @event.number_of_tickets == @event.applications.count - 1
+      if (@event.organizer.capacity_email_notifications == "Always") || (@event.organizer.capacity_email_notifications == "Once" && @event.capacity_reminder_count == 0)
+        OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+        @event.update_attributes(capacity_reminder_count: @event.capacity_reminder_count + 1)
+      end
+    end
   end
 end

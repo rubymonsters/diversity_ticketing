@@ -41,12 +41,17 @@ en:
               invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
   users:
     edit:
+      capacity-email-notifications-info: "We would like to inform you once your event received more applications than the number of tickets you made available via Diversity Tickets to give you the opportunity to increase the number of tickets for your event."
       country: "Country"
       email-notifications: "Email notifications"
+      for-organizers: "For organizers"
       name: "Name"
       password: "Password"
+      receive-all-capacity-reminders: "Yes, please!"
+      receive-capacity-reminders-once: "Yes, but only once per event"
       receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I’ve selected for my account"
       receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
+      receive-no-capacity-reminders: "No, thank you."
       save-changes: "Save changes"
       title: "Account settings"
     events:
