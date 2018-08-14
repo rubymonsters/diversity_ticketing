@@ -14,7 +14,7 @@
     <% if @event.closed? %>
       <section class="box">
         <h2 class="box-title">
-          Distributed tickets: <%= @event.approved_tickets != nil ? @event.approved_tickets : @event.applications.where(status: 'approved').count %>
+          Distributed tickets: <%= @event.approved_tickets %>
         </h2>
         <h5>
           This number displays the actual amount of tickets given out to applicants
