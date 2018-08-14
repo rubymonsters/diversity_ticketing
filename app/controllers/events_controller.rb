@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
   before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
+  before_action :set_approved_tickets_count, only: [:show]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
@@ -136,5 +137,12 @@ class EventsController < ApplicationController
         end
       end
       @event.update_attributes(columns)
+    end
+
+    def set_approved_tickets_count
+      if @event.approved_tickets == 0
+        approved_tickets = @event.applications.where(status: 'approved').count
+        @event.update_attributes(approved_tickets: approved_tickets)
+      end
     end
 end
