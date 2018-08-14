@@ -92,16 +92,16 @@
         data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
     <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
     <% unless @event.approved? %>
-    <span class="approve-button">
-      <%= form_for :approve,
-          url: approve_admin_event_path(@event),
-          html: { method: :post } do |form| %>
-      <%= form.submit(t('.approve_event'), class: "btn btn-save", title: t(".approve").downcase) %>
-        <span>
-          <%= form.check_box :tweet, checked: true %>
-          <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
-          <%= t('.tweet_event') %>
-        </span>
+      <span class="approve-button">
+        <%= form_for :approve,
+            url: approve_admin_event_path(@event),
+            html: { method: :post } do |form| %>
+        <%= form.submit(t('.approve_event'), class: "btn btn-save", title: t(".approve").downcase) %>
+          <span>
+            <%= form.check_box :tweet, checked: true %>
+            <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
+            <%= t('.tweet_event') %>
+          </span>
        </span>
       <% end %>
     <% end %>
