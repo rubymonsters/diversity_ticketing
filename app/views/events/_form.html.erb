@@ -59,12 +59,12 @@
           placeholder: t('.directions_applicants_placeholder') %>
     <div class="two-columns">
       <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'], placeholder: t('.date_placeholder'), min: Date.today %>
-      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'],
+      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'] %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>
 
       <h3 class="box-subtitle"><%= t('.funded') %></h3>
-      
+
       <div class="form_field">
         <%= label_tag do %>
           <%= f.check_box(:ticket_funded, checked: true) %> <%= t('.ticket') %>

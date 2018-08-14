@@ -545,7 +545,7 @@ en:
       receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
       receive-no-capacity-reminders: "No, thank you."
       select_your_country: "Select your country"
-      save-changes: "Save changes"
+      save_changes: "Save changes"
       title: "Account settings"
     events:
       approved: "Approved"
