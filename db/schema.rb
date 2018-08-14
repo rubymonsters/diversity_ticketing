@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_083204) do
     t.text "code_of_conduct"
     t.string "city"
     t.string "country"
-    t.datetime "deadline"
+    t.date "deadline"
     t.integer "number_of_tickets"
     t.boolean "ticket_funded", default: false, null: false
     t.boolean "accommodation_funded", default: false, null: false
