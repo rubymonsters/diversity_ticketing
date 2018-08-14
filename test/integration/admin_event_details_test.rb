@@ -146,21 +146,21 @@ feature 'Admin Event Details' do
 
     assert page.has_content?("Distributed tickets: 1")
     @event.reload
-    assert_equal "1", @event.approved_tickets
+    assert_equal 1, @event.approved_tickets
 
     page.first('a.btn.btn-edit.revert-application').click
     @event.reload
-    assert_equal "0", @event.approved_tickets
+    assert_equal 0, @event.approved_tickets
     assert page.has_content?("Distributed tickets: 0")
 
     page.first('a.btn.btn-save.approve-application').click
     @event.reload
-    assert_equal "1", @event.approved_tickets
+    assert_equal 1, @event.approved_tickets
     assert page.has_content?("Distributed tickets: 1")
 
     page.first('a.btn.btn-save.approve-application').click
     @event.reload
-    assert_equal "2", @event.approved_tickets
+    assert_equal 2, @event.approved_tickets
     assert page.has_content?("Distributed tickets: 2")
   end
 end
