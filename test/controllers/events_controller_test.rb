@@ -241,14 +241,14 @@ class EventsControllerTest < ActionController::TestCase
       future_approved_event = make_event(
         start_date: 1.week.ago,
         end_date: 10.days.from_now,
-        deadline: 10.days.from_now,
+        deadline: 9.days.from_now,
         approved: true,
         name: 'Approved'
       )
       future_unapproved_event = make_event(
         start_date: 1.week.ago,
         end_date: 10.days.from_now,
-        deadline: 10.days.from_now,
+        deadline: 9.days.from_now,
         approved: false,
         name: 'Unapproved'
       )
@@ -510,7 +510,7 @@ class EventsControllerTest < ActionController::TestCase
     it 'deletes all the attributes of the event except the id and the country' do
       organizer = make_user
       event = make_event(name: "HOLA", organizer_id: organizer.id)
-      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago)
+      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago, deadline: 9.days.ago)
       event_id = event.id
       sign_in_as(organizer)
 
@@ -527,7 +527,7 @@ class EventsControllerTest < ActionController::TestCase
       event = make_event(organizer_id: organizer.id)
       applicant = make_user(email: "other@example.com")
       application = make_application(event, applicant_id: applicant.id )
-      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago)
+      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago, deadline: 9.days.ago)
       application_id = application.id
 
       sign_in_as(organizer)

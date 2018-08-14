@@ -38,7 +38,7 @@ class ReportExporterTest < ActiveSupport::TestCase
     end
 
     it 'does not include events where applications are still open' do
-      @event.update(deadline: 2.days.from_now)
+      @event.update(end_date: 3.days.from_now, deadline: 2.days.from_now)
 
       report = ReportExporter.events_report.split("\n")
 

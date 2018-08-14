@@ -10,7 +10,7 @@
 
   <div class="detail-pair">
     <strong><%= t('.deadline_applications') %></strong>
-    <%= format_date(@event.deadline)%><%= t('.midnight_utc') %>
+    <%= format_datetime(@event.deadline) %>
   </div>
 
   <div class="detail-pair">

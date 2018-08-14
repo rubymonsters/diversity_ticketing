@@ -18,4 +18,18 @@
         </strong>
       </li>
     </ul>
+    <div class="map-statistics" id="map-statistics">
+      <span class="map-expander-btn" id="map-expander-btn">
+        <%= t('.show_statistics_map') %>
+        <i class="icon-sort-down-black" id="icon-map-expander"></i>
+      </span>
+        <div class="map-statistics-content">
+          <div class="map-legend">
+             <span>&nbsp;</span>
+             <%=t('.countries_hosted_events') %>
+          </div>
+           <div id="map_events" style="position: relative; width: 100%; height: 600px;"></div>
+           <%= javascript_tag "new CustomizedMap(#{@countries_statistics});" %>
+          </div>
+        </div>
 </div>

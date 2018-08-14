@@ -93,6 +93,9 @@ en:
       tweet_event: "Tweet it"
       reject: "Reject"
       revert: "Revert"
+    statistics:
+      countries_hosted_events: "Countries that hosted events"
+      show_statistics_map: "Show statistics map"
 
   applications:
     form:
@@ -576,4 +579,3 @@ en:
       already_registered: "Already registered?"
       create_your_account: "Create your account"
       sign_in_here: "Sign in here"
-
