@@ -26,5 +26,6 @@
 //= require events.js
 //= require markdown.js
 //= require marked.min.js
+//= require map-expander.js
 //= require dropdown.js
 //= require datepicker.js
