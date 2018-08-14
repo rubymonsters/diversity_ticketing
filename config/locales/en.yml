@@ -82,6 +82,9 @@ en:
       delete-button: "Delete account"
 
   admin_events:
+    index:
+      countries_hosted_events: "Countries that hosted events"
+      show_statistics_map: "Show statistics map"
     show:
       approve-event: "Approve event"
       tweet-event: "Tweet it"
