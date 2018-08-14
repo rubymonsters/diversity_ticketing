@@ -1,7 +1,7 @@
-<%= form.form_field :email_field, :email, "Email" %>
+<%= form.form_field :email_field, :email, t('.email') %>
 
-<%= form.form_field :password_field, :password, "Password" %>
+<%= form.form_field :password_field, :password, t('.password') %>
 
 <%= hidden_field_tag :referer, request.env["HTTP_REFERER"] %>
 
-<%= hidden_field_tag :event_id, params[:format] %>
+<%= hidden_field_tag :event_id, params[:event_id] %>

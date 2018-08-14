@@ -26,7 +26,7 @@ class PastEventDateServiceTest < ActiveSupport::TestCase
         email_confirmation: user.email
       )
 
-      past_event.update_attributes(start_date: Time.now.yesterday, end_date: Time.now.yesterday)
+      past_event.update_attributes(start_date: Time.now.yesterday, end_date: Time.now.yesterday, deadline: 2.days.ago)
       old_past_event.update_attributes(start_date: 2.weeks.ago, end_date: 2.weeks.ago)
 
       assert_equal 'user@example.com', future_application.email
@@ -61,7 +61,7 @@ class PastEventDateServiceTest < ActiveSupport::TestCase
         email_confirmation: user.email
       )
 
-      past_event.update_attributes(start_date: Time.now.yesterday, end_date: Time.now.yesterday)
+      past_event.update_attributes(start_date: Time.now.yesterday, end_date: Time.now.yesterday, deadline: 2.days.ago)
 
       assert_equal 'user@example.com', future_draft.email
       assert_equal 'user@example.com', past_draft.email
@@ -108,9 +108,9 @@ class PastEventDateServiceTest < ActiveSupport::TestCase
         email_confirmation: user.email
       )
 
-      past_event_1.update_attributes(start_date: Time.now.yesterday, end_date: Time.now.yesterday)
-      past_event_2.update_attributes(start_date: 2.weeks.ago, end_date: 2.weeks.ago)
-      past_event_3.update_attributes(start_date: 1.year.ago, end_date: 1.year.ago)
+      past_event_1.update_attributes(start_date: Time.now.yesterday, end_date: Time.now.yesterday, deadline: 2.days.ago)
+      past_event_2.update_attributes(start_date: 2.weeks.ago, end_date: 2.weeks.ago, deadline: 3.weeks.ago)
+      past_event_3.update_attributes(start_date: 1.year.ago, end_date: 1.year.ago, deadline: 2.years.ago)
 
       assert_equal 3, Event.approved.past.count
       assert_equal 3, Event.approved.past.map { |e| e.applications.count }.inject { |sum,n| sum += n }

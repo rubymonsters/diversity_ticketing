@@ -23,7 +23,8 @@ feature 'Application Page' do
     assert_equal current_path, event_application_path(@event.id, @application.id)
 
     assert page.has_content?('Your application')
-    assert_equal 2, page.all("a[href='/users/#{@user.id}/applications']").count
+
+    assert_equal 2, page.all("a[href='/en/users/#{@user.id}/applications']").count
   end
 
   test 'shows link to delete this application if user is an admin' do

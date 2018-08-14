@@ -5,9 +5,9 @@
 
   <% if Clearance.configuration.allow_sign_up? %>
     <div class="col alternative-registration">
-      <h2>New to Diversity Tickets?</h2>
+      <h2><%=t('.new_to_diversity_tickets') %></h2>
       <%= link_to sign_up_path do %>
-        <div class="btn btn-edit">Create your account</div>
+        <div class="btn btn-edit"><%=t('.create_your_account') %></div>
       <% end %>
     </div>
   <% end %>

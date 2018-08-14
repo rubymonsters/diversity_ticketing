@@ -97,7 +97,7 @@ class UsersControllerTest < ActionController::TestCase
       user = make_user
       approved_event = make_event(approved: true, organizer_id: user.id, end_date: 10.days.from_now)
       unapproved_event = make_event(organizer_id: user.id, end_date: 10.days.from_now)
-      past_event = make_event(organizer_id: user.id, start_date: Time.now.yesterday, end_date: Time.now.yesterday)
+      past_event = make_event(organizer_id: user.id, start_date: Time.now.yesterday, end_date: Time.now.yesterday, deadline: 2.days.ago)
 
       categorized_user_events = {
         approved: user.events.approved.upcoming,

@@ -2,70 +2,58 @@
   <h1 class="page-title">FAQ</h1>
 
   <ul>
-    <li><%= link_to "What is diversitytickets.org?", anchor: "general_org" %></li>
-    <li><%= link_to "What options are there to use diversitytickets.org?", anchor: "general_options" %></li>
-    <li><%= link_to "Why is there a need for something like diversitytickets.org?", anchor: "general_need" %></li>
-    <li><%= link_to "Which events are eligible?", anchor: "conf_1" %></li>
-    <li><%= link_to "How can I submit my event?", anchor: "conf_2" %></li>
-    <li><%= link_to "How long will it take for my event to be approved?", anchor: "conf_3" %></li>
-    <li><%= link_to "Why has my event not been approved?", anchor: "conf_4" %></li>
-    <li><%= link_to "How can I add a new tag to my event?", anchor: "conf_5" %></li>
-    <li><%= link_to "How can I apply?", anchor: "grant_1" %></li>
-    <li><%= link_to "Am I eligible to apply?", anchor: "grant_2" %></li>
-    <li><%= link_to "When will I find out if my application has been accepted/rejected?", anchor: "grant_3" %></li>
+    <li><%= link_to t('.what_is_diversity_tickets'), anchor: t('.what_is_diversity_tickets_anchor') %></li>
+    <li><%= link_to t('.diversity_tickets_options') , anchor: t('.diversity_tickets_options_anchor') %></li>
+    <li><%= link_to t('.why_diversity_tickets'), anchor: t('.why_diversity_tickets_anchor') %></li>
+    <li><%= link_to t('.which_events_eligible'), anchor: t('.which_events_eligible_anchor') %></li>
+    <li><%= link_to t('.how_can_i_submit_my_event'), anchor: t('.how_can_i_submit_my_event_anchor') %></li>
+    <li><%= link_to t('.how_long_event_approved'), anchor: t('.how_long_event_approved_anchor') %></li>
+    <li><%= link_to t('.why_even_not_approved'), anchor: t('.why_even_not_approved_anchor') %></li>
+    <li><%= link_to t('.how_can_i_add_tags'), anchor: t('.how_can_i_add_tags_anchor') %></li>
+    <li><%= link_to t('.how_can_i_apply'), anchor: t('.how_can_i_apply_anchor')%></li>
+    <li><%= link_to t('.am_i_eligible'), anchor: t('.am_i_eligible_anchor') %></li>
+    <li><%= link_to t('.when_find_application_approved_rejected'), anchor: t('.when_find_application_approved_rejected_anchor') %></li>
   </ul>
 
 
-  <h2 class="page-subtitle">General</h2>
+  <h2 class="page-subtitle"><%= t('.general')%></h2>
 
-  <p id="general_org"><strong>What is diversitytickets.org?</strong></p>
-  <p>diversitytickets.org is a Travis Foundation app which helps conference organisers manage their diversity tickets and offer underrepresented groups in tech a platform to find events they can apply for. Conference organizers can submit their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
+  <p id="general_org"><strong><%= t('.what_is_diversity_tickets') %></strong></p>
+  <p><%= t('.what_is_diversity_tickets_answer') %></p>
 
-  <p id="general_options"><strong>What options are there to use diversitytickets.org?</strong></p>
-  <ul>
-    <li>1) Travis Foundation handles the selection and application process for your conference</li>
-    <li>2) Travis Foundation handles the application process, you handle the selection process</li>
-    <li>3) You handle both the application and selection and we only list your conference on our site.</li>
-  </ul>
+  <p id="general_options"><strong><%= t('.diversity_tickets_options') %></strong></p>
+  <%= raw t('.diversity_tickets_options_answer') %>
 
-  For option 2) we will send you a .csv file with all applications that came in through diversitytickets.org.
-
-  Since Travis Foundation is a non-profit organization we depend on donations to continue the projects we build. To be able to put in working hours to manage your conference tickets and meanwhile still support our other projects, we ask for a small donation to Travis Foundation for our service. We will take into consideration the resources and size of the conference when asking for a contribution and are sure we will always find a way to make this work.
-
-  For option 1) and 2) we will ask for a donation to cover the diversity consulting and management work of Travis Foundation. For option 3) the use of the app is for free, but a small donation around 50 € is greatly appreciated and will go towards hosting and managing the site and printing stickers for Rubymonstas.
-
-  <p id="general_need"><strong>Why is there a need for something like diversitytickets.org?</strong></p>
-  <p>Unfortunately, the tech industry is <a href="http://geekfeminism.wikia.com/wiki/FLOSS" target="_blank">far from being diverse</a>. There are a few projects which make us all aware of this problem, but the goal of diversitytickets.org is first and foremost to try and raise the amount of diverse attendees at conferences by specifically reaching out to members of minority groups who would otherwise not be able to attend a conference.</p>
-
-  <p>Read more about the concept on the Travis Foundation Blog: <a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">An app to diversify tech conferences</a></p>
+  <p id="general_need"><strong><%= t('.why_diversity_tickets') %></strong></p>
+  <%= raw t('.why_diversity_tickets_answer', geekfeminism: '<a href="http://geekfeminism.wikia.com/wiki/FLOSS" target="_blank">', travis_blog: '<a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">' ).html_safe %>
 
 
-  <h2 class="page-subtitle">For conference organisers</h2>
+  <h2 class="page-subtitle"><%=t('.for_conference_organisers') %></h2>
 
-  <p id="conf_1"><strong>Which events are eligible?</strong></p>
-  <p>Organizers that want to get help from <a href="http://foundation.travis-ci.org/">Travis Foundation</a> to handle their diversity tickets can submit any of their events or conferences for which they are willing to offer free tickets or travel grants — this must have been discussed with Travis Foundation prior to the submission. We expect the events to be inclusive and to have a Code of Conduct which will be enforced throughout the event.</p>
+  <p id="conf_1"><strong><%= t('.which_events_eligible') %></strong></p>
+  <%= raw t('.which_events_eligible', travis_website: '<a href="http://foundation.travis-ci.org/">').html_safe %>
 
-  <p id="conf_2"><strong>How can I submit my event?</strong></p>
-  <p>To submit your event, click on “Submit Event” and fill out all the details. Your personal information (name and email) will not be public and is only asked so that we can contact you.</p>
+  <p id="conf_2"><strong><%= t('.how_can_i_submit_my_event') %></strong></p>
+  <%= raw t('.how_can_i_submit_my_event_answer') %>
 
-  <p id="conf_3"><strong>How long will it take for my event to be approved?</strong></p>
-  <p>This usually depends on how many event submissions we get; we expect for it to take from 24 hours up to one week, so please factor that in when submitting your event. Once the event is approved, you will receive an automated email.</p>
+  <p id="conf_3"><strong><%= t('.how_long_event_approved') %></strong></p>
+  <%= raw t('.how_long_event_approved_answer') %>
 
-  <p id="conf_4"><strong>Why has my event not been approved?</strong></p>
-  <p>If your event has not been approved, you can contact us for more details.</p>
+  <p id="conf_4"><strong><%= t('.why_even_not_approved') %></strong></p>
+  <%= raw t('.why_even_not_approved_answer') %>
 
-  <p id="conf_5"><strong>How can I add a new tag to my event?</strong></p>
-  <p>We currently only allow site administrators to add new tags; if you'd like to tag your event with a tag that is currently not available from the list, please drop us a line at <%= mail_to "foundation@travis-ci.org" %>. We will try to process your request as quickly as possible and add your chosen tag to your event submission.</p>
+  <p id="conf_5"><strong><%= t('.how_can_i_add_tags') %></strong></p>
+  <%=raw t('.how_can_i_add_tags_answer', travis_email: 'mail_to "foundation@travis-ci.org"') %>
 
 
-  <h2 class="page-subtitle">For grant applicants</h2>
+  <h2 class="page-subtitle"><%= t('.for_grant_applicants') %></h2>
 
-  <p id="grant_1"><strong>How can I apply?</strong></p>
-  <p>Find the event you wish to apply to in the <a href="https://diversitytickets.org/events" target="_blank">event list</a>, and click the green "Apply" button underneath the event description. Please fill out all the form fields, and using the checkboxes, select the kind of support you are applying for (eg. ticket, travel grant) and accept the Terms and Conditions. That’s all!</p>
+  <p id="grant_1"><strong><%= t('.how_can_i_apply') %></strong></p>
+  <%= raw t('.how_can_i_apply_answer', events_link: '<a href="https://diversitytickets.org/events" target="_blank">').html_safe %>
 
-  <p id="grant_2"><strong>Am I eligible to apply?</strong></p>
-  <p>If you feel like you are a member of an underrepresented group in tech — this includes, but is not limited to: people of colour, LGBTQIA+ people, women and disabled people — and agree to our Terms and Conditions, that makes you eligible for a diversity ticket.</p>
+  <p id="grant_2"><strong><%= t('.am_i_eligible') %></strong></p>
+  <%= raw t('.am_i_eligible_answer') %>
 
-  <p id="grant_3"><strong>When will I find out if my application has been accepted/rejected?</strong></p>
-  <p>Every conference is different, so we can’t tell you for sure how much the selection process will take; two weeks from the application deadline usually give us enough time to process all applications.</p>
+  <p id="grant_3"><strong><%= t('.when_find_application_approved_rejected') %></strong></p>
+  <%= raw t('.when_find_application_approved_rejected_answer', travis_mail: 'mail_to "foundation@travis-ci.org"' )%>
 </div>
