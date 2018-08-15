@@ -39,7 +39,7 @@
 
 <div class="box">
   <% if @event.application_process == "selection_by_travis" %>
-    <p><%=t(".application_status", application_status: @application.status)%></p>
+    <p><%=t('.application_status', application_status: @application.status)%></p>
     <% if @application.event.closed? && !@event.past? %>
       <% if @application.status == 'pending' %>
         <%= link_to t(".approve"), approve_event_application_path(@application.event_id, @application.id),
