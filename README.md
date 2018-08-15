@@ -5,7 +5,7 @@ This is a Ruby on Rails app made by RubyMonstas (a RailsGirls study group based 
 Supported by the [Travis Foundation](http://foundation.travis-ci.org/).
 
 ## Contribution Workflow
-If you want to contribute, you can look at the [open issues](https://github.com/rubymonsters/diversity_ticketing/issues). We'll behappy to answer your questions if you consider to help.
+If you want to contribute, you can look at the [open issues](https://github.com/rubymonsters/diversity_ticketing/issues). We'll be happy to answer your questions if you consider to help.
 
 If you have other ideas to enhance the site or have found a bug, feel free to open an [issue](https://github.com/rubymonsters/diversity_ticketing/issues)!
 
