@@ -3,7 +3,6 @@
 <%= render partial: 'statistics' %>
 
 <p>
-
   <%= link_to t('.download_events_report'), admin_path(format: :csv),
     class: "btn btn-save"%>
 
@@ -19,8 +18,8 @@
       <ul class="admin-list">
         <% if events.empty? %>
         <p><%= t(".no_events_to_approve")%></p>
-        </ul>
-        <% elsif events.first.approved? %>
+      </ul>
+        <% elsif heading == "Approved events" %>
           <% @approved_events_deadline.each do |heading, events| %>
             <% unless events.empty? %>
               <div class="box">
