@@ -241,7 +241,7 @@ es:
       directions_applicants: "Directrices para las/os solicitantes"
       midnight_utc: "(medianoche UTC)"
       number_tickets: "Número de tickets disponibles"
-      tickets: "ticket"
+      ticket: "ticket"
       travel: "Transporte"
       whats_funded: "¿Qué incluye?"
     event:
