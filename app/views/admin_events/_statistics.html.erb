@@ -10,9 +10,9 @@
         Most conferences:
         <strong>
           <ol>
-            <% for index in 1..@countries.length%>
-            <% break if index > 3 %>
-            <li><%= index %>. <%=@events.country_with_most_events(index) %> (<%= @events.number_of_events_per_country(index)%>)</li>
+            <% @country_rank.each.with_index do |country, index| %>
+            <% break if index >= 3 || index == @country_rank.length %>
+            <li><%= index + 1 %>. <%= @country_rank[index][0] %> (<%= @country_rank[index][1] %>)</li>
           <% end %>
           </ol>
         </strong>
