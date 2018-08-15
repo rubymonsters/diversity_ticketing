@@ -45,7 +45,7 @@ en:
       admin_link: "Admin"
       application_by: "Application by %{application_name}"
       application_for: "Application for %{event_name}"
-      application_status: "Application status: #{application_status}"
+      application_status: "Application status: %{application_status}"
       approve: "Approve"
       are_you_sure: "Are you sure you want to delete this application?"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
