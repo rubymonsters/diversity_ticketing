@@ -45,7 +45,7 @@ es:
       admin_link: "Admin"
       application_by: "Solicitud de %{application_name}"
       application_for: "Solicitud para %{event_name}"
-      application_status: "Estado de la solicitud: #{application_status}"
+      application_status: "Estado de la solicitud: %{application_status}"
       approve: "Aprobar"
       are_you_sure: "¿Estás segura/o de que quieres eliminar esta solicitud?"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
