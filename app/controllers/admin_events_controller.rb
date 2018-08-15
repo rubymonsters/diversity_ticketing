@@ -10,6 +10,7 @@ class AdminEventsController < ApplicationController
     @new_users = User.all.created_last_30_days
     @countries = Event.all.pluck(:country).compact
     @countries_statistics = CountriesStatistics.new(@events).to_json
+    @country_rank = CountriesStatistics.new(@events).country_rank
     @categorized_events = {
       "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
       "Approved events" => Event.approved.upcoming.order(:deadline),

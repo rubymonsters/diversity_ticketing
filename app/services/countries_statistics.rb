@@ -10,6 +10,13 @@ class CountriesStatistics
     end.to_json
   end
 
+  def country_rank
+    countries.each_with_object({}) do |country, memo|
+      next if country.nil?
+      memo[country] = events_count(country)
+    end.sort_by { |k, v| -v }
+  end
+
   private
 
   def key(country)
