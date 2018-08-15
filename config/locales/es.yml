@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  date:
+    order: ["day", "month", "year"]
+    month_names: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"]
   activerecord:
     attributes:
       application:
@@ -330,7 +333,7 @@ es:
       submit_your_conference: "Puedes %{link_to_submission} o navegar por %{link_to_past_events}."
       submit_your_own_conference: "subir una conferencia"
     new:
-      create_new_event: "CrearCreate</span>un evento nuevo"
+      create_new_event: "Crear</span>un evento nuevo"
       home_link: "Inicio"
       events: "Eventos"
       errors: "impidieron guardar este evento"
