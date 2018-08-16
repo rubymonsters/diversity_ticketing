@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  date:
+    order: ["day", "month", "year"]
+    month_names: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"]
   activerecord:
     attributes:
       application:
@@ -45,7 +48,7 @@ es:
       admin_link: "Admin"
       application_by: "Solicitud de %{application_name}"
       application_for: "Solicitud para %{event_name}"
-      application_status: "Estado de la solicitud: #{application_status}"
+      application_status: "Estado de la solicitud: %{application_status}"
       approve: "Aprobar"
       are_you_sure: "¿Estás segura/o de que quieres eliminar esta solicitud?"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
@@ -241,7 +244,7 @@ es:
       directions_applicants: "Directrices para las/os solicitantes"
       midnight_utc: "(medianoche UTC)"
       number_tickets: "Número de tickets disponibles"
-      tickets: "ticket"
+      ticket: "ticket"
       travel: "Transporte"
       whats_funded: "¿Qué incluye?"
     event:
@@ -330,7 +333,7 @@ es:
       submit_your_conference: "Puedes %{link_to_submission} o navegar por %{link_to_past_events}."
       submit_your_own_conference: "subir una conferencia"
     new:
-      create_new_event: "CrearCreate</span>un evento nuevo"
+      create_new_event: "Crear</span>un evento nuevo"
       home_link: "Inicio"
       events: "Eventos"
       errors: "impidieron guardar este evento"

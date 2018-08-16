@@ -59,7 +59,8 @@
           placeholder: t('.directions_applicants_placeholder') %>
     <div class="two-columns">
       <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'],
-          min: Date.today, use_short_month: true, start_year: Date.today.year, include_blank: true, default: nil %>
+          min: Date.today, start_year: Date.today.year, include_blank: true, default: nil,
+          :use_month_names => t('date.month_names') %>
       <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'], ignore_date: true %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>
