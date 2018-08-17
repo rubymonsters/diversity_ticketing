@@ -2,7 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>DiversityTickets</title>
+
+  <title>
+    <% if current_page? root_url %>
+      DiversityTickets
+    <% else %>
+      <%= yield :title %> | DiversityTickets
+    <% end %>
+  </title>
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
