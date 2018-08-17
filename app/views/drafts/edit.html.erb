@@ -1,3 +1,4 @@
+<% provide :title, 'Edit Draft' %>
 <%= form_for @draft, url: event_application_path(params[:event_id], @draft.id), builder: ::FormBuilder do |f| %>
 
   <% if @draft.errors.any? %>

@@ -1,4 +1,4 @@
-<%= provide :title, @event.organizer_name %>
+<% provide :title, @event.organizer_name %>
 <p class="breadcrumb">
   <%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
   <% if !@event.approved? %>
