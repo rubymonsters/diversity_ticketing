@@ -18,7 +18,7 @@
       <h2><%=t('.fields_of_interest') %></h2>
       <div class="category-tags">
         <% Category.all.each do |category| %>
-          <p><%= category.name.capitalize %></p>
+          <p><%= t('.' + category.name.gsub(" ", "_")) %></p>
           <%= form.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
             <%= tag.label { tag.check_box + " " + tag.text } %>
           <% end %>
@@ -27,17 +27,17 @@
     </section>
 
     <section class="box col-6">
-        <h2><%= t(".email-notifications") %></h2>
-        <p><%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %></p>
-        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive-emails-tag') %><p>
-        <h3><%= t(".for-organizers") %></h3>
-        <h5><%= t(".capacity-email-notifications-info") %></h5>
+        <h2><%= t(".email_notifications") %></h2>
+        <p><%= form.check_box :country_email_notifications %> <%= t('.receive_emails_country') %></p>
+        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive_emails_tag') %><p>
+        <h3><%= t(".for_organizers") %></h3>
+        <h5><%= t(".capacity_email_notifications_info") %></h5>
         <p><%= form.radio_button :capacity_email_notifications, "OFF", checked: (@user.capacity_email_notifications == "OFF" ? true : false)%>
-          <%= t('.receive-no-capacity-reminders') %></p>
+          <%= t('.receive_no_capacity_reminders') %></p>
         <p><%= form.radio_button :capacity_email_notifications, "Always", checked: (@user.capacity_email_notifications == "Always" ? true : false) %>
-          <%= t('.receive-all-capacity-reminders') %></p>
+          <%= t('.receive_all_capacity_reminders') %></p>
         <p><%= form.radio_button :capacity_email_notifications, "Once", checked: (@user.capacity_email_notifications == "Once" ? true : false) %>
-          <%= t('.receive-capacity-reminders-once') %></p>
+          <%= t('.receive_capacity_reminders_once') %></p>
 
     </section>
 
