@@ -12,7 +12,12 @@
   <% end %>
 
   <section class="box">
-    <h2 class="box-title"><%= t(".please_fill") %></h2>
+    <span class="box-title-translated"><h2 class="english"><%= raw t(".please_fill", :locale => :en) %></h2>
+      <div>
+        <p><%= raw t(".please_fill") unless I18n.locale == :en %><p>
+        <p><%= t(".please_fill_english") %></p>
+      </div>
+    </span>
     <% unless current_user %>
       <p>
         <em>
@@ -21,18 +26,18 @@
         </em>
       </p>
     <% end %>
-    <%= f.form_field :text_area, :attendee_info_1, t('.attendee_info_1', event_name: @event.name) %>
-    <%= f.form_field :text_area, :attendee_info_2, t('.attendee_info_2') %>
+    <%= f.form_field :text_area, :attendee_info_1, t('.attendee_info_1', event_name: @event.name, :locale => :en) %>
+    <%= f.form_field :text_area, :attendee_info_2, t('.attendee_info_2', :locale => :en) %>
     <% if current_user %>
       <div class="form_field">
-        <%= f.form_field :text_field, :name, t('.name'), value: current_user.name %>
-        <%= f.form_field :text_field, :email, t('.email'), value: current_user.email %>
+        <%= f.form_field :text_field, :name, t('.name', :locale => :en), value: current_user.name %>
+        <%= f.form_field :text_field, :email, t('.email', :locale => :en), value: current_user.email %>
       </div>
     <% else %>
-      <%= f.form_field :text_field, :name, t('.name') %>
-      <%= f.form_field :text_field, :email, t('.email') %>
+      <%= f.form_field :text_field, :name, t('.name', :locale => :en) %>
+      <%= f.form_field :text_field, :email, t('.email', :locale => :en) %>
     <% end %>
-    <%= f.form_field :text_field, :email_confirmation, t('.email_confirmation') %>
+    <%= f.form_field :text_field, :email_confirmation, t('.email_confirmation', :locale => :en) %>
 
     <% if @event.travel_funded? %>
       <div class="form_field">
