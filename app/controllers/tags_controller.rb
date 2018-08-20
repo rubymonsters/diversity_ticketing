@@ -9,9 +9,9 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
 
     if @tag.save
-      flash[:notice] = "Tag #{@tag.name} was successfully created."
+      flash[:notice] = t('.tag_created', tag_name: @tag.name)
     else
-      flash[:alert] = "There was a problem creating the new tag."
+      flash[:alert] = t('.tag_problem')
     end
     redirect_to tags_path
   end

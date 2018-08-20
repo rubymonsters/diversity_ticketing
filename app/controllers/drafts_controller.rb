@@ -13,14 +13,14 @@ class DraftsController < ApplicationController
     set_applicant_id
     @draft = Application.new(application_params)
     @draft.event = @event
-    save_draft("You have successfully saved an application draft for #{@event.name}.")
+    save_draft(t('.successful_saved', event_name: @event.name))
   end
 
   def update
     @draft = @event.applications.find(params[:id])
     @draft.skip_validation = true
     if @draft.update(application_params)
-      save_draft("You have successfully saved your changes to the draft.")
+      save_draft(t('.successful_saved_changes'))
     end
   end
 
@@ -29,7 +29,7 @@ class DraftsController < ApplicationController
     if @draft.update(application_params)
       @draft.update_attributes(submitted: true)
       ApplicantMailer.application_received(@draft).deliver_later
-      redirect_to event_application_path(@event.id, @draft.id), notice: "You have successfully applied for #{@event.name}."
+      redirect_to event_application_path(@event.id, @draft.id), notice: t('.successful_application', event_name: @event.name)
     else
       render :show
     end

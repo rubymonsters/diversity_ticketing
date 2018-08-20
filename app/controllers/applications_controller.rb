@@ -14,7 +14,7 @@ class ApplicationsController < ApplicationController
 
   def create
     if current_user && @event.applications.find_by(applicant_id: current_user.id)
-      redirect_to @event, alert: "You have already applied for #{@event.name}"
+      redirect_to @event, alert: t('.already_applied', event_name: @event.name)
     else
       @application = Application.new(application_params)
       @application.event = @event
@@ -30,21 +30,21 @@ class ApplicationsController < ApplicationController
   def show
     if @application.deleted
       redirect_to user_applications_path(current_user.id),
-      alert: "You cannot view your application as the event you applied for has been removed from Diversity Tickets"
+      alert: t('.application_deleted')
     end
   end
 
   def edit
     if @event.closed?
       redirect_to event_application_path(@event.id, @application.id),
-      alert: "You cannot edit your application as the #{@event.name} deadline has already passed"
+      alert: t('.edit_deadline_passed', event_name: @event.name)
     end
   end
 
   def update
     if @application.update(application_params)
       redirect_to event_application_path(@event.id, @application.id),
-      notice: "You have successfully updated your application for #{@event.name}."
+      notice: t('.update_success', event_name: @event.name)
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class ApplicationsController < ApplicationController
       ApplicantMailer.application_received(@application).deliver_later
       ticket_capacity_check
       current_user ? (path = event_application_path(@event.id, @application.id)) : (path = @event)
-      redirect_to path, notice: "You have successfully applied for #{@event.name}."
+      redirect_to path, notice: t('.application_success', event_name: @event.name)
     else
       render :show
     end

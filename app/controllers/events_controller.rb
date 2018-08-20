@@ -16,17 +16,17 @@ class EventsController < ApplicationController
 
   def show
     if @event.unapproved && @event.organizer_id != current_user.id
-      flash[:alert] = 'You are not allowed to access this event.'
+      flash[:alert] = t('.not_allowed')
       redirect_back(fallback_location: root_path)
     elsif @event.deleted
-      flash[:alert] = 'This event has been deleted by the organizer.'
+      flash[:alert] = t('.event_deleted')
       redirect_back(fallback_location: root_path)
     end
   end
 
   def new
     if !current_user
-      redirect_to sign_in_path, flash: { :info => "Please sign into your existing account or create a new one to submit events." }
+      redirect_to sign_in_path, flash: { :info => t('.please_sign') }
     else
       @event = Event.new
       @event.tags.build
@@ -52,7 +52,7 @@ class EventsController < ApplicationController
         AdminMailer.submitted_event(@event, user.email).deliver_later
       end
       OrganizerMailer.submitted_event(@event).deliver_later
-      redirect_to events_url, notice: "Thank you for submitting #{@event.name}. We will review it shortly."
+      redirect_to events_url, notice: t('.thank_you', event_name: @event.name)
     else
       render :new
     end
@@ -60,7 +60,7 @@ class EventsController < ApplicationController
 
   def edit
     if @event.uneditable_by?(current_user)
-      redirect_to event_url(@event), alert: "Your event can't be edited, because the deadline has passed."
+      redirect_to event_url(@event), alert: t('.deadline_passed')
     end
   end
 
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
     if @event.uneditable_by?(current_user)
       head :forbidden
     elsif @event.update(event_params)
-      redirect_back fallback_location: '/', notice: "You have successfully updated #{@event.name}."
+      redirect_back fallback_location: '/', notice: t('.update_success', event_name: @event.name)
     else
       render :edit
     end

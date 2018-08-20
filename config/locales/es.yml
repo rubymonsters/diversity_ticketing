@@ -44,6 +44,9 @@ es:
               invalid: "URL completa, por ejemplo: https://miconferencia.com/codigo-de-conducta"
 
   admin_applications:
+    application_approved: "¡La solicitud de %{application_name} ha sido aprobada!"
+    application_pending: "La solicitud de %{application_name} ha vuelto a \"pendiente\""
+    application_rejected: "La solicitud de %{application_name} ha sido rechazada"
     show:
       admin_link: "Admin"
       application_by: "Solicitud de %{application_name}"
@@ -63,6 +66,8 @@ es:
       visa_need: "Necesito una visa"
 
   admin_events:
+    event_approved: "¡%{event_name} ha sido aprobado!"
+    event_unapproved: "%{event_name} ha sido desaprobado"
     index:
       are_you_sure: "¿Estás seguro/a?"
       approve: aprobar
@@ -98,6 +103,11 @@ es:
       revert: "Revertir"
 
   applications:
+    already_applied: "Ya has realizado una solicitud para %{event_name}"
+    application_deleted: "No puedes visualizar tu solicitud porque el evento ha sido eliminado de Diversity Tickets"
+    application_success: "Tu solicitud se ha enviado con éxito a %{event_name}."
+    edit_deadline_passed: "No puedes editar tu solicitud porque la fecha límite de %{event_name} ya ha pasado"
+    update_success: "Has actualizado con éxito tu solicitud para %{event_name}."
     form:
       agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
@@ -195,6 +205,9 @@ es:
       your_applications: "Tus solicitudes"
 
   drafts:
+    successful_saved: "Has guardado con éxito tu solicitud para %{event_name}."
+    successful_saved_changes: "Has guardado con éxito los cambios en tu borrador"
+    successful_application: "Tu solicitud se ha enviado con éxito a %{event_name}."
     edit:
       agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       apply_changes: "Aplicar cambios"
@@ -238,6 +251,12 @@ es:
       your_applications: "Tus solicitudes"
 
   events:
+    deadline_passed: "Tu evento no puede ser editado, ya que la fecha límite ya ha pasado"
+    event_deleted: "Este evento ha sido eliminado por el organizador"
+    not_allowed: "No tienes permiso para acceder a este evento"
+    please_sign: "Por favor, inicia sesión en tu cuenta o crea una nueva para subir un evento"
+    thank_you: "Gracias por subir %{event_name}. Lo revisaremos en cuanto antes."
+    update_success: "Has actualizado %{event_name} con éxito."
     application_details:
       accomodation: "Alojamiento"
       application_details: "Detalles de la solicitud"
@@ -454,6 +473,8 @@ es:
       privacy_policy: "Privacy policy"
 
   sessions:
+    account_not_found: "No se encuentra la cuenta. Por favor, regístrate primero."
+    please_reset_password: "Debido a una actualización de seguridad, te pedimos que resetees tu contraseña."
     form:
       email: "Email"
       password: "Contraseña"
@@ -467,11 +488,19 @@ es:
       new_to_diversity_tickets: "¿Nuevo en diversity tickets?"
 
   tags:
+    tag_created: "El tag %{tag_name} se ha creado con éxito."
+    tag_problem: "Ha habido un problema creando el nuevo tag."
     index:
       are_you_sure: "¿Estás segura/o?"
       tags_management_title: "Gestión de tags"
 
   users:
+    account_deleted: "Tu cuenta se ha eliminado con éxito"
+    no_permission: "Lo sentimos pero no tienes permiso para acceder a esta página."
+    password_incorrect: "Contraseña incorrecta"
+    password_mandatory: "La contraseña es un campo obligatorio"
+    update_fail: "Tus datos no han podido ser actualizados"
+    update_success: "Has actualizado tus datos con éxito"
     form:
       email: "Email"
       password: "Contraseña"

@@ -54,9 +54,9 @@ class AdminEventsController < ApplicationController
       tweet_event_check
       inform_applicants_country
       inform_applicants_field_of_interest
-      redirect_to admin_url, notice: "#{@event.name} has been approved!"
+      redirect_to admin_url, notice: t('.event_approved', event_name: @event.name)
     else
-      redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
+      redirect_to admin_url, notice: t('.event_unapproved', event_name: @event.name)
     end
   end
 
