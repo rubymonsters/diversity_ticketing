@@ -44,6 +44,9 @@ en:
               blank: "Please state why you're applying for a diversity ticket"
 
   admin_applications:
+    application_approved: "%{application_name}'s application has been approved!"
+    application_pending: "%{application_name}'s application has been changed to pending"
+    application_rejected: "%{application_name}'s application has been rejected"
     show:
       admin_link: "Admin"
       application_by: "Application by %{application_name}"
@@ -63,6 +66,8 @@ en:
       visa_need: "I need a Visa."
 
   admin_events:
+    event_approved: "%{event_name} has been approved!"
+    event_unapproved: "%{event_name} has been unapproved"
     index:
       are_you_sure: "Are you sure?"
       approve: "approve"
@@ -101,6 +106,11 @@ en:
       show_statistics_map: "Show statistics map"
 
   applications:
+    already_applied: "You have already applied for %{event_name}"
+    application_deleted: "You cannot view your application as the event you applied for has been removed from Diversity Tickets"
+    application_success: "You have successfully applied for %{event_name}."
+    edit_deadline_passed: "You cannot edit your application as the %{event_name} deadline has already passed"
+    update_success: "You have successfully updated your application for %{event_name}."
     form:
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
@@ -198,6 +208,9 @@ en:
       your_applications: "Your applications"
 
   drafts:
+    successful_saved: "You have successfully saved an application draft for %{event_name}."
+    successful_saved_changes: "You have successfully saved your changes to the draft."
+    successful_application: "You have successfully applied for %{event_name}."
     edit:
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
@@ -241,6 +254,12 @@ en:
       your_applications: "Your applications"
 
   events:
+    deadline_passed: "Your event can't be edited, because the deadline has passed."
+    event_deleted: "This event has been deleted by the organizer."
+    not_allowed: "You are not allowed to access this event."
+    please_sign: "Please sign into your existing account or create a new one to submit events."
+    thank_you: "Thank you for submitting %{event_name}. We will review it shortly."
+    update_success: "You have successfully updated %{event_name}."
     application_details:
       accomodation: "Accomodation"
       application_details: "Application details"
@@ -500,6 +519,8 @@ en:
       privacy_policy: "Privacy policy"
 
   sessions:
+    account_not_found: "Account not found, please register first"
+    please_reset_password: "Due to a security update from our side we kindly ask you to reset your password."
     form:
       email: "Email"
       password: "Password"
@@ -513,11 +534,19 @@ en:
       new_to_diversity_tickets: "New to Diversity Tickets?"
 
   tags:
+    tag_created: "Tag %{tag_name} was successfully created."
+    tag_problem: "There was a problem creating the new tag."
     index:
       are_you_sure: "Are you sure?"
       tags_management_title: "Tags management"
 
   users:
+    account_deleted: "Your account has been deleted successfully."
+    no_permission: "We're sorry. You don't have permission to access this page."
+    password_incorrect: "Incorrect password"
+    password_mandatory: "Password is a mandatory field"
+    update_fail: "Data could not be updated."
+    update_success: "You have successfully updated your user data."
     form:
       email: "Email"
       password: "Password"
