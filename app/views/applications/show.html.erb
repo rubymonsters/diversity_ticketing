@@ -1,4 +1,5 @@
-<% provide :title, 'Application' %>
+<% provide :title, t('applications.show.title') %>
+
 <p class="breadcrumb">
   <%= link_to t('.home_link'), root_path %> >
   <% if current_user.admin? %>

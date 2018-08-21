@@ -48,6 +48,7 @@ en:
     application_pending: "%{application_name}'s application has been changed to pending"
     application_rejected: "%{application_name}'s application has been rejected"
     show:
+      title: "Admin"
       admin_link: "Admin"
       application_by: "Application by %{application_name}"
       application_for: "Application for %{event_name}"
@@ -69,6 +70,7 @@ en:
     event_approved: "%{event_name} has been approved!"
     event_unapproved: "%{event_name} has been unapproved"
     index:
+      title: 'Admin'
       are_you_sure: "Are you sure?"
       approve: "approve"
       conference_since: "Conferences since "
@@ -111,6 +113,7 @@ en:
     application_success: "You have successfully applied for %{event_name}."
     edit_deadline_passed: "You cannot edit your application as the %{event_name} deadline has already passed"
     update_success: "You have successfully updated your application for %{event_name}."
+    new_application: "New Application"
     form:
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
@@ -156,6 +159,7 @@ en:
       sign_me_in: "Sign me in"
       title: "How would you like to apply?"
     edit:
+      edit_application: "Edit Application"
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       apply_changes: "Apply changes"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
@@ -176,6 +180,7 @@ en:
       terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
       visa_need: "I will need a visa to attend"
     show:
+      title: "Application"
       admin_link: "Admin"
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       application_by: "Application by %{applicant_name}"
@@ -212,6 +217,7 @@ en:
     successful_saved_changes: "You have successfully saved your changes to the draft."
     successful_application: "You have successfully applied for %{event_name}."
     edit:
+      title: "Edit Draft"
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
       attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
@@ -232,6 +238,7 @@ en:
       terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
       visa_need: "I will need a visa to attend"
     show:
+      title: "Draft"
       are_you_sure: "Are you sure you want to delete this draft?"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
       attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
@@ -337,6 +344,7 @@ en:
       your_application: "Your application"
       your_draft: "Your draft"
     edit:
+      title: "Edit Event"
       edit: "Edit"
       edit_event: "Edit event"
       home_link: "Home"
@@ -346,6 +354,7 @@ en:
       past_events_thanks: "These events provided diversity tickets in the past. Many thanks to the organizers."
       show_upcoming_events: "Show upcoming events"
     index:
+      title: "Events"
       closed_for_application: "Closed for applications"
       home_link: "Home"
       events: "Events"
@@ -356,6 +365,7 @@ en:
       submit_your_conference: "You can %{link_to_submission} now or browse through %{link_to_past_events}."
       submit_your_own_conference: "submit your own conference"
     new:
+      submit_event: "Submit Event"
       create_new_event: "Create</span> new event"
       home_link: "Home"
       events: "Events"
@@ -364,6 +374,7 @@ en:
       please_fill: "Please fill out this form. Fields marked with * are required."
       preview_event: "Preview event"
     preview:
+      preview_event: "Preview Event"
       edit_event: "Edit event"
       email: "Email"
       name: "Name"
@@ -384,7 +395,10 @@ en:
       your_draft: "Your draft"
 
   home:
+    impressum:
+      title: "Impressum"
     about:
+      title: "About"
       about_title: "About Diversity Tickets"
       about_diversity_tickets: "<p>diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants. They can do so by adding their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
         <p>The app was created to make the work around diversity ticketing easier for event organisers as well as members of underrepresented groups in tech. Organisers don’t have to set up forms for the applicants to fill out and can focus on other organisational work, while applicants have a good overview of which events are currently offering diversity tickets, through the event listing.</p>
@@ -392,6 +406,7 @@ en:
         <p>Read more about the idea and concept on the Travis Foundation blog: %{travis_blog} %{app_to_diversify}</a></p>"
       app_to_diversify: "An app to diversify tech conferences"
     faq:
+      title: "FAQ"
       am_i_eligible: "Am I eligible to apply?"
       am_i_eligible_anchor: "grant_2"
       am_i_eligible_answer: "<p>If you feel like you are a member of an underrepresented group in tech — this includes, but is not limited to: people of colour, LGBTQIA+ people, women and disabled people — and agree to our Terms and Conditions, that makes you eligible for a diversity ticket.</p>"
@@ -442,6 +457,7 @@ en:
       organizers: "Organizers"
       submit_event: "Submit your upcoming events."
     privacy:
+      title: "Privacy"
       ad_servers: "<p>We do not partner with or have special relationships with any ad server companies.</p>"
       ad_servers_title: "Ad servers"
       changes: "<p>If our information practices change in the future, we will post the policy changes to our website to notify you of these changes, indicating the date of the latest revision. We will only use data collected from the time of the policy change forward for these new purposes. If you are concerned about how your information is used, you should check back at our website periodically.</p>"
@@ -562,6 +578,7 @@ en:
       your_applications: "Your applications"
       your_draft: "Your draft"
     edit:
+      title: "Edit Account"
       capacity_email_notifications_info: "We would like to inform you once your event received more applications than the number of tickets you made available via Diversity Tickets to give you the opportunity to increase the number of tickets for your event."
       country: "Country"
       download_user_data: "Here you can download a CSV file that contains a list of all your user data we store:"
@@ -591,6 +608,7 @@ en:
       title: "Your events"
       unapproved: "Not approved so far"
     confirm_delete:
+      title: "Account Deletion Confirmation"
       are_you_sure: "Are you sure you want to delete your user account?"
       benefits_intro: "We would be sad to see you go and don't want you to miss out on the benefits of
       being a signed up user."
@@ -612,6 +630,7 @@ en:
       password: "Password"
       title: "Delete Account"
     new:
+      create_account: "Create Account"
       already_registered: "Already registered?"
       create_your_account: "Create your account"
       sign_in_here: "Sign in here"

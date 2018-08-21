@@ -1,4 +1,5 @@
-<% provide :title, 'Edit Application' %>
+<% provide :title, t('applications.edit.edit_application') %>
+
 <%= form_for @application, url: event_application_path(params[:event_id], @application.id), builder: ::FormBuilder do |f| %>
 
   <% if @application.errors.any? %>
