@@ -12,7 +12,7 @@ feature 'User Confirm Delete Page' do
 
     assert page.text.include?("Your account")
 
-    page.find("#dropdown-btn").click
+    page.find("#account-menu").click
     click_link 'Account settings'
 
     page.fill_in 'user_password', with: @user.password
