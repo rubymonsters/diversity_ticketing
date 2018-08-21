@@ -1,4 +1,4 @@
-<% if controller.controller_name == "events" %>
+<% if controller.controller_name == "events" && action_name == "show"%>
   <meta property="og:description" content="<%= "#{@event.description.first(297)}..." %>">
   <meta property="og:image" content="<%= "#{event_image @event}" %>">
   <meta property="og:title" content="<%= "#{@event.name} - Diversity Tickets"%>">
