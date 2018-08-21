@@ -37,6 +37,10 @@ module ApplicationHelper
     date.strftime("%B #{date.mday.ordinalize}, %Y")
   end
 
+  def format_datetime(datetime)
+    datetime.strftime("%B #{datetime.mday.ordinalize}, %Y %H:%M:%S %Z")
+  end
+
   def format_date_range_same_month(start_date, end_date)
     start_date.strftime("%B #{start_date.mday.ordinalize}") + " to #{end_date.mday.ordinalize}, #{end_date.year}"
   end

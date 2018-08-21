@@ -1,11 +1,12 @@
 <% provide :title, 'Edit Event' %>
+
 <p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > Edit event</p>
 
-<h1 class="page-title"><span class="page-title-firstword">Edit</span> <%= @event.name %></h1>
+<h1 class="page-title"><span class="page-title-firstword"><%= t('.edit') %></span> <%= @event.name %></h1>
 
 <% if @event.errors.any? %>
   <div class="error">
-    <p><%= pluralize(@event.errors.count, "error") %> stopped this event from being updated:</p>
+    <p><%= pluralize(@event.errors.count, "error") %><%= t('.errors') %> </p>
 
     <ul>
       <% @event.errors.messages.each do |field, messages| %>
@@ -16,4 +17,4 @@
 <% end %>
 
 
-<%= render partial: "form", locals: {submit_tag_text: "Submit changes", form_url: event_path(@event)} %>
+<%= render partial: "form", locals: {submit_tag_text: t('.submit_changes'), form_url: event_path(@event)} %>

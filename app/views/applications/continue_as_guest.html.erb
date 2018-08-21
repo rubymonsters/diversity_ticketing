@@ -1,43 +1,17 @@
 <% provide :title, 'Continue As Guest' %>
-<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > <%= link_to @event.name, event_path(@event) %> > Application for <%= @event.name %></p>
+
+<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= link_to t('.events_link'), events_path %> > <%= link_to @event.name, event_path(@event) %> ><%= t('.application_for', event_name: @event.name) %></p>
 
 <h2><%= t(".title") %></h2>
 <section class="box">
-  <h3>Benefits of having a user account</h3>
+  <h3><%=t('.benefits_of_account_title') %></h3>
   <p>
-    If you have a free user account with Diversity Tickets you can:
-    <ul>
-      <li>
-        review and manage all of your applications in your applications dashboard
-      </li>
-      <li>
-        save applications as a draft before submission
-      </li>
-      <li>
-        come back to your draft later to finish and submit it
-      </li>
-      <li>
-        come back to your submitted applications later to edit them or withdraw your application
-        in case you changed your mind or your situation has changed before the end of the application deadline
-      </li>
-      <li>
-        save personal data such as your name and email address that will be saved
-        for your future applications (you will still be able to individually adjust that information)
-      </li>
-      <li>
-        manage your personal information and email preferences in your account settings
-        and decide which information you would like to share and/or receive
-      </li>
-      <li>
-        choose to receive updates about our latest conferences or other interesting events for you
-      </li>
-    </ul>
+    <%= raw t('.benefits_of_account') %>
     <strong>
-      If you continue as a guest you will not be able to save or come back to your
-      application.
+      <%= t('.guest_warning') %>
     </strong>
   </p>
 </section>
-<%= link_to 'Sign me in', sign_in_path, class: "btn btn-save" %>
-<%= link_to 'Create an account', sign_up_path(@event.id), class: "btn btn-save" %>
-<%= link_to 'Continue as guest', new_event_application_path(@event.id, guest: @guest), class: "btn btn-edit" %>
+<%= link_to t('.sign_me_in'), sign_in_path, class: "btn btn-save" %>
+<%= link_to t('.create_an_account'), sign_up_event_path(event_id: @event.id), class: "btn btn-save" %>
+<%= link_to t('.continue_as_guest'), new_event_application_path(event_id: @event.id, guest: @guest), class: "btn btn-edit" %>

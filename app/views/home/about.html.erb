@@ -1,9 +1,9 @@
 <% provide :title, 'About' %>
-<h1 class="page-title">About</h1>
-  <p>diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants. They can do so by adding their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
-  <p>The app was created to make the work around diversity ticketing easier for event organisers as well as members of underrepresented groups in tech. Organisers don’t have to set up forms for the applicants to fill out and can focus on other organisational work, while applicants have a good overview of which events are currently offering diversity tickets, through the event listing.</p>
-  <p>Travis Foundation has partnered with <a href="http://rubymonstas.org/" target="_blank">RubyMonstas</a> to create this Open Source app, which they currently use in their diversity work with conferences. The app itself is currently offered for a fee as part of the Foundation’s diversity consulting. If you’re interested in offering a diverse conference experience to your attendees, <a href="mailto:foundation@travis-ci.com">get in touch</a>!
-  </p>
-  <p>
-  Read more about the idea and concept on the Travis Foundation blog: <a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">An app to diversify tech conferences.</a>
-</p>
+
+<h1 class="page-title"><%=t('.about_title') %></h1>
+
+
+  <%=raw t('.about_diversity_tickets', ruby_monstas: '<a href="http://rubymonstas.org/" target="_blank">RubyMonstas</a>',
+                                    travis_blog: '<a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">',
+                                    email_foundation: '<a href="mailto:foundation@travis-ci.com">',
+                                    app_to_diversify: t('.app_to_diversify')).html_safe %>

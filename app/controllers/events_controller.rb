@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_s3_direct_post, only: [:new, :preview, :edit, :create, :update]
   before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
+  before_action :set_approved_tickets_count, only: [:show]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
@@ -15,17 +16,17 @@ class EventsController < ApplicationController
 
   def show
     if @event.unapproved && @event.organizer_id != current_user.id
-      flash[:alert] = 'You are not allowed to access this event.'
+      flash[:alert] = t('.not_allowed')
       redirect_back(fallback_location: root_path)
     elsif @event.deleted
-      flash[:alert] = 'This event has been deleted by the organizer.'
+      flash[:alert] = t('.event_deleted')
       redirect_back(fallback_location: root_path)
     end
   end
 
   def new
     if !current_user
-      redirect_to sign_in_path, flash: { :info => "Please sign into your existing account or create a new one to submit events." }
+      redirect_to sign_in_path, flash: { :info => t('.please_sign') }
     else
       @event = Event.new
       @event.tags.build
@@ -51,7 +52,7 @@ class EventsController < ApplicationController
         AdminMailer.submitted_event(@event, user.email).deliver_later
       end
       OrganizerMailer.submitted_event(@event).deliver_later
-      redirect_to events_url, notice: "Thank you for submitting #{@event.name}. We will review it shortly."
+      redirect_to events_url, notice: t('.thank_you', event_name: @event.name)
     else
       render :new
     end
@@ -59,7 +60,7 @@ class EventsController < ApplicationController
 
   def edit
     if @event.uneditable_by?(current_user)
-      redirect_to event_url(@event), alert: "Your event can't be edited, because the deadline has passed."
+      redirect_to event_url(@event), alert: t('.deadline_passed')
     end
   end
 
@@ -67,9 +68,7 @@ class EventsController < ApplicationController
     if @event.uneditable_by?(current_user)
       head :forbidden
     elsif @event.update(event_params)
-      url = current_user.admin? ? admin_url : user_url(current_user)
-
-      redirect_to url, notice: "You have successfully updated #{@event.name}."
+      redirect_back fallback_location: '/', notice: t('.update_success', event_name: @event.name)
     else
       render :edit
     end
@@ -118,7 +117,7 @@ class EventsController < ApplicationController
         :accommodation_funded, :travel_funded, :deadline, :number_of_tickets,
         :website, :code_of_conduct, :city, :country, :applicant_directions,
         :data_protection_confirmation, :application_link, :application_process,
-        :twitter_handle, :state_province,
+        :twitter_handle, :state_province, :approved_tickets, :locale,
         { :tag_ids => [] }, tags_attributes: [:id, :name, :category_id]
       ]
     end
@@ -138,5 +137,12 @@ class EventsController < ApplicationController
         end
       end
       @event.update_attributes(columns)
+    end
+
+    def set_approved_tickets_count
+      if @event.approved_tickets == 0
+        approved_tickets = @event.applications.where(status: 'approved').count
+        @event.update_attributes(approved_tickets: approved_tickets)
+      end
     end
 end

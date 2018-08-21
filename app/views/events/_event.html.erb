@@ -1,27 +1,27 @@
 <section class="box">
-<h2 class="box-title">Event details</h2>
+<h2 class="box-title"><%= t('.event_details') %></h2>
 
 <div class="detail-pair">
-  <strong>Event name</strong>
+  <strong><%= t('.event_name') %></strong>
   <%= @event.name %>
 </div>
 
 <% if @event.logo.present? && (controller_name == 'admin_events' || action_name == 'preview') %>
   <div class="detail-pair">
-    <strong>Logo</strong>
+    <strong><%= t('.event_logo') %></strong>
     <div class="conflogo--large"><%= image_tag @event.logo %></div>
   </div>
 <% end %>
 
 <% if @event.twitter_handle.present? %>
   <div class="detail-pair">
-    <strong>Twitter</strong>
+    <strong><%= t('.event_twitter') %></strong>
     <%= link_to "@#{@event.twitter_handle}", "https://twitter.com/#{@event.twitter_handle}", target: "_blank" %>
   </div>
 <% end %>
 
 <div class="detail-pair">
-  <strong>Tags</strong>
+  <strong><%= t('.event_tags') %></strong>
   <ul class="tags">
     <% @event.tags.each do |tag| %>
       <li class="tag <%= tag.category.name.gsub(" ", "-") %>"><%= tag.name %></li>
@@ -30,27 +30,27 @@
 </div>
 
 <div class="detail-pair">
-  <strong>Website</strong>
+  <strong><%= t('.event_website') %></strong>
   <%= link_to @event.website, "#{@event.website}", target: "_blank" %>
 </div>
 
 <div class="detail-pair">
-  <strong>Code of conduct link</strong>
+  <strong><%= t('.event_code_of_conduct') %></strong>
   <%= link_to @event.code_of_conduct, "#{@event.code_of_conduct}", target: "_blank" %>
 </div>
 
 <div class="detail-pair">
-  <strong>Location</strong>
+  <strong><%= t('.event_location') %></strong>
   <%= @event.location %>
 </div>
 
 <div class="detail-pair">
-  <strong>Date</strong>
+  <strong><%= t('.event_date') %></strong>
   <%= format_date_range(@event.start_date, @event.end_date) %>
 </div>
 
 <div class="detail-pair">
-  <strong>Description</strong>
+  <strong><%= t('.event_description') %></strong>
   <div class="markdownize"><%= @event.description %></div>
 </div>
 </section>
@@ -61,16 +61,15 @@
 
 <% unless controller_name == 'events' && action_name == 'show' %>
   <section class="box">
-    <h2 class="box-title box-noborder">Application and selection</h2>
-    <p class="border">Not shown to the public.<p>
+    <h2 class="box-title box-noborder"><%= t('.application_and_selection') %></h2>
+    <p class="border"><%= t('.not_shown') %><p>
     <div>
       <% if @event.application_process == 'selection_by_travis' %>
-        Both, the application and selection process shall be handled by diversitytickets.org*.
-        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+        <%= raw t('.selection_by_travis') %>
       <% elsif @event.application_process == 'selection_by_organizer'  %>
-        We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+        <%= t('.selection_by_organizer') %>
       <% elsif @event.application_process == 'application_by_organizer' %>
-        We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app:
+        <%= t('.application_by_organizer') %>
         <%= link_to @event.application_link, "#{@event.application_link}", target: "_blank" %>
       <% end %>
     </div>

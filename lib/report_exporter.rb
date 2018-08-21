@@ -69,13 +69,23 @@ module ReportExporter
           event.number_of_tickets
         end.inject { |sum,n| sum += n }
 
-        csv << ["Tickets offered", number_of_tickets_offered ]
+        csv << ["Tickets offered", number_of_tickets_offered]
 
         number_of_tickets_provided = events.map do |event|
+          if event.approved_tickets != 0
+            event.approved_tickets
+          else
+            event.applications.where(status: 'approved').count
+          end
+        end.inject { |sum,n| sum += n }
+
+        csv << ["Tickets provided (total)", number_of_tickets_provided]
+
+        number_of_tickets_approved_by_travis = events.map do |event|
           event.applications.where(status: "approved").count
         end.inject { |sum,n| sum += n }
 
-        csv << ["Tickets provided via 'Travis Selection'", number_of_tickets_provided ]
+        csv << ["Tickets provided via 'Travis Selection'", number_of_tickets_approved_by_travis]
 
         csv << ["Geographical distribution"]
 
@@ -130,6 +140,7 @@ module ReportExporter
         "Updated at",
         "Email notifications: Local event, on?",
         "Email notifications: Events about fields of interest, on?",
+        "Email notifictions: Send reminder when ticket capacity is reached",
         "Number of applications"
       ]
 
@@ -142,6 +153,7 @@ module ReportExporter
         result["updated_at"],
         result["country_email_notifications"],
         result["tag_email_notifications"],
+        result["capacity_email_notifications"],
         result.applications.count
       ]
 

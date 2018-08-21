@@ -3,6 +3,10 @@ Rails.application.configure do
   ENV['DT_USERNAME'] = 'monster'
   ENV['DT_PASSWORD'] = 'hello'
 
+  #this sets a default locale for the tests to pass 
+
+  Rails.application.routes.default_url_options = {locale: :en}
+
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
@@ -32,6 +36,7 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = {host: 'test.host', locale: "en"}
 
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
@@ -43,7 +48,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # set default url options for Sidekiq workers
-  config.x.worker_routes.default_url_options = {host: 'test.host', protocol: 'https'}
+  config.x.worker_routes.default_url_options = {host: 'test.host/en', protocol: 'https', locale: :en}
 
   # Sets the tests to run in order
   config.active_support.test_order = :sorted

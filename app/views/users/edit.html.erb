@@ -8,18 +8,18 @@
     <%= form.form_field :email_field, :email, t('.email') %>
 
   <%= form.label t('.country') %>
-  <%= form.select :country, CS.countries.values, {:include_blank => "Select your country"} %>
+  <%= form.select :country, CS.countries.values, {:include_blank => t('.select_your_country')} %>
 
-    <%= form.form_field :password_field, :new_password, "New password" %>
+    <%= form.form_field :password_field, :new_password, t('.new_password') %>
 
-    <%= form.form_field :password_field, :password, "Password" %>
+    <%= form.form_field :password_field, :password, t('.password') %>
     </section>
 
     <section class="tags box col-6">
-      <h2>Fields of interest</h2>
+      <h2><%=t('.fields_of_interest') %></h2>
       <div class="category-tags">
         <% Category.all.each do |category| %>
-          <p><%= category.name.capitalize %></p>
+          <p><%= t('.' + category.name.gsub(" ", "_")) %></p>
           <%= form.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
             <%= tag.label { tag.check_box + " " + tag.text } %>
           <% end %>
@@ -28,25 +28,33 @@
     </section>
 
     <section class="box col-6">
-        <h2><%= t(".email-notifications") %></h2>
-        <p><%= form.check_box :country_email_notifications %> <%= t('.receive-emails-country') %></p>
-        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive-emails-tag') %><p>
+        <h2><%= t(".email_notifications") %></h2>
+        <p><%= form.check_box :country_email_notifications %> <%= t('.receive_emails_country') %></p>
+        <p><%= form.check_box :tag_email_notifications %> <%= t('.receive_emails_tag') %><p>
+        <h3><%= t(".for_organizers") %></h3>
+        <h5><%= t(".capacity_email_notifications_info") %></h5>
+        <p><%= form.radio_button :capacity_email_notifications, "OFF", checked: (@user.capacity_email_notifications == "OFF" ? true : false)%>
+          <%= t('.receive_no_capacity_reminders') %></p>
+        <p><%= form.radio_button :capacity_email_notifications, "Always", checked: (@user.capacity_email_notifications == "Always" ? true : false) %>
+          <%= t('.receive_all_capacity_reminders') %></p>
+        <p><%= form.radio_button :capacity_email_notifications, "Once", checked: (@user.capacity_email_notifications == "Once" ? true : false) %>
+          <%= t('.receive_capacity_reminders_once') %></p>
+
     </section>
 
     <section class="box col-6">
       <div class="submit-field">
         <p>
-          Here you can download a CSV file that contains a list of all your user data
-          we store:
+          <%= t('.download_user_data') %>
         </p>
-        <%= link_to 'Download user data', edit_user_path(id: @user.id, format: :csv),
-          class: "btn btn-edit", title: "Download user data" %>
+        <%= link_to t('.download_user_data_link'), edit_user_path(id: @user.id, format: :csv),
+          class: "btn btn-edit", title: t('.download_user_data_link') %>
       </div>
     </section>
     <div class="submit-field">
-      <%= link_to t("users.delete_account.delete-button"), confirm_delete_path(id: @user.id),
+      <%= link_to t("users.delete_account.delete_button"), confirm_delete_path(id: @user.id),
           class: "btn btn-delete" %>
-      <%= form.submit(t(".save-changes"), class: "btn btn-save") %>
+      <%= form.submit(t(".save_changes"), class: "btn btn-save") %>
     </div>
   </div>
 <% end %>

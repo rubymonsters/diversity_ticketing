@@ -1,34 +1,15 @@
 <% provide :title, 'Admin' %>
+
 <h1>Admin page</h1>
 
-<div class="box">
-  <h2>Statistics</h2>
-    <ul class="admin-list">
-      <li>Total conferences: <strong><%= @events.count %></strong></li>
-      <li>Conferences since <%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
-      <li class="border">New users in the last 30 days: <strong><%= @new_users.count %></strong></li>
-    </ul>
-    <ul class="admin-list">
-      <li>
-        Most conferences:
-        <strong>
-          <ol>
-            <% for index in 1..@countries.length%>
-            <% break if index > 3 %>
-            <li><%= index %>. <%=@events.country_with_most_events(index) %> (<%= @events.number_of_events_per_country(index)%>)</li>
-          <% end %>
-          </ol>
-        </strong>
-      </li>
-    </ul>
-</div>
+<%= render partial: 'statistics' %>
 
 <p>
-  <%= link_to 'Download events report', admin_path(format: :csv),
-    class: "btn btn-save", title: "Download events report" %>
+  <%= link_to t('.download_events_report'), admin_path(format: :csv),
+    class: "btn btn-save"%>
 
-  <%= link_to 'Download annual events report', admin_annual_path(format: :csv),
-    class: "btn btn-save", title: "Download annual events report" %>
+  <%= link_to t('.download_annual_events_report'), admin_annual_path(format: :csv),
+    class: "btn btn-save"%>
 </p>
 
 <% @categorized_events.each do |heading, events| %>
@@ -38,8 +19,8 @@
     <div class="admin">
       <ul class="admin-list">
         <% if events.empty? %>
-        <p> We currently don't have any events to approve </p>
-        </ul>
+        <p><%= t(".no_events_to_approve")%></p>
+      </ul>
         <% elsif heading == "Approved events" %>
           <% @approved_events_deadline.each do |heading, events| %>
             <% unless events.empty? %>
@@ -57,27 +38,24 @@
                   <p class="application-deadline">
                     <%= format_date(event.deadline) %>
                   </p>
-
                   <div class="admin-buttons">
-
-                    <%= link_to approve_admin_event_path(event, 'Unapprove'),
+                    <%= link_to approve_admin_event_path(event),
                         method: :post, class: "icon tooltip-large",
-                        title: 'unapprove' do %>
+                        title: t('.unapprove') do %>
                         <span class="icon-unapprove" aria-label="unapprove icon"></span>
                       <% end %>
 
-                    <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
+                    <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: t('.edit') do %>
                       <span class="icon-edit" aria-label="edit icon"></span>
                     <% end %>
-
                     <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
-                        data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+                        data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: t('.delete') do %>
                       <span class="icon-delete" aria-label="trashcan icon"></span>
                     <% end %>
                   </div>
                   <p>
-                    <%= link_to 'Download CSV', event_admin_path(id: event.id, format: :csv),
-                        class: "btn btn-save", title: "Download data" %>
+                    <%= link_to t('.download_csv'), event_admin_path(id: event.id, format: :csv),
+                        class: "btn btn-save", title: t('.download_data')%>
                   </p>
                 </li>
                 <% end %>
@@ -97,40 +75,39 @@
             <p class="application-deadline">
               <%= format_date(event.deadline) %>
             </p>
-
             <div class="admin-buttons">
               <% if event.unapproved %>
                 <%= form_for :approve,
-                      url: approve_admin_event_path(event, 'Approve'),
+                      url: approve_admin_event_path(event),
                       html: { method: :post } do |form| %>
                     <span>
                       <span class="icon tooltip" title="tweet">
                       <%= form.check_box :tweet, checked: true %></span>
                       <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
-                      <span class="icon tooltip" title="approve">
+                      <span class="icon tooltip" title="approve" >
                       <%= form.submit(class: "icon-approve", title: "approve") %></span>
                     <% end %>
               <% else %>
-                <%= link_to approve_admin_event_path(event, 'Unapprove'),
+                <%= link_to approve_admin_event_path(event),
                     method: :post, class: "icon tooltip-large",
-                    title: 'unapprove' do %>
+                    title: t('.unapprove') do %>
                     <span class="icon-unapprove" aria-label="unapprove icon"></span>
                   <% end %>
               <% end %>
 
-              <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: "edit" do %>
+              <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: t('.edit') do %>
+
                 <span class="icon-edit" aria-label="edit icon"></span>
               <% end %>
-
               <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
-                  data: { confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
+                  data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: t('.delete') do %>
                 <span class="icon-delete" aria-label="trashcan icon"></span>
               <% end %>
             </div>
             <p>
               <% if event.approved %>
-              <%= link_to 'Download CSV', event_admin_path(id: event.id, format: :csv),
-                  class: "btn btn-save", title: "Download data" %>
+              <%= link_to t('.download_csv'), event_admin_path(id: event.id, format: :csv),
+                  class: "btn btn-save", title: t('.download_data') %>
               <% end %>
             </p>
           </li>

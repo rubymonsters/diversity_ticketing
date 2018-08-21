@@ -1,0 +1,569 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  date:
+    order: ["day", "month", "year"]
+    month_names: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"]
+  activerecord:
+    attributes:
+      application:
+        attendee_info_1: ""
+        attendee_info_2: ""
+    errors:
+      models:
+        application:
+          attributes:
+            attendee_info_1:
+              blank: "Por favor, explica por qué quieres acudir a este evento"
+            attendee_info_2:
+              blank: "Por favor, explica por qué estás solicitando un diversity ticket"
+        event:
+          attributes:
+            website:
+              invalid: "URL completa, por ejemplo: https://miconferencia.com"
+            code_of_conduct:
+              invalid: "URL completa, por ejemplo: https://miconferencia.com/codigo-de-conducta"
+
+  admin_applications:
+    application_approved: "¡La solicitud de %{application_name} ha sido aprobada!"
+    application_pending: "La solicitud de %{application_name} ha vuelto a \"pendiente\""
+    application_rejected: "La solicitud de %{application_name} ha sido rechazada"
+    show:
+      admin_link: "Admin"
+      application_by: "Solicitud de %{application_name}"
+      application_for: "Solicitud para %{event_name}"
+      application_status: "Estado de la solicitud: %{application_status}"
+      approve: "Aprobar"
+      are_you_sure: "¿Estás segura/o de que quieres eliminar esta solicitud?"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket"
+      delete_application: "Borrar solicitud"
+      name: "Nombre"
+      email: "Email"
+      home_link: "Inicio"
+      reject: "Denegar"
+      revert: "Revertir"
+      show_event_details: 'Mostrar detalles del evento'
+      visa_need: "Necesito una visa"
+
+  admin_events:
+    event_approved: "¡%{event_name} ha sido aprobado!"
+    event_unapproved: "%{event_name} ha sido desaprobado"
+    index:
+      are_you_sure: "¿Estás seguro/a?"
+      approve: aprobar
+      conferences_since: "Conferencias desde "
+      delete: "eliminar"
+      download_annual_events_report: "Descargar informe anual de eventos"
+      download_csv: "Descargar CSV"
+      download_events_report: "Descargar informe de eventos"
+      download_data: "Descargar datos"
+      edit: "editar"
+      most_conferences: "Mayoría de conferencias"
+      new_users_last_30_days: "Usuarios nuevos en los últimos 30 días"
+      no_events_to_approve: "No existe ningún evento pendiente de revisión"
+      statistics: "Estadísticas"
+      title: "Página de administrador"
+      total_conferences: "Número total de conferencias:"
+      unapprove: "desaprobar"
+    show:
+      admin_link: "Admin"
+      applications: "Solicitudes"
+      approve: "Aprobar"
+      approve_event: "Aprobar evento"
+      are_you_sure: "¿Estás segura/o?"
+      edit_event: "Editar evento"
+      delete: "Borrar"
+      delete_event: "Borrar evento"
+      home_link: "Inicio"
+      organizer_details: "Detalles del organizador"
+      organizer_email: "Email"
+      organizer_name: "Nombre"
+      tweet_event: "Twittéalo"
+      reject: "Rechazar"
+      revert: "Revertir"
+
+  applications:
+    already_applied: "Ya has realizado una solicitud para %{event_name}"
+    application_deleted: "No puedes visualizar tu solicitud porque el evento ha sido eliminado de Diversity Tickets"
+    application_success: "Tu solicitud se ha enviado con éxito a %{event_name}."
+    edit_deadline_passed: "No puedes editar tu solicitud porque la fecha límite de %{event_name} ya ha pasado"
+    update_success: "Has actualizado con éxito tu solicitud para %{event_name}."
+    form:
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      code_of_conduct: "código de conducta"
+      email: "Email"
+      email_confirmation: "Confirmación de email"
+      name: "Nombre"
+      please_fill: "Por favor, rellena este formulario <span>en inglés</span>. Los campos marcados con * son obligatorios."
+      please_fill_english: "Lamentablemente no podemos hacernos cargo de aquellas solicitudes que estén escritas en otro idioma. Todas las solicitudes que no se presenten en inglés tendrán que ser rechazadas por falta de recursos, y nos disgustaría tener que rechazarte por este motivo."
+      save_as_draft: "Guardar como un borrador"
+      sign_in: "iniciar sesión"
+      sign_in_request: "¿Te gustaría %{href} para utilizar la información de tu cuenta y guardar esta solicitud?"
+      submit_application: "Enviar solicitud"
+      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms_and_conditions_2: "entrada a la conferencia,"
+      terms_and_conditions_3: "costes del viaje,"
+      terms_and_conditions_4: "alojamiento,"
+      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa_need: "Necesito una visa para poder asistir"
+    continue_as_guest:
+      application_for: "Solicitud para %{event_name}"
+      benefits_of_account: "Con una cuenta gratuita en Diversity Tickets puedes:
+        <ul><li>revisar y gestionar todas tus solicitudes en tu panel de solicitudes</li>
+        <li>guardar solicitudes como borradores antes de enviarlas</li>
+        <li>retornar a tu borrador más adelante para terminarlo y enviarlo</li>
+        <li>revisar tus solicitudes enviadas para editarlas o eliminarlas si has cambiado de opinión
+          o tu situación ha cambiado antes de la fecha límite de la conferencia</li>
+        <li>guardar datos personales como nombre o email para solicitudes potenciales
+          (susceptible de modificación en todo momento)</li>
+        <li>gestionar tu información personal o preferencias de email en las preferencias de cuenta
+          y decidir qué información te gustaría compartir y/o recibir</li>
+        <li>elegir o recibir novedades sobre las últimas conferencias o otros eventos interesantes para ti</li></ul>"
+      benefits_of_account_title: "Beneficios de crear una cuenta"
+      create_an_account: "Crear una cuenta"
+      continue_as_guest: "Continuar como invitada/o"
+      events_link: "Evento"
+      home_link: "Inicio"
+      guest_warning: "Si continuas como invitado no podrás guardar o modificar tu solicitud más adelante"
+      sign_me_in: "Iniciar sesión"
+      title: "¿Cómo te gustaría solicitar un ticket?"
+    edit:
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
+      apply_changes: "Aplicar cambios"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      back: "Atrás"
+      code_of_conduct: "código de conducta"
+      email: "Email"
+      email_confirmation: "Confirmación de email"
+      name: "Nombre"
+      please_fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
+      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms_and_conditions_2: "entrada a la conferencia,"
+      terms_and_conditions_3: "costes del viaje,"
+      terms_and_conditions_4: "alojamiento,"
+      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa_need: "Necesito una visa para poder asistir"
+    show:
+      admin_link: "Admin"
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
+      application_by: "Solicitud de %{applicant_name}"
+      application_for: "Solicitud para %{event_name}"
+      approve: "Aprobar"
+      are_you_sure: "¿Estás segura/o de que quieres eliminar esta solicitud?"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      code_of_conduct: "Código de conducta"
+      delete: "Eliminar"
+      delete_application: "Eliminar solicitud"
+      edit: "Edit"
+      email: "Email"
+      email_confirmation: "Email confirmation"
+      home_link: "Inicio"
+      name: "Nombre"
+      reject: "Denegar"
+      revert: "Revertir"
+      show_event_details: "Mostrar detalles del evento"
+      submit_application: "Enviar solicitud"
+      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms_and_conditions_2: "entrada a la conferencia,"
+      terms_and_conditions_3: "costes del viaje,"
+      terms_and_conditions_4: "alojamiento,"
+      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa_need: "Necesito una visa para poder asistir"
+      your_applications: "Tus solicitudes"
+
+  drafts:
+    successful_saved: "Has guardado con éxito tu solicitud para %{event_name}."
+    successful_saved_changes: "Has guardado con éxito los cambios en tu borrador"
+    successful_application: "Tu solicitud se ha enviado con éxito a %{event_name}."
+    edit:
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
+      apply_changes: "Aplicar cambios"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      back: "Atrás"
+      code_of_conduct: "código de conducta"
+      email: "Email"
+      email_confirmation: "Confirmación de email"
+      name: "Nombre"
+      please_fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
+      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms_and_conditions_2: "entrada a la conferencia,"
+      terms_and_conditions_3: "costes del viaje,"
+      terms_and_conditions_4: "alojamiento,"
+      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa_need: "Necesito una visa para poder asistir"
+    show:
+      are_you_sure: "¿Estás segura/o de que quieres eliminar este borrador?"
+      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
+      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      edit: "Editar"
+      email: "Email"
+      delete: "Eliminar"
+      home_link: "Inicio"
+      name: "Nombre"
+      show_event_details: 'Mostrar detalles del evento'
+      submit_application: "Enviar solicitud"
+      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms_and_conditions_2: "entrada a la conferencia,"
+      terms_and_conditions_3: "costes del viaje,"
+      terms_and_conditions_4: "alojamiento,"
+      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
+      visa_need: "Necesito una visa para poder asistir"
+      your_applications: "Tus solicitudes"
+
+  events:
+    deadline_passed: "Tu evento no puede ser editado, ya que la fecha límite ya ha pasado"
+    event_deleted: "Este evento ha sido eliminado por el organizador"
+    not_allowed: "No tienes permiso para acceder a este evento"
+    please_sign: "Por favor, inicia sesión en tu cuenta o crea una nueva para subir un evento"
+    thank_you: "Gracias por subir %{event_name}. Lo revisaremos en cuanto antes."
+    update_success: "Has actualizado %{event_name} con éxito."
+    application_details:
+      accomodation: "Alojamiento"
+      application_details: "Detalles de la solicitud"
+      deadline_applications: "Fecha límite para enviar solicitudes"
+      directions_applicants: "Directrices para las/os solicitantes"
+      midnight_utc: "(medianoche UTC)"
+      number_tickets: "Número de tickets disponibles"
+      ticket: "ticket"
+      travel: "Transporte"
+      whats_funded: "¿Qué incluye?"
+    event:
+      application_and_selection: "Solicitud y selección"
+      application_by_organizer: "Nos encargaremos de los procesos de solicitud y selección. Tan sólo nos gustaría publicitar nuestro evento en Diversity Tickets. Las/os solicitantes tendrán que inscribirse a través de nuestra app / web:"
+      event_code_of_conduct: "Link del código de conducta"
+      event_date: "Fecha"
+      event_description: "Descripción"
+      event_details: "Detalles del evento"
+      event_location: "Lugar"
+      event_logo: "Logo"
+      event_name: "Nombre del evento"
+      event_tags: "Tags"
+      event_twitter: "Twitter"
+      event_website: "Página web"
+      selection_by_organizer: "Nos encargaremos del proceso de selección, pero nos gustaría utilizar Diversity Tickets como plataforma de inscripción. No compartiremos la privacidad, detalles ni respuestas de las/os solicitantes con terceras partes, incluyendo los patrocinadores del evento."
+      selection_by_travis: "Los procesos de selección e inscripción serán llevados a cabo por diversitytickets.org*
+        <p>* diversitytickets.org es una app de Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
+      not_shown: "No visible al público"
+    form:
+      accomodation: "Alojamiento"
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones:"
+      application_by_organizer: "El organizador se encargará de la selección e inscripción. Tan sólo ha solicitado la publicación de su evento en Diversity Tickets. Las/os solicitantes tendrán que inscribirse a través de su app/web."
+      application_form_link: "Link al formulario de solicitud"
+      application_form_link_placeholder: "p.ej. https://miconferencia.com/solicitud"
+      application_selection: "Solicitud y selección"
+      approve_event: "¿Aprobar evento?"
+      cant_find_tag: "¿No encuentras el tag que necesitas? Envíanos una sugerencia."
+      date_placeholder: "dd.mm.yyyy"
+      deadline_application: "Fecha límite para solicitudes"
+      description: "Descripción"
+      directions_applicants: "Directrices para solicitantes"
+      directions_applicants_placeholder: "Información relevante para las/os solicitantes como:
+        - ¿Qué incluye el ticket?
+        p. ej.: El ticket es válido para todos los días de la conferencia.
+        - Información organizativa adicional
+        - ..."
+      diversity_tickets_info: "* diversitytickets.org es una app de Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de Travis Foundation se harán cargo del proceso de selección y solicitud."
+      from: "Desde"
+      funded: "Financiado"
+      event_city: "Ciudad"
+      event_code_of_conduct: "Link al código de conducta"
+      event_code_of_conduct_placeholder: "p.ej. https://miconferencia.com/codigo_de_conducta"
+      event_details: "Detalles del evento"
+      event_logo: "Logo"
+      event_logo_description: "Elige una imagen cuadrada para los mejores resultados."
+      event_tags: "Tags"
+      event_twitter_handler: "Twitter"
+      event_twitter_placeholder: "mi_conf"
+      event_website: "Página web"
+      event_website_placeholder: "p.ej. https://miconferencia.com"
+      not_shown: "No visible para el público"
+      number_of_tickets: "Número de diversity tickets disponibles"
+      organizer_details: "Detalles del organizador"
+      selection_by_organizer: "Los organizadores se encargarán del proceso de selección por sí mismos, pero la solicitud se llevará a cabo a través de la plataforma de diversitytickets.org"
+      selection_by_travis: "Tanto la solicitud como la selección se llevará a cabo a través de diversitytickets.org*"
+      select_country: "Selecciona un país*"
+      state_province: "Estado/Provincia"
+      terms_and_conditions: "No compartiremos la privacidad, detalles o respuestas de las/os solicitantes a terceras partes, incluyendo los patrocinadores del evento."
+      ticket: "Ticket*"
+      to: "Hasta"
+      travel: "Transporte"
+    index_list_item:
+      application_deadline: "Fecha límite de la solicitud"
+      apply: "Solicitar"
+      apply_at: "Solicitar en %{event_name}"
+      your_application: "Tu solicitud"
+      your_draft: "Tu boceto"
+    edit:
+      edit: "Editar"
+      edit_event: "Editar evento"
+      home_link: "Página de inicio"
+      errors: "impidieron la actualización de este evento"
+      submit_changes: "Aplicar cambios"
+    index_past:
+      past_events_thanks: "Estos eventos proporcionaron diversity tickets en el pasado. Muchas gracias a los organizadores."
+      show_upcoming_events: "Mostrar eventos futuros"
+    index:
+      closed_for_application: "Solicitudes cerradas"
+      home_link: "Inicio"
+      events: "Eventos"
+      no_events: "<h2>No tenemos ningún evento disponible.</h2> <p>¡Pero añadiremos nuevos pronto!</p>"
+      open_for_application: "Inscripción abierta"
+      past_events: "eventos pasados"
+      show_past_events: "Mostrar eventos pasados"
+      submit_your_conference: "Puedes %{link_to_submission} o navegar por %{link_to_past_events}."
+      submit_your_own_conference: "subir una conferencia"
+    new:
+      create_new_event: "Crear</span> un evento nuevo"
+      home_link: "Inicio"
+      events: "Eventos"
+      errors: "impidieron guardar este evento"
+      new_event: "Nuevo evento"
+      please_fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
+      preview_event: "Previsualizar evento"
+    preview:
+      edit_event: "Editar evento"
+      email: "Email"
+      name: "Nombre"
+      not_visible: "No visible públicamente."
+      organizer_details: "Detalles del organizador/a"
+      preview_of: "Previsualización de </span> %{event_name}"
+      submit_your_event: "Subir tu evento"
+    show:
+      applications_closed: "Lo siento, las solicitudes para %{event_name} están cerradas."
+      apply_at: "Inscríbete en %{event_name}"
+      apply_for_ticket: "Solicita un ticket"
+      approval_pending: "(Aprobado: pendiente)"
+      are-you-sure: "¿Estás segura/o?"
+      delete: "Eliminar"
+      edit: "Editar"
+      home_link: "Inicio"
+      your_application: "Tu solicitud"
+      your_draft: "Tu borrador"
+
+  home:
+    about:
+      about_title: "Sobre Diversity Tickets"
+      about_diversity_tickets: "<p>diversitytickets.org es una app de Travis Foundation que ayuda a organizadores que colaboran con nosotras y proporcionan ayudas y tickets para conferencias a minorías infrarepresentadas en tecnología. Pueden hacerlo subiendo su evento/conferencia a nuestra plataforma espeficiando cuántos tickets ofrecerán. Una vez el evento está aprobado, se publica en nuestra página web y las interesadas pueden solicitar un ticket. </p>
+        <p>La app fue creada para hacer todo el trabajo relacionado más fácil, tanto para los organizadores como las solicitantes potenciales. Los organizadores no tienen que crear formularios para las solicitudes de los tickets y pueden concentrarse en otro tipo de trabajo organizativo. Las solicitantes adquieren además una visión general de qué eventos están ofrenciendo diversity tickets a través de nuestra lista de eventos. </p>
+        <p>Travis Foundation ha colaborado con %{ruby_monstas} para crear esta aplicación de Código Abierto y Libre, que la fundación utiliza en su trabajo con conferencias. La app se ofrece como parte de la cuota que se ha de pagar por los servicios de consulta de la fundación. Si estás interesada/o en proporcionar una experiencia en una conferencia más abierta para tus participantes, ¡%{email_foundation}ponte en contacto con nosotras!</p>
+        <p>Lee más sobre la idea y el concepto en el blog de Travis Foundation: %{travis_blog} %{app_to_diversify}. </a></p>"
+      app_to_diversify: "Una app para mejorar la diversidad"
+
+    faq:
+      am_i_eligible: "¿Soy eligible para solicitar un ticket?"
+      am_i_eligible_anchor: "grant_2"
+      am_i_eligible_answer: "<p>Si consideras que formas parte de un grupo infrarepresentado en tecnología (persona no blanca, persona LGTBIA+, mujer o persona discapacitada) y estás de acuerdo con nuestros Términos y condiciones, significa que tienes posibilidades de recibir un ticket.</p>"
+      diversity_tickets_options: "¿Qué opciones existen en diversitytickets.org?"
+      diversity_tickets_options_anchor: "general_options"
+      diversity_tickets_options_answer: "<ul> <li>1) Travis Foundation gestionael proceso de selección e inscripción para tu conferencia.</li>
+        <li>2) Travis Foundation gestiona el proceso de inscripción, pero el proceso de selección lo gestiona el evento.</li>
+        <li>3) El evento gestiona el proceso de selección e inscripción pero sólo publicaremos el evento en nuestra página web. </li>
+        Para la opción 2) te enviaremos un archivo csv con todas las solicitudes que hemos recibido a través de diversitytickets.org.
+        Como Travis Foundation es una organización sin ánimo de lucro, dependemos de tus donaciones para continuar los proyectos que construimos. Para ser capaz de trabajar en tus tickets, y también apoyar otros proyectos, pedimos una pequeña donación a la Travis Foundation por nuestros servicios. Tenemos en cuenta los recursos y el tamaño de la conferencia cuando pedimos una contribución y estamos seguras de que siempre encontraremos una solución juntas.
+        Para la opción 1) y 2) te pediremos una donación para cubrir el trabajo de consulta y gestión de Travis Foundation. Para la opción 3) el uso de la app es gratuita, pero pequeñas donaciones como 50 euros son bienvenidas y se utilizarán para apoyar el hosting, gestionar la página web e imprimir pegatinas para Rubymontas."
+      for_conference_organisers: "Para organizadores de conferencias"
+      for_grant_applicants: "Para las solicitantes de becas"
+      general: "General"
+      how_can_i_submit_my_event: "¿Cómo puedo subir un evento?"
+      how_can_i_submit_my_event_anchor: "conf_2"
+      how_can_i_submit_my_event_answer: "<p>Para subir un evento, click en \"Subir evento\" e incluye todos los detalles. Tu información personal (nombre y email) no serán visibles públicamente y sólo son necesarias para que podamos contactarte.</p>"
+      how_can_i_add_tags: "¿Cómo puedo añadir un nuevo tag a mi evento?"
+      how_can_i_add_tags_anchor: "conf_5"
+      how_can_i_add_tags_answer: "<p>Sólo los administradores de la página pueden añadir nuevas tags; si te gustaría añadir un tag que no está disponible a tu evento, envíanos un email: %{travis_email}. Intentaremos procesar tu petición tan rápido como sea posible y añadir el tag que has elegido a tu evento. </p>"
+      how_can_i_apply: "¿Cómo puedo solicitar un ticket?"
+      how_can_i_apply_anchor: "grant_1"
+      how_can_i_apply_answer: "<p>Encuentra el evento en el que te gustaría solicitar un ticket en la %{events_link}lista de eventos </a>, y haz click en el botón verde \"Solicitar\" que se encuentra debajo de la descripción del evento. Por favor, rellena todos los campos del formulario y utilizando las casillas de selección, selecta el tipo de apoyo que estás solicutando (p. ej: ticket, beca de transporte) y acepta los Términos y condciones. ¡Esto es todo!</p>"
+      how_long_event_approved: "¿Cuánto tiempo pasa hasta que mi evento sea aprobado?"
+      how_long_event_approved_anchor: "conf_3"
+      how_long_event_approved_answer: "<p>Esto normalmente depende de cuántos eventos recibamos; normalmente nos lleva entre 24 horas y una semana. Por favor, tenlo en cuenta a la hora de subir tu evento. Una vez tu evento ha sido aprobado, recibirás un email automático.</p>"
+      what_is_diversity_tickets: "¿Qué es diversitytickets.org?"
+      what_is_diversity_tickets_anchor: "general_org"
+      what_is_diversity_tickets_answer: "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets
+        y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde pueden encontrar eventos donde solicitar uno de estos tickets. Los organizadores de conferencias pueden subir sus propios eventos y conferencias y espeficiar cuántos tickets pueden ofrecer. Una vez un evento ha sido aprobado, se publica en nuestra página y las solicitantes pueden inscribirse en él"
+      when_find_application_approved_rejected: "¿Cuándo sabré si mi solicitud ha sido aceptada o rechazada?"
+      when_find_application_approved_rejected_anchor: "grant_3"
+      when_find_application_approved_rejected_answer: "<p>Cada conferencia es diferente, así que no podemos decirte de forma segura cuánto se tardará en el proceso de selección; normalmente con dos semanas tras la fecha límite nos proporciona tiempo suficiente para procesar todas las solicitudes. </p>"
+      which_events_eligible: "¿Qué eventos se pueden subir a la página?"
+      which_events_eligible_anchor: "conf_1"
+      which_events_eligible_answer: "<p>Aquellos organizadores que requieren ayuda de %{travis_website}Travis Foundation</a> para gestionar sus diversity tickets pueden subir cualquiera de sus eventos o conferencias para los cuales ofrecen tickets gratuitos o becase de transporte. Esto debe de ser discutido con Travis Foundation antes de subir el eventos. Todos los eventos tienen que ser inclusivos y tener un Código de conducta que deberá ser cumplido durante el evento.</p>"
+      why_diversity_tickets: "¿Por qué son los diversity tickets necesarios?"
+      why_diversity_tickets_anchor: "general_need"
+      why_diversity_tickets_answer: "<p>Desgraciadamente, la industria tecnológica está %{geekfeminism} lejos de ser diversa</a>. Existen algunos proyectos que dan visibilidad a este problema, pero el objetivo de diversitytickets.org es intentar aumentar la diversidad en las conferencias y llegar a aquellos grupos que de otro modo no tendrían la posibilidad de acudir a conferencias.</p>
+        <p>Lee más sobre este concepto en el blog de Travis Foundation: %{travis_blog} Una app para diversificar conferencias tecnológicas</a></p>"
+      why_even_not_approved: "¿Por qué no ha sido aprobado mi evento?"
+      why_even_not_approved_anchor: "conf_4"
+      why_event_not_approved_answer: "<p>Si tu evento no ha sido aprobado, puedes contactarnos para conocer más detalles.</p>"
+    home:
+      attendees: "Solicitantes"
+      find_event: "Encuentra e inscríbete en las próximas conferencias"
+      main_presentation: "Ayudamos a eventos a tener una comunidad <em class=\"em--yellow\">más diversa</em>. Y te ayudamos a <em class=\"em--yellow\">encontrar esos eventos</em>."
+      main_presentation_subtitle: "<em class=\"em--red\">La diversidad</em> es lo que <em class=\"em--red\">completa las comunidades</em>."
+      organizers: "Organizadores"
+      submit_event: "Sube tu próxima conferencia"
+
+  layouts:
+    header:
+      about: "Info"
+      account_settings: "Preferencias de cuenta"
+      admin: "Admin"
+      diversity_tickets: "Diversity tickets"
+      events: "Eventos"
+      faq: "FAQ"
+      logo: "Logo"
+      sign_in: "Sign in / Crear cuenta"
+      sign_out: "Sign out"
+      submit_event: "Subir un evento"
+      tags: "Tags"
+      your_account: "Tu cuenta"
+      your_events: "Tus eventos"
+      your_application: "Tus solicitudes"
+    open_graph_tags:
+      description: "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets
+        y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde solicitarlos"
+      title: "Ayudamos a las conferencias a llegar a una audiencia más diversa. Te ayudamos a ti a que encuentres estas conferencias."
+      diversity_tickets: "Diversity Tickets"
+      url: "https://diversitytickets.org/"
+      type: "website"
+    application:
+      check_out_the_code: "Echa un vistazo al código "
+      proudly_built: "Desarrollado por "
+      supported_by: "Con soporte de "
+      legal: "Legal "
+      impressum: "Impressum aquí"
+      privacy_policy: "Privacy policy"
+
+  sessions:
+    account_not_found: "No se encuentra la cuenta. Por favor, regístrate primero."
+    please_reset_password: "Debido a una actualización de seguridad, te pedimos que resetees tu contraseña."
+    form:
+      email: "Email"
+      password: "Contraseña"
+    login:
+      log_in: "Log in"
+      password: "Contraseña"
+      username: "Nombre de usuario"
+    new:
+      title: "Sign in"
+      create_your_account: "Crea tu propia cuenta"
+      new_to_diversity_tickets: "¿Nuevo en diversity tickets?"
+
+  tags:
+    tag_created: "El tag %{tag_name} se ha creado con éxito."
+    tag_problem: "Ha habido un problema creando el nuevo tag."
+    index:
+      are_you_sure: "¿Estás segura/o?"
+      tags_management_title: "Gestión de tags"
+
+  users:
+    account_deleted: "Tu cuenta se ha eliminado con éxito"
+    no_permission: "Lo sentimos pero no tienes permiso para acceder a esta página."
+    password_incorrect: "Contraseña incorrecta"
+    password_mandatory: "La contraseña es un campo obligatorio"
+    update_fail: "Tus datos no han podido ser actualizados"
+    update_success: "Has actualizado tus datos con éxito"
+    form:
+      email: "Email"
+      password: "Contraseña"
+    applications:
+      drafts: "Borradores"
+      home_link: "Inicio"
+      info_description: "<p>Una vez haya pasado el evento, tu solicitud desaparecerá de esta página
+      y toda tu información susceptible de ser sensible será borrada de la base de datos</p>"
+      no_applications: "No existe ninguna solicitud asociada a esta cuenta."
+      submitted: "Enviada"
+      title: "Tus solicitudes"
+      your_application: "Tu solicitud"
+      your_applications: "Tus solicitudes"
+      your_draft: "Tu borrador"
+    edit:
+      capacity_email_notifications_info: "Nos gustaría informarte una vez por evento si el número de tickets solicitados super el número de tickets que has ofrecido en Diversity Tickets. Así te daremos la oportunidad de aumentar el número de diversity tickets para tu evento."
+      country: "País"
+      download_user_data: "Aquí puedes descargarte un archivo CSV con toda la información que almacenamos sobre ti"
+      download_user_data_link: "Descarga datos de usuario"
+      email_notifications: "Notificaciones de correo"
+      for_organizers: "Para organizadores"
+      fields_of_expertise: "Campos expertos"
+      fields_of_interest: "Campos de interés"
+      languages: "Idiomas"
+      name: "Nombre"
+      new_password: "Nueva contraseña"
+      password: "Contraseña"
+      programming_languages: "Lenguajes de programación"
+      receive_all_capacity_reminders: "¡Sí, por favor!"
+      receive_capacity_reminders_once: "Sí, pero sólo una vez por evento."
+      receive_emails_country: "Sí, quiero recibir notificaciones vía correo electrónico sobre eventos que tomen lugar en en país seleccionado en mi cuenta"
+      receive_emails_tag: "Sí, quiero recibir notificaciones vía correo electrónico sobre eventos que traten los temas que me interesan seleccionados en mi cuenta"
+      receive_no_capacity_reminders: "No, gracias."
+      save_changes: "Guardar cambios"
+      select_your_country: "Selecciona tu país"
+      title: "Ajustes de la cuenta"
+    events:
+      approved: "Aprobado"
+      edit: "Editar"
+      no_events: "Actualmente no existe ningún evento asociado a esta cuenta de usuario"
+      past: "Pasado"
+      title: "Tus eventos"
+      unapproved: "Aún sin aprobar"
+    confirm_delete:
+      are_you_sure: "¿Estás segura/o de que quieres eliminar tu cuenta de usuario?"
+      benefits_intro: "Nos entristecería que te marchases y no queremos que te pierdas los beneficios de un usuario registrado"
+      email_preferences: "<strong>Por favor, ten en cuenta</strong> que puedes gestionar tus emails
+          en tus ajustes de cuenta. No tienes por qué recibir nuestras newsletters si no quieres."
+      list_of_benefits: "Si procedes a eliminar tu cuenta pasará lo siguiente:
+        <li> Tus solicitudes enviadas seguirán siendo válidas. <strong>Sin embargo:</strong></li>
+        <li> Ya no serás capaz de visitar o gestionar tus solicitudes o borradores actuales.</li>
+        <li> Las nuevas solicitudes sólo se podrán enviar como usuario invitado, a no ser que registres una nueva cuenta. </li>
+        <li> Si te vuelves a registrar, no serás capaz de recuperar tus datos antiguos.</li>
+        <li> Como invitado perderás la oportunidad de recibir actualizaciones sobre las últimas conferencias o otros eventos interesantes para ti. </li>"
+      no_delete_button: "¡No, ve atrás!"
+      proceed_delete_button: "Sí, estoy segura/o"
+      subtitle: "Eliminar tu cuenta es irreversible."
+      title: "¿Estás segura/o?"
+    delete_account:
+      delete_button: "Eliminar cuenta"
+      password: "Password"
+      title: "Borrar cuenta"
+    new:
+      already_registered: "¿Ya registrado?"
+      create_your_account: "Crea tu propia cuenta"
+      sign_in_here: "Sign in"

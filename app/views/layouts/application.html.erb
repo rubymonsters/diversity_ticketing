@@ -56,8 +56,8 @@
   <footer class="footer">
     <div class="inner">
       <ul>
-        <li><%= image_tag("icon-heart.svg", :alt => "heart-icon") %><p>Proudly built by <%= link_to 'RubyMonstas', 'http://rubymonstas.org', :target => "_blank" %><br>Supported by <%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org', :target => "_blank" %></p></li>
-        <li><%= image_tag("icon-legal.svg", :alt => "legal-icon") %><p>Checkout the code on <%= link_to 'GitHub', 'https://github.com/rubymonsters/diversity_ticketing/', :target => "_blank" %><br>Legal <%= link_to 'impressum here', impressum_path, :target => "_blank" %>; <%= link_to 'Privacy Policy', privacy_path %></p></li>
+        <li><%= image_tag("icon-heart.svg", :alt => "heart-icon") %><p><%= t('.proudly_built') %><%= link_to 'RubyMonstas', 'http://rubymonstas.org', :target => "_blank" %> <%= t('.supported_by') %><%= link_to 'Travis Foundation', 'http://foundation.travis-ci.org', :target => "_blank" %></p></li>
+        <li><%= image_tag("icon-legal.svg", :alt => "legal-icon") %><p><%= t('.check_out_the_code') %><%= link_to 'GitHub', 'https://github.com/rubymonsters/diversity_ticketing/', :target => "_blank" %><br><%= t('.legal') %><%=  link_to t('.impressum'), impressum_path, :target => "_blank" %>; <%= link_to t('.privacy_policy'), privacy_path %></p></li>
         <li id="bmbf-logo"><%= image_tag("BMBF_gefoerdert_2017.jpg", :alt => "bmbf-logo") %>
       </ul>
     </div>

@@ -2,21 +2,22 @@
   <%= form_for @event, url: form_url, builder: ::FormBuilder, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f| %>
 
     <section class="box">
-      <h2 class="box-title box-noborder">Organizer details</h2>
-      <p class="border">Not shown to the public.</p>
-      <%= f.form_field :text_field, :organizer_name, 'Full name', value: @event.organizer_name ? @event.organizer_name : ((current_user.name != nil) ? current_user.name : '')%>
-      <%= f.form_field :text_field, :organizer_email, 'Email', value: @event.organizer_email ? @event.organizer_email : current_user.email %>  
+      <h2 class="box-title box-noborder"><%= t('.organizer_details') %></h2>
+      <p class="border"><%= t('.not_shown') %></p>
+      <%= f.form_field :text_field, :organizer_name, 'Full name', value: (current_user.name != nil) ? current_user.name : '' %>
+      <%= f.form_field :text_field, :organizer_email, 'Email', value: current_user.email %>
+
       <% if action_name == 'new' || action_name == 'preview' %>
         <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation', value: @event.organizer_email ? @event.organizer_email : current_user.email %>
       <% end %>
     </section>
 
     <section class="box">
-      <h2>Event details</h2>
+      <h2><%= t('.event_details') %></h2>
       <%= f.form_field :text_field, :name, 'Name' %>
 
       <div class="tags">
-        <label>Tags</label>
+        <label><%= t('.event_tags') %></label>
 
         <% Category.all.each do |category| %>
           <div class="category-tags tags-border">
@@ -25,74 +26,77 @@
               <%= tag.label { tag.check_box + " " + tag.text } %>
             <% end %>
 
-            <p class="hint"><%= link_to "Can’t find the tag you want? Suggest a new one.", faq_path(anchor: "conf_5"), target: "_blank" %></p>
+            <p class="hint"><%= link_to t('.cant_find_tag'), faq_path(anchor: "conf_5"), target: "_blank" %></p>
           </div>
         <% end %>
       </div>
 
-      <%= f.image_upload_field :logo, 'Logo', image_name: @event.logo.present? ? @event.logo : "DT-logo.svg", class: ['event-logo'] %>
+      <%= f.image_upload_field :logo, t('.event_logo'), image_name: @event.logo.present? ? @event.logo : "DT-logo.svg", class: ['event-logo'] %>
       <%= f.hidden_field :logo %>
-      <div class="form-hint">Choose a square image for best displaying results.</div>
+      <div class="form-hint"><%= t('.event_logo_description') %></div>
 
-      <%= f.form_field :text_field, :twitter_handle, 'Twitter handle', placeholder: "my_conf" %>
-      <%= f.form_field :text_field, :website, 'Website', placeholder: "e.g. https://myconference.com" %>
-      <%= f.form_field :text_field, :code_of_conduct, 'Link to code of conduct', placeholder: "e.g. https://myconference.com/code_of_conduct" %>
+      <%= f.form_field :text_field, :twitter_handle, t('.event_twitter_handler'), placeholder: t('.event_twitter_placeholder') %>
+      <%= f.form_field :text_field, :website, t('.event_website'), placeholder: t('.event_website_placeholder') %>
+      <%= f.form_field :text_field, :code_of_conduct, t('.event_code_of_conduct'), placeholder: t('.event_code_of_conduct_placeholder') %>
 
       <h3 class="box-subtitle">Location</h3>
-      <%= f.form_field :text_field, :city, 'City' %>
-      <%= f.select :country, CS.countries.values, {:include_blank => "Select country *"} %>
-      <%= f.form_field :text_field, :state_province, 'State/Province' %>
+      <%= f.form_field :text_field, :city, t('.event_city') %>
+      <%= f.select :country, CS.countries.values, {:include_blank => t('.select_country')} %>
+      <%= f.form_field :text_field, :state_province, t('.state_province') %>
 
       <h3>Dates</h3>
-      <%= f.form_field :date_field, :start_date, 'From', class: ['left'], placeholder: "dd.mm.yyyy", min: Date.today %>
+      <%= f.form_field :date_field, :start_date, t('.from'), class: ['left'], placeholder: t('.date_placeholder'), min: Date.today %>
 
-      <%= f.form_field :date_field, :end_date, 'To', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
+      <%= f.form_field :date_field, :end_date, t('.to'), class: ['right'], placeholder: t('.date_placeholder'), min: Date.today %>
 
-      <%= f.form_field :text_area, :description, 'Description', class: ['markdown'] %>
+      <%= f.form_field :text_area, :description, t('.description'), class: ['markdown'] %>
     </section>
 
     <section class="box">
       <h2 class="box-title">Application details</h2>
-      <%= f.form_field :text_area, :applicant_directions, 'Directions for applicants', class: ['markdown'],
-          placeholder: "Let the applicants know about any additional information like:
-  - What does the ticket include?
-    E.g.: The ticket is valid for both conference days, ...
-  - Additional organizational info
-  - ..." %>
-      <%= f.form_field :date_field, :deadline, 'Deadline for application', class: ['right'], placeholder: "dd.mm.yyyy", min: Date.today %>
-      <%= f.form_field :number_field, :number_of_tickets, 'Number of available diversity tickets', min: 1 %>
 
-      <h3 class="box-subtitle">Funded</h3>
+      <%= f.form_field :text_area, :applicant_directions, t('.directions_applicants'), class: ['markdown'],
+          placeholder: t('.directions_applicants_placeholder') %>
+    <div class="two-columns">
+      <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'],
+          min: Date.today, start_year: Date.today.year, include_blank: true, default: nil,
+          :use_month_names => t('date.month_names') %>
+      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'], ignore_date: true %>
+    </div>
+      <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>
+
+      <h3 class="box-subtitle"><%= t('.funded') %></h3>
+
       <div class="form_field">
         <%= label_tag do %>
-          <%= f.check_box(:ticket_funded, checked: true) %> Ticket*
+          <%= f.check_box(:ticket_funded, checked: true) %> <%= t('.ticket') %>
         <% end %>
         <%= label_tag do %>
-          <%= f.check_box(:accommodation_funded) %> Accommodation
+          <%= f.check_box(:accommodation_funded) %><%= t('.accomodation') %>
         <% end %>
         <%= label_tag do %>
-          <%= f.check_box(:travel_funded) %> Travel
+          <%= f.check_box(:travel_funded) %> <%= t('.travel') %>
         <% end %>
       </div>
     </section>
 
     <section class="box">
-      <h2 class="box-title">Application & Selection</h2>
+      <h2 class="box-title"><%= t('.application_selection') %></h2>
       <div class="form_field">
         <%= label_tag do %>
-          <%= f.radio_button(:application_process, 'selection_by_travis', checked: 'checked') %> Both, the application and selection process shall be handled by diversitytickets.org*.
+          <%= f.radio_button(:application_process, 'selection_by_travis', checked: 'checked') %> <%= t('.selection_by_travis')%>
         <% end %>
 
         <%= label_tag do %>
-          <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org.
+          <%= f.radio_button(:application_process, 'selection_by_organizer', class: 'has-dependent') %> <%= t('.selection_by_organizer') %>
 
           <div class="form_field--check indent terms_and_conditions-border">
             <%= label_tag do %>
               <%= f.check_box :data_protection_confirmation %>
-              <span class="check-label">I agree with the following Terms and Conditions:</span>
+              <span class="check-label"><%= t('.agree_terms_and_conditions') %></span>
             <% end %>
             <p id="terms-and-conditions">
-              I will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets.
+              <%=t('.terms_and_conditions') %>
             </p>
           </div>
 
@@ -100,23 +104,23 @@
 
 
         <%= label_tag do %>
-        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> The organizer is handling both the selection and application process and only wants their event listed on this site. Applicants have to apply through their site / app.
+        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> <%=t('.application_by_organizer') %>
 
         <div class="form_field indent">
-          <p><%= f.form_field :text_area, :application_link, 'Link to application form', placeholder: "e.g. https://myconference.com/apply" %></p>
+          <p><%= f.form_field :text_area, :application_link, t('.application_form_link'), placeholder: t('application_form_link_placeholder') %></p>
         </div>
 
         <% end %>
       </div>
 
       <%= label_tag do %>
-        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>
+        <p><%= t('.diversity_tickets_info') %></p>
       <% end %>
     </section>
 
     <% if current_user.admin? && action_name == 'edit' %>
       <section class="box">
-        <h3 class="box-subtitle">Approve event?</h3>
+        <h3 class="box-subtitle"><%= t('.approve_event') %></h3>
         <div class="form_field">
           <%= label_tag do %>
             <%= f.radio_button(:approved, true) %> Yes
