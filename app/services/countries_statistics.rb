@@ -17,8 +17,6 @@ class CountriesStatistics
     end.sort_by { |k, v| -v }
   end
 
-
-
   private
 
   def key(country)
