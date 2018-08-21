@@ -1,6 +1,15 @@
-<meta property="og:description" content="<%= "#{t('.description')}" %>">
-<meta property="og:image" content="<%= "#{root_url}/assets/event-default.png" %>">
-<meta property="og:title" content="<%= "#{t('.title')}"%>">
-<meta property="og:site_name" content="<%= "#{t('.diversity_tickets')}" %>">
-<meta property="og:url" content="<%= "#{t('.url')}" %>">
-<meta property="og:type" content="<%= "#{t('.type')}" %>" />
+<% if controller.controller_name == "events" %>
+  <meta property="og:description" content="<%= "#{@event.description.first(297)}..." %>">
+  <meta property="og:image" content="<%= "#{event_image @event}" %>">
+  <meta property="og:title" content="<%= "#{@event.name} - Diversity Tickets"%>">
+  <meta property="og:site_name" content="<%= "#{t('.diversity_tickets')}" %>">
+  <meta property="og:url" content="<%= "#{event_url(@event)}" %>">
+  <meta property="og:type" content="<%= "#{t('.type')}" %>" />
+<% else %>
+  <meta property="og:description" content="<%= "#{t('.description')}" %>">
+  <meta property="og:image" content="<%= "#{root_url}/assets/event-default.png" %>">
+  <meta property="og:title" content="<%= "#{t('.title')}"%>">
+  <meta property="og:site_name" content="<%= "#{t('.diversity_tickets')}" %>">
+  <meta property="og:url" content="<%= "#{t('.url')}" %>">
+  <meta property="og:type" content="<%= "#{t('.type')}" %>" />
+<% end %>
