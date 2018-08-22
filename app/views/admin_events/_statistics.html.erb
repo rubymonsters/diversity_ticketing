@@ -1,13 +1,13 @@
 <div class="box">
-  <h2>Statistics</h2>
+  <h2><%= t('.statistics') %></h2>
     <ul class="admin-list">
-      <li>Total conferences: <strong><%= @events.count %></strong></li>
-      <li>Conferences since <%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
-      <li class="border">New users in the last 30 days: <strong><%= @new_users.count %></strong></li>
+      <li><%= t('.total_conferences') %> <strong><%= @events.count %></strong></li>
+      <li><%= %><%= t('.conferences_since')%><%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
+      <li class="border"><%= t('.new_users_last_30_days') %> <strong><%= @new_users.count %></strong></li>
     </ul>
     <ul class="admin-list">
       <li>
-        Most conferences:
+        <%= t('.most_conferences') %>
         <strong>
           <ol>
             <% @country_rank.each.with_index do |country, index| %>

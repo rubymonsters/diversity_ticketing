@@ -71,19 +71,14 @@ es:
     index:
       are_you_sure: "¿Estás seguro/a?"
       approve: aprobar
-      conferences_since: "Conferencias desde "
       delete: "eliminar"
       download_annual_events_report: "Descargar informe anual de eventos"
       download_csv: "Descargar CSV"
       download_events_report: "Descargar informe de eventos"
       download_data: "Descargar datos"
       edit: "editar"
-      most_conferences: "Mayoría de conferencias"
-      new_users_last_30_days: "Usuarios nuevos en los últimos 30 días"
       no_events_to_approve: "No existe ningún evento pendiente de revisión"
-      statistics: "Estadísticas"
       title: "Página de administrador"
-      total_conferences: "Número total de conferencias:"
       unapprove: "desaprobar"
     show:
       admin_link: "Admin"
@@ -101,6 +96,14 @@ es:
       tweet_event: "Twittéalo"
       reject: "Rechazar"
       revert: "Revertir"
+    statistics:
+      conferences_since: "Conferencias desde "
+      countries_hosted_events: "Países donde hubo eventos"
+      most_conferences: "Mayoría de conferencias"
+      new_users_last_30_days: "Usuarios nuevos en los últimos 30 días"
+      total_conferences: "Número total de conferencias:"
+      show_statistics_map: "Mostrar mapa de estadísticas"
+      statistics: "Estadísticas"
 
   applications:
     already_applied: "Ya has realizado una solicitud para %{event_name}"
