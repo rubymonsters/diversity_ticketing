@@ -71,19 +71,14 @@ en:
     index:
       are_you_sure: "Are you sure?"
       approve: "approve"
-      conference_since: "Conferences since "
       edit: "edit"
       delete: "delete"
       download_annual_events_report: "Download annual events report"
       download_csv: "Download CSV"
       download_data: "Download data"
       download_events_report: "Download events report"
-      most_conferences: "Most conferences"
-      new_users_last_30_days: "New users in the last 30 days:"
       no_events_to_approve: "We currently don't have any events to approve"
       title: "Admin page"
-      total_conferences: "Total conferences:"
-      statistics: "Statistics"
       unapprove: "unapprove"
     show:
       admin_link: "Admin"
@@ -102,8 +97,13 @@ en:
       reject: "Reject"
       revert: "Revert"
     statistics:
+      conferences_since: "Conferences since "
       countries_hosted_events: "Countries that hosted events"
+      most_conferences: "Most conferences"
+      new_users_last_30_days: "New users in the last 30 days:"
+      total_conferences: "Total conferences:"
       show_statistics_map: "Show statistics map"
+      statistics: "Statistics"
 
   applications:
     already_applied: "You have already applied for %{event_name}"
