@@ -456,7 +456,7 @@ es:
       tags: "Tags"
       your_account: "Tu cuenta"
       your_events: "Tus eventos"
-      your_application: "Tus solicitudes"
+      your_applications: "Tus solicitudes"
     open_graph_tags:
       description: "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets
         y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde solicitarlos"
