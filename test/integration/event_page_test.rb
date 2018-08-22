@@ -39,7 +39,7 @@ feature 'Event' do
 
     visit event_path(@event.id)
 
-    assert page.text.include?('You are not allowed to access this event')
+    assert page.text.include?('This event has been deleted by the organizer')
     assert root_path, current_path
   end
 
