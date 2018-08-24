@@ -1,6 +1,6 @@
-<% provide :title, t('events.preview.preview_event') %>
+<% provide :title, t('.title') %>
 
-<h1 class="page-title"><span class="page-title-firstword">Preview of</span> <%= @event.name %></h1>
+<h1 class="page-title"><span class="page-title-firstword"> <%= raw t('.preview_of', event_name: @event.name) %></h1>
 <div class="two-columns">
 
   <section class="box">

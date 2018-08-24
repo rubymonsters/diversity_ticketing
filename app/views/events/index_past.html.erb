@@ -1,6 +1,6 @@
-<% provide :title, t('events.index.past_events').titleize %>
+<% provide :title, t('.title') %>
 
-<p>These events provided diversity tickets in the past. Many thanks to the organizers.</p>
+<p><%= t('.past_events_thanks') %></p>
 
 <div class="two-columns">
   <% @events.each do |event| %>

@@ -5,7 +5,7 @@
       <h2 class="box-title box-noborder"><%= t('.organizer_details') %></h2>
       <p class="border"><%= t('.not_shown') %></p>
       <%= f.form_field :text_field, :organizer_name, 'Full name', value: (current_user.name != nil) ? current_user.name : '' %>
-      <%= f.form_field :text_field, :organizer_email, 'Email', value: current_user.email %>
+      <%= f.form_field :text_field, :organizer_email, 'Email', value: @event.organizer_email ? @event.organizer_email : current_user.email %>
 
       <% if action_name == 'new' || action_name == 'preview' %>
         <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation', value: @event.organizer_email ? @event.organizer_email : current_user.email %>
