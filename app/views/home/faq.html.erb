@@ -43,7 +43,7 @@
   <%= raw t('.why_event_not_approved_answer') %>
 
   <p id="conf_5"><strong><%= t('.how_can_i_add_tags') %></strong></p>
-  <%=raw t('.how_can_i_add_tags_answer', travis_email: 'mail_to "foundation@travis-ci.org"') %>
+  <%=raw t('.how_can_i_add_tags_answer', travis_email: '<a href="mailto:foundation@travis-ci.org">foundation@travis-ci.org</a>').html_safe %>
 
 
   <h2 class="page-subtitle"><%= t('.for_grant_applicants') %></h2>
