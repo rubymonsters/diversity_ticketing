@@ -30,5 +30,3 @@ coverage
 
 # Ignore public assets folder
 /public/assets
-
-dump.rdb

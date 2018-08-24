@@ -48,7 +48,6 @@ en:
     application_pending: "%{application_name}'s application has been changed to pending"
     application_rejected: "%{application_name}'s application has been rejected"
     show:
-      title: "Admin"
       admin_link: "Admin"
       application_by: "Application by %{application_name}"
       application_for: "Application for %{event_name}"
@@ -64,6 +63,7 @@ en:
       reject: "Reject"
       revert: "Revert"
       show_event_details: 'Show event details'
+      title: "Admin"
       visa_need: "I need a Visa."
 
   admin_events:
