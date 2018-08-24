@@ -1,4 +1,6 @@
-<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%=t('.edit_event') %></p>
+<% provide :title, t('events.edit.title') %>
+
+<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= breadcrumb_link_according_to_user_status %> > Edit event</p>
 
 <h1 class="page-title"><span class="page-title-firstword"><%= t('.edit') %></span> <%= @event.name %></h1>
 

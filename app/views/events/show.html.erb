@@ -1,3 +1,5 @@
+<% provide :title, @event.name %>
+
 <p class="breadcrumb">
   <%= link_to t('.home_link'), root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
   <% if !@event.approved? %>

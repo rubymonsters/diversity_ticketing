@@ -8,7 +8,7 @@
       <%= f.form_field :text_field, :organizer_email, 'Email', value: current_user.email %>
 
       <% if action_name == 'new' || action_name == 'preview' %>
-        <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation', value: current_user.email %>
+        <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation', value: @event.organizer_email ? @event.organizer_email : current_user.email %>
       <% end %>
     </section>
 

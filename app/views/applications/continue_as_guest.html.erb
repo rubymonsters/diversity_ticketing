@@ -1,3 +1,5 @@
+<% provide :title, t('applications.continue_as_guest.continue_as_guest') %>
+
 <p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= link_to t('.events_link'), events_path %> > <%= link_to @event.name, event_path(@event) %> ><%= t('.application_for', event_name: @event.name) %></p>
 
 <h2><%= t(".title") %></h2>
