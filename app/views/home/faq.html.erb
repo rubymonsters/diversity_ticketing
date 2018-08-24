@@ -2,17 +2,17 @@
   <h1 class="page-title">FAQ</h1>
 
   <ul>
-    <li><%= link_to t('.what_is_diversity_tickets'), anchor: t('.what_is_diversity_tickets_anchor') %></li>
-    <li><%= link_to t('.diversity_tickets_options') , anchor: t('.diversity_tickets_options_anchor') %></li>
-    <li><%= link_to t('.why_diversity_tickets'), anchor: t('.why_diversity_tickets_anchor') %></li>
-    <li><%= link_to t('.which_events_eligible'), anchor: t('.which_events_eligible_anchor') %></li>
-    <li><%= link_to t('.how_can_i_submit_my_event'), anchor: t('.how_can_i_submit_my_event_anchor') %></li>
-    <li><%= link_to t('.how_long_event_approved'), anchor: t('.how_long_event_approved_anchor') %></li>
-    <li><%= link_to t('.why_even_not_approved'), anchor: t('.why_even_not_approved_anchor') %></li>
-    <li><%= link_to t('.how_can_i_add_tags'), anchor: t('.how_can_i_add_tags_anchor') %></li>
-    <li><%= link_to t('.how_can_i_apply'), anchor: t('.how_can_i_apply_anchor')%></li>
-    <li><%= link_to t('.am_i_eligible'), anchor: t('.am_i_eligible_anchor') %></li>
-    <li><%= link_to t('.when_find_application_approved_rejected'), anchor: t('.when_find_application_approved_rejected_anchor') %></li>
+    <li><%= link_to t('.what_is_diversity_tickets'), anchor: "general_org" %></li>
+    <li><%= link_to t('.diversity_tickets_options') , anchor: "general_options" %></li>
+    <li><%= link_to t('.why_diversity_tickets'), anchor: "general_need" %></li>
+    <li><%= link_to t('.which_events_eligible'), anchor: "conf_1" %></li>
+    <li><%= link_to t('.how_can_i_submit_my_event'), anchor: "conf_2" %></li>
+    <li><%= link_to t('.how_long_event_approved'), anchor: "conf_3" %></li>
+    <li><%= link_to t('.why_event_not_approved'), anchor: "conf_4" %></li>
+    <li><%= link_to t('.how_can_i_add_tags'), anchor: "conf_5" %></li>
+    <li><%= link_to t('.how_can_i_apply'), anchor: "grant_1" %></li>
+    <li><%= link_to t('.am_i_eligible'), anchor: "grant_2" %></li>
+    <li><%= link_to t('.when_find_application_approved_rejected'), anchor: "grant_3" %></li>
   </ul>
 
 
@@ -31,7 +31,7 @@
   <h2 class="page-subtitle"><%=t('.for_conference_organisers') %></h2>
 
   <p id="conf_1"><strong><%= t('.which_events_eligible') %></strong></p>
-  <%= raw t('.which_events_eligible', travis_website: '<a href="http://foundation.travis-ci.org/">').html_safe %>
+  <%= raw t('.which_events_eligible_answer', travis_website: '<a href="http://foundation.travis-ci.org/">').html_safe %>
 
   <p id="conf_2"><strong><%= t('.how_can_i_submit_my_event') %></strong></p>
   <%= raw t('.how_can_i_submit_my_event_answer') %>
@@ -39,8 +39,8 @@
   <p id="conf_3"><strong><%= t('.how_long_event_approved') %></strong></p>
   <%= raw t('.how_long_event_approved_answer') %>
 
-  <p id="conf_4"><strong><%= t('.why_even_not_approved') %></strong></p>
-  <%= raw t('.why_even_not_approved_answer') %>
+  <p id="conf_4"><strong><%= t('.why_event_not_approved') %></strong></p>
+  <%= raw t('.why_event_not_approved_answer') %>
 
   <p id="conf_5"><strong><%= t('.how_can_i_add_tags') %></strong></p>
   <%=raw t('.how_can_i_add_tags_answer', travis_email: 'mail_to "foundation@travis-ci.org"') %>
