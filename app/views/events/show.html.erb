@@ -1,3 +1,5 @@
+<% provide :title, @event.name %>
+
 <p class="breadcrumb">
   <%= link_to t('.home_link'), root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
   <% if !@event.approved? %>
@@ -28,7 +30,7 @@
     <% end %>
     <%= link_to t('.edit'), edit_event_path(@event), id: @event.id, class: 'btn btn-edit' %>
     <%= link_to t('.delete'), delete_event_path(id: @event.id), method: :delete,
-        data: { confirm: t('.are you sure')}, class: "btn btn-delete" if @event.past?%>
+        data: { confirm: t('.are-you-sure')}, class: "btn btn-delete" if @event.past?%>
   <% end %>
 
   <% if @event.application_process == 'application_by_organizer' %>
