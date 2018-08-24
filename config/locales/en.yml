@@ -393,10 +393,8 @@ en:
       app_to_diversify: "An app to diversify tech conferences"
     faq:
       am_i_eligible: "Am I eligible to apply?"
-      am_i_eligible_anchor: "grant_2"
       am_i_eligible_answer: "<p>If you feel like you are a member of an underrepresented group in tech — this includes, but is not limited to: people of colour, LGBTQIA+ people, women and disabled people — and agree to our Terms and Conditions, that makes you eligible for a diversity ticket.</p>"
       diversity_tickets_options: "What options are there to use diversitytickets.org?"
-      diversity_tickets_options_anchor: "general_options"
       diversity_tickets_options_answer: "<ul> <li>1) Travis Foundation handles the selection and application process for your conference</li>
         <li>2) Travis Foundation handles the application process, you handle the selection process</li>
         <li>3) You handle both the application and selection and we only list your conference on our site.</li></ul>
@@ -407,32 +405,23 @@ en:
       for_grant_applicants: "For grant applicants"
       general: "General"
       how_can_i_submit_my_event: "How can I submit my event?"
-      how_can_i_submit_my_event_anchor: "conf_2"
       how_can_i_submit_my_event_answer: "<p>To submit your event, click on \"Submit Event\" and fill out all the details. Your personal information (name and email) will not be public and is only asked so that we can contact you.</p>"
       how_can_i_add_tags: "How can I add a new tag to my event?"
-      how_can_i_add_tags_anchor: "conf_5"
       how_can_i_add_tags_answer: "<p>We currently only allow site administrators to add new tags; if you'd like to tag your event with a tag that is currently not available from the list, please drop us a line at %{travis_email}. We will try to process your request as quickly as possible and add your chosen tag to your event submission.</p>"
       how_can_i_apply: "How can I apply?"
-      how_can_i_apply_anchor: "grant_1"
       how_can_i_apply_answer: "<p>Find the event you wish to apply to in the %{events_link}event list</a>, and click the green \"Apply\" button underneath the event description. Please fill out all the form fields, and using the checkboxes, select the kind of support you are applying for (eg. ticket, travel grant) and accept the Terms and Conditions. That’s all!</p>"
       how_long_event_approved: "How long will it take for my event to be approved?"
-      how_long_event_approved_anchor: "conf_3"
       how_long_event_approved_answer: "<p>This usually depends on how many event submissions we get; we expect for it to take from 24 hours up to one week, so please factor that in when submitting your event. Once the event is approved, you will receive an automated email.</p>"
       what_is_diversity_tickets: "What is diversitytickets.org?"
-      what_is_diversity_tickets_anchor: "general_org"
       what_is_diversity_tickets_answer: "diversitytickets.org is a Travis Foundation app which helps conference organisers manage their diversity tickets and offer underrepresented groups in tech a platform to find events they can apply for. Conference organizers can submit their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it."
       when_find_application_approved_rejected: "When will I find out if my application has been accepted/rejected?"
-      when_find_application_approved_rejected_anchor: "grant_3"
       when_find_application_approved_rejected_answer: "<p>Every conference is different, so we can’t tell you for sure how much the selection process will take; two weeks from the application deadline usually give us enough time to process all applications.</p>"
       which_events_eligible: "Which events are eligible?"
-      which_events_eligible_anchor: "conf_1"
       which_events_eligible_answer: "<p>Organizers that want to get help from %{travis_website}Travis Foundation</a> to handle their diversity tickets can submit any of their events or conferences for which they are willing to offer free tickets or travel grants — this must have been discussed with Travis Foundation prior to the submission. We expect the events to be inclusive and to have a Code of Conduct which will be enforced throughout the event.</p>"
       why_diversity_tickets: "Why is there a need for something like diversitytickets.org?"
-      why_diversity_tickets_anchor: "general_need"
       why_diversity_tickets_answer: "<p>Unfortunately, the tech industry is %{geekfeminism} far from being diverse</a>. There are a few projects which make us all aware of this problem, but the goal of diversitytickets.org is first and foremost to try and raise the amount of diverse attendees at conferences by specifically reaching out to members of minority groups who would otherwise not be able to attend a conference.</p>
         <p>Read more about the concept on the Travis Foundation Blog: %{travis_blog} An app to diversify tech conferences</a></p>"
       why_event_not_approved: "Why has my event not been approved?"
-      why_event_not_approved_anchor: "conf_4"
       why_event_not_approved_answer: "<p>If your event has not been approved, you can contact us for more details.</p>"
     home:
       attendees: "Attendees"
