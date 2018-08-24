@@ -433,8 +433,8 @@ es:
       why_diversity_tickets_anchor: "general_need"
       why_diversity_tickets_answer: "<p>Desgraciadamente, la industria tecnológica está %{geekfeminism} lejos de ser diversa</a>. Existen algunos proyectos que dan visibilidad a este problema, pero el objetivo de diversitytickets.org es intentar aumentar la diversidad en las conferencias y llegar a aquellos grupos que de otro modo no tendrían la posibilidad de acudir a conferencias.</p>
         <p>Lee más sobre este concepto en el blog de Travis Foundation: %{travis_blog} Una app para diversificar conferencias tecnológicas</a></p>"
-      why_even_not_approved: "¿Por qué no ha sido aprobado mi evento?"
-      why_even_not_approved_anchor: "conf_4"
+      why_event_not_approved: "¿Por qué no ha sido aprobado mi evento?"
+      why_event_not_approved_anchor: "conf_4"
       why_event_not_approved_answer: "<p>Si tu evento no ha sido aprobado, puedes contactarnos para conocer más detalles.</p>"
     home:
       attendees: "Solicitantes"
