@@ -113,8 +113,8 @@ en:
     update_success: "You have successfully updated your application for %{event_name}."
     form:
       agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
-      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
-      attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
+      attendee_info_1: "Why are you applying for %{event_name} and what do you look forward to learning?"
+      attendee_info_2: "What makes you eligible for a diversity ticket? (1-2 sentences is enough, please only share what you're comfortable with)"
       code_of_conduct: "code of conduct"
       email: "Email"
       email_confirmation: "Email confirmation"
