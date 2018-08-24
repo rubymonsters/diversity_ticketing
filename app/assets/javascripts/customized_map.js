@@ -1,27 +1,11 @@
 (function(){
   this.CustomizedMap = function(countriesStatistics) {
     var mapData = {};
-
-    var totalEvents = 0;
-    var higherNumberOfEvents = 0;
-
-    for(key in countriesStatistics) {
-        higherNumberOfEvents = countriesStatistics[key][0] > higherNumberOfEvents ? countriesStatistics[key][0] : higherNumberOfEvents;
-        totalEvents = totalEvents + countriesStatistics[key][0];
-        var maxScore = higherNumberOfEvents / totalEvents;
-    };
-
-  // This "normalizes" the opacity based on the number of events each country has in order to avoid polarization of the values
-  // Maybe could be moved to the controller
-    defineOpacity = function(numberOfEvents) {
-      var countryScore = numberOfEvents / totalEvents;
-      return (countryScore / maxScore) + maxScore;
-    };
-
+    
     var keys = Object.keys(countriesStatistics);
 
     keys.forEach(function(key){
-      mapData[key] = { fillKey: "events", numberOfEvents: countriesStatistics[key][0], opacityKey: defineOpacity(countriesStatistics[key][0]), numberOfTickets: countriesStatistics[key][1] };
+      mapData[key] = { fillKey: "events", numberOfEvents: countriesStatistics[key][0], opacityKey: countriesStatistics[key][2], numberOfTickets: countriesStatistics[key][1] };
     });
 
     map = new Datamap({
