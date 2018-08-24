@@ -6,7 +6,7 @@ class CountriesStatistics
   def to_json
     countries.each_with_object({}) do |country, memo|
       next if key(country).nil?
-      memo[key(country)] = [events_count(country), tickets_count(country)]
+      memo[key(country)] = [events_count(country), tickets_count(country), country_score(country)]
     end.to_json
   end
 
@@ -36,5 +36,12 @@ class CountriesStatistics
 
   def tickets_count(country)
     @events.where(country: country).sum(:number_of_tickets)
+  end
+
+  def country_score(country)
+    total_events = @events.count
+    max_score = country_rank[0][1].to_f / total_events
+    country_score = events_count(country).to_f / total_events
+    (country_score / max_score ) + max_score
   end
 end
