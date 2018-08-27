@@ -147,7 +147,7 @@ class EventTest < ActiveSupport::TestCase
       make_event(start_date: '2016-07-03', end_date: '2016-07-05', deadline: '2016-06-15')
       make_event(start_date: '2016-06-23', end_date: '2016-06-25', deadline: '2016-06-01')
 
-      assert_equal 1, Event.deadline_in_two_days(DateTime.parse('2016-06-13')).length
+      assert_equal 1, Event.deadline_in_three_days(DateTime.parse('2016-06-12')).length
     end
   end
 

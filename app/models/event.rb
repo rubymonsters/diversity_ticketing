@@ -56,8 +56,8 @@ class Event < ApplicationRecord
     where('deadline BETWEEN ? AND ?', (now - 1.day).beginning_of_day, (now - 1.day).end_of_day)
   end
 
-  def self.deadline_in_two_days(now = DateTime.current)
-    where('deadline BETWEEN ? AND ?', (now + 2.days).beginning_of_day, (now + 2.days).end_of_day)
+  def self.deadline_in_three_days(now = DateTime.current)
+    where('deadline BETWEEN ? AND ?', (now + 3.days).beginning_of_day, (now + 3.days).end_of_day)
   end
 
   def self.created_current_year(now = Time.zone.now)
