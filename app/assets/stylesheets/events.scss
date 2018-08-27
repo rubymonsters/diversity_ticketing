@@ -132,5 +132,8 @@ ul.tags {
     &.languages {
       background-color: lighten($green-bg, 20%);
     }
+    &.fields-of-expertise {
+      background-color: lighten($yellow, 20%);
+    }
   }
 }
