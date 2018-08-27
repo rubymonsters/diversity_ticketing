@@ -6,6 +6,6 @@ class ApplicantMailer < ApplicationMailer
 
 	def deadline_reminder(application)
 		@application = application
-		mail(to: @application.email, subject: "#{@application.event.name} deadline in two days.")
+		mail(to: @application.email, subject: "#{@application.event.name} deadline is approaching.")
 	end
 end
