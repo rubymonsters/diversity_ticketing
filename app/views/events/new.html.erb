@@ -1,11 +1,13 @@
-<p class="breadcrumb"><%= link_to 'Home', root_path %> > <%= link_to 'Events', events_path %> > New event</p>
+<% provide :title, t('.title') %>
 
-<h1 class="page-title"><span class="page-title-firstword">Create</span> new event</h1>
-<p class="page-description">Please fill out this form. Fields marked with * are required.</p>
+<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= link_to t('.events'), events_path %> > <%= t('new_event') %></p>
+
+<h1 class="page-title"><span class="page-title-firstword"><%= raw t('.create_new_event') %></h1>
+<p class="page-description"><%= t('.please_fill') %></p>
 
 <% if @event.errors.any? %>
   <div class="error">
-    <p><%= pluralize(@event.errors.count, "error") %> stopped this event from being saved:</p>
+    <p><%= pluralize(@event.errors.count, "error") %> <%=t('.errors') %></p>
 
     <ul>
       <% @event.errors.messages.each do |field, messages| %>
@@ -15,4 +17,4 @@
   </div>
 <% end %>
 
-<%= render partial: "form", locals: {submit_tag_text: "Preview event", form_url: event_preview_path} %>
+<%= render partial: "form", locals: {submit_tag_text: t('.preview_event'), form_url: event_preview_path} %>

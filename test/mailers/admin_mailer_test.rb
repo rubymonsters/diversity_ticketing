@@ -27,7 +27,7 @@ class AdminMailerTest < ActionMailer::TestCase
 
     assert_equal ['info@diversitytickets.org'], email.from
     assert_equal [@admin.email], email.to
-    assert_equal "#{@event.name} deadline in two days.", email.subject
+    assert_equal "#{@event.name} deadline is approaching.", email.subject
   end
 
   test "passed_event_deadline" do

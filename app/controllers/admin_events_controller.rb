@@ -3,16 +3,19 @@ require "report_exporter"
 class AdminEventsController < ApplicationController
   before_action :get_event, except: [:index, :annual_events_report]
   before_action :require_admin
+  before_action :set_approved_tickets_count, only: [:show]
 
   def index
     @events = Event.all
     @new_users = User.all.created_last_30_days
-    @countries = Event.all.group_by(&:country).keys
+    @countries = Event.all.pluck(:country).compact
+    @countries_statistics = CountriesStatistics.new(@events).to_json
+    @country_rank = CountriesStatistics.new(@events).country_rank
     @categorized_events = {
       "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
       "Approved events" => Event.approved.upcoming.order(:deadline),
-      "Past approved events"=> Event.approved.past.order(:deadline),
-      "Past unapproved events" => Event.unapproved.past.order(:deadline)
+      "Past approved events"=> Event.approved.past.order(:deadline).active,
+      "Past unapproved events" => Event.unapproved.past.order(:deadline).active
     }
     @approved_events_deadline = {
       "Open deadline:" => Event.approved.upcoming.open.order(:deadline),
@@ -51,9 +54,9 @@ class AdminEventsController < ApplicationController
       tweet_event_check
       inform_applicants_country
       inform_applicants_field_of_interest
-      redirect_to admin_url, notice: "#{@event.name} has been approved!"
+      redirect_to admin_url, notice: t('.event_approved', event_name: @event.name)
     else
-      redirect_to admin_url, notice: "#{@event.name} has been unapproved!"
+      redirect_to admin_url, notice: t('.event_unapproved', event_name: @event.name)
     end
   end
 
@@ -82,5 +85,12 @@ class AdminEventsController < ApplicationController
 
   def tweet_event_check
     Tweet.create(event_id: @event.id, published: false) if params[:approve][:tweet] == "0"
+  end
+
+  def set_approved_tickets_count
+    if @event.approved_tickets == 0
+      approved_tickets = Application.where(event_id: @event.id, status: 'approved').count
+      @event.update_attributes(approved_tickets: approved_tickets)
+    end
   end
 end

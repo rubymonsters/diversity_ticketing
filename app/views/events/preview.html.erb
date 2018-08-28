@@ -1,15 +1,17 @@
-<h1 class="page-title"><span class="page-title-firstword">Preview of</span> <%= @event.name %></h1>
+<% provide :title, t('.title') %>
+
+<h1 class="page-title"><span class="page-title-firstword"> <%= raw t('.preview_of', event_name: @event.name) %></h1>
 <div class="two-columns">
 
   <section class="box">
-    <h2 class="box-title box-noborder">Organizer details</h2>
-    <p class="border">Not shown to the public.</p>
+    <h2 class="box-title box-noborder"><%= t('.organizer_details') %></h2>
+    <p class="border"><%= t('.not_visible') %></p>
     <div class="detail-pair">
-      <strong>Name</strong>
+      <strong><%= t('.name') %></strong>
       <%= @event.organizer_name %>
     </div>
     <div class="detail-pair">
-      <strong>Email</strong>
+      <strong><%= t('.email') %></strong>
       <%= @event.organizer_email %>
     </div>
   </section>
@@ -45,8 +47,8 @@
     <% end %>
 
     <div class="form_field">
-      <a class="btn btn-edit" href="javascript:history.back()">Edit event</a>
-      <%= f.submit "Submit your event", :class => "btn btn-save" %>
+      <a class="btn btn-edit" href="javascript:history.back()"><%= t('.edit_event') %></a>
+      <%= f.submit t('.submit_your_event'), :class => "btn btn-save" %>
     </div>
   <% end %>
 </div>

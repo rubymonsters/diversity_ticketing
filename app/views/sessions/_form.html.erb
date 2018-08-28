@@ -2,9 +2,9 @@
 
   <%= hidden_field_tag :referer, request.env["HTTP_REFERER"] %>
 
-  <%= form.form_field :email_field, :email, "Email" %>
+  <%= form.form_field :email_field, :email, t('.email') %>
 
-  <%= form.form_field :password_field, :password, "Password" %>
+  <%= form.form_field :password_field, :password, t('.password') %>
 
   <div class="form_field">
     <%= form.submit("Sign in", class: "btn btn-save") %>

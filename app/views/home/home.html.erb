@@ -1,14 +1,14 @@
-<h1 class="front-title">We help events reach a <em class="em--yellow">more diverse</em> audience. And we help you to <em class="em--yellow">find these events</em>.</h1>
-<h2 class="front-title">Because <em class="em--red">diversity</em> is what <em class="em--red">makes communities whole</em>.</h2>
+<h1 class="front-title"><%= raw t('.main_presentation') %></h1>
+<h2 class="front-title"><%=raw t('.main_presentation_subtitle') %></h2>
 
 <div class="front-cta">
   <%= link_to events_path, class:"front-apply attendee" do %>
-    <h3>Attendees</h3>
-    <p>Find and apply for upcoming events.</p>
+    <h3><%= t('.attendees') %></h3>
+    <p><%= t('.find_event') %></p>
   <% end %>
 
   <%= link_to new_event_path, class: "front-apply organizer" do %>
-    <h3>Organizers</h3>
-    <p>Submit your upcoming events.</p>
+    <h3><%= t('.organizers') %></h3>
+    <p><%= t('.submit_event') %></p>
   <% end %>
 </div>

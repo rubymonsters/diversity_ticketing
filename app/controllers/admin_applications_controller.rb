@@ -7,23 +7,24 @@ class AdminApplicationsController < ApplicationController
   end
 
   def approve
+    get_event
     @application.update_attributes(status: 'approved')
+    add_to_approved_tickets_count
     redirect_to admin_event_path(@application.event_id),
-                notice: "#{@application.name}'s application has been approved!"
+                notice: t('.application_approved', application_name: @application.name)
   end
 
   def reject
     @application.update_attributes(status: 'rejected')
     redirect_to admin_event_path(@application.event_id),
-                flash: { info: "#{@application.name}'s application
-                                 has been rejected" }
+                flash: { info: t('.application_rejected', application_name: @application.name) }
   end
 
   def revert
+    remove_from_approved_tickets_count
     @application.update_attributes(status: 'pending')
     redirect_to admin_event_path(@application.event_id),
-                flash: { info: "#{@application.name}'s application
-                                 has been changed to pending" }
+                flash: { info: t('.application_pending', application_name: @application.name) }
   end
 
   def destroy
@@ -44,5 +45,15 @@ class AdminApplicationsController < ApplicationController
 
   def skip_validation
     @application.skip_validation = true
+  end
+
+  def add_to_approved_tickets_count
+    @event.update_attributes(approved_tickets: @event.approved_tickets + 1)
+  end
+
+  def remove_from_approved_tickets_count
+    if @application.status == 'approved'
+      @event.update_attributes(approved_tickets: @event.approved_tickets - 1)
+    end
   end
 end

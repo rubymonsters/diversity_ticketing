@@ -1,4 +1,6 @@
-<p>These events provided diversity tickets in the past. Many thanks to the organizers.</p>
+<% provide :title, t('.title') %>
+
+<p><%= t('.past_events_thanks') %></p>
 
 <div class="two-columns">
   <% @events.each do |event| %>
@@ -6,4 +8,4 @@
   <% end %>
 </div>
 
-<%= link_to 'Show upcoming events', events_path %>
+<%= link_to t('.show_upcoming_events'), events_path %>

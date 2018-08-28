@@ -17,14 +17,19 @@ module DiversityTicketing
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+
+    # Where the I18n library should search for translation files
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+    I18n.available_locales = [:en, :es]
+    config.i18n.default_locale = :en
+
     config.active_job.queue_adapter = :sidekiq
 
     # set default url options for mailers
     config.action_mailer.default_url_options = {host: 'localhost'}
     # set default url options for Sidekiq workers
     config.x.worker_routes.default_url_options = {host: 'localhost'}
+    # prints rails logs to heroku logs only needed if there are problems in heroku
+    # config.logger = Logger.new(STDOUT)
   end
 end

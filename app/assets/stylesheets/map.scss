@@ -1,0 +1,46 @@
+div.map-statistics {
+  div.map-statistics-content {
+    div.map-legend {
+      display: block;
+      float: right;
+      border: 1px solid $border-grey;
+      border-radius: 3px;
+      padding: 10px 0px 10px 0;
+      margin: 0 0 -30px 0;
+      width: 25%;
+      font-size: 12px;
+
+      span {
+        background-color: #EA5755;
+        border-radius: 4px;
+        padding: 0 1em;
+        margin: 0 10px;
+        float: left;
+      }
+    }
+
+    div.hoverinfo {
+      padding: 5px;
+      background-color: #FFF;
+      text-align: center;
+      box-shadow: 0;
+      font-size: 12px;
+      border-radius: 3px;
+      border: 1px solid $border-grey;
+
+      p.hovertitle {
+        font-weight: 600;
+      }
+    }
+  }
+  .map-expander-btn {
+    &:active, &:hover {
+      color: $green;
+      cursor: pointer;
+    }
+    .rotated {
+      transform: rotate(180deg);
+      background-position: 12px 2px;
+    }
+  }
+}

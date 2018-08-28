@@ -10,8 +10,9 @@ class Event < ApplicationRecord
   has_many :interested_users, -> { distinct }, through: :tag_taggings, source: 'user'
 
   validates :organizer_name, :description, :name, :website, :code_of_conduct, :city, :country, presence: true, unless: :skip_validation
-  validates :start_date, :deadline, date: true, presence: true, unless: :skip_validation
+  validates :start_date, date: true, presence: true, unless: :skip_validation
   validates :end_date, date: { after_or_equal_to: :start_date }, presence: true, unless: :skip_validation
+  validates :deadline, date: { before: :end_date }, presence: true, unless: :skip_validation
   validates :organizer_email, confirmation: true, format: { with: /.+@.+\..+/ }, presence: true, unless: :skip_validation
   validates :organizer_email_confirmation, presence: true, on: :create, unless: :skip_validation
   validates :website, :code_of_conduct, format: { with: /(http|https):\/\/.+\..+/ }, unless: :skip_validation
@@ -43,20 +44,20 @@ class Event < ApplicationRecord
     where('end_date < ?', now)
   end
 
-  def self.open(now = DateTime.now)
+  def self.open(now = DateTime.current)
     where('deadline >= ?', now)
   end
 
-  def self.closed(now = DateTime.now)
+  def self.closed(now = DateTime.current)
     where('deadline < ?', now)
   end
 
-  def self.deadline_yesterday(now = DateTime.now)
-    where('deadline = ?', now - 1.day)
+  def self.deadline_yesterday(now = DateTime.current)
+    where('deadline BETWEEN ? AND ?', (now - 1.day).beginning_of_day, (now - 1.day).end_of_day)
   end
 
-  def self.deadline_in_two_days(now = DateTime.now)
-    where('deadline = ?', now + 2.days)
+  def self.deadline_in_three_days(now = DateTime.current)
+    where('deadline BETWEEN ? AND ?', (now + 3.days).beginning_of_day, (now + 3.days).end_of_day)
   end
 
   def self.created_current_year(now = Time.zone.now)
@@ -68,19 +69,15 @@ class Event < ApplicationRecord
   end
 
   def open?
-    deadline_as_time >= Time.now
+    deadline >= Time.now
   end
 
   def closed?
-    deadline_as_time < Time.now
+    deadline < Time.now
   end
 
   def past?
     end_date < Time.now
-  end
-
-  def deadline_as_time
-    (deadline + 1).in_time_zone("UTC")
   end
 
   def location

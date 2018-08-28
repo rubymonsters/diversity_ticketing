@@ -39,9 +39,9 @@ class UsersController < Clearance::UsersController
     else
       @user.password_optional = true
       if @user.update(user_params)
-        redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+        redirect_to edit_user_path(@user), notice: t('.update_success')
       else
-        redirect_to edit_user_path(@user), alert: "Data could not be updated."
+        redirect_to edit_user_path(@user), alert: t('.update_fail')
       end
     end
   end
@@ -49,13 +49,13 @@ class UsersController < Clearance::UsersController
   def destroy
     if @user.authenticated?(params[:user][:password])
       @user.destroy
-      flash[:alert] = "Your account has been deleted successfully."
+      flash[:alert] = t('.account_deleted')
       redirect_to root_path
     else
       if user_params[:password] === ''
-        message = "Password is a mandatory field"
+        message = t('.password_mandatory')
       else
-        message = "Incorrect password"
+        message = t('.password_incorrect')
       end
       flash.now[:error] = message
       render :delete_account
@@ -81,14 +81,15 @@ class UsersController < Clearance::UsersController
     def ensure_correct_user
       @user = User.find(params[:id])
       unless @user == current_user
-        redirect_to root_path, alert: "We're sorry. You don't have permission to access this page."
+        redirect_to root_path, alert: t('.no_permission')
       end
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :new_password,
+      params.require(:user).permit(:name, :email, :password, :new_password, :locale, :event_id,
         :country, :country_email_notifications, :tag_email_notifications,
-        { :tag_ids => [] }, tags_attributes: [:id, :name, :category_id])
+        :capacity_email_notifications, { :tag_ids => [] },
+        tags_attributes: [:id, :name, :category_id])
     end
 
     def user_from_params
@@ -107,15 +108,15 @@ class UsersController < Clearance::UsersController
       if @user.authenticated?(user_params[:password])
         if @user.update_attributes(user_params)
           @user.update_attributes(password: user_params[:new_password]) if user_params[:new_password] != ''
-          redirect_to edit_user_path(@user), notice: "You have successfully updated your user data."
+          redirect_to edit_user_path(@user), notice: t('.update_success')
         else
-          redirect_to edit_user_path(@user), alert: "Data could not be updated."
+          redirect_to edit_user_path(@user), alert: t('.update_fail')
         end
       else
         if user_params[:password] === ''
-          message = "Password is a mandatory field"
+          message = t('.password_mandatory')
         else
-          message = "Incorrect password"
+          message = t('.password_incorrect')
         end
         flash.now[:error] = message
         render :edit

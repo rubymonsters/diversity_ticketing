@@ -38,8 +38,8 @@ feature 'Event' do
     click_link("Delete")
 
     visit event_path(@event.id)
-    
-    assert page.text.include?('You are not allowed to access this event')
+
+    assert page.text.include?('This event has been deleted by the organizer')
     assert root_path, current_path
   end
 
@@ -74,5 +74,19 @@ feature 'Event' do
     click_link 'The Event'
 
     assert page.text.include?('Admin')
+  end
+
+  test 'shows correct number of approved tickets if deadline is closed' do
+    sign_in_as_user
+    make_application(@event, name: 'Peter', status: 'pending')
+    make_application(@event, name: 'Paul', status: 'pending')
+    make_application(@event, name: 'Lara', status: 'approved')
+    @event.update_attributes(start_date: 1.day.ago, end_date: 1.day.ago, deadline: 2.days.ago)
+
+    visit event_path(@event.id)
+
+    assert page.has_content?("Distributed tickets: 1")
+    @event.reload
+    assert_equal 1, @event.approved_tickets
   end
 end

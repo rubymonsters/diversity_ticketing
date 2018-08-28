@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  date:
+    order: ["day", "month", "year"]
+    month_names: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
   activerecord:
     attributes:
       application:
@@ -27,65 +30,598 @@ en:
         attendee_info_2: ""
     errors:
       models:
-        application:
-          attributes:
-            attendee_info_1:
-              blank: "Please state why you want to attend this event"
-            attendee_info_2:
-              blank: "Please state why you're applying for a diversity ticket"
         event:
           attributes:
             website:
               invalid: "should be a full URL, e.g. https://myconference.com"
             code_of_conduct:
               invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
-  users:
-    edit:
-      country: "Country"
-      email-notifications: "Email notifications"
+        application:
+          attributes:
+            attendee_info_1:
+              blank: "Please state why you want to attend this event"
+            attendee_info_2:
+              blank: "Please state why you're applying for a diversity ticket"
+
+  admin_applications:
+    application_approved: "%{application_name}'s application has been approved!"
+    application_pending: "%{application_name}'s application has been changed to pending"
+    application_rejected: "%{application_name}'s application has been rejected"
+    show:
+      admin_link: "Admin"
+      application_by: "Application by %{application_name}"
+      application_for: "Application for %{event_name}"
+      application_status: "Application status: %{application_status}"
+      approve: "Approve"
+      are_you_sure: "Are you sure you want to delete this application?"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket."
+      delete_application: "Delete application"
+      email: "Email"
+      home_link: "Home"
       name: "Name"
+      reject: "Reject"
+      revert: "Revert"
+      show_event_details: 'Show event details'
+      title: "Admin"
+      visa_need: "I need a Visa."
+
+  admin_events:
+    event_approved: "%{event_name} has been approved!"
+    event_unapproved: "%{event_name} has been unapproved"
+    index:
+      are_you_sure: "Are you sure?"
+      approve: "approve"
+      edit: "edit"
+      delete: "delete"
+      download_annual_events_report: "Download annual events report"
+      download_csv: "Download CSV"
+      download_data: "Download data"
+      download_events_report: "Download events report"
+      no_events_to_approve: "We currently don't have any events to approve"
+      title: "Admin page"
+      unapprove: "unapprove"
+    show:
+      admin_link: "Admin"
+      applications: "Applications"
+      approve: "Approve"
+      approve_event: "Approve event"
+      are_you_sure: "Are you sure?"
+      delete: "Delete"
+      delete_event: "Delete event"
+      edit_event: "Edit event"
+      home_link: "Home"
+      organizer_details: "Organizer details"
+      organizer_email: "Email"
+      organizer_name: "Name"
+      title: "Admin"
+      tweet_event: "Tweet it"
+      reject: "Reject"
+      revert: "Revert"
+    statistics:
+      conferences_since: "Conferences since "
+      countries_hosted_events: "Countries that hosted events"
+      most_conferences: "Most conferences"
+      new_users_last_30_days: "New users in the last 30 days:"
+      total_conferences: "Total conferences:"
+      show_statistics_map: "Show statistics map"
+      statistics: "Statistics"
+
+  applications:
+    already_applied: "You have already applied for %{event_name}"
+    application_deleted: "You cannot view your application as the event you applied for has been removed from Diversity Tickets"
+    application_success: "You have successfully applied for %{event_name}."
+    edit_deadline_passed: "You cannot edit your application as the %{event_name} deadline has already passed"
+    update_success: "You have successfully updated your application for %{event_name}."
+    form:
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
+      attendee_info_1: "Why are you applying for %{event_name} and what do you look forward to learning?"
+      attendee_info_2: "What makes you eligible for a diversity ticket? (1-2 sentences is enough, please only share what you're comfortable with)"
+      code_of_conduct: "code of conduct"
+      email: "Email"
+      email_confirmation: "Email confirmation"
+      name: "Name"
+      please_fill: "Please fill out this form <span>in English</span>. Fields marked with * are required."
+      please_fill_english: "Unfortunately we can not take care of those applications filled in a different language. Applications not written in English would be automatically rejected. We would like to avoid that so please keep it in mind when submitting your application."
+      save_as_draft: "Save as a draft"
+      sign_in: "sign in"
+      sign_in_request: "Would you like to %{href} to use your profile information and save this application?"
+      submit_application: "Submit application"
+      terms_and_conditions_1: "This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of %{event_name}. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes"
+      terms_and_conditions_2: "admission to the conference,"
+      terms_and_conditions_3: "travel costs,"
+      terms_and_conditions_4: "accomodation,"
+      terms_and_conditions_5: "<li>catering for the day of the conference,</li>
+        <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>"
+      terms_and_conditions_6: "If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk."
+      terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
+      visa_need: "I will need a visa to attend"
+    continue_as_guest:
+      application_for: "Application for %{event_name}"
+      benefits_of_account: "If you have a free user account with Diversity Tickets you can:
+        <ul><li>review and manage all of your applications in your applications dashboard</li>
+        <li>save applications as a draft before submission</li>
+        <li>come back to your draft later to finish and submit it</li>
+        <li>come back to your submitted applications later to edit them or withdraw your application
+          in case you changed your mind or your situation has changed before the end of the application deadline</li>
+        <li>save personal data such as your name and email address that will be saved
+          for your future applications (you will still be able to individually adjust that information)</li>
+        <li>manage your personal information and email preferences in your account settings
+          and decide which information you would like to share and/or receive</li>
+        <li>choose to receive updates about our latest conferences or other interesting events for you</li></ul>"
+      benefits_of_account_title: "Benefits of creating account"
+      create_an_account: "Create an account"
+      continue_as_guest: "Continue as guest"
+      events_link: "Event"
+      home_link: "Home"
+      guest_warning: "If you continue as a guest you will not be able to save or come back to your application."
+      sign_me_in: "Sign me in"
+      title: "How would you like to apply?"
+    edit:
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
+      apply_changes: "Apply changes"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
+      back: "Back"
+      code_of_conduct: "code of conduct"
+      email: "Email"
+      email_confirmation: "Email confirmation"
+      name: "Name"
+      please_fill: "Please fill out this form. Fields marked with * are required."
+      terms_and_conditions_1: "This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of %{event_name}. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes"
+      terms_and_conditions_2: "admission to the conference,"
+      terms_and_conditions_3: "travel costs,"
+      terms_and_conditions_4: "accomodation,"
+      terms_and_conditions_5: "<li>catering for the day of the conference,</li>
+        <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>"
+      terms_and_conditions_6: "If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk."
+      terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
+      title: "Edit application"
+      visa_need: "I will need a visa to attend"
+    new:
+      application: "Application"
+      application_for: "Application for"
+      events_link: "Event"
+      home_link: "Home"
+      title: "New application"
+    show:
+      admin_link: "Admin"
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
+      application_by: "Application by %{applicant_name}"
+      application_for: "Application for %{event_name}"
+      approve: "Approve"
+      are_you_sure: "Are you sure you want to delete this application?"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
+      code_of_conduct: "code of conduct"
+      delete: "Delete"
+      delete_application: "Delete application"
+      edit: "Edit"
+      email: "Email"
+      email_confirmation: "Email confirmation"
+      home_link: "Home"
+      name: "Name"
+      reject: "reject"
+      revert: "revert"
+      show_event_details: "Show event details"
+      submit_application: "Submit application"
+      terms_and_conditions_1: "This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of %{event_name}. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes"
+      terms_and_conditions_2: "admission to the conference,"
+      terms_and_conditions_3: "travel costs,"
+      terms_and_conditions_4: "accomodation,"
+      terms_and_conditions_5: "<li>catering for the day of the conference,</li>
+        <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>"
+      terms_and_conditions_6: "If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk."
+      terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
+      title: "Application"
+      visa_need: "I will need a visa to attend"
+      your_applications: "Your applications"
+
+  drafts:
+    successful_saved: "You have successfully saved an application draft for %{event_name}."
+    successful_saved_changes: "You have successfully saved your changes to the draft."
+    successful_application: "You have successfully applied for %{event_name}."
+    edit:
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
+      back: "Back"
+      code_of_conduct: "code of conduct"
+      email: "Email"
+      email_confirmation: "Email confirmation"
+      name: "Name"
+      please_fill: "Please fill out this form. Fields marked with * are required."
+      save_changes: "Save changes"
+      terms_and_conditions_1: "This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of %{event_name}. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes"
+      terms_and_conditions_2: "admission to the conference,"
+      terms_and_conditions_3: "travel costs,"
+      terms_and_conditions_4: "accomodation,"
+      terms_and_conditions_5: "<li>catering for the day of the conference,</li>
+        <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>"
+      terms_and_conditions_6: "If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk."
+      terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
+      title: "Edit draft"
+      visa_need: "I will need a visa to attend"
+    show:
+      are_you_sure: "Are you sure you want to delete this draft?"
+      attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
+      attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
+      email: "Email"
+      edit: "Edit"
+      delete: "Delete"
+      home_link: "Home"
+      name: "Name"
+      show_event_details: 'Show event details'
+      submit_application: "Submit application"
+      terms_and_conditions_1: "This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of %{event_name}. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes"
+      terms_and_conditions_2: "admission to the conference,"
+      terms_and_conditions_3: "travel costs,"
+      terms_and_conditions_4: "accomodation,"
+      terms_and_conditions_5: "<li>catering for the day of the conference,</li>
+        <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>"
+      terms_and_conditions_6: "If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk."
+      terms_and_conditions_7: "All attendees, speakers, sponsors and staff at %{event} are required to agree with the %{href} of the event. Organizers will enforce this code throughout the event."
+      title: "Draft"
+      visa_need: "I will need a visa to attend"
+      your_applications: "Your applications"
+
+  events:
+    deadline_passed: "Your event can't be edited, because the deadline has passed."
+    event_deleted: "This event has been deleted by the organizer."
+    not_allowed: "You are not allowed to access this event."
+    please_sign: "Please sign into your existing account or create a new one to submit events."
+    thank_you: "Thank you for submitting %{event_name}. We will review it shortly."
+    update_success: "You have successfully updated %{event_name}."
+    application_details:
+      accomodation: "Accomodation"
+      application_details: "Application details"
+      deadline_applications: "Deadline for applications"
+      directions_applicants: "Directions for applicants"
+      midnight_utc: "(midnight UTC)"
+      number_tickets: "Number of available diversity tickets"
+      ticket: "ticket"
+      travel: "Travel"
+      whats_funded: "What's funded?"
+    event:
+      application_and_selection: "Application and selection"
+      application_by_organizer: "We are handling both the selection and application process and only want our event listed on this site. Applicants have to apply through our site / app:"
+      event_code_of_conduct: "Code of conduct link"
+      event_date: "Date"
+      event_description: "Description"
+      event_details: "Event details"
+      event_location: "Location"
+      event_logo: "Logo"
+      event_name: "Event name"
+      event_tags: "Tags"
+      event_twitter: "Twitter"
+      event_website: "Website"
+      selection_by_organizer: "We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
+      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*.
+        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
+      not_shown: "Not shown to the public."
+    form:
+      accomodation: "Accomodation"
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions:"
+      application_by_organizer: "The organizer is handling both the selection and application process and only wants their event listed on this site. Applicants have to apply through their site / app."
+      application_form_link: "Link to application form"
+      application_form_link_placeholder: "e.g. https://myconference.com/apply"
+      application_selection: "Application & Selection"
+      approve_event: "Approve event?"
+      cant_find_tag: "Can’t find the tag you want? Suggest a new one."
+      date_placeholder: "dd.mm.yyyy"
+      deadline_application: "Deadline for applications"
+      description: "Description"
+      directions_applicants: "Directions for applicants"
+      directions_applicants_placeholder: "Let the applicants know about any additional information like:
+        - What does the ticket include?
+        E.g.: The ticket is valid for both conference days, ...
+        - Additional organizational info
+        - ..."
+      diversity_tickets_info: "* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes."
+      from: "From"
+      funded: "Funded"
+      event_city: "City"
+      event_code_of_conduct: "Link to code of conduct"
+      event_code_of_conduct_placeholder: "e.g. https://myconference.com/code_of_conduct"
+      event_details: "Event details"
+      event_logo: "Logo"
+      event_logo_description: Choose a square image for best displaying results.
+      event_tags: "Tags"
+      event_twitter_handler: "Twitter handle"
+      event_twitter_placeholder: "my_conf"
+      event_website: "Website"
+      event_website_placeholder: "e.g. https://myconference.com"
+      not_shown: "Not shown to the public."
+      number_of_tickets: "Number of available diversity tickets"
+      organizer_details: "Organizer details"
+      selection_by_organizer: "The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org."
+      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*."
+      select_country: "Select country *"
+      state_province: "State/Province"
+      terms_and_conditions: "I will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
+      ticket: "Ticket*"
+      to: "To"
+      travel: "Travel"
+    index_list_item:
+      application_deadline: "Application deadline passed"
+      apply: "Apply"
+      apply_at: "Apply at %{event_name}"
+      your_application: "Your application"
+      your_draft: "Your draft"
+    edit:
+      edit: "Edit"
+      edit_event: "Edit event"
+      home_link: "Home"
+      errors: "stopped this event from being updated:"
+      submit_changes: "Submit changes"
+    index_past:
+      past_events_thanks: "These events provided diversity tickets in the past. Many thanks to the organizers."
+      show_upcoming_events: "Show upcoming events"
+      title: "Past events"
+    index:
+      closed_for_application: "Closed for applications"
+      home_link: "Home"
+      events: "Events"
+      no_events: "<h2>We currently have no events lined up.</h2> <p>But we'll add new ones soon!</p>"
+      open_for_application: "Open for applications"
+      past_events: "past events"
+      show_past_events: "Show past events"
+      submit_your_conference: "You can %{link_to_submission} now or browse through %{link_to_past_events}."
+      submit_your_own_conference: "submit your own conference"
+    new:
+      create_new_event: "Create</span> new event"
+      home_link: "Home"
+      events: "Events"
+      errors: "stopped this event from being saved:"
+      new_event: "New event"
+      please_fill: "Please fill out this form. Fields marked with * are required."
+      preview_event: "Preview event"
+      title: "Submit event"
+    preview:
+      edit_event: "Edit event"
+      email: "Email"
+      name: "Name"
+      not_visible: "Not shown to the public."
+      organizer_details: "Organizer details"
+      preview_of: "Preview of</span> %{event_name}"
+      submit_your_event: "Submit your event"
+      title: "Preview event"
+    show:
+      applications_closed: "Sorry, applications for %{event_name} are closed."
+      apply_at: "Apply at %{event_name}"
+      apply_for_ticket: "Apply for a ticket"
+      approval_pending: "(Approval: pending)"
+      are-you-sure: "Are you sure?"
+      delete: "Delete"
+      edit: "Edit"
+      home_link: "Home"
+      your_application: "Your application"
+      your_draft: "Your draft"
+
+  home:
+    about:
+      about_title: "About Diversity Tickets"
+      about_diversity_tickets: "<p>diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants. They can do so by adding their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
+        <p>The app was created to make the work around diversity ticketing easier for event organisers as well as members of underrepresented groups in tech. Organisers don’t have to set up forms for the applicants to fill out and can focus on other organisational work, while applicants have a good overview of which events are currently offering diversity tickets, through the event listing.</p>
+        <p>Travis Foundation has partnered with %{ruby_monstas} to create this Open Source app, which they currently use in their diversity work with conferences. The app itself is currently offered for a fee as part of the Foundation’s diversity consulting. If you’re interested in offering a diverse conference experience to your attendees, %{email_foundation} get in touch</a>!</p>
+        <p>Read more about the idea and concept on the Travis Foundation blog: %{travis_blog} %{app_to_diversify}</a></p>"
+      app_to_diversify: "An app to diversify tech conferences"
+      title: "About"
+    faq:
+      am_i_eligible: "Am I eligible to apply?"
+      am_i_eligible_answer: "<p>If you feel like you are a member of an underrepresented group in tech — this includes, but is not limited to: people of colour, LGBTQIA+ people, women and disabled people — and agree to our Terms and Conditions, that makes you eligible for a diversity ticket.</p>"
+      diversity_tickets_options: "What options are there to use diversitytickets.org?"
+      diversity_tickets_options_answer: "<ul> <li>1) Travis Foundation handles the selection and application process for your conference</li>
+        <li>2) Travis Foundation handles the application process, you handle the selection process</li>
+        <li>3) You handle both the application and selection and we only list your conference on our site.</li></ul>
+        For option 2) we will send you a .csv file with all applications that came in through diversitytickets.org.
+        Since Travis Foundation is a non-profit organization we depend on donations to continue the projects we build. To be able to put in working hours to manage your conference tickets and meanwhile still support our other projects, we ask for a small donation to Travis Foundation for our service. We will take into consideration the resources and size of the conference when asking for a contribution and are sure we will always find a way to make this work.
+        For option 1) and 2) we will ask for a donation to cover the diversity consulting and management work of Travis Foundation. For option 3) the use of the app is for free, but a small donation around 50 € is greatly appreciated and will go towards hosting and managing the site and printing stickers for Rubymonstas."
+      for_conference_organisers: "For conference organisers"
+      for_grant_applicants: "For grant applicants"
+      general: "General"
+      how_can_i_submit_my_event: "How can I submit my event?"
+      how_can_i_submit_my_event_answer: "<p>To submit your event, click on \"Submit Event\" and fill out all the details. Your personal information (name and email) will not be public and is only asked so that we can contact you.</p>"
+      how_can_i_add_tags: "How can I add a new tag to my event?"
+      how_can_i_add_tags_answer: "<p>We currently only allow site administrators to add new tags; if you'd like to tag your event with a tag that is currently not available from the list, please drop us a line at %{travis_email}. We will try to process your request as quickly as possible and add your chosen tag to your event submission.</p>"
+      how_can_i_apply: "How can I apply?"
+      how_can_i_apply_answer: "<p>Find the event you wish to apply to in the %{events_link}event list</a>, and click the green \"Apply\" button underneath the event description. Please fill out all the form fields, and using the checkboxes, select the kind of support you are applying for (eg. ticket, travel grant) and accept the Terms and Conditions. That’s all!</p>"
+      how_long_event_approved: "How long will it take for my event to be approved?"
+      how_long_event_approved_answer: "<p>This usually depends on how many event submissions we get; we expect for it to take from 24 hours up to one week, so please factor that in when submitting your event. Once the event is approved, you will receive an automated email.</p>"
+      title: "FAQ"
+      what_is_diversity_tickets: "What is diversitytickets.org?"
+      what_is_diversity_tickets_answer: "diversitytickets.org is a Travis Foundation app which helps conference organisers manage their diversity tickets and offer underrepresented groups in tech a platform to find events they can apply for. Conference organizers can submit their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it."
+      when_find_application_approved_rejected: "When will I find out if my application has been accepted/rejected?"
+      when_find_application_approved_rejected_answer: "<p>Every conference is different, so we can’t tell you for sure how much the selection process will take; two weeks from the application deadline usually give us enough time to process all applications.</p>"
+      which_events_eligible: "Which events are eligible?"
+      which_events_eligible_answer: "<p>Organizers that want to get help from %{travis_website}Travis Foundation</a> to handle their diversity tickets can submit any of their events or conferences for which they are willing to offer free tickets or travel grants — this must have been discussed with Travis Foundation prior to the submission. We expect the events to be inclusive and to have a Code of Conduct which will be enforced throughout the event.</p>"
+      why_diversity_tickets: "Why is there a need for something like diversitytickets.org?"
+      why_diversity_tickets_answer: "<p>Unfortunately, the tech industry is %{geekfeminism} far from being diverse</a>. There are a few projects which make us all aware of this problem, but the goal of diversitytickets.org is first and foremost to try and raise the amount of diverse attendees at conferences by specifically reaching out to members of minority groups who would otherwise not be able to attend a conference.</p>
+        <p>Read more about the concept on the Travis Foundation Blog: %{travis_blog} An app to diversify tech conferences</a></p>"
+      why_event_not_approved: "Why has my event not been approved?"
+      why_event_not_approved_answer: "<p>If your event has not been approved, you can contact us for more details.</p>"
+    home:
+      attendees: "Attendees"
+      find_event: "Find and apply for upcoming events."
+      main_presentation: "We help events reach a <em class=\"em--yellow\">more diverse</em> audience. And we help you to <em class=\"em--yellow\">find these events</em>."
+      main_presentation_subtitle: "Because <em class=\"em--red\">diversity</em> is what <em class=\"em--red\">makes communities whole</em>."
+      organizers: "Organizers"
+      submit_event: "Submit your upcoming events."
+    impressum:
+      title: "Impressum"
+    privacy:
+      ad_servers: "<p>We do not partner with or have special relationships with any ad server companies.</p>"
+      ad_servers_title: "Ad servers"
+      changes: "<p>If our information practices change in the future, we will post the policy changes to our website to notify you of these changes, indicating the date of the latest revision. We will only use data collected from the time of the policy change forward for these new purposes. If you are concerned about how your information is used, you should check back at our website periodically.</p>"
+      changes_title: "Changes"
+      cookies: "<p>We use cookies to store user preferences, customize webpage content based on user browser type or other information that the user sends. You can control the use of cookies at the individual browser level, but if you choose to disable cookies, it may limit your use of certain features or functions on our website.</p>"
+      cookies_title: "Cookies"
+      duration_of_the_storage_data: "<p>We only store your personal data for as long as your account is active or otherwise for a limited period of time as long as it is necessary for the execution of the respective purpose.</p>
+        <p>Criteria for the storage period include whether the data are still up-to-date, whether a contractual relationship with us still exists, whether an inquiry has already been processed, whether a process has been completed or not, and whether legal retention periods for the personal data concerned are relevant or not.</p>"
+      duration_of_the_storage_data_title: "Duration of the storage of personal data"
+      information_gathering: "<p>When registering for Diversity Tickets we ask for information such as your name and email address. Diversity Tickets collects the email addresses of those who communicate with us via email, and information as part of the application or conference submission process.</p>
+        <p>We only collect personal data that is required to provide our services, and we only store it insofar that it is necessary to deliver these services.</p>"
+      information_gathering_title: "Information gathering and usage"
+      introduction: "<p>We take the protection of our users (\"User/you/your\") personal data very seriously and strictly comply with applicable data protection laws and regulations. In our privacy policy below (“Privacy Policy”) we provide you with an overview of what data we collect for what purpose and how we ensure the protection of the data.</p>
+        <p>The controller is <strong>Travis Foundation gUG (haftungsbeschränkt)</strong>, Rigaer Straße 8, 10247 Berlin/Germany, registered at the local court (Amtsgericht) of Charlottenburg under HRB 158047 B), represented by the managing director Anika Lindtner (“we/us/our”).</p>"
+      introduction_title: "Introduction"
+      last_updated: "Last updated: May 25th, 2018"
+      links_to_other_websites: "<p>Our website contains links to other websites. The fact that we link to a website is not an endorsement, authorization or representation of our affiliation with that third-party. We do not exercise control over third-party websites. These other websites may place their own cookies or other files on your computer, collect data or solicit Personal Information from you. Other sites follow different rules regarding the use or disclosure of the Personal Information you submit to them. We are not responsible for the content, privacy and security practices, and policies of third-party sites or services to which links or access are provided through the Service. We encourage you to read the privacy policies or statements of the other websites you visit.</p>"
+      links_to_other_websites_title: "Links to other websites"
+      privacy_policy: "Privacy policy"
+      right_of_access: "<p>You have the right to be informed at any time and free of charge about the personal data stored about you.</p>"
+      right_of_access_title: "Right of access"
+      right_of_rectification: "<p>You have the right to rectify inaccurate personal data about you. Taking into account the purposes of the processing, you have the right to have incomplete personal data completed (for example, by providing an additional statement).</p>"
+      right_of_rectification_title: "Right to rectification"
+      right_to_be_forgotten: "<p>You have the right to have us delete any personal data concerning you that we store.</p>
+        <p>We have the obligation to erase your personal data without undue delay where one of the following grounds applies, as long as the processing is not necessary:
+        <ul><li>The personal data are no longer necessary in relation to the purposes for which they were collected or otherwise processed</li>
+        <li>The User withdraws consent to which the processing is based according to point (a) of Article 6(1) of the GDPR, or point (a) of Article 9(2) of the GDPR, and where there is no other legal ground for the processing</li>
+        <li>The User objects to the processing pursuant to Article 21(1) of the GDPR and there are no overriding legitimate grounds for the processing, or the User objects to the processing pursuant to Article 21(2) of the GDPR</li>
+        <li>The personal data have been unlawfully processed</li>
+        <li>The personal data must be erased for compliance with a legal obligation in Union or Member State law to which we are subject
+        The personal data have been collected in relation to the offer of information society services referred to in Article 8(1) of the GDPR</li>
+        </ul></p>"
+      right_to_be_forgotten_title: "Right to be forgotten"
+      right_to_data_portability: "<p>You have the right to ask for and receive the personal data we store about you in a structured, commonly used and machine-readable format. You also have the right to transfer this data to another controller without hindrance by the controller to whom the personal data have been provided, provided that the processing is based on a consent or on a contract to which the data subject is a party and that the processing is carried out by means of automated procedures.
+        Furthermore, in exercising your right to data portability, you have the right to have personal data transmitted directly from one controller to another where technically feasible — and when doing so does not affect the rights and freedoms of others.</p>"
+      right_to_data_portability_title: "Right to data portability"
+      right_to_withdraw_consent: "<p>You have the right to withdraw your consent regarding the use, processing or transmission of your data at any time in writing or by email to us. </p>
+        <p>In the event of consent withdrawal, we will no longer process and immediately delete your stored data. This does not apply if we can prove compelling grounds for processing that are worthy of protection and which outweigh your interests, rights and freedoms or in case the processing serves to assert, exercise or defend legal claims. For example, we will continue to use data if it is still necessary for the implementation of the contractual relationship (including, but not limited to, if you are granted a diversity ticket from us for a conference).</p>"
+      right_to_withdraw_consent_title: "Right to withdraw consent"
+      security: "<p>All data and information transmitted with Service is secured by SSL protocol.</p>"
+      security_title: "Security"
+      title: "Privacy"
+      your_data: "<p>Diversity Tickets uses third-party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run Diversity Tickets. Although Diversity Tickets owns the databases to the Diversity Tickets application, you retain all rights to your data. We will never share your personal data with a third party without your prior authorization, and we will never sell data to third parties. We transfer data with third-parties necessary to our ability to provide our services, all of whom are GDPR-compliant and provide the necessary safeguards required if they are outside of the EU.</p>"
+      your_data_title: "Your data"
+      your_rights: "<p>For further information on your rights, to withdraw consent, or to ask for deletion of your data, you can contact us at <a href=\"mailto:foundation@travis-ci.org\">foundation@travis-ci.org</a>.</p>"
+      your_rights_title: "Your rights"
+
+  layouts:
+    header:
+      about: "About"
+      account_settings: "Account settings"
+      admin: "Admin"
+      diversity_tickets: "Diversity tickets"
+      events: "Events"
+      faq: "FAQ"
+      logo: "Logo"
+      sign_in: "Sign in / Create account"
+      sign_out: "Sign out"
+      submit_event: "Submit event"
+      tags: "Tags"
+      your_account: "Your account"
+      your_events: "Your events"
+      your_applications: "Your applications"
+    open_graph_tags:
+      description: "diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants."
+      diversity_tickets: "Diversity Tickets"
+      title: "We help events reach a more diverse audience. And we help you to find these events."
+      type: "website"
+      url: "https://diversitytickets.org/"
+    application:
+      check_out_the_code: "Checkout the code on "
+      proudly_built: "Proudly built by "
+      supported_by: "Supported by "
+      legal: "Legal "
+      impressum: "Impressum here"
+      privacy_policy: "Privacy policy"
+
+  sessions:
+    account_not_found: "Account not found, please register first"
+    please_reset_password: "Due to a security update from our side we kindly ask you to reset your password."
+    form:
+      email: "Email"
       password: "Password"
-      receive-emails-country: "Yes, I want to get email notifications about new events taking place in the country I’ve selected for my account"
-      receive-emails-tag: "Yes, I want to get email notifications about new events that match my fields of interest"
-      save-changes: "Save changes"
+    login:
+      log_in: "Log in"
+      password: "Password"
+      username: "Username"
+    new:
+      create_your_account: "Create your account"
+      new_to_diversity_tickets: "New to Diversity Tickets?"
+      title: "Sign in"
+
+  tags:
+    tag_created: "Tag %{tag_name} was successfully created."
+    tag_problem: "There was a problem creating the new tag."
+    index:
+      are_you_sure: "Are you sure?"
+      tags_management_title: "Tags management"
+
+  users:
+    account_deleted: "Your account has been deleted successfully."
+    no_permission: "We're sorry. You don't have permission to access this page."
+    password_incorrect: "Incorrect password"
+    password_mandatory: "Password is a mandatory field"
+    update_fail: "Data could not be updated."
+    update_success: "You have successfully updated your user data."
+    form:
+      email: "Email"
+      password: "Password"
+    applications:
+      drafts: "Drafts"
+      home_link: "Home"
+      info_description: "<p> Once an event date has passed your applications
+      will vanish from this overview and all sensitive data will be removed from the database.</p>"
+      no_applications: "There are currently no applications for this user account."
+      submitted: "Submitted"
+      title: "Your applications"
+      your_application: "Your application"
+      your_applications: "Your applications"
+      your_draft: "Your draft"
+    edit:
+      capacity_email_notifications_info: "We would like to inform you once your event received more applications than the number of tickets you made available via Diversity Tickets to give you the opportunity to increase the number of tickets for your event."
+      country: "Country"
+      download_user_data: "Here you can download a CSV file that contains a list of all your user data we store:"
+      download_user_data_link: "Download user data"
+      email_notifications: "Email notifications"
+      for_organizers: "For organizers"
+      fields_of_expertise: "Fields of expertise"
+      fields_of_interest: "Fields of interest"
+      languages: "Languages"
+      name: "Name"
+      new_password: "New password"
+      password: "Password"
+      programming_languages: "Programming languages"
+      receive_all_capacity_reminders: "Yes, please!"
+      receive_capacity_reminders_once: "Yes, but only once per event"
+      receive_emails_country: "Yes, I want to get email notifications about new events taking place in the country I’ve selected for my account"
+      receive_emails_tag: "Yes, I want to get email notifications about new events that match my fields of interest"
+      receive_no_capacity_reminders: "No, thank you."
+      select_your_country: "Select your country"
+      save_changes: "Save changes"
       title: "Account settings"
     events:
-      title: "Your events"
       approved: "Approved"
-      unapproved: "Not approved so far"
+      edit: "Edit"
+      no_events: "There are currently no events for this user account."
       past: "Past"
-    applications:
-      title: "Your applications"
-      submitted: "Submitted"
-      drafts: "Drafts"
-      info-description: "<p> Once an event date has passed your applications
-      will vanish from this overview and all sensitive data will be removed from the database.</p>"
+      title: "Your events"
+      unapproved: "Not approved so far"
     confirm_delete:
-      title: "Are you sure?"
-      subtitle: "Deleting your account is irreversible."
-      benefits-intro: "We would be sad to see you go and don't want you to miss out on the benefits of
+      are_you_sure: "Are you sure you want to delete your user account?"
+      benefits_intro: "We would be sad to see you go and don't want you to miss out on the benefits of
       being a signed up user."
-      list-of-benefits: "If you proceed with the account deletion the following things will happen:
+      email_preferences: "<strong>Please note</strong> that you can manage your email preferences
+          in your account settings. You don't have to receive our newsletters if you
+          don't want to."
+      list_of_benefits: "If you proceed with the account deletion the following things will happen:
       <li> Your submitted applications will still be valid. <strong>However:</strong> </li>
       <li> You will not be able to visit or manage your current applications or drafts anymore.</li>
       <li> New applications can only be submitted as a guest, unless you sign up for a new user account again.</li>
       <li> If you sign up again, you will not be able to retrieve your \"old\" data. </li>
       <li> As a guest you will be missing out on the opportunity to receive updates about our latest conferences or other interesting events for you.</li>"
-      email-preferences: "<strong>Please note</strong> that you can manage your email preferences
-          in your account settings. You don't have to receive our newsletters if you
-          don't want to."
-      are-you-sure: "Are you sure you want to delete your user account?"
-      no-delete-button: "No, go back!"
-      proceed-delete-button: "Yes, proceed!"
+      no_delete_button: "No, go back!"
+      proceed_delete_button: "Yes, proceed!"
+      subtitle: "Deleting your account is irreversible."
+      title: "Are you sure?"
     delete_account:
-      title: "Delete Account"
-      delete-button: "Delete account"
-
-  admin_events:
-    show:
-      approve-event: "Approve event"
-      tweet-event: "Tweet it"
-
-  applications:
-    continue_as_guest:
-      title: "How would you like to apply?"
+      delete_button: "Delete account"
+      password: "Password"
+      title: "Delete account"
+    new:
+      already_registered: "Already registered?"
+      create_your_account: "Create your account"
+      sign_in_here: "Sign in here"
+      title: "Create account"

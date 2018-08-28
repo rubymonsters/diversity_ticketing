@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $( "#dropdown-btn" ).click(function() {
+  $( "#account-menu" ).click(function() {
     $(".dropdown-content").toggle();
   });
 

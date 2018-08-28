@@ -1,0 +1,35 @@
+<div class="box">
+  <h2><%= t('.statistics') %></h2>
+    <ul class="admin-list">
+      <li><%= t('.total_conferences') %> <strong><%= @events.count %></strong></li>
+      <li><%= %><%= t('.conferences_since')%><%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
+      <li class="border"><%= t('.new_users_last_30_days') %> <strong><%= @new_users.count %></strong></li>
+    </ul>
+    <ul class="admin-list">
+      <li>
+        <%= t('.most_conferences') %>
+        <strong>
+          <ol>
+            <% @country_rank.each.with_index do |country, index| %>
+            <% break if index >= 3 || index == @country_rank.length %>
+            <li><%= index + 1 %>. <%= @country_rank[index][0] %> (<%= @country_rank[index][1] %>)</li>
+          <% end %>
+          </ol>
+        </strong>
+      </li>
+    </ul>
+    <div class="map-statistics" id="map-statistics">
+      <span class="map-expander-btn" id="map-expander-btn">
+        <%= t('.show_statistics_map') %>
+        <i class="icon-sort-down-black" id="icon-map-expander"></i>
+      </span>
+        <div class="map-statistics-content">
+          <div class="map-legend">
+             <span>&nbsp;</span>
+             <%=t('.countries_hosted_events') %>
+          </div>
+           <div id="map_events" style="position: relative; width: 100%; height: 600px;"></div>
+           <%= javascript_tag "new CustomizedMap(#{@countries_statistics});" %>
+          </div>
+        </div>
+</div>

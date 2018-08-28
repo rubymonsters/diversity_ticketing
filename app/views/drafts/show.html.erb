@@ -1,6 +1,8 @@
+<% provide :title, t('.title') %>
+
 <p class="breadcrumb">
-  <%= link_to 'Home', root_path %> >
-  <%= link_to 'Your applications', user_applications_path(current_user.id) %> >
+  <%= link_to t('.home_link'), root_path %> >
+  <%= link_to t('.your_applications'), user_applications_path(current_user.id) %> >
   Draft for <%= @event.name %>
 </p>
 
@@ -9,30 +11,29 @@
 <section class="box">
   <p class="detail-pair">
     <strong>
-      Why do you want to attend <%= @event.name %>
-      and what especially do you look forward to learning?
+      <%= t('.attendee_info_1', event_name: @event.name) %>
     </strong>
     <%= @draft.attendee_info_1 %>
   </p>
 
   <p class="detail-pair">
-    <strong>Please share with us why you're applying for a diversity ticket.</strong>
+    <strong><%=t('.attendee_info_2')%></strong>
     <%= @draft.attendee_info_2 %>
   </p>
 
   <p class="detail-pair">
-    <strong>Name</strong>
+    <strong><%=t('.name')%></strong>
     <%= @draft.name %>
   </p>
 
   <p class="detail-pair">
-    <strong>Email</strong>
+    <strong><%=t('.email')%></strong>
     <%= @draft.email %>
   </p>
 
   <% if @draft.visa_needed %>
     <p class="detail-pair">
-      <strong>I need a Visa.</strong>
+      <strong><%=t('.visa_needed')%></strong>
     </p>
   <% end %>
 </section>
@@ -56,46 +57,45 @@
       <div class="form_field--check">
         <%= label_tag do %>
         <%= f.check_box :terms_and_conditions, checked: false %>
-        <span class="check-label">I agree with the following Terms and Conditions*</span>
+        <span class="check-label"><%=t('.agree_terms_and_conditions') %></span>
         <% end %>
         <p id="terms-and-conditions">
-          This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of <%= @event.name %>. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes
+          <%= t('.terms_and_conditions_1') %>
         </p>
         <ul>
           <% if @event.ticket_funded? %>
-            <li>admission to the conference,</li>
+            <li><%= t('.terms_and_conditions_2') %></li>
           <% end %>
           <% if @event.travel_funded? %>
-            <li>travel costs,</li>
+            <li><%= t('.terms_and_conditions_3') %></li>
           <% end %>
           <% if @event.accommodation_funded? %>
-            <li>accommodation,</li>
+            <li><%= t('.terms_and_conditions_4') %></li>
           <% end %>
-          <li>catering for the day of the conference,</li>
-          <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>
+          <%=raw t('.terms_and_conditions_5') %>
         </ul>
         <% if @event.travel_funded? %>
-          <p>If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk.</p>
+          <p><%= t('.terms_and_conditions_6') %></p>
         <% end %>
-        <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of Conduct', "#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
-      </div>
-    </section>
-    <div>
-      <%= f.submit("Submit application", class: "btn btn-save submit-application") %>
-      <%= link_to 'Edit', edit_event_draft_path(@event.id, @draft.id),
+        <p><%= t('.terms_and_conditions_7', event: @event.name, href: link_to(t('.code_of_conduct'), @event.code_of_conduct)).html_safe %></p>
+        </div>
+      </section>
+      <div>
+      <%= f.submit(t('.submit_application'), class: "btn btn-save submit_application") %>
+      <%= link_to t('.edit'), edit_event_draft_path(@event.id, @draft.id),
           class: "btn btn-edit" %>
-      <%= link_to 'Delete', event_application_path(@event.id, @draft.id),
+      <%= link_to t('.delete'), event_application_path(@event.id, @draft.id),
           class: "btn btn-delete",  method: :delete,
-          data: { confirm: "Are you sure you want to delete this application?" } %>
+          data: { confirm: t('.are_you_sure') } %>
     </div>
   <% end %>
 <% else %>
   <div>
-    <%= link_to 'Delete', event_application_path(@event.id, @draft.id),
+    <%= link_to t('.delete'), event_application_path(@event.id, @draft.id),
         class: "btn btn-delete",  method: :delete,
-        data: { confirm: "Are you sure you want to delete this application?" } %>
+        data: { confirm: t('.are_you_sure') } %>
   </div>
 <% end %>
 <p>
-  <%= link_to 'Show event details', event_path(@event.id) %>
+  <%= link_to t('.show_event_details'), event_path(@event.id) %>
 </p>

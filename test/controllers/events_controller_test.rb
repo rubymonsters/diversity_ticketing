@@ -166,7 +166,7 @@ class EventsControllerTest < ActionController::TestCase
       get :index
 
       assert_select 'a',
-        {count: 1, text: 'past events'},
+        {count: 1, text: 'Show past events'},
         "This page must contain anchor that says 'Show past events'"
     end
 
@@ -241,14 +241,14 @@ class EventsControllerTest < ActionController::TestCase
       future_approved_event = make_event(
         start_date: 1.week.ago,
         end_date: 10.days.from_now,
-        deadline: 10.days.from_now,
+        deadline: 9.days.from_now,
         approved: true,
         name: 'Approved'
       )
       future_unapproved_event = make_event(
         start_date: 1.week.ago,
         end_date: 10.days.from_now,
-        deadline: 10.days.from_now,
+        deadline: 9.days.from_now,
         approved: false,
         name: 'Unapproved'
       )
@@ -424,7 +424,7 @@ class EventsControllerTest < ActionController::TestCase
       event.reload
 
       assert_equal 'MonstersConf', event.name
-      assert_redirected_to admin_url
+      assert_redirected_to "http://test.host/"
     end
 
     it 'loads correctly for event owner' do
@@ -442,7 +442,7 @@ class EventsControllerTest < ActionController::TestCase
       event.reload
 
       assert_equal 'MonstersConf', event.name
-      assert_redirected_to user_url(user)
+      assert_redirected_to "http://test.host/"
     end
 
     it 'does not change approval status when event owner is updating' do
@@ -458,7 +458,7 @@ class EventsControllerTest < ActionController::TestCase
 
       event.reload
 
-      assert_redirected_to user_url(user)
+      assert_redirected_to "http://test.host/"
       assert_equal false, event.approved?
     end
 
@@ -479,7 +479,7 @@ class EventsControllerTest < ActionController::TestCase
 
       event.reload
 
-      assert_redirected_to admin_url
+      assert_redirected_to "http://test.host/"
       assert_equal true, event.approved?
     end
 
@@ -510,7 +510,7 @@ class EventsControllerTest < ActionController::TestCase
     it 'deletes all the attributes of the event except the id and the country' do
       organizer = make_user
       event = make_event(name: "HOLA", organizer_id: organizer.id)
-      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago)
+      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago, deadline: 9.days.ago)
       event_id = event.id
       sign_in_as(organizer)
 
@@ -527,7 +527,7 @@ class EventsControllerTest < ActionController::TestCase
       event = make_event(organizer_id: organizer.id)
       applicant = make_user(email: "other@example.com")
       application = make_application(event, applicant_id: applicant.id )
-      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago)
+      event.update_attributes(start_date: 2.weeks.ago, end_date: 1.week.ago, deadline: 9.days.ago)
       application_id = application.id
 
       sign_in_as(organizer)

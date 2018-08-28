@@ -1,3 +1,5 @@
+<% provide :title, t('.title') %>
+
 <%= form_for @application, url: event_application_path(params[:event_id], @application.id), builder: ::FormBuilder do |f| %>
 
   <% if @application.errors.any? %>
@@ -12,25 +14,25 @@
   <% end %>
 
   <section class="box">
-    <h2 class="box-title">Please fill out this form. Fields marked with * are required.</h2>
-    <%= f.form_field :text_area, :attendee_info_1, "Why do you want to attend #{@event.name} and what especially do you look forward to learning?" %>
-    <%= f.form_field :text_area, :attendee_info_2, "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)" %>
+    <h2 class="box-title"><%=t('.please_fill')%></h2>
+    <%= f.form_field :text_area, :attendee_info_1, t('.attendee_info_1', event_name: @event.name) %>
+    <%= f.form_field :text_area, :attendee_info_2, t('.attendee_info_2')%>
     <% if current_user %>
       <div class="form_field">
-        <%= f.form_field :text_field, :name, 'Name', value: current_user.name %>
-        <%= f.form_field :text_field, :email, 'Email', value: current_user.email %>
+        <%= f.form_field :text_field, :name, t('.name'), value: current_user.name %>
+        <%= f.form_field :text_field, :email, t('.email'), value: current_user.email %>
       </div>
     <% else %>
-      <%= f.form_field :text_field, :name, 'Name' %>
-      <%= f.form_field :text_field, :email, 'Email' %>
+      <%= f.form_field :text_field, :name, t('.name') %>
+      <%= f.form_field :text_field, :email, t('.email') %>
     <% end %>
-    <%= f.form_field :text_field, :email_confirmation, 'Email confirmation' %>
+    <%= f.form_field :text_field, :email_confirmation, t('.email_confirmation')%>
 
     <% if @event.travel_funded? %>
       <div class="form_field">
         <%= label_tag do %>
         <%= f.check_box :visa_needed %>
-          I will need a visa to attend
+          <%= t('.visa_needed') %>
         <% end %>
       </div>
     <% end %>
@@ -38,33 +40,32 @@
     <div class="form_field--check">
       <%= label_tag do %>
       <%= f.check_box :terms_and_conditions, checked: false %>
-      <span class="check-label">I agree with the following Terms and Conditions*</span>
+      <span class="check-label"><%=t('.agree_terms_and_conditions') %></span>
       <% end %>
       <p id="terms-and-conditions">
-        This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of <%= @event.name %>. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes
+        <%= t('.terms_and_conditions_1') %>
       </p>
       <ul>
         <% if @event.ticket_funded? %>
-          <li>admission to the conference,</li>
+          <li><%= t('.terms_and_conditions_2') %></li>
         <% end %>
         <% if @event.travel_funded? %>
-          <li>travel costs,</li>
+          <li><%= t('.terms_and_conditions_3') %></li>
         <% end %>
         <% if @event.accommodation_funded? %>
-          <li>accommodation,</li>
+          <li><%= t('.terms_and_conditions_4') %></li>
         <% end %>
-        <li>catering for the day of the conference,</li>
-        <li>and admission to the parties organised for the conference attendees, speakers, and staff.</li>
+        <%=raw t('.terms_and_conditions_5') %>
       </ul>
       <% if @event.travel_funded? %>
-        <p>If you applied for a travel grant and were accepted, you will get reimbursed for your costs either up to 300 € (EU) or up to 900 € (non-EU). Note: You will only get reimbursed when the organizers of the conference can confirm that you actually attended the conference. They will take note of your name at the registration desk.</p>
+        <p><%= t('.terms_and_conditions_6') %></p>
       <% end %>
-      <p>All attendees, speakers, sponsors and staff at <%= @event.name %> are required to agree with the <%= link_to 'Code of conduct', "#{@event.code_of_conduct}" %> of the event. Organizers will enforce this code throughout the event.</p>
+      <p><%= t('.terms_and_conditions_7', event: @event.name, href: link_to(t('.code_of_conduct'), @event.code_of_conduct)).html_safe %></p>
     </div>
   </section>
 
   <div class="form_field">
-    <%= link_to 'Back', event_application_path(@event.id, @application.id), class: "btn btn-edit" %>
-    <%= f.submit("Apply changes", class: "btn btn-save") %>
+    <%= link_to t('.back'), event_application_path(@event.id, @application.id), class: "btn btn-edit" %>
+    <%= f.submit(t('.apply_changes'), class: "btn btn-save") %>
   </div>
 <% end %>
