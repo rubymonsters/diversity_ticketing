@@ -4,7 +4,7 @@ the deadline for <%= @application.event.name %> is only a few days away!
 
 Do you want to submit your application? Follow the link to further details:
 
-<%= event_application_url(@application.event_id, @application.id) %>
+<%= event_application_url(@application.event_id, @application.id, locale: "en") %>
 
 If you have further questions, you can reach us at foundation@travis-ci.org
 
