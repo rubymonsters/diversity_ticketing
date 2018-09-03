@@ -15,7 +15,7 @@
 
   <%= form_tag(events_path, method: :get) do %>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag 'Search', name: nil %>
+    <%= submit_tag t('.search'), name: nil %>
   <% end %>
 
   <% if @open_events.any? %>
