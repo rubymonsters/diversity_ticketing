@@ -6,12 +6,12 @@ class EventsController < ApplicationController
 
   def index
     @open_events = if params[:search]
-              Event.where('name ILIKE ?', "%#{params[:search]}%").approved.upcoming.open.order(:deadline)
+              Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.upcoming.open.order(:deadline)
             else
               Event.approved.upcoming.open.order(:deadline)
             end
     @closed_events = if params[:search]
-              Event.where('name ILIKE ?', "%#{params[:search]}%").approved.upcoming.closed.order(:deadline)
+              Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.upcoming.closed.order(:deadline)
             else
               Event.approved.upcoming.closed.order(:deadline)
             end
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
   def index_past
     @events = if params[:search]
-              Event.where('name ILIKE ?', "%#{params[:search]}%").approved.past.active
+              Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.past.active
             else
               Event.approved.past.active
             end
