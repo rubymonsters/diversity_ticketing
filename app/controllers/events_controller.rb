@@ -15,11 +15,7 @@ class EventsController < ApplicationController
             else
               Event.approved.upcoming.closed.order(:deadline)
             end
-    @past_events = if params[:search]
-              Event.where('name ILIKE ?', "%#{params[:search]}%").approved.past.active
-            else
-              Event.approved.past.active
-            end
+    @past_events = Event.approved.past.active
   end
 
   def index_past
