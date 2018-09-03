@@ -4,4 +4,4 @@ the deadline for <%= @event.name %> is approaching soon!
 
 Follow the link below to view details:
 
-<%= event_admin_url(@event) %>
+<%= event_admin_url(@event.id, locale: "en") %>
