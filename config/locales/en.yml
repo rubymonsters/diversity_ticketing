@@ -299,6 +299,8 @@ en:
       selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*.
         <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
       not_shown: "Not shown to the public."
+    event_search:
+      search: "Search"
     form:
       accomodation: "Accomodation"
       agree_terms_and_conditions: "I agree with the following Terms and Conditions:"
@@ -365,7 +367,6 @@ en:
       no_events: "<h2>We currently have no events lined up.</h2> <p>But we'll add new ones soon!</p>"
       open_for_application: "Open for applications"
       past_events: "past events"
-      search: "Search"
       show_past_events: "Show past events"
       submit_your_conference: "You can %{link_to_submission} now or browse through %{link_to_past_events}."
       submit_your_own_conference: "submit your own conference"

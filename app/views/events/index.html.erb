@@ -13,10 +13,7 @@
 
 <% else %>
 
-  <%= form_tag(events_path, method: :get) do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag t('.search'), name: nil %>
-  <% end %>
+<%= render partial: 'event_search' %>
 
   <% if @open_events.any? %>
     <h2><%= t('.open_for_application') %></h2>
