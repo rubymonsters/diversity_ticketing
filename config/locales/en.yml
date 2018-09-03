@@ -358,6 +358,8 @@ en:
       errors: "stopped this event from being updated:"
       submit_changes: "Submit changes"
     index_past:
+      home_link: "Home"
+      past_events: "Past events"
       past_events_thanks: "These events provided diversity tickets in the past. Many thanks to the organizers."
       show_upcoming_events: "Show upcoming events"
       title: "Past events"

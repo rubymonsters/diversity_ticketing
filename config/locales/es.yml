@@ -359,6 +359,8 @@ es:
       errors: "impidieron la actualización de este evento"
       submit_changes: "Aplicar cambios"
     index_past:
+      home_link: "Inicio"
+      past_events: "Eventos pasados"
       past_events_thanks: "Estos eventos proporcionaron diversity tickets en el pasado. Muchas gracias a los organizadores."
       show_upcoming_events: "Mostrar eventos futuros"
       title: "Eventos pasados"
