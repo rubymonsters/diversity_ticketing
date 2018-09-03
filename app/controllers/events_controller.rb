@@ -23,7 +23,11 @@ class EventsController < ApplicationController
   end
 
   def index_past
-    @events = Event.approved.past.active
+    @events = if params[:search]
+              Event.where('name ILIKE ?', "%#{params[:search]}%").approved.past.active
+            else
+              Event.approved.past.active
+            end
   end
 
   def show

@@ -1,5 +1,5 @@
 <div id="searchbar">
-  <%= form_tag(events_path, method: :get) do %>
+  <%= form_tag(yield(:search_path), method: :get) do %>
     <%= text_field_tag :search, params[:search],
         placeholder: t('.enter_search'), class: "search-input" %>
     <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>

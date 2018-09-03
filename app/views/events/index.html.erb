@@ -1,4 +1,5 @@
 <% provide :title, t('.events') %>
+<% provide :search_path, events_path %>
 
 <p class="breadcrumb">
   <%= link_to t('.home_link'), root_path %> > <%= t('.events') %>
@@ -13,7 +14,7 @@
 
 <% else %>
 
-<%= render partial: 'event_search' %>
+<%= render partial: 'event_search'%>
 
   <% if @open_events.any? %>
     <h2><%= t('.open_for_application') %></h2>
