@@ -1,0 +1,16 @@
+#searchbar {
+  margin: 20px 0;
+  .search-input, .btn {
+    position: relative;
+    float: left;
+    align-items: baseline;
+  }
+  .search-input{
+    height: 2rem;
+    top: 1px;
+  }
+}
+
+.clear {
+  clear: both;
+}

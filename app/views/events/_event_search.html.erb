@@ -1,4 +1,8 @@
-<%= form_tag(events_path, method: :get) do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag t('.search'), name: nil %>
-<% end %>
+<div id="searchbar">
+  <%= form_tag(events_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search],
+        placeholder: t('.enter_search'), class: "search-input" %>
+    <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>
+  <% end %>
+  <div class="clear"></div>
+</div>
