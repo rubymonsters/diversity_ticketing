@@ -300,6 +300,7 @@ en:
         <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
       not_shown: "Not shown to the public."
     event_search:
+      enter_search: "Enter event name or keyword..."
       search: "Search"
     form:
       accomodation: "Accomodation"

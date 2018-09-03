@@ -301,6 +301,7 @@ es:
         <p>* diversitytickets.org es una app de Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
       not_shown: "No visible al público"
     event_search:
+      enter_search: "Enter event name or keyword..."
       search: "Search"
     form:
       accomodation: "Alojamiento"
