@@ -1,8 +1,25 @@
 <div id="searchbar">
-  <%= form_tag(yield(:search_path), method: :get) do %>
-    <%= text_field_tag :search, params[:search],
-        placeholder: t('.enter_search'), class: "search-input" %>
-    <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>
-  <% end %>
-  <div class="clear"></div>
+  <section class="tags box col-6">
+    <%= form_tag(yield(:search_path), method: :get) do %>
+      <%= text_field_tag :search, params[:search],
+          placeholder: t('.enter_search'), class: "search-input" %>
+      <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>
+    <% end %>
+    <h4 id="filter-tags-dropdown"><i class="icon-filter" id="icon-filter"></i>Filter by tags</h4>
+    <div class="clear"></div>
+
+    <!-- <%= form_tag(yield(:search_path), method: :get) do %> -->
+      <div class="filter-dropdown-content">
+        <div class="category-tags">
+          <% Category.all.each do |category| %>
+            <p><%= t('.' + category.name.gsub(" ", "_")) %></p>
+            <%= collection_check_boxes(:post, :tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
+              <%= tag.label { tag.check_box + " " + tag.text } %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= submit_tag 'Update', name: nil, class: "btn btn-edit" %>
+      </div>
+    <!-- <% end %> -->
+  </section>
 </div>

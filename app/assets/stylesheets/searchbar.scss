@@ -7,10 +7,20 @@
   }
   .search-input{
     height: 2rem;
-    top: 1px;
+    top: 2px;
   }
 }
 
 .clear {
   clear: both;
+}
+
+#filter-tags-dropdown {
+  cursor: pointer;
+  position: relative;
+  float: right;
+}
+
+.filter-dropdown-content {
+  display: none;
 }

@@ -10,6 +10,10 @@ class EventsController < ApplicationController
             else
               Event.approved.upcoming.open.order(:deadline)
             end
+    # @open_events = @open_events.map do |event|
+    #   next if event.tags.pluck(:name).include? params[:tag] == false
+    #   event
+    # end
     @closed_events = if params[:search]
               Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.upcoming.closed.order(:deadline)
             else
