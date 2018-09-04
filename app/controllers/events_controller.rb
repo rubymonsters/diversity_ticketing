@@ -8,10 +8,12 @@ class EventsController < ApplicationController
     @open_events = EventSearchService.new(params).results.approved.upcoming.open.order(:deadline)
     @closed_events = EventSearchService.new(params).results.approved.upcoming.closed.order(:deadline)
     @past_events = Event.approved.past.active
+    @selected_tags = EventSearchService.new(params).selected_tags
   end
 
   def index_past
     @events = EventSearchService.new(params).results.approved.past.active
+    @selected_tags = EventSearchService.new(params).selected_tags
   end
 
   def show

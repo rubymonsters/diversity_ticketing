@@ -10,6 +10,10 @@ class EventSearchService
     tag_results(query_results(Event.all))
   end
 
+  def selected_tags
+    @tag_ids.map {|tag_id| Tag.where(id: tag_id.to_i)}
+  end
+
   private
 
   def tag_results(events)
