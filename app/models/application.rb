@@ -27,4 +27,8 @@ class Application < ApplicationRecord
   def self.rejected
     where(status: "rejected")
   end
+
+  def self.active
+    where(deleted: false)
+  end
 end
