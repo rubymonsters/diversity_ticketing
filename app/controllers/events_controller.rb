@@ -5,29 +5,13 @@ class EventsController < ApplicationController
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
-    @open_events = if params[:search]
-              Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.upcoming.open.order(:deadline)
-            else
-              Event.approved.upcoming.open.order(:deadline)
-            end
-    # @open_events = @open_events.map do |event|
-    #   next if event.tags.pluck(:name).include? params[:tag] == false
-    #   event
-    # end
-    @closed_events = if params[:search]
-              Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.upcoming.closed.order(:deadline)
-            else
-              Event.approved.upcoming.closed.order(:deadline)
-            end
+    @open_events = EventSearchService.new(params).results.approved.upcoming.open.order(:deadline)
+    @closed_events = EventSearchService.new(params).results.approved.upcoming.closed.order(:deadline)
     @past_events = Event.approved.past.active
   end
 
   def index_past
-    @events = if params[:search]
-              Event.where('name || description || city || country ILIKE ?', "%#{params[:search]}%").approved.past.active
-            else
-              Event.approved.past.active
-            end
+    @events = EventSearchService.new(params).results.approved.past.active
   end
 
   def show
