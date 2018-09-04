@@ -4,6 +4,8 @@
   <%= link_to t('.home_link'), root_path %> > <%= t('.events') %>
 </p>
 
+<%= render 'event_search', search_path: events_path %>
+
 <% if @open_events.empty? && @closed_events.empty? %>
 
   <div class="events-empty">
@@ -12,8 +14,6 @@
   </div>
 
 <% else %>
-
-<%= render 'event_search', search_path: events_path %>
 
   <% if @open_events.any? %>
     <h2><%= t('.open_for_application') %></h2>
