@@ -302,6 +302,10 @@ es:
       not_shown: "No visible al público"
     event_search:
       enter_search: "Enter event name or keyword..."
+      fields_of_expertise: "Campos expertos"
+      filter_by_tags: "Filter by tags"
+      languages: "Idiomas"
+      programming_languages: "Lenguajes de programación"
       search: "Search"
     form:
       accomodation: "Alojamiento"
@@ -359,7 +363,6 @@ es:
       errors: "impidieron la actualización de este evento"
       submit_changes: "Aplicar cambios"
     index_past:
-      filter_by_tags: "Filter by tags"
       home_link: "Inicio"
       past_events: "Eventos pasados"
       past_events_thanks: "Estos eventos proporcionaron diversity tickets en el pasado. Muchas gracias a los organizadores."
@@ -368,7 +371,6 @@ es:
     index:
       closed_for_application: "Solicitudes cerradas"
       events: "Eventos"
-      filter_by_tags: "Filter by tags"
       home_link: "Inicio"
       no_events: "<h2>No tenemos ningún evento disponible.</h2> <p>¡Pero añadiremos nuevos pronto!</p>"
       open_for_application: "Inscripción abierta"

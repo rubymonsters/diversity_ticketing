@@ -301,6 +301,10 @@ en:
       not_shown: "Not shown to the public."
     event_search:
       enter_search: "Enter event name or keyword..."
+      fields_of_expertise: "Fields of expertise"
+      filter_by_tags: "Filter by tags"
+      languages: "Languages"
+      programming_languages: "Programming languages"
       search: "Search"
     form:
       accomodation: "Accomodation"
@@ -358,7 +362,6 @@ en:
       errors: "stopped this event from being updated:"
       submit_changes: "Submit changes"
     index_past:
-      filter_by_tags: "Filter by tags"
       home_link: "Home"
       past_events: "Past events"
       past_events_thanks: "These events provided diversity tickets in the past. Many thanks to the organizers."
@@ -367,7 +370,6 @@ en:
     index:
       closed_for_application: "Closed for applications"
       events: "Events"
-      filter_by_tags: "Filter by tags"
       home_link: "Home"
       no_events: "<h2>We currently have no events lined up.</h2> <p>But we'll add new ones soon!</p>"
       open_for_application: "Open for applications"
