@@ -1,7 +1,7 @@
 <div id="searchbar">
   <section class="tags box col-6">
     <%= form_tag(search_path, method: :get) do %>
-      <h4 id="filter-tags-dropdown"><i class="icon-filter" id="icon-filter"></i>Filter by tags</h4>
+      <h4 id="filter-tags-dropdown"><i class="icon-filter" id="icon-filter"></i><%= t('.filter_by_tags') %></h4>
       <ul class="tags">
         <% if @selected_tags %>
           <% @selected_tags.each do |relation| %>
