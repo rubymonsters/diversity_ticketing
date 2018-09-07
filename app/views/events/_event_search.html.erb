@@ -14,7 +14,7 @@
       <div class="filter-dropdown-content">
         <div class="category-tags">
           <% Category.all.each do |category| %>
-            <p><%= t('.' + category.name.gsub(" ", "_")) %></p>
+            <p class="highlight-grey-dark"><%= t('.' + category.name.gsub(" ", "_")) %></p>
             <%= collection_check_boxes(:filter, :tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
               <%= tag.label { tag.check_box + " " + tag.text } %>
             <% end %>
