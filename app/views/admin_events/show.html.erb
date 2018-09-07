@@ -49,7 +49,7 @@
                       <%= link_to approve_event_application_path(application.event_id, application.id),
                           method: :post, class: "btn btn-save approve-application",
                           title: t(".approve").downcase do %>
-                        <%= t(".revert") %>
+                        <%= t(".approve") %>
                       <% end %>
 
                       <%= link_to reject_event_application_path(application.event_id, application.id),
