@@ -33,8 +33,8 @@ class EventSearchServiceTest < ActiveSupport::TestCase
         @ruby_event = make_event
         @java_event = make_event
         @ruby_java_event = make_event
-        @ruby_tag = Tag.create!(id: 1, name: 'Ruby', category: Category.create!(name: 'Programming language'))
-        @java_tag = Tag.create!(id: 2, name: 'Java', category: Category.create!(name: 'Programming language'))
+        @ruby_tag = Tag.create!(name: 'Ruby', category: Category.create!(name: 'Programming language'))
+        @java_tag = Tag.create!(name: 'Java', category: Category.create!(name: 'Programming language'))
         Tagging.create!(event: @ruby_event, tag: @ruby_tag)
         Tagging.create!(event: @java_event, tag: @java_tag)
         Tagging.create!(event: @ruby_java_event, tag: @ruby_tag)
