@@ -5,8 +5,8 @@ class EventSearchServiceTest < ActiveSupport::TestCase
   describe 'filtering events by tags'  do
     describe 'with no events' do
       it 'returns no events' do
-        tag = Tag.create!(id: 1, name: 'Ruby', category: Category.create!(name: 'Programming language'))
-        assert_equal EventSearchService.new(query: '', filter: { tag_ids: ["1"] }).results, []
+        tag = Tag.create!(name: 'Ruby', category: Category.create!(name: 'Programming language'))
+        assert_equal EventSearchService.new(query: '', filter: { tag_ids: ["#{tag.id}"] }).results, []
       end
     end
 
@@ -14,16 +14,16 @@ class EventSearchServiceTest < ActiveSupport::TestCase
       before do
         @event = make_event
         other_event = make_event
-        tag = Tag.create!(id: 1, name: 'Ruby', category: Category.create!(name: 'Programming language'))
-        Tagging.create!(event: @event, tag: tag)
+        @tag = Tag.create!(name: 'Ruby', category: Category.create!(name: 'Programming language'))
+        Tagging.create!(event: @event, tag: @tag)
       end
 
       it 'returns only events that have a selected tag' do
-        assert_equal EventSearchService.new(query: '', filter: { tag_ids: ["1"] }).results, [@event]
+        assert_equal EventSearchService.new(query: '', filter: { tag_ids: ["#{@tag.id}"] }).results, [@event]
       end
 
       it 'returns only events that have a selected tag with undefined query input' do
-        assert_equal EventSearchService.new(filter: { tag_ids: ["1"] }).results, [@event]
+        assert_equal EventSearchService.new(filter: { tag_ids: ["#{@tag.id}"] }).results, [@event]
       end
     end
 
@@ -33,16 +33,16 @@ class EventSearchServiceTest < ActiveSupport::TestCase
         @ruby_event = make_event
         @java_event = make_event
         @ruby_java_event = make_event
-        ruby_tag = Tag.create!(id: 1, name: 'Ruby', category: Category.create!(name: 'Programming language'))
-        java_tag = Tag.create!(id: 2, name: 'Java', category: Category.create!(name: 'Programming language'))
-        Tagging.create!(event: @ruby_event, tag: ruby_tag)
-        Tagging.create!(event: @java_event, tag: java_tag)
-        Tagging.create!(event: @ruby_java_event, tag: ruby_tag)
-        Tagging.create!(event: @ruby_java_event, tag: java_tag)
+        @ruby_tag = Tag.create!(id: 1, name: 'Ruby', category: Category.create!(name: 'Programming language'))
+        @java_tag = Tag.create!(id: 2, name: 'Java', category: Category.create!(name: 'Programming language'))
+        Tagging.create!(event: @ruby_event, tag: @ruby_tag)
+        Tagging.create!(event: @java_event, tag: @java_tag)
+        Tagging.create!(event: @ruby_java_event, tag: @ruby_tag)
+        Tagging.create!(event: @ruby_java_event, tag: @java_tag)
       end
 
       it 'returns three events' do
-        assert_equal EventSearchService.new(filter: { tag_ids: ["1", "2"] }).results, [@ruby_event, @java_event, @ruby_java_event]
+        assert_equal EventSearchService.new(filter: { tag_ids: ["#{@ruby_tag.id}", "#{@java_tag.id}"] }).results, [@ruby_event, @java_event, @ruby_java_event]
       end
     end
   end
@@ -79,24 +79,24 @@ class EventSearchServiceTest < ActiveSupport::TestCase
         @ruby_event = make_event(name: 'New CodeCamp')
         @java_event = make_event(description: 'This is a new event.')
         @ruby_java_event = make_event
-        ruby_tag = Tag.create!(id: 1, name: 'Ruby', category: Category.create!(name: 'Programming language'))
-        java_tag = Tag.create!(id: 2, name: 'Java', category: Category.create!(name: 'Programming language'))
-        Tagging.create!(event: @ruby_event, tag: ruby_tag)
-        Tagging.create!(event: @java_event, tag: java_tag)
-        Tagging.create!(event: @ruby_java_event, tag: ruby_tag)
-        Tagging.create!(event: @ruby_java_event, tag: java_tag)
+        @ruby_tag = Tag.create!(name: 'Ruby', category: Category.create!(name: 'Programming language'))
+        @java_tag = Tag.create!(name: 'Java', category: Category.create!(name: 'Programming language'))
+        Tagging.create!(event: @ruby_event, tag: @ruby_tag)
+        Tagging.create!(event: @java_event, tag: @java_tag)
+        Tagging.create!(event: @ruby_java_event, tag: @ruby_tag)
+        Tagging.create!(event: @ruby_java_event, tag: @java_tag)
       end
 
       it 'returns only the one ruby event with matching keyword and tags' do
-        assert_equal [@ruby_event.id], EventSearchService.new(query: 'New', filter: { tag_ids: ["1"] }).results.map(&:id)
+        assert_equal [@ruby_event.id], EventSearchService.new(query: 'New', filter: { tag_ids: ["#{@ruby_tag.id}"] }).results.map(&:id)
       end
 
       it 'returns two events with matching keyword and tags' do
-        assert_equal [@ruby_event.id, @java_event.id], EventSearchService.new(query: 'New', filter: { tag_ids: ["1", "2"] }).results.map(&:id)
+        assert_equal [@ruby_event.id, @java_event.id], EventSearchService.new(query: 'New', filter: { tag_ids: ["#{@ruby_tag.id}", "#{@java_tag.id}"] }).results.map(&:id)
       end
 
       it 'raises exception for non-existent tag-search' do
-        assert_raises { EventSearchService.new(filter: { tag_ids: ["1", "2", "3"] }).results.map(&:id) }
+        assert_raises { EventSearchService.new(filter: { tag_ids: ["#{@ruby_tag.id}", "#{@java_tag.id}", "3"] }).results.map(&:id) }
       end
     end
   end
