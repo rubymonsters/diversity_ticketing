@@ -87,6 +87,7 @@ class EventSearchServiceTest < ActiveSupport::TestCase
         Tagging.create!(event: @ruby_java_event, tag: @java_tag)
       end
 
+
       it 'returns only the one ruby event with matching keyword and tags' do
         assert_equal [@ruby_event.id], EventSearchService.new(query: 'New', filter: { tag_ids: ["#{@ruby_tag.id}"] }).results.map(&:id)
       end
@@ -96,7 +97,7 @@ class EventSearchServiceTest < ActiveSupport::TestCase
       end
 
       it 'raises exception for non-existent tag-search' do
-        assert_raises { EventSearchService.new(filter: { tag_ids: ["#{@ruby_tag.id}", "#{@java_tag.id}", "3"] }).results.map(&:id) }
+        assert_raises { EventSearchService.new(filter: { tag_ids: ["#{@ruby_tag.id}", "#{@java_tag.id}", "#{Tag.pluck(:id).last + 1}"] }).results.map(&:id) }
       end
     end
   end
