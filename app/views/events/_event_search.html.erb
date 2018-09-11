@@ -1,0 +1,30 @@
+<div id="searchbar">
+  <section class="tags box col-6">
+    <%= form_tag(search_path, method: :get) do %>
+      <h4 id="filter-tags-dropdown"><i class="icon-filter" id="icon-filter"></i><%= t('.filter_by_tags') %></h4>
+      <ul class="tags">
+        <% if @selected_tags %>
+          <% @selected_tags.each do |relation| %>
+            <% relation.each do |tag| %>
+              <li class="tag <%= tag.category.name.gsub(" ", "-") %>"><%= tag.name %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+      <div class="filter-dropdown-content">
+        <div class="category-tags">
+          <% Category.all.each do |category| %>
+            <p class="highlight-grey-dark"><%= t('.' + category.name.gsub(" ", "_")) %></p>
+            <%= collection_check_boxes(:filter, :tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
+              <%= tag.label { tag.check_box + " " + tag.text } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%= text_field_tag :query, params[:query],
+          placeholder: t('.enter_search'), class: "search-input" %>
+      <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>
+      <div class="clear"></div>
+    <% end %>
+  </section>
+</div>
