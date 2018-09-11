@@ -1,0 +1,26 @@
+#searchbar {
+  margin: 20px 0;
+  .search-input, .btn {
+    position: relative;
+    float: left;
+    align-items: baseline;
+  }
+  .search-input{
+    height: 2rem;
+    top: 2px;
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+#filter-tags-dropdown {
+  cursor: pointer;
+  position: relative;
+  float: right;
+}
+
+.filter-dropdown-content {
+  display: none;
+}

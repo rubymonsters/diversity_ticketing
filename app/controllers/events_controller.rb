@@ -5,13 +5,15 @@ class EventsController < ApplicationController
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
 
   def index
-    @open_events   = Event.approved.upcoming.open.order(:deadline)
-    @closed_events = Event.approved.upcoming.closed.order(:deadline)
-    @past_events   = Event.approved.past.active
+    @open_events = EventSearchService.new(params).results.approved.upcoming.open.order(:deadline)
+    @closed_events = EventSearchService.new(params).results.approved.upcoming.closed.order(:deadline)
+    @past_events = Event.approved.past.active
+    @selected_tags = EventSearchService.new(params).selected_tags
   end
 
   def index_past
-    @events = Event.approved.past.active
+    @events = EventSearchService.new(params).results.approved.past.active
+    @selected_tags = EventSearchService.new(params).selected_tags
   end
 
   def show

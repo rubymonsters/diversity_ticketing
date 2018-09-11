@@ -300,6 +300,13 @@ es:
       selection_by_travis: "Los procesos de selección e inscripción serán llevados a cabo por diversitytickets.org*
         <p>* diversitytickets.org es una app de Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
       not_shown: "No visible al público"
+    event_search:
+      enter_search: "Introduce el nombre del evento o keyword..."
+      fields_of_expertise: "Campos expertos"
+      filter_by_tags: "Filtra a través de tags"
+      languages: "Idiomas"
+      programming_languages: "Lenguajes de programación"
+      search: "Busca"
     form:
       accomodation: "Alojamiento"
       agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones:"
@@ -356,18 +363,20 @@ es:
       errors: "impidieron la actualización de este evento"
       submit_changes: "Aplicar cambios"
     index_past:
+      home_link: "Inicio"
+      past_events: "Eventos pasados"
       past_events_thanks: "Estos eventos proporcionaron diversity tickets en el pasado. Muchas gracias a los organizadores."
       show_upcoming_events: "Mostrar eventos futuros"
       title: "Eventos pasados"
     index:
       closed_for_application: "Solicitudes cerradas"
-      home_link: "Inicio"
       events: "Eventos"
+      home_link: "Inicio"
       no_events: "<h2>No tenemos ningún evento disponible.</h2> <p>¡Pero añadiremos nuevos pronto!</p>"
       open_for_application: "Inscripción abierta"
       past_events: "eventos pasados"
       show_past_events: "Mostrar eventos pasados"
-      submit_your_conference: "Puedes %{link_to_submission} o navegar por %{link_to_past_events}."
+      submit_your_conference: "Puedes %{link_to_submission}."
       submit_your_own_conference: "subir una conferencia"
     new:
       create_new_event: "Crear</span> un evento nuevo"

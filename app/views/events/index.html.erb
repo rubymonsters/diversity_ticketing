@@ -4,11 +4,13 @@
   <%= link_to t('.home_link'), root_path %> > <%= t('.events') %>
 </p>
 
+<%= render 'event_search', search_path: events_path %>
+
 <% if @open_events.empty? && @closed_events.empty? %>
 
   <div class="events-empty">
     <%= raw t('.no_events') %>
-    <p><%= raw t('.submit_your_conference', link_to_submission: link_to(t('.submit_your_own_conference'), new_event_path), link_to_past_events: (link_to(t('.past_events'), past_events_path) if @past_events.any?)) %></p>
+    <p><%= raw t('.submit_your_conference', link_to_submission: link_to(t('.submit_your_own_conference'), new_event_path)) %></p>
   </div>
 
 <% else %>
