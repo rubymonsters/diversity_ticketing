@@ -14,10 +14,4 @@ $(document).ready(function(){
       }
     }
   });
-
-  //Filter dropdown for search:
-  $( "#filter-tags-dropdown" ).click(function() {
-    $(".filter-dropdown-content").toggle();
-  });
-
 });
