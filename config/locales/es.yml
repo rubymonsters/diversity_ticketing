@@ -301,12 +301,12 @@ es:
         <p>* diversitytickets.org es una app de Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
       not_shown: "No visible al público"
     event_search:
-      enter_search: "Enter event name or keyword..."
+      enter_search: "Introduce el nombre del evento o keyword..."
       fields_of_expertise: "Campos expertos"
-      filter_by_tags: "Filter by tags"
+      filter_by_tags: "Filtra a través de tags"
       languages: "Idiomas"
       programming_languages: "Lenguajes de programación"
-      search: "Search"
+      search: "Busca"
     form:
       accomodation: "Alojamiento"
       agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones:"
