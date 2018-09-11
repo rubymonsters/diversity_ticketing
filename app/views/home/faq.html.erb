@@ -3,21 +3,30 @@
   <h1 class="page-title">FAQ</h1>
 
   <ul>
+    <h3 class='faq-section-header'><%= link_to t('.general'), anchor: "general_header" %></h3>
     <li><%= link_to t('.what_is_diversity_tickets'), anchor: "general_org" %></li>
     <li><%= link_to t('.diversity_tickets_options') , anchor: "general_options" %></li>
     <li><%= link_to t('.why_diversity_tickets'), anchor: "general_need" %></li>
+  </ul>
+
+  <ul>
+    <h3 class='faq-section-header'><%= link_to t('.for_conference_organisers'), anchor: "organisers_header" %></h3>
     <li><%= link_to t('.which_events_eligible'), anchor: "conf_1" %></li>
     <li><%= link_to t('.how_can_i_submit_my_event'), anchor: "conf_2" %></li>
     <li><%= link_to t('.how_long_event_approved'), anchor: "conf_3" %></li>
     <li><%= link_to t('.why_event_not_approved'), anchor: "conf_4" %></li>
     <li><%= link_to t('.how_can_i_add_tags'), anchor: "conf_5" %></li>
+</ul>
+
+  <ul>
+    <h3 class='faq-section-header'><%= link_to t('.for_grant_applicants'), anchor: "applicants_header" %></h3>
     <li><%= link_to t('.how_can_i_apply'), anchor: "grant_1" %></li>
     <li><%= link_to t('.am_i_eligible'), anchor: "grant_2" %></li>
     <li><%= link_to t('.when_find_application_approved_rejected'), anchor: "grant_3" %></li>
   </ul>
 
 
-  <h2 class="page-subtitle"><%= t('.general')%></h2>
+  <h2 class="page-subtitle" id="general_header"><%= t('.general')%></h2>
 
   <p id="general_org"><strong><%= t('.what_is_diversity_tickets') %></strong></p>
   <p><%= t('.what_is_diversity_tickets_answer') %></p>
@@ -29,7 +38,7 @@
   <%= raw t('.why_diversity_tickets_answer', geekfeminism: '<a href="http://geekfeminism.wikia.com/wiki/FLOSS" target="_blank">', travis_blog: '<a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">' ).html_safe %>
 
 
-  <h2 class="page-subtitle"><%=t('.for_conference_organisers') %></h2>
+  <h2  id="organisers_header" class="page-subtitle"><%=t('.for_conference_organisers') %></h2>
 
   <p id="conf_1"><strong><%= t('.which_events_eligible') %></strong></p>
   <%= raw t('.which_events_eligible_answer', travis_website: '<a href="http://foundation.travis-ci.org/">').html_safe %>
@@ -47,7 +56,7 @@
   <%=raw t('.how_can_i_add_tags_answer', travis_email: '<a href="mailto:foundation@travis-ci.org">foundation@travis-ci.org</a>').html_safe %>
 
 
-  <h2 class="page-subtitle"><%= t('.for_grant_applicants') %></h2>
+  <h2 id="applicants_header" class="page-subtitle"><%= t('.for_grant_applicants') %></h2>
 
   <p id="grant_1"><strong><%= t('.how_can_i_apply') %></strong></p>
   <%= raw t('.how_can_i_apply_answer', events_link: '<a href="https://diversitytickets.org/events" target="_blank">').html_safe %>
