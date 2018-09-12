@@ -13,8 +13,9 @@
             <i class="icon-sort-down-black" id="icon-language"></i>
           </span>
           <div class="language-picker-content">
-            <li class="language-picker-item"><%= link_to 'EN', {locale: :en} unless I18n.locale == :en %></li>
-            <li class="language-picker-item"><%= link_to 'ES', {locale: :es} unless I18n.locale == :es%></li>
+            <% I18n.available_locales.each do |language| %>
+              <li class="language-picker-item"><%= link_to language.upcase, {locale: language} unless I18n.locale == language %></li>
+            <% end %>
           </div>
         </div>
         <% if signed_in? %>
