@@ -3,11 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    <% if current_page? root_url %>
-      DiversityTickets
-    <% else %>
-      <%= yield :title %> | DiversityTickets
-    <% end %>
+    <%= full_title(yield(:title)) %>
   </title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
