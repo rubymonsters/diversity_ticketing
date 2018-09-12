@@ -19,12 +19,21 @@
         class: "btn btn-save", disabled: event.closed? %>
   <% else %>
   <% event.applications.find_by(applicant_id: current_user.id).submitted ? button_text = t('.your_application'): button_text = t('.your_draft') %>
-    <%= button_to button_text,
-        event_application_path(
-        event_id: event.id,
-        id: event.applications.find_by(applicant_id: current_user.id).id
-        ),
-        method: :get, class: "btn btn-save" %>
+    <% if button_text == t('.your_application') %>
+      <%= button_to button_text,
+          event_application_path(
+          event_id: event.id,
+          id: event.applications.find_by(applicant_id: current_user.id).id
+          ),
+          method: :get, class: "btn btn-save" %>
+    <% else %>
+      <%= button_to button_text,
+          event_draft_path(
+          event_id: event.id,
+          id: event.applications.find_by(applicant_id: current_user.id).id
+          ),
+          method: :get, class: "btn btn-save" %>
+    <% end %>
   <% end %>
 
   <% if event.closed? %>
