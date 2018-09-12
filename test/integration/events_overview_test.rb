@@ -29,7 +29,7 @@ feature 'Event Overview' do
 
     click_button("Your draft")
 
-    assert_equal event_application_path(event.id, draft.id), current_path
+    assert_equal event_draft_path(event.id, draft.id), current_path
   end
 
   test 'shows a link to Your Application if the user already submitted an application for the event' do
