@@ -246,6 +246,59 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       assert_equal false, application.submitted
     end
+
+    it 'sends an email to the organizer if they have decided that want to get
+    informed when the event reached the maximum number of applications' do
+      organizer = make_user(capacity_email_notifications: "Always")
+      event = make_event(number_of_tickets: 1, organizer_id: organizer.id)
+      user = make_user(email: "applicant@test.de")
+      make_application(event, { applicant_id: user.id + 1 })
+
+      sign_in_as(user)
+
+      application = make_draft(event, { applicant_id: user.id })
+
+      post :submit, params: { event_id: event.id,
+                              id: application.id,
+                              application: {
+                                email: user.email,
+                                email_confirmation: user.email,
+                                terms_and_conditions: '1'
+                              }
+                            }
+      reminder_email = ActionMailer::Base.deliveries.last
+      assert_equal reminder_email.subject, "Your event received more applications than available tickets."
+    end
+
+    it 'sends an email to the organizer if they have decided that want to get
+    informed when the event reached the maximum number of applications only once' do
+      organizer = make_user(capacity_email_notifications: "once")
+      event = make_event(number_of_tickets: 1, organizer_id: organizer.id)
+      user = make_user(email: "applicant@test.de")
+      make_application(event, { applicant_id: user.id + 1 })
+
+      event.number_of_tickets = 2
+
+      make_application(event, { applicant_id: user.id + 2 })
+
+      sign_in_as(user)
+
+      application = make_draft(event, { applicant_id: user.id })
+
+      post :submit, params: { event_id: event.id,
+                              id: application.id,
+                              application: {
+                                email: user.email,
+                                email_confirmation: user.email,
+                                terms_and_conditions: '1'
+                              }
+                            }
+      reminder_emails = []
+      emails = ActionMailer::Base.deliveries
+      emails.each { |email| reminder_emails << email if email.subject == "Your event received more applications than available tickets." }
+      assert_equal 1, reminder_emails.length
+
+    end
   end
 
   describe '#destroy' do

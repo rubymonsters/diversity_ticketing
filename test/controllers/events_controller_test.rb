@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
   describe '#create' do
-    it 'successfully creates event and sends email' do
+    it 'successfully creates event and sends etest' do
       admin_user = make_admin
       sign_in_as(admin_user)
 
