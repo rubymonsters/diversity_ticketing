@@ -10,7 +10,11 @@
       <ul class="tags-list">
         <% tags.each do |tag| %>
           <li>
-            <%= tag.name %>
+            <% if tag.category.name != "programming languages" %>
+              <%= t("tags.#{tag.category.name}.#{tag.name.downcase}") %>
+            <% else %>
+              <%= tag.name %>
+            <% end %>
             <%= link_to url_for(action: :destroy, id: tag.id), method: :delete,
                 data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: "delete" do %>
               <span class="icon-delete" aria-label="trashcan icon"></span>
