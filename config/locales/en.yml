@@ -269,7 +269,6 @@ en:
     deadline_passed: "Your event can't be edited, because the deadline has passed."
     event_deleted: "This event has been deleted by the organizer."
     not_allowed: "You are not allowed to access this event."
-    please_sign: "Please sign into your existing account or create a new one to submit events."
     thank_you: "Thank you for submitting %{event_name}. We will review it shortly."
     update_success: "You have successfully updated %{event_name}."
     application_details:

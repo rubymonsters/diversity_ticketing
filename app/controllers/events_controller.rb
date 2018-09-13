@@ -27,12 +27,8 @@ class EventsController < ApplicationController
   end
 
   def new
-    if !current_user
-      redirect_to sign_in_path, flash: { :info => t('.please_sign') }
-    else
-      @event = Event.new
-      @event.tags.build
-    end
+    @event = Event.new
+    @event.tags.build
   end
 
   def preview

@@ -11,6 +11,14 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       assert_response :success
     end
+
+    it 'proper redirects a non signed in user to continue_as_guest' do
+      event = make_event
+
+      get :new, params: { event_id: event.id }
+
+      assert_redirected_to continue_as_guest_path
+    end
   end
 
   describe '#create' do

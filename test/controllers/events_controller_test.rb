@@ -266,6 +266,7 @@ class EventsControllerTest < ActionController::TestCase
     it 'redirects not logged-in user' do
       get :new
 
+      assert_equal "Please sign in to continue.", flash[:notice]
       assert_redirected_to sign_in_path
     end
 
