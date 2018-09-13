@@ -552,11 +552,28 @@ en:
       title: "Sign in"
 
   tags:
-    tag_created: "Tag %{tag_name} was successfully created."
-    tag_problem: "There was a problem creating the new tag."
+    languages:
+      chinese: "Chinese"
+      english: "English"
+      french: "French"
+      german: "German"
+      japanese: "Japanese"
+      polish: "Polish"
+      portuguese: "Portuguese"
+      russian: "Russian"
+      spanish: "Spanish"
+    fields of expertise:
+      biology: "Biology"
+      math: "Math"
+      people: "People"
+      tech: "Tech"
+      security: "Security"
     index:
       are_you_sure: "Are you sure?"
       tags_management_title: "Tags management"
+    tag_created: "Tag %{tag_name} was successfully created."
+    tag_problem: "There was a problem creating the new tag."
+
 
   users:
     account_deleted: "Your account has been deleted successfully."
