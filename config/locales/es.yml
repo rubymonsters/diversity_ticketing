@@ -21,7 +21,6 @@
 
 es:
   date:
-    order: ["day", "month", "year"]
     month_names: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"]
   activerecord:
     attributes:
