@@ -56,5 +56,20 @@ class DraftsControllerTest < ActionController::TestCase
 
       assert_equal draft.submitted, true
     end
+
+    it 'submits the draft and transforms it into an application' do
+      user = make_user
+      event = make_event
+      draft = make_draft(event, applicant_id: user.id, email: user.email, email_confirmation: user.email)
+
+      sign_in_as(user)
+
+      post :submit, params: { event_id: event.id, id: draft.id, application: {email_confirmation: "another@email.de"} }
+
+      draft.reload
+
+      assert_equal draft.submitted, false
+      assert_template 'drafts/show'
+    end
   end
 end

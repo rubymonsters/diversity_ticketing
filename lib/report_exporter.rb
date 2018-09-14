@@ -65,25 +65,31 @@ module ReportExporter
 
         csv << ["Number of approved events", events.count]
 
-        number_of_tickets_offered = events.map do |event|
-          event.number_of_tickets
-        end.inject { |sum,n| sum += n }
+        number_of_tickets_offered = 0
+
+        events.map do |event|
+          number_of_tickets_offered = event.number_of_tickets
+        end
 
         csv << ["Tickets offered", number_of_tickets_offered]
 
-        number_of_tickets_provided = events.map do |event|
+        number_of_tickets_provided = 0
+
+        events.map do |event|
           if event.approved_tickets != 0
-            event.approved_tickets
+            number_of_tickets_provided = event.approved_tickets
           else
-            event.applications.where(status: 'approved').count
+            number_of_tickets_provided = event.applications.where(status: 'approved').count
           end
-        end.inject { |sum,n| sum += n }
+        end
 
         csv << ["Tickets provided (total)", number_of_tickets_provided]
 
-        number_of_tickets_approved_by_travis = events.map do |event|
-          event.applications.where(status: "approved").count
-        end.inject { |sum,n| sum += n }
+        number_of_tickets_approved_by_travis = 0
+
+        events.map do |event|
+          number_of_tickets_approved_by_travis = event.applications.where(status: "approved").count
+        end
 
         csv << ["Tickets provided via 'Travis Selection'", number_of_tickets_approved_by_travis]
 
