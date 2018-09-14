@@ -81,9 +81,7 @@ class AdminEventsControllerTest < ActionController::TestCase
       emails = ActionMailer::Base.deliveries
       emails.each { |email| @notification_country = email if email.subject ==  "A new event in your country!"
                             @notification_tag = email if email.subject == "A new event of your interest!" }
-      assert_equal @notification_country.subject, "A new event in your country!"
       assert_equal @notification_country.to, [interested_user_1.email]
-      assert_equal @notification_tag.subject, "A new event of your interest!"
       assert_equal @notification_tag.to, [interested_user_2.email]
     end
 
