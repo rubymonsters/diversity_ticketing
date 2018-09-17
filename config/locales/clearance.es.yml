@@ -1,0 +1,55 @@
+---
+es:
+  clearance:
+    models:
+      clearance_mailer:
+        change_password: Modifica tu contraseña
+  clearance_mailer:
+    change_password:
+      change_my_password: "Modifica mi contraseña"
+      closing: Si no lo has solicitado puedes ignorar este email.
+      link_text: Cambia mi contraseña
+      opening: "Alguien, esperamos que tú, ha solicitado modificar tu contraseña"
+  flashes:
+    failure_after_create: Email o contraseña incorrecta.
+    failure_after_update: La contraseña es un campo obligatorio.
+    failure_when_forbidden: Por favor, comprueba la URL de nuevo o intenta entrar de nuevo.
+    failure_when_not_signed_in: Por favor, entra en tu cuenta para continuar.
+  helpers:
+    label:
+      password:
+        email: Email
+      password_reset:
+        password: Elige una contraseña
+    submit:
+      password:
+        submit: Resetea la contraseña
+      password_reset:
+        submit: Guarda esta contraseña
+      session:
+        submit: Sign in
+      user:
+        create: Crea tu cuenta
+  layouts:
+    application:
+      sign_in: Sign in
+      sign_out: Sign out
+  passwords:
+    create:
+      description: Recibirás un email en unos minutos. Contiene información sobre cómo modificar tu contraseña.
+    edit:
+      description: Tu contraseña ha sido reseteada. Comprueba el email a continuación.
+      title: Modifica tu contraseña
+    new:
+      description: Para recibir el link que te permitirá resetear tu contraseña, por favor, introduce tu email
+      title: Resetea tu contraseña
+  sessions:
+    form:
+      forgot_password: ¿Has olvidado tu contraseña?
+      sign_up: Crea tu cuenta
+    new:
+      title: Sign in
+  users:
+    new:
+      sign_in: Sign in
+      title: Crea tu cuenta
