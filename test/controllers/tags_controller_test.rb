@@ -53,13 +53,15 @@ class TagsControllerTest < ActionController::TestCase
     end
 
     it 'does not allow non-admin user to create a new tag' do
+      make_tag
+
       user = make_user
       sign_in_as(user)
-
-      put :create, params: { tag: { name: "New Tag", category_id: 1 } }
+      
+      put :create, params: { tag: { name: "Non Created Tag", category_id: 1 } }
 
       assert_redirected_to root_path
-      assert_nil Tag.last
+      assert_not_equal "Non Created Tag", Tag.last.name
     end
   end
 
