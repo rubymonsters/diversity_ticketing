@@ -141,10 +141,10 @@ class ActiveSupport::TestCase
   end
 
   def make_tag(tag_params = {})
-    Category.create!(id: 1, name: "Category")
+    category = Category.create!(name: "Category")
     defaults = {
       name: 'tag name',
-      category_id: 1
+      category_id: category.id
     }
     tag_params = defaults.merge(tag_params)
     Tag.create!(tag_params)
