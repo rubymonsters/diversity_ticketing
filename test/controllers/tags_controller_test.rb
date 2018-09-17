@@ -1,0 +1,81 @@
+require 'test_helper'
+
+class TagsControllerTest < ActionController::TestCase
+  describe '#index' do
+    it 'shows all Tags already created to admins' do
+      setup do
+        3.times { make_tag(name: "New event", category_id: 1) }
+      end
+
+      admin = make_user(admin: true)
+      sign_in_as(admin)
+
+      get :index
+
+      assert_response :success
+      assert_template 'tags/index'
+    end
+
+    it 'does not show all Tags already created to non-admins' do
+      setup do
+        3.times { make_tag(name: "New event", category_id: 1) }
+      end
+
+      user = make_user
+      sign_in_as(user)
+
+      get :index
+
+      assert_redirected_to root_path
+    end
+  end
+
+  describe '#create' do
+    it 'allows an admin user to create a new tag with a name and a category' do
+      admin = make_user(admin: true)
+      sign_in_as(admin)
+
+      put :create, params: { tag: { name: "New Tag", category_id: 1 } }
+
+      assert_redirected_to tags_path
+      assert_equal "Tag New Tag was successfully created.", flash[:notice]
+      assert_equal Tag.last.name, "New Tag"
+    end
+
+    it '' do
+      admin = make_user(admin: true)
+      sign_in_as(admin)
+
+      put :create, params: { tag: { name: "New Tag" } }
+
+      assert_redirected_to tags_path
+      assert_equal "There was a problem creating the new tag.", flash[:alert]
+    end
+
+    it 'does not allow non-admin user to create a new tag' do
+      user = make_user
+      sign_in_as(user)
+
+      put :create, params: { tag: { name: "New Tag", category_id: 1 } }
+
+      assert_redirected_to root_path
+      assert_nil Tag.last
+    end
+  end
+
+  describe '#destroy' do
+    it 'allows admin to delete tags' do
+      Tag.create!(id: 1, name: "New Tag", category_id: 1)
+
+      admin = make_user(admin: true)
+      sign_in_as(admin)
+
+      delete :destroy, params: { id: 1 }
+
+      assert_redirected_to tags_path
+
+    end
+
+  end
+
+end
