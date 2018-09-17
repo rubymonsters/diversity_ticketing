@@ -1,6 +1,29 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+  describe '#create' do
+    it 'creates a user with a name and email' do
+      put :create, params: { user: { email: "candela@test.de", password: "greatpassword" },
+                             referer: '' }
+
+      assert_redirected_to root_path
+    end
+
+    it 'redirects to continue_as_guest page if the referer contains continue_as_guest' do
+      put :create, params: { user: { email: "candela@test.de", password: "greatpassword" },
+                             referer: '/continue_as_guest', event_id: 1 }
+
+      assert_redirected_to new_event_application_path(1)
+    end
+
+    it 'redirects to users new page if the user creation was not successful' do
+      put :create, params: { user: { email: "candela", password: "greatpassword" } }
+
+      assert_response :success
+      assert_template 'users/new'
+    end
+  end
+
   describe '#update' do
     it 'does not allow logged-in user to edit anyone else\'s data' do
       user1 = make_user(email: 'a@example.org')
@@ -130,6 +153,40 @@ class UsersControllerTest < ActionController::TestCase
       assert_redirected_to root_path
       assert_equal "Your account has been deleted successfully.", flash[:alert]
       assert_equal 'a@example.org', User.last.email
+    end
+
+    it 'prevents the user to delete their account if the password was incorrect' do
+      user = make_user(email: 'a@example.org', password: "greatpassword")
+
+      sign_in_as(user)
+
+      delete :destroy, params: { id: user.id, user: { password: "wrongpassword" } }
+
+      assert_equal "Incorrect password", flash[:error]
+      assert_response :success
+    end
+
+    it 'prevents the user to delete their account if the password was  missing' do
+      user = make_user(email: 'a@example.org', password: "greatpassword")
+
+      sign_in_as(user)
+
+      delete :destroy, params: { id: user.id, user: { password: "" } }
+
+      assert_equal "Password is a mandatory field", flash[:error]
+      assert_response :success
+    end
+  end
+
+  describe '#delete_account' do
+    it 'renders delete_account template' do
+      user = make_user(email: 'a@example.org', password: "greatpassword")
+
+      sign_in_as(user)
+
+      put :delete_account, params: { id: user.id }
+
+      assert_template "users/delete_account"
     end
   end
 end

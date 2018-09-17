@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
   describe '#create' do
-    it 'successfully creates event and sends email' do
+    it 'successfully creates event and sends etest' do
       admin_user = make_admin
       sign_in_as(admin_user)
 
@@ -266,6 +266,7 @@ class EventsControllerTest < ActionController::TestCase
     it 'redirects not logged-in user' do
       get :new
 
+      assert_equal "Please sign in to continue.", flash[:notice]
       assert_redirected_to sign_in_path
     end
 

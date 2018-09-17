@@ -22,7 +22,11 @@
           <div class="category-tags tags-border">
             <p class="border"><%= category.name.capitalize %></p>
             <%= f.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
-              <%= tag.label { tag.check_box + " " + tag.text } %>
+              <% if category.name != "programming languages" %>
+                <%= tag.label { tag.check_box + " " + t("tags.#{category.name}.#{tag.text.downcase}") } %>
+              <% else %>
+                <%= tag.label { tag.check_box + " " + tag.text } %>
+              <% end %>
             <% end %>
 
             <p class="hint"><%= link_to t('.cant_find_tag'), faq_path(anchor: "conf_5"), target: "_blank" %></p>
@@ -52,14 +56,14 @@
     </section>
 
     <section class="box">
-      <h2 class="box-title">Application details</h2>
+      <h2 class="box-title"><%= t(".application_details") %></h2>
 
       <%= f.form_field :text_area, :applicant_directions, t('.directions_applicants'), class: ['markdown'],
           placeholder: t('.directions_applicants_placeholder') %>
     <div class="two-columns">
       <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'],
           min: Date.today, start_year: Date.today.year, include_blank: true, default: nil,
-          :use_month_names => t('date.month_names') %>
+          use_month_names: t('date.month_names'), order: [:day, :month, :year] %>
       <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'], ignore_date: true, default: {:hour => '23', :minute => '59'}  %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>

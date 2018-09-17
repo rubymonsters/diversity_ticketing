@@ -40,8 +40,6 @@ class UsersController < Clearance::UsersController
       @user.password_optional = true
       if @user.update(user_params)
         redirect_to edit_user_path(@user), notice: t('.update_success')
-      else
-        redirect_to edit_user_path(@user), alert: t('.update_fail')
       end
     end
   end
@@ -109,8 +107,6 @@ class UsersController < Clearance::UsersController
         if @user.update_attributes(user_params)
           @user.update_attributes(password: user_params[:new_password]) if user_params[:new_password] != ''
           redirect_to edit_user_path(@user), notice: t('.update_success')
-        else
-          redirect_to edit_user_path(@user), alert: t('.update_fail')
         end
       else
         if user_params[:password] === ''
