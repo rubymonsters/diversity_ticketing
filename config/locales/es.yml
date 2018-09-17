@@ -290,7 +290,6 @@ es:
     deadline_passed: "Tu evento no puede ser editado, ya que la fecha límite ya ha pasado"
     event_deleted: "Este evento ha sido eliminado por el organizador"
     not_allowed: "No tienes permiso para acceder a este evento"
-    please_sign: "Por favor, inicia sesión en tu cuenta o crea una nueva para subir un evento"
     thank_you: "Gracias por subir %{event_name}. Lo revisaremos en cuanto antes."
     update_success: "Has actualizado %{event_name} con éxito."
     application_details:
