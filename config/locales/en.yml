@@ -21,7 +21,6 @@
 
 en:
   date:
-    order: ["day", "month", "year"]
     month_names: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
   activerecord:
     attributes:
@@ -30,18 +29,39 @@ en:
         attendee_info_2: ""
     errors:
       models:
-        event:
-          attributes:
-            website:
-              invalid: "should be a full URL, e.g. https://myconference.com"
-            code_of_conduct:
-              invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
         application:
           attributes:
             attendee_info_1:
               blank: "Please state why you want to attend this event"
             attendee_info_2:
               blank: "Please state why you're applying for a diversity ticket"
+        event:
+          attributes:
+            country:
+              blank: "can't be blank"
+            city:
+              blank: "can't be blank"
+            code_of_conduct:
+              blank: "can't be blank"
+              invalid: "should be a full URL, e.g. https://myconference.com/code_of_conduct"
+            deadline:
+              blank: "can't be blank"
+            description:
+              blank: "can't be blank"
+            end_date:
+              blank: "can't be blank"
+            name:
+              blank: "can't be blank"
+            number_of_tickets:
+              not_a_number: "is not a number"
+              blank: "can't be blank"
+            organizer_name:
+              blank: "can't be blank"
+            start_date:
+              blank: "can't be blank"
+            website:
+              blank: "can't be blank"
+              invalid: "should be a full URL, e.g. https://myconference.com"
 
   admin_applications:
     application_approved: "%{application_name}'s application has been approved!"
@@ -310,6 +330,7 @@ en:
       accomodation: "Accomodation"
       agree_terms_and_conditions: "I agree with the following Terms and Conditions:"
       application_by_organizer: "The organizer is handling both the selection and application process and only wants their event listed on this site. Applicants have to apply through their site / app."
+      application_details: "Application details"
       application_form_link: "Link to application form"
       application_form_link_placeholder: "e.g. https://myconference.com/apply"
       application_selection: "Application & Selection"
@@ -552,11 +573,28 @@ en:
       title: "Sign in"
 
   tags:
-    tag_created: "Tag %{tag_name} was successfully created."
-    tag_problem: "There was a problem creating the new tag."
+    languages:
+      chinese: "Chinese"
+      english: "English"
+      french: "French"
+      german: "German"
+      japanese: "Japanese"
+      polish: "Polish"
+      portuguese: "Portuguese"
+      russian: "Russian"
+      spanish: "Spanish"
+    fields of expertise:
+      biology: "Biology"
+      math: "Math"
+      people: "People"
+      tech: "Tech"
+      security: "Security"
     index:
       are_you_sure: "Are you sure?"
       tags_management_title: "Tags management"
+    tag_created: "Tag %{tag_name} was successfully created."
+    tag_problem: "There was a problem creating the new tag."
+
 
   users:
     account_deleted: "Your account has been deleted successfully."
