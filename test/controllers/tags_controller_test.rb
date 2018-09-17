@@ -42,7 +42,7 @@ class TagsControllerTest < ActionController::TestCase
       assert_equal Tag.last.name, "New Tag"
     end
 
-    it '' do
+    it 'shows a flash message if there was a problem creating the tag' do
       admin = make_user(admin: true)
       sign_in_as(admin)
 
@@ -65,17 +65,17 @@ class TagsControllerTest < ActionController::TestCase
 
   describe '#destroy' do
     it 'allows admin to delete tags' do
-      Tag.create!(id: 1, name: "New Tag", category_id: 1)
+      make_tag(name: "New event", category_id: 1)
+
+      all_tags = Tag.all.count
 
       admin = make_user(admin: true)
       sign_in_as(admin)
 
-      delete :destroy, params: { id: 1 }
+      delete :destroy, params: { id: Tag.last.id }
 
       assert_redirected_to tags_path
-
+      assert_equal all_tags - 1, Tag.all.count
     end
-
   end
-
 end
