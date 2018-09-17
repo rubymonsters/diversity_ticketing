@@ -22,7 +22,11 @@
         <% Category.all.each do |category| %>
           <p><%= t('.' + category.name.gsub(" ", "_")) %></p>
           <%= form.collection_check_boxes(:tag_ids, category.tags.order(:name), :id, :name) do |tag| %>
-            <%= tag.label { tag.check_box + " " + tag.text } %>
+            <% if category.name != "programming languages" %>
+              <%= tag.label { tag.check_box + " " + t("tags.#{category.name}.#{tag.text.downcase}") } %>
+            <% else %>
+              <%= tag.label { tag.check_box + " " + tag.text } %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

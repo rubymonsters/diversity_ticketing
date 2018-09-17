@@ -7,12 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :require_login
 
-  def build_missing_translations(object)
-    I18n.available_locales.each do |locale|
-      object.translations.build(locale: locale) unless object.translated_locales.include?(locale)
-    end
-  end
-
   def default_url_options
     { locale: I18n.locale }
   end
