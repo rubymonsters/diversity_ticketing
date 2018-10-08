@@ -18,4 +18,12 @@ module EventsHelper
     end
   end
 
+  def event_image_root(event)
+    if event.logo && event.logo != ''
+      image_tag event.logo, skip_pipeline: true
+    else
+      image_tag root_url "event-default.png"
+    end
+  end
+
 end
