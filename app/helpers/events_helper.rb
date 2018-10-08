@@ -18,11 +18,11 @@ module EventsHelper
     end
   end
 
-  def event_image_root(event)
+  def event_image_open_graph(event)
     if event.logo && event.logo != ''
-      image_tag event.logo, skip_pipeline: true
+      event.logo
     else
-      image_tag root_url "event-default.png"
+      root_url "event-default.png"
     end
   end
 
