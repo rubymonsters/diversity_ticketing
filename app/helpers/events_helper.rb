@@ -18,12 +18,4 @@ module EventsHelper
     end
   end
 
-  def event_image_open_graph(event)
-    if event.logo && event.logo != ''
-      event.logo
-    else
-      root_url "event-default.png"
-    end
-  end
-
 end
