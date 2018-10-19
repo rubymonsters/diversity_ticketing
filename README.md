@@ -62,5 +62,8 @@ This following text describes how to set up your workstation to develop for [div
         diversity_ticketing_production <br>
 1. Run `rake db:create` to create the database.
 
+## Translate the app
+If you want to contribute to Diversity Tickets by translating the app into your language, [here are some indications on how to proceed](https://github.com/rubymonsters/diversity_ticketing/wiki/Do-you-want-to-translate-Diversity-Tickets-to-your-own-language%3F-Here-are-some-indications:)
+
 ## License
 [MIT](https://github.com/rubymonsters/diversity_ticketing/blob/master/LICENSE.md).

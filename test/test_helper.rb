@@ -140,6 +140,16 @@ class ActiveSupport::TestCase
     Application.create!(application_params)
   end
 
+  def make_tag(tag_params = {})
+    category = Category.create!(name: "Category")
+    defaults = {
+      name: 'tag name',
+      category_id: category.id
+    }
+    tag_params = defaults.merge(tag_params)
+    Tag.create!(tag_params)
+  end
+
   # Add more helper methods to be used by all tests here...
 end
 

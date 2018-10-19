@@ -194,4 +194,28 @@ class EventTest < ActiveSupport::TestCase
       assert event.to_csv.include?(application.attendee_info_2)
     end
   end
+
+  describe 'country_with_most_events' do
+    it 'provides a rank of countries with the most events' do
+      make_event(country: "Spain")
+      make_event(country: "Spain")
+      make_event(country: "Germany")
+
+      assert_equal "Spain", Event.country_with_most_events(1)
+      assert_equal "Germany", Event.country_with_most_events(2)
+    end
+  end
+
+  describe 'number_of_events_per_country' do
+    it 'provides a the number of events in a country from the rank' do
+      make_event(country: "Spain")
+      make_event(country: "Spain")
+      make_event(country: "Germany")
+
+      Event.country_with_most_events(1)
+      assert_equal 2, Event.number_of_events_per_country(1)
+      Event.country_with_most_events(2)
+      assert_equal 1, Event.number_of_events_per_country(2)
+    end
+  end
 end
