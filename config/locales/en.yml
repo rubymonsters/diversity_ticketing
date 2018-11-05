@@ -549,12 +549,12 @@ en:
       type: "website"
       url: "https://diversitytickets.org/"
     footer:
+      check_out_the_code: "Checkout the code on "
+      impressum: "Impressum here"
+      legal: "Legal "
+      privacy_policy: "Privacy policy"
       proudly_built: "Proudly built by "
       supported_by: "Supported by "
-      check_out_the_code: "Checkout the code on "
-      legal: "Legal "
-      impressum: "Impressum here"
-      privacy_policy: "Privacy policy"
 
   sessions:
     account_not_found: "Account not found, please register first"
