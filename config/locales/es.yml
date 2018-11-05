@@ -499,17 +499,17 @@ es:
     open_graph_tags:
       description: "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets
         y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde solicitarlos"
-      title: "Ayudamos a las conferencias a llegar a una audiencia más diversa. Te ayudamos a ti a que encuentres estas conferencias."
       diversity_tickets: "Diversity Tickets"
-      url: "https://diversitytickets.org/"
+      title: "Ayudamos a las conferencias a llegar a una audiencia más diversa. Te ayudamos a ti a que encuentres estas conferencias."
       type: "website"
-    application:
+      url: "https://diversitytickets.org/"
+    footer:
       check_out_the_code: "Echa un vistazo al código "
+      impressum: "Impressum"
+      legal: "Legal "
+      privacy_policy: "Privacy policy"
       proudly_built: "Desarrollado por "
       supported_by: "Con soporte de "
-      legal: "Legal "
-      impressum: "Impressum"
-      privacy_policy: "Privacy policy"
 
   sessions:
     account_not_found: "No se encuentra la cuenta. Por favor, regístrate primero."
