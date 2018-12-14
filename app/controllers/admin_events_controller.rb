@@ -14,7 +14,7 @@ class AdminEventsController < ApplicationController
     @categorized_events = {
       "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
       "Approved events" => Event.approved.upcoming.order(:deadline),
-      "Past approved events"=> Event.approved.past.order(:deadline).active,
+      "Past approved events"=> Event.approved.past.order(deadline: :desc).active,
       "Past unapproved events" => Event.unapproved.past.order(:deadline).active
     }
     @approved_events_deadline = {
