@@ -1,8 +1,10 @@
 <% provide :title, t('.title') %>
-<div id="clearance" class="sign-in two-columns">
+<div id="clearance" class="sign-in flex">
 
-  <h2><%= t(".title") %></h2>
-  <%= render partial: '/sessions/form' %>
+  <div class="col-6">
+    <h2><%= t(".title") %></h2>
+    <%= render partial: '/sessions/form' %>
+  </div>
 
   <% if Clearance.configuration.allow_sign_up? %>
     <div class="col alternative-registration">
