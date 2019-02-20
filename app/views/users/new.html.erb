@@ -1,15 +1,15 @@
 <% provide :title, t('.title') %>
 
-<div id="clearance" class="sign-up two-columns">
+<div id="clearance" class="sign-up flex">
 
-  <div class="alternative-registration">
+  <div class="alternative-registration col-6">
     <h2><%= t('.already_registered') %></h2>
     <%= link_to sign_in_path do %>
       <div class="btn btn-edit"><%= t(".sign_in_here") %></div>
     <% end %>
   </div>
 
-  <div class="col">
+  <div class="col-6">
     <h2><%= t('.create_your_account') %></h2>
     <%= form_for @user, builder: ::FormBuilder do |form| %>
       <%= render partial: '/users/form', object: form %>
