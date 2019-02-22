@@ -90,7 +90,7 @@
   <%= render partial: "events/event" %>
 
   <div class="form_field">
-    <%= link_to t("delete_event"), event_path(@event.id), method: :delete,
+    <%= link_to t(".delete_event"), event_path(@event.id), method: :delete,
         data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
     <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
     <% unless @event.approved? %>
