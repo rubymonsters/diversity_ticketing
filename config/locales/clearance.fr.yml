@@ -42,7 +42,7 @@ fr:
       description: "Votre mot de passe a été réinitialisé. Choisissez un nouveau mot de passe ci-dessous."
       title: Modifier votre mot de passe
     new:
-      description: Pour recevoir un courriel contenant un lien pour de réinitialisation de votre mot de passe, veuillez entrer votre adresse courriel.
+      description: Pour recevoir un courriel contenant un lien de réinitialisation de votre mot de passe, veuillez entrer votre adresse courriel.
       title: Réinitialiser votre mot de passe
   sessions:
     form:
