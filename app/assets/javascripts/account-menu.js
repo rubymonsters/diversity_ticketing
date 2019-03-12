@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $( "#account-menu" ).click(function() {
-    $(".dropdown-content").toggle();
+    $("#dropdown .dropdown-content").toggle();
   });
 
   //makes menu disappear when you click somewhere else on the page:
@@ -10,7 +10,7 @@ $(document).ready(function(){
         return;
       }
       else {
-        $(".dropdown-content").toggle();
+        $("#dropdown .dropdown-content").toggle();
       }
     }
   });

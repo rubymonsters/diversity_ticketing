@@ -11,11 +11,11 @@
         <li><%= navbar_link_to t('.events'), events_path %></li>
         <li><%= navbar_link_to t('.submit_event'), new_event_path %></li>
         <li><%= navbar_link_to t('.about'), about_path %></li>
-        <li><%= navbar_link_to t('.faq'), faq_path %></li>
+        <li class="flex-grow"><%= navbar_link_to t('.faq'), faq_path %></li>
         <% if signed_in? %>
-          <li id="dropdown">
-            <span id="account-menu"><%= t('.your_account') %><i class="icon-user-circle"></i>|</span>
-            <div class="dropdown-content">
+          <li id="dropdown" class="dropdown">
+            <span id="account-menu" class="dropdown-label"><%= t('.your_account') %><i class="icon-user-circle"></i>|</span>
+            <ul class="dropdown-content account-menu-content">
               <% if admin_user? %>
                 <li class="dropdown-item"><%= navbar_link_to t('.admin'), admin_path %></li>
                 <li class="dropdown-item"><%= navbar_link_to t('.tags'), tags_path %></li>
@@ -24,19 +24,19 @@
               <li class="dropdown-item"><%= navbar_link_to t('.your_applications'), user_applications_path(current_user) %></li>
               <li class="dropdown-item"><%= navbar_link_to t('.account_settings'), edit_user_path(current_user) %></li>
               <li class="dropdown-item"><%= link_to t('.sign_out'), sign_out_path, method: :delete %></li>
-            </div>
+            </ul>
           </li>
         <% else %>
           <li><%= link_to t('.sign_in'), sign_in_path %></li>
         <% end %>
-        <li id="language-picker">
-          <span class="language-picker-btn" id="language-picker-btn">
+        <li id="language-picker" class="dropdown">
+          <span class="dropdown-label" id="language-picker-btn">
             <%= I18n.locale.upcase %>
             <i class="icon-sort-down-black" id="icon-language"></i>
           </span>
-          <ul class="language-picker-content">
+          <ul class="dropdown-content language-picker-content">
             <% I18n.available_locales.each do |language| %>
-              <li class="language-picker-item"><%= link_to language.upcase, {locale: language} unless I18n.locale == language %></li>
+              <li class="dropdown-item"><%= link_to language.upcase, {locale: language} unless I18n.locale == language %></li>
             <% end %>
           </ul>
         </li>
