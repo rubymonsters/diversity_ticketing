@@ -1,0 +1,72 @@
+.dropdown {
+  @media (min-width: $medium) {
+    position: relative;
+  }
+
+  .rotated {
+    transform: rotate(180deg);
+    background-position: 12px 2px;
+  }
+
+  .dropdown-label {
+    display: inline-block;
+    cursor: pointer;
+    line-height: $topbar-height;
+    &:hover,
+    &:active {
+      color: $green;
+      border: none;
+    }
+  }
+
+  .dropdown-content {
+    padding: 0;
+    display: none; // this will be toggled
+    max-width: 170px;
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    @media (min-width: $medium) {
+      position: absolute;
+    }
+  }
+
+  .dropdown-item {
+    display: inline-block;
+    padding-left: 2em;
+    line-height: 3em;
+    text-align: left;
+    border-bottom: 1px solid transparent;
+    a:hover,
+    a:active {
+      &:after {
+        content: none !important;
+      }
+    }
+    &:empty {
+      display: none;
+    }
+    @media (min-width: $medium) {
+      padding-left: 1em;
+    }
+
+  }
+}
+
+.dropdown {
+  .account-menu-content {
+    @media (min-width: $medium) {
+      width: 200px;
+    }
+    .dropdown-item:last-of-type {
+      font-weight: 600;
+    }
+  }
+
+  .language-picker-content {
+    @media (min-width: $medium) {
+      max-width: 3.6em;
+    }
+  }
+
+}
