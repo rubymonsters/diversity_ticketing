@@ -22,7 +22,7 @@
   .dropdown-content {
     padding: 0;
     display: none; // this will be toggled
-    max-width: 170px;
+    width: 200px;
     background-color: white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -49,15 +49,11 @@
     @media (min-width: $medium) {
       padding-left: 1em;
     }
-
   }
 }
 
 .dropdown {
   .account-menu-content {
-    @media (min-width: $medium) {
-      width: 200px;
-    }
     .dropdown-item:last-of-type {
       font-weight: 600;
     }
@@ -68,5 +64,4 @@
       max-width: 3.6em;
     }
   }
-
 }

@@ -5,7 +5,6 @@
     list-style: none;
     margin: 0;
     padding: 0px 0px 0px 30px;
-    //overflow: auto;
     font-size: 15px;
     @media (min-width: $large) {
       display: flex;
@@ -24,7 +23,7 @@
   }
 
   a {
-    display: block;
+    display: inline-block;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     color: $black;
