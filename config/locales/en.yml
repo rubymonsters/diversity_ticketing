@@ -109,6 +109,8 @@ en:
       are_you_sure: "Are you sure?"
       delete: "Delete"
       delete_event: "Delete event"
+      download_csv: "Download CSV"
+      download_data: "Download data"
       edit_event: "Edit event"
       home_link: "Home"
       organizer_details: "Organizer details"

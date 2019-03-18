@@ -110,6 +110,8 @@ es:
       edit_event: "Editar evento"
       delete: "Borrar"
       delete_event: "Borrar evento"
+      download_csv: "Descargar CSV"
+      download_data: "Descargar datos"
       home_link: "Inicio"
       organizer_details: "Detalles del organizador"
       organizer_email: "Email"
