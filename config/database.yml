@@ -7,8 +7,8 @@
 default: &default
   adapter: postgresql
   host: localhost
-  username: pguser
-  password: pguser_password
+  username: rails_dev
+  password: rails_pw
   pool: 5
   timeout: 5000
 
