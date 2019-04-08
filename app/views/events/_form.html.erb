@@ -4,16 +4,16 @@
     <section class="box">
       <h2 class="box-title box-noborder"><%= t('.organizer_details') %></h2>
       <p class="border"><%= t('.not_shown') %></p>
-      <%= f.form_field :text_field, :organizer_name, 'Full name', value: @event.organizer_name ? @event.organizer_name : ((current_user.name != nil) ? current_user.name : '')%>
-      <%= f.form_field :text_field, :organizer_email, 'Email', value: @event.organizer_email ? @event.organizer_email : current_user.email %>
+      <%= f.form_field :text_field, :organizer_name, t('.full_name'), value: @event.organizer_name ? @event.organizer_name : ((current_user.name != nil) ? current_user.name : '')%>
+      <%= f.form_field :text_field, :organizer_email, t('.email'), value: @event.organizer_email ? @event.organizer_email : current_user.email %>
       <% if action_name == 'new' || action_name == 'preview' %>
-        <%= f.form_field :text_field, :organizer_email_confirmation, 'Email confirmation', value: @event.organizer_email ? @event.organizer_email : current_user.email %>
+        <%= f.form_field :text_field, :organizer_email_confirmation, t('.email_confirmation'), value: @event.organizer_email ? @event.organizer_email : current_user.email %>
       <% end %>
     </section>
 
     <section class="box">
       <h2><%= t('.event_details') %></h2>
-      <%= f.form_field :text_field, :name, 'Name' %>
+      <%= f.form_field :text_field, :name, t('.name') %>
 
       <div class="tags">
         <label><%= t('.event_tags') %></label>
@@ -42,7 +42,7 @@
       <%= f.form_field :text_field, :website, t('.event_website'), placeholder: t('.event_website_placeholder') %>
       <%= f.form_field :text_field, :code_of_conduct, t('.event_code_of_conduct'), placeholder: t('.event_code_of_conduct_placeholder') %>
 
-      <h3 class="box-subtitle">Location</h3>
+      <h3 class="box-subtitle"><%= t('.event_location') %></h3>
       <%= f.form_field :text_field, :city, t('.event_city') %>
       <%= f.select :country, CS.countries.values, {:include_blank => t('.select_country')} %>
       <%= f.form_field :text_field, :state_province, t('.state_province') %>
@@ -64,7 +64,7 @@
       <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'],
           min: Date.today, start_year: Date.today.year, include_blank: true, default: nil,
           use_month_names: t('date.month_names'), order: [:day, :month, :year] %>
-      <%= f.form_field :time_select, :deadline, 'Time (hh:mm UTC)', class: ['right'], ignore_date: true, default: {:hour => '23', :minute => '59'}  %>
+      <%= f.form_field :time_select, :deadline, t('.time_utc'), class: ['right'], ignore_date: true, default: {:hour => '23', :minute => '59'}  %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>
 
