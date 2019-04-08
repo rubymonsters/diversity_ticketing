@@ -109,6 +109,8 @@ fr:
       are_you_sure: "Êtes-vous sûr·e ?"
       delete: "Supprimer"
       delete_event: "Supprimer l'événement"
+      download_csv: "Télécharger CSV"
+      download_data: "Télécharger les données"
       edit_event: "Modifier l'événement"
       home_link: "Accueil"
       organizer_details: "Détails de l'organisateur"
