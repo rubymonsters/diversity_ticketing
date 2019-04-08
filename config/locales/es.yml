@@ -301,6 +301,7 @@ es:
       directions_applicants: "Directrices para las/os solicitantes"
       number_tickets: "Número de tickets disponibles"
       ticket: "ticket"
+      tickets: "tickets"
       travel: "Transporte"
       whats_funded: "¿Qué incluye?"
     event:

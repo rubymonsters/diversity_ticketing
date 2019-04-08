@@ -301,6 +301,7 @@ en:
       midnight_utc: "(midnight UTC)"
       number_tickets: "Number of available diversity tickets"
       ticket: "ticket"
+      tickets: "tickets"
       travel: "Travel"
       whats_funded: "What's funded?"
     event:

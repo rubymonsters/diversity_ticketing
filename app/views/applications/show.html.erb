@@ -51,7 +51,7 @@
 
       <% if @application.errors.any? %>
         <div class="error">
-          <p><%= pluralize(@application.errors.count, "error") %> stopped this application from being saved:</p>
+          <p><%= pluralize(@application.errors.count, "error", "errors") %> stopped this application from being saved:</p>
           <ul>
             <% @application.errors.messages.each do |field, messages| %>
               <li><%= @application.class.human_attribute_name(field) %> <%= join_messages(messages) %></li>
