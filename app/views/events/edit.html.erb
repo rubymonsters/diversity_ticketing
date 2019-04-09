@@ -6,7 +6,7 @@
 
 <% if @event.errors.any? %>
   <div class="error">
-    <p><%= pluralize(@event.errors.count, "error") %><%= t('.errors') %> </p>
+    <p><%= pluralize(@event.errors.count, "error", "errors") %><%= t('.errors') %> </p>
 
     <ul>
       <% @event.errors.messages.each do |field, messages| %>
