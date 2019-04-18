@@ -109,8 +109,9 @@
         <%= label_tag do %>
         <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> <%=t('.application_by_organizer') %>
 
-        <div class="form_field indent">
-          <p><%= f.form_field :text_area, :application_link, t('.application_form_link'), placeholder: t('.application_form_link_placeholder') %></p>
+        <div class="form_field indent form_with_hint">
+          <%= f.form_field :text_area, :application_link, t('.application_form_link'), placeholder: t('.application_form_link_placeholder') %>
+            <div class="form-hint"><%= link_to t('home.faq.why_provide_a_link_short'), faq_path(anchor: "conf_6") %></div>
         </div>
 
         <% end %>
