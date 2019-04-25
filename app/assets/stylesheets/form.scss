@@ -51,7 +51,8 @@ input[type="email"],
 input[type="date"],
 input[type="number"],
 input[type="password"],
-textarea {
+textarea,
+select {
   display: block;
   width: 100%;
   font-size: 14px;
@@ -59,10 +60,7 @@ textarea {
   border: 1px solid $border-grey;
   border-radius: 2px;
   margin-bottom: 1em;
-}
-
-select {
-  margin-bottom: 1em;
+  background-color: white;
 }
 
 .field_with_errors {
@@ -166,6 +164,15 @@ input.has-dependent:checked + div.form_field {
   margin-bottom: 2rem;
   margin-left: .4em;
   font-size: 12px;
+}
+
+.form_with_hint {
+  label {
+    margin-top: 1rem;
+  }
+  textarea {
+    margin-bottom: 0;
+  }
 }
 
 .category-tags {
