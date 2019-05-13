@@ -406,6 +406,7 @@ en:
       show_past_events: "Show past events"
       submit_your_conference: "You can %{link_to_submission} now."
       submit_your_own_conference: "submit your own conference"
+      title: "Events"
     new:
       create_new_event: "Create</span> new event"
       home_link: "Home"
@@ -621,7 +622,7 @@ en:
       drafts: "Drafts"
       home_link: "Home"
       info_description: "<p> Once an event date has passed your applications
-      will vanish from this overview and all sensitive data will be removed from the database.</p>"
+        will vanish from this overview and all sensitive data will be removed from the database.</p>"
       no_applications: "There are currently no applications for this user account."
       submitted: "Submitted"
       title: "Your applications"

@@ -406,6 +406,7 @@ fr:
       show_past_events: "Afficher les événements passés"
       submit_your_conference: "Vous pouvez %{link_to_submission} maintenant."
       submit_your_own_conference: "soumettre votre propre événement"
+      title: "Événements"
     new:
       create_new_event: "Créer</span> un nouvel événement"
       home_link: "Accueil"
