@@ -584,6 +584,10 @@ en:
       new_to_diversity_tickets: "New to Diversity Tickets?"
       title: "Sign in"
 
+  shared:
+    first_level_breadcrumbs:
+      home_link: "Home"
+
   tags:
     languages:
       chinese: "Chinese"

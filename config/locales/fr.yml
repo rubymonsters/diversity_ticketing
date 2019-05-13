@@ -536,6 +536,10 @@ fr:
       new_to_diversity_tickets: "Première visite sur Diversity Tickets?"
       title: "Se connecter"
 
+  shared:
+    first_level_breadcrumbs:
+      home_link: "Accueil"
+
   tags:
     languages:
       chinese: "Chinois"

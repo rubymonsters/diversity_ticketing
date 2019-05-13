@@ -560,6 +560,10 @@ es:
       new_to_diversity_tickets: "¿Nuevo en diversity tickets?"
       title: "Sign in"
 
+  shared:
+    first_level_breadcrumbs:
+      home_link: "Inicio"
+
   tags:
     languages:
       chinese: "Chino"
