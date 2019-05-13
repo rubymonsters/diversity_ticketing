@@ -583,7 +583,7 @@ es:
       security: "Securidad"
     index:
       are_you_sure: "¿Estás segura/o?"
-      tags_management_title: "Gestión de tags"
+      title: "Gestión de tags"
     tag_created: "El tag %{tag_name} se ha creado con éxito."
     tag_problem: "Ha habido un problema creando el nuevo tag."
 

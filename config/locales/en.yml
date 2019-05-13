@@ -607,7 +607,7 @@ en:
       security: "Security"
     index:
       are_you_sure: "Are you sure?"
-      tags_management_title: "Tags management"
+      title: "Tags management"
     tag_created: "Tag %{tag_name} was successfully created."
     tag_problem: "There was a problem creating the new tag."
 

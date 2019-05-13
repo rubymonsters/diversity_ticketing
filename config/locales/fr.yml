@@ -559,7 +559,7 @@ fr:
       security: "Sécurité"
     index:
       are_you_sure: "Êtes-vous sûr·e ?"
-      tags_management_title: "Gestion des étiquettes"
+      title: "Gestion des étiquettes"
     tag_created: "L'étiquette %{tag_name} a été créée avec succès."
     tag_problem: "Un problème est survenu durant la création de la nouvelle étiquette."
 
