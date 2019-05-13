@@ -1,6 +1,10 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= link_to t('.events'), events_path %> > <%= t('new_event') %></p>
+<p class="breadcrumb">
+  <%= link_to t('.home_link'), root_path %> >
+  <%= link_to t('.events'), events_path %> >
+  <%= t('new_event') %>
+</p>
 
 <h1 class="page-title"><span class="page-title-firstword"><%= raw t('.create_new_event') %></h1>
 <p class="page-description"><%= t('.please_fill') %></p>

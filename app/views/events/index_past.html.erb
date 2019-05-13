@@ -1,7 +1,8 @@
 <% provide :title, t('.title') %>
 
 <p class="breadcrumb">
-  <%= link_to t('.home_link'), root_path %> > <%= t('.past_events') %>
+  <%= link_to t('.home_link'), root_path %> >
+  <%= t('.past_events') %>
 </p>
 
 <%= render 'event_search', search_path: past_events_path %>
