@@ -51,7 +51,7 @@ feature 'Event' do
 
     click_link 'The Event'
 
-    assert page.text.include?('Your Events')
+    assert page.text.include?('Your events')
   end
 
   test 'shows Events in the breadcrumb if the user is not an organizer' do
