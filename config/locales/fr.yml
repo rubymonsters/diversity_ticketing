@@ -386,11 +386,14 @@ fr:
       your_application: "Votre candidature"
       your_draft: "Votre brouillon"
     edit:
+      admin_link: "Admin"
       edit: "Modifier"
       edit_event: "Modifier l'événement"
+      events_link: "Événements"
       home_link: "Accueil"
       errors: "durant la mise à jour de l'événement :"
       submit_changes: "Soumettre des modifications"
+      your_events: "Vos événements"
     index_past:
       home_link: "Accueil"
       past_events: "Événements passés"

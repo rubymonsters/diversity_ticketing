@@ -386,11 +386,14 @@ en:
       your_application: "Your application"
       your_draft: "Your draft"
     edit:
+      admin_link: "Admin"
       edit: "Edit"
       edit_event: "Edit event"
+      events_link: "Events"
       home_link: "Home"
       errors: "stopped this event from being updated:"
       submit_changes: "Submit changes"
+      your_events: "Your events"
     index_past:
       home_link: "Home"
       past_events: "Past events"

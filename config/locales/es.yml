@@ -402,11 +402,14 @@ es:
       your_application: "Tu solicitud"
       your_draft: "Tu boceto"
     edit:
+      admin_link: "Admin"
       edit: "Editar"
       edit_event: "Editar evento"
+      events_link: "Eventos"
       home_link: "Página de inicio"
       errors: "impidieron la actualización de este evento"
       submit_changes: "Aplicar cambios"
+      your_events: "Tus eventos"
     index_past:
       home_link: "Inicio"
       past_events: "Eventos pasados"
