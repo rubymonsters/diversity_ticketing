@@ -430,6 +430,7 @@ en:
       submit_your_event: "Submit your event"
       title: "Preview event"
     show:
+      admin_link: "Admin"
       applications_closed: "Sorry, applications for %{event_name} are closed."
       apply_at: "Apply at %{event_name}"
       apply_for_ticket: "Apply for a ticket"
@@ -437,9 +438,11 @@ en:
       are-you-sure: "Are you sure?"
       delete: "Delete"
       edit: "Edit"
+      events_link: "Events"
       home_link: "Home"
       your_application: "Your application"
       your_draft: "Your draft"
+      your_events: "Your events"
 
   home:
     about:

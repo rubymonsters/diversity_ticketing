@@ -446,6 +446,7 @@ es:
       submit_your_event: "Subir tu evento"
       title: "Previsualizar evento"
     show:
+      admin_link: "Admin"
       applications_closed: "Lo siento, las solicitudes para %{event_name} están cerradas."
       apply_at: "Inscríbete en %{event_name}"
       apply_for_ticket: "Solicita un ticket"
@@ -453,9 +454,11 @@ es:
       are-you-sure: "¿Estás segura/o?"
       delete: "Eliminar"
       edit: "Editar"
+      events_link: "Eventos"
       home_link: "Inicio"
       your_application: "Tu solicitud"
       your_draft: "Tu borrador"
+      your_events: "Tus eventos"
 
   home:
     about:

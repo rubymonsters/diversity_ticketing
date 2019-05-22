@@ -430,6 +430,7 @@ fr:
       submit_your_event: "Soumettre votre événement"
       title: "Prévisualiser l'événement"
     show:
+      admin_link: "Admin"
       applications_closed: "Désolé, les candidatures pour %{event_name} sont fermées."
       apply_at: "Postuler à %{event_name}"
       apply_for_ticket: "Faire une demande de billet"
@@ -437,9 +438,11 @@ fr:
       are-you-sure: "Êtes-vous sûr·e ?"
       delete: "Supprimer"
       edit: "Modifier"
+      events_link: "Événements"
       home_link: "Accueil"
       your_application: "Votre candidature"
       your_draft: "Votre brouillon"
+      your_events: "Vos événements"
 
   home:
     about:
