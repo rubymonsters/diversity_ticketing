@@ -78,12 +78,12 @@ es:
               invalid: "URL completa, por ejemplo: https://miconferencia.com"
 
   admin_applications:
-    application_approved: "¡La solicitud de %{application_name} ha sido aprobada!"
-    application_pending: 'La solicitud de %{application_name} ha vuelto a "pendiente"'
-    application_rejected: "La solicitud de %{application_name} ha sido rechazada"
+    application_approved: "¡La solicitud de %{applicant_name} ha sido aprobada!"
+    application_pending: 'La solicitud de %{applicant_name} ha vuelto a "pendiente"'
+    application_rejected: "La solicitud de %{applicant_name} ha sido rechazada"
     show:
       admin_link: "Admin"
-      application_by: "Solicitud de %{application_name}"
+      application_by: "Solicitud de %{applicant_name}"
       application_for: "Solicitud para %{event_name}"
       application_status: "Estado de la solicitud: %{application_status}"
       approve: "Aprobar"

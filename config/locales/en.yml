@@ -64,12 +64,12 @@ en:
               invalid: "should be a full URL, e.g. https://myconference.com"
 
   admin_applications:
-    application_approved: "%{application_name}'s application has been approved!"
-    application_pending: "%{application_name}'s application has been changed to pending"
-    application_rejected: "%{application_name}'s application has been rejected"
+    application_approved: "%{applicant_name}'s application has been approved!"
+    application_pending: "%{applicant_name}'s application has been changed to pending"
+    application_rejected: "%{applicant_name}'s application has been rejected"
     show:
       admin_link: "Admin"
-      application_by: "Application by %{application_name}"
+      application_by: "Application by %{applicant_name}"
       application_for: "Application for %{event_name}"
       application_status: "Application status: %{application_status}"
       approve: "Approve"

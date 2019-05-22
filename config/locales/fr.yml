@@ -64,12 +64,12 @@ fr:
               invalid: "doit être une URL complète, comme https://maconference.fr"
 
   admin_applications:
-    application_approved: "La candidature de %{application_name} a été approuvée"
-    application_pending: "La candidature de %{application_name} est en attente"
-    application_rejected: "La candidature de %{application_name} a été rejetée"
+    application_approved: "La candidature de %{applicant_name} a été approuvée"
+    application_pending: "La candidature de %{applicant_name} est en attente"
+    application_rejected: "La candidature de %{applicant_name} a été rejetée"
     show:
       admin_link: "Admin"
-      application_by: "Candidature de %{application_name}"
+      application_by: "Candidature de %{applicant_name}"
       application_for: "Candidature pour %{event_name}"
       application_status: "Statut de la candidature : %{application_status}"
       approve: "Approuver"
@@ -209,7 +209,7 @@ fr:
     show:
       admin_link: "Admin"
       agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
-      application_by: "Candidature de %{application_name}"
+      application_by: "Candidature de %{applicant_name}"
       application_for: "Candidature pour %{event_name}"
       approve: "Approuver"
       are_you_sure: "Êtes-vous sûr·e de vouloir supprimer cette candidature ?"
