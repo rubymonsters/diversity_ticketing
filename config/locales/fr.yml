@@ -268,6 +268,7 @@ fr:
       are_you_sure: "Êtes-vous sûr·e de vouloir supprimer ce brouillon ?"
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
+      draft_for: "Brouillon pour %{event_name}"
       email: "Courriel"
       edit: "Modifier"
       delete: "Supprimer"

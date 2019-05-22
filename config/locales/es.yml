@@ -283,6 +283,7 @@ es:
       are_you_sure: "¿Estás segura/o de que quieres eliminar este borrador?"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
       attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
+      draft_for: "Borrador para %{event_name}"
       edit: "Editar"
       email: "Email"
       delete: "Eliminar"
