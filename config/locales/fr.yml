@@ -544,7 +544,7 @@ fr:
       title: "Se connecter"
 
   shared:
-    first_level_breadcrumbs:
+    breadcrumbs:
       home_link: "Accueil"
 
   tags:

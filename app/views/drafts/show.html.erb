@@ -1,10 +1,6 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb">
-  <%= link_to t('.home_link'), root_path %> >
-  <%= link_to t('.your_applications'), user_applications_path(current_user.id) %> >
-  Draft for <%= @event.name %>
-</p>
+<%= render partial: "shared/breadcrumbs", locals:{ your_applications: t('.your_applications'), draft_for: t('.draft_for', event_name: @event.name) } %>
 
 <h1 class="box-title">Draft for <%= @event.name %></h1>
 

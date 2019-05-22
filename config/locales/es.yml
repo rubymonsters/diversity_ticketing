@@ -568,7 +568,7 @@ es:
       title: "Sign in"
 
   shared:
-    first_level_breadcrumbs:
+    breadcrumbs:
       home_link: "Inicio"
 
   tags:

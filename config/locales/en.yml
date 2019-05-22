@@ -592,7 +592,7 @@ en:
       title: "Sign in"
 
   shared:
-    first_level_breadcrumbs:
+    breadcrumbs:
       home_link: "Home"
 
   tags:
