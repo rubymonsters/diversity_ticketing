@@ -1,12 +1,10 @@
 <% provide :title, @event.name %>
 
-<% if current_user && @event.organizer_id == current_user.id %>
-  <%= render partial: "shared/breadcrumbs", locals:{ your_events: t('.your_events'), event: @event, approval_pending: t('.approval_pending') } %>
-<% elsif current_user && current_user.admin? %>
-  <%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), event: @event, approval_pending: t('.approval_pending') } %>
-<% else %>
-  <%= render partial: "shared/breadcrumbs", locals:{ events: t('.events_link'), event: @event, approval_pending: t('.approval_pending') } %>
-<% end %>
+<% key = breadcrumb_locals_according_to_user_status.keys.first %>
+<% value = breadcrumb_locals_according_to_user_status.values.first %>
+
+<%= render partial: "shared/breadcrumbs", locals: Hash[key => value, event: @event, approval_pending: t('.approval_pending')] %>
+
 
 <h1><span class="conflogo--medium"><%= event_image @event %></span><%= @event.name %></h1>
 

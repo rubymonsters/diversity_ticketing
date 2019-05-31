@@ -8,17 +8,16 @@ module EventsHelper
     end
   end
 
-  #Currently not used - Left it for further refactoring, maybe we can
-  #reuse this later if we modify it for the breadcrumb_partial:
+  #Used in events/edit and events/show:
 
-  # def breadcrumb_link_according_to_user_status
-  #   if current_user && @event.organizer_id == current_user.id
-  #     link_to 'Your Events', user_path(current_user)
-  #   elsif current_user && current_user.admin?
-  #     link_to 'Admin', admin_path
-  #   else
-  #     link_to 'Events', events_path
-  #   end
-  # end
+  def breadcrumb_locals_according_to_user_status
+    if current_user && @event.organizer_id == current_user.id
+      { your_events: t('.your_events') }
+    elsif current_user && current_user.admin?
+      { admin: t('.admin_link') }
+    else
+      { events: t('.events_link') }
+    end
+  end
 
 end

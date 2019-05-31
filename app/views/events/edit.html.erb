@@ -1,12 +1,10 @@
 <% provide :title, t('.edit_event') %>
 
-<% if current_user && @event.organizer_id == current_user.id %>
-  <%= render partial: "shared/breadcrumbs", locals:{ your_events: t('.your_events'), edit_event: t('.edit_event') } %>
-<% elsif current_user && current_user.admin? %>
-  <%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), edit_event: t('.edit_event') } %>
-<% else %>
-  <%= render partial: "shared/breadcrumbs", locals:{ events: t('.events_link'), edit_event: t('.edit_event') } %>
-<% end %>
+<% key = breadcrumb_locals_according_to_user_status.keys.first %>
+<% value = breadcrumb_locals_according_to_user_status.values.first %>
+
+<%= render partial: "shared/breadcrumbs", locals: Hash[key => value, edit_event: t('.edit_event')] %>
+
 
 <h1 class="page-title"><span class="page-title-firstword"><%= t('.edit') %></span> <%= @event.name %></h1>
 
