@@ -1,8 +1,6 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb">
-  <%= link_to t('.home_link'), root_path %> > <%= t('.your_applications') %>
-</p>
+<%= render partial: "shared/breadcrumbs", locals:{ title: t('.title') } %>
 
 <h1><%= t(".title") %></h1>
 <div class="two-columns">

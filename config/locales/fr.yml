@@ -64,12 +64,12 @@ fr:
               invalid: "doit être une URL complète, comme https://maconference.fr"
 
   admin_applications:
-    application_approved: "La candidature de %{application_name} a été approuvée"
-    application_pending: "La candidature de %{application_name} est en attente"
-    application_rejected: "La candidature de %{application_name} a été rejetée"
+    application_approved: "La candidature de %{applicant_name} a été approuvée"
+    application_pending: "La candidature de %{applicant_name} est en attente"
+    application_rejected: "La candidature de %{applicant_name} a été rejetée"
     show:
       admin_link: "Admin"
-      application_by: "Candidature de %{application_name}"
+      application_by: "Candidature de %{applicant_name}"
       application_for: "Candidature pour %{event_name}"
       application_status: "Statut de la candidature : %{application_status}"
       approve: "Approuver"
@@ -174,7 +174,7 @@ fr:
       benefits_of_account_title: "Les avantages d'avoir un compte"
       create_an_account: "Créer un compte"
       continue_as_guest: "Continuer en tant qu'invité"
-      events_link: "Événement"
+      events_link: "Événements"
       home_link: "Accueil"
       guest_warning: "Si vous continuez en tant qu'invité, vous ne pourrez pas enregistrer ou revenir à votre candidature."
       sign_me_in: "Se connecter"
@@ -209,7 +209,7 @@ fr:
     show:
       admin_link: "Admin"
       agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
-      application_by: "Candidature de %{application_name}"
+      application_by: "Candidature de %{applicant_name}"
       application_for: "Candidature pour %{event_name}"
       approve: "Approuver"
       are_you_sure: "Êtes-vous sûr·e de vouloir supprimer cette candidature ?"
@@ -268,6 +268,7 @@ fr:
       are_you_sure: "Êtes-vous sûr·e de vouloir supprimer ce brouillon ?"
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
+      draft_for: "Brouillon pour %{event_name}"
       email: "Courriel"
       edit: "Modifier"
       delete: "Supprimer"
@@ -385,11 +386,14 @@ fr:
       your_application: "Votre candidature"
       your_draft: "Votre brouillon"
     edit:
+      admin_link: "Admin"
       edit: "Modifier"
       edit_event: "Modifier l'événement"
+      events_link: "Événements"
       home_link: "Accueil"
       errors: "durant la mise à jour de l'événement :"
       submit_changes: "Soumettre des modifications"
+      your_events: "Vos événements"
     index_past:
       home_link: "Accueil"
       past_events: "Événements passés"
@@ -406,6 +410,7 @@ fr:
       show_past_events: "Afficher les événements passés"
       submit_your_conference: "Vous pouvez %{link_to_submission} maintenant."
       submit_your_own_conference: "soumettre votre propre événement"
+      title: "Événements"
     new:
       create_new_event: "Créer</span> un nouvel événement"
       home_link: "Accueil"
@@ -425,6 +430,7 @@ fr:
       submit_your_event: "Soumettre votre événement"
       title: "Prévisualiser l'événement"
     show:
+      admin_link: "Admin"
       applications_closed: "Désolé, les candidatures pour %{event_name} sont fermées."
       apply_at: "Postuler à %{event_name}"
       apply_for_ticket: "Faire une demande de billet"
@@ -432,9 +438,11 @@ fr:
       are-you-sure: "Êtes-vous sûr·e ?"
       delete: "Supprimer"
       edit: "Modifier"
+      events_link: "Événements"
       home_link: "Accueil"
       your_application: "Votre candidature"
       your_draft: "Votre brouillon"
+      your_events: "Vos événements"
 
   home:
     about:
@@ -535,6 +543,10 @@ fr:
       new_to_diversity_tickets: "Première visite sur Diversity Tickets?"
       title: "Se connecter"
 
+  shared:
+    breadcrumbs:
+      home_link: "Accueil"
+
   tags:
     languages:
       chinese: "Chinois"
@@ -554,7 +566,7 @@ fr:
       security: "Sécurité"
     index:
       are_you_sure: "Êtes-vous sûr·e ?"
-      tags_management_title: "Gestion des étiquettes"
+      title: "Gestion des étiquettes"
     tag_created: "L'étiquette %{tag_name} a été créée avec succès."
     tag_problem: "Un problème est survenu durant la création de la nouvelle étiquette."
 

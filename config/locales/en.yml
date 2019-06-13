@@ -64,12 +64,12 @@ en:
               invalid: "should be a full URL, e.g. https://myconference.com"
 
   admin_applications:
-    application_approved: "%{application_name}'s application has been approved!"
-    application_pending: "%{application_name}'s application has been changed to pending"
-    application_rejected: "%{application_name}'s application has been rejected"
+    application_approved: "%{applicant_name}'s application has been approved!"
+    application_pending: "%{applicant_name}'s application has been changed to pending"
+    application_rejected: "%{applicant_name}'s application has been rejected"
     show:
       admin_link: "Admin"
-      application_by: "Application by %{application_name}"
+      application_by: "Application by %{applicant_name}"
       application_for: "Application for %{event_name}"
       application_status: "Application status: %{application_status}"
       approve: "Approve"
@@ -174,7 +174,7 @@ en:
       benefits_of_account_title: "Benefits of creating account"
       create_an_account: "Create an account"
       continue_as_guest: "Continue as guest"
-      events_link: "Event"
+      events_link: "Events"
       home_link: "Home"
       guest_warning: "If you continue as a guest you will not be able to save or come back to your application."
       sign_me_in: "Sign me in"
@@ -268,6 +268,7 @@ en:
       are_you_sure: "Are you sure you want to delete this draft?"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
       attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
+      draft_for: "Draft for %{event_name}"
       email: "Email"
       edit: "Edit"
       delete: "Delete"
@@ -385,11 +386,14 @@ en:
       your_application: "Your application"
       your_draft: "Your draft"
     edit:
+      admin_link: "Admin"
       edit: "Edit"
       edit_event: "Edit event"
+      events_link: "Events"
       home_link: "Home"
       errors: "stopped this event from being updated:"
       submit_changes: "Submit changes"
+      your_events: "Your events"
     index_past:
       home_link: "Home"
       past_events: "Past events"
@@ -406,6 +410,7 @@ en:
       show_past_events: "Show past events"
       submit_your_conference: "You can %{link_to_submission} now."
       submit_your_own_conference: "submit your own conference"
+      title: "Events"
     new:
       create_new_event: "Create</span> new event"
       home_link: "Home"
@@ -425,6 +430,7 @@ en:
       submit_your_event: "Submit your event"
       title: "Preview event"
     show:
+      admin_link: "Admin"
       applications_closed: "Sorry, applications for %{event_name} are closed."
       apply_at: "Apply at %{event_name}"
       apply_for_ticket: "Apply for a ticket"
@@ -432,9 +438,11 @@ en:
       are-you-sure: "Are you sure?"
       delete: "Delete"
       edit: "Edit"
+      events_link: "Events"
       home_link: "Home"
       your_application: "Your application"
       your_draft: "Your draft"
+      your_events: "Your events"
 
   home:
     about:
@@ -583,6 +591,10 @@ en:
       new_to_diversity_tickets: "New to Diversity Tickets?"
       title: "Sign in"
 
+  shared:
+    breadcrumbs:
+      home_link: "Home"
+
   tags:
     languages:
       chinese: "Chinese"
@@ -602,7 +614,7 @@ en:
       security: "Security"
     index:
       are_you_sure: "Are you sure?"
-      tags_management_title: "Tags management"
+      title: "Tags management"
     tag_created: "Tag %{tag_name} was successfully created."
     tag_problem: "There was a problem creating the new tag."
 
@@ -621,7 +633,7 @@ en:
       drafts: "Drafts"
       home_link: "Home"
       info_description: "<p> Once an event date has passed your applications
-      will vanish from this overview and all sensitive data will be removed from the database.</p>"
+        will vanish from this overview and all sensitive data will be removed from the database.</p>"
       no_applications: "There are currently no applications for this user account."
       submitted: "Submitted"
       title: "Your applications"

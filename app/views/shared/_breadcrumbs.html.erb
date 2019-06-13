@@ -1,0 +1,58 @@
+<p class="breadcrumb">
+  <%= link_to t('.home_link'), root_path %> >
+
+  <% if local_assigns.has_key? :title %>
+    <%= title %>
+
+  <% elsif local_assigns.has_key? :admin %>
+    <%= link_to admin, admin_path %> >
+    <% if local_assigns.has_key? :application_by %>
+      <%= link_to event.name, event_admin_path(event.id) %> >
+      <%= application_by %>
+    <% elsif local_assigns.has_key? :edit_event %>
+      <%= edit_event %>
+    <% else %>
+      <%= event.name %>
+      <% if local_assigns.has_key? :approval_pending && !event.approved? %>
+        <%= approval_pending %>
+      <% end %>
+    <% end %>
+
+  <% elsif local_assigns.has_key? :events %>
+    <%= link_to events, events_path %> >
+    <% if local_assigns.has_key? :edit_event %>
+      <%= edit_event %>
+    <% elsif local_assigns.has_key? :approval_pending %>
+      <%= event.name %>
+      <% if !event.approved? %>
+        <%= approval_pending %>
+      <% end %>
+    <% else %>
+      <%= link_to event.name, event_path(event) %> >
+      <% if local_assigns.has_key? :application_for %>
+        <%= application_for %>
+      <% else %>
+        <%= application %>
+      <% end %>
+    <% end %>
+
+  <% elsif local_assigns.has_key? :your_applications %>
+    <%= link_to your_applications, user_applications_path(current_user.id) %> >
+    <% if local_assigns.has_key? :draft_for %>
+      <%= draft_for %>
+    <% else %>
+      <%= application_for %>
+    <% end %>
+
+  <% elsif local_assigns.has_key? :your_events %>
+    <%= link_to your_events, user_path(current_user) %> >
+    <% if local_assigns.has_key? :event %>
+      <%= event.name %>
+      <% if !event.approved? %>
+        <%= approval_pending %>
+      <% end %>
+    <% else %>
+      <%= edit_event %>
+    <% end %>
+  <% end %>
+</p>

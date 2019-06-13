@@ -1,8 +1,6 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb">
-  <%= link_to t(".home_link"), root_path %> > <%= link_to t(".admin_link"), admin_path %> > <%= @event.name %>
-</p>
+<%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), event: @event } %>
 
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
 

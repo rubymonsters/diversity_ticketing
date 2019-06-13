@@ -1,6 +1,10 @@
 <% provide :title, t('.edit_event') %>
 
-<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%=t('.edit_event') %></p>
+<% key = breadcrumb_locals_according_to_user_status.keys.first %>
+<% value = breadcrumb_locals_according_to_user_status.values.first %>
+
+<%= render partial: "shared/breadcrumbs", locals: Hash[key => value, edit_event: t('.edit_event')] %>
+
 
 <h1 class="page-title"><span class="page-title-firstword"><%= t('.edit') %></span> <%= @event.name %></h1>
 
