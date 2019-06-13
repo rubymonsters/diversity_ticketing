@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   end
 
   def index_past
-    @events = EventSearchService.new(params).results.approved.past.active
+    @events = EventSearchService.new(params).results.approved.past.active.order(end_date: :desc)
     @selected_tags = EventSearchService.new(params).selected_tags
   end
 
