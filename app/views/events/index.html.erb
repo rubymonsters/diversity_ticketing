@@ -1,8 +1,6 @@
-<% provide :title, t('.events') %>
+<% provide :title, t('.title') %>
 
-<p class="breadcrumb">
-  <%= link_to t('.home_link'), root_path %> > <%= t('.events') %>
-</p>
+<%= render partial: "shared/breadcrumbs", locals:{ title: t('.title') } %>
 
 <%= render 'event_search', search_path: events_path %>
 

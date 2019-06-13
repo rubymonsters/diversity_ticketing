@@ -1,5 +1,7 @@
 <% provide :title, t('.title') %>
 
+<%= render partial: "shared/breadcrumbs", locals:{ title: t('.title') } %>
+
 <h1 class="page-title"><%=t('.about_title') %></h1>
 
 

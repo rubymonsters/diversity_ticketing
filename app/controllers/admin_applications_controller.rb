@@ -11,20 +11,20 @@ class AdminApplicationsController < ApplicationController
     @application.update_attributes(status: 'approved')
     add_to_approved_tickets_count
     redirect_to admin_event_path(@application.event_id),
-                notice: t('.application_approved', application_name: @application.name)
+                notice: t('.application_approved', applicant_name: @application.name)
   end
 
   def reject
     @application.update_attributes(status: 'rejected')
     redirect_to admin_event_path(@application.event_id),
-                flash: { info: t('.application_rejected', application_name: @application.name) }
+                flash: { info: t('.application_rejected', applicant_name: @application.name) }
   end
 
   def revert
     remove_from_approved_tickets_count
     @application.update_attributes(status: 'pending')
     redirect_to admin_event_path(@application.event_id),
-                flash: { info: t('.application_pending', application_name: @application.name) }
+                flash: { info: t('.application_pending', applicant_name: @application.name) }
   end
 
   def destroy

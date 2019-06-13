@@ -1,11 +1,10 @@
 <% provide :title, @event.name %>
 
-<p class="breadcrumb">
-  <%= link_to t('.home_link'), root_path %> > <%= breadcrumb_link_according_to_user_status %> > <%= @event.name %>
-  <% if !@event.approved? %>
-    <%= t('.approval_pending') %>
-  <% end %>
-</p>
+<% key = breadcrumb_locals_according_to_user_status.keys.first %>
+<% value = breadcrumb_locals_according_to_user_status.values.first %>
+
+<%= render partial: "shared/breadcrumbs", locals: Hash[key => value, event: @event, approval_pending: t('.approval_pending')] %>
+
 
 <h1><span class="conflogo--medium"><%= event_image @event %></span><%= @event.name %></h1>
 

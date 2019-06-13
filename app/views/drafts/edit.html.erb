@@ -4,7 +4,7 @@
 
   <% if @draft.errors.any? %>
     <div class="error">
-      <p><%= pluralize(@draft.errors.count, "error") %> stopped this draft from being saved:</p>
+      <p><%= pluralize(@draft.errors.count, "error", "errors") %> stopped this draft from being saved:</p>
       <ul>
         <% @draft.errors.messages.each do |field, messages| %>
           <li><%= @draft.class.human_attribute_name(field) %> <%= join_messages(messages) %></li>

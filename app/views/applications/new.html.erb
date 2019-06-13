@@ -1,6 +1,6 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb"><%= link_to t('.home_link'), root_path %> > <%= link_to t('.events_link'), events_path %> > <%= link_to @event.name, event_path(@event) %> > <%= t('.application') %></p>
+<%= render partial: "shared/breadcrumbs", locals:{ events: t('.events_link'), event: @event, application: t('.application') } %>
 
 <h1 class="page-title"><span class="page-title-firstword"><%= t('.application_for') %></span> <%= @event.name %></h1>
 

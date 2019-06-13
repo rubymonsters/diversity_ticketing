@@ -1,11 +1,6 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb">
-  <%= link_to t('.home_link'), root_path %> >
-  <%= link_to t('.admin_link'), admin_path %> >
-  <%= link_to @event.name, event_admin_path(@event.id) %> >
-  <%= t('.application_by', application_name: @application.name)%>
-</p>
+<%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), event: @event, application_by: t('.application_by', applicant_name: @application.name) } %>
 
 <h1 class="box-title"><%=t('.application_for', event_name: @event.name)%></h1>
 

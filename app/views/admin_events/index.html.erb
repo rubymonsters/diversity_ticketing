@@ -1,5 +1,7 @@
 <% provide :title, t('.title') %>
 
+<%= render partial: "shared/breadcrumbs", locals:{ title: t('.title') } %>
+
 <h1><%=t('.title')%></h1>
 
 <%= render partial: 'statistics' %>
@@ -54,8 +56,7 @@
                     <% end %>
                   </div>
                   <p>
-                    <%= link_to t('.download_csv'), event_admin_path(id: event.id, format: :csv),
-                        class: "btn btn-save", title: t('.download_data')%>
+                    <%= download_csv_link(event) %>
                   </p>
                 </li>
                 <% end %>

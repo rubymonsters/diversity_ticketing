@@ -1,8 +1,6 @@
 <% provide :title, t('.title') %>
 
-<p class="breadcrumb">
-  <%= link_to t(".home_link"), root_path %> > <%= link_to t(".admin_link"), admin_path %> > <%= @event.name %>
-</p>
+<%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), event: @event } %>
 
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
 
@@ -90,10 +88,12 @@
   <%= render partial: "events/event" %>
 
   <div class="form_field">
-    <%= link_to t("delete_event"), event_path(@event.id), method: :delete,
+    <%= link_to t(".delete_event"), event_path(@event.id), method: :delete,
         data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
     <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
-    <% unless @event.approved? %>
+    <% if @event.approved? %>
+      <%= download_csv_link(@event) %>
+    <% else %>
       <span class="approve-button">
         <%= form_for :approve,
             url: approve_admin_event_path(@event),

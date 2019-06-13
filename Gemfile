@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.4.3'
+ruby '2.6.3'
 
-gem 'rails', '5.2.0'
+gem 'rails', '~>5.2.0'
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2'
