@@ -1,7 +1,7 @@
 <div class="box event">
   <h3 class="conf-title">
-    <div class="conflogo--medium"><%= event_image event %></div>
-    <%= link_to event.name, event_path(id: event.id) %>
+      <div class="conflogo--medium"><%= event_image event %></div>
+      <div class="conftitle-link"><%= link_to event.name, event_path(id: event.id) %></div>
   </h3>
 
   <p><i class="icon-location"></i><%= event.location %></p>

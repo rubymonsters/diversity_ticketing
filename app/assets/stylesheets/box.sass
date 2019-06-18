@@ -28,8 +28,10 @@
     @extend %anchor
 
 .conf-title
-  white-space: nowrap
-  overflow: hidden
+  display: inline-flex
+  .conftitle-link
+    a:not([class^="icon"])
+      vertical-align: -webkit-baseline-middle
 
 .detail-pair
   font-weight: 300
