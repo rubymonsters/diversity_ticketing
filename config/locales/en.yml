@@ -126,6 +126,7 @@ en:
       most_conferences: "Most conferences"
       new_users_last_30_days: "New users in the last 30 days:"
       total_conferences: "Total conferences:"
+      total_organizers: "Total organizers:"
       show_statistics_map: "Show statistics map"
       statistics: "Statistics"
 
