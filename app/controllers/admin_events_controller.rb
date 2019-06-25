@@ -5,6 +5,7 @@ class AdminEventsController < ApplicationController
   before_action :require_admin
   before_action :set_approved_tickets_count, only: [:show]
 
+  #Admin page view with all submitted events and admin statistics:
   def index
     @events = Event.all
     @new_users = User.all.created_last_30_days
@@ -34,6 +35,8 @@ class AdminEventsController < ApplicationController
     end
   end
 
+  #Event show view for admins (events/:id/admin)- shows event details, an overview over the status of
+  #applications (if selection is handled by Travis) and allows selection process for applications as well as csv-download
   def show
     @categorized_applications = {
       "Pending applications" => @event.applications.submitted.pending,
@@ -47,6 +50,7 @@ class AdminEventsController < ApplicationController
     end
   end
 
+  #to approve/unapprove an event:
   def approve
     @event.toggle(:approved)
     @event.save!
