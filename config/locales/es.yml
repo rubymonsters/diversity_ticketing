@@ -140,6 +140,7 @@ es:
       most_conferences: "Mayoría de conferencias"
       new_users_last_30_days: "Usuarios nuevos en los últimos 30 días"
       total_conferences: "Número total de conferencias:"
+      total_organizers: "Número total de organizadores:"
       show_statistics_map: "Mostrar mapa de estadísticas"
       statistics: "Estadísticas"
 

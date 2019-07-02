@@ -124,8 +124,9 @@ fr:
       conferences_since: "Événements depuis "
       countries_hosted_events: "Pays hôtes"
       most_conferences: "Le + d'événements"
-      new_users_last_30_days: "Nouveaux inscrits les 30 derniers jours :"
-      total_conferences: "Nombre total d'événements :"
+      new_users_last_30_days: "Nouveaux inscrits les 30 derniers jours:"
+      total_conferences: "Nombre total d'événements:"
+      total_organizers: "Nombre total d'organisateurs:"
       show_statistics_map: "Afficher la carte statistique"
       statistics: "Statistiques"
 
