@@ -56,7 +56,7 @@
         <span class="check-label"><%=t('.agree_terms_and_conditions') %></span>
         <% end %>
         <p id="terms-and-conditions">
-          <%= t('.terms_and_conditions_1') %>
+          <%= t('.terms_and_conditions_1', event_name: @event.name)%>
         </p>
         <ul>
           <% if @event.ticket_funded? %>
