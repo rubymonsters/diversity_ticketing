@@ -163,14 +163,6 @@ es:
       sign_in: "iniciar sesión"
       sign_in_request: "¿Te gustaría %{href} para utilizar la información de tu cuenta y guardar esta solicitud?"
       submit_application: "Enviar solicitud"
-      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
-      terms_and_conditions_2: "entrada a la conferencia,"
-      terms_and_conditions_3: "costes del viaje,"
-      terms_and_conditions_4: "alojamiento,"
-      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
-        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
-      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
-      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       visa_need: "Necesito una visa para poder asistir"
     continue_as_guest:
       application_for: "Solicitud para %{event_name}"
@@ -204,14 +196,6 @@ es:
       email_confirmation: "Confirmación de email"
       name: "Nombre"
       please_fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
-      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
-      terms_and_conditions_2: "entrada a la conferencia,"
-      terms_and_conditions_3: "costes del viaje,"
-      terms_and_conditions_4: "alojamiento,"
-      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
-        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
-      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
-      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       title: "Editar solicitud"
       visa_need: "Necesito una visa para poder asistir"
     new:
@@ -241,14 +225,6 @@ es:
       revert: "Revertir"
       show_event_details: "Mostrar detalles del evento"
       submit_application: "Enviar solicitud"
-      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
-      terms_and_conditions_2: "entrada a la conferencia,"
-      terms_and_conditions_3: "costes del viaje,"
-      terms_and_conditions_4: "alojamiento,"
-      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
-        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
-      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
-      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       title: "Solicitud"
       visa_need: "Necesito una visa para poder asistir"
       your_applications: "Tus solicitudes"
@@ -269,14 +245,6 @@ es:
       name: "Nombre"
       please_fill: "Por favor, rellena este formulario. Los campos marcados con * son obligatorios."
       save_changes: "Guardar cambios"
-      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
-      terms_and_conditions_2: "entrada a la conferencia,"
-      terms_and_conditions_3: "costes del viaje,"
-      terms_and_conditions_4: "alojamiento,"
-      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
-        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
-      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
-      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       title: "Editar solicitud"
       visa_need: "Necesito una visa para poder asistir"
     show:
@@ -291,14 +259,6 @@ es:
       name: "Nombre"
       show_event_details: "Mostrar detalles del evento"
       submit_application: "Enviar solicitud"
-      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
-      terms_and_conditions_2: "entrada a la conferencia,"
-      terms_and_conditions_3: "costes del viaje,"
-      terms_and_conditions_4: "alojamiento,"
-      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
-        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
-      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
-      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
       visa_need: "Necesito una visa para poder asistir"
       title: "Borrador"
       your_applications: "Tus solicitudes"
@@ -570,6 +530,15 @@ es:
   shared:
     breadcrumbs:
       home_link: "Inicio"
+    applications_t&c:
+      terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
+      terms_and_conditions_2: "entrada a la conferencia,"
+      terms_and_conditions_3: "costes del viaje,"
+      terms_and_conditions_4: "alojamiento,"
+      terms_and_conditions_5: "<li>catering para el día de la conferencia,</li>
+        <li>y entrada a las fiestas organizadas por los asistentes de la conferencia, speakers y equipo.</li>"
+      terms_and_conditions_6: "Si has solicitado una beca de viaje y has sido aceptado, recibirás un reembolso de tus gastos de hasta 300 € (EU) o de más de 900 € (non-EU). Nota: Sólo recibirás un reembolso si los organizadores confirman que has asistido a la conferencia. Tomarán nota de tu nombre en su mesa de registro."
+      terms_and_conditions_7: "Todos los asistentes, speakers, patrocinadores y equipo de %{event} han de aceptar el %{href}. Los organizadores de la conferencia harán complir este código durante el evento."
 
   tags:
     languages:
