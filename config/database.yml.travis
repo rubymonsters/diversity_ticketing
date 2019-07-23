@@ -2,3 +2,4 @@ test:
   adapter: postgresql
   database: diversity_ticketing_test
   username: postgres
+  dist: trusty
