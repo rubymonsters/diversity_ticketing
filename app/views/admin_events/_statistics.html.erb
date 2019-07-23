@@ -1,8 +1,9 @@
 <div class="box">
   <h2><%= t('.statistics') %></h2>
     <ul class="admin-list">
-      <li><%= t('.total_conferences') %> <strong><%= @events.count %></strong></li>
-      <li><%= %><%= t('.conferences_since')%><%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
+      <li><%= t('.total_conferences') %><strong><%= @events.count %></strong></li>
+      <li><%= t('.conferences_since')%><%= Time.zone.now.year %>: <strong><%= @events.created_current_year.count %></strong></li>
+      <li><%= t('.total_organizers') %><strong><%= @total_organizers %></strong></li>
       <li class="border"><%= t('.new_users_last_30_days') %> <strong><%= @new_users.count %></strong></li>
     </ul>
     <ul class="admin-list">

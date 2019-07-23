@@ -9,6 +9,7 @@ class AdminEventsController < ApplicationController
   def index
     @events = Event.all
     @new_users = User.all.created_last_30_days
+    @total_organizers = Event.all.total_organizers
     @countries = Event.all.pluck(:country).compact
     @countries_statistics = CountriesStatistics.new(@events).to_json
     @country_rank = CountriesStatistics.new(@events).country_rank

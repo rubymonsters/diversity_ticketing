@@ -68,6 +68,10 @@ class Event < ApplicationRecord
     where(deleted: false)
   end
 
+  def self.total_organizers
+    pluck(:organizer_id).uniq.count
+  end
+
   def open?
     deadline >= Time.now
   end

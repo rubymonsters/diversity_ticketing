@@ -4,16 +4,17 @@
 
 .progress {
   max-width: 600px;
-  margin:    0.2em 0 0.2em 0;
+  margin: 0.2em 0 0.2em 0;
 }
 
 .progress .bar {
   padding-left: 0.2em;
-  color:   white;
+  color: white;
   display: none;
 }
 
-.funded, .not-funded {
+.funded,
+.not-funded {
   padding-right: 0.5em;
 }
 
@@ -39,13 +40,13 @@
 }
 
 .approve-button {
-  display: inline-block;
-  input[type="checkbox"]{
+  input[type="checkbox"] {
     margin-left: 10px;
   }
 }
 
-.admin-list, .tags-list {
+.admin-list,
+.tags-list {
   list-style: none;
   padding: 0;
 
@@ -91,7 +92,8 @@
   }
 }
 
-.organizer-list, .applicant-list {
+.organizer-list,
+.applicant-list {
   list-style: none;
   padding: 0;
 
