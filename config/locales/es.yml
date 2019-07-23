@@ -151,7 +151,6 @@ es:
     edit_deadline_passed: "No puedes editar tu solicitud porque la fecha límite de %{event_name} ya ha pasado"
     update_success: "Has actualizado con éxito tu solicitud para %{event_name}."
     form:
-      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
       attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
       code_of_conduct: "código de conducta"
@@ -187,7 +186,6 @@ es:
       sign_me_in: "Iniciar sesión"
       title: "¿Cómo te gustaría solicitar un ticket?"
     edit:
-      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       apply_changes: "Aplicar cambios"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
       attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
@@ -207,7 +205,6 @@ es:
       title: "Nueva solicitud"
     show:
       admin_link: "Admin"
-      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       application_by: "Solicitud de %{applicant_name}"
       application_for: "Solicitud para %{event_name}"
       approve: "Aprobar"
@@ -235,7 +232,6 @@ es:
     successful_saved_changes: "Has guardado con éxito los cambios en tu borrador"
     successful_application: "Tu solicitud se ha enviado con éxito a %{event_name}."
     edit:
-      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       apply_changes: "Aplicar cambios"
       attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
       attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket (con 1 o 2 frases basta, escribe sólo aquello con lo que te sientas a gusto)"
@@ -532,6 +528,7 @@ es:
     breadcrumbs:
       home_link: "Inicio"
     applications_t&c:
+      agree_terms_and_conditions: "Estoy de acuerdo con los siguientes Términos y condiciones*"
       terms_and_conditions_1: "Este programa de diversidad pretende apoyar la assistencia de grupos infrarrepresentados en tecnología y así reducir sus obstáculos. Esto incluye pero no está limitado a: Mujeres, personas no blancas, LGTBQIA+ y personas discapacitadas. Tu privacidad, detalles y respuestas sólo serán compartidas con los organizadores de %{event_name}. No compartiremos estos datos con los patrocinadores. Esta solicitud sólo es válida para un ticket, que incluye"
       terms_and_conditions_2: "entrada a la conferencia,"
       terms_and_conditions_3: "costes del viaje,"

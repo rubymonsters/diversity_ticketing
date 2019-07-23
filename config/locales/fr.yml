@@ -137,7 +137,6 @@ fr:
     edit_deadline_passed: "Vous ne pouvez pas modifier votre candidature car la date limite pour %{event_name} est déjà dépassée"
     update_success: "Votre candidature pour %{event_name} a été mise à jour avec succès"
     form:
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
       code_of_conduct: "Code de Conduite"
@@ -173,7 +172,6 @@ fr:
       sign_me_in: "Se connecter"
       title: "Comment souhaitez-vous postuler ?"
     edit:
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       apply_changes: "Effectuer les modifications"
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
@@ -193,7 +191,6 @@ fr:
       title: "Nouvelle candidature"
     show:
       admin_link: "Admin"
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       application_by: "Candidature de %{applicant_name}"
       application_for: "Candidature pour %{event_name}"
       approve: "Approuver"
@@ -221,7 +218,6 @@ fr:
     successful_saved_changes: "Votre brouillon a été sauvegardé avec succès."
     successful_application: "Votre candidature pour %{event_name} a été enregistrée avec succès."
     edit:
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
       back: "Retour"
@@ -508,6 +504,7 @@ fr:
     breadcrumbs:
       home_link: "Accueil"
     applications_t&c:
+      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
       terms_and_conditions_2: "l'entrée à l'événement,"
       terms_and_conditions_3: "les frais de déplacement,"

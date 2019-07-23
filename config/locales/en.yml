@@ -137,7 +137,6 @@ en:
     edit_deadline_passed: "You cannot edit your application as the %{event_name} deadline has already passed"
     update_success: "You have successfully updated your application for %{event_name}."
     form:
-      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       attendee_info_1: "Why are you applying for %{event_name} and what do you look forward to learning?"
       attendee_info_2: "What makes you eligible for a diversity ticket? (1-2 sentences is enough, please only share what you're comfortable with)"
       code_of_conduct: "code of conduct"
@@ -173,7 +172,6 @@ en:
       sign_me_in: "Sign me in"
       title: "How would you like to apply?"
     edit:
-      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       apply_changes: "Apply changes"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
       attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
@@ -193,7 +191,6 @@ en:
       title: "New application"
     show:
       admin_link: "Admin"
-      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       application_by: "Application by %{applicant_name}"
       application_for: "Application for %{event_name}"
       approve: "Approve"
@@ -221,7 +218,6 @@ en:
     successful_saved_changes: "You have successfully saved your changes to the draft."
     successful_application: "You have successfully applied for %{event_name}."
     edit:
-      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       attendee_info_1: "Why do you want to attend %{event_name} and what especially do you look forward to learning?"
       attendee_info_2: "Please share with us why you're applying for a diversity ticket. (1-2 sentences is enough, please only share what you're comfortable with)"
       back: "Back"
@@ -556,6 +552,7 @@ en:
     breadcrumbs:
       home_link: "Home"
     applications_t&c:
+      agree_terms_and_conditions: "I agree with the following Terms and Conditions*"
       terms_and_conditions_1: "This diversity program is aimed to help underrepresented groups in tech to attend and lowering the barriers for them. This includes but isn’t limited to: women, people of color, LGBTQIA+ people, and disabled people. Your privacy, details and answers will only be shared with the organizers of %{event_name}. We will not share any data with those who sponsor these tickets. This application is for one conference ticket only. The ticket includes"
       terms_and_conditions_2: "admission to the conference,"
       terms_and_conditions_3: "travel costs,"
