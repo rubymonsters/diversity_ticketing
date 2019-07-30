@@ -1,3 +1,5 @@
+#Handles Tag management - Event organizers can choose from a pool of existing tags
+#and add them to their event. Only Admins can access the tags_index_view to add/delete/modify tags.
 class TagsController < ApplicationController
   before_action :require_admin
 

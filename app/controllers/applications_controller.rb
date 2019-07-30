@@ -1,3 +1,4 @@
+#This controller manages the applications for a specific event
 class ApplicationsController < ApplicationController
   before_action :get_event
   before_action :get_application, except: [:new, :create, :continue_as_guest]
@@ -67,6 +68,8 @@ class ApplicationsController < ApplicationController
     redirect_to user_applications_path(current_user.id)
   end
 
+  #If current user is signed in redirect to applications#new, otherwise show continue_as_guest page
+  #to give user the option to sign in/up or choose to proceed as guest without a user_id.
   def continue_as_guest
     if current_user
       redirect_to new_event_application_path(event_id: params[:event_id])

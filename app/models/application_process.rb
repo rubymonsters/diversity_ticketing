@@ -25,6 +25,10 @@ module ApplicationProcess
     end
   end
 
+  #This part handles the dynamic validations for our event_form, such as checked
+  #box for data_protection_confirmation (only validated if selection by organizer
+  # is chosen), etc.. It's included in the Event model:
+
   module Validator
     def self.included(base)
       base.validates_each :application_process do |record, attr, value|
