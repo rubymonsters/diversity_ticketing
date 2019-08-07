@@ -137,10 +137,8 @@ fr:
     edit_deadline_passed: "Vous ne pouvez pas modifier votre candidature car la date limite pour %{event_name} est déjà dépassée"
     update_success: "Votre candidature pour %{event_name} a été mise à jour avec succès"
     form:
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
-      code_of_conduct: "Code de Conduite"
       email: "Courriel"
       email_confirmation: "Courriel de confirmation"
       name: "Nom"
@@ -150,14 +148,6 @@ fr:
       sign_in: "vous connecter"
       sign_in_request: "Souhaitez-vous %{href} pour utiliser les informations de votre profil et enregistrer cette candidature ?"
       submit_application: "Postuler"
-      terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
-      terms_and_conditions_2: "l'entrée à l'événement,"
-      terms_and_conditions_3: "les frais de déplacement,"
-      terms_and_conditions_4: "le logement,"
-      terms_and_conditions_5: "<li>la restauration pendant l'événement,</li>
-        <li>et l'admission aux soirées organisées pour les participants à la conférence, les conférenciers et le personnel.</li>"
-      terms_and_conditions_6: "Si vous avez demandé une bourse de voyage et que votre demande a été acceptée, vous serez remboursé·e à hauteur de 300 € (UE) ou de 900 € (hors UE). Note : vous ne serez remboursé·e que lorsque les organisateurs de la conférence pourront confirmer que vous avez effectivement assisté à la conférence. Ils prendront note de votre nom à l'accueil."
-      terms_and_conditions_7: "Tous les participants, les conférenciers, les partenaires et le personnel de %{event} doivent être d'accord avec le %{href} de l'événement. Les organisateurs appliqueront ce code tout au long de l'événement."
       visa_need: "J'aurai besoin d'un visa pour y assister"
     continue_as_guest:
       application_for: "Candidature pour %{event_name}"
@@ -181,24 +171,14 @@ fr:
       sign_me_in: "Se connecter"
       title: "Comment souhaitez-vous postuler ?"
     edit:
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       apply_changes: "Effectuer les modifications"
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
       back: "Retour"
-      code_of_conduct: "code de conduite"
       email: "Courriel"
       email_confirmation: "Courriel de confirmation"
       name: "Nom"
       please_fill: "Veuillez remplir ce formulaire <span>en Anglais</span>. Les champs marqués d'une * sont obligatoires."
-      terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
-      terms_and_conditions_2: "l'entrée à l'événement,"
-      terms_and_conditions_3: "les frais de déplacement,"
-      terms_and_conditions_4: "le logement,"
-      terms_and_conditions_5: "<li>la restauration pendant l'événement,</li>
-        <li>et l'admission aux soirées organisées pour les participants à la conférence, les conférenciers et le personnel.</li>"
-      terms_and_conditions_6: "Si vous avez demandé une bourse de voyage et que votre demande a été acceptée, vous serez remboursé·e à hauteur de 300 € (UE) ou de 900 € (hors UE). Note : vous ne serez remboursé·e que lorsque les organisateurs de la conférence pourront confirmer que vous avez effectivement assisté à la conférence. Ils prendront note de votre nom à l'accueil."
-      terms_and_conditions_7: "Tous les participants, les conférenciers, les partenaires et le personnel de %{event} doivent être d'accord avec le %{href} de l'événement. Les organisateurs appliqueront ce code tout au long de l'événement."
       title: "Modifier la candidature"
       visa_need: "J'aurai besoin d'un visa pour y assister"
     new:
@@ -209,14 +189,12 @@ fr:
       title: "Nouvelle candidature"
     show:
       admin_link: "Admin"
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       application_by: "Candidature de %{applicant_name}"
       application_for: "Candidature pour %{event_name}"
       approve: "Approuver"
       are_you_sure: "Êtes-vous sûr·e de vouloir supprimer cette candidature ?"
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
-      code_of_conduct: "code de conduite"
       delete: "Supprimer"
       delete_application: "Supprimer la candidature"
       edit: "Modifier"
@@ -228,14 +206,6 @@ fr:
       revert: "annuler"
       show_event_details: "Voir les détails de l'événement"
       submit_application: "Postuler"
-      terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
-      terms_and_conditions_2: "l'entrée à l'événement,"
-      terms_and_conditions_3: "les frais de déplacement,"
-      terms_and_conditions_4: "le logement,"
-      terms_and_conditions_5: "<li>la restauration pendant l'événement,</li>
-        <li>et l'admission aux soirées organisées pour les participants à la conférence, les conférenciers et le personnel.</li>"
-      terms_and_conditions_6: "Si vous avez demandé une bourse de voyage et que votre demande a été acceptée, vous serez remboursé·e à hauteur de 300 € (UE) ou de 900 € (hors UE). Note : vous ne serez remboursé·e que lorsque les organisateurs de la conférence pourront confirmer que vous avez effectivement assisté à la conférence. Ils prendront note de votre nom à l'accueil."
-      terms_and_conditions_7: "Tous les participants, les conférenciers, les partenaires et le personnel de %{event} doivent être d'accord avec le %{href} de l'événement. Les organisateurs appliqueront ce code tout au long de l'événement."
       title: "Candidature"
       visa_need: "J'aurai besoin d'un visa pour y assister"
       your_applications: "Vos candidatures"
@@ -245,24 +215,14 @@ fr:
     successful_saved_changes: "Votre brouillon a été sauvegardé avec succès."
     successful_application: "Votre candidature pour %{event_name} a été enregistrée avec succès."
     edit:
-      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
       attendee_info_1: "Pourquoi souhaitez-vous participer à %{event_name} et que souhaitez-vous tout particulièrement y apprendre ?"
       attendee_info_2: "Qu'est-ce qui vous rend éligible à un billet diversité ? (1-2 phrases suffisent, ne partagez que ce avec quoi vous êtes à l'aise)"
       back: "Retour"
-      code_of_conduct: "code de conduite"
       email: "Courriel"
       email_confirmation: "Courriel de confirmation"
       name: "Nom"
       please_fill: "Veuillez remplir ce formulaire. Les champs marqués d'une * sont obligatoires."
       save_changes: "Enregistrer les modifications"
-      terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
-      terms_and_conditions_2: "l'entrée à l'événement,"
-      terms_and_conditions_3: "les frais de déplacement,"
-      terms_and_conditions_4: "le logement,"
-      terms_and_conditions_5: "<li>la restauration pendant l'événement,</li>
-        <li>et l'admission aux soirées organisées pour les participants à la conférence, les conférenciers et le personnel.</li>"
-      terms_and_conditions_6: "Si vous avez demandé une bourse de voyage et que votre demande a été acceptée, vous serez remboursé·e à hauteur de 300 € (UE) ou de 900 € (hors UE). Note : vous ne serez remboursé·e que lorsque les organisateurs de la conférence pourront confirmer que vous avez effectivement assisté à la conférence. Ils prendront note de votre nom à l'accueil."
-      terms_and_conditions_7: "Tous les participants, les conférenciers, les partenaires et le personnel de %{event} doivent être d'accord avec le %{href} de l'événement. Les organisateurs appliqueront ce code tout au long de l'événement."
       title: "Modifier le brouillon"
       visa_need: "J'aurai besoin d'un visa pour y assister"
     show:
@@ -277,14 +237,6 @@ fr:
       name: "Nom"
       show_event_details: "Voir les détails de l'événement"
       submit_application: "Postuler"
-      terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
-      terms_and_conditions_2: "l'entrée à l'événement,"
-      terms_and_conditions_3: "les frais de déplacement,"
-      terms_and_conditions_4: "le logement,"
-      terms_and_conditions_5: "<li>la restauration pendant l'événement,</li>
-        <li>et l'admission aux soirées organisées pour les participants à la conférence, les conférenciers et le personnel.</li>"
-      terms_and_conditions_6: "Si vous avez demandé une bourse de voyage et que votre demande a été acceptée, vous serez remboursé·e à hauteur de 300 € (UE) ou de 900 € (hors UE). Note : vous ne serez remboursé·e que lorsque les organisateurs de la conférence pourront confirmer que vous avez effectivement assisté à la conférence. Ils prendront note de votre nom à l'accueil."
-      terms_and_conditions_7: "Tous les participants, les conférenciers, les partenaires et le personnel de %{event} doivent être d'accord avec le %{href} de l'événement. Les organisateurs appliqueront ce code tout au long de l'événement."
       title: "Brouillon"
       visa_need: "J'aurai besoin d'un visa pour y assister"
       your_applications: "Vos candidatures"
@@ -547,6 +499,17 @@ fr:
   shared:
     breadcrumbs:
       home_link: "Accueil"
+    applications_t&c:
+      agree_terms_and_conditions: "J'accepte les Conditions Générales* suivantes."
+      code_of_conduct: "Code de Conduite"
+      terms_and_conditions_1: "Ce programme pro-diversité vise à aider les groupes sous-représentés dans le domaine de la technologie à participer et à réduire les obstacles auxquels ils font face. Cela inclut, sans s'y limiter : les femmes, les personnes de couleur, les personnes LGBTQIA+ et les personnes handicapées. Votre vie privée, vos coordonnées et vos réponses ne seront partagées qu'avec les organisateurs de %{event_name}. Nous ne partagerons aucune donnée avec ceux qui financent ces billets. Cette candidature ne concerne qu'un seul billet de conférence. Le billet comprend"
+      terms_and_conditions_2: "l'entrée à l'événement,"
+      terms_and_conditions_3: "les frais de déplacement,"
+      terms_and_conditions_4: "le logement,"
+      terms_and_conditions_5: "<li>la restauration pendant l'événement,</li>
+        <li>et l'admission aux soirées organisées pour les participants à la conférence, les conférenciers et le personnel.</li>"
+      terms_and_conditions_6: "Si vous avez demandé une bourse de voyage et que votre demande a été acceptée, vous serez remboursé·e à hauteur de 300 € (UE) ou de 900 € (hors UE). Note : vous ne serez remboursé·e que lorsque les organisateurs de la conférence pourront confirmer que vous avez effectivement assisté à la conférence. Ils prendront note de votre nom à l'accueil."
+      terms_and_conditions_7: "Tous les participants, les conférenciers, les partenaires et le personnel de %{event} doivent être d'accord avec le %{href} de l'événement. Les organisateurs appliqueront ce code tout au long de l'événement."
 
   tags:
     languages:

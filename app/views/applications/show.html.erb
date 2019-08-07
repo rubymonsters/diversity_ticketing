@@ -55,32 +55,10 @@
 
       <section class="box">
         <%= f.form_field :text_field, :email_confirmation, t('.email_confirmation') %>
-        <div class="form_field--check">
-          <%= label_tag do %>
-          <%= f.check_box :terms_and_conditions, checked: false %>
-          <span class="check-label"><%=t('.agree_terms_and_conditions') %></span>
-          <% end %>
-          <p id="terms-and-conditions">
-            <%= t('.terms_and_conditions_1') %>
-          </p>
-          <ul>
-            <% if @event.ticket_funded? %>
-              <li><%= t('.terms_and_conditions_2') %></li>
-            <% end %>
-            <% if @event.travel_funded? %>
-              <li><%= t('.terms_and_conditions_3') %></li>
-            <% end %>
-            <% if @event.accommodation_funded? %>
-              <li><%= t('.terms_and_conditions_4') %></li>
-            <% end %>
-            <%=raw t('.terms_and_conditions_5') %>
-          </ul>
-          <% if @event.travel_funded? %>
-            <p><%= t('.terms_and_conditions_6') %></p>
-          <% end %>
-          <p><%= t('.terms_and_conditions_7', event: @event.name, href: link_to(t('.code_of_conduct'), @event.code_of_conduct)).html_safe %></p>
-          </div>
-        </section>
+
+        <%= render partial: "shared/applications_t&c", locals: { f: f } %>
+
+      </section>
       <div>
         <%= f.submit(t('.submit_application'), class: "btn btn-save submit_application") %>
     <% end %>
