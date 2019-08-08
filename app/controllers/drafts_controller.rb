@@ -1,3 +1,5 @@
+#Drafts are all applications where submitted == 'false'. Only storable if applicant
+#is registered user.
 class DraftsController < ApplicationController
   before_action :get_event
 

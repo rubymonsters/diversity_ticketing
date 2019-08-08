@@ -1,3 +1,5 @@
+#Defines event keyword search and filter option on the events index pages:
+
 class EventSearchService
   def initialize(params)
     params[:query] = [] if params[:query] == nil
