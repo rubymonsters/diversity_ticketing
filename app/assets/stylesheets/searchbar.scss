@@ -1,13 +1,16 @@
 #searchbar {
   margin: 20px 0;
-  .search-input, .btn {
+  .search-input,
+  .btn {
     position: relative;
     float: left;
     align-items: baseline;
   }
-  .search-input{
+  .search-input {
     height: 2rem;
     top: 2px;
+    margin-right: 5px;
+    margin-left: 5px;
   }
 }
 
