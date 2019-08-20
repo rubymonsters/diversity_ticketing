@@ -9,7 +9,11 @@ class ApplicationsController < ApplicationController
     if !current_user && !guest
       redirect_to continue_as_guest_path(@event.id)
     else
-      @application = @event.applications.build
+      unless current_user && @event.applications.find_by(applicant_id: current_user.id)
+        @application = @event.applications.build
+      else
+        redirect_to user_applications_path(current_user.id)
+      end
     end
   end
 

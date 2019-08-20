@@ -171,4 +171,46 @@ feature 'New Application' do
 
     assert page.has_content?("You have successfully saved an application draft for #{@event.name}.")
   end
+
+  test 'redirects to users application overview after sign_in via continue_as_guest? if an application already exists' do
+    @application = make_application(@event, application_params = {
+      name: @user.name,
+      email: @user.email,
+      email_confirmation: @user.email,
+      applicant_id: @user.id
+      })
+
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    click_link "Sign me in"
+
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_button 'Sign in'
+
+    assert_equal current_path, user_applications_path(@user.id)
+  end
+
+  test 'redirects to users application overview after sign_in via continue_as_guest? if a draft already exists' do
+    @draft = make_draft(@event, application_params = {
+      name: @user.name,
+      email: @user.email,
+      email_confirmation: @user.email,
+      applicant_id: @user.id
+      })
+
+    visit event_path(@event.id)
+
+    click_button "Apply"
+
+    click_link "Sign me in"
+
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_button 'Sign in'
+
+    assert_equal current_path, user_applications_path(@user.id)
+  end
 end
