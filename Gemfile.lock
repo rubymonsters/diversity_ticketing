@@ -175,7 +175,7 @@ GEM
     multipart-post (2.0.0)
     naught (1.1.0)
     nio4r (2.3.1)
-    nokogiri (1.10.2)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     pg (0.20.0)
     platform-api (2.2.0)
@@ -307,6 +307,7 @@ DEPENDENCIES
   minitest-rails-capybara
   minitest-spec-rails
   mocha
+  nokogiri (>= 1.10.4)
   pg (~> 0.20.0)
   pry
   puma
@@ -325,4 +326,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
