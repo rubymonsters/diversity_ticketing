@@ -660,4 +660,4 @@ en:
       sign_in_here: "Sign in here"
       title: "Create account"
       privacy_policy: "privacy policy"
-      privacy_policy_checkbox: "I agree with the %{privacy_policy_link} of Diversity Tickets*"
+      privacy_policy_checkbox: "I agree with the %{privacy_policy_link} of Diversity Tickets"
