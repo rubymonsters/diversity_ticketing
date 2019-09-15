@@ -3,14 +3,14 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   describe '#create' do
     it 'creates a user with a name and email' do
-      put :create, params: { user: { email: "candela@test.de", password: "greatpassword" },
+      put :create, params: { user: { email: "candela@test.de", password: "greatpassword", privacy_policy_agreement: "1" },
                              referer: '' }
 
       assert_redirected_to root_path
     end
 
     it 'redirects to continue_as_guest page if the referer contains continue_as_guest' do
-      put :create, params: { user: { email: "candela@test.de", password: "greatpassword" },
+      put :create, params: { user: { email: "candela@test.de", password: "greatpassword", privacy_policy_agreement: "1" },
                              referer: '/continue_as_guest', event_id: 1 }
 
       assert_redirected_to new_event_application_path(1)

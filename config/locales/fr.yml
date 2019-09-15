@@ -608,3 +608,5 @@ fr:
       create_your_account: "Créer votre compte"
       sign_in_here: "Se connecter"
       title: "Créer un compte"
+      privacy_policy: "confidentialité"
+      privacy_policy_checkbox: "I agree with the %{privacy_policy_link} of Diversity Tickets"

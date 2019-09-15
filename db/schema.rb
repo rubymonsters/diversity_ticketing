@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_083204) do
+ActiveRecord::Schema.define(version: 2019_08_26_092342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
+  create_table "applications", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "event_id"
+    t.integer "event_id"
     t.text "attendee_info_1"
     t.text "attendee_info_2"
     t.boolean "ticket_needed", default: false, null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_083204) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", id: :serial, force: :cascade do |t|
     t.string "organizer_name"
     t.string "organizer_email"
     t.text "description"
@@ -60,13 +60,13 @@ ActiveRecord::Schema.define(version: 2018_08_08_083204) do
     t.boolean "ticket_funded", default: false, null: false
     t.boolean "accommodation_funded", default: false, null: false
     t.boolean "travel_funded", default: false, null: false
-    t.text "logo"
     t.text "applicant_directions"
+    t.text "logo"
     t.text "application_link"
-    t.bigint "organizer_id"
     t.string "application_process"
     t.string "twitter_handle"
     t.string "state_province"
+    t.integer "organizer_id"
     t.boolean "deleted", default: false
     t.integer "approved_tickets", default: 0
     t.integer "capacity_reminder_count", default: 0
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_083204) do
     t.index ["event_id"], name: "index_tweets_on_event_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", null: false
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_083204) do
     t.string "country"
     t.boolean "tag_email_notifications", default: false
     t.string "capacity_email_notifications", default: "OFF"
+    t.boolean "privacy_policy_agreement", default: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

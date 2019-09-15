@@ -634,3 +634,5 @@ es:
       create_your_account: "Crea tu propia cuenta"
       sign_in_here: "Sign in"
       title: "Crear cuenta"
+      privacy_policy: "privacy policy"
+      privacy_policy_checkbox: "I agree with the %{privacy_policy_link} of Diversity Tickets"

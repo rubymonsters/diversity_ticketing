@@ -13,6 +13,9 @@
     <h2><%= t('.create_your_account') %></h2>
     <%= form_for @user, builder: ::FormBuilder do |form| %>
       <%= render partial: '/users/form', object: form %>
+      <%= form.form_field :check_box, :privacy_policy_agreement,
+      t('.privacy_policy_checkbox', privacy_policy_link: link_to(t('.privacy_policy'), privacy_path)).html_safe,
+      class: 'required flex-reverse ' %>
       <div class="submit-field">
         <%= form.submit(class: "btn btn-save", value: t('.create_your_account')) %>
       </div>

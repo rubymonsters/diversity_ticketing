@@ -85,7 +85,7 @@ class UsersController < Clearance::UsersController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :new_password, :locale, :event_id,
-        :country, :country_email_notifications, :tag_email_notifications,
+        :country, :country_email_notifications, :tag_email_notifications, :privacy_policy_agreement,
         :capacity_email_notifications, { :tag_ids => [] },
         tags_attributes: [:id, :name, :category_id])
     end
