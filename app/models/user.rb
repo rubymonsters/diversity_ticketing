@@ -9,6 +9,8 @@ class User < ApplicationRecord
   attr_accessor :new_password
   attr_accessor :password_optional
 
+  validates :privacy_policy_agreement, acceptance: true, on: :create
+
   def self.admin
   	where(admin: true)
   end

@@ -24,7 +24,8 @@ class ActiveSupport::TestCase
     defaults = {
       name: 'Awesome name',
       email: 'awesome@example.org',
-      password: 'awesome_password'
+      password: 'awesome_password',
+      privacy_policy_agreement: true
     }
     user_params = defaults.merge(user_params)
     User.create!(user_params)
@@ -34,7 +35,8 @@ class ActiveSupport::TestCase
     defaults = {
       email: 'admin@woo.hoo',
       password: 'awesome_password',
-      admin: true
+      admin: true,
+      privacy_policy_agreement: true
     }
     user_params = defaults.merge(user_params)
     User.create!(user_params)

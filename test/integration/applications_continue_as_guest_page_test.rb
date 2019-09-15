@@ -55,6 +55,7 @@ feature 'Application Edit' do
 
     fill_in 'Email', with: 'new@example.org'
     fill_in 'Password', with: 'new_password'
+    check("I agree with the privacy policy of Diversity Tickets")
     click_button 'Create your account'
 
     assert_current_path new_event_application_path(event_id: @event.id)
