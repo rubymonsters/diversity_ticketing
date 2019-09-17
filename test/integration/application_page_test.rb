@@ -11,6 +11,12 @@ feature 'Application Page' do
                   attendee_info_1: 'I would like to learn Ruby',
                   attendee_info_2: 'I can not afford the ticket'
                 )
+    @admin_application = make_application(
+                  @event,
+                  applicant_id: @admin.id,
+                  attendee_info_1: 'I would like to learn Ruby as admin',
+                  attendee_info_2: 'I can not afford the ticket as admin'
+                )
   end
 
   test 'shows Your applications in the breadcrumb if the user is not an admin' do
@@ -65,6 +71,14 @@ feature 'Application Page' do
     sign_in_as_user
 
     visit event_application_path(@event.id, @application.id)
+
+    assert page.has_content?('Edit')
+  end
+
+  test 'shows a button to the admin-applicant to edit their application if deadline has not passed' do
+    sign_in_as_admin
+
+    visit event_application_path(@event.id, @admin_application.id)
 
     assert page.has_content?('Edit')
   end
