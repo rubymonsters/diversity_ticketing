@@ -85,7 +85,7 @@
         <%= f.submit(t('.submit_application'), class: "btn btn-save submit_application") %>
     <% end %>
   <% else %>
-    <div>
+    <div class="margin-bottom">
   <% end %>
   <% if current_user.id == @application.applicant_id %>
     <%= link_to t('.edit'), edit_event_application_path(@event.id, @application.id),
