@@ -87,7 +87,7 @@
   <% else %>
     <div>
   <% end %>
-  <% unless current_user.admin? %>
+  <% if current_user.id == @application.applicant_id %>
     <%= link_to t('.edit'), edit_event_application_path(@event.id, @application.id),
         class: "btn btn-edit" %>
     <%= link_to t('.delete'), event_application_path(@event.id, @application.id),
