@@ -422,7 +422,7 @@ en:
       how_can_i_submit_my_event: "How can I submit my event?"
       how_can_i_submit_my_event_answer: "<p>To submit your event, click on \"Submit Event\" and fill out all the details. Your personal information (name and email) will not be public and is only asked so that we can contact you.</p>"
       how_can_i_add_tags: "How can I add a new tag to my event?"
-      how_can_i_add_tags_answer: "<p>We currently only allow site administrators to add new tags; if you'd like to tag your event with a tag that is currently not available from the list, please drop us a line at %{travis_email}. We will try to process your request as quickly as possible and add your chosen tag to your event submission.</p>"
+      how_can_i_add_tags_answer: "<p>We currently only allow site administrators to add new tags; if you'd like to tag your event with a tag that is currently not available from the list, please drop us a line at %{diversity_email}. We will try to process your request as quickly as possible and add your chosen tag to your event submission.</p>"
       why_provide_a_link: "Why do I have to provide a link when I manage the application and selection myself?"
       why_provide_a_link_short: "Why do I have to provide a link?"
       why_provide_a_link_answer: "When you manage the application and selection process yourself it's important to show applicants (and your community) that you are serious about diversity and inclusion and you are trying to make an effort. A link to a form for the application or a dedicated page on your event page explaining how you will choose from applicants, what you're looking for and why, and what you want to achieve by offering diversity tickets goes a long way."
@@ -496,7 +496,7 @@ en:
       title: "Privacy"
       your_data: "<p>Diversity Tickets uses third-party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run Diversity Tickets. Although Diversity Tickets owns the databases to the Diversity Tickets application, you retain all rights to your data. We will never share your personal data with a third party without your prior authorization, and we will never sell data to third parties. We transfer data with third-parties necessary to our ability to provide our services, all of whom are GDPR-compliant and provide the necessary safeguards required if they are outside of the EU.</p>"
       your_data_title: "Your data"
-      your_rights: "<p>For further information on your rights, to withdraw consent, or to ask for deletion of your data, you can contact us at <a href=\"mailto:foundation@travis-ci.org\">foundation@travis-ci.org</a>.</p>"
+      your_rights: "<p>For further information on your rights, to withdraw consent, or to ask for deletion of your data, you can contact us at <a href=\"mailto:diversityticketsorg@gmail.com\">diversityticketsorg@gmail.com</a>.</p>"
       your_rights_title: "Your rights"
 
   layouts:

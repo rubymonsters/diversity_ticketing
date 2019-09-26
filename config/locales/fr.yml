@@ -422,7 +422,7 @@ fr:
       how_can_i_submit_my_event: "Comment puis-je proposer mon événement ?"
       how_can_i_submit_my_event_answer: "<p>Pour soumettre votre événement, cliquez sur \"Soumettre un événement\" et remplissez tous les détails. Vos informations personnelles (nom et email) ne seront pas rendues publiques et ne sont demandées que dans l'objectif de vous contacter.</p>"
       how_can_i_add_tags: "Comment puis-je ajouter une nouvelle étiquette à mon événement ?"
-      how_can_i_add_tags_answer: "<p>Nous n'autorisons actuellement que les administrateurs du site à ajouter de nouvelles étiquettes ; si vous souhaitez marquer votre événement avec une étiquette qui n'est actuellement pas disponible dans la liste, veuillez nous envoyer un message à %{travis_email}. Nous nous efforcerons de traiter votre demande le plus rapidement possible et d'ajouter l'étiquette que vous avez choisie à votre dossier de soumission d'événement.</p>"
+      how_can_i_add_tags_answer: "<p>Nous n'autorisons actuellement que les administrateurs du site à ajouter de nouvelles étiquettes ; si vous souhaitez marquer votre événement avec une étiquette qui n'est actuellement pas disponible dans la liste, veuillez nous envoyer un message à %{diversity_email}. Nous nous efforcerons de traiter votre demande le plus rapidement possible et d'ajouter l'étiquette que vous avez choisie à votre dossier de soumission d'événement.</p>"
       why_provide_a_link: ""
       why_provide_a_link_short: ""
       why_provide_a_link_answer: ""
