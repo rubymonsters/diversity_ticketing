@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_092342) do
+ActiveRecord::Schema.define(version: 2019_09_26_090956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "application_process_options_handlers", force: :cascade do |t|
+    t.boolean "selection_by_dt_enabled", default: true, null: false
+  end
 
   create_table "applications", id: :serial, force: :cascade do |t|
     t.string "name"
