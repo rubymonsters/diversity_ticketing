@@ -1,6 +1,10 @@
 require 'test_helper'
 
 feature 'Admin Events' do
+  before do
+    make_application_process_options_handler
+  end
+
   scenario 'Approve and unapprove event' do
     click_link 'Admin'
 

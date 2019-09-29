@@ -23,5 +23,10 @@ class ApplicationController < ActionController::Base
     signed_in? && current_user.admin?
   end
 
+  def selection_by_dt_enabled?
+    ApplicationProcessOptionsHandler.first.selection_by_dt_enabled
+  end
+
   helper_method :admin_user?
+  helper_method :selection_by_dt_enabled?
 end
