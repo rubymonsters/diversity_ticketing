@@ -4,7 +4,7 @@ class AdminEventsControllerTest < ActionController::TestCase
   before do
     make_application_process_options_handler
   end
-  
+
   describe '#index' do
     it 'protect admin index from anonymous visitors, redirects to sign in' do
       get :index
