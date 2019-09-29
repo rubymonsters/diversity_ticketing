@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
+  before do
+    make_application_process_options_handler
+  end
+  
   describe '#create' do
     it 'successfully creates event and sends etest' do
       admin_user = make_admin

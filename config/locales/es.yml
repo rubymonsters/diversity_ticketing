@@ -440,7 +440,7 @@ es:
       how_can_i_submit_my_event: "¿Cómo puedo subir un evento?"
       how_can_i_submit_my_event_answer: '<p>Para subir un evento, click en "Subir evento" e incluye todos los detalles. Tu información personal (nombre y email) no serán visibles públicamente y sólo son necesarias para que podamos contactarte.</p>'
       how_can_i_add_tags: "¿Cómo puedo añadir un nuevo tag a mi evento?"
-      how_can_i_add_tags_answer: "<p>Sólo los administradores de la página pueden añadir nuevas tags; si te gustaría añadir un tag que no está disponible a tu evento, envíanos un email: %{travis_email}. Intentaremos procesar tu petición tan rápido como sea posible y añadir el tag que has elegido a tu evento. </p>"
+      how_can_i_add_tags_answer: "<p>Sólo los administradores de la página pueden añadir nuevas tags; si te gustaría añadir un tag que no está disponible a tu evento, envíanos un email: %{diversity_email}. Intentaremos procesar tu petición tan rápido como sea posible y añadir el tag que has elegido a tu evento. </p>"
       why_provide_a_link: "¿Por qué tengo que ofrecer un enlace cuando administro la aplicación y la selección usted mismo?"
       why_provide_a_link_short: "¿Por qué tengo que ofrecer un enlace?"
       why_provide_a_link_answer: "Cuando usted mismo administre el proceso de solicitud y selección, es importante mostrar a los solicitantes (y a su comunidad) que se toma en serio la diversidad y la inclusión y sobre todo que está tratando de hacer un esfuerzo. Un enlace a un formulario para la solicitud o una página dedicada en la página de su evento que explica cómo elegirá a los solicitantes, qué está buscando y por qué, y qué quiere lograr al ofrecer boletos de diversidad supondrá un gran avance."

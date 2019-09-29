@@ -86,8 +86,10 @@
     <section class="box">
       <h2 class="box-title"><%= t('.application_selection') %></h2>
       <div class="form_field">
-        <%= label_tag do %>
-          <%= f.radio_button(:application_process, 'selection_by_travis', checked: 'checked') %> <%= t('.selection_by_travis')%>
+        <% if selection_by_dt_enabled? %>
+          <%= label_tag do %>
+            <%= f.radio_button(:application_process, 'selection_by_travis', checked: 'checked') %> <%= t('.selection_by_travis')%>
+          <% end %>
         <% end %>
 
         <%= label_tag do %>
