@@ -4,6 +4,7 @@ include ApplicationHelper
 feature 'Admin Event Details' do
 
   def setup
+    make_application_process_options_handler
     @admin = make_admin
     @event = make_event
     @application_1 = make_application(@event, name: 'Peter', status: 'pending')

@@ -2,6 +2,7 @@ require 'test_helper'
 
 feature 'User Sign In' do
   def setup
+    make_application_process_options_handler
     @user = make_user
     @admin = make_admin
   end

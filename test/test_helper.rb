@@ -152,6 +152,15 @@ class ActiveSupport::TestCase
     Tag.create!(tag_params)
   end
 
+  def make_application_process_options_handler(application_process_options_handler_params = {})
+    defaults = {
+      id: 1,
+      selection_by_dt_enabled: true
+    }
+    application_process_options_handler_params = defaults.merge(application_process_options_handler_params)
+    ApplicationProcessOptionsHandler.create!(application_process_options_handler_params)
+  end
+
   # Add more helper methods to be used by all tests here...
 end
 
