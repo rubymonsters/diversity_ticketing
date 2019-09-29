@@ -14,6 +14,20 @@
     class: "btn btn-save"%>
 </p>
 
+
+<div class="box">
+  <h2>Manage "Selection by Diversity Tickets"</h2>
+  <%= form_for @application_process_options_handler, url: update_process_path do |form| %>
+    <%= form.check_box :selection_by_dt_enabled, value: selection_by_dt_enabled?  %>
+      Enable selection by Diversity Tickets?
+    <div class="submit-field">
+      <%= form.submit(class: "btn btn-save", value: 'Save', data: {
+        confirm: selection_by_dt_enabled? ? 'Are you sure you want to disable selection by Diversity Tickets?' : 'Are you sure you want to enable selection by Diversity Tickets?'
+      }) %>
+    </div>
+  <% end %>
+</div>
+
 <% @categorized_events.each do |heading, events| %>
   <div class="box">
     <h2><%= heading %></h2>

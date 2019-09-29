@@ -7,6 +7,7 @@ class AdminEventsController < ApplicationController
 
   #Admin page view with all submitted events and admin statistics:
   def index
+    @application_process_options_handler = ApplicationProcessOptionsHandler.find(1)
     @events = Event.all
     @new_users = User.all.created_last_30_days
     @total_organizers = Event.all.total_organizers

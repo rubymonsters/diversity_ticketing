@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     post 'users/:id/delete', to: 'users#delete_account', as: :delete_account
     patch '/events/:event_id/drafts/:id/submit', to: 'drafts#submit', as: :submit_draft
 
+    patch '/admin', to: 'application_process_options_handlers#update', as: :update_process
+
     root 'home#home'
   end
 end
