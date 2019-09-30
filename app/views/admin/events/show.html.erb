@@ -1,6 +1,6 @@
-<% provide :title, t('.title') %>
+<% provide :title, "Admin - #{@event.name}" %>
 
-<%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), event: @event } %>
+<%= render partial: "shared/breadcrumbs", locals:{ admin: "Admin", event: @event } %>
 
 <h1 class="page-title"><span class="page-title-firstword">Details</span> for <%= @event.name %></h1>
 
@@ -16,7 +16,7 @@
 
 <% unless @event.application_process == "application_by_organizer" %>
 <section class="box">
-  <h2 class="box-title"><%=t(".applications")%></h2>
+  <h2 class="box-title">Applications</h2>
   <%= pluralize_highlight_count(@event.applications.submitted.count, "application") %> currently
   <br>
   <%= pluralize_highlight_count(@event.applications.drafts.count, "draft") %> currently
@@ -33,34 +33,36 @@
               <li>
                 <p class="event-name">
                   <span class="conflogo--small"><%= event_image application.event %></span>
-                  <%= link_to application.name, show_admin_event_application_path(id: application.id, event_id: application.event_id), title: application.event.name %>
+                  <%= link_to application.name,
+                    admin_event_application_path(id: application.id, event_id: application.event_id),
+                    title: application.event.name %>
                 </p>
                 <p>
                   <% unless @event.application_process == "selection_by_organizer" %>
                     <% if (application.status == "approved") || (application.status == "rejected") %>
-                      <%= link_to revert_event_application_path(application.event_id, application.id),
-                          method: :post, class: "btn btn-edit revert-application",
-                          title: t(".revert").downcase do %>
-                          <%= t(".revert") %>
-                        <% end %>
+                      <%= link_to revert_admin_event_application_path(application.event_id, application.id),
+                        method: :post, class: "btn btn-edit revert-application",
+                        title: "revert" do %>
+                        Revert
+                      <% end %>
                     <% else %>
-                      <%= link_to approve_event_application_path(application.event_id, application.id),
-                          method: :post, class: "btn btn-save approve-application",
-                          title: t(".approve").downcase do %>
-                        <%= t(".approve") %>
+                      <%= link_to approve_admin_event_application_path(application.event_id, application.id),
+                        method: :post, class: "btn btn-save approve-application",
+                        title: "approve" do %>
+                        Approve
                       <% end %>
 
-                      <%= link_to reject_event_application_path(application.event_id, application.id),
-                          method: :post, class: "btn btn-external reject-application",
-                          title: t(".reject").downcase do %>
-                        <%=t(".reject")%>
+                      <%= link_to reject_admin_event_application_path(application.event_id, application.id),
+                        method: :post, class: "btn btn-external reject-application",
+                        title: "reject" do %>
+                        Reject
                       <% end %>
                     <% end %>
                   <% end %>
 
                   <%= link_to admin_event_application_path(application.id, application.event_id), method: :delete,
-                      data: { confirm: t(".are_you_sure")}, class: "btn btn-delete delete-application", title: t(".delete").downcase do %>
-                    <%= t(".delete")%>
+                    data: {confirm: "Are you sure"}, class: "btn btn-delete delete-application", title: "delete" do %>
+                    Delete
                   <% end %>
                 </p>
               </li>
@@ -76,11 +78,11 @@
   <section class="box">
     <h2 class="box-title"><%=t(".organizer_details")%></h2>
     <div class="detail-pair">
-      <strong><%=t('.organizer_name')%></strong>
+      <strong>Organizer Name</strong>
       <%= @event.organizer_name %>
     </div>
     <div class="detail-pair">
-      <strong><%=t('.organizer_email')%></strong>
+      <strong>Organizer Email</strong>
       <%= @event.organizer_email %>
     </div>
   </section>
@@ -88,9 +90,9 @@
   <%= render partial: "events/event" %>
 
   <div class="box form_field">
-    <%= link_to t(".delete_event"), event_path(@event.id), method: :delete,
-        data: {confirm: t(".are_you_sure")}, class: "btn btn-delete" %>
-    <%= link_to t(".edit_event"), edit_event_path(@event.id), class: "btn btn-edit" %>
+    <%= link_to "Delete event", event_path(@event.id), method: :delete,
+        data: {confirm: "Are you sure?"}, class: "btn btn-delete" %>
+    <%= link_to "Edit event", edit_event_path(@event.id), class: "btn btn-edit" %>
     <% if @event.approved? %>
       <%= download_csv_link(@event) %>
     <% else %>
@@ -98,11 +100,11 @@
         <%= form_for :approve,
             url: approve_admin_event_path(@event),
             html: { method: :post } do |form| %>
-        <%= form.submit(t('.approve_event'), class: "btn btn-save", title: t(".approve").downcase) %>
+        <%= form.submit("Approve", class: "btn btn-save", title:"approve") %>
           <span>
             <%= form.check_box :tweet, checked: true %>
-            <span class="icon-twitter icon tooltip" aria-label="twitter icon"></span>
-            <%= t('.tweet_event') %>
+            <span class="icon-twitter" aria-label="twitter icon"></span>
+            Tweet event
           </span>
        </span>
       <% end %>

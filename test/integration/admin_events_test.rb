@@ -42,10 +42,10 @@ feature 'Admin Events' do
   end
 
   def unapproved_events_box
-    first('.box', text: 'Unapproved events')
+    first('.box', text: 'Unapproved Events')
   end
 
   def approved_events_box
-    first('.box', text: 'Approved events')
+    first('.box', text: 'Approved Events')
   end
 end

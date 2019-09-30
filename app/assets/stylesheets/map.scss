@@ -33,14 +33,4 @@ div.map-statistics {
       }
     }
   }
-  .map-expander-btn {
-    &:active, &:hover {
-      color: $green;
-      cursor: pointer;
-    }
-    .rotated {
-      transform: rotate(180deg);
-      background-position: 12px 2px;
-    }
-  }
 }

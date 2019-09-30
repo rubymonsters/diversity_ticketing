@@ -22,7 +22,6 @@
             <ul class="dropdown__content">
               <% if admin_user? %>
                 <li class="dropdown__item"><%= navbar_link_to t('.admin'), admin_path %></li>
-                <li class="dropdown__item"><%= navbar_link_to t('.tags'), tags_path %></li>
               <% end %>
               <li class="dropdown__item"><%= navbar_link_to t('.your_events'), user_path(current_user) %></li>
               <li class="dropdown__item"><%= navbar_link_to t('.your_applications'), user_applications_path(current_user) %></li>

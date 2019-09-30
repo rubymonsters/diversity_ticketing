@@ -1,0 +1,45 @@
+<% provide :title, "Admin - Application for #{@event.name}" %>
+
+<%= render partial: "shared/breadcrumbs",
+  locals: {
+    admin: "Admin",
+    event: @event,
+    application_by: "Application by",
+    applicant_name: @application.name
+  } %>
+
+<h1 class="box-title"><%= "Application for #{@event.name}" %></h1>
+
+<%= render partial: "applications/application_details", locals: {application: @application, event_name: @event.name} %>
+
+<div class="box">
+  <% if @event.application_process == "selection_by_travis" %>
+    <p>
+      <strong>Application Status:</strong>
+      <%= @application.status %>
+    </p>
+
+    <% if @application.event.closed? && !@event.past? %>
+      <% if @application.status == 'pending' %>
+        <%= link_to "Approve", approve_admin_event_application_path(@application.event_id, @application.id),
+          method: :post, class: "btn btn-save approve-application",
+          title: "approve" %>
+        <%= link_to "Reject", reject_admin_event_application_path(@application.event_id, @application.id),
+         method: :post, class: "btn btn-external reject-application",
+         title: "reject" %>
+      <% elsif @application.status == 'approved' || @application.status == 'rejected' %>
+        <%= link_to "Revert", revert_event_application_path(@application.event_id, @application.id),
+          method: :post, class: "btn btn-edit revert-application",
+          title: "revert" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= link_to "Delete Application", event_application_path(@event.id, @application.id),
+    class: "btn btn-delete",  method: :delete,
+    data: {confirm: "Are you sure?"} %>
+</div>
+
+<p>
+  <%= link_to "Show Event Details", admin_event_path(@event.id) %>
+</p>

@@ -1,8 +1,10 @@
-<% provide :title, t('.title') %>
+<% provide :title, "Admin - Tags Management" %>
 
-<%= render partial: "shared/breadcrumbs", locals:{ title: t('.title') } %>
+<%= render partial: "admin/admin_navigation" %>
 
-<h1 class="page-title"><%= t('.title') %></h1>
+<%= render partial: "shared/breadcrumbs", locals: {title: "Tags Management", admin: "Admin"} %>
+
+<h1 class="page-title">Tags Management</h1>
 
 <div class="two-columns">
   <% @tags.each do |category, tags| %>
@@ -12,13 +14,9 @@
       <ul class="tags-list">
         <% tags.each do |tag| %>
           <li>
-            <% if tag.category.name != "programming languages" %>
-              <%= t("tags.#{tag.category.name}.#{tag.name.downcase}") %>
-            <% else %>
-              <%= tag.name %>
-            <% end %>
+            <%= tag.name %>
             <%= link_to url_for(action: :destroy, id: tag.id), method: :delete,
-                data: { confirm: t('.are_you_sure')}, class: "icon tooltip", title: "delete" do %>
+              data: {confirm: "Are you sure?"}, class: "icon tooltip", title: "delete" do %>
               <span class="icon-delete" aria-label="trashcan icon"></span>
             <% end %>
           </li>

@@ -1,42 +1,15 @@
 <% provide :title, t('.title') %>
 
-<% if current_user.admin? %>
-  <%= render partial: "shared/breadcrumbs", locals:{ admin: t('.admin_link'), event: @event, application_by: t('.application_by', applicant_name: @application.name) } %>
-<% else %>
-  <%= render partial: "shared/breadcrumbs", locals:{ your_applications: t('.your_applications'), application_for: t('.application_for', event_name: @event.name) } %>
-<% end %>
+<%= render partial: "shared/breadcrumbs",
+  locals: {
+    your_applications: t('.your_applications'),
+    application_for: t('.application_for',
+    event_name: @event.name)
+  } %>
 
 <h1 class="box-title"><%= t('.application_for', event_name: @event.name) %></h1>
 
-<section class="box">
-  <p class="detail-pair">
-    <strong>
-      <%= t('.attendee_info_1', event_name: @event.name) %>
-    </strong>
-    <%= @application.attendee_info_1 %>
-  </p>
-
-  <p class="detail-pair">
-    <strong><%=t('.attendee_info_2')%></strong>
-    <%= @application.attendee_info_2 %>
-  </p>
-
-  <p class="detail-pair">
-    <strong><%=t('.name')%></strong>
-    <%= @application.name %>
-  </p>
-
-  <p class="detail-pair">
-    <strong><%=t('.email')%></strong>
-    <%= @application.email %>
-  </p>
-
-  <% if @application.visa_needed %>
-    <p class="detail-pair">
-      <strong><%=t('.visa_needed')%></strong>
-    </p>
-  <% end %>
-</section>
+<%= render partial: "application_details", locals: {application: @application, event_name: @event.name} %>
 
 <% if @application.event.open? %>
   <% if !@application.submitted %>
@@ -80,28 +53,7 @@
         data: { confirm: t('.are_you_sure') } %>
   </div>
 <% end %>
-<% if current_user.admin? %>
-  <div class="box">
-    <p> Application status: <%= @application.status %> </p>
-    <%= link_to t('.delete_application'), event_application_path(@event.id, @application.id),
-        class: "btn btn-delete",  method: :delete,
-        data: { confirm: t('.are_you_sure') } %>
-    <% if @application.submitted == true && !@event.past? %>
-      <% if @application.status == 'pending' %>
-        <%= link_to t('.approve').capitalize, approve_event_application_path(@application.event_id, @application.id),
-            method: :post, class: "btn btn-save approve-application",
-            title: t('.approve') %>
-        <%= link_to t('.reject').capitalize, reject_event_application_path(@application.event_id, @application.id),
-         method: :post, class: "btn btn-external reject-application",
-         title: t('.reject') %>
-      <% elsif @application.status == 'approved' || @application.status == 'rejected' %>
-        <%= link_to t('.revert').capitalize, revert_event_application_path(@application.event_id, @application.id),
-               method: :post, class: "btn btn-edit revert-application",
-               title: t('.revert') %>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
-  <p>
-    <%= link_to t('.show_event_details'), event_path(@event.id) %>
-  </p>
+
+<p>
+  <%= link_to t('.show_event_details'), event_path(@event.id) %>
+</p>

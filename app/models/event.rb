@@ -84,6 +84,10 @@ class Event < ApplicationRecord
     end_date < Time.now
   end
 
+  def deleted?
+    deleted
+  end
+
   def location
     [city, state_province, country].reject(&:blank?).join(", ")
   end
@@ -110,7 +114,7 @@ class Event < ApplicationRecord
   end
 
   def editable_by?(user)
-    user.admin? || (owned_by?(user) && open?)
+    owned_by?(user) && open?
   end
 
   def uneditable_by?(user)
@@ -118,7 +122,7 @@ class Event < ApplicationRecord
   end
 
   def deletable_by?(user)
-    user.admin? || owned_by?(user)
+    owned_by?(user)
   end
 
   def self.country_with_most_events(country_rank)

@@ -4,11 +4,12 @@ class EventsControllerTest < ActionController::TestCase
   before do
     make_application_process_options_handler
   end
-  
+
   describe '#create' do
-    it 'successfully creates event and sends etest' do
+    it 'successfully creates event and sends expected emails' do
       admin_user = make_admin
-      sign_in_as(admin_user)
+      user = make_user
+      sign_in_as(user)
 
       ActionMailer::Base.deliveries.clear
 
@@ -20,19 +21,19 @@ class EventsControllerTest < ActionController::TestCase
           organizer_email_confirmation: 'ruby@example.com',
           application_process: 'selection_by_travis'
         })
-    }
+      }
 
       assert_equal 'Thank you for submitting Ruby Conf. We will review it shortly.', flash[:notice]
       assert_redirected_to events_path
 
-      admin_email = ActionMailer::Base.deliveries.find {|d| d.to == ['admin@woo.hoo']}
+      admin_email = ActionMailer::Base.deliveries.find { |d| d.to == ['admin@woo.hoo'] }
       assert_equal admin_email.subject, 'A new event has been submitted.'
       assert_match admin_email.body, /Ruby Conf/
       assert_match admin_email.body, /Organizer Name: Ruby Fakename/
       assert_match admin_email.body, /Organizer Email: ruby@example.com/
       assert_match admin_email.body, /Application Process: Selection by travis/
 
-      organizer_email = ActionMailer::Base.deliveries.find {|d| d.to == ['ruby@example.com']}
+      organizer_email = ActionMailer::Base.deliveries.find { |d| d.to == ['ruby@example.com'] }
       assert_equal organizer_email.subject, 'You submitted a new event.'
 
       assert_equal Event.last.name, 'Ruby Conf'
@@ -363,16 +364,6 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   describe '#edit' do
-    it 'loads correctly for admin users' do
-      user = make_user(admin: true)
-      event = make_event
-      sign_in_as(user)
-
-      get :edit, params: { id: event.id }
-
-      assert_response :success
-    end
-
     it 'loads correctly for event owner' do
       user = make_user(admin: false)
       event = make_event(
@@ -419,19 +410,6 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   describe '#update' do
-    it 'loads correctly for admin users' do
-      user = make_user(admin: true)
-      event = make_event(name: 'BoringConf')
-      sign_in_as(user)
-
-      put :update, params: { id: event.id, event: {name: 'MonstersConf'} }
-
-      event.reload
-
-      assert_equal 'MonstersConf', event.name
-      assert_redirected_to "http://test.host/"
-    end
-
     it 'loads correctly for event owner' do
       user = make_user(admin: false)
       event = make_event(
@@ -439,7 +417,7 @@ class EventsControllerTest < ActionController::TestCase
         organizer_id: user.id,
         approved: false,
         deadline: 5.days.from_now
-        )
+      )
       sign_in_as(user)
 
       put :update, params: { id: event.id, event: {name: 'MonstersConf'} }
@@ -456,7 +434,7 @@ class EventsControllerTest < ActionController::TestCase
         approved: false,
         organizer_id: user.id,
         deadline: 5.days.from_now
-        )
+      )
       sign_in_as(user)
 
       put :update, params: { id: event.id, event: {approved: true} }
@@ -465,27 +443,6 @@ class EventsControllerTest < ActionController::TestCase
 
       assert_redirected_to "http://test.host/"
       assert_equal false, event.approved?
-    end
-
-    it 'changes approval status when admin is updating' do
-      admin = make_user(admin: true)
-      event_owner = make_user(
-        admin: false,
-        email: 'different_address@example.org'
-      )
-      event = make_event(
-        approved: false,
-        organizer_id: event_owner.id,
-        deadline: 5.days.from_now
-      )
-      sign_in_as(admin)
-
-      put :update, params: { id: event.id, event: { approved: true } }
-
-      event.reload
-
-      assert_redirected_to "http://test.host/"
-      assert_equal true, event.approved?
     end
 
     it 'rerenders edit when event update was not successful' do
@@ -500,8 +457,8 @@ class EventsControllerTest < ActionController::TestCase
 
     it 'renders a forbidden 403 status code when unauthorized user tries to update event info' do
       user = make_user
-      organizer = make_user( email: 'other@example.org' )
-      event = make_event( organizer_id: organizer.id )
+      organizer = make_user(email: 'other@example.org')
+      event = make_event(organizer_id: organizer.id)
       sign_in_as(user)
 
       put :update, params: { id: event.id, event: { name: 'Fakename' } }

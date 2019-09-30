@@ -31,4 +31,8 @@ class Application < ApplicationRecord
   def self.active
     where(deleted: false)
   end
+
+  def draft?
+    !submitted
+  end
 end
