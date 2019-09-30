@@ -30,4 +30,3 @@
 //= require dropdown.js
 //= require datepicker.js
 //= require filter-dropdown.js
-//= require searchbar-input-width.js
