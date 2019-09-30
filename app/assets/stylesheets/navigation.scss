@@ -1,12 +1,18 @@
 .navigation {
+  display: flex;
+  flex-direction: column;
   vertical-align: middle;
+  text-align: center;
   flex-grow: 1;
-  ul {
+  @media (min-width: $medium) {
+    text-align: left;
+  }
+  >ul {
     list-style: none;
     margin: 0;
     padding: 0px 0px 0px 30px;
     font-size: 15px;
-    @media (min-width: $large) {
+    @media (min-width: $medium) {
       display: flex;
       flex-grow: 1;
       justify-content: end;
@@ -17,15 +23,18 @@
     flex-grow: 1;
   }
 
-  li {
-    margin-right: 1.3em;
-    line-height: $topbar-height;
+  >ul>li {
+    margin: 10px auto;
+    line-height: 1.5em;
+    @media (min-width: $medium) {
+      margin: 0 1.3em 0 0;
+      line-height: $topbar-height;
+    }
   }
 
   a {
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
     color: $black;
   }
 
@@ -43,6 +52,14 @@
         margin-top: -1px;
         background-color: $green;
       }
+    }
+  }
+}
+
+#account-menu {
+  @media (min-width: $medium) {
+    &:after {
+      content: "|";
     }
   }
 }

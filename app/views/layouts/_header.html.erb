@@ -2,8 +2,8 @@
   <div class="inner">
     <h1 class="logo">
       <%= link_to(root_path) do %>
-        <%= image_tag("DT-logo.svg", alt: t('.logo')) %>
-        <%= t('.diversity_tickets') %>
+        <%= image_tag("DT-logo.svg", alt: t('.logo-image')) %>
+        <span class="logo-text"><%= t('.diversity_tickets') %></span>
       <% end %>
     </h1>
     <nav class="navigation" role="navigation">
@@ -11,10 +11,11 @@
         <li><%= navbar_link_to t('.events'), events_path %></li>
         <li><%= navbar_link_to t('.submit_event'), new_event_path %></li>
         <li><%= navbar_link_to t('.about'), about_path %></li>
-        <li class="flex-grow"><%= navbar_link_to t('.faq'), faq_path %></li>
+        <li><%= navbar_link_to t('.faq'), faq_path %></li>
+        <li class="flex-grow"></li>
         <% if signed_in? %>
           <li id="dropdown" class="dropdown">
-            <span id="account-menu" class="dropdown-label"><%= t('.your_account') %><i class="icon-user-circle"></i>|</span>
+            <span id="account-menu" class="dropdown-label"><%= t('.your_account') %><i class="icon-user-circle"></i></span>
             <ul class="dropdown-content account-menu-content">
               <% if admin_user? %>
                 <li class="dropdown-item"><%= navbar_link_to t('.admin'), admin_path %></li>

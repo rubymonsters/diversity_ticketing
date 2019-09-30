@@ -35,8 +35,8 @@
 .icon-filter
   @extend %icon
   background-image: image-url("icon-filter.svg")
-  background-size: 20px
-  margin: 0 10px
+  background-size: 15px
+  background-position: left center
 
 .icon-location
   @extend %icon
@@ -63,10 +63,13 @@
   background-position: -2px -2px
 
 .icon-user-circle
+  display: none
   @extend %icon
   background-image: image-url("icon-user-circle.svg")
   background-size: 20px
   margin: 0 10px
+  @media (min-width: $medium)
+    display: inline-block
 
 .approve-application, .reject-application, .revert-application, .delete-application
   font-size: 23px
