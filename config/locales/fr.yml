@@ -301,7 +301,6 @@ fr:
         Par ex. : le billet est valable pour les deux jours de la conférence…
         - Informations supplémentaires sur l'organisation
         - …"
-      diversity_tickets_info: "* diversitytickets.org est une application de la Fondation Travis, construite par Rubymonstas. Les employés de la Fondation Travis géreront l'enregistrement des candidatures et de sélection."
       email: "Courriel"
       email_confirmation: "Confirmation courriel"
       from: "Du"
@@ -324,7 +323,7 @@ fr:
       number_of_tickets: "Nombre de billets disponibles"
       organizer_details: "Détails de l'organisateur"
       selection_by_organizer: "L'équipe organisatrice s'occupera elle-même du processus de sélection, mais les candidatures seront traitées par diversitytickets.org."
-      selection_by_travis: "Le processus de candidature et de sélection sera géré par diversitytickets.org*."
+      selection_by_travis: "Le processus de candidature et de sélection sera géré par diversitytickets.org."
       select_country: "Choisissez un pays *"
       state_province: "État/Région"
       terms_and_conditions: "Je ne partagerai pas la vie privée, les détails et les réponses des candidat·e·s avec des tiers, y compris ceux qui financent les billets diversité."
@@ -402,7 +401,7 @@ fr:
       about_title: "À propos de Diversity Tickets"
       about_diversity_tickets: "<p>diversitytickets.org est une application de la Fondation Travis qui aide les organisateurs et organisatrices nous ayant contacté à atteindre les populations minoritaires en leur offrant des billets et des bourses de voyage. Ils et elles peuvent le faire en ajoutant leur propre événement ou conférence et en précisant combien de billets seront distribués. Une fois l'événement approuvé, il est rendu public sur le site Web et les candidat·e·s peuvent en faire la demande.</p>
         <p>L'application a été créée pour faciliter le travail autour de la distribution de billets pro-diversité pour les équipes organisatrices d'événements ainsi que pour les membres de groupes sous-représentés dans les technologies. Les organisateurs et organisatrices n'ont pas besoin de mettre en place des formulaires à remplir par les candidat·e·s et peuvent se concentrer sur d'autres tâches organisationnelles, tandis que les candidat·e·s ont une bonne vue d'ensemble des événements qui offrent actuellement des billets diversité, grâce à la liste des événements.</p>
-        <p>La Fondation Travis s'est associé à %{ruby_monstas} pour créer cette application Open Source, qu'ils utilisent actuellement dans leur travail sur la diversité dans les conférences. L'application elle-même est actuellement offerte moyennant des frais dans le cadre de la consultation sur la diversité de la Fondation. Si vous êtes intéressé à offrir une expérience de conférence diversifiée à vos participants, %{email_foundation} entrez en contact</a> !</p>
+        <p>La Fondation Travis s'est associé à %{ruby_monstas} pour créer cette application Open Source, qu'ils utilisent actuellement dans leur travail sur la diversité dans les conférences. L'application elle-même est actuellement offerte moyennant des frais dans le cadre de la consultation sur la diversité de la Fondation. Si vous êtes intéressé à offrir une expérience de conférence diversifiée à vos participants, %{email_diversitytickets} entrez en contact</a> !</p>
         <p>Pour en savoir plus sur l'idée et le concept, consultez le blog de la Fondation Travis : %{travis_blog} %{app_to_diversify}</a></p>"
       app_to_diversify: "An app to diversify tech conferences [EN]"
       title: "À propos"

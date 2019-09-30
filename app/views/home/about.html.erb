@@ -4,8 +4,10 @@
 
 <h1 class="page-title"><%=t('.about_title') %></h1>
 
-
-  <%=raw t('.about_diversity_tickets', ruby_monstas: '<a href="http://rubymonstas.org/" target="_blank">RubyMonstas</a>',
-                                    travis_blog: '<a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">',
-                                    email_foundation: '<a href="mailto:foundation@travis-ci.com">',
-                                    app_to_diversify: t('.app_to_diversify')).html_safe %>
+<%= raw t(
+  '.about_diversity_tickets',
+  ruby_monstas: '<a href="http://rubymonstas.org/" target="_blank">RubyMonstas</a>',
+  travis_blog: '<a href="http://foundation.travis-ci.org/2016/04/26/diversity-tickets/">',
+  email_diversitytickets: '<a href="mailto:diversitytickets.org@gmail.com">',
+  app_to_diversify: t('.app_to_diversify')
+).html_safe %>

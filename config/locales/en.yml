@@ -273,7 +273,7 @@ en:
       event_website: "Website"
       selection_by_organizer: "We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
       selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*.
-        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
+        <p>* Members of the Diversity Tickets team will manage the application and selection processes.</p>"
       not_shown: "Not shown to the public."
     event_search:
       enter_search: "Enter event name, location or keyword..."
@@ -297,11 +297,9 @@ en:
       description: "Description"
       directions_applicants: "Directions for applicants"
       directions_applicants_placeholder: "Let the applicants know about any additional information like:
-        - What does the ticket include?
-        E.g.: The ticket is valid for both conference days, ...
-        - Additional organizational info
+        - What does the ticket include? E.g.: The ticket is valid for both conference days.\n
+        - Additional organizational info\n
         - ..."
-      diversity_tickets_info: "* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes."
       email: "Email"
       email_confirmation: "Email confirmation"
       from: "From"
@@ -324,7 +322,7 @@ en:
       number_of_tickets: "Number of available diversity tickets"
       organizer_details: "Organizer details"
       selection_by_organizer: "The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org."
-      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*."
+      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org."
       select_country: "Select country *"
       state_province: "State/Province"
       terms_and_conditions: "I will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
@@ -402,7 +400,7 @@ en:
       about_title: "About Diversity Tickets"
       about_diversity_tickets: "<p>diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants. They can do so by adding their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
         <p>The app was created to make the work around diversity ticketing easier for event organisers as well as members of underrepresented groups in tech. Organisers don’t have to set up forms for the applicants to fill out and can focus on other organisational work, while applicants have a good overview of which events are currently offering diversity tickets, through the event listing.</p>
-        <p>Travis Foundation has partnered with %{ruby_monstas} to create this Open Source app, which they currently use in their diversity work with conferences. The app itself is currently offered for a fee as part of the Foundation’s diversity consulting. If you’re interested in offering a diverse conference experience to your attendees, %{email_foundation} get in touch</a>!</p>
+        <p>Travis Foundation has partnered with %{ruby_monstas} to create this Open Source app, which they currently use in their diversity work with conferences. The app itself is currently offered for a fee as part of the Foundation’s diversity consulting. If you’re interested in offering a diverse conference experience to your attendees, %{email_diversitytickets} get in touch</a>!</p>
         <p>Read more about the idea and concept on the Travis Foundation blog: %{travis_blog} %{app_to_diversify}</a></p>"
       app_to_diversify: "An app to diversify tech conferences"
       title: "About"
