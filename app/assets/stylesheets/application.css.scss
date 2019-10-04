@@ -23,6 +23,7 @@ $green: #65BE66;
 $yellow: #F8BA3F;
 $orange: #F0AD4E;
 $black: #4C5052;
+$white: #fff;
 
 $small: 600px;
 $medium: 900px;
@@ -35,8 +36,7 @@ $topbar-height: 55px;
 @import "normalize.scss";
 @import "layout.sass";
 @import "top.sass";
-@import "navigation.scss";
-@import "dropdown.scss";
+@import "top_menu.sass";
 @import "footer.sass";
 @import "flashes.sass";
 @import "form.scss";

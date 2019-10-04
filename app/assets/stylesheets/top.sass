@@ -1,30 +1,30 @@
 .topbar
   background: white
   border-bottom: 1px solid #DDDEDF
-  // to make dropdown menu appear infront:
   position: relative
   z-index: 2
 
-  @media (min-width: $large)
-    height: $topbar-height
-
   a
+    text-decoration: none
     color: $grey-dark
     &:hover,
     &:active
       color: $green
 
   .inner
-    @media (min-width: $medium)
-      display: flex
-      justify-content: flex-start
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
 
 .logo
-  text-align: center
+  flex-grow: 2
   margin: 0
   vertical-align: middle
   font-size: 20px
   font-weight: 400
+  height: $topbar-height
+  line-height: $topbar-height
+
   a
     text-decoration: none
     color: $grey-dark
@@ -35,7 +35,82 @@
     margin-right: 5px
     vertical-align: middle
 
+.navigation
+  display: none
+  flex: 0 1 100%
+  order: 3
+
+  &.responsive
+    display: inline-block
+
   @media (min-width: $medium)
     display: inline-block
-    height: $topbar-height
-    line-height: $topbar-height
+    flex: 0 1 70%
+    order: 0
+
+.menu-button
+  align-self: center
+  display: inline-block
+  cursor: pointer
+  margin: 0 10px
+
+  @media (min-width: $medium)
+    display: none
+
+.bar1, .bar2, .bar3
+  width: 15px
+  height: 2px
+  background-color: #333
+  margin: 4px 0
+  transition: 0.4s
+
+/* Rotate first bar */
+.change .bar1
+  transform: rotate(-45deg) translate(-4px, 4px)
+
+/* Fade out the second bar */
+.change .bar2
+  opacity: 0
+
+/* Rotate last bar */
+.change .bar3
+  transform: rotate(45deg) translate(-4px, -4px)
+
+.language-picker
+  font-size: 15px
+  display: inline-block
+  position: relative
+  cursor: pointer
+  line-height: $topbar-height
+
+.language-picker_icon
+  &.rotated
+    transform: rotate(180deg)
+    background-position: 15px 5px
+
+.language-picker_content
+  background-color: $white
+  list-style: none
+  display: none
+  position: absolute
+  top: 55px
+  right: -10px
+  padding: 0px 41px 0px 8px
+  margin: 0
+  border: 1px solid #eee
+  border-top: 1px solid $green
+
+  &:after
+    border-bottom: 6px solid $green
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    content: ""
+    display: inline-block
+    height: 0
+    left: 20px
+    position: absolute
+    top: -6px
+    width: 0
+
+  &.is-visible
+    display: block

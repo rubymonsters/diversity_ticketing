@@ -12,7 +12,7 @@ feature 'User Settings Page' do
 
     assert page.text.include?("Your account")
 
-    page.find("#account-menu").click
+    page.find("#dropdown").click
 
     click_link 'Account settings'
 
@@ -58,7 +58,7 @@ feature 'User Settings Page' do
 
     assert page.text.include?("Your account")
 
-    page.find("#account-menu").click
+    page.find("#dropdown").click
     click_link 'Account settings'
 
     click_link 'Delete account'
@@ -73,7 +73,7 @@ feature 'User Settings Page' do
 
     assert page.text.include?("Your account")
 
-    page.find("#account-menu").click
+    page.find("#dropdown").click
     click_link 'Account settings'
 
     page.must_have_selector("input[name='user[country_email_notifications]']")
@@ -97,7 +97,7 @@ feature 'User Settings Page' do
 
     assert page.text.include?("Your account")
 
-    page.find("#account-menu").click
+    page.find("#dropdown").click
     click_link 'Account settings'
 
     page.fill_in 'user_name', with: 'New Name'
