@@ -288,7 +288,7 @@ es:
       selection_by_organizer: "Nos encargaremos del proceso de selección, pero nos gustaría utilizar Diversity Tickets como plataforma de inscripción. No compartiremos la privacidad, detalles ni respuestas de las/os solicitantes con terceras partes, incluyendo los patrocinadores del evento."
       selection_by_travis:
         "Los procesos de selección e inscripción serán llevados a cabo por diversitytickets.org*
-        <p>* diversitytickets.org es una app de Travis Foundation, desarrollada por Rubymonstas. Las trabajadoras de Travis Foundation serán las encargadas del proceso de selección e inscripción</p>"
+        <p>* Las miembros del Diversity Tickets serán las encargadas del proceso de selección e inscripción</p>"
       not_shown: "No visible al público"
     event_search:
       enter_search: "Introduce el nombre del evento o keyword..."
@@ -312,10 +312,9 @@ es:
       description: "Descripción"
       directions_applicants: "Directrices para solicitantes"
       directions_applicants_placeholder:
-        "Información relevante para las/os solicitantes como:
-        - ¿Qué incluye el ticket?
-        p. ej.: El ticket es válido para todos los días de la conferencia.
-        - Información organizativa adicional
+        "Información relevante para las/os solicitantes como:\n
+        - ¿Qué incluye el ticket? p. ej.: El ticket es válido para todos los días de la conferencia.\n
+        - Información organizativa adicional\n
         - ..."
       email: "Email"
       email_confirmation: "Confirmación de email"
@@ -416,11 +415,11 @@ es:
     about:
       about_title: "Sobre Diversity Tickets"
       about_diversity_tickets:
-        "<p>diversitytickets.org es una app de Travis Foundation que ayuda a organizadores que colaboran con nosotras y proporcionan ayudas y tickets para conferencias a minorías infrarepresentadas en tecnología. Pueden hacerlo subiendo su evento/conferencia a nuestra plataforma espeficiando cuántos tickets ofrecerán. Una vez el evento está aprobado, se publica en nuestra página web y las interesadas pueden solicitar un ticket. </p>
+        "<p>diversitytickets.org es una app que ayuda a organizadores que colaboran con nosotras y proporcionan ayudas y tickets para conferencias a minorías infrarepresentadas en tecnología. Pueden hacerlo subiendo su evento/conferencia a nuestra plataforma espeficiando cuántos tickets ofrecerán. Una vez el evento está aprobado, se publica en nuestra página web y las interesadas pueden solicitar un ticket. </p>
         <p>La app fue creada para hacer todo el trabajo relacionado más fácil, tanto para los organizadores como las solicitantes potenciales. Los organizadores no tienen que crear formularios para las solicitudes de los tickets y pueden concentrarse en otro tipo de trabajo organizativo. Las solicitantes adquieren además una visión general de qué eventos están ofrenciendo diversity tickets a través de nuestra lista de eventos. </p>
-        <p>Travis Foundation ha colaborado con %{ruby_monstas} para crear esta aplicación de Código Abierto y Libre, que la fundación utiliza en su trabajo con conferencias. La app se ofrece como parte de la cuota que se ha de pagar por los servicios de consulta de la fundación. Si estás interesada/o en proporcionar una experiencia en una conferencia más abierta para tus participantes, ¡%{email_diversitytickets} ponte en contacto con nosotras!</p>
-        <p>Lee más sobre la idea y el concepto en el blog de Travis Foundation: %{travis_blog} %{app_to_diversify}. </a></p>"
-      app_to_diversify: "Una app para mejorar la diversidad"
+        <p>Si estás interesada/o en proporcionar una experiencia en una conferencia más abierta para tus participantes, ¡%{email_diversitytickets} ponte en contacto con nosotras</a>!</p>
+        <p>Travis Foundation ha colaborado con %{ruby_monstas} para crear esta aplicación de Código Abierto y Libre. Lee más sobre la idea y el concepto en el blog de Travis Foundation: %{travis_blog} %{app_to_diversify}</a>.</p>"
+      app_to_diversify: "An app to diversify tech conferences [EN]"
       title: "Info"
     faq:
       am_i_eligible: "¿Soy eligible para solicitar un ticket?"
@@ -489,9 +488,7 @@ es:
       your_events: "Tus eventos"
       your_applications: "Tus solicitudes"
     open_graph_tags:
-      description:
-        "diversitytickets.org es una app de Travis Foundation que ayuda a conferencias organizar sus diversity tickets
-        y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde solicitarlos"
+      description: "diversitytickets.org es una app que ayuda a conferencias organizar sus diversity tickets y ofrecer a minorías infrarepresentadas en tecnología una plataforma donde solicitarlos"
       diversity_tickets: "Diversity Tickets"
       title: "Ayudamos a las conferencias a llegar a una audiencia más diversa. Te ayudamos a ti a que encuentres estas conferencias."
       type: "website"
