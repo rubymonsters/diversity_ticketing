@@ -3,13 +3,7 @@ class EventsController < ApplicationController
   before_action :get_event, only: [:show, :edit, :update, :destroy, :delete_event_data, :delete_event_applications_data]
   before_action :set_approved_tickets_count, only: [:show]
   skip_before_action :require_login, only: [:index, :index_past, :show, :destroy]
-
-  def index
-    @open_events = EventSearchService.new(params).results.approved.upcoming.open.order(:deadline)
-    @closed_events = EventSearchService.new(params).results.approved.upcoming.closed.order(:deadline)
-    @past_events = Event.approved.past.active
-    @selected_tags = EventSearchService.new(params).selected_tags
-  end
+  before_action :open_events, :closed_events, :past_events, :selected_tags, only: [:index]
 
   def index_past
     @events = EventSearchService.new(params).results.approved.past.active.order(end_date: :desc)
@@ -142,5 +136,21 @@ class EventsController < ApplicationController
         approved_tickets = @event.applications.where(status: 'approved').count
         @event.update_attributes(approved_tickets: approved_tickets)
       end
+    end
+
+    def open_events
+      @open_events = EventSearchService.new(params).results.approved.upcoming.open.order(:deadline)
+    end
+
+    def closed_events
+      @closed_events = EventSearchService.new(params).results.approved.upcoming.closed.order(:deadline)
+    end
+
+    def past_events
+      @past_events = Event.approved.past.active
+    end
+
+    def selected_tags
+      @selected_tags = EventSearchService.new(params).selected_tags
     end
 end

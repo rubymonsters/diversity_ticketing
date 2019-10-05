@@ -285,6 +285,7 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       application = make_draft(event, { applicant_id: user.id })
 
+      ActionMailer::Base.deliveries = []
       post :submit, params: { event_id: event.id,
                               id: application.id,
                               application: {
@@ -297,7 +298,6 @@ class ApplicationsControllerTest < ActionController::TestCase
       emails = ActionMailer::Base.deliveries
       emails.each { |email| reminder_emails << email if email.subject == "Your event received more applications than available tickets." }
       assert_equal 1, reminder_emails.length
-
     end
   end
 

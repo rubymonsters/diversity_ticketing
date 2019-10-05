@@ -31,7 +31,8 @@ class DraftsController < ApplicationController
     if @draft.update(application_params)
       @draft.update_attributes(submitted: true)
       ApplicantMailer.application_received(@draft).deliver_later
-      redirect_to event_application_path(@event.id, @draft.id), notice: t('.successful_application', event_name: @event.name)
+      flash[:notice] = t('.successful_application', event_name: @event.name)
+      redirect_to event_application_path(@event.id, @draft.id)
     else
       render :show
     end

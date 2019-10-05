@@ -72,6 +72,26 @@ class Event < ApplicationRecord
     pluck(:organizer_id).uniq.count
   end
 
+  def emails_notification_capacity
+    organizer.capacity_email_notifications
+  end
+
+  def emails_notification_capacity_always?
+    emails_notification_capacity == "Always"
+  end
+
+  def emails_notification_capacity_once?
+    emails_notification_capacity.downcase == "Once".downcase
+  end
+
+  def ticket_capacity_reached?
+    (applications.count - 1) >= number_of_tickets
+  end
+
+  def able_to_send_reminder?
+    emails_notification_capacity_always? || (emails_notification_capacity_once? && capacity_reminder_count.zero?)
+  end
+
   def open?
     deadline >= Time.now
   end
@@ -94,11 +114,18 @@ class Event < ApplicationRecord
 
   def to_csv
     CSV.generate do |csv|
-      csv << ["Name", "Email", "Why do you want to attend #{self.name} and what especially do you look forward to learning?", "Please share with us why you're applying for a diversity ticket."]
+      csv << csv_content
       applications.active.submitted.each do |application|
         csv << [application.name, application.email, application.attendee_info_1, application.attendee_info_2]
       end
     end
+  end
+
+  def csv_content
+    ["Name",
+     "Email",
+     "Why do you want to attend #{self.name} and what especially do you look forward to learning?",
+     "Please share with us why you're applying for a diversity ticket."]
   end
 
   def twitter_handle=(value)
