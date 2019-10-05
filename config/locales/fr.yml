@@ -600,7 +600,7 @@ fr:
       subtitle: "La suppression de votre compte est irréversible."
       title: "Êtes-vous sûr·e ?"
     delete_account:
-      delete_button: "Delete account"
+      delete_button: "Supprimer le compte"
       password: "Mot de passe"
       title: "Suppression du compte"
     new:
@@ -609,4 +609,4 @@ fr:
       sign_in_here: "Se connecter"
       title: "Créer un compte"
       privacy_policy: "confidentialité"
-      privacy_policy_checkbox: "I agree with the %{privacy_policy_link} of Diversity Tickets"
+      privacy_policy_checkbox: "Je suis en accord avec la %{privacy_policy_link} de Diversity Tickets"
