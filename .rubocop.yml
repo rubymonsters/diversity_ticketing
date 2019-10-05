@@ -1,0 +1,33 @@
+inherit_from: .rubocop_todo.yml
+
+Rails:
+  Enabled: true
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 121
+Metrics/MethodLength:
+  Enabled: false
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'test/**/*'
+Metrics/AbcSize:
+  Max: 18
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+Lint/MissingCopEnableDirective:
+  Enabled: false
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+Metrics/ClassLength:
+  Max: 150

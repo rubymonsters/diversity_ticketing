@@ -9,8 +9,8 @@ gem 'aws-sdk', '~> 2'
 gem 'city-state'
 gem 'clearance'
 gem 'coffee-rails', '~> 4.2.0'
-gem 'iso_country_codes'
 gem 'date_validator'
+gem 'iso_country_codes'
 gem 'jquery-rails'
 gem 'letsencrypt-rails-heroku', group: 'production'
 gem 'minitest-rails', '~> 3.0'
@@ -20,9 +20,9 @@ gem 'puma'
 gem 'rails-controller-testing'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
-gem 'uglifier'
 gem 'twitter'
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'tzinfo-data', platforms: %i[mingw mswin]
+gem 'uglifier'
 
 group :development, :test do
   gem 'byebug'
@@ -30,6 +30,7 @@ group :development, :test do
   gem 'mocha'
   gem 'pry'
   gem 'spring'
+  gem 'rubocop'
 end
 
 group :development do
