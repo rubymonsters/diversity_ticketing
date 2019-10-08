@@ -276,7 +276,7 @@ fr:
         <p>* Les membres de Diversity Tickets géreront tout le processus d'enregistrement des candidatures et de sélection.</p>"
       not_shown: "Informations invisibles au public"
     event_search:
-      enter_search: "Entrez le nom d'un l'événement ou un mot-clé..."
+      enter_search: "Entrez le nom d'un événement, d'une localisation ou d'un mot-clé..."
       fields_of_expertise: "Domaines d'expertise"
       filter_by_tags: "Filtrer par étiquettes"
       languages: "Langues"
