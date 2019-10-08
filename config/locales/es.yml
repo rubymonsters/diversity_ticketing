@@ -291,7 +291,7 @@ es:
         <p>* Las miembros del Diversity Tickets serán las encargadas del proceso de selección e inscripción</p>"
       not_shown: "No visible al público"
     event_search:
-      enter_search: "Introduce el nombre del evento o keyword..."
+      enter_search: "Introduce el nombre del evento, ubicación o palabra clave..."
       fields_of_expertise: "Campos expertos"
       filter_by_tags: "Filtra a través de tags"
       languages: "Idiomas"
