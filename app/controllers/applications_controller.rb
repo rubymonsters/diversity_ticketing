@@ -6,14 +6,12 @@ class ApplicationsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :continue_as_guest]
 
   def new
-    if !current_user && !guest
+    if guest?
       redirect_to continue_as_guest_path(@event.id)
+    elsif !current_user || !@event.applications.find_by(applicant_id: current_user.id)
+      @application = @event.applications.build
     else
-      unless current_user && @event.applications.find_by(applicant_id: current_user.id)
-        @application = @event.applications.build
-      else
-        redirect_to user_applications_path(current_user.id)
-      end
+      redirect_to user_applications_path(current_user.id)
     end
   end
 
@@ -115,12 +113,14 @@ class ApplicationsController < ApplicationController
     params[:guest]
   end
 
+  def guest?
+    !current_user && !guest
+  end
+
   def ticket_capacity_check
-    if @event.number_of_tickets == @event.applications.count - 1
-      if (@event.organizer.capacity_email_notifications == "Always") || (@event.organizer.capacity_email_notifications == "Once" && @event.capacity_reminder_count == 0)
-        OrganizerMailer.ticket_capacity_reached(@event).deliver_later
-        @event.update_attributes(capacity_reminder_count: @event.capacity_reminder_count + 1)
-      end
+    if @event.ticket_capacity_reached? && @event.able_to_send_reminder?
+      OrganizerMailer.ticket_capacity_reached(@event).deliver_later
+      @event.update_attributes(capacity_reminder_count: @event.capacity_reminder_count + 1)
     end
   end
 end

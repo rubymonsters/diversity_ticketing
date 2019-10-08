@@ -4,27 +4,10 @@ class AdminEventsController < ApplicationController
   before_action :get_event, except: [:index, :annual_events_report]
   before_action :require_admin
   before_action :set_approved_tickets_count, only: [:show]
+  before_action :set_application_handler, :set_country_info, :set_events_data, :set_users_data, only: [:index]
 
   #Admin page view with all submitted events and admin statistics:
   def index
-    @application_process_options_handler = ApplicationProcessOptionsHandler.find(1)
-    @events = Event.all
-    @new_users = User.all.created_last_30_days
-    @total_organizers = Event.all.total_organizers
-    @countries = Event.all.pluck(:country).compact
-    @countries_statistics = CountriesStatistics.new(@events).to_json
-    @country_rank = CountriesStatistics.new(@events).country_rank
-    @categorized_events = {
-      "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
-      "Approved events" => Event.approved.upcoming.order(:deadline),
-      "Past approved events"=> Event.approved.past.order(deadline: :desc).active,
-      "Past unapproved events" => Event.unapproved.past.order(:deadline).active
-    }
-    @approved_events_deadline = {
-      "Open deadline:" => Event.approved.upcoming.open.order(:deadline),
-      "Closed deadline:" => Event.approved.upcoming.closed.order(:deadline)
-    }
-
     respond_to do |format|
       format.html
       format.csv { send_data ReportExporter.events_report, filename: "events_report_#{DateTime.now.strftime("%F")}.csv" }
@@ -33,7 +16,9 @@ class AdminEventsController < ApplicationController
 
   def annual_events_report
     respond_to do |format|
-      format.csv { send_data ReportExporter.annual_events_report, filename: "anual_events_report_#{DateTime.now.strftime("%F")}.csv" }
+      format.csv do
+        send_data ReportExporter.annual_events_report, filename: "anual_events_report_#{DateTime.now.strftime("%F")}.csv"
+      end
     end
   end
 
@@ -98,5 +83,42 @@ class AdminEventsController < ApplicationController
       approved_tickets = Application.where(event_id: @event.id, status: 'approved').count
       @event.update_attributes(approved_tickets: approved_tickets)
     end
+  end
+
+  def set_users_data
+    @new_users = User.all.created_last_30_days
+  end
+
+  def set_events_data
+    @total_organizers = all_events.total_organizers
+    categorized_events
+    @approved_events_deadline = {
+      "Open deadline:" => Event.approved.upcoming.open.order(:deadline),
+      "Closed deadline:" => Event.approved.upcoming.closed.order(:deadline)
+    }
+  end
+
+  def categorized_events
+    @categorized_events = {
+      "Unapproved events" => Event.unapproved.upcoming.order(:deadline),
+      "Approved events" => Event.approved.upcoming.order(:deadline),
+      "Past approved events"=> Event.approved.past.order(deadline: :desc).active,
+      "Past unapproved events" => Event.unapproved.past.order(:deadline).active
+    }
+  end
+
+  def set_country_info
+    @countries = all_events.pluck(:country).compact
+    @countries_statistics = CountriesStatistics.new(@events).to_json
+    @country_rank = CountriesStatistics.new(@events).country_rank
+  end
+
+  def set_application_handler
+    @application_process_options_handler = ApplicationProcessOptionsHandler.find(1)
+  end
+
+  def all_events
+    @events = Event.all
+    @events
   end
 end

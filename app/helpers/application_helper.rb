@@ -46,7 +46,10 @@ module ApplicationHelper
   end
 
   def format_date_range_different_month(start_date, end_date)
-    start_date.strftime("%B #{start_date.mday.ordinalize}") + " to " + end_date.strftime("%B #{end_date.mday.ordinalize}") + ", #{end_date.year}"
+    start_date.strftime("%B #{start_date.mday.ordinalize}") +
+      " to " +
+      end_date.strftime("%B #{end_date.mday.ordinalize}") +
+      ", #{end_date.year}"
   end
 
   def full_title(page_title = '')
