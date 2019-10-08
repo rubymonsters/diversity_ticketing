@@ -5,10 +5,13 @@
   }
   .search-input,
   .btn {
-    float: left;
+    margin-bottom: 10px;
+    @media (min-width: $medium) {
+      float: left;
+    }
   }
   .search-input {
-    width: 320px;
+    width: 450px;
     height: 35px;
     margin-right: 8px;
   }
@@ -22,7 +25,7 @@
   cursor: pointer;
   position: relative;
   margin-top: 10px;
-  @media (min-width: $small) {
+  @media (min-width: $medium) {
     float: right;
     margin-top: 0;
   }
