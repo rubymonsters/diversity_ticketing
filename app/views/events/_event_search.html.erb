@@ -21,9 +21,10 @@
           <% end %>
         </div>
       </div>
-      <%= text_field_tag :query, params[:query],
-          placeholder: t('.enter_search'), class: "search-input" %>
-      <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>
+      <div>
+        <%= text_field_tag :query, params[:query], placeholder: t('.enter_search'), class: "search-input" %>
+        <%= submit_tag t('.search'), name: nil, class: "btn btn-edit" %>
+      </div>
       <div class="clear"></div>
     <% end %>
   </section>

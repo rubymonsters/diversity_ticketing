@@ -27,7 +27,7 @@
 //= require markdown.js
 //= require marked.min.js
 //= require map-expander.js
-//= require dropdown.js
 //= require datepicker.js
 //= require filter-dropdown.js
-//= require searchbar-input-width.js
+//= require top_menu.js
+//= require language_picker.js
