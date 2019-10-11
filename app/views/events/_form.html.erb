@@ -61,10 +61,11 @@
       <%= f.form_field :text_area, :applicant_directions, t('.directions_applicants'), class: ['markdown'],
           placeholder: t('.directions_applicants_placeholder') %>
     <div class="two-columns">
-      <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right'],
+      <%= f.form_field :date_select, :deadline, t('.deadline_application') , class: ['right', 'date-select'],
           min: Date.today, start_year: Date.today.year, include_blank: true, default: nil,
           use_month_names: t('date.month_names'), order: [:day, :month, :year] %>
-      <%= f.form_field :time_select, :deadline, t('.time_utc'), class: ['right'], ignore_date: true, default: {:hour => '23', :minute => '59'}  %>
+      <%= f.form_field :time_select, :deadline, t('.time_utc'), class: ['right', 'time-select'],
+          ignore_date: true, default: {hour: '23', minute: '59'} %>
     </div>
       <%= f.form_field :number_field, :number_of_tickets, t('.number_of_tickets'), min: 1 %>
 
@@ -104,24 +105,17 @@
               <%=t('.terms_and_conditions') %>
             </p>
           </div>
-
         <% end %>
-
 
         <%= label_tag do %>
-        <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> <%=t('.application_by_organizer') %>
+          <%= f.radio_button(:application_process, 'application_by_organizer', class: 'has-dependent') %> <%=t('.application_by_organizer') %>
 
-        <div class="form_field indent form_with_hint">
-          <%= f.form_field :text_area, :application_link, t('.application_form_link'), placeholder: t('.application_form_link_placeholder') %>
-            <div class="form-hint"><%= link_to t('home.faq.why_provide_a_link_short'), faq_path(anchor: "conf_6") %></div>
-        </div>
-
+          <div class="form_field indent form_with_hint">
+            <%= f.form_field :text_area, :application_link, t('.application_form_link'), placeholder: t('.application_form_link_placeholder') %>
+              <div class="form-hint"><%= link_to t('home.faq.why_provide_a_link_short'), faq_path(anchor: "conf_6") %></div>
+          </div>
         <% end %>
       </div>
-
-      <%= label_tag do %>
-        <p><%= t('.diversity_tickets_info') %></p>
-      <% end %>
     </section>
 
     <% if current_user.admin? && action_name == 'edit' %>

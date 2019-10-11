@@ -273,7 +273,7 @@ en:
       event_website: "Website"
       selection_by_organizer: "We are handling the selection process ourselves, but the application process will be handled by diversitytickets.org. We will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
       selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*.
-        <p>* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes.</p>"
+        <p>* Members of the Diversity Tickets team will manage the application and selection processes.</p>"
       not_shown: "Not shown to the public."
     event_search:
       enter_search: "Enter event name, location or keyword..."
@@ -297,11 +297,9 @@ en:
       description: "Description"
       directions_applicants: "Directions for applicants"
       directions_applicants_placeholder: "Let the applicants know about any additional information like:
-        - What does the ticket include?
-        E.g.: The ticket is valid for both conference days, ...
-        - Additional organizational info
+        - What does the ticket include? E.g.: The ticket is valid for both conference days.\n
+        - Additional organizational info\n
         - ..."
-      diversity_tickets_info: "* diversitytickets.org is an app of Travis Foundation, built by Rubymonstas. The employees of Travis Foundation will manage the application and selection processes."
       email: "Email"
       email_confirmation: "Email confirmation"
       from: "From"
@@ -324,7 +322,7 @@ en:
       number_of_tickets: "Number of available diversity tickets"
       organizer_details: "Organizer details"
       selection_by_organizer: "The organizer is handling the selection process by themselves, but the application process will be handled by diversitytickets.org."
-      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org*."
+      selection_by_travis: "Both, the application and selection process shall be handled by diversitytickets.org."
       select_country: "Select country *"
       state_province: "State/Province"
       terms_and_conditions: "I will not share the privacy, details, and answers of any applicant with third parties, including those who sponsor the diversity tickets."
@@ -400,22 +398,22 @@ en:
   home:
     about:
       about_title: "About Diversity Tickets"
-      about_diversity_tickets: "<p>diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants. They can do so by adding their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
+      about_diversity_tickets: "<p>diversitytickets.org is an application that helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants. They can do so by adding their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it.</p>
         <p>The app was created to make the work around diversity ticketing easier for event organisers as well as members of underrepresented groups in tech. Organisers don’t have to set up forms for the applicants to fill out and can focus on other organisational work, while applicants have a good overview of which events are currently offering diversity tickets, through the event listing.</p>
-        <p>Travis Foundation has partnered with %{ruby_monstas} to create this Open Source app, which they currently use in their diversity work with conferences. The app itself is currently offered for a fee as part of the Foundation’s diversity consulting. If you’re interested in offering a diverse conference experience to your attendees, %{email_foundation} get in touch</a>!</p>
-        <p>Read more about the idea and concept on the Travis Foundation blog: %{travis_blog} %{app_to_diversify}</a></p>"
+        <p>If you’re interested in offering a diverse conference experience to your attendees, %{email_diversitytickets} get in touch</a>!</p>
+        <p>Travis Foundation partnered with %{ruby_monstas} to create this Open Source app. Read more about the idea and concept on the Travis Foundation blog: %{travis_blog} %{app_to_diversify}</a></p>"
       app_to_diversify: "An app to diversify tech conferences"
       title: "About"
     faq:
       am_i_eligible: "Am I eligible to apply?"
       am_i_eligible_answer: "<p>If you feel like you are a member of an underrepresented group in tech — this includes, but is not limited to: people of colour, LGBTQIA+ people, women and disabled people — and agree to our Terms and Conditions, that makes you eligible for a diversity ticket.</p>"
       diversity_tickets_options: "What options are there to use diversitytickets.org?"
-      diversity_tickets_options_answer: "<ul> <li>1) Travis Foundation handles the selection and application process for your conference</li>
-        <li>2) Travis Foundation handles the application process, you handle the selection process</li>
+      diversity_tickets_options_answer: "<ul> <li>1) The Diversity Tickets team handles the selection and application process for your conference. (Currently not available.)</li>
+        <li>2) The Diversity Tickets team handles the application process, you handle the selection process.</li>
         <li>3) You handle both the application and selection and we only list your conference on our site.</li></ul>
         For option 2) we will send you a .csv file with all applications that came in through diversitytickets.org.
-        Since Travis Foundation is a non-profit organization we depend on donations to continue the projects we build. To be able to put in working hours to manage your conference tickets and meanwhile still support our other projects, we ask for a small donation to Travis Foundation for our service. We will take into consideration the resources and size of the conference when asking for a contribution and are sure we will always find a way to make this work.
-        For option 1) and 2) we will ask for a donation to cover the diversity consulting and management work of Travis Foundation. For option 3) the use of the app is for free, but a small donation around 50 € is greatly appreciated and will go towards hosting and managing the site and printing stickers for Rubymonstas."
+        Since we belong to a non-profit organization we depend on donations to continue the projects we build. To be able to put in working hours to manage your conference tickets and meanwhile still support our other projects, we ask for a small donation for our service. We will take into consideration the resources and size of the conference when asking for a contribution and are sure we will always find a way to make this work.
+        For option 1) and 2) we will ask for a donation to cover the diversity consulting and management work of Diversity Tickets. For option 3) the use of the app is for free, but a small donation around 50 € is greatly appreciated and will go towards hosting and managing the site and printing stickers for Rubymonstas."
       for_conference_organisers: "For conference organisers"
       for_grant_applicants: "For grant applicants"
       general: "General"
@@ -432,11 +430,11 @@ en:
       how_long_event_approved_answer: "<p>This usually depends on how many event submissions we get; we expect for it to take from 24 hours up to one week, so please factor that in when submitting your event. Once the event is approved, you will receive an automated email.</p>"
       title: "FAQ"
       what_is_diversity_tickets: "What is diversitytickets.org?"
-      what_is_diversity_tickets_answer: "diversitytickets.org is a Travis Foundation app which helps conference organisers manage their diversity tickets and offer underrepresented groups in tech a platform to find events they can apply for. Conference organizers can submit their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it."
+      what_is_diversity_tickets_answer: "diversitytickets.org is an application which helps conference organisers manage their diversity tickets and offer underrepresented groups in tech a platform to find events they can apply for. Conference organizers can submit their own event/conference and specifying how many tickets will be given away. Once the event is approved, it becomes publicly listed on the website and applicants can apply for it."
       when_find_application_approved_rejected: "When will I find out if my application has been accepted/rejected?"
       when_find_application_approved_rejected_answer: "<p>Every conference is different, so we can’t tell you for sure how much the selection process will take; two weeks from the application deadline usually give us enough time to process all applications.</p>"
       which_events_eligible: "Which events are eligible?"
-      which_events_eligible_answer: "<p>Organizers that want to get help from %{travis_website}Travis Foundation</a> to handle their diversity tickets can submit any of their events or conferences for which they are willing to offer free tickets or travel grants — this must have been discussed with Travis Foundation prior to the submission. We expect the events to be inclusive and to have a Code of Conduct which will be enforced throughout the event.</p>"
+      which_events_eligible_answer: "<p>Organizers that want to get help from Diversity Tickets to handle their diversity tickets can submit any of their events or conferences for which they are willing to offer free tickets or travel grants — this must have been discussed with the Diversity Tickets team prior to the submission. We expect the events to be inclusive and to have a Code of Conduct which will be enforced throughout the event.</p>"
       why_diversity_tickets: "Why is there a need for something like diversitytickets.org?"
       why_diversity_tickets_answer: "<p>Unfortunately, the tech industry is %{geekfeminism} far from being diverse</a>. There are a few projects which make us all aware of this problem, but the goal of diversitytickets.org is first and foremost to try and raise the amount of diverse attendees at conferences by specifically reaching out to members of minority groups who would otherwise not be able to attend a conference.</p>
         <p>Read more about the concept on the Travis Foundation Blog: %{travis_blog} An app to diversify tech conferences</a></p>"
@@ -516,7 +514,7 @@ en:
       your_events: "Your events"
       your_applications: "Your applications"
     open_graph_tags:
-      description: "diversitytickets.org is a Travis Foundation app which helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants."
+      description: "diversitytickets.org is an application that helps conference organisers who have partnered with us reach out to minority groups by offering them ticket and travel grants."
       diversity_tickets: "Diversity Tickets"
       title: "We help events reach a more diverse audience. And we help you to find these events."
       type: "website"
