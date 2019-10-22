@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || :en
   end
 
+  def set_locale_to_english
+    I18n.locale = :en
+  end
+
   def require_admin
     redirect_to root_path unless admin_user?
   end

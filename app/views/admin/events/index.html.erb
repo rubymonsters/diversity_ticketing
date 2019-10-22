@@ -1,0 +1,62 @@
+<% provide :title, "Admin - Events" %>
+
+<%= render partial: "admin/admin_navigation" %>
+
+<%= render partial: "shared/breadcrumbs", locals: {admin: "Admin", title: "Events"} %>
+
+<h1>Events</h1>
+
+<div class="box">
+  <h2>Manage "Selection by Diversity Tickets"</h2>
+  <%= form_for @application_process_options_handler, url: update_process_path do |form| %>
+    <%= form.check_box :selection_by_dt_enabled, value: selection_by_dt_enabled?  %>
+      Enable selection by Diversity Tickets?
+    <div class="submit-field">
+      <%= form.submit(class: "btn btn-save", value: 'Save', data: {
+        confirm: selection_by_dt_enabled? ? 'Are you sure you want to disable selection by Diversity Tickets?' : 'Are you sure you want to enable selection by Diversity Tickets?'
+      }) %>
+    </div>
+  <% end %>
+</div>
+
+<div class="box">
+  <h2>Unapproved Events</h2>
+  <div class="admin">
+    <ul class="admin-list">
+      <% if @unapproved_events.empty? %>
+        <p><%= t(".no_events_to_approve")%></p>
+      <% else %>
+        <% @unapproved_events.each do |event| %>
+          <%= render partial: "event_row", locals: { event: event } %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="box">
+  <h2>Approved Events</h2>
+  <div class="admin">
+    <div class="box">
+      <h3>Open deadline</h3>
+      <ul class="admin-list">
+        <% unless @approved_open_events.empty? %>
+          <% @approved_open_events.each do |event| %>
+            <%= render partial: "event_row", locals: { event: event } %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3>Closed deadline</h3>
+      <ul class="admin-list">
+        <% unless @approved_closed_events.empty? %>
+          <% @approved_closed_events.each do |event| %>
+            <%= render partial: "event_row", locals: { event: event } %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

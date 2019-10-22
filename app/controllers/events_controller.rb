@@ -50,7 +50,7 @@ class EventsController < ApplicationController
         AdminMailer.submitted_event(@event, user.email).deliver_later
       end
       OrganizerMailer.submitted_event(@event).deliver_later
-      redirect_to events_url, notice: t('.thank_you', event_name: @event.name)
+      redirect_to events_path, notice: t('.thank_you', event_name: @event.name)
     else
       render :new
     end
@@ -91,21 +91,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      if current_user.admin?
-        admin_event_params
-      else
-        organizer_event_params
-      end
-    end
-
-    def organizer_event_params
       params.require(:event).permit permitted_params_for_event_organizers
-    end
-
-    def admin_event_params
-      params.require(:event).permit(
-        permitted_params_for_event_organizers + [:approved]
-      )
     end
 
     def permitted_params_for_event_organizers

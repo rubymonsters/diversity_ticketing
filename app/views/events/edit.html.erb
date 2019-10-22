@@ -5,7 +5,6 @@
 
 <%= render partial: "shared/breadcrumbs", locals: Hash[key => value, edit_event: t('.edit_event')] %>
 
-
 <h1 class="page-title"><span class="page-title-firstword"><%= t('.edit') %></span> <%= @event.name %></h1>
 
 <% if @event.errors.any? %>
@@ -19,6 +18,5 @@
     </ul>
   </div>
 <% end %>
-
 
 <%= render partial: "form", locals: {submit_tag_text: t('.submit_changes'), form_url: event_path(@event)} %>

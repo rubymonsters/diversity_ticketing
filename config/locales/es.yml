@@ -77,73 +77,6 @@ es:
               blank: ": Por favor, introduce una página web"
               invalid: "URL completa, por ejemplo: https://miconferencia.com"
 
-  admin_applications:
-    application_approved: "¡La solicitud de %{applicant_name} ha sido aprobada!"
-    application_pending: 'La solicitud de %{applicant_name} ha vuelto a "pendiente"'
-    application_rejected: "La solicitud de %{applicant_name} ha sido rechazada"
-    show:
-      admin_link: "Admin"
-      application_by: "Solicitud de %{applicant_name}"
-      application_for: "Solicitud para %{event_name}"
-      application_status: "Estado de la solicitud: %{application_status}"
-      approve: "Aprobar"
-      are_you_sure: "¿Estás segura/o de que quieres eliminar esta solicitud?"
-      attendee_info_1: "¿Por qué quieres acudir a %{event_name} y qué es lo que te gustaría aprender?"
-      attendee_info_2: "Por favor, explícanos por qué te gustaría recibir un Diversity Ticket"
-      delete_application: "Borrar solicitud"
-      name: "Nombre"
-      email: "Email"
-      home_link: "Inicio"
-      reject: "Denegar"
-      revert: "Revertir"
-      show_event_details: "Mostrar detalles del evento"
-      title: "Admin"
-      visa_need: "Necesito una visa"
-
-  admin_events:
-    event_approved: "¡%{event_name} ha sido aprobado!"
-    event_unapproved: "%{event_name} ha sido desaprobado"
-    index:
-      are_you_sure: "¿Estás seguro/a?"
-      approve: aprobar
-      delete: "eliminar"
-      download_annual_events_report: "Descargar informe anual de eventos"
-      download_csv: "Descargar CSV"
-      download_events_report: "Descargar informe de eventos"
-      download_data: "Descargar datos"
-      edit: "editar"
-      no_events_to_approve: "No existe ningún evento pendiente de revisión"
-      title: "Página de administrador"
-      unapprove: "desaprobar"
-    show:
-      admin_link: "Admin"
-      applications: "Solicitudes"
-      approve: "Aprobar"
-      approve_event: "Aprobar evento"
-      are_you_sure: "¿Estás segura/o?"
-      edit_event: "Editar evento"
-      delete: "Borrar"
-      delete_event: "Borrar evento"
-      download_csv: "Descargar CSV"
-      download_data: "Descargar datos"
-      home_link: "Inicio"
-      organizer_details: "Detalles del organizador"
-      organizer_email: "Email"
-      organizer_name: "Nombre"
-      title: "Admin"
-      tweet_event: "Twittéalo"
-      reject: "Rechazar"
-      revert: "Revertir"
-    statistics:
-      conferences_since: "Conferencias desde "
-      countries_hosted_events: "Países donde hubo eventos"
-      most_conferences: "Mayoría de conferencias"
-      new_users_last_30_days: "Usuarios nuevos en los últimos 30 días"
-      total_conferences: "Número total de conferencias:"
-      total_organizers: "Número total de organizadores:"
-      show_statistics_map: "Mostrar mapa de estadísticas"
-      statistics: "Estadísticas"
-
   applications:
     already_applied: "Ya has realizado una solicitud para %{event_name}"
     application_deleted: "No puedes visualizar tu solicitud porque el evento ha sido eliminado de Diversity Tickets"
@@ -202,7 +135,6 @@ es:
       home_link: "Inicio"
       title: "Nueva solicitud"
     show:
-      admin_link: "Admin"
       application_by: "Solicitud de %{applicant_name}"
       application_for: "Solicitud para %{event_name}"
       approve: "Aprobar"
@@ -353,7 +285,6 @@ es:
       your_application: "Tu solicitud"
       your_draft: "Tu boceto"
     edit:
-      admin_link: "Admin"
       edit: "Editar"
       edit_event: "Editar evento"
       events_link: "Eventos"
@@ -397,7 +328,6 @@ es:
       submit_your_event: "Subir tu evento"
       title: "Previsualizar evento"
     show:
-      admin_link: "Admin"
       applications_closed: "Lo siento, las solicitudes para %{event_name} están cerradas."
       apply_at: "Inscríbete en %{event_name}"
       apply_for_ticket: "Solicita un ticket"
@@ -548,11 +478,6 @@ es:
       people: "Humanidades"
       tech: "Tecnología"
       security: "Securidad"
-    index:
-      are_you_sure: "¿Estás segura/o?"
-      title: "Gestión de tags"
-    tag_created: "El tag %{tag_name} se ha creado con éxito."
-    tag_problem: "Ha habido un problema creando el nuevo tag."
 
   users:
     account_deleted: "Tu cuenta se ha eliminado con éxito"

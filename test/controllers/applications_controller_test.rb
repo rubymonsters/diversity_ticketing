@@ -102,7 +102,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       assert_redirected_to sign_in_path
     end
 
-    it 'does not show application of other users to non-admin users' do
+    it 'does not show application of other users' do
       user = make_user
       other_user = make_user(email: 'other@email.com')
       sign_in_as(user)
@@ -113,41 +113,6 @@ class ApplicationsControllerTest < ActionController::TestCase
       get :show, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to root_path
-    end
-
-    it 'shows submitted application to admin users' do
-      admin = make_admin
-      sign_in_as(admin)
-
-      event = make_event
-      application = make_application(event)
-
-      get :show, params: { event_id: event.id, id: application.id }
-
-      assert_response :success
-    end
-
-    it 'redirects admin users to root if they try to see drafted applications' do
-      admin = make_admin
-      sign_in_as(admin)
-
-      event = make_event
-      draft = make_draft(event)
-
-      get :show, params: { event_id: event.id, id: draft.id }
-
-      assert_redirected_to root_path
-    end
-
-    it 'raise exception if application does not exist' do
-      admin = make_admin
-      sign_in_as(admin)
-
-      event = make_event
-
-      assert_raises(ActiveRecord::RecordNotFound) do
-        get :show, params: { event_id: event.id, id: 1 }
-      end
     end
 
     it 'redirects users to applications overview if the event has been deleted' do
@@ -169,7 +134,11 @@ class ApplicationsControllerTest < ActionController::TestCase
       get :show, params: { event_id: event.id, id: application.id }
 
       assert_redirected_to user_applications_path(user.id)
-      assert_equal "You cannot view your application as the event you applied for has been removed from Diversity Tickets", flash[:alert]
+      assert_equal(
+        "You cannot view your application as the event you applied for has been removed from "\
+        "Diversity Tickets",
+        flash[:alert]
+      )
     end
   end
 
@@ -180,14 +149,15 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_application(event, { applicant_id: user.id })
 
-      post :update, params: { event_id: event.id,
-                              id: application.id,
-                              application: { name: "New Name",
-                                email: user.email,
-                                email_confirmation: user.email,
-                                terms_and_conditions: '1'
-                              }
-                            }
+      post :update, params: {
+        event_id: event.id,
+        id: application.id,
+        application: { name: "New Name",
+          email: user.email,
+          email_confirmation: user.email,
+          terms_and_conditions: '1'
+        }
+      }
 
       application.reload
 
@@ -200,10 +170,11 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_application(event, { applicant_id: user.id })
 
-      post :update, params: { event_id: event.id,
-                              id: application.id,
-                              application: { name: "New Name" }
-                            }
+      post :update, params: {
+        event_id: event.id,
+        id: application.id,
+        application: { name: "New Name" }
+      }
 
       application.reload
 
@@ -218,14 +189,15 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_draft(event, { applicant_id: user.id })
 
-      post :submit, params: { event_id: event.id,
-                              id: application.id,
-                              application: {
-                                email: user.email,
-                                email_confirmation: user.email,
-                                terms_and_conditions: '1'
-                              }
-                            }
+      post :submit, params: {
+        event_id: event.id,
+        id: application.id,
+        application: {
+          email: user.email,
+          email_confirmation: user.email,
+          terms_and_conditions: '1'
+        }
+      }
 
       application.reload
 
@@ -238,9 +210,11 @@ class ApplicationsControllerTest < ActionController::TestCase
       event = make_event
       application = make_draft(event, applicant_id: user.id)
 
-      post :submit, params: { event_id: event.id,
-                              id: application.id,
-                              application: { applicant_id: user.id } }
+      post :submit, params: {
+        event_id: event.id,
+        id: application.id,
+        application: { applicant_id: user.id }
+      }
 
       application.reload
 
@@ -258,20 +232,24 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       application = make_draft(event, { applicant_id: user.id })
 
-      post :submit, params: { event_id: event.id,
-                              id: application.id,
-                              application: {
-                                email: user.email,
-                                email_confirmation: user.email,
-                                terms_and_conditions: '1'
-                              }
-                            }
+      post :submit, params: {
+        event_id: event.id,
+        id: application.id,
+        application: {
+          email: user.email,
+          email_confirmation: user.email,
+          terms_and_conditions: '1'
+        }
+      }
       reminder_email = ActionMailer::Base.deliveries.last
-      assert_equal reminder_email.subject, "Your event received more applications than available tickets."
+      assert_equal(
+        reminder_email.subject,
+        "Your event received more applications than available tickets."
+      )
     end
 
-    it 'sends an email to the organizer if they have decided that want to get
-    informed when the event reached the maximum number of applications only once' do
+    it 'sends an email to the organizer if they have decided that want to get'\
+      'informed when the event reached the maximum number of applications only once' do
       organizer = make_user(capacity_email_notifications: "once")
       event = make_event(number_of_tickets: 1, organizer_id: organizer.id)
       user = make_user(email: "applicant@test.de")
@@ -285,24 +263,29 @@ class ApplicationsControllerTest < ActionController::TestCase
 
       application = make_draft(event, { applicant_id: user.id })
 
-      post :submit, params: { event_id: event.id,
-                              id: application.id,
-                              application: {
-                                email: user.email,
-                                email_confirmation: user.email,
-                                terms_and_conditions: '1'
-                              }
-                            }
+      post :submit, params: {
+        event_id: event.id,
+        id: application.id,
+        application: {
+          email: user.email,
+          email_confirmation: user.email,
+          terms_and_conditions: '1'
+        }
+      }
       reminder_emails = []
       emails = ActionMailer::Base.deliveries
-      emails.each { |email| reminder_emails << email if email.subject == "Your event received more applications than available tickets." }
-      assert_equal 1, reminder_emails.length
+      emails.each do |email|
+        if email.subject == "Your event received more applications than available tickets."
+          reminder_emails << email
+        end
+      end
 
+      assert_equal 1, reminder_emails.length
     end
   end
 
   describe '#destroy' do
-    it 'non-admin users can delete their own applications' do
+    it 'users can delete their own applications' do
       user = make_user(admin: false)
       sign_in_as(user)
 

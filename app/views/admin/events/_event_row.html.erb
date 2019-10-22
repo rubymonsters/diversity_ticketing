@@ -1,0 +1,54 @@
+<li>
+  <p class="event-name">
+    <span class="conflogo--small"><%= event_image event %></span>
+    <%= link_to event.name, admin_event_path(id: event.id), title: event.name %>
+  </p>
+
+  <p class="application-process">
+    <%= event.application_process.humanize %>
+  </p>
+
+  <p class="application-deadline">
+    <%= format_date(event.deadline) %>
+  </p>
+
+  <div class="admin-buttons">
+    <% if event.unapproved && event.open? %>
+      <%= form_for :approve,
+        url: approve_admin_event_path(event),
+        html: { method: :post } do |form| %>
+        <span>
+          <span title="tweet">
+            <%= form.check_box :tweet, checked: true %>
+          </span>
+          <span class="icon-twitter" aria-label="twitter icon"></span>
+          <span class="icon tooltip" title="approve" >
+            <%= form.submit(class: "icon-approve", title: "approve") %>
+          </span>
+        </span>
+      <% end %>
+    <% elsif event.approved && event.open? %>
+      <%= link_to approve_admin_event_path(event),
+        method: :post, class: "icon tooltip-large",
+        title: "Unapprove" do %>
+        <span class="icon-unapprove" aria-label="unapprove icon"></span>
+      <% end %>
+    <% end %>
+
+    <%= link_to edit_admin_event_path(id: event.id), class: "icon tooltip", title: "Edit" do %>
+      <span class="icon-edit" aria-label="edit icon"></span>
+    <% end %>
+
+    <%= link_to url_for(action: :destroy, id: event.id), method: :delete,
+      data: {confirm: "Are you sure?"}, class: "icon tooltip", title: "Delete" do %>
+      <span class="icon-delete" aria-label="trashcan icon"></span>
+    <% end %>
+  </div>
+
+  <p>
+    <% if event.approved %>
+      <%= link_to "Download CSV", admin_event_path(id: event.id, format: :csv),
+        class: "btn btn-save", title: "Download Data" %>
+    <% end %>
+  </p>
+</li>

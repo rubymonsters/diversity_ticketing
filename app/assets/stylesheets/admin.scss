@@ -1,0 +1,150 @@
+.secondary-navigation {
+  display: flex;
+  background-color: lighten($grey-mid, 20%);
+  padding: 0 10px;
+  height: 55px;
+  margin-bottom: 25px;
+  border-radius: 2px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px 0px 0px 30px;
+    font-size: 15px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+  }
+
+  li {
+    margin-right: 1.3em;
+    line-height: $topbar-height;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    color: $black;
+  }
+
+  a:hover,
+  .active {
+    background-color: inherit;
+    color: $green;
+    padding-bottom: 1px;
+    border: none;
+    &:after {
+      content: "";
+      display: block;
+      height: 1px;
+      margin-top: -1px;
+      background-color: $green;
+    }
+  }
+
+  p {
+    font-weight: 600;
+  }
+}
+
+.approve-button {
+  input[type="checkbox"] {
+    margin-left: 10px;
+  }
+}
+
+.admin-list,
+.tags-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 1em;
+    border-bottom: 3px solid #f1f1f1;
+    @media (min-width: $medium) {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+  }
+  .application-name {
+    flex: 0 0 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 1em;
+  }
+  .application-mail {
+    flex-basis: 40%;
+    overflow: hidden;
+    margin-right: 1em;
+    flex-grow: 1;
+  }
+  p {
+    margin: 0 0 1em;
+  }
+  .admin-buttons>form {
+    display:inline;
+  }
+  .event-name {
+    flex-basis: 15em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .application-process {
+    flex-basis: 12em;
+  }
+  .application-deadline {
+    flex-basis: 11em;
+  }
+}
+
+.organizer-list,
+.applicant-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 1em;
+    border-bottom: 3px solid #f1f1f1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: none;
+    margin-bottom: 0;
+    p:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+  p {
+    margin: 0 0 1em;
+  }
+  .event-name {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+ul.tags {
+  padding-left: 0;
+
+  li.tag {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 0 0.5em;
+    &.programming-languages {
+      background-color: lighten($blue-bg, 30%);
+    }
+    &.languages {
+      background-color: lighten($green-bg, 20%);
+    }
+    &.fields-of-expertise {
+      background-color: lighten($yellow, 20%);
+    }
+  }
+}

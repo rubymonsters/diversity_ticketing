@@ -1,0 +1,33 @@
+<% provide :title, "Admin - Past Events" %>
+
+<%= render partial: "admin/admin_navigation" %>
+
+<%= render partial: "shared/breadcrumbs", locals:{ title: "Past Events", admin: "Admin" } %>
+
+<h1>Past Events</h1>
+
+<div class="box">
+  <h2>Past Approved Events</h2>
+  <div class="admin">
+    <ul class="admin-list">
+      <% unless @approved_events.empty? %>
+        <% @approved_events.each do |event| %>
+          <%= render partial: "event_row", locals: { event: event } %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="box">
+  <h2>Past Unapproved Events</h2>
+  <div class="admin">
+    <ul class="admin-list">
+      <% unless @unapproved_events.empty? %>
+        <% @unapproved_events.each do |event| %>
+          <%= render partial: "event_row", locals: { event: event } %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

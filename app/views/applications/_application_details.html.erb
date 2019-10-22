@@ -1,0 +1,29 @@
+<section class="box">
+  <p class="detail-pair">
+    <strong>
+      <%= t('applications.show.attendee_info_1', event_name: event_name) %>
+    </strong>
+    <%= application.attendee_info_1 %>
+  </p>
+
+  <p class="detail-pair">
+    <strong><%=t('applications.show.attendee_info_2')%></strong>
+    <%= application.attendee_info_2 %>
+  </p>
+
+  <p class="detail-pair">
+    <strong><%=t('applications.show.name')%></strong>
+    <%= application.name %>
+  </p>
+
+  <p class="detail-pair">
+    <strong><%=t('applications.show.email')%></strong>
+    <%= application.email %>
+  </p>
+
+  <% if application.visa_needed %>
+    <p class="detail-pair">
+      <strong><%=t('applications.show.visa_needed')%></strong>
+    </p>
+  <% end %>
+</section>
