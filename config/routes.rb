@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     delete 'users/:id', to: 'users#destroy', as: :destroy_user
 
     get '/past_events', to: 'events#index_past', as: :past_events
-    get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest, constraints: { event_id: /\d.+/ }
+    get '/events/:event_id/continue_as_guest', to: 'applications#continue_as_guest', as: :continue_as_guest, constraints: { event_id: /\d+/ }
     post '/events/preview', to: 'events#preview', as: :event_preview
     patch '/events/:event_id/application/:id/submit', to: 'applications#submit', as: :submit_event_application
     patch '/events/:event_id/drafts/:id/submit', to: 'drafts#submit', as: :submit_draft
