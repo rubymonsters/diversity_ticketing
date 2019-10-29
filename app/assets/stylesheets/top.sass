@@ -57,8 +57,8 @@
   @media (min-width: $medium)
     display: none
 
-.bar1, .bar2, .bar3
-  width: 15px
+.bar1, .bar2
+  width: 24px
   height: 2px
   background-color: #333
   margin: 4px 0
@@ -66,15 +66,11 @@
 
 /* Rotate first bar */
 .change .bar1
-  transform: rotate(-45deg) translate(-4px, 4px)
-
-/* Fade out the second bar */
-.change .bar2
-  opacity: 0
+  transform: rotate(-45deg) translate(-2px, 2px)
 
 /* Rotate last bar */
-.change .bar3
-  transform: rotate(45deg) translate(-4px, -4px)
+.change .bar2
+  transform: rotate(45deg) translate(-2px, -2px)
 
 .language-picker
   font-size: 15px
