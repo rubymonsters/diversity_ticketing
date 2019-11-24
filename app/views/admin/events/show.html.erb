@@ -89,10 +89,24 @@
 
   <%= render partial: "events/event" %>
 
+  <section class="box">
+    <h2 class="box-title box-noborder"><%= t('.application_and_selection') %></h2>
+    <div>
+      <% if @event.application_process == 'selection_by_travis' %>
+        Selection by Diversity Tickets
+      <% elsif @event.application_process == 'selection_by_organizer'  %>
+        Selection by Organizer
+      <% elsif @event.application_process == 'application_by_organizer' %>
+        Application by Organizer
+        <%= link_to @event.application_link, "#{@event.application_link}", target: "_blank" %>
+      <% end %>
+    </div>
+  </section>
+
   <div class="box form_field">
-    <%= link_to "Delete event", event_path(@event.id), method: :delete,
+    <%= link_to "Delete event", admin_event_path(@event.id), method: :delete,
         data: {confirm: "Are you sure?"}, class: "btn btn-delete" %>
-    <%= link_to "Edit event", edit_event_path(@event.id), class: "btn btn-edit" %>
+    <%= link_to "Edit event", edit_admin_event_path(@event.id), class: "btn btn-edit" %>
     <% if @event.approved? %>
       <%= download_csv_link(@event) %>
     <% else %>
