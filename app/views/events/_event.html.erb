@@ -58,20 +58,3 @@
 <div></div>
 
 <%= render partial: "events/application_details" %>
-
-<% unless controller_name == 'events' && action_name == 'show' %>
-  <section class="box">
-    <h2 class="box-title box-noborder"><%= t('.application_and_selection') %></h2>
-    <p class="border"><%= t('.not_shown') %><p>
-    <div>
-      <% if @event.application_process == 'selection_by_travis' %>
-        <%= raw t('.selection_by_travis') %>
-      <% elsif @event.application_process == 'selection_by_organizer'  %>
-        <%= t('.selection_by_organizer') %>
-      <% elsif @event.application_process == 'application_by_organizer' %>
-        <%= t('.application_by_organizer') %>
-        <%= link_to @event.application_link, "#{@event.application_link}", target: "_blank" %>
-      <% end %>
-    </div>
-  </section>
-<% end %>
