@@ -530,6 +530,7 @@ es:
       past: "Pasado"
       title: "Tus eventos"
       unapproved: "Aún sin aprobar"
+      download_data: "Descarga solicitudes"
     confirm_delete:
       are_you_sure: "¿Estás segura/o de que quieres eliminar tu cuenta de usuario?"
       benefits_intro: "Nos entristecería que te marchases y no queremos que te pierdas los beneficios de un usuario registrado"

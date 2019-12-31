@@ -1,6 +1,6 @@
 <% provide :title, t('.title') %>
 
-<%= render partial: "shared/breadcrumbs", locals:{ title: t('.title') } %>
+<%= render partial: "shared/breadcrumbs", locals: { title: t('.title') } %>
 
 <h1><%= t(".title") %></h1>
 <div class="two-columns">
@@ -22,6 +22,13 @@
                 <p>
                   <%= link_to edit_event_path(id: event.id), class: "icon tooltip", title: t('.edit') do %>
                     <span class="icon-edit" aria-label="edit icon"></span>
+                  <% end %>
+                </p>
+                <p>
+                  <% if event.application_process == "selection_by_organizer" %>
+                     <%= link_to event_path(id: event.id, format: :csv), class: "icon tooltip-large", title: t('.download_data') do %>
+                      <span class="icon-download" aria-label="download icon"></span>
+                    <% end %>
                   <% end %>
                 </p>
               </li>

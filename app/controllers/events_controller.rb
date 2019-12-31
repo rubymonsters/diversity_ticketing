@@ -17,12 +17,27 @@ class EventsController < ApplicationController
   end
 
   def show
-    if @event.unapproved && @event.organizer_id != current_user.id
-      flash[:alert] = t('.not_allowed')
-      redirect_back(fallback_location: root_path)
-    elsif @event.deleted
+    if @event.deleted
       flash[:alert] = t('.event_deleted')
       redirect_back(fallback_location: root_path)
+    end
+
+    respond_to do |format|
+      format.html do
+        if @event.unapproved && @event.organizer_id != current_user.id
+          flash[:alert] = t('.not_allowed')
+          redirect_back(fallback_location: root_path)
+        end
+      end
+
+      format.csv do
+        if @event.organizer_id != current_user.id
+          flash[:alert] = t('.not_allowed')
+          redirect_back(fallback_location: root_path)
+        else
+          send_data @event.to_csv, filename: "#{@event.name} #{DateTime.now.strftime("%F")}.csv"
+        end
+      end
     end
   end
 

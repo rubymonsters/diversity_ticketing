@@ -333,6 +333,31 @@ class EventsControllerTest < ActionController::TestCase
       assert_equal 'You are not allowed to access this event.', flash[:alert]
       assert_redirected_to request.env["HTTP_REFERER"]
     end
+
+    describe 'download event details as CSV' do
+      it 'shows the event details page in csv format to organizer' do
+        user = make_user(admin: false)
+        event = make_event(organizer_id: user.id)
+        sign_in_as(user)
+
+        get :show, params: { id: event.id }, format: :csv
+
+        assert_equal request.format, :csv
+      end
+
+      it 'does not show the event details page in csv format to other users' do
+        user = make_user(admin: false)
+        different_user = make_user(admin: false, email: "differnt_user@example.com")
+        event = make_event(organizer_id: user.id)
+        request.env["HTTP_REFERER"] = 'http://www.somewhere.net'
+        sign_in_as(different_user)
+
+        get :show, params: { id: event.id }, format: :csv
+
+        assert_equal 'You are not allowed to access this event.', flash[:alert]
+        assert_redirected_to request.env["HTTP_REFERER"]
+      end
+    end
   end
 
   describe '#preview' do

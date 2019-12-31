@@ -555,6 +555,7 @@ en:
       past: "Past"
       title: "Your events"
       unapproved: "Not approved so far"
+      download_data: "Download Applications"
     confirm_delete:
       are_you_sure: "Are you sure you want to delete your user account?"
       benefits_intro: "We would be sad to see you go and don't want you to miss out on the benefits of
