@@ -506,6 +506,7 @@ fr:
       past: "Passés"
       title: "Vos événements"
       unapproved: "Non approuvé(s) jusqu'à présent"
+      download_data: "Téléchargez candidatures"
     confirm_delete:
       are_you_sure: "Êtes-vous sûr·e de vouloir supprimer votre compte utilisateur ?"
       benefits_intro: "Nous serions tristes de vous voir partir et ne voulons pas que vous ne manquiez pas les avantages qu'une compte vous confère."
