@@ -28,6 +28,10 @@ class Event < ApplicationRecord
     where.not(application_process: 'application_by_organizer')
   end
 
+  def self.selection_by_organizer
+    where(application_process: 'selection_by_organizer')
+  end
+
   def self.approved
     where(approved: true)
   end

@@ -77,6 +77,7 @@ module Admin
         tweet_event_check
         inform_applicants_country
         inform_applicants_field_of_interest
+        inform_organizer
         redirect_to admin_path, notice: "#{@event.name} has been approved"
       else
         redirect_to admin_path, notice: "#{@event.name} has been unapproved"
@@ -124,6 +125,10 @@ module Admin
       @event.interested_users.where(tag_email_notifications: true).each do |user|
         UserNotificationsMailer.new_field_specific_event(@event, user).deliver_later
       end
+    end
+
+    def inform_organizer
+      OrganizerMailer.approved_event(@event).deliver_later
     end
 
     def tweet_event_check
