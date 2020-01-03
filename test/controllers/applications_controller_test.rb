@@ -244,7 +244,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       reminder_email = ActionMailer::Base.deliveries.last
       assert_equal(
         reminder_email.subject,
-        "Your event received more applications than available tickets."
+        "Your event #{event.name} received more applications than available tickets."
       )
     end
 
@@ -275,7 +275,7 @@ class ApplicationsControllerTest < ActionController::TestCase
       reminder_emails = []
       emails = ActionMailer::Base.deliveries
       emails.each do |email|
-        if email.subject == "Your event received more applications than available tickets."
+        if email.subject == "Your event #{event.name} received more applications than available tickets."
           reminder_emails << email
         end
       end
